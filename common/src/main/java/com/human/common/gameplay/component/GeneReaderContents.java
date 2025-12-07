@@ -1,8 +1,8 @@
 package com.human.common.gameplay.component;
 
+import com.human.common.gameplay.gene.GeneBonusDataEntry;
 import com.just.codec.stream.StreamCodec;
 import com.just.codec.stream.schema.StreamCodecSchema;
-import com.human.common.gameplay.gene.GeneBonusDataEntry;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import org.jetbrains.annotations.NotNull;

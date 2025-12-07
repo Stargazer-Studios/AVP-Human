@@ -1,6 +1,5 @@
 package com.human.common.gameplay.entity.nuke;
 
-import com.avp.AVP;
 import com.avp.server.ServerScheduler;
 import com.human.common.config.HumanConfig;
 import com.human.common.registry.init.HumanBlocks;

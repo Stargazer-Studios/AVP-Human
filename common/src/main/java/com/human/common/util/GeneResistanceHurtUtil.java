@@ -1,5 +1,6 @@
 package com.human.common.util;
 
+import com.avp.common.registry.AVPDeferredHolder;
 import com.human.common.gameplay.entity.manager.GeneContainer;
 import com.human.common.gameplay.gene.Gene;
 import com.human.common.gameplay.gene.GeneOperationType;
@@ -8,8 +9,6 @@ import com.human.common.model.GeneCarrier;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
-
-import com.avp.common.registry.AVPDeferredHolder;
 
 public class GeneResistanceHurtUtil {
 
@@ -21,9 +20,9 @@ public class GeneResistanceHurtUtil {
         var geneContainer = geneCarrier.getOrCreateGeneManager().getGeneContainer();
 
         // FIXME:
-//        if (damageSource.is(AVPDamageTypeKeys.ACID)) {
-//            return applyGeneResistanceToDamage(geneContainer, Genes.ACID_RESISTANCE, damage);
-//        }
+        // if (damageSource.is(AVPDamageTypeKeys.ACID)) {
+        // return applyGeneResistanceToDamage(geneContainer, Genes.ACID_RESISTANCE, damage);
+        // }
 
         if (damageSource.is(DamageTypeTags.IS_FIRE)) {
             return applyGeneResistanceToDamage(geneContainer, Genes.FIRE_RESISTANCE, damage);

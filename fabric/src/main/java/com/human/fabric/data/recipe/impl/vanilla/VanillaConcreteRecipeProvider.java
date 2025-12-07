@@ -1,6 +1,5 @@
 package com.human.fabric.data.recipe.impl.vanilla;
 
-import com.avp.common.gameplay.block.property.BlockProperties;
 import com.avp.fabric.data.recipe.builder.RecipeBuilder;
 import com.avp.fabric.data.recipe.util.RecipeUtil;
 import com.human.common.gameplay.block.property.HumanBlockProperties;

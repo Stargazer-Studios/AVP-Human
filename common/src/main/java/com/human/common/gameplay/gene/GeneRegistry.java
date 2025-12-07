@@ -1,5 +1,6 @@
 package com.human.common.gameplay.gene;
 
+import com.avp.common.registry.AVPDeferredHolder;
 import com.just.core.functional.option.Option;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
@@ -8,8 +9,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
-
-import com.avp.common.registry.AVPDeferredHolder;
 
 public class GeneRegistry {
 

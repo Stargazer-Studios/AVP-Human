@@ -2,8 +2,8 @@ package com.human.mixin;
 
 import com.human.common.gameplay.item.GeneReaderItem;
 import com.human.common.gameplay.item.SyringeItem;
-import com.human.common.registry.init.item.HumanItems;
 import com.human.common.registry.GeneBonusDataRegistry;
+import com.human.common.registry.init.item.HumanItems;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;

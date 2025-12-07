@@ -1,6 +1,5 @@
 package com.human.common.gameplay.block.entity.power.impl;
 
-import com.avp.AVP;
 import com.human.common.config.HumanConfig;
 import com.human.common.gameplay.block.entity.power.PowerConsumerBlockEntity;
 import com.human.common.registry.init.HumanBlockEntityTypes;
@@ -47,8 +46,7 @@ public class ResonatorBlockEntity extends PowerConsumerBlockEntity {
 
         tickCounter++;
 
-        var tickValue = HumanConfig
-            .INSTANCE.blockConfigs.RESONATOR_REPLACE_TICKS;
+        var tickValue = HumanConfig.INSTANCE.blockConfigs.RESONATOR_REPLACE_TICKS;
 
         if (tickCounter % tickValue != 0) {
             return;

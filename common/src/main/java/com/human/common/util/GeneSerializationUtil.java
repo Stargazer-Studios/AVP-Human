@@ -1,5 +1,6 @@
 package com.human.common.util;
 
+import com.avp.AVP;
 import com.human.common.gameplay.entity.manager.GeneMap;
 import com.human.common.gameplay.gene.GeneBonusDataEntry;
 import com.human.common.gameplay.gene.GeneModifierKey;
@@ -7,8 +8,6 @@ import com.mojang.serialization.Dynamic;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.NbtOps;
-
-import com.avp.AVP;
 
 public class GeneSerializationUtil {
 

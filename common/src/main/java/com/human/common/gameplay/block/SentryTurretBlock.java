@@ -1,6 +1,5 @@
 package com.human.common.gameplay.block;
 
-import com.avp.common.gameplay.block.property.BlockProperties;
 import com.human.common.gameplay.block.property.HumanBlockProperties;
 import com.human.common.registry.init.HumanEntityTypes;
 import net.minecraft.core.BlockPos;

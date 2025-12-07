@@ -1,6 +1,5 @@
 package com.human.fabric.data.tag;
 
-import com.avp.common.registry.tag.AVPBlockTags;
 import com.compat.CommonBlockTags;
 import com.human.Human;
 import com.human.common.registry.init.HumanBlocks;

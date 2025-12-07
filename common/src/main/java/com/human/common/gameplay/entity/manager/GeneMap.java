@@ -1,5 +1,6 @@
 package com.human.common.gameplay.entity.manager;
 
+import com.avp.common.registry.AVPDeferredHolder;
 import com.human.common.gameplay.gene.Gene;
 import com.human.common.gameplay.gene.GeneModifierKey;
 import com.human.common.gameplay.gene.GeneOperationType;
@@ -12,8 +13,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-
-import com.avp.common.registry.AVPDeferredHolder;
 
 public class GeneMap {
 

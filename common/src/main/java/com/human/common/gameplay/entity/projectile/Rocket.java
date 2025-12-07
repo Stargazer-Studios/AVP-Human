@@ -1,6 +1,5 @@
 package com.human.common.gameplay.entity.projectile;
 
-import com.avp.AVP;
 import com.human.common.config.HumanConfig;
 import com.human.common.registry.init.HumanEntityTypes;
 import net.minecraft.core.particles.ParticleTypes;

@@ -1,6 +1,5 @@
 package com.human.fabric.data.model;
 
-import com.avp.common.gameplay.block.property.BlockProperties;
 import com.avp.fabric.data.model.AVPModelTemplates;
 import com.avp.fabric.data.model.generator.BarsGenerator;
 import com.human.common.gameplay.block.property.HumanBlockProperties;

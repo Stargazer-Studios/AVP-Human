@@ -1,9 +1,9 @@
 package com.human.common.gameplay.entity.manager;
 
-import com.lib.common.gameplay.NBTSerializable;
 import com.human.common.gameplay.gene.Gene;
 import com.human.common.gameplay.gene.GeneModifierKey;
 import com.human.common.gameplay.gene.GeneRegistry;
+import com.lib.common.gameplay.NBTSerializable;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;

@@ -84,7 +84,9 @@ public class HumanIndustrialGlassBlocks {
                         Function.identity(),
                         dyeColor -> create(
                             dyeColor.getName() + "_industrial_glass_pane",
-                            () -> new IronBarsBlock(HumanBlockProperties.DYE_COLOR_TO_INDUSTRIAL_GLASS_PANE_PROPERTIES.get(dyeColor).build())
+                            () -> new IronBarsBlock(
+                                HumanBlockProperties.DYE_COLOR_TO_INDUSTRIAL_GLASS_PANE_PROPERTIES.get(dyeColor).build()
+                            )
                         )
                     )
                 )

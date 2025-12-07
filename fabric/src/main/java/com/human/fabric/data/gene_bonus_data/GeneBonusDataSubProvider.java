@@ -2,15 +2,15 @@ package com.human.fabric.data.gene_bonus_data;
 
 import com.avp.AVP;
 import com.avp.common.registry.AVPDeferredHolder;
-import com.human.common.registry.init.HumanEntityTypes;
-import com.just.core.functional.tuple.Tuple2;
-import com.lib.common.data.EntityTypePredicate;
 import com.human.common.gameplay.gene.Gene;
 import com.human.common.gameplay.gene.GeneBonusData;
 import com.human.common.gameplay.gene.GeneBonusDataEntry;
 import com.human.common.gameplay.gene.GeneModifier;
 import com.human.common.gameplay.gene.GeneOperationType;
 import com.human.common.gameplay.gene.Genes;
+import com.human.common.registry.init.HumanEntityTypes;
+import com.just.core.functional.tuple.Tuple2;
+import com.lib.common.data.EntityTypePredicate;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.tags.TagKey;
@@ -104,8 +104,8 @@ public class GeneBonusDataSubProvider extends GeneBonusDataProvider {
                 // Positives
                 new Tuple2<>(Genes.THORNS, new GeneModifier(GeneOperationType.ADDITIVE, 4.0)),
                 new Tuple2<>(Genes.ATTACK_DAMAGE, new GeneModifier(GeneOperationType.ADDITIVE, 6.0))
-                // Negatives
-                // TODO: Negative attack speed here.
+            // Negatives
+            // TODO: Negative attack speed here.
             )
         );
         add(
@@ -114,7 +114,7 @@ public class GeneBonusDataSubProvider extends GeneBonusDataProvider {
                 // Positives
                 new Tuple2<>(Genes.ATTACK_DAMAGE, new GeneModifier(GeneOperationType.ADDITIVE, 12.0)),
                 new Tuple2<>(Genes.INTELLIGENCE, new GeneModifier(GeneOperationType.ADDITIVE, 15.0))
-                // Negatives
+            // Negatives
             )
         );
         add(
@@ -133,8 +133,8 @@ public class GeneBonusDataSubProvider extends GeneBonusDataProvider {
                 // Positives
                 new Tuple2<>(Genes.THORNS, new GeneModifier(GeneOperationType.ADDITIVE, 2.0)),
                 new Tuple2<>(Genes.ATTACK_DAMAGE, new GeneModifier(GeneOperationType.ADDITIVE, 3.0))
-                // Negatives
-                // TODO: Negative attack speed here.
+            // Negatives
+            // TODO: Negative attack speed here.
             )
         );
         add(

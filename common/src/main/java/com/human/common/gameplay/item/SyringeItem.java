@@ -2,12 +2,12 @@ package com.human.common.gameplay.item;
 
 import com.human.common.gameplay.component.SyringeContents;
 import com.human.common.gameplay.component.SyringeMode;
-import com.human.common.registry.init.HumanDataComponents;
 import com.human.common.gameplay.gene.GeneBonusDataEntry;
 import com.human.common.gameplay.gene.GeneOperationType;
 import com.human.common.gameplay.gene.Genes;
 import com.human.common.model.GeneCarrier;
 import com.human.common.registry.GeneBonusDataRegistry;
+import com.human.common.registry.init.HumanDataComponents;
 import com.human.common.util.GeneDataUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.CommonComponents;

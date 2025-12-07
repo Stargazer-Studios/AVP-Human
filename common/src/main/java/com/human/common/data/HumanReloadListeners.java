@@ -1,8 +1,7 @@
 package com.human.common.data;
 
-import net.minecraft.server.packs.resources.PreparableReloadListener;
-
 import com.avp.service.Services;
+import net.minecraft.server.packs.resources.PreparableReloadListener;
 
 public class HumanReloadListeners {
 

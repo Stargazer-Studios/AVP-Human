@@ -1,5 +1,7 @@
 package com.human.common.gameplay.gene;
 
+import com.avp.AVPResources;
+import com.avp.common.registry.AVPDeferredHolder;
 import com.just.core.functional.function.Function2;
 import net.minecraft.core.Holder;
 import net.minecraft.world.entity.LivingEntity;
@@ -7,9 +9,6 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 
 import java.util.function.Consumer;
-
-import com.avp.AVPResources;
-import com.avp.common.registry.AVPDeferredHolder;
 
 public class Genes {
 
