@@ -1,0 +1,9 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "avp_human:block/sentry_turret"
+      }
+    ]
+  }
+}

@@ -1,6 +1,18 @@
 package com.human.fabric.data.tag;
 
+import com.avp.common.registry.tag.AVPItemTags;
+import com.compat.CommonItemTags;
+import com.human.common.gameplay.item.GunItem;
+import com.human.common.registry.init.block.CoreBlocks;
+import com.human.common.registry.init.item.HumanArmorItems;
+import com.human.common.registry.init.item.HumanBlockItems;
 import com.human.common.registry.init.item.HumanItems;
+import com.human.common.registry.init.item.block.HumanFerroaluminumBlockItems;
+import com.human.common.registry.init.item.block.HumanIndustrialGlassBlockItems;
+import com.human.common.registry.init.item.block.HumanSteelBlockItems;
+import com.human.common.registry.init.item.block.HumanTitaniumBlockItems;
+import com.human.common.registry.tag.HumanItemTags;
+import com.human.compat.HumanCommonItemTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.core.HolderLookup;
@@ -9,9 +21,11 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.HoeItem;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ButtonBlock;
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.FenceBlock;
@@ -30,7 +44,365 @@ public class HumanItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider wrapperLookup) {
+        addArmors();
+        addRadioactiveItems();
+        addCompatibilityTags();
         addAutomatedTagItems();
+
+        getOrCreateTagBuilder(HumanItemTags.AMMO_ITEMS)
+            .add(
+                HumanItems.CASELESS_BULLET.get(),
+                HumanItems.HEAVY_BULLET.get(),
+                HumanItems.SMALL_BULLET.get(),
+                HumanItems.MEDIUM_BULLET.get(),
+                HumanItems.SHOTGUN_SHELL.get(),
+                HumanItems.ROCKET.get(),
+                HumanItems.FUEL_TANK.get()
+            );
+
+        getOrCreateTagBuilder(AVPItemTags.IRON_BLOCK_LIKE)
+            .addTag(HumanCommonItemTags.STORAGE_BLOCKS_ALUMINUM)
+            .addTag(HumanCommonItemTags.STORAGE_BLOCKS_FERROALUMINUM)
+            .addTag(HumanCommonItemTags.STORAGE_BLOCKS_STEEL)
+            .addTag(HumanCommonItemTags.STORAGE_BLOCKS_ZINC);
+
+        getOrCreateTagBuilder(AVPItemTags.IRON_INGOT_LIKE)
+            .addTag(HumanCommonItemTags.INGOTS_ALUMINUM)
+            .addTag(HumanCommonItemTags.INGOTS_FERROALUMINUM)
+            .addTag(HumanCommonItemTags.INGOTS_STEEL)
+            .addTag(HumanCommonItemTags.INGOTS_ZINC);
+
+        var plasticTagBuilder = getOrCreateTagBuilder(HumanItemTags.PLASTIC);
+
+        TagProviderUtil.getPlasticBlockStream()
+            .map(Block::asItem)
+            .forEach(plasticTagBuilder::add);
+
+        var industrialGlassBlockTagBuilder = getOrCreateTagBuilder(HumanItemTags.INDUSTRIAL_GLASS_BLOCK);
+
+        industrialGlassBlockTagBuilder.add(HumanIndustrialGlassBlockItems.INDUSTRIAL_GLASS.get());
+        HumanIndustrialGlassBlockItems.DYE_COLOR_TO_INDUSTRIAL_GLASS.forEach(
+            ($, blockItemSupplier) -> industrialGlassBlockTagBuilder.add(blockItemSupplier.get())
+        );
+
+        var industrialGlassPaneTagBuilder = getOrCreateTagBuilder(HumanItemTags.INDUSTRIAL_GLASS_PANE);
+
+        industrialGlassPaneTagBuilder.add(HumanIndustrialGlassBlockItems.INDUSTRIAL_GLASS_PANE.get());
+        HumanIndustrialGlassBlockItems.DYE_COLOR_TO_INDUSTRIAL_GLASS_PANE.forEach(
+            ($, blockItemSupplier) -> industrialGlassPaneTagBuilder.add(blockItemSupplier.get())
+        );
+
+        getOrCreateTagBuilder(HumanItemTags.INDUSTRIAL_GLASS)
+            .addTag(HumanItemTags.INDUSTRIAL_GLASS_BLOCK)
+            .addTag(HumanItemTags.INDUSTRIAL_GLASS_PANE);
+
+        getOrCreateTagBuilder(HumanItemTags.LITHIUM)
+            .add(
+                CoreBlocks.LITHIUM_BLOCK.get().asItem(),
+                CoreBlocks.LITHIUM_ORE.get().asItem(),
+                HumanItems.LITHIUM_DUST.get()
+            );
+
+        getOrCreateTagBuilder(ItemTags.DYEABLE)
+            .addTag(HumanItemTags.MK50_ARMOR);
+
+        getOrCreateTagBuilder(AVPItemTags.RANGED_WEAPONS)
+            .addTag(HumanItemTags.GUNS);
+    }
+
+    private void addArmors() {
+        getOrCreateTagBuilder(HumanItemTags.RADIATION_RESISTANT_ARMORS)
+            .add(
+                HumanArmorItems.MK50_HELMET.get(),
+                HumanArmorItems.MK50_CHESTPLATE.get(),
+                HumanArmorItems.MK50_LEGGINGS.get(),
+                HumanArmorItems.MK50_BOOTS.get()
+            );
+
+        getOrCreateTagBuilder(HumanItemTags.MK50_ARMOR)
+            .add(
+                HumanArmorItems.MK50_BOOTS.get(),
+                HumanArmorItems.MK50_CHESTPLATE.get(),
+                HumanArmorItems.MK50_HELMET.get(),
+                HumanArmorItems.MK50_LEGGINGS.get()
+            );
+
+        getOrCreateTagBuilder(HumanItemTags.PRESSURE_ARMOR)
+            .add(
+                HumanArmorItems.PRESSURE_BOOTS.get(),
+                HumanArmorItems.PRESSURE_CHESTPLATE.get(),
+                HumanArmorItems.PRESSURE_HELMET.get(),
+                HumanArmorItems.PRESSURE_LEGGINGS.get()
+            );
+    }
+
+    private void addRadioactiveItems() {
+        getOrCreateTagBuilder(HumanItemTags.RADIATION_CURE_ITEMS)
+            .add(
+                Items.GOLDEN_APPLE,
+                Items.ENCHANTED_GOLDEN_APPLE
+            );
+
+        getOrCreateTagBuilder(HumanItemTags.RADIOACTIVE_ITEMS)
+            .add(
+                HumanItems.AUTUNITE_DUST.get(),
+                HumanItems.URANIUM_NUGGET.get(),
+                HumanItems.URANIUM_INGOT.get(),
+                HumanBlockItems.AUTUNITE_BLOCK.get(),
+                HumanBlockItems.AUTUNITE_ORE.get(),
+                HumanBlockItems.URANIUM_BLOCK.get(),
+                HumanBlockItems.TRINITITE_BLOCK.get()
+            )
+            .addTag(HumanCommonItemTags.INGOTS_URANIUM);
+
+        getOrCreateTagBuilder(HumanItemTags.URANIUM_NUGGET_LIKE)
+            .addOptionalTag(HumanCommonItemTags.NUGGETS_URANIUM);
+    }
+
+    private void addCompatibilityTags() {
+        getOrCreateTagBuilder(HumanCommonItemTags.DUSTS_AUTUNITE)
+            .setReplace(false)
+            .add(HumanItems.AUTUNITE_DUST.get());
+
+        getOrCreateTagBuilder(CommonItemTags.DUSTS_COAL)
+            .setReplace(false)
+            .add(HumanItems.CARBON_DUST.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.DUSTS_LITHIUM)
+            .setReplace(false)
+            .add(HumanItems.LITHIUM_DUST.get());
+
+        getOrCreateTagBuilder(CommonItemTags.INGOTS)
+            .setReplace(false)
+            .addTag(HumanCommonItemTags.INGOTS_ALUMINUM)
+            .addTag(HumanCommonItemTags.INGOTS_BRASS)
+            .addTag(HumanCommonItemTags.INGOTS_FERROALUMINUM)
+            .addTag(HumanCommonItemTags.INGOTS_LEAD)
+            .addTag(HumanCommonItemTags.INGOTS_STEEL)
+            .addTag(HumanCommonItemTags.INGOTS_TITANIUM)
+            .addTag(HumanCommonItemTags.INGOTS_URANIUM)
+            .addTag(HumanCommonItemTags.INGOTS_ZINC);
+
+        getOrCreateTagBuilder(HumanCommonItemTags.INGOTS_ALUMINUM)
+            .setReplace(false)
+            .add(HumanItems.ALUMINUM_INGOT.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.INGOTS_BRASS)
+            .setReplace(false)
+            .add(HumanItems.BRASS_INGOT.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.INGOTS_LEAD)
+            .setReplace(false)
+            .add(HumanItems.LEAD_INGOT.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.INGOTS_FERROALUMINUM)
+            .setReplace(false)
+            .add(HumanItems.FERROALUMINUM_INGOT.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.INGOTS_STEEL)
+            .setReplace(false)
+            .add(HumanItems.STEEL_INGOT.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.INGOTS_TITANIUM)
+            .setReplace(false)
+            .add(HumanItems.TITANIUM_INGOT.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.INGOTS_URANIUM)
+            .setReplace(false)
+            .add(HumanItems.URANIUM_INGOT.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.INGOTS_ZINC)
+            .setReplace(false)
+            .add(HumanItems.ZINC_INGOT.get());
+
+        getOrCreateTagBuilder(CommonItemTags.NUGGETS)
+            .setReplace(false)
+            .addTag(HumanCommonItemTags.NUGGETS_ALUMINUM)
+            .addTag(HumanCommonItemTags.NUGGETS_BRASS)
+            .addTag(HumanCommonItemTags.NUGGETS_FERROALUMINUM)
+            .addTag(HumanCommonItemTags.NUGGETS_LEAD)
+            .addTag(HumanCommonItemTags.NUGGETS_STEEL)
+            .addTag(HumanCommonItemTags.NUGGETS_TITANIUM)
+            .addTag(HumanCommonItemTags.NUGGETS_URANIUM)
+            .addTag(HumanCommonItemTags.NUGGETS_ZINC);
+
+        getOrCreateTagBuilder(HumanCommonItemTags.NUGGETS_ALUMINUM)
+            .setReplace(false)
+            .add(HumanItems.ALUMINUM_NUGGET.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.NUGGETS_BRASS)
+            .setReplace(false)
+            .add(HumanItems.BRASS_NUGGET.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.NUGGETS_FERROALUMINUM)
+            .setReplace(false)
+            .add(HumanItems.FERROALUMINUM_NUGGET.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.NUGGETS_LEAD)
+            .setReplace(false)
+            .add(HumanItems.LEAD_NUGGET.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.NUGGETS_STEEL)
+            .setReplace(false)
+            .add(HumanItems.STEEL_NUGGET.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.NUGGETS_TITANIUM)
+            .setReplace(false)
+            .add(HumanItems.TITANIUM_NUGGET.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.NUGGETS_URANIUM)
+            .setReplace(false)
+            .add(HumanItems.URANIUM_NUGGET.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.NUGGETS_ZINC)
+            .setReplace(false)
+            .add(HumanItems.ZINC_NUGGET.get());
+
+        getOrCreateTagBuilder(CommonItemTags.ORES)
+            .setReplace(false)
+            .addTag(HumanCommonItemTags.ORES_ALUMINUM)
+            .addTag(HumanCommonItemTags.ORES_AUTUNITE)
+            .addTag(HumanCommonItemTags.ORES_LEAD)
+            .addTag(HumanCommonItemTags.ORES_LITHIUM)
+            .addTag(HumanCommonItemTags.ORES_MONAZITE)
+            .addTag(HumanCommonItemTags.ORES_TITANIUM)
+            .addTag(HumanCommonItemTags.ORES_ZINC);
+
+        getOrCreateTagBuilder(HumanCommonItemTags.ORES_ALUMINUM)
+            .setReplace(false)
+            .addTag(HumanCommonItemTags.ORES_BAUXITE);
+
+        getOrCreateTagBuilder(HumanCommonItemTags.ORES_AUTUNITE)
+            .setReplace(false)
+            .add(HumanBlockItems.AUTUNITE_ORE.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.ORES_BAUXITE)
+            .setReplace(false)
+            .add(HumanBlockItems.BAUXITE_ORE.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.ORES_GALENA)
+            .setReplace(false)
+            .add(HumanBlockItems.GALENA_ORE.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.ORES_LEAD)
+            .setReplace(false)
+            .addTag(HumanCommonItemTags.ORES_GALENA);
+
+        getOrCreateTagBuilder(HumanCommonItemTags.ORES_LITHIUM)
+            .setReplace(false)
+            .add(HumanBlockItems.LITHIUM_ORE.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.ORES_MONAZITE)
+            .setReplace(false)
+            .add(HumanBlockItems.MONAZITE_ORE.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.ORES_TITANIUM)
+            .setReplace(false)
+            .add(HumanBlockItems.DEEPSLATE_TITANIUM_ORE.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.ORES_ZINC)
+            .setReplace(false)
+            .add(HumanBlockItems.ZINC_ORE.get())
+            .add(HumanBlockItems.DEEPSLATE_ZINC_ORE.get());
+
+        getOrCreateTagBuilder(CommonItemTags.RAW_MATERIALS)
+            .setReplace(false)
+            .addTag(HumanCommonItemTags.RAW_MATERIALS_ALUMINUM)
+            .addTag(HumanCommonItemTags.RAW_MATERIALS_LEAD)
+            .addTag(HumanCommonItemTags.RAW_MATERIALS_STEEL)
+            .addTag(HumanCommonItemTags.RAW_MATERIALS_TITANIUM)
+            .addTag(HumanCommonItemTags.RAW_MATERIALS_ZINC);
+
+        getOrCreateTagBuilder(HumanCommonItemTags.RAW_MATERIALS_ALUMINUM)
+            .setReplace(false)
+            .add(HumanItems.RAW_BAUXITE.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.RAW_MATERIALS_LEAD)
+            .setReplace(false)
+            .add(HumanItems.RAW_GALENA.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.RAW_MATERIALS_MONAZITE)
+            .setReplace(false)
+            .add(HumanItems.RAW_MONAZITE.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.RAW_MATERIALS_STEEL)
+            .setReplace(false)
+            .add(HumanItems.RAW_CRUDE_IRON.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.RAW_MATERIALS_TITANIUM)
+            .setReplace(false)
+            .add(HumanItems.RAW_TITANIUM.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.RAW_MATERIALS_ZINC)
+            .setReplace(false)
+            .add(HumanItems.RAW_ZINC.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.SILICON)
+            .setReplace(false)
+            .add(HumanItems.SILICON.get());
+
+        getOrCreateTagBuilder(CommonItemTags.STORAGE_BLOCKS)
+            .setReplace(false)
+            .addTag(HumanCommonItemTags.STORAGE_BLOCKS_ALUMINUM)
+            .addTag(HumanCommonItemTags.STORAGE_BLOCKS_BRASS)
+            .addTag(HumanCommonItemTags.STORAGE_BLOCKS_FERROALUMINUM)
+            .addTag(HumanCommonItemTags.STORAGE_BLOCKS_LEAD)
+            .addTag(HumanCommonItemTags.STORAGE_BLOCKS_RAW_ALUMINUM)
+            .addTag(HumanCommonItemTags.STORAGE_BLOCKS_RAW_LEAD)
+            .addTag(HumanCommonItemTags.STORAGE_BLOCKS_RAW_TITANIUM)
+            .addTag(HumanCommonItemTags.STORAGE_BLOCKS_RAW_ZINC)
+            .addTag(HumanCommonItemTags.STORAGE_BLOCKS_STEEL)
+            .addTag(HumanCommonItemTags.STORAGE_BLOCKS_TITANIUM)
+            .addTag(HumanCommonItemTags.STORAGE_BLOCKS_URANIUM)
+            .addTag(HumanCommonItemTags.STORAGE_BLOCKS_ZINC);
+
+        getOrCreateTagBuilder(HumanCommonItemTags.STORAGE_BLOCKS_ALUMINUM)
+            .setReplace(false)
+            .add(HumanBlockItems.ALUMINUM_BLOCK.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.STORAGE_BLOCKS_BRASS)
+            .setReplace(false)
+            .add(HumanBlockItems.BRASS_BLOCK.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.STORAGE_BLOCKS_FERROALUMINUM)
+            .setReplace(false)
+            .add(HumanFerroaluminumBlockItems.FERROALUMINUM_BLOCK.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.STORAGE_BLOCKS_LEAD)
+            .setReplace(false)
+            .add(HumanBlockItems.LEAD_BLOCK.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.STORAGE_BLOCKS_RAW_ALUMINUM)
+            .setReplace(false)
+            .add(HumanBlockItems.RAW_BAUXITE_BLOCK.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.STORAGE_BLOCKS_RAW_LEAD)
+            .setReplace(false)
+            .add(HumanBlockItems.RAW_GALENA_BLOCK.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.STORAGE_BLOCKS_RAW_TITANIUM)
+            .setReplace(false)
+            .add(HumanBlockItems.RAW_TITANIUM_BLOCK.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.STORAGE_BLOCKS_RAW_ZINC)
+            .setReplace(false)
+            .add(HumanBlockItems.RAW_ZINC_BLOCK.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.STORAGE_BLOCKS_STEEL)
+            .setReplace(false)
+            .add(HumanSteelBlockItems.STEEL_BLOCK.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.STORAGE_BLOCKS_TITANIUM)
+            .setReplace(false)
+            .add(HumanTitaniumBlockItems.TITANIUM_BLOCK.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.STORAGE_BLOCKS_URANIUM)
+            .setReplace(false)
+            .add(HumanBlockItems.URANIUM_BLOCK.get());
+
+        getOrCreateTagBuilder(HumanCommonItemTags.STORAGE_BLOCKS_ZINC)
+            .setReplace(false)
+            .add(HumanBlockItems.ZINC_BLOCK.get());
     }
 
     private void addAutomatedTagItems() {
@@ -56,6 +428,7 @@ public class HumanItemTagProvider extends FabricTagProvider.ItemTagProvider {
         var shovelTagProvider = getOrCreateTagBuilder(ItemTags.SHOVELS);
 
         // Weapons
+        var gunTagProvider = getOrCreateTagBuilder(HumanItemTags.GUNS);
         var swordTagProvider = getOrCreateTagBuilder(ItemTags.SWORDS);
 
         HumanItems.REGISTRY.getAll().forEach(deferredHolder -> {
@@ -105,6 +478,10 @@ public class HumanItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
             if (item instanceof AxeItem) {
                 axeTagProvider.add(item);
+            }
+
+            if (item instanceof GunItem) {
+                gunTagProvider.add(item);
             }
 
             if (item instanceof HoeItem) {

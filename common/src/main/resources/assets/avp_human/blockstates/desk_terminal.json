@@ -1,0 +1,26 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "avp_human:block/desk_terminal",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "avp_human:block/desk_terminal",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "avp_human:block/desk_terminal"
+    },
+    "facing=south": {
+      "model": "avp_human:block/desk_terminal",
+      "y": 180
+    },
+    "facing=up": {
+      "model": "avp_human:block/desk_terminal"
+    },
+    "facing=west": {
+      "model": "avp_human:block/desk_terminal",
+      "y": 270
+    }
+  }
+}

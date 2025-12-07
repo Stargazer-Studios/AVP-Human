@@ -1,5 +1,7 @@
 package com.human.common.registry.init;
 
+import com.human.compat.HumanCommonItemTags;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -9,6 +11,24 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.Supplier;
 
 public class HumanTiers {
+
+    public static final Tier STEEL = create(
+        500,
+        7.0F,
+        2.5F,
+        BlockTags.INCORRECT_FOR_IRON_TOOL,
+        13,
+        () -> Ingredient.of(HumanCommonItemTags.INGOTS_STEEL)
+    );
+
+    public static final Tier TITANIUM = create(
+        1000,
+        7.0F,
+        2.5F,
+        BlockTags.INCORRECT_FOR_IRON_TOOL,
+        12,
+        () -> Ingredient.of(HumanCommonItemTags.INGOTS_TITANIUM)
+    );
 
     private static Tier create(
         int uses,

@@ -7,22 +7,20 @@ import net.minecraft.world.item.CreativeModeTab;
 
 public class HumanCreativeModeTabKeys {
 
-    public static final ResourceKey<CreativeModeTab> BLOCKS_KEY = createResourceKey("human_blocks");
+    public static final ResourceKey<CreativeModeTab> BLOCKS_KEY = create("human_blocks");
 
-    public static final ResourceKey<CreativeModeTab> COMBAT_KEY = createResourceKey("human_combat");
+    public static final ResourceKey<CreativeModeTab> COMBAT_KEY = create("human_combat");
 
-    public static final ResourceKey<CreativeModeTab> INGREDIENTS_KEY = createResourceKey("human_ingredients");
+    public static final ResourceKey<CreativeModeTab> INGREDIENTS_KEY = create("human_ingredients");
 
-    public static final ResourceKey<CreativeModeTab> SPAWN_EGGS_KEY = createResourceKey("human_spawn_eggs");
+    public static final ResourceKey<CreativeModeTab> SPAWN_EGGS_KEY = create("human_spawn_eggs");
 
-    public static final ResourceKey<CreativeModeTab> TOOLS_AND_UTILITIES_KEY = createResourceKey("human_tools_and_utilities");
+    public static final ResourceKey<CreativeModeTab> TOOLS_AND_UTILITIES_KEY = create("human_tools_and_utilities");
 
-    public static ResourceKey<CreativeModeTab> createResourceKey(String name) {
+    public static ResourceKey<CreativeModeTab> create(String name) {
         return ResourceKey.create(
             BuiltInRegistries.CREATIVE_MODE_TAB.key(),
             HumanResources.location(name)
         );
     }
-
-    public static void initialize() {}
 }

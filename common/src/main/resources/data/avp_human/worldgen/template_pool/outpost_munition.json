@@ -1,0 +1,15 @@
+{
+  "name": "avp_human:outpost_munition",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "avp_human:outpost/munition/outpost_munition",
+        "processors": "minecraft:empty"
+      }
+    }
+  ]
+}

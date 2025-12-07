@@ -1,0 +1,90 @@
+package com.human.common.registry.init;
+
+import com.blib.BLibHolder;
+import com.blib.BLibRegistry;
+import com.human.Human;
+import com.human.common.gameplay.component.ArmorCaseContainerContents;
+import com.human.common.gameplay.component.GeneReaderContents;
+import com.human.common.gameplay.component.GeneReaderMode;
+import com.human.common.gameplay.component.SyringeContents;
+import com.human.common.gameplay.component.SyringeMode;
+import com.lib.common.util.codec.stream.adapter.JustStreamCodecToMojangStreamCodecAdapter;
+import com.mojang.serialization.Codec;
+import net.minecraft.core.component.DataComponentType;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.util.ExtraCodecs;
+
+import java.util.function.UnaryOperator;
+
+public class HumanDataComponents {
+
+    private static final BLibRegistry<DataComponentType<?>> REGISTRY = Human.MOD.createRegistry(BuiltInRegistries.DATA_COMPONENT_TYPE);
+
+    public static final BLibHolder<DataComponentType<Integer>> AMMUNITION = create(
+        "ammunition",
+        builder -> builder.persistent(Codec.INT)
+            .networkSynchronized(ByteBufCodecs.VAR_INT)
+            .cacheEncoding()
+    );
+
+    public static final BLibHolder<DataComponentType<ArmorCaseContainerContents>> ARMOR_CASE_CONTAINER = create(
+        "armor_case_container",
+        builder -> builder.persistent(ArmorCaseContainerContents.CODEC)
+            .networkSynchronized(new JustStreamCodecToMojangStreamCodecAdapter<>(ArmorCaseContainerContents.STREAM_CODEC))
+            .cacheEncoding()
+    );
+
+    public static final BLibHolder<DataComponentType<Integer>> CANISTER_CAPACITY = create(
+        "canister_capacity",
+        builder -> builder.persistent(ExtraCodecs.NON_NEGATIVE_INT)
+            .networkSynchronized(ByteBufCodecs.VAR_INT)
+            .cacheEncoding()
+    );
+
+    public static final BLibHolder<DataComponentType<GeneReaderContents>> GENE_READER_CONTENTS = create(
+        "gene_reader_contents",
+        builder -> builder.persistent(GeneReaderContents.CODEC)
+            .networkSynchronized(new JustStreamCodecToMojangStreamCodecAdapter<>(GeneReaderContents.STREAM_CODEC))
+            .cacheEncoding()
+    );
+
+    public static final BLibHolder<DataComponentType<GeneReaderMode>> GENE_READER_MODE = create(
+        "gene_reader_mode",
+        builder -> builder.persistent(GeneReaderMode.CODEC)
+            .networkSynchronized(new JustStreamCodecToMojangStreamCodecAdapter<>(GeneReaderMode.STREAM_CODEC))
+            .cacheEncoding()
+    );
+
+    public static final BLibHolder<DataComponentType<Boolean>> IS_FIRING = create(
+        "is_firing",
+        builder -> builder.persistent(Codec.BOOL)
+            .networkSynchronized(ByteBufCodecs.BOOL)
+            .cacheEncoding()
+    );
+
+    public static final BLibHolder<DataComponentType<SyringeContents>> SYRINGE_CONTENTS = create(
+        "syringe_contents",
+        builder -> builder.persistent(SyringeContents.CODEC)
+            .networkSynchronized(new JustStreamCodecToMojangStreamCodecAdapter<>(SyringeContents.STREAM_CODEC))
+            .cacheEncoding()
+    );
+
+    public static final BLibHolder<DataComponentType<SyringeMode>> SYRINGE_MODE = create(
+        "syringe_mode",
+        builder -> builder.persistent(SyringeMode.CODEC)
+            .networkSynchronized(new JustStreamCodecToMojangStreamCodecAdapter<>(SyringeMode.STREAM_CODEC))
+            .cacheEncoding()
+    );
+
+    private static <T> BLibHolder<DataComponentType<T>> create(
+        String id,
+        UnaryOperator<DataComponentType.Builder<T>> unaryOperator
+    ) {
+        return REGISTRY.createHolder(id, () -> unaryOperator.apply(DataComponentType.builder()).build());
+    }
+
+    public static void initialize() {
+        REGISTRY.registerAll();
+    }
+}

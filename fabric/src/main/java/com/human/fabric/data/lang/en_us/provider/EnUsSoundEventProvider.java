@@ -1,5 +1,6 @@
 package com.human.fabric.data.lang.en_us.provider;
 
+import com.human.common.registry.init.HumanSoundEvents;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.sounds.SoundEvent;
 
@@ -9,6 +10,37 @@ import java.util.function.Supplier;
 public class EnUsSoundEventProvider {
 
     public static final Consumer<FabricLanguageProvider.TranslationBuilder> CONSUMER = builder -> {
+        addSound(builder, HumanSoundEvents.ITEM_ARMOR_EQUIP_MK50, "MK50 armor rustles");
+        addSound(builder, HumanSoundEvents.ITEM_ARMOR_EQUIP_PRESSURE, "Pressure armor rustles");
+        addSound(builder, HumanSoundEvents.ITEM_ARMOR_EQUIP_STEEL, "Steel armor clanks");
+        addSound(builder, HumanSoundEvents.ITEM_ARMOR_EQUIP_TACTICAL, "Tactical armor rustles");
+        addSound(builder, HumanSoundEvents.ITEM_ARMOR_EQUIP_TITANIUM, "Titanium armor clanks");
+
+        addSound(builder, HumanSoundEvents.WEAPON_FLAMETHROWER_SEVASTOPOL_RELOAD_FINISH, "Flamethrower finishes reloading");
+        addSound(builder, HumanSoundEvents.WEAPON_FLAMETHROWER_SEVASTOPOL_RELOAD_START, "Flamethrower reloads");
+        addSound(builder, HumanSoundEvents.WEAPON_FLAMETHROWER_SEVASTOPOL_SHOOT, "Flamethrower shoots");
+        addSound(builder, HumanSoundEvents.WEAPON_FX_RICOCHET_DIRT, "Bullet ricochets off of dirt");
+        addSound(builder, HumanSoundEvents.WEAPON_FX_RICOCHET_GENERIC, "Bullet ricochets");
+        addSound(builder, HumanSoundEvents.WEAPON_FX_RICOCHET_GLASS, "Bullet ricochets off of glass");
+        addSound(builder, HumanSoundEvents.WEAPON_FX_RICOCHET_METAL, "Bullet ricochets off of metal");
+        addSound(builder, HumanSoundEvents.WEAPON_GENERIC_RELOAD, "Gun reloads");
+        addSound(builder, HumanSoundEvents.WEAPON_GENERIC_SHOOT, "Gun shoots");
+        addSound(builder, HumanSoundEvents.WEAPON_GENERIC_SHOOT_FAIL, "Gun fails to shoot");
+        addSound(builder, HumanSoundEvents.WEAPON_M37_12_SHOTGUN_SHOOT, "M37-12 Shotgun shoots");
+        addSound(builder, HumanSoundEvents.WEAPON_M41A_PULSE_RIFLE_SHOOT, "M41A Pulse Rifle shoots");
+        addSound(builder, HumanSoundEvents.WEAPON_M42A3_SNIPER_RIFLE_SHOOT, "M42A3 Sniper Rifle shoots");
+        addSound(builder, HumanSoundEvents.WEAPON_M4RA_BATTLE_RIFLE_SHOOT, "M4RA Battle Rifle shoots");
+        addSound(builder, HumanSoundEvents.WEAPON_M56_SMARTGUN_SHOOT, "M56 Smartgun shoots");
+        addSound(builder, HumanSoundEvents.WEAPON_M6B_ROCKET_LAUNCHER_RELOAD_FINISH, "M6B Rocket Launcher finishes reloading");
+        addSound(builder, HumanSoundEvents.WEAPON_M6B_ROCKET_LAUNCHER_RELOAD_START, "M6B Rocket Launcher reloads");
+        addSound(builder, HumanSoundEvents.WEAPON_M6B_ROCKET_LAUNCHER_SHOOT, "M6B Rocket Launcher shoots");
+        addSound(builder, HumanSoundEvents.WEAPON_M88_MOD_4_COMBAT_PISTOL_RELOAD, "M88 Mod 4 Combat Pistol reloads");
+        addSound(builder, HumanSoundEvents.WEAPON_M88_MOD_4_COMBAT_PISTOL_SHOOT, "M88 Mod 4 Combat Pistol shoots");
+        addSound(builder, HumanSoundEvents.WEAPON_OLD_PAINLESS_SHOOT, "Old painless shoots");
+        addSound(builder, HumanSoundEvents.WEAPON_OLD_PAINLESS_SHOOT_FINISH, "Old Painless stops shooting");
+        addSound(builder, HumanSoundEvents.WEAPON_OLD_PAINLESS_SHOOT_SPINNING, "Old Painless barrel spins");
+        addSound(builder, HumanSoundEvents.WEAPON_OLD_PAINLESS_SHOOT_START, "Old Painless barrel starts spinning");
+        addSound(builder, HumanSoundEvents.WEAPON_ZX_76_SHOTGUN_SHOOT, "ZX-76 Shotgun shoots");
     };
 
     private static void addSound(

@@ -1,0 +1,73 @@
+package com.human.common.data.loot;
+
+import com.human.common.registry.init.item.HumanItems;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+
+import java.util.function.Function;
+
+public class CommanderChestPersonalLootTable {
+
+    public static final Function<HolderLookup.Provider, LootTable.Builder> LOOT_TABLE = provider -> LootTable.lootTable()
+        .withPool(
+            LootPool.lootPool()
+                .setRolls(ConstantValue.exactly(1))
+                .add(
+                    LootItem.lootTableItem(Items.DIAMOND)
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3)))
+                        .setWeight(25)
+                )
+        )
+        .withPool(
+            LootPool.lootPool()
+                .setRolls(ConstantValue.exactly(1))
+                .add(
+                    LootItem.lootTableItem(Items.GOLD_INGOT)
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 6)))
+                        .setWeight(20)
+                )
+        )
+        .withPool(
+            LootPool.lootPool()
+                .setRolls(ConstantValue.exactly(1))
+                .add(
+                    LootItem.lootTableItem(Items.EMERALD)
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 3)))
+                        .setWeight(15)
+                )
+        )
+        .withPool(
+            LootPool.lootPool()
+                .setRolls(ConstantValue.exactly(1))
+                .add(
+                    LootItem.lootTableItem(HumanItems.BLUEPRINT_FLAMETHROWER_SEVASTOPOL.get())
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
+                        .setWeight(3)
+                )
+        );
+    // FIXME:
+    // .withPool(
+    // LootPool.lootPool()
+    // .setRolls(ConstantValue.exactly(1))
+    // .add(
+    // LootItem.lootTableItem(AlienItems.ALIEN_MUSIC_DISC_1_FRAGMENT.get())
+    // .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 8)))
+    // .setWeight(10)
+    // )
+    // )
+    // .withPool(
+    // LootPool.lootPool()
+    // .setRolls(ConstantValue.exactly(1))
+    // .add(
+    // LootItem.lootTableItem(AlienItems.ALIEN_MUSIC_DISC_1_FRAGMENT.get())
+    // .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 4)))
+    // .setWeight(1)
+    // )
+    // );
+}

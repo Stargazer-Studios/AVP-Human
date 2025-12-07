@@ -1,7 +1,19 @@
 package com.human.fabric.data.recipe;
 
 import com.avp.fabric.data.recipe.builder.RecipeBuilder;
+import com.human.fabric.data.recipe.builder.IndustrialFurnaceRecipeBuilder;
+import com.human.fabric.data.recipe.impl.ArmorRecipeProvider;
+import com.human.fabric.data.recipe.impl.ElectronicItemRecipeProvider;
+import com.human.fabric.data.recipe.impl.GlassRecipeProvider;
+import com.human.fabric.data.recipe.impl.GunRecipeProvider;
+import com.human.fabric.data.recipe.impl.IndustrialConcreteRecipeProvider;
+import com.human.fabric.data.recipe.impl.MetalRecipeProvider;
 import com.human.fabric.data.recipe.impl.MiscellaneousRecipeProvider;
+import com.human.fabric.data.recipe.impl.PaddingRecipeProvider;
+import com.human.fabric.data.recipe.impl.PlasticRecipeProvider;
+import com.human.fabric.data.recipe.impl.ToolRecipeProvider;
+import com.human.fabric.data.recipe.impl.vanilla.VanillaChestRecipeProvider;
+import com.human.fabric.data.recipe.impl.vanilla.VanillaConcreteRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.HolderLookup;
@@ -18,7 +30,21 @@ public class RecipeProvider extends FabricRecipeProvider {
     @Override
     public void buildRecipes(RecipeOutput recipeOutput) {
         var builder = RecipeBuilder.with(recipeOutput);
+        IndustrialFurnaceRecipeBuilder.ensureRegistration(recipeOutput);
+
+        ArmorRecipeProvider.provide(builder);
+        ElectronicItemRecipeProvider.provide(builder);
+        GlassRecipeProvider.provide(builder);
+        GunRecipeProvider.provide(builder);
+        IndustrialConcreteRecipeProvider.provide(builder);
+        MetalRecipeProvider.provide(builder);
         MiscellaneousRecipeProvider.provide(builder);
+        PaddingRecipeProvider.provide(builder);
+        PlasticRecipeProvider.provide(builder);
+        ToolRecipeProvider.provide(builder);
+
+        VanillaChestRecipeProvider.provide(builder);
+        VanillaConcreteRecipeProvider.provide(builder);
     }
 
 }

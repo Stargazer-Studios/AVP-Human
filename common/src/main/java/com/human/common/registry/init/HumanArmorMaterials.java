@@ -4,11 +4,13 @@ import com.blib.BLibHolder;
 import com.blib.BLibRegistry;
 import com.human.Human;
 import com.human.HumanResources;
+import com.human.compat.HumanCommonItemTags;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.crafting.Ingredient;
 import org.jetbrains.annotations.NotNull;
 
@@ -19,6 +21,126 @@ import java.util.function.Supplier;
 public class HumanArmorMaterials {
 
     public static final BLibRegistry<ArmorMaterial> REGISTRY = Human.MOD.createRegistry(BuiltInRegistries.ARMOR_MATERIAL);
+
+    public static final BLibHolder<ArmorMaterial> MK50 = create(
+        "mk50",
+        relativeDefense(
+            ArmorMaterials.IRON,
+            Map.ofEntries(
+                Map.entry(ArmorItem.Type.CHESTPLATE, -2),
+                Map.entry(ArmorItem.Type.LEGGINGS, -1)
+            )
+        ),
+        6,
+        HumanSoundEvents.ITEM_ARMOR_EQUIP_MK50::getHolder,
+        () -> Ingredient.of(HumanCommonItemTags.INGOTS_LEAD),
+        0,
+        0,
+        true
+    );
+
+    public static final BLibHolder<ArmorMaterial> PRESSURE = create(
+        "pressure",
+        relativeDefense(
+            ArmorMaterials.IRON,
+            Map.ofEntries(
+                Map.entry(ArmorItem.Type.CHESTPLATE, -2),
+                Map.entry(ArmorItem.Type.LEGGINGS, -1)
+            )
+        ),
+        6,
+        HumanSoundEvents.ITEM_ARMOR_EQUIP_PRESSURE::getHolder,
+        () -> Ingredient.of(HumanCommonItemTags.INGOTS_ALUMINUM),
+        0,
+        0,
+        false
+    );
+
+    public static final BLibHolder<ArmorMaterial> STEEL = create(
+        "steel",
+        relativeDefense(
+            ArmorMaterials.IRON,
+            Map.ofEntries(
+                Map.entry(ArmorItem.Type.HELMET, 1),
+                Map.entry(ArmorItem.Type.CHESTPLATE, 1),
+                Map.entry(ArmorItem.Type.LEGGINGS, 1),
+                Map.entry(ArmorItem.Type.BOOTS, 1)
+            )
+        ),
+        5, // TODO:
+        HumanSoundEvents.ITEM_ARMOR_EQUIP_STEEL::getHolder,
+        () -> Ingredient.of(HumanCommonItemTags.INGOTS_STEEL),
+        0,
+        0,
+        false
+    );
+
+    public static final BLibHolder<ArmorMaterial> TACTICAL = create(
+        "tactical",
+        Map.ofEntries(
+            Map.entry(ArmorItem.Type.HELMET, 2),
+            Map.entry(ArmorItem.Type.CHESTPLATE, 6),
+            Map.entry(ArmorItem.Type.LEGGINGS, 3),
+            Map.entry(ArmorItem.Type.BOOTS, 2)
+        ),
+        5,
+        HumanSoundEvents.ITEM_ARMOR_EQUIP_TACTICAL::getHolder,
+        () -> Ingredient.of(HumanCommonItemTags.INGOTS_STEEL),
+        0,
+        0,
+        false
+    );
+
+    public static final BLibHolder<ArmorMaterial> TITANIUM = create(
+        "titanium",
+        relativeDefense(
+            ArmorMaterials.IRON,
+            Map.ofEntries(
+                Map.entry(ArmorItem.Type.HELMET, 1),
+                Map.entry(ArmorItem.Type.CHESTPLATE, 2),
+                Map.entry(ArmorItem.Type.LEGGINGS, 1),
+                Map.entry(ArmorItem.Type.BOOTS, 1)
+            )
+        ),
+        5,
+        HumanSoundEvents.ITEM_ARMOR_EQUIP_TITANIUM::getHolder,
+        () -> Ingredient.of(HumanCommonItemTags.INGOTS_TITANIUM),
+        1,
+        0,
+        false
+    );
+
+    public static final BLibHolder<ArmorMaterial> WY_COMMANDO = create(
+        "wy_commando",
+        Map.ofEntries(
+            Map.entry(ArmorItem.Type.HELMET, 2),
+            Map.entry(ArmorItem.Type.CHESTPLATE, 6),
+            Map.entry(ArmorItem.Type.LEGGINGS, 3),
+            Map.entry(ArmorItem.Type.BOOTS, 2)
+        ),
+        5,
+        HumanSoundEvents.ITEM_ARMOR_EQUIP_TACTICAL::getHolder,
+        () -> Ingredient.of(HumanCommonItemTags.INGOTS_STEEL),
+        0,
+        0,
+        false
+    );
+
+    public static final BLibHolder<ArmorMaterial> WY_ELITE = create(
+        "wy_elite",
+        Map.ofEntries(
+            Map.entry(ArmorItem.Type.HELMET, 2),
+            Map.entry(ArmorItem.Type.CHESTPLATE, 6),
+            Map.entry(ArmorItem.Type.LEGGINGS, 3),
+            Map.entry(ArmorItem.Type.BOOTS, 2)
+        ),
+        5,
+        HumanSoundEvents.ITEM_ARMOR_EQUIP_TACTICAL::getHolder,
+        () -> Ingredient.of(HumanCommonItemTags.INGOTS_STEEL),
+        0,
+        0,
+        false
+    );
 
     public static BLibHolder<ArmorMaterial> create(
         String path,
