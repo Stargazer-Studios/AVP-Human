@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.extinguish_fire.action;
 
-import com.avp.common.model.inventory.AVPInventory;
+import com.blib.common.gameplay.model.inventory.BLibInventory;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.just.core.functional.option.Option;
 import com.just.goap.Action;
@@ -54,9 +54,9 @@ public class PlaceWaterAtFeetAction {
         var removeResult = marine.getInventory().removeItem(WATER_BUCKET_ITEM);
 
         return switch (removeResult) {
-            case AVPInventory.RemoveResult.InventoryEmpty inventoryEmpty -> Action.Signal.ABORT;
-            case AVPInventory.RemoveResult.Partial partial -> Action.Signal.ABORT;
-            case AVPInventory.RemoveResult.Success success -> {
+            case BLibInventory.RemoveResult.InventoryEmpty inventoryEmpty -> Action.Signal.ABORT;
+            case BLibInventory.RemoveResult.Partial partial -> Action.Signal.ABORT;
+            case BLibInventory.RemoveResult.Success success -> {
                 // Put mainhand item in inventory.
                 marine.getInventory().addItemStack(mainhandItemStack);
                 marine.setItemInHand(HAND_TO_USE, ItemStack.EMPTY);

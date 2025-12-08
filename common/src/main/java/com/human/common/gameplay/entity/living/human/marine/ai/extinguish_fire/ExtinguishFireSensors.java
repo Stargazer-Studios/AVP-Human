@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.extinguish_fire;
 
-import com.avp.common.model.inventory.AVPInventory;
+import com.blib.common.gameplay.model.inventory.BLibInventory;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.human.common.gameplay.entity.living.human.marine.ai.extinguish_fire.sensor.WaterBucketInInventorySensor;
 import com.just.core.functional.option.Option;
@@ -12,7 +12,7 @@ import net.minecraft.world.item.Items;
 
 public class ExtinguishFireSensors {
 
-    public static final Sensor.Mono<Marine, Option<AVPInventory.Entry>> WATER_BUCKET_IN_INVENTORY =
+    public static final Sensor.Mono<Marine, Option<BLibInventory.Entry>> WATER_BUCKET_IN_INVENTORY =
         Sensors.lazyCompose(
             WaterBucketInInventorySensor.KEY,
             WaterBucketInInventorySensor::sense

@@ -1,6 +1,6 @@
 package com.human.mixin;
 
-import com.avp.common.model.Crawler;
+import com.human.common.model.Crawler;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Pose;

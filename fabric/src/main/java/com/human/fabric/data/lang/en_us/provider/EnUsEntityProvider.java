@@ -1,10 +1,7 @@
 package com.human.fabric.data.lang.en_us.provider;
 
-import com.avp.common.registry.AVPRegistryValidation;
-import com.human.Human;
 import com.human.common.registry.init.HumanEntityTypes;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
 
 import java.util.HashSet;
@@ -24,12 +21,14 @@ public class EnUsEntityProvider {
         addEntity(builder, HumanEntityTypes.ROCKET, "Rocket");
         addEntity(builder, HumanEntityTypes.SENTRY_TURRET, "Sentry Turret");
 
-        AVPRegistryValidation.throwIfMissingEntries(
-            Human.MOD.getAllHolders(BuiltInRegistries.ENTITY_TYPE),
-            TOUCHED_ENTRIES::contains,
-            EntityType::getDescriptionId,
-            "Entity type translation did not complete successfully - there are unhandled entity types that need to be handled."
-        );
+        // FIXME:
+        // AVPRegistryValidation.throwIfMissingEntries(
+        // Human.MOD.getAllHolders(BuiltInRegistries.ENTITY_TYPE),
+        // TOUCHED_ENTRIES::contains,
+        // EntityType::getDescriptionId,
+        // "Entity type translation did not complete successfully - there are unhandled entity types that need to be
+        // handled."
+        // );
     };
 
     private static void addEntity(

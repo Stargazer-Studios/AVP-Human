@@ -1,6 +1,7 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance;
 
-import com.avp.common.model.inventory.AVPInventoryHolder;
+import com.blib.common.gameplay.goap.GOAPSensors;
+import com.blib.common.gameplay.model.inventory.BLibInventoryHolder;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.action.EquipFRIAction;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.action.MoveToFRIAction;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.action.PickUpFRIAction;
@@ -8,7 +9,6 @@ import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resi
 import com.human.common.gameplay.entity.living.human.marine.ai.model.ItemTarget;
 import com.just.goap.Action;
 import com.just.goap.condition.expression.Expressions;
-import com.lib.common.gameplay.goap.GOAPSensors;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 
@@ -22,7 +22,7 @@ public class FRIActions {
         .withFinishCallback(MoveToFRIAction::onFinish)
         .build();
 
-    public static <T extends LivingEntity & AVPInventoryHolder> Action<T> pickUpBestFRIFactory() {
+    public static <T extends LivingEntity & BLibInventoryHolder> Action<T> pickUpBestFRIFactory() {
         return Action.<T>builder("PickUpBestFRIAction")
             .addPrecondition(FRISensors.BEST_FRI_LOCATION.key(), Expressions.Compare.equalTo(ItemTarget.Location.WORLD))
             .addPrecondition(FRISensors.IS_BEST_WORLD_FRI_IN_RANGE.key(), Expressions.Boolean.isTrue())
@@ -31,7 +31,7 @@ public class FRIActions {
             .build();
     }
 
-    public static <T extends LivingEntity & AVPInventoryHolder> Action<T> equipBestFRIFactory() {
+    public static <T extends LivingEntity & BLibInventoryHolder> Action<T> equipBestFRIFactory() {
         return Action.<T>builder("EquipBestFRIAction")
             .addPrecondition(FRISensors.BEST_FRI_LOCATION.key(), Expressions.Compare.equalTo(ItemTarget.Location.INVENTORY))
             .addEffect(FRISensors.BEST_FRI_LOCATION.key().asDerived(), ItemTarget.Location.EQUIPPED)

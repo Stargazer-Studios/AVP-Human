@@ -1,7 +1,7 @@
 package com.human.fabric.data.tag;
 
-import com.avp.common.registry.tag.AVPItemTags;
-import com.compat.CommonItemTags;
+import com.blib.common.data.tag.BLibItemTags;
+import com.compatibility.CommonItemTags;
 import com.human.common.gameplay.item.GunItem;
 import com.human.common.registry.init.block.CoreBlocks;
 import com.human.common.registry.init.item.HumanArmorItems;
@@ -60,13 +60,13 @@ public class HumanItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 HumanItems.FUEL_TANK.get()
             );
 
-        getOrCreateTagBuilder(AVPItemTags.IRON_BLOCK_LIKE)
+        getOrCreateTagBuilder(BLibItemTags.IRON_BLOCK_LIKE)
             .addTag(HumanCommonItemTags.STORAGE_BLOCKS_ALUMINUM)
             .addTag(HumanCommonItemTags.STORAGE_BLOCKS_FERROALUMINUM)
             .addTag(HumanCommonItemTags.STORAGE_BLOCKS_STEEL)
             .addTag(HumanCommonItemTags.STORAGE_BLOCKS_ZINC);
 
-        getOrCreateTagBuilder(AVPItemTags.IRON_INGOT_LIKE)
+        getOrCreateTagBuilder(BLibItemTags.IRON_INGOT_LIKE)
             .addTag(HumanCommonItemTags.INGOTS_ALUMINUM)
             .addTag(HumanCommonItemTags.INGOTS_FERROALUMINUM)
             .addTag(HumanCommonItemTags.INGOTS_STEEL)
@@ -106,7 +106,7 @@ public class HumanItemTagProvider extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(ItemTags.DYEABLE)
             .addTag(HumanItemTags.MK50_ARMOR);
 
-        getOrCreateTagBuilder(AVPItemTags.RANGED_WEAPONS)
+        getOrCreateTagBuilder(BLibItemTags.RANGED_WEAPONS)
             .addTag(HumanItemTags.GUNS);
     }
 

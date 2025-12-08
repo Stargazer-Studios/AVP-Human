@@ -1,6 +1,6 @@
 package com.human.client.animation.entity;
 
-import com.avp.client.animation.BasicAnimationUtils;
+import com.blib.client.animation.BLibEntityAnimationUtils;
 import com.human.HumanResources;
 import com.human.common.gameplay.entity.machine.SentryTurret;
 import mod.azure.azurelib.common.animation.AzAnimatorConfig;
@@ -33,6 +33,6 @@ public class SentryTurretAnimator extends AzEntityAnimator<SentryTurret> {
 
     @Override
     public void setCustomAnimations(SentryTurret animatable, float partialTicks) {
-        BasicAnimationUtils.applyHeadRotations(animatable, context(), partialTicks, "gRotationJoint", 0F);
+        BLibEntityAnimationUtils.applyHeadRotations(animatable, context(), partialTicks, "gRotationJoint", 0F);
     }
 }

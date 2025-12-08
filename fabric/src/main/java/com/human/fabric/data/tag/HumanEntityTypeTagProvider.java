@@ -1,6 +1,6 @@
 package com.human.fabric.data.tag;
 
-import com.avp.common.registry.tag.AVPEntityTypeTags;
+import com.blib.common.data.tag.BLibEntityTypeTags;
 import com.human.common.registry.init.HumanEntityTypes;
 import com.human.common.registry.tag.HumanEntityTypeTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -24,7 +24,7 @@ public class HumanEntityTypeTagProvider extends FabricTagProvider.EntityTypeTagP
     }
 
     private void addHumanoids() {
-        getOrCreateTagBuilder(AVPEntityTypeTags.HUMANOIDS)
+        getOrCreateTagBuilder(BLibEntityTypeTags.HUMANOIDS)
             .add(
                 HumanEntityTypes.MARINE.get()
             );

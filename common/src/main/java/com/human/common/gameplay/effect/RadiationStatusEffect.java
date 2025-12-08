@@ -1,6 +1,6 @@
 package com.human.common.gameplay.effect;
 
-import com.avp.common.util.AVPPredicates;
+import com.blib.common.gameplay.util.BLibEntityPredicates;
 import com.human.common.registry.init.HumanMobEffects;
 import com.human.common.registry.key.HumanDamageTypeKeys;
 import com.human.common.registry.tag.HumanEntityTypeTags;
@@ -37,7 +37,7 @@ public class RadiationStatusEffect extends MobEffect {
     @Override
     public boolean applyEffectTick(@NotNull LivingEntity livingEntity, int amplifier) {
         if (
-            AVPPredicates.IS_IMMORTAL.test(livingEntity)
+            BLibEntityPredicates.isInvulnerable(livingEntity)
                 || livingEntity.getType().is(HumanEntityTypeTags.RADIATION_RESISTANT)
         ) {
             livingEntity.removeEffect(HumanMobEffects.RADIATION.getHolder());

@@ -1,8 +1,8 @@
 package com.human.common.registry.init.item;
 
-import com.avp.service.Services;
 import com.blib.BLibHolder;
 import com.blib.BLibRegistry;
+import com.blib.service.BLibServices;
 import com.human.Human;
 import com.human.common.registry.init.HumanEntityTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -30,7 +30,7 @@ public class HumanSpawnEggItems {
         int primaryColor,
         int secondaryColor
     ) {
-        var supplier = Services.BRIDGE.createSpawnEggSupplier(entityTypeSupplier, primaryColor, secondaryColor, new Item.Properties());
+        var supplier = BLibServices.FACTORY.createSpawnEggSupplier(entityTypeSupplier, primaryColor, secondaryColor, new Item.Properties());
         return REGISTRY.createHolder(baseId + "_spawn_egg", supplier);
     }
 

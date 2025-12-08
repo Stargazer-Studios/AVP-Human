@@ -1,9 +1,9 @@
 package com.human.common.gameplay.power.grid;
 
+import com.blib.common.util.DirectionUtil;
 import com.human.common.gameplay.power.PowerNode;
 import com.human.common.registry.init.HumanBlocks;
 import com.just.core.traversal.BFS;
-import com.lib.common.util.DirectionUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 

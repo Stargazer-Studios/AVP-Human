@@ -1,6 +1,6 @@
 package com.human.compat;
 
-import com.compat.CommonConstants;
+import com.compatibility.CommonConstants;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;

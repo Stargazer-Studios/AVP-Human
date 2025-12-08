@@ -1,13 +1,13 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.impl;
 
-import com.avp.common.model.inventory.AVPInventory;
+import com.blib.common.gameplay.goap.GOAPSensors;
+import com.blib.common.gameplay.model.inventory.BLibInventory;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.FRIStrategy;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.FRIStrategyUtil;
 import com.human.common.gameplay.entity.living.human.marine.ai.action.ConsumeItemAction;
 import com.just.goap.Action;
 import com.just.goap.state.Blackboard;
 import com.just.goap.state.ReadableWorldState;
-import com.lib.common.gameplay.goap.GOAPSensors;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.LivingEntity;
@@ -30,7 +30,7 @@ public class DrinkablePotionFRIStrategy implements FRIStrategy {
     }
 
     @Override
-    public Collection<AVPInventory.Entry> selectEntriesFromInventory(AVPInventory inventory) {
+    public Collection<BLibInventory.Entry> selectEntriesFromInventory(BLibInventory inventory) {
         return inventory.selectEntries(Items.POTION)
             .stream()
             .filter(entry -> FRIStrategyUtil.fireResistanceTicksFromStack(entry) > 0)

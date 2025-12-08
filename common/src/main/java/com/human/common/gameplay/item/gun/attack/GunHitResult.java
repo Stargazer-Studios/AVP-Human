@@ -1,10 +1,10 @@
 package com.human.common.gameplay.item.gun.attack;
 
+import com.blib.common.util.codec.stream.impl.MojangStreamCodecs;
 import com.human.common.network.codec.GunHitResultCodec;
 import com.just.codec.stream.RecordStreamCodec;
 import com.just.codec.stream.StreamCodec;
 import com.just.codec.stream.impl.StreamCodecs;
-import com.lib.common.util.codec.stream.impl.MojangStreamCodecs;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 

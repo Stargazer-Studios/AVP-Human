@@ -1,7 +1,7 @@
 package com.human.common.data.worldgen;
 
-import com.avp.common.registry.key.AVPStructureProcessorListKeys;
-import com.avp.mixin.StructurePoolAccessor;
+import com.blib.common.registry.key.BLibStructureProcessorListKeys;
+import com.blib.mixin.StructurePoolAccessor;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
@@ -20,11 +20,11 @@ public class HumanVillageInjection {
         String nbtPieceRL,
         int weight
     ) {
-        if (processorListRegistry.getHolder(AVPStructureProcessorListKeys.EMPTY_PROCESSOR_LIST_KEY).isEmpty()) {
+        if (processorListRegistry.getHolder(BLibStructureProcessorListKeys.EMPTY_PROCESSOR_LIST_KEY).isEmpty()) {
             return;
         }
 
-        var emptyProcessorList = processorListRegistry.getHolder(AVPStructureProcessorListKeys.EMPTY_PROCESSOR_LIST_KEY).get();
+        var emptyProcessorList = processorListRegistry.getHolder(BLibStructureProcessorListKeys.EMPTY_PROCESSOR_LIST_KEY).get();
         var pool = templatePoolRegistry.get(poolRL);
 
         if (pool == null) {

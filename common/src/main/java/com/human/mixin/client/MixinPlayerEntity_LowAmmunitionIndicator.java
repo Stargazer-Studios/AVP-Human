@@ -1,6 +1,6 @@
 package com.human.mixin.client;
 
-import com.avp.common.util.AVPPredicates;
+import com.blib.common.gameplay.util.BLibEntityPredicates;
 import com.human.common.gameplay.item.GunItem;
 import com.human.common.registry.init.HumanDataComponents;
 import com.human.common.registry.init.item.HumanGunItems;
@@ -38,7 +38,7 @@ public abstract class MixinPlayerEntity_LowAmmunitionIndicator extends LivingEnt
             // Don't try to show ammo indicator server-side.
             !self.level().isClientSide
                 // Don't show ammo indicator for creative/spectator players.
-                || AVPPredicates.IS_IMMORTAL.test(self)
+                || BLibEntityPredicates.isInvulnerable(self)
                 // Don't show ammo indicator if the player is not holding an item.
                 || mainHandItem.isEmpty()
                 // Don't show ammo indicator if the player is not holding a gun.

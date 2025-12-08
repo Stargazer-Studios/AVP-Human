@@ -1,8 +1,8 @@
 package com.human.fabric.data.recipe.impl;
 
-import com.avp.fabric.data.recipe.RecipeConstants;
-import com.avp.fabric.data.recipe.RecipeTemplates;
-import com.avp.fabric.data.recipe.builder.RecipeBuilder;
+import com.blib.fabric.data.recipe.RecipeConstants;
+import com.blib.fabric.data.recipe.RecipeTemplates;
+import com.blib.fabric.data.recipe.builder.RecipeBuilder;
 import com.human.common.registry.init.block.HumanIndustrialGlassBlocks;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.world.item.DyeItem;

@@ -1,11 +1,11 @@
 package com.human.common.gameplay.item.gun;
 
-import com.avp.common.util.AVPPredicates;
-import com.avp.server.ServerScheduler;
+import com.blib.common.gameplay.util.BLibEntityPredicates;
+import com.blib.common.gameplay.util.EnchantmentUtil;
+import com.blib.server.ServerScheduler;
 import com.human.common.gameplay.item.GunItem;
 import com.human.common.registry.init.HumanDataComponents;
 import com.human.common.registry.init.item.HumanBlockItems;
-import com.lib.common.gameplay.util.EnchantmentUtil;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -57,7 +57,7 @@ public class GunReloading {
         var reloadAmount = gunConfig.reloadAmount();
         var neededAmmunition = (int) Math.ceil((maximumAmmunition - currentAmmunition) / ((float) reloadAmount));
 
-        var isPlayerImmortal = AVPPredicates.IS_IMMORTAL.test(player);
+        var isPlayerImmortal = BLibEntityPredicates.isInvulnerable(player);
         // Result is how much we DIDN'T consume.
         var result = isPlayerImmortal
             // If the player is immortal, then assume they can get a full reload.

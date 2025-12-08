@@ -1,12 +1,12 @@
 package com.human.common.gameplay.item.gun.attack.projectile;
 
-import com.avp.service.Services;
+import com.blib.common.gameplay.util.EnchantmentUtil;
+import com.blib.service.BLibServices;
 import com.human.common.gameplay.entity.projectile.Flamethrow;
 import com.human.common.gameplay.item.gun.attack.GunAttackAction;
 import com.human.common.gameplay.item.gun.attack.GunAttackConfig;
 import com.human.common.gameplay.item.gun.pipeline.GunShootResult;
 import com.human.common.network.packet.S2CGunRecoilPayload;
-import com.lib.common.gameplay.util.EnchantmentUtil;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.enchantment.Enchantments;
 
@@ -31,7 +31,7 @@ public class FlamethrowProjectileGunAttackAction implements GunAttackAction {
         flamethrow.shootFromRotation(shooter, shooter.getXRot(), shooter.getYRot(), 0.0F, 1.5F, 1.0F);
 
         if (shooter instanceof ServerPlayer serverPlayer) {
-            Services.SERVER_NETWORKING.sendToClient(serverPlayer, new S2CGunRecoilPayload(gunAttackConfig.fireModeConfig().recoil()));
+            BLibServices.SERVER_NETWORKING.sendToClient(serverPlayer, new S2CGunRecoilPayload(gunAttackConfig.fireModeConfig().recoil()));
         }
 
         level.addFreshEntity(flamethrow);

@@ -1,6 +1,6 @@
 package com.human.fabric.data.recipe.impl.vanilla;
 
-import com.avp.fabric.data.recipe.builder.RecipeBuilder;
+import com.blib.fabric.data.recipe.builder.RecipeBuilder;
 import com.human.common.registry.init.item.HumanBlockItems;
 import com.human.compat.HumanCommonItemTags;
 import net.minecraft.data.recipes.RecipeCategory;

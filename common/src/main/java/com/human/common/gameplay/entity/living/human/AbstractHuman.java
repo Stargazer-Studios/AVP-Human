@@ -1,10 +1,10 @@
 package com.human.common.gameplay.entity.living.human;
 
-import com.avp.common.util.MovementAnalyzer;
+import com.blib.common.network.data.DataAccessor;
+import com.blib.common.network.data.DataUser;
+import com.blib.common.util.MovementAnalyzer;
 import com.human.common.config.HumanConfig;
 import com.human.common.registry.init.HumanDataKeys;
-import com.lib.common.network.DataAccessor;
-import com.lib.common.network.DataUser;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;

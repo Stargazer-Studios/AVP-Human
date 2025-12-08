@@ -1,8 +1,8 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance;
 
+import com.blib.common.gameplay.goap.GOAPSensors;
 import com.just.goap.Goal;
 import com.just.goap.condition.expression.Expressions;
-import com.lib.common.gameplay.goap.GOAPSensors;
 
 public class FRIGoals {
 

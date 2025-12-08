@@ -1,7 +1,7 @@
 package com.human.fabric.data.model;
 
-import com.avp.fabric.data.model.AVPModelTemplates;
-import com.avp.fabric.data.model.generator.BarsGenerator;
+import com.blib.fabric.data.model.BLibModelTemplates;
+import com.blib.fabric.data.model.generator.BarsGenerator;
 import com.human.common.gameplay.block.property.HumanBlockProperties;
 import com.human.common.registry.init.HumanBlocks;
 import com.human.common.registry.init.block.CoreBlocks;
@@ -507,12 +507,12 @@ public class BlockModelProvider extends FabricModelProvider {
             wallTopTextureMapping,
             generators.modelOutput
         );
-        var lowSideResourceLocation = AVPModelTemplates.WALL_LOW_SIDE.create(
+        var lowSideResourceLocation = BLibModelTemplates.WALL_LOW_SIDE.create(
             wallBlock,
             wallTextureMapping,
             generators.modelOutput
         );
-        var tallSideResourceLocation = AVPModelTemplates.WALL_TALL_SIDE.create(
+        var tallSideResourceLocation = BLibModelTemplates.WALL_TALL_SIDE.create(
             wallBlock,
             wallTextureMapping,
             generators.modelOutput
@@ -522,7 +522,7 @@ public class BlockModelProvider extends FabricModelProvider {
             BlockModelGenerators.createWall(wallBlock, postResourceLocation, lowSideResourceLocation, tallSideResourceLocation)
         );
 
-        var inventoryResourceLocation = AVPModelTemplates.WALL_INVENTORY.create(
+        var inventoryResourceLocation = BLibModelTemplates.WALL_INVENTORY.create(
             wallBlock,
             wallTextureMapping,
             generators.modelOutput

@@ -1,12 +1,12 @@
 package com.human.common.gameplay.item;
 
+import com.blib.common.gameplay.util.TooltipUtil;
 import com.human.common.gameplay.item.gun.GunConfig;
 import com.human.common.gameplay.item.gun.pipeline.GunShootContext;
 import com.human.common.gameplay.item.old_painless.OldPainlessAnimationRefs;
 import com.human.common.registry.init.HumanDataComponents;
 import com.human.common.registry.init.item.HumanGunItems;
 import com.human.compat.HumanCommonItemTags;
-import com.lib.common.gameplay.util.TooltipUtil;
 import mod.azure.azurelib.common.animation.dispatch.command.AzCommand;
 import mod.azure.azurelib.common.animation.play_behavior.AzPlayBehaviors;
 import net.minecraft.network.chat.Component;

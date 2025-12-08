@@ -1,5 +1,6 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.sensor;
 
+import com.blib.common.gameplay.goap.GOAPSensors;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.FRIStrategies;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.FRIStrategy;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.FRIStrategyResult;
@@ -7,7 +8,6 @@ import com.human.common.gameplay.entity.living.human.marine.ai.model.ItemTarget;
 import com.just.core.functional.option.Option;
 import com.just.goap.StateKey;
 import com.just.goap.state.ReadableWorldState;
-import com.lib.common.gameplay.goap.GOAPSensors;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import org.jetbrains.annotations.NotNull;

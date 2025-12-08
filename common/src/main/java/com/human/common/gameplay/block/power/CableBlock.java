@@ -1,8 +1,8 @@
 package com.human.common.gameplay.block.power;
 
+import com.blib.common.util.DirectionUtil;
 import com.human.common.gameplay.power.PowerNode;
 import com.human.common.gameplay.power.PowerSystem;
-import com.lib.common.util.DirectionUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;

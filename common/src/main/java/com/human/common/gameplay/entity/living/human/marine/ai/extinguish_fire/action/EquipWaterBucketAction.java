@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.extinguish_fire.action;
 
-import com.avp.common.model.inventory.AVPInventoryHolder;
+import com.blib.common.gameplay.model.inventory.BLibInventoryHolder;
 import com.human.common.gameplay.entity.living.human.marine.ai.action.EquipItemAction;
 import com.human.common.gameplay.entity.living.human.marine.ai.extinguish_fire.ExtinguishFireSensors;
 import com.just.core.functional.option.Option;
@@ -12,7 +12,7 @@ import net.minecraft.world.entity.LivingEntity;
 
 public class EquipWaterBucketAction {
 
-    public static <T extends LivingEntity & AVPInventoryHolder> Action.Signal perform(
+    public static <T extends LivingEntity & BLibInventoryHolder> Action.Signal perform(
         T livingEntityWithInventory,
         ReadableWorldState worldState,
         Blackboard blackboard

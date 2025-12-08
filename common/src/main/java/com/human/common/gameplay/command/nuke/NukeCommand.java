@@ -1,9 +1,9 @@
 package com.human.common.gameplay.command.nuke;
 
-import com.avp.common.gameplay.explosion.Explosion;
-import com.avp.common.gameplay.explosion.ExplosionProgressTracker;
-import com.avp.common.util.ExplosionUtil;
-import com.avp.server.ServerScheduler;
+import com.blib.common.gameplay.explosion.Explosion;
+import com.blib.common.gameplay.explosion.ExplosionProgressTracker;
+import com.blib.common.util.ExplosionUtil;
+import com.blib.server.ServerScheduler;
 import com.human.Human;
 import com.human.common.gameplay.explosion.nuke.NuclearExplosionEffects;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;

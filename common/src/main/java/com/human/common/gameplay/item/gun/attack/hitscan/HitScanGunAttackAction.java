@@ -1,13 +1,13 @@
 package com.human.common.gameplay.item.gun.attack.hitscan;
 
-import com.avp.common.util.AVPPredicates;
-import com.avp.service.Services;
+import com.blib.common.gameplay.util.BLibEntityPredicates;
+import com.blib.common.gameplay.util.EnchantmentUtil;
+import com.blib.service.BLibServices;
 import com.human.common.gameplay.item.gun.attack.GunAttackAction;
 import com.human.common.gameplay.item.gun.attack.GunAttackConfig;
 import com.human.common.gameplay.item.gun.attack.GunHitResult;
 import com.human.common.gameplay.item.gun.pipeline.GunShootResult;
 import com.human.common.network.packet.C2SGunHitResultsPayload;
-import com.lib.common.gameplay.util.EnchantmentUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
@@ -59,7 +59,7 @@ public class HitScanGunAttackAction implements GunAttackAction {
                 next,
                 shooter.getBoundingBox().expandTowards(direction.scale(maxDistance)).inflate(1.0),
                 entity -> !hitEntityUUIDs.contains(entity.getUUID()) &&
-                    (entity.getType() == EntityType.END_CRYSTAL || AVPPredicates.isLiving(entity))
+                    (entity.getType() == EntityType.END_CRYSTAL || BLibEntityPredicates.isAlive(entity))
             );
 
             if (entityHit != null) {
@@ -100,7 +100,7 @@ public class HitScanGunAttackAction implements GunAttackAction {
             // And then network their hit results to the server. While yes this opens the door for players to cheat
             // on servers, hit results are done this way so that the player's shots are visually accurate.
             // TODO: There is some cheating that can occur here on servers. Add server-side validation at some point.
-            Services.CLIENT_NETWORKING.sendToServer(gunHitResultsPayload);
+            BLibServices.CLIENT_NETWORKING.sendToServer(gunHitResultsPayload);
             return GunShootResult.SHOT;
         }
 

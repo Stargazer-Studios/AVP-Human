@@ -1,6 +1,6 @@
 package com.human.mixin;
 
-import com.avp.common.util.AVPPredicates;
+import com.blib.common.gameplay.util.BLibEntityPredicates;
 import com.human.common.registry.init.item.HumanBlockItems;
 import com.human.common.registry.tag.HumanItemTags;
 import net.minecraft.advancements.CriteriaTriggers;
@@ -72,7 +72,7 @@ public class MixinInventory_InsertAmmoItemsIntoAmmoChest {
 
         int remainingToAdd = toAddItemStack.getCount();
 
-        if (AVPPredicates.IS_IMMORTAL.test(player)) {
+        if (BLibEntityPredicates.isInvulnerable(player)) {
             return;
         }
 

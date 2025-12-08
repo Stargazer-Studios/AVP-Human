@@ -1,6 +1,6 @@
 package com.human.client.animation.entity;
 
-import com.avp.client.animation.BasicAnimationUtils;
+import com.blib.client.animation.BLibEntityAnimationUtils;
 import com.human.HumanResources;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.human.common.gameplay.entity.living.human.marine.MarineAnimationRefs;
@@ -35,7 +35,7 @@ public class MarineAnimator extends AzEntityAnimator<Marine> {
     public void setCustomAnimations(Marine animatable, float partialTicks) {
         super.setCustomAnimations(animatable, partialTicks);
 
-        BasicAnimationUtils.applyHeadRotations(animatable, context(), partialTicks, "gHead", 0F);
+        BLibEntityAnimationUtils.applyHeadRotations(animatable, context(), partialTicks, "gHead", 0F);
 
         var boneCache = this.context().boneCache();
         var leftArm = boneCache.getBakedModel().getBoneOrNull("gLeftArm");

@@ -1,7 +1,8 @@
 package com.human.fabric.data.gene_bonus_data;
 
-import com.avp.AVP;
 import com.avp.common.registry.AVPDeferredHolder;
+import com.blib.common.data.EntityTypePredicate;
+import com.human.Human;
 import com.human.common.gameplay.gene.Gene;
 import com.human.common.gameplay.gene.GeneBonusData;
 import com.human.common.gameplay.gene.GeneBonusDataEntry;
@@ -10,10 +11,8 @@ import com.human.common.gameplay.gene.GeneOperationType;
 import com.human.common.gameplay.gene.Genes;
 import com.human.common.registry.init.HumanEntityTypes;
 import com.just.core.functional.tuple.Tuple2;
-import com.lib.common.data.EntityTypePredicate;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 
@@ -421,30 +420,13 @@ public class GeneBonusDataSubProvider extends GeneBonusDataProvider {
         BuiltInRegistries.ENTITY_TYPE.stream()
             .filter(Predicate.not(touchedEntries::contains))
             .filter(entityType -> entityType.getCategory() != MobCategory.MISC)
-            .forEach(entityType -> AVP.LOGGER.warn("No gene bonuses provided for {}", BuiltInRegistries.ENTITY_TYPE.getKey(entityType)));
-    }
-
-    private void add(TagKey<EntityType<?>> entityTypeTagKey, List<Tuple2<AVPDeferredHolder<Gene>, GeneModifier>> geneBonusList) {
-        add(
-            entityTypeTagKey.location().getPath() + "_gene_bonuses",
-            new GeneBonusData(
-                new EntityTypePredicate.Tag(entityTypeTagKey),
-                geneBonusList.stream()
-                    .map(
-                        tuple -> new GeneBonusDataEntry(
-                            tuple.v1().get().id(),
-                            tuple.v2().operation(),
-                            tuple.v2().value()
-                        )
-                    )
-                    .toList()
-            )
-        );
+            .forEach(entityType -> Human.LOGGER.warn("No gene bonuses provided for {}", BuiltInRegistries.ENTITY_TYPE.getKey(entityType)));
     }
 
     private void add(EntityType<?> entityType, List<Tuple2<AVPDeferredHolder<Gene>, GeneModifier>> geneBonusList) {
+        touchedEntries.add(entityType);
         add(
-            BuiltInRegistries.ENTITY_TYPE.getKey(entityType).getPath() + "_gene_bonuses",
+            BuiltInRegistries.ENTITY_TYPE.getKey(entityType).getPath(),
             new GeneBonusData(
                 new EntityTypePredicate.Single(entityType),
                 geneBonusList.stream()

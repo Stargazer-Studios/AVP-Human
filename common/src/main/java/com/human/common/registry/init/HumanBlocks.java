@@ -1,8 +1,8 @@
 package com.human.common.registry.init;
 
-import com.avp.common.gameplay.block.property.BlockPropertyBuilder;
 import com.blib.BLibHolder;
 import com.blib.BLibRegistry;
+import com.blib.common.gameplay.block.property.BlockPropertyBuilder;
 import com.human.Human;
 import com.human.common.gameplay.block.AmmoChestBlock;
 import com.human.common.gameplay.block.IndustrialFurnaceBlock;

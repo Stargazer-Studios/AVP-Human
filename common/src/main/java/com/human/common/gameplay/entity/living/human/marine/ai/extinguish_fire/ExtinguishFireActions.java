@@ -1,12 +1,12 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.extinguish_fire;
 
+import com.blib.common.gameplay.goap.GOAPSensors;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.human.common.gameplay.entity.living.human.marine.ai.MarineGOAPSensors;
 import com.human.common.gameplay.entity.living.human.marine.ai.extinguish_fire.action.EquipWaterBucketAction;
 import com.human.common.gameplay.entity.living.human.marine.ai.extinguish_fire.action.PlaceWaterAtFeetAction;
 import com.just.goap.Action;
 import com.just.goap.condition.expression.Expressions;
-import com.lib.common.gameplay.goap.GOAPSensors;
 
 public class ExtinguishFireActions {
 

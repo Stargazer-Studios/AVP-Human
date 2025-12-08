@@ -1,5 +1,6 @@
 package com.human.common.gameplay.entity.living.human.marine.ai;
 
+import com.blib.common.gameplay.goap.GOAPSensors;
 import com.human.common.gameplay.entity.ai.goap.HumanGOAPSensors;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.FRIActions;
@@ -12,7 +13,6 @@ import com.human.common.gameplay.entity.living.human.marine.ai.extinguish_fire.E
 import com.human.common.gameplay.entity.living.human.marine.ai.extinguish_fire.ExtinguishFireGoals;
 import com.human.common.gameplay.entity.living.human.marine.ai.extinguish_fire.ExtinguishFireSensors;
 import com.just.goap.graph.Graph;
-import com.lib.common.gameplay.goap.GOAPSensors;
 
 public class MarineGOAP {
 

@@ -1,9 +1,9 @@
 package com.human.fabric.data.recipe.impl;
 
-import com.avp.common.registry.tag.AVPItemTags;
-import com.avp.fabric.data.recipe.RecipeConstants;
-import com.avp.fabric.data.recipe.builder.RecipeBuilder;
-import com.compat.CommonItemTags;
+import com.blib.common.data.tag.BLibItemTags;
+import com.blib.fabric.data.recipe.RecipeConstants;
+import com.blib.fabric.data.recipe.builder.RecipeBuilder;
+import com.compatibility.CommonItemTags;
 import com.human.common.registry.init.HumanBlocks;
 import com.human.common.registry.init.block.CoreBlocks;
 import com.human.common.registry.init.item.HumanItems;
@@ -101,7 +101,7 @@ public class MiscellaneousRecipeProvider {
 
         builder.shaped()
             .withCategory(RecipeCategory.COMBAT)
-            .define('I', AVPItemTags.IRON_INGOT_LIKE)
+            .define('I', BLibItemTags.IRON_INGOT_LIKE)
             .define('N', CommonItemTags.NUGGETS_IRON)
             .pattern("INI")
             .pattern("NIN")
@@ -136,7 +136,7 @@ public class MiscellaneousRecipeProvider {
             .withCategory(RecipeCategory.MISC)
             .define('S', Items.SMOOTH_STONE)
             .define('F', Items.FURNACE)
-            .define('I', AVPItemTags.IRON_INGOT_LIKE)
+            .define('I', BLibItemTags.IRON_INGOT_LIKE)
             .pattern("SSS")
             .pattern("SFS")
             .pattern("III")

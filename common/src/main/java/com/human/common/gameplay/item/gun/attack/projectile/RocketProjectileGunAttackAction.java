@@ -1,6 +1,6 @@
 package com.human.common.gameplay.item.gun.attack.projectile;
 
-import com.avp.service.Services;
+import com.blib.service.BLibServices;
 import com.human.common.gameplay.entity.projectile.Rocket;
 import com.human.common.gameplay.item.gun.attack.GunAttackAction;
 import com.human.common.gameplay.item.gun.attack.GunAttackConfig;
@@ -28,7 +28,7 @@ public class RocketProjectileGunAttackAction implements GunAttackAction {
         rocket.shootFromRotation(shooter, shooter.getXRot(), shooter.getYRot(), 0.0F, 1.5F, 1.0F);
 
         if (shooter instanceof ServerPlayer serverPlayer) {
-            Services.SERVER_NETWORKING.sendToClient(serverPlayer, new S2CGunRecoilPayload(gunAttackConfig.fireModeConfig().recoil()));
+            BLibServices.SERVER_NETWORKING.sendToClient(serverPlayer, new S2CGunRecoilPayload(gunAttackConfig.fireModeConfig().recoil()));
         }
 
         level.addFreshEntity(rocket);

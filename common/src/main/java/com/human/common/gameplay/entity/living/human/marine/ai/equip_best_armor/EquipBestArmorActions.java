@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor;
 
-import com.avp.common.model.inventory.AVPInventory;
+import com.blib.common.gameplay.model.inventory.BLibInventory;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.human.common.gameplay.entity.living.human.marine.ai.AVPExpressions;
 import com.human.common.gameplay.entity.living.human.marine.ai.action.EquipItemAction;
@@ -42,19 +42,19 @@ public class EquipBestArmorActions {
 
             var signal = Action.Signal.CONTINUE;
 
-            if (bestArmorTarget.helmet() instanceof ItemTarget.Inventory(AVPInventory.Entry entry)) {
+            if (bestArmorTarget.helmet() instanceof ItemTarget.Inventory(BLibInventory.Entry entry)) {
                 signal = EquipItemAction.perform(marine, entry, EquipmentSlot.HEAD);
             }
 
-            if (bestArmorTarget.chestplate() instanceof ItemTarget.Inventory(AVPInventory.Entry entry)) {
+            if (bestArmorTarget.chestplate() instanceof ItemTarget.Inventory(BLibInventory.Entry entry)) {
                 signal = EquipItemAction.perform(marine, entry, EquipmentSlot.CHEST);
             }
 
-            if (bestArmorTarget.leggings() instanceof ItemTarget.Inventory(AVPInventory.Entry entry)) {
+            if (bestArmorTarget.leggings() instanceof ItemTarget.Inventory(BLibInventory.Entry entry)) {
                 signal = EquipItemAction.perform(marine, entry, EquipmentSlot.LEGS);
             }
 
-            if (bestArmorTarget.boots() instanceof ItemTarget.Inventory(AVPInventory.Entry entry)) {
+            if (bestArmorTarget.boots() instanceof ItemTarget.Inventory(BLibInventory.Entry entry)) {
                 signal = EquipItemAction.perform(marine, entry, EquipmentSlot.FEET);
             }
 

@@ -1,6 +1,6 @@
 package com.human.util;
 
-import com.avp.common.util.AVPPredicates;
+import com.blib.common.gameplay.util.BLibEntityPredicates;
 import com.human.common.registry.init.HumanMobEffects;
 import com.human.common.registry.tag.HumanEntityTypeTags;
 import com.human.common.registry.tag.HumanItemTags;
@@ -16,7 +16,7 @@ public class HumanPredicates {
                 // Or if the entity is radiation-resistant...
                 || livingEntity.getType().is(HumanEntityTypeTags.RADIATION_RESISTANT)
                 // Or if the living entity is immortal...
-                || AVPPredicates.IS_IMMORTAL.test(livingEntity)
+                || BLibEntityPredicates.isInvulnerable(livingEntity)
                 // Or if the living entity already has the radiation effect...
                 || livingEntity.hasEffect(HumanMobEffects.RADIATION.getHolder())
                 // Or if the entity is no longer alive...
@@ -26,7 +26,7 @@ public class HumanPredicates {
             return false;
         }
 
-        var hasFullRadiationResistantArmor = AVPPredicates.hasFullArmorSetMatching(
+        var hasFullRadiationResistantArmor = BLibEntityPredicates.hasFullArmorSetMatching(
             livingEntity,
             itemStack -> itemStack.is(HumanItemTags.RADIATION_RESISTANT_ARMORS)
         );

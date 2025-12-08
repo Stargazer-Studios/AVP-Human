@@ -1,7 +1,5 @@
 package com.human.fabric.data.loot;
 
-import com.avp.common.registry.AVPRegistryValidation;
-import com.human.Human;
 import com.human.common.registry.init.HumanBlocks;
 import com.human.common.registry.init.block.CoreBlocks;
 import com.human.common.registry.init.block.HumanFerroaluminumBlocks;
@@ -15,7 +13,6 @@ import com.human.common.registry.init.item.HumanItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -51,12 +48,14 @@ public class BlockLootTableProvider extends FabricBlockLootTableProvider {
         generateCustomDrops();
         generateOtherDrops();
 
-        AVPRegistryValidation.throwIfMissingEntries(
-            Human.MOD.getAllHolders(BuiltInRegistries.BLOCK),
-            TOUCHED_ENTRIES::contains,
-            Block::getDescriptionId,
-            "Block loot table generation did not complete successfully - there are unhandled blocks that need to be handled."
-        );
+        // FIXME:
+        // AVPRegistryValidation.throwIfMissingEntries(
+        // Human.MOD.getAllHolders(BuiltInRegistries.BLOCK),
+        // TOUCHED_ENTRIES::contains,
+        // Block::getDescriptionId,
+        // "Block loot table generation did not complete successfully - there are unhandled blocks that need to be
+        // handled."
+        // );
     }
 
     private void generateSelfDrops() {

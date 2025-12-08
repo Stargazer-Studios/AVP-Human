@@ -1,6 +1,6 @@
 package com.human.mixin;
 
-import com.avp.common.util.AVPPredicates;
+import com.blib.common.gameplay.util.BLibEntityPredicates;
 import com.human.common.registry.tag.HumanItemTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -45,11 +45,11 @@ public abstract class MixinLivingEntity_ApplyArmorEffects extends Entity {
 
     @Unique
     private boolean isWearingFullMK50SuitArmor(LivingEntity self) {
-        return AVPPredicates.hasFullArmorSetMatching(self, (itemStack -> itemStack.is(HumanItemTags.MK50_ARMOR)));
+        return BLibEntityPredicates.hasFullArmorSetMatching(self, (itemStack -> itemStack.is(HumanItemTags.MK50_ARMOR)));
     }
 
     @Unique
     private boolean isWearingFullPressureSuitArmor(LivingEntity self) {
-        return AVPPredicates.hasFullArmorSetMatching(self, (itemStack -> itemStack.is(HumanItemTags.PRESSURE_ARMOR)));
+        return BLibEntityPredicates.hasFullArmorSetMatching(self, (itemStack -> itemStack.is(HumanItemTags.PRESSURE_ARMOR)));
     }
 }

@@ -74,9 +74,9 @@ public class HumanNeoForgeDatagen {
                                     List.of(
                                         new MobSpawnSettings.SpawnerData(
                                             entityType,
-                                            spawnSettings.weight,
-                                            spawnSettings.minGroupSize,
-                                            spawnSettings.maxGroupSize
+                                            spawnSettings.weight(),
+                                            spawnSettings.minGroupSize(),
+                                            spawnSettings.maxGroupSize()
                                         )
                                     )
                                 )

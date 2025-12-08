@@ -1,6 +1,7 @@
 package com.human.fabric.data.recipe;
 
-import com.avp.fabric.data.recipe.builder.RecipeBuilder;
+import com.blib.fabric.data.recipe.builder.RecipeBuilder;
+import com.human.Human;
 import com.human.fabric.data.recipe.builder.IndustrialFurnaceRecipeBuilder;
 import com.human.fabric.data.recipe.impl.ArmorRecipeProvider;
 import com.human.fabric.data.recipe.impl.ElectronicItemRecipeProvider;
@@ -29,7 +30,7 @@ public class RecipeProvider extends FabricRecipeProvider {
 
     @Override
     public void buildRecipes(RecipeOutput recipeOutput) {
-        var builder = RecipeBuilder.with(recipeOutput);
+        var builder = RecipeBuilder.with(Human.MOD, recipeOutput);
         IndustrialFurnaceRecipeBuilder.ensureRegistration(recipeOutput);
 
         ArmorRecipeProvider.provide(builder);

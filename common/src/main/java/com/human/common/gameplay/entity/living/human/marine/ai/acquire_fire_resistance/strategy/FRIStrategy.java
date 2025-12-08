@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy;
 
-import com.avp.common.model.inventory.AVPInventory;
+import com.blib.common.gameplay.model.inventory.BLibInventory;
 import com.just.goap.Action;
 import com.just.goap.state.Blackboard;
 import com.just.goap.state.ReadableWorldState;
@@ -15,7 +15,7 @@ public interface FRIStrategy {
 
     boolean isValid(LivingEntity livingEntity, ReadableWorldState worldState);
 
-    Collection<AVPInventory.Entry> selectEntriesFromInventory(AVPInventory inventory);
+    Collection<BLibInventory.Entry> selectEntriesFromInventory(BLibInventory inventory);
 
     double score(LivingEntity livingEntity, ReadableWorldState worldState, ItemStack itemStack);
 

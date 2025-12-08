@@ -1,6 +1,7 @@
 package com.human.common.gameplay.item.gun.pipeline;
 
-import com.avp.common.util.AVPPredicates;
+import com.blib.common.gameplay.util.BLibEntityPredicates;
+import com.blib.common.gameplay.util.EnchantmentUtil;
 import com.human.common.gameplay.item.GunItem;
 import com.human.common.gameplay.item.gun.FireModeConfig;
 import com.human.common.gameplay.item.gun.GunConfig;
@@ -12,7 +13,6 @@ import com.human.common.gameplay.item.gun.pipeline.step.impl.CheckShootDelayStep
 import com.human.common.registry.init.HumanDataComponents;
 import com.human.common.util.GunLightUtil;
 import com.just.core.functional.option.Option;
-import com.lib.common.gameplay.util.EnchantmentUtil;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -60,7 +60,7 @@ public record GunShootContext(
             gunItem,
             EnchantmentUtil.getLevel(shooter.level(), itemStack, Enchantments.INFINITY) > 0,
             tickProgress == 0,
-            AVPPredicates.IS_IMMORTAL.test(shooter),
+            BLibEntityPredicates.isInvulnerable(shooter),
             itemStack,
             shooter,
             tickProgress

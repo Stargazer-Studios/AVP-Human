@@ -1,8 +1,9 @@
 package com.human.client.input.keybind;
 
-import com.avp.client.model.KeyInteractType;
-import com.avp.common.model.Crawler;
-import com.avp.service.Services;
+import com.blib.client.model.KeyInteractType;
+import com.blib.service.BLibServices;
+import com.human.Human;
+import com.human.common.model.Crawler;
 import com.human.common.network.packet.C2SGunReloadPayload;
 import com.human.common.network.packet.C2SPlayerToggleCrawlPayload;
 import com.just.core.functional.tuple.Tuple2;
@@ -26,7 +27,7 @@ public class HumanKeybindingRegistry {
                 var crawler = (Crawler) player;
                 var shouldCrawl = keyMapping == KeyInteractType.PRESS;
                 crawler.setCrawling(shouldCrawl);
-                Services.CLIENT_NETWORKING.sendToServer(new C2SPlayerToggleCrawlPayload(shouldCrawl));
+                BLibServices.CLIENT_NETWORKING.sendToServer(new C2SPlayerToggleCrawlPayload(shouldCrawl));
             }
         }
     );
@@ -39,18 +40,23 @@ public class HumanKeybindingRegistry {
             var player = Minecraft.getInstance().player;
 
             if (player != null) {
-                Services.CLIENT_NETWORKING.sendToServer(C2SGunReloadPayload.INSTANCE);
+                BLibServices.CLIENT_NETWORKING.sendToServer(C2SGunReloadPayload.INSTANCE);
             }
         }
     );
 
     private static Supplier<Tuple2<KeyMapping, Consumer<KeyInteractType>>> register(
-        String id,
+        String path,
         String category,
         int key,
         Consumer<KeyInteractType> onKeyMappingActivated
     ) {
-        return Services.CLIENT_REGISTRY.registerKeyMapping(id, category, key, onKeyMappingActivated);
+        return BLibServices.CLIENT_REGISTRY.registerKeyMapping(
+            Human.MOD.createResourceLocation(path),
+            category,
+            key,
+            onKeyMappingActivated
+        );
     }
 
     public static void initialize() {}

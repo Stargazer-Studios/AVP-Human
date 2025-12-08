@@ -1,6 +1,6 @@
 package com.human.fabric.data.recipe.impl;
 
-import com.avp.fabric.data.recipe.builder.RecipeBuilder;
+import com.blib.fabric.data.recipe.builder.RecipeBuilder;
 import com.human.fabric.data.recipe.builder.IndustrialFurnaceRecipeBuilder;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeProvider;

@@ -1,7 +1,7 @@
 package com.human.common.network;
 
-import com.avp.common.network.NetworkHandler;
 import com.avp.service.Services;
+import com.blib.common.network.model.NetworkHandler;
 import com.human.client.network.HumanClientListener;
 import com.human.common.network.packet.C2SGunHitResultsPayload;
 import com.human.common.network.packet.C2SGunReloadPayload;

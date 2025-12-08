@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.living.human;
 
-import com.avp.common.gameplay.ai.goal.WaterMoveControl;
+import com.blib.common.gameplay.entity.ai.goal.WaterMoveControl;
 import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.goal.GoalSelector;
 import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;

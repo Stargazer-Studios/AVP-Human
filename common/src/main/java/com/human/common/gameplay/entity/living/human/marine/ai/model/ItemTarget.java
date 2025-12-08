@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.model;
 
-import com.avp.common.model.inventory.AVPInventory;
+import com.blib.common.gameplay.model.inventory.BLibInventory;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.item.ItemEntity;
 
@@ -19,7 +19,7 @@ public sealed interface ItemTarget {
     }
 
     record Inventory(
-        AVPInventory.Entry entry
+        BLibInventory.Entry entry
     ) implements ItemTarget {
 
         @Override

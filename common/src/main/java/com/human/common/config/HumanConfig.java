@@ -1,12 +1,9 @@
 package com.human.common.config;
 
 import com.avp.AVP;
-import com.avp.common.constant.ArmorConstants;
-import com.avp.common.constant.AttackDamageConstants;
-import com.avp.common.constant.FollowRangeConstants;
-import com.avp.common.constant.HealthConstants;
-import com.avp.common.constant.MoveSpeedConstants;
+import com.blib.common.constant.PlayerStatConstants;
 import com.human.Human;
+import com.human.common.gameplay.entity.living.human.marine.Marine;
 import mod.azure.azurelib.common.config.Config;
 import mod.azure.azurelib.common.config.Configurable;
 import mod.azure.azurelib.common.config.format.ConfigFormats;
@@ -124,15 +121,15 @@ public class HumanConfig {
         @Configurable.Synchronized
         @Configurable.Comment("Modifying any of these will require restarting the game.")
         public AdvancedStats MARINE_STATS = new AdvancedStats(
-            HealthConstants.PLAYER_HEALTH,
-            AttackDamageConstants.MARINE_ATTACK_DAMAGE,
+            PlayerStatConstants.BASE_HEALTH,
+            Marine.ATTACK_DAMAGE,
             0.0f,
             0.0f,
-            MoveSpeedConstants.PLAYER_SPRINT_JUMP_SPEED,
-            ArmorConstants.MARINE_ARMOR,
+            PlayerStatConstants.BASE_SPRINT_JUMP_SPEED,
+            Marine.ARMOR,
             0.0f,
             0,
-            FollowRangeConstants.MARINE_FOLLOW_RANGE
+            Marine.FOLLOW_RANGE
         );
 
         public static class AdvancedStats {

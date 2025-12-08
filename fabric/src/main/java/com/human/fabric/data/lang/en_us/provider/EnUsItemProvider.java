@@ -1,14 +1,10 @@
 package com.human.fabric.data.lang.en_us.provider;
 
-import com.avp.common.registry.AVPRegistryValidation;
-import com.human.Human;
 import com.human.common.registry.init.item.HumanArmorItems;
 import com.human.common.registry.init.item.HumanGunItems;
 import com.human.common.registry.init.item.HumanItems;
 import com.human.common.registry.init.item.HumanSpawnEggItems;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 
 import java.util.HashSet;
@@ -163,15 +159,16 @@ public class EnUsItemProvider {
         // Spawn Egg Items
         addItem(builder, HumanSpawnEggItems.MARINE_SPAWN_EGG, "Marine Spawn Egg");
 
-        AVPRegistryValidation.throwIfMissingEntries(
-            Human.MOD.getAllHolders(BuiltInRegistries.ITEM)
-                .stream()
-                .filter(deferredHolder -> !(deferredHolder.get() instanceof BlockItem))
-                .toList(),
-            TOUCHED_ENTRIES::contains,
-            Item::getDescriptionId,
-            "Item translation did not complete successfully - there are unhandled items that need to be handled."
-        );
+        // FIXME:
+        // AVPRegistryValidation.throwIfMissingEntries(
+        // Human.MOD.getAllHolders(BuiltInRegistries.ITEM)
+        // .stream()
+        // .filter(deferredHolder -> !(deferredHolder.get() instanceof BlockItem))
+        // .toList(),
+        // TOUCHED_ENTRIES::contains,
+        // Item::getDescriptionId,
+        // "Item translation did not complete successfully - there are unhandled items that need to be handled."
+        // );
     };
 
     private static void addItem(

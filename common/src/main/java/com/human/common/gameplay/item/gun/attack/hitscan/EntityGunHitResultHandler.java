@@ -1,8 +1,8 @@
 package com.human.common.gameplay.item.gun.attack.hitscan;
 
+import com.blib.common.gameplay.util.EnchantmentUtil;
 import com.human.common.gameplay.item.gun.attack.GunAttackConfig;
 import com.human.common.registry.key.HumanDamageTypeKeys;
-import com.lib.common.gameplay.util.EnchantmentUtil;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;

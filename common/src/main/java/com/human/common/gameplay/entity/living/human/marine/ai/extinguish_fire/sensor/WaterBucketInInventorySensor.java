@@ -1,7 +1,7 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.extinguish_fire.sensor;
 
-import com.avp.common.model.inventory.AVPInventory;
-import com.avp.common.model.inventory.AVPInventoryHolder;
+import com.blib.common.gameplay.model.inventory.BLibInventory;
+import com.blib.common.gameplay.model.inventory.BLibInventoryHolder;
 import com.just.core.functional.option.Option;
 import com.just.goap.StateKey;
 import com.just.goap.state.ReadableWorldState;
@@ -11,9 +11,9 @@ import org.jetbrains.annotations.NotNull;
 
 public class WaterBucketInInventorySensor {
 
-    public static final StateKey.Sensed<Option<AVPInventory.Entry>> KEY = StateKey.sensed("water_bucket_in_inventory");
+    public static final StateKey.Sensed<Option<BLibInventory.Entry>> KEY = StateKey.sensed("water_bucket_in_inventory");
 
-    public static <T extends LivingEntity & AVPInventoryHolder> @NotNull Option<AVPInventory.Entry> sense(
+    public static <T extends LivingEntity & BLibInventoryHolder> @NotNull Option<BLibInventory.Entry> sense(
         T livingEntityWithInventory,
         ReadableWorldState worldState
     ) {

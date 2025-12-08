@@ -1,9 +1,9 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.util;
 
-import com.avp.common.model.inventory.AVPInventoryHolder;
+import com.blib.common.gameplay.goap.GOAPSensors;
+import com.blib.common.gameplay.model.inventory.BLibInventoryHolder;
 import com.human.common.gameplay.entity.living.human.marine.ai.model.ItemTarget;
 import com.just.goap.state.ReadableWorldState;
-import com.lib.common.gameplay.goap.GOAPSensors;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ArmorItem;
@@ -37,7 +37,7 @@ public class ItemSenseUtil {
 
         // At this point we may be able to reasonably assume the entity doesn't have the item on them. So we move
         // on to checking the entity's inventory.
-        if (livingEntity instanceof AVPInventoryHolder inventoryHolder) {
+        if (livingEntity instanceof BLibInventoryHolder inventoryHolder) {
             var inventory = inventoryHolder.getInventory();
 
             var entriesWithItem = inventory.selectEntries(targetItem);

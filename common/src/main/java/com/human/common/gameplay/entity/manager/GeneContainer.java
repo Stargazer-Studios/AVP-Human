@@ -1,7 +1,7 @@
 package com.human.common.gameplay.entity.manager;
 
+import com.blib.common.gameplay.model.NBTSerializable;
 import com.human.common.util.GeneSerializationUtil;
-import com.lib.common.gameplay.NBTSerializable;
 import net.minecraft.nbt.CompoundTag;
 
 public class GeneContainer implements NBTSerializable {

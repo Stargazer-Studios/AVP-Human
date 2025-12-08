@@ -1,9 +1,9 @@
 package com.human.common.gameplay.entity.projectile;
 
+import com.blib.common.util.DirectionUtil;
 import com.human.common.registry.init.HumanEntityTypes;
 import com.human.common.registry.key.HumanDamageTypeKeys;
 import com.just.core.traversal.BFS;
-import com.lib.common.util.DirectionUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;

@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.action;
 
-import com.avp.common.model.inventory.AVPInventoryHolder;
+import com.blib.common.gameplay.model.inventory.BLibInventoryHolder;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.FRISensors;
 import com.human.common.gameplay.entity.living.human.marine.ai.action.EquipItemAction;
 import com.just.core.functional.option.Option;
@@ -12,7 +12,7 @@ import net.minecraft.world.entity.LivingEntity;
 
 public class EquipFRIAction {
 
-    public static <T extends LivingEntity & AVPInventoryHolder> Action.Signal perform(
+    public static <T extends LivingEntity & BLibInventoryHolder> Action.Signal perform(
         T livingEntityWithInventory,
         ReadableWorldState worldState,
         Blackboard blackboard

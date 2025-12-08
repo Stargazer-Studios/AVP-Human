@@ -2,8 +2,6 @@ package com.human;
 
 import com.blib.BLib;
 import com.blib.BLibMod;
-import com.blib.event.BLibLevelTickEvent;
-import com.blib.event.key.BLibEventKeys;
 import com.blib.service.BLibServices;
 import com.human.common.HumanEvents;
 import com.human.common.config.HumanConfig;
@@ -50,6 +48,7 @@ import com.human.common.registry.init.item.block.HumanPlasticBlockItems;
 import com.human.common.registry.init.item.block.HumanSteelBlockItems;
 import com.human.common.registry.init.item.block.HumanTitaniumBlockItems;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.Level;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -125,13 +124,11 @@ public class Human {
         // Listeners / Events
         HumanReloadListeners.initialize();
 
-        MOD.addEventListener(BLibEventKeys.LEVEL_TICK_POST, Human::updatePowerSystem);
-        MOD.addEventListener(BLibEventKeys.TAGS_UPDATED, $ -> HumanEvents.onTagsUpdated());
+        BLibServices.EVENT.afterLevelTick().register(Human::updatePowerSystem);
+        BLibServices.EVENT.onTagsUpdated().register(($1, $2) -> HumanEvents.onTagsUpdated());
     }
 
-    private static void updatePowerSystem(BLibLevelTickEvent.Post event) {
-        var level = event.level();
-
+    private static void updatePowerSystem(Level level) {
         if (level.isClientSide) {
             return;
         }

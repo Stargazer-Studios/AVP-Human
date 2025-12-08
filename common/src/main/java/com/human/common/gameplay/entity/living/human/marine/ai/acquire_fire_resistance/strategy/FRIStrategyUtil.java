@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy;
 
-import com.avp.common.model.inventory.AVPInventory;
+import com.blib.common.gameplay.model.inventory.BLibInventory;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.effect.MobEffect;
@@ -13,7 +13,7 @@ import java.util.List;
 
 public class FRIStrategyUtil {
 
-    public static int fireResistanceTicksFromStack(AVPInventory.Entry entry) {
+    public static int fireResistanceTicksFromStack(BLibInventory.Entry entry) {
         var mobEffectInstance = getMobEffectInstanceOrNull(entry, MobEffects.FIRE_RESISTANCE);
         return mobEffectInstance == null
             ? 0
@@ -65,7 +65,7 @@ public class FRIStrategyUtil {
         return Math.max(0.0, Math.min(1.0, value));
     }
 
-    private static @Nullable MobEffectInstance getMobEffectInstanceOrNull(AVPInventory.Entry entry, Holder<MobEffect> mobEffectHolder) {
+    private static @Nullable MobEffectInstance getMobEffectInstanceOrNull(BLibInventory.Entry entry, Holder<MobEffect> mobEffectHolder) {
         for (var mobEffectInstance : getMobEffects(entry)) {
             if (mobEffectInstance.getEffect() == mobEffectHolder) {
                 return mobEffectInstance;
@@ -75,7 +75,7 @@ public class FRIStrategyUtil {
         return null;
     }
 
-    private static Iterable<MobEffectInstance> getMobEffects(AVPInventory.Entry entry) {
+    private static Iterable<MobEffectInstance> getMobEffects(BLibInventory.Entry entry) {
         var potionContents = entry.get(DataComponents.POTION_CONTENTS);
 
         if (potionContents == null) {

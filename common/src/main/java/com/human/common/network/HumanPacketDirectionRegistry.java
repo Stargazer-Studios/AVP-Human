@@ -1,7 +1,7 @@
 package com.human.common.network;
 
-import com.avp.common.network.PacketDirection;
 import com.avp.service.Services;
+import com.blib.common.network.model.PacketDirection;
 import com.human.common.network.packet.C2SGunHitResultsPayload;
 import com.human.common.network.packet.C2SGunReloadPayload;
 import com.human.common.network.packet.C2SPlayerToggleCrawlPayload;

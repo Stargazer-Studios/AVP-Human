@@ -1,8 +1,8 @@
 package com.human.common.network;
 
-import com.avp.common.model.Crawler;
 import com.human.common.gameplay.item.gun.GunReloading;
 import com.human.common.gameplay.item.gun.attack.hitscan.GunHitScanAttackHandler;
+import com.human.common.model.Crawler;
 import com.human.common.network.packet.C2SGunHitResultsPayload;
 import com.human.common.network.packet.C2SGunReloadPayload;
 import com.human.common.network.packet.C2SPlayerToggleCrawlPayload;

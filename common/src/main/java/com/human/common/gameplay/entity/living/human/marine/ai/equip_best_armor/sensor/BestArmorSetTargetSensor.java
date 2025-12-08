@@ -1,10 +1,10 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.sensor;
 
+import com.blib.common.gameplay.goap.GOAPSensors;
 import com.human.common.gameplay.entity.ai.goap.HumanGOAPSensors;
 import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.EquipBestArmorSensors;
 import com.human.common.gameplay.entity.living.human.marine.ai.model.ArmorSetTarget;
 import com.just.goap.state.ReadableWorldState;
-import com.lib.common.gameplay.goap.GOAPSensors;
 import net.minecraft.world.entity.LivingEntity;
 
 public class BestArmorSetTargetSensor {

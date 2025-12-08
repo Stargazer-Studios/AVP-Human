@@ -1,14 +1,14 @@
 package com.human.mixin;
 
 import com.avp.common.registry.init.AVPDataKeys;
+import com.blib.common.network.data.DataAccessor;
+import com.blib.common.network.data.DataUser;
+import com.blib.common.util.TeleportUtil;
 import com.human.common.gameplay.entity.manager.GeneManager;
 import com.human.common.gameplay.gene.GeneOperationType;
 import com.human.common.gameplay.gene.Genes;
 import com.human.common.model.GeneCarrier;
 import com.human.common.util.GeneResistanceHurtUtil;
-import com.lib.common.network.DataAccessor;
-import com.lib.common.network.DataUser;
-import com.lib.common.util.TeleportUtil;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.tags.DamageTypeTags;

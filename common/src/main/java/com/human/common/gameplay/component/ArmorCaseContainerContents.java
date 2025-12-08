@@ -1,8 +1,8 @@
 package com.human.common.gameplay.component;
 
+import com.blib.common.util.codec.stream.impl.MojangStreamCodecs;
 import com.just.codec.stream.RecordStreamCodec;
 import com.just.codec.stream.StreamCodec;
-import com.lib.common.util.codec.stream.impl.MojangStreamCodecs;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.world.item.ItemStack;

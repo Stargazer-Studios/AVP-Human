@@ -1,6 +1,6 @@
 package com.human.mixin.client;
 
-import com.avp.common.util.AVPPredicates;
+import com.blib.common.gameplay.util.BLibEntityPredicates;
 import com.human.common.gameplay.item.GunItem;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
@@ -34,7 +34,7 @@ public abstract class MixinGui_CrosshairPickEntityWithinGunRange {
 
         var hitResult = ProjectileUtil.getHitResultOnViewVector(
             player,
-            entity -> entity.getType() == EntityType.END_CRYSTAL || AVPPredicates.isLiving(entity),
+            entity -> entity.getType() == EntityType.END_CRYSTAL || BLibEntityPredicates.isAlive(entity),
             gun.getGunConfig().getDefaultFireMode().range()
         );
 

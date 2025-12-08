@@ -1,9 +1,9 @@
 package com.human.common.network.packet;
 
+import com.blib.common.util.codec.stream.impl.MojangStreamCodecs;
 import com.human.HumanResources;
 import com.just.codec.stream.RecordStreamCodec;
 import com.just.codec.stream.StreamCodec;
-import com.lib.common.util.codec.stream.impl.MojangStreamCodecs;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;

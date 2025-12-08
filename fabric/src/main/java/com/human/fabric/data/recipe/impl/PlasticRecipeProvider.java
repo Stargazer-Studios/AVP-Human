@@ -1,8 +1,8 @@
 package com.human.fabric.data.recipe.impl;
 
-import com.avp.fabric.data.recipe.RecipeTemplates;
-import com.avp.fabric.data.recipe.builder.RecipeBuilder;
-import com.avp.fabric.data.recipe.util.RecipeUtil;
+import com.blib.fabric.data.recipe.RecipeTemplates;
+import com.blib.fabric.data.recipe.builder.RecipeBuilder;
+import com.blib.fabric.data.recipe.util.RecipeUtil;
 import com.human.common.registry.init.block.HumanPlasticBlocks;
 import com.human.common.registry.init.item.HumanItems;
 import net.minecraft.data.recipes.RecipeCategory;

@@ -2,13 +2,13 @@ package com.human.common.registry.init;
 
 import com.blib.BLibHolder;
 import com.blib.BLibRegistry;
+import com.blib.common.util.codec.stream.adapter.JustStreamCodecToMojangStreamCodecAdapter;
 import com.human.Human;
 import com.human.common.gameplay.component.ArmorCaseContainerContents;
 import com.human.common.gameplay.component.GeneReaderContents;
 import com.human.common.gameplay.component.GeneReaderMode;
 import com.human.common.gameplay.component.SyringeContents;
 import com.human.common.gameplay.component.SyringeMode;
-import com.lib.common.util.codec.stream.adapter.JustStreamCodecToMojangStreamCodecAdapter;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;

@@ -1,12 +1,12 @@
 package com.human.common.gameplay.item;
 
+import com.blib.common.data.TooltipHintBuilder;
+import com.blib.common.gameplay.model.TooltipCategoryType;
 import com.human.common.data.HumanAdvancements;
 import com.human.common.data.HumanTooltipTranslationKeys;
 import com.human.common.gameplay.component.ArmorCaseContainerContents;
 import com.human.common.gameplay.menu.armor_case.ArmorCaseMenu;
 import com.human.common.registry.init.HumanDataComponents;
-import com.lib.common.data.TooltipHintBuilder;
-import com.lib.common.model.TooltipCategoryType;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;

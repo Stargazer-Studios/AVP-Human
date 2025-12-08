@@ -1,7 +1,7 @@
 package com.human.fabric.data.lang.en_us.provider;
 
-import com.lib.common.gameplay.gene.Gene;
-import com.lib.common.gameplay.gene.Genes;
+import com.human.common.gameplay.gene.Gene;
+import com.human.common.gameplay.gene.Genes;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 
 import java.util.function.Consumer;

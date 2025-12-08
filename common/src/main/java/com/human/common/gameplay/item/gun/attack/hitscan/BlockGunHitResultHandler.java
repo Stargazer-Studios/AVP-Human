@@ -1,14 +1,14 @@
 package com.human.common.gameplay.item.gun.attack.hitscan;
 
-import com.avp.common.registry.tag.AVPBlockTags;
-import com.avp.server.BlockBreakProgressManager;
-import com.avp.service.Services;
+import com.blib.common.data.tag.BLibBlockTags;
+import com.blib.common.gameplay.util.EnchantmentUtil;
+import com.blib.server.BlockBreakProgressManager;
+import com.blib.service.BLibServices;
 import com.human.common.config.HumanConfig;
 import com.human.common.gameplay.item.gun.attack.GunAttackConfig;
 import com.human.common.gameplay.item.gun.attack.GunHitResult;
 import com.human.common.network.packet.S2CBulletHitBlockPayload;
 import com.human.common.registry.init.HumanSoundEvents;
-import com.lib.common.gameplay.util.EnchantmentUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
@@ -34,7 +34,7 @@ public class BlockGunHitResultHandler {
         damageBlock(gunAttackConfig, level, blockPos, blockState);
 
         var payload = new S2CBulletHitBlockPayload(blockPos, direction);
-        Services.SERVER_NETWORKING.sendToAllClients(level.getServer(), payload);
+        BLibServices.SERVER_NETWORKING.sendToAllClients(level.getServer(), payload);
     }
 
     private static SoundEvent getRicochetSoundForSoundType(SoundType soundType) {
@@ -57,9 +57,9 @@ public class BlockGunHitResultHandler {
             !HumanConfig.INSTANCE.weaponConfigs.BULLETS_DAMAGE_BLOCKS_ENABLED
                 || !level.getGameRules().getBoolean(GameRules.RULE_PROJECTILESCANBREAKBLOCKS)
                 // Only damage blocks if they should be destroyed.
-                || blockState.is(AVPBlockTags.SHOULD_NOT_BE_DESTROYED)
+                || blockState.is(BLibBlockTags.SHOULD_NOT_BE_DESTROYED)
                 || (gunAttackConfig.shooter() instanceof Player player
-                    && !Services.EVENT.beforeBlockBreak(level, blockPos, blockState, player))
+                    && !BLibServices.EVENT.beforeBlockBreak().dispatcher().invoke(level, player, blockPos, blockState))
         ) {
             return;
         }

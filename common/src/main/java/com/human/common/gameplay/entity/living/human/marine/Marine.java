@@ -1,8 +1,12 @@
 package com.human.common.gameplay.entity.living.human.marine;
 
 import com.avp.AVP;
-import com.avp.common.model.inventory.AVPInventory;
-import com.avp.common.model.inventory.AVPInventoryHolder;
+import com.blib.common.constant.PlayerStatConstants;
+import com.blib.common.gameplay.goap.GOAPUser;
+import com.blib.common.gameplay.model.inventory.BLibInventory;
+import com.blib.common.gameplay.model.inventory.BLibInventoryHolder;
+import com.blib.common.gameplay.util.ItemUtil;
+import com.blib.common.util.codec.schema.CodecSchemas;
 import com.human.common.config.HumanConfig;
 import com.human.common.gameplay.entity.living.human.AbstractHuman;
 import com.human.common.gameplay.entity.living.human.marine.ai.MarineGOAP;
@@ -12,9 +16,6 @@ import com.human.common.registry.init.item.HumanGunItems;
 import com.human.common.registry.init.item.HumanItems;
 import com.just.core.functional.option.Option;
 import com.just.goap.graph.Graph;
-import com.lib.common.gameplay.goap.GOAPUser;
-import com.lib.common.gameplay.util.ItemUtil;
-import com.lib.common.util.codec.schema.CodecSchemas;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.world.DifficultyInstance;
@@ -43,7 +44,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Supplier;
 
-public class Marine extends AbstractHuman implements AVPInventoryHolder, GOAPUser<Marine> {
+public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUser<Marine> {
+
+    public static final float FOLLOW_RANGE = 20F;
+
+    // Alien measurements (in terms of half-hearts).
+    public static final float ATTACK_DAMAGE = PlayerStatConstants.BASE_HEALTH * 0.1F;
+
+    public static final float ARMOR = 2.0F;
 
     private static final String NBT_INVENTORY = "inventory";
 
@@ -91,12 +99,12 @@ public class Marine extends AbstractHuman implements AVPInventoryHolder, GOAPUse
 
     private final MarineAnimationDispatcher animationDispatcher;
 
-    private final AVPInventory inventory;
+    private final BLibInventory inventory;
 
     public Marine(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level);
         this.animationDispatcher = new MarineAnimationDispatcher(this);
-        this.inventory = new AVPInventory(27);
+        this.inventory = new BLibInventory(27);
     }
 
     @Override
@@ -156,7 +164,7 @@ public class Marine extends AbstractHuman implements AVPInventoryHolder, GOAPUse
     }
 
     @Override
-    public AVPInventory getInventory() {
+    public BLibInventory getInventory() {
         return inventory;
     }
 
@@ -177,7 +185,7 @@ public class Marine extends AbstractHuman implements AVPInventoryHolder, GOAPUse
         }
 
         if (compoundTag.contains(NBT_INVENTORY)) {
-            AVPInventory.CODEC.decode(CodecSchemas.NBT, compoundTag.get(NBT_INVENTORY))
+            BLibInventory.CODEC.decode(CodecSchemas.NBT, compoundTag.get(NBT_INVENTORY))
                 .inspectErr(tag -> AVP.LOGGER.error("Failed to load tag '{}'. Tag: {}", NBT_INVENTORY, tag))
                 .ifOk(loadedInventory -> Arrays.stream(loadedInventory.getSerializedItemStacks()).forEach(inventory::addItemStack));
         }
@@ -186,7 +194,7 @@ public class Marine extends AbstractHuman implements AVPInventoryHolder, GOAPUse
     @Override
     public void addAdditionalSaveData(@NotNull CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
-        compoundTag.put(NBT_INVENTORY, AVPInventory.CODEC.encode(CodecSchemas.NBT, inventory));
+        compoundTag.put(NBT_INVENTORY, BLibInventory.CODEC.encode(CodecSchemas.NBT, inventory));
     }
 
     private void addInitialArmor() {

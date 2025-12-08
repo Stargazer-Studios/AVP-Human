@@ -1,7 +1,7 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.sensor;
 
-import com.avp.common.model.inventory.AVPInventory;
-import com.avp.common.model.inventory.AVPInventoryHolder;
+import com.blib.common.gameplay.model.inventory.BLibInventory;
+import com.blib.common.gameplay.model.inventory.BLibInventoryHolder;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.FRIStrategies;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.FRIStrategy;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.FRIStrategyResult;
@@ -16,12 +16,12 @@ public class BestFRIInInventorySensor {
 
     public static final StateKey.Sensed<Option<FRIStrategyResult<ItemTarget.Inventory>>> KEY = StateKey.sensed("best_fri_in_inventory");
 
-    public static <T extends LivingEntity & AVPInventoryHolder> @NotNull Option<FRIStrategyResult<ItemTarget.Inventory>> sense(
+    public static <T extends LivingEntity & BLibInventoryHolder> @NotNull Option<FRIStrategyResult<ItemTarget.Inventory>> sense(
         T livingEntityWithInventory,
         ReadableWorldState worldState
     ) {
         var bestScore = Double.MIN_VALUE;
-        AVPInventory.Entry bestEntry = null;
+        BLibInventory.Entry bestEntry = null;
         FRIStrategy bestStrategy = null;
 
         for (var strategy : FRIStrategies.STRATEGIES) {

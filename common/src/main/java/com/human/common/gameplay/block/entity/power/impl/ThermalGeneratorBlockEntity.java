@@ -1,5 +1,6 @@
 package com.human.common.gameplay.block.entity.power.impl;
 
+import com.blib.common.util.DirectionUtil;
 import com.human.common.gameplay.block.IndustrialFurnaceBlock;
 import com.human.common.gameplay.block.entity.power.PowerNodeBlockEntity;
 import com.human.common.gameplay.power.PowerNode;
@@ -7,7 +8,6 @@ import com.human.common.registry.init.HumanBlockEntityTypes;
 import com.human.common.registry.init.HumanBlocks;
 import com.just.core.functional.function.Function;
 import com.just.core.functional.function.Lazy;
-import com.lib.common.util.DirectionUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.BlastFurnaceBlock;
 import net.minecraft.world.level.block.Block;

@@ -1,7 +1,7 @@
 package com.human.fabric.data.gene_bonus_data;
 
-import com.avp.common.data.GeneBonusDataReloadListener;
 import com.human.HumanResources;
+import com.human.common.data.GeneBonusDataReloadListener;
 import com.human.common.gameplay.gene.GeneBonusData;
 import com.mojang.serialization.JsonOps;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
