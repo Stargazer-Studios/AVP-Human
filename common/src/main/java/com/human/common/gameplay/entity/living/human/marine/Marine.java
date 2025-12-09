@@ -46,12 +46,11 @@ import java.util.function.Supplier;
 
 public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUser<Marine> {
 
-    public static final float FOLLOW_RANGE = 20F;
+    public static final float ARMOR = 2.0F;
 
-    // Alien measurements (in terms of half-hearts).
     public static final float ATTACK_DAMAGE = PlayerStatConstants.BASE_HEALTH * 0.1F;
 
-    public static final float ARMOR = 2.0F;
+    public static final float FOLLOW_RANGE = 20F;
 
     private static final String NBT_INVENTORY = "inventory";
 

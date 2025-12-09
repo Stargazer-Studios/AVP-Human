@@ -11,6 +11,8 @@ import com.human.common.gameplay.gene.Genes;
 import com.human.common.gameplay.level.patrol.MarinePatrolSpawner;
 import com.human.common.gameplay.power.PowerSystem;
 import com.human.common.gameplay.worldgen.biome.NukedAshPlacement;
+import com.human.common.network.HumanPacketDirectionRegistry;
+import com.human.common.network.HumanServerPacketHandlerRegistry;
 import com.human.common.registry.init.HumanArmorMaterials;
 import com.human.common.registry.init.HumanBlockEntityTypes;
 import com.human.common.registry.init.HumanBlocks;
@@ -105,6 +107,9 @@ public class Human {
         HumanVillagerTrades.initialize();
 
         HumanDataKeys.initialize();
+
+        HumanPacketDirectionRegistry.initialize();
+        HumanServerPacketHandlerRegistry.initialize();
         HumanMenuTypes.initialize();
         HumanMobEffects.initialize();
 
