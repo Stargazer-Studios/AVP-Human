@@ -1,6 +1,5 @@
 package com.human.common.registry.init.item;
 
-import com.avp.service.Services;
 import com.blib.BLibHolder;
 import com.blib.BLibRegistry;
 import com.human.Human;
@@ -76,16 +75,17 @@ public class HumanGunItems {
 
     public static void initialize() {
         REGISTRY.registerAll();
-        Services.REGISTRY.registerAzureLibIdentity(F903WE_RIFLE);
-        Services.REGISTRY.registerAzureLibIdentity(FLAMETHROWER_SEVASTOPOL);
-        Services.REGISTRY.registerAzureLibIdentity(M37_12_SHOTGUN);
-        Services.REGISTRY.registerAzureLibIdentity(M41A_PULSE_RIFLE);
-        Services.REGISTRY.registerAzureLibIdentity(M42A3_SNIPER_RIFLE);
-        Services.REGISTRY.registerAzureLibIdentity(M4RA_BATTLE_RIFLE);
-        Services.REGISTRY.registerAzureLibIdentity(M56_SMARTGUN);
-        Services.REGISTRY.registerAzureLibIdentity(M6B_ROCKET_LAUNCHER);
-        Services.REGISTRY.registerAzureLibIdentity(M88MOD4_COMBAT_PISTOL);
-        Services.REGISTRY.registerAzureLibIdentity(OLD_PAINLESS);
-        Services.REGISTRY.registerAzureLibIdentity(ZX_76_SHOTGUN);
+        // FIXME:
+        // Services.REGISTRY.registerAzureLibIdentity(F903WE_RIFLE);
+        // Services.REGISTRY.registerAzureLibIdentity(FLAMETHROWER_SEVASTOPOL);
+        // Services.REGISTRY.registerAzureLibIdentity(M37_12_SHOTGUN);
+        // Services.REGISTRY.registerAzureLibIdentity(M41A_PULSE_RIFLE);
+        // Services.REGISTRY.registerAzureLibIdentity(M42A3_SNIPER_RIFLE);
+        // Services.REGISTRY.registerAzureLibIdentity(M4RA_BATTLE_RIFLE);
+        // Services.REGISTRY.registerAzureLibIdentity(M56_SMARTGUN);
+        // Services.REGISTRY.registerAzureLibIdentity(M6B_ROCKET_LAUNCHER);
+        // Services.REGISTRY.registerAzureLibIdentity(M88MOD4_COMBAT_PISTOL);
+        // Services.REGISTRY.registerAzureLibIdentity(OLD_PAINLESS);
+        // Services.REGISTRY.registerAzureLibIdentity(ZX_76_SHOTGUN);
     }
 }

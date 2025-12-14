@@ -1,15 +1,18 @@
 package com.human.common.registry.init;
 
-import com.avp.service.Services;
-import com.human.common.data.CommissaryTradeLevels;
-
 public class HumanVillagerTrades {
 
     public static void initialize() {
-        Services.REGISTRY.registerVillagerTrade(HumanVillagerProfessions.COMMISSARY, 1, CommissaryTradeLevels.LEVEL_1);
-        Services.REGISTRY.registerVillagerTrade(HumanVillagerProfessions.COMMISSARY, 2, CommissaryTradeLevels.LEVEL_2);
-        Services.REGISTRY.registerVillagerTrade(HumanVillagerProfessions.COMMISSARY, 3, CommissaryTradeLevels.LEVEL_3);
-        Services.REGISTRY.registerVillagerTrade(HumanVillagerProfessions.COMMISSARY, 4, CommissaryTradeLevels.LEVEL_4);
-        Services.REGISTRY.registerVillagerTrade(HumanVillagerProfessions.COMMISSARY, 5, CommissaryTradeLevels.LEVEL_5);
+        // FIXME:
+        // Services.REGISTRY.registerVillagerTrade(HumanVillagerProfessions.COMMISSARY, 1,
+        // CommissaryTradeLevels.LEVEL_1);
+        // Services.REGISTRY.registerVillagerTrade(HumanVillagerProfessions.COMMISSARY, 2,
+        // CommissaryTradeLevels.LEVEL_2);
+        // Services.REGISTRY.registerVillagerTrade(HumanVillagerProfessions.COMMISSARY, 3,
+        // CommissaryTradeLevels.LEVEL_3);
+        // Services.REGISTRY.registerVillagerTrade(HumanVillagerProfessions.COMMISSARY, 4,
+        // CommissaryTradeLevels.LEVEL_4);
+        // Services.REGISTRY.registerVillagerTrade(HumanVillagerProfessions.COMMISSARY, 5,
+        // CommissaryTradeLevels.LEVEL_5);
     }
 }

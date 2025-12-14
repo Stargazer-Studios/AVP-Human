@@ -1,6 +1,5 @@
 package com.human.common.registry.init.item;
 
-import com.avp.service.Services;
 import com.blib.BLibHolder;
 import com.blib.common.registry.impl.BLibItemRegistry;
 import com.human.Human;
@@ -173,7 +172,8 @@ public class HumanBlockItems {
 
     public static void initialize() {
         REGISTRY.registerAll();
-        Services.REGISTRY.registerAzureLibIdentity(RESONATOR_BLOCK);
-        Services.REGISTRY.registerAzureLibIdentity(SENTRY_TURRET);
+        // FIXME:
+        // Services.REGISTRY.registerAzureLibIdentity(RESONATOR_BLOCK);
+        // Services.REGISTRY.registerAzureLibIdentity(SENTRY_TURRET);
     }
 }
