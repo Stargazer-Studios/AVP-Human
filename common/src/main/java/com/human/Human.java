@@ -71,63 +71,65 @@ public class Human {
 
         HumanConfig.initialize();
 
-        HumanSoundEvents.initialize();
-        HumanArmorMaterials.initialize();
-        HumanDataComponents.initialize();
-        HumanEntityTypes.initialize();
+        MOD.initialize(() -> {
+            HumanSoundEvents.initialize();
+            HumanArmorMaterials.initialize();
+            HumanDataComponents.initialize();
+            HumanEntityTypes.initialize();
 
-        // Blocks
-        CoreBlocks.initialize();
-        HumanBlocks.initialize();
-        HumanFerroaluminumBlocks.initialize();
-        HumanIndustrialConcreteBlocks.initialize();
-        HumanIndustrialGlassBlocks.initialize();
-        HumanPaddingBlocks.initialize();
-        HumanPlasticBlocks.initialize();
-        HumanSteelBlocks.initialize();
-        HumanTitaniumBlocks.initialize();
+            // Blocks
+            CoreBlocks.initialize();
+            HumanBlocks.initialize();
+            HumanFerroaluminumBlocks.initialize();
+            HumanIndustrialConcreteBlocks.initialize();
+            HumanIndustrialGlassBlocks.initialize();
+            HumanPaddingBlocks.initialize();
+            HumanPlasticBlocks.initialize();
+            HumanSteelBlocks.initialize();
+            HumanTitaniumBlocks.initialize();
 
-        HumanBlockEntityTypes.initialize();
+            HumanBlockEntityTypes.initialize();
 
-        // Items
-        HumanItems.initialize();
-        HumanGunItems.initialize();
-        HumanBlockItems.initialize();
-        HumanFerroaluminumBlockItems.initialize();
-        HumanIndustrialConcreteBlockItems.initialize();
-        HumanIndustrialGlassBlockItems.initialize();
-        HumanPaddingBlockItems.initialize();
-        HumanPlasticBlockItems.initialize();
-        HumanSpawnEggItems.initialize();
-        HumanSteelBlockItems.initialize();
-        HumanTitaniumBlockItems.initialize();
+            // Items
+            HumanItems.initialize();
+            HumanGunItems.initialize();
+            HumanBlockItems.initialize();
+            HumanFerroaluminumBlockItems.initialize();
+            HumanIndustrialConcreteBlockItems.initialize();
+            HumanIndustrialGlassBlockItems.initialize();
+            HumanPaddingBlockItems.initialize();
+            HumanPlasticBlockItems.initialize();
+            HumanSpawnEggItems.initialize();
+            HumanSteelBlockItems.initialize();
+            HumanTitaniumBlockItems.initialize();
 
-        HumanVillagerPoiTypes.initialize();
-        HumanVillagerProfessions.initialize();
-        HumanVillagerTrades.initialize();
+            HumanVillagerPoiTypes.initialize();
+            HumanVillagerProfessions.initialize();
+            HumanVillagerTrades.initialize();
 
-        HumanDataKeys.initialize();
+            HumanDataKeys.initialize();
 
-        HumanPacketDirectionRegistry.initialize();
-        HumanServerPacketHandlerRegistry.initialize();
-        HumanMenuTypes.initialize();
-        HumanMobEffects.initialize();
+            HumanPacketDirectionRegistry.initialize();
+            HumanServerPacketHandlerRegistry.initialize();
+            HumanMenuTypes.initialize();
+            HumanMobEffects.initialize();
 
-        HumanArmorItems.initialize();
+            HumanArmorItems.initialize();
 
-        HumanRecipes.initialize();
+            HumanRecipes.initialize();
 
-        HumanEntitySpawns.initialize();
-        HumanFuels.initialize();
+            HumanEntitySpawns.initialize();
+            HumanFuels.initialize();
 
-        HumanCreativeModeTabs.initialize();
+            HumanCreativeModeTabs.initialize();
 
-        // AI
-        Genes.initialize();
-        MarineGOAP.initialize();
+            // AI
+            Genes.initialize();
+            MarineGOAP.initialize();
 
-        // Listeners / Events
-        HumanReloadListeners.initialize();
+            // Listeners / Events
+            HumanReloadListeners.initialize();
+        });
 
         BLibServices.EVENT.afterLevelTick().register(Human::updatePowerSystem);
         BLibServices.EVENT.onTagsUpdated().register(($1, $2) -> HumanEvents.onTagsUpdated());
