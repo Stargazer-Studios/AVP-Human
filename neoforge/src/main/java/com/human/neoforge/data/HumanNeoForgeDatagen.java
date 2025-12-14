@@ -2,8 +2,6 @@ package com.human.neoforge.data;
 
 import com.human.Human;
 import com.human.neoforge.data.impl.NeoForgeHumanBiomeModifiers;
-import com.human.neoforge.data.impl.NeoForgeHumanCompostableDataMappings;
-import com.human.neoforge.data.impl.NeoForgeHumanFurnaceFuelDataMappings;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.data.DataProvider;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -20,11 +18,6 @@ public class HumanNeoForgeDatagen {
     @SubscribeEvent
     public static void onGatherData(GatherDataEvent event) {
         var generator = event.getGenerator();
-        var packOutput = generator.getPackOutput();
-        var lookupProvider = event.getLookupProvider();
-
-        generator.addProvider(event.includeServer(), new NeoForgeHumanCompostableDataMappings(packOutput, lookupProvider));
-        generator.addProvider(event.includeServer(), new NeoForgeHumanFurnaceFuelDataMappings(packOutput, lookupProvider));
 
         DataProvider.Factory<DatapackBuiltinEntriesProvider> datapackBuiltinEntriesProviderFactory =
             $1 -> createDatapackBuiltInEntriesProvider(event);

@@ -57,8 +57,6 @@ public class HumanDataGenerator implements DataGeneratorEntrypoint {
         pack.addProvider(HumanEnchantmentTagProvider::new);
         pack.addProvider(HumanEntityTypeTagProvider::new);
         pack.addProvider(HumanItemTagProvider::new);
-        // FIXME:
-        // pack.addProvider(AVPMobEffectTagProvider::new);
         pack.addProvider(HumanPoiTagProvider::new);
 
         // Loot providers

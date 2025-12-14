@@ -1,13 +1,12 @@
 package com.human.common.registry.init.item;
 
 import com.blib.BLibHolder;
-import com.blib.BLibRegistry;
+import com.blib.common.registry.impl.BLibItemRegistry;
 import com.human.Human;
 import com.human.common.gameplay.item.MK50ArmorItem;
 import com.human.common.gameplay.item.PressureSuitArmorItem;
 import com.human.common.registry.init.HumanArmorMaterials;
 import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
@@ -16,7 +15,7 @@ import java.util.function.Supplier;
 
 public class HumanArmorItems {
 
-    private static final BLibRegistry<ArmorItem> REGISTRY = Human.MOD.createRegistry(BuiltInRegistries.ITEM);
+    private static final BLibItemRegistry REGISTRY = Human.MOD.createItemRegistry();
 
     private static final int STEEL_DURABILITY_MULTIPLIER = 21;
 
@@ -64,189 +63,189 @@ public class HumanArmorItems {
 
     public static final BLibHolder<ArmorItem> STEEL_BOOTS = create(
         "steel_boots",
-        HumanArmorMaterials.STEEL::getHolder,
+        HumanArmorMaterials.STEEL,
         ArmorItem.Type.BOOTS,
         STEEL_DURABILITY_MULTIPLIER
     );
 
     public static final BLibHolder<ArmorItem> STEEL_CHESTPLATE = create(
         "steel_chestplate",
-        HumanArmorMaterials.STEEL::getHolder,
+        HumanArmorMaterials.STEEL,
         ArmorItem.Type.CHESTPLATE,
         STEEL_DURABILITY_MULTIPLIER
     );
 
     public static final BLibHolder<ArmorItem> STEEL_HELMET = create(
         "steel_helmet",
-        HumanArmorMaterials.STEEL::getHolder,
+        HumanArmorMaterials.STEEL,
         ArmorItem.Type.HELMET,
         STEEL_DURABILITY_MULTIPLIER
     );
 
     public static final BLibHolder<ArmorItem> STEEL_LEGGINGS = create(
         "steel_leggings",
-        HumanArmorMaterials.STEEL::getHolder,
+        HumanArmorMaterials.STEEL,
         ArmorItem.Type.LEGGINGS,
         STEEL_DURABILITY_MULTIPLIER
     );
 
     public static final BLibHolder<ArmorItem> TACTICAL_BOOTS = create(
         "tactical_boots",
-        HumanArmorMaterials.TACTICAL::getHolder,
+        HumanArmorMaterials.TACTICAL,
         ArmorItem.Type.BOOTS,
         TACTICAL_DURABILITY_MULTIPLIER
     );
 
     public static final BLibHolder<ArmorItem> TACTICAL_CHESTPLATE = create(
         "tactical_chestplate",
-        HumanArmorMaterials.TACTICAL::getHolder,
+        HumanArmorMaterials.TACTICAL,
         ArmorItem.Type.CHESTPLATE,
         TACTICAL_DURABILITY_MULTIPLIER
     );
 
     public static final BLibHolder<ArmorItem> TACTICAL_HELMET = create(
         "tactical_helmet",
-        HumanArmorMaterials.TACTICAL::getHolder,
+        HumanArmorMaterials.TACTICAL,
         ArmorItem.Type.HELMET,
         TACTICAL_DURABILITY_MULTIPLIER
     );
 
     public static final BLibHolder<ArmorItem> TACTICAL_LEGGINGS = create(
         "tactical_leggings",
-        HumanArmorMaterials.TACTICAL::getHolder,
+        HumanArmorMaterials.TACTICAL,
         ArmorItem.Type.LEGGINGS,
         TACTICAL_DURABILITY_MULTIPLIER
     );
 
     public static final BLibHolder<ArmorItem> TACTICAL_CAMO_BOOTS = create(
         "tactical_camo_boots",
-        HumanArmorMaterials.TACTICAL::getHolder,
+        HumanArmorMaterials.TACTICAL,
         ArmorItem.Type.BOOTS,
         TACTICAL_DURABILITY_MULTIPLIER
     );
 
     public static final BLibHolder<ArmorItem> TACTICAL_CAMO_CHESTPLATE = create(
         "tactical_camo_chestplate",
-        HumanArmorMaterials.TACTICAL::getHolder,
+        HumanArmorMaterials.TACTICAL,
         ArmorItem.Type.CHESTPLATE,
         TACTICAL_DURABILITY_MULTIPLIER
     );
 
     public static final BLibHolder<ArmorItem> TACTICAL_CAMO_HELMET = create(
         "tactical_camo_helmet",
-        HumanArmorMaterials.TACTICAL::getHolder,
+        HumanArmorMaterials.TACTICAL,
         ArmorItem.Type.HELMET,
         TACTICAL_DURABILITY_MULTIPLIER
     );
 
     public static final BLibHolder<ArmorItem> TACTICAL_CAMO_LEGGINGS = create(
         "tactical_camo_leggings",
-        HumanArmorMaterials.TACTICAL::getHolder,
+        HumanArmorMaterials.TACTICAL,
         ArmorItem.Type.LEGGINGS,
         TACTICAL_DURABILITY_MULTIPLIER
     );
 
     public static final BLibHolder<ArmorItem> TITANIUM_BOOTS = create(
         "titanium_boots",
-        HumanArmorMaterials.TITANIUM::getHolder,
+        HumanArmorMaterials.TITANIUM,
         ArmorItem.Type.BOOTS,
         TITANIUM_DURABILITY_MULTIPLIER
     );
 
     public static final BLibHolder<ArmorItem> TITANIUM_CHESTPLATE = create(
         "titanium_chestplate",
-        HumanArmorMaterials.TITANIUM::getHolder,
+        HumanArmorMaterials.TITANIUM,
         ArmorItem.Type.CHESTPLATE,
         TITANIUM_DURABILITY_MULTIPLIER
     );
 
     public static final BLibHolder<ArmorItem> TITANIUM_HELMET = create(
         "titanium_helmet",
-        HumanArmorMaterials.TITANIUM::getHolder,
+        HumanArmorMaterials.TITANIUM,
         ArmorItem.Type.HELMET,
         TITANIUM_DURABILITY_MULTIPLIER
     );
 
     public static final BLibHolder<ArmorItem> TITANIUM_LEGGINGS = create(
         "titanium_leggings",
-        HumanArmorMaterials.TITANIUM::getHolder,
+        HumanArmorMaterials.TITANIUM,
         ArmorItem.Type.LEGGINGS,
         TITANIUM_DURABILITY_MULTIPLIER
     );
 
     public static final BLibHolder<ArmorItem> WY_COMMANDO_BOOTS = create(
         "wy_commando_boots",
-        HumanArmorMaterials.WY_COMMANDO::getHolder,
+        HumanArmorMaterials.WY_COMMANDO,
         ArmorItem.Type.BOOTS,
         WY_COMMANDO_DURABILITY_MULTIPLIER
     );
 
     public static final BLibHolder<ArmorItem> WY_COMMANDO_CHESTPLATE = create(
         "wy_commando_chestplate",
-        HumanArmorMaterials.WY_COMMANDO::getHolder,
+        HumanArmorMaterials.WY_COMMANDO,
         ArmorItem.Type.CHESTPLATE,
         WY_COMMANDO_DURABILITY_MULTIPLIER
     );
 
     public static final BLibHolder<ArmorItem> WY_COMMANDO_HELMET = create(
         "wy_commando_helmet",
-        HumanArmorMaterials.WY_COMMANDO::getHolder,
+        HumanArmorMaterials.WY_COMMANDO,
         ArmorItem.Type.HELMET,
         WY_COMMANDO_DURABILITY_MULTIPLIER
     );
 
     public static final BLibHolder<ArmorItem> WY_COMMANDO_LEGGINGS = create(
         "wy_commando_leggings",
-        HumanArmorMaterials.WY_COMMANDO::getHolder,
+        HumanArmorMaterials.WY_COMMANDO,
         ArmorItem.Type.LEGGINGS,
         WY_COMMANDO_DURABILITY_MULTIPLIER
     );
 
     public static final BLibHolder<ArmorItem> WY_ELITE_BOOTS = create(
         "wy_elite_boots",
-        HumanArmorMaterials.WY_ELITE::getHolder,
+        HumanArmorMaterials.WY_ELITE,
         ArmorItem.Type.BOOTS,
         WY_ELITE_DURABILITY_MULTIPLIER
     );
 
     public static final BLibHolder<ArmorItem> WY_ELITE_CHESTPLATE = create(
         "wy_elite_chestplate",
-        HumanArmorMaterials.WY_ELITE::getHolder,
+        HumanArmorMaterials.WY_ELITE,
         ArmorItem.Type.CHESTPLATE,
         WY_ELITE_DURABILITY_MULTIPLIER
     );
 
     public static final BLibHolder<ArmorItem> WY_ELITE_HELMET = create(
         "wy_elite_helmet",
-        HumanArmorMaterials.WY_ELITE::getHolder,
+        HumanArmorMaterials.WY_ELITE,
         ArmorItem.Type.HELMET,
         WY_ELITE_DURABILITY_MULTIPLIER
     );
 
     public static final BLibHolder<ArmorItem> WY_ELITE_LEGGINGS = create(
         "wy_elite_leggings",
-        HumanArmorMaterials.WY_ELITE::getHolder,
+        HumanArmorMaterials.WY_ELITE,
         ArmorItem.Type.LEGGINGS,
         WY_ELITE_DURABILITY_MULTIPLIER
     );
 
     private static BLibHolder<ArmorItem> create(
         String path,
-        Supplier<Holder<ArmorMaterial>> holderSupplier,
+        BLibHolder<ArmorMaterial> holder,
         ArmorItem.Type type,
         int durabilityMultiplier
     ) {
-        return create(path, holderSupplier, type, durabilityMultiplier, new Item.Properties());
+        return create(path, holder, type, durabilityMultiplier, new Item.Properties());
     }
 
     private static BLibHolder<ArmorItem> create(
         String path,
-        Supplier<Holder<ArmorMaterial>> holderSupplier,
+        BLibHolder<ArmorMaterial> holder,
         ArmorItem.Type type,
         int durabilityMultiplier,
         Item.Properties properties
     ) {
-        return create(path, () -> createArmorItem(holderSupplier.get(), type, durabilityMultiplier, properties));
+        return create(path, () -> createArmorItem(holder, type, durabilityMultiplier, properties));
     }
 
     private static <T extends ArmorItem> BLibHolder<T> create(String path, Supplier<T> itemSupplier) {

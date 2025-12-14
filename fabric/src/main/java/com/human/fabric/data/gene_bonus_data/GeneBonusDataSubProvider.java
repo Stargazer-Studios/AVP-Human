@@ -1,6 +1,5 @@
 package com.human.fabric.data.gene_bonus_data;
 
-import com.avp.common.registry.AVPDeferredHolder;
 import com.blib.common.data.EntityTypePredicate;
 import com.human.Human;
 import com.human.common.gameplay.gene.Gene;
@@ -423,7 +422,7 @@ public class GeneBonusDataSubProvider extends GeneBonusDataProvider {
             .forEach(entityType -> Human.LOGGER.warn("No gene bonuses provided for {}", BuiltInRegistries.ENTITY_TYPE.getKey(entityType)));
     }
 
-    private void add(EntityType<?> entityType, List<Tuple2<AVPDeferredHolder<Gene>, GeneModifier>> geneBonusList) {
+    private void add(EntityType<?> entityType, List<Tuple2<Gene, GeneModifier>> geneBonusList) {
         touchedEntries.add(entityType);
         add(
             BuiltInRegistries.ENTITY_TYPE.getKey(entityType).getPath(),
@@ -432,7 +431,7 @@ public class GeneBonusDataSubProvider extends GeneBonusDataProvider {
                 geneBonusList.stream()
                     .map(
                         tuple -> new GeneBonusDataEntry(
-                            tuple.v1().get().id(),
+                            tuple.v1().id(),
                             tuple.v2().operation(),
                             tuple.v2().value()
                         )

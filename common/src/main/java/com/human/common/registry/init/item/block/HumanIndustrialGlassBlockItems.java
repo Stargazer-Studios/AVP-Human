@@ -1,10 +1,9 @@
 package com.human.common.registry.init.item.block;
 
 import com.blib.BLibHolder;
-import com.blib.BLibRegistry;
+import com.blib.common.registry.impl.BLibItemRegistry;
 import com.human.Human;
 import com.human.common.registry.init.block.HumanIndustrialGlassBlocks;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
@@ -19,7 +18,7 @@ import java.util.stream.Collectors;
 
 public class HumanIndustrialGlassBlockItems {
 
-    private static final BLibRegistry<BlockItem> REGISTRY = Human.MOD.createRegistry(BuiltInRegistries.ITEM);
+    private static final BLibItemRegistry REGISTRY = Human.MOD.createItemRegistry();
 
     public static final BLibHolder<BlockItem> INDUSTRIAL_GLASS = create(
         "industrial_glass",

@@ -1,6 +1,5 @@
 package com.human.common.util;
 
-import com.avp.common.registry.AVPDeferredHolder;
 import com.human.common.gameplay.entity.manager.GeneContainer;
 import com.human.common.gameplay.gene.Gene;
 import com.human.common.gameplay.gene.GeneOperationType;
@@ -37,7 +36,7 @@ public class GeneResistanceHurtUtil {
 
     private static float applyGeneResistanceToDamage(
         GeneContainer geneContainer,
-        AVPDeferredHolder<Gene> gene,
+        Gene gene,
         float damage
     ) {
         // Percent reduction value.

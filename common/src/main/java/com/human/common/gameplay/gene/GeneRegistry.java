@@ -1,8 +1,7 @@
 package com.human.common.gameplay.gene;
 
-import com.avp.common.registry.AVPDeferredHolder;
+import com.blib.BLibHolder;
 import com.just.core.functional.option.Option;
-import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 
@@ -20,7 +19,7 @@ public class GeneRegistry {
         return GENES_BY_RESOURCE_LOCATION.get(resourceLocation);
     }
 
-    public static @Nullable ResourceLocation getResourceLocationOrNull(AVPDeferredHolder<Gene> geneHolder) {
+    public static @Nullable ResourceLocation getResourceLocationOrNull(BLibHolder<Gene> geneHolder) {
         return RESOURCE_LOCATION_BY_VALUE.get(geneHolder.get());
     }
 
@@ -28,18 +27,17 @@ public class GeneRegistry {
         return Option.ofNullable(getValueOrNull(resourceLocation));
     }
 
-    public static Option<ResourceLocation> getResourceLocation(AVPDeferredHolder<Gene> geneHolder) {
+    public static Option<ResourceLocation> getResourceLocation(BLibHolder<Gene> geneHolder) {
         return Option.ofNullable(getResourceLocationOrNull(geneHolder));
     }
 
-    public static AVPDeferredHolder<Gene> register(Supplier<Gene> geneSupplier) {
+    public static Gene register(Supplier<Gene> geneSupplier) {
         var gene = geneSupplier.get();
         var resourceLocation = gene.id();
-        var holder = Holder.direct(gene);
 
         GENES_BY_RESOURCE_LOCATION.put(resourceLocation, gene);
         RESOURCE_LOCATION_BY_VALUE.put(gene, resourceLocation);
 
-        return new AVPDeferredHolder<>(() -> gene, () -> holder);
+        return gene;
     }
 }

@@ -1,9 +1,8 @@
 package com.human.common.registry.init;
 
 import com.blib.BLibHolder;
-import com.blib.BLibRegistry;
-import com.blib.common.registry.init.entity_type.SilencedEntityTypeBuilder;
-import com.blib.service.BLibServices;
+import com.blib.common.registry.SilencedEntityTypeBuilder;
+import com.blib.common.registry.impl.BLibEntityTypeRegistry;
 import com.human.Human;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.human.common.gameplay.entity.machine.SentryTurret;
@@ -15,14 +14,13 @@ import com.human.common.gameplay.entity.projectile.ThrownGrenade;
 import com.human.common.gameplay.util.EyeColorGenerator;
 import com.human.common.gameplay.util.HairColorGenerator;
 import com.human.common.gameplay.util.SkinColorGenerator;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 
 public class HumanEntityTypes {
 
-    public static final BLibRegistry<EntityType<?>> REGISTRY = Human.MOD.createRegistry(BuiltInRegistries.ENTITY_TYPE);
+    public static final BLibEntityTypeRegistry REGISTRY = Human.MOD.createEntityTypeRegistry();
 
     public static final BLibHolder<EntityType<Flamethrow>> FLAMETHROW = create(
         "flamethrow",
@@ -93,7 +91,7 @@ public class HumanEntityTypes {
 
     public static void initialize() {
         REGISTRY.registerAll();
-        BLibServices.REGISTRY.registerEntityAttributes(MARINE, Marine::createMarineAttributes);
-        BLibServices.REGISTRY.registerEntityAttributes(SENTRY_TURRET, SentryTurret::createSentryTurretAttributes);
+        REGISTRY.registerAttributes(MARINE, Marine::createMarineAttributes);
+        REGISTRY.registerAttributes(SENTRY_TURRET, SentryTurret::createSentryTurretAttributes);
     }
 }

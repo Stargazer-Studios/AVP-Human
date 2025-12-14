@@ -1,7 +1,7 @@
 package com.human.common.data.worldgen;
 
 import com.blib.common.registry.key.BLibStructureProcessorListKeys;
-import com.blib.mixin.StructurePoolAccessor;
+import com.blib.internal.mixin.StructurePoolAccessor;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;

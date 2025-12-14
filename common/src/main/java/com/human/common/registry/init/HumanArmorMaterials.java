@@ -32,7 +32,7 @@ public class HumanArmorMaterials {
             )
         ),
         6,
-        HumanSoundEvents.ITEM_ARMOR_EQUIP_MK50::getHolder,
+        HumanSoundEvents.ITEM_ARMOR_EQUIP_MK50,
         () -> Ingredient.of(HumanCommonItemTags.INGOTS_LEAD),
         0,
         0,
@@ -49,7 +49,7 @@ public class HumanArmorMaterials {
             )
         ),
         6,
-        HumanSoundEvents.ITEM_ARMOR_EQUIP_PRESSURE::getHolder,
+        HumanSoundEvents.ITEM_ARMOR_EQUIP_PRESSURE,
         () -> Ingredient.of(HumanCommonItemTags.INGOTS_ALUMINUM),
         0,
         0,
@@ -68,7 +68,7 @@ public class HumanArmorMaterials {
             )
         ),
         5, // TODO:
-        HumanSoundEvents.ITEM_ARMOR_EQUIP_STEEL::getHolder,
+        HumanSoundEvents.ITEM_ARMOR_EQUIP_STEEL,
         () -> Ingredient.of(HumanCommonItemTags.INGOTS_STEEL),
         0,
         0,
@@ -84,7 +84,7 @@ public class HumanArmorMaterials {
             Map.entry(ArmorItem.Type.BOOTS, 2)
         ),
         5,
-        HumanSoundEvents.ITEM_ARMOR_EQUIP_TACTICAL::getHolder,
+        HumanSoundEvents.ITEM_ARMOR_EQUIP_TACTICAL,
         () -> Ingredient.of(HumanCommonItemTags.INGOTS_STEEL),
         0,
         0,
@@ -103,7 +103,7 @@ public class HumanArmorMaterials {
             )
         ),
         5,
-        HumanSoundEvents.ITEM_ARMOR_EQUIP_TITANIUM::getHolder,
+        HumanSoundEvents.ITEM_ARMOR_EQUIP_TITANIUM,
         () -> Ingredient.of(HumanCommonItemTags.INGOTS_TITANIUM),
         1,
         0,
@@ -119,7 +119,7 @@ public class HumanArmorMaterials {
             Map.entry(ArmorItem.Type.BOOTS, 2)
         ),
         5,
-        HumanSoundEvents.ITEM_ARMOR_EQUIP_TACTICAL::getHolder,
+        HumanSoundEvents.ITEM_ARMOR_EQUIP_TACTICAL,
         () -> Ingredient.of(HumanCommonItemTags.INGOTS_STEEL),
         0,
         0,
@@ -135,7 +135,7 @@ public class HumanArmorMaterials {
             Map.entry(ArmorItem.Type.BOOTS, 2)
         ),
         5,
-        HumanSoundEvents.ITEM_ARMOR_EQUIP_TACTICAL::getHolder,
+        HumanSoundEvents.ITEM_ARMOR_EQUIP_TACTICAL,
         () -> Ingredient.of(HumanCommonItemTags.INGOTS_STEEL),
         0,
         0,
@@ -146,7 +146,7 @@ public class HumanArmorMaterials {
         String path,
         Map<ArmorItem.Type, Integer> defensePoints,
         int enchantability,
-        Supplier<Holder<SoundEvent>> equipSoundHolderSupplier,
+        BLibHolder<SoundEvent> holder,
         Supplier<Ingredient> repairIngredientSupplier,
         float toughness,
         float knockbackResistance,
@@ -163,7 +163,7 @@ public class HumanArmorMaterials {
             () -> new ArmorMaterial(
                 defensePoints,
                 enchantability,
-                equipSoundHolderSupplier.get(),
+                holder,
                 repairIngredientSupplier,
                 layers,
                 toughness,

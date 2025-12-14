@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.manager;
 
-import com.avp.common.registry.AVPDeferredHolder;
+import com.blib.BLibHolder;
 import com.human.common.gameplay.gene.Gene;
 import com.human.common.gameplay.gene.GeneModifierKey;
 import com.human.common.gameplay.gene.GeneOperationType;
@@ -25,7 +25,7 @@ public class GeneMap {
         this.geneMap = new Object2DoubleArrayMap<>();
     }
 
-    public boolean hasGene(AVPDeferredHolder<Gene> geneHolder) {
+    public boolean hasGene(BLibHolder<Gene> geneHolder) {
         return hasGene(geneHolder.get());
     }
 
@@ -43,13 +43,9 @@ public class GeneMap {
         return getValueFromMap(gene, operation, geneMap);
     }
 
-    public double getValue(AVPDeferredHolder<Gene> geneHolder, GeneOperationType operation) {
-        return getValueFromMap(geneHolder, operation, geneMap);
-    }
-
-    public double getValue(AVPDeferredHolder<Gene> geneHolder) {
-        var multiplicative = getValue(geneHolder, GeneOperationType.MULTIPLICATIVE);
-        var additive = getValue(geneHolder, GeneOperationType.ADDITIVE);
+    public double getValue(Gene gene) {
+        var multiplicative = getValue(gene, GeneOperationType.MULTIPLICATIVE);
+        var additive = getValue(gene, GeneOperationType.ADDITIVE);
         return multiplicative + additive;
     }
 
@@ -61,8 +57,8 @@ public class GeneMap {
         geneMap.forEach(this::add);
     }
 
-    public void add(AVPDeferredHolder<Gene> geneHolder, GeneOperationType operation, double value) {
-        add(geneHolder.get().id(), operation, value);
+    public void add(Gene gene, GeneOperationType operation, double value) {
+        add(gene.id(), operation, value);
     }
 
     public void add(ResourceLocation resourceLocation, GeneOperationType operation, double value) {
@@ -97,7 +93,7 @@ public class GeneMap {
         }
     }
 
-    private double getValueFromMap(AVPDeferredHolder<Gene> geneHolder, GeneOperationType operation, Map<GeneModifierKey, Double> geneMap) {
+    private double getValueFromMap(BLibHolder<Gene> geneHolder, GeneOperationType operation, Map<GeneModifierKey, Double> geneMap) {
         return getValueFromMap(geneHolder.get(), operation, geneMap);
     }
 

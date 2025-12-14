@@ -23,7 +23,7 @@ public class PressureSuitArmorItem extends ArmorItem {
 
     public PressureSuitArmorItem(Type type) {
         super(
-            HumanArmorMaterials.PRESSURE.getHolder(),
+            HumanArmorMaterials.PRESSURE,
             type,
             new Properties().durability(type.getDurability(PRESSURE_DURABILITY_MULTIPLIER))
         );

@@ -1,7 +1,6 @@
 package com.human.common.gameplay.gene;
 
-import com.avp.AVPResources;
-import com.avp.common.registry.AVPDeferredHolder;
+import com.human.HumanResources;
 import com.just.core.functional.function.Function2;
 import net.minecraft.core.Holder;
 import net.minecraft.world.entity.LivingEntity;
@@ -12,7 +11,7 @@ import java.util.function.Consumer;
 
 public class Genes {
 
-    public static final AVPDeferredHolder<Gene> ACID_RESISTANCE = registerSimple(
+    public static final Gene ACID_RESISTANCE = registerSimple(
         "acid_resistance",
         (value, geneOperationType) -> switch (geneOperationType) {
             case ADDITIVE -> Math.clamp(value, -100, 100);
@@ -21,7 +20,7 @@ public class Genes {
     );
 
     // Controls how explosive xenomorph acid is. This results in boilers.
-    public static final AVPDeferredHolder<Gene> ACID_VOLATILITY = registerSimple(
+    public static final Gene ACID_VOLATILITY = registerSimple(
         "acid_volatility",
         (value, geneOperationType) -> switch (geneOperationType) {
             case ADDITIVE -> Math.clamp(value, 0, 100);
@@ -29,14 +28,14 @@ public class Genes {
         }
     );
 
-    public static final AVPDeferredHolder<Gene> ACIDIC_BLOOD = registerSimple(
+    public static final Gene ACIDIC_BLOOD = registerSimple(
         "acidic_blood",
         (value, geneOperationType) -> switch (geneOperationType) {
             case ADDITIVE, MULTIPLICATIVE -> value;
         }
     );
 
-    public static final AVPDeferredHolder<Gene> ARMOR = registerAttribute(
+    public static final Gene ARMOR = registerAttribute(
         "armor",
         Attributes.ARMOR,
         (value, geneOperationType) -> switch (geneOperationType) {
@@ -45,7 +44,7 @@ public class Genes {
         }
     );
 
-    public static final AVPDeferredHolder<Gene> ARMOR_TOUGHNESS = registerAttribute(
+    public static final Gene ARMOR_TOUGHNESS = registerAttribute(
         "armor_toughness",
         Attributes.ARMOR_TOUGHNESS,
         (value, geneOperationType) -> switch (geneOperationType) {
@@ -54,7 +53,7 @@ public class Genes {
         }
     );
 
-    public static final AVPDeferredHolder<Gene> ATTACK_DAMAGE = registerAttribute(
+    public static final Gene ATTACK_DAMAGE = registerAttribute(
         "attack_damage",
         Attributes.ATTACK_DAMAGE,
         (value, geneOperationType) -> switch (geneOperationType) {
@@ -63,14 +62,14 @@ public class Genes {
         }
     );
 
-    public static final AVPDeferredHolder<Gene> BONUS_EMBRYO_COUNT = registerSimple(
+    public static final Gene BONUS_EMBRYO_COUNT = registerSimple(
         "bonus_embryo_count",
         (value, geneOperationType) -> switch (geneOperationType) {
             case ADDITIVE, MULTIPLICATIVE -> Math.clamp(value, 0, 3);
         }
     );
 
-    public static final AVPDeferredHolder<Gene> BONUS_PARASITE_COUNT = registerEffect(
+    public static final Gene BONUS_PARASITE_COUNT = registerEffect(
         "bonus_parasite_count",
         Genes::handleBonusParasiteCount,
         (value, geneOperationType) -> switch (geneOperationType) {
@@ -78,7 +77,7 @@ public class Genes {
         }
     );
 
-    public static final AVPDeferredHolder<Gene> COLD_RESISTANCE = registerSimple(
+    public static final Gene COLD_RESISTANCE = registerSimple(
         "cold_resistance",
         (value, geneOperationType) -> switch (geneOperationType) {
             case ADDITIVE -> Math.clamp(value, -100, 100);
@@ -86,7 +85,7 @@ public class Genes {
         }
     );
 
-    public static final AVPDeferredHolder<Gene> FIRE_RESISTANCE = registerSimple(
+    public static final Gene FIRE_RESISTANCE = registerSimple(
         "fire_resistance",
         (value, geneOperationType) -> switch (geneOperationType) {
             case ADDITIVE -> Math.clamp(value, -100, 100);
@@ -94,7 +93,7 @@ public class Genes {
         }
     );
 
-    public static final AVPDeferredHolder<Gene> GENETIC_INTEGRITY = registerSimple(
+    public static final Gene GENETIC_INTEGRITY = registerSimple(
         "genetic_integrity",
         (value, geneOperationType) -> switch (geneOperationType) {
             case ADDITIVE -> Math.clamp(value, -300, 100);
@@ -102,7 +101,7 @@ public class Genes {
         }
     );
 
-    public static final AVPDeferredHolder<Gene> INTELLIGENCE = registerSimple(
+    public static final Gene INTELLIGENCE = registerSimple(
         "intelligence",
         (value, geneOperationType) -> switch (geneOperationType) {
             case ADDITIVE -> Math.clamp(value, -100, 100);
@@ -110,7 +109,7 @@ public class Genes {
         }
     );
 
-    public static final AVPDeferredHolder<Gene> KNOCKBACK_RESISTANCE = registerAttribute(
+    public static final Gene KNOCKBACK_RESISTANCE = registerAttribute(
         "knockback_resistance",
         Attributes.KNOCKBACK_RESISTANCE,
         (value, geneOperationType) -> switch (geneOperationType) {
@@ -119,7 +118,7 @@ public class Genes {
         }
     );
 
-    public static final AVPDeferredHolder<Gene> MAX_HEALTH = registerAttribute(
+    public static final Gene MAX_HEALTH = registerAttribute(
         "max_health",
         Attributes.MAX_HEALTH,
         (value, geneOperationType) -> switch (geneOperationType) {
@@ -128,7 +127,7 @@ public class Genes {
         }
     );
 
-    public static final AVPDeferredHolder<Gene> MOVE_SPEED = registerAttribute(
+    public static final Gene MOVE_SPEED = registerAttribute(
         "move_speed",
         Attributes.MOVEMENT_SPEED,
         (value, geneOperationType) -> switch (geneOperationType) {
@@ -137,28 +136,28 @@ public class Genes {
         }
     );
 
-    public static final AVPDeferredHolder<Gene> POISON = registerSimple(
+    public static final Gene POISON = registerSimple(
         "poison",
         (value, geneOperationType) -> switch (geneOperationType) {
             case ADDITIVE, MULTIPLICATIVE -> value;
         }
     );
 
-    public static final AVPDeferredHolder<Gene> POISONOUS_BARBS = registerSimple(
+    public static final Gene POISONOUS_BARBS = registerSimple(
         "poisonous_barbs",
         (value, geneOperationType) -> switch (geneOperationType) {
             case ADDITIVE, MULTIPLICATIVE -> value;
         }
     );
 
-    public static final AVPDeferredHolder<Gene> THORNS = registerSimple(
+    public static final Gene THORNS = registerSimple(
         "thorns",
         (value, geneOperationType) -> switch (geneOperationType) {
             case ADDITIVE, MULTIPLICATIVE -> value;
         }
     );
 
-    public static final AVPDeferredHolder<Gene> WARP = registerSimple(
+    public static final Gene WARP = registerSimple(
         "warp",
         (value, geneOperationType) -> switch (geneOperationType) {
             case ADDITIVE, MULTIPLICATIVE -> Math.clamp(value, 0, 1.0);
@@ -167,24 +166,24 @@ public class Genes {
 
     public static void initialize() {}
 
-    private static AVPDeferredHolder<Gene> registerAttribute(
+    private static Gene registerAttribute(
         String name,
         Holder<Attribute> attribute,
         Function2<Double, GeneOperationType, Double> transformer
     ) {
-        return GeneRegistry.register(() -> new Gene.Attribute(AVPResources.location(name), attribute, transformer));
+        return GeneRegistry.register(() -> new Gene.Attribute(HumanResources.location(name), attribute, transformer));
     }
 
-    private static AVPDeferredHolder<Gene> registerEffect(
+    private static Gene registerEffect(
         String name,
         Consumer<LivingEntity> onChange,
         Function2<Double, GeneOperationType, Double> transformer
     ) {
-        return GeneRegistry.register(() -> new Gene.Effect(AVPResources.location(name), onChange, transformer));
+        return GeneRegistry.register(() -> new Gene.Effect(HumanResources.location(name), onChange, transformer));
     }
 
-    private static AVPDeferredHolder<Gene> registerSimple(String name, Function2<Double, GeneOperationType, Double> transformer) {
-        return GeneRegistry.register(() -> new Gene.Simple(AVPResources.location(name), transformer));
+    private static Gene registerSimple(String name, Function2<Double, GeneOperationType, Double> transformer) {
+        return GeneRegistry.register(() -> new Gene.Simple(HumanResources.location(name), transformer));
     }
 
     // FIXME:

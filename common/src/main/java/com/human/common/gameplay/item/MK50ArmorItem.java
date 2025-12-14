@@ -26,7 +26,7 @@ public class MK50ArmorItem extends ArmorItem {
         .build();
 
     public MK50ArmorItem(ArmorItem.Type type) {
-        super(HumanArmorMaterials.MK50.getHolder(), type, new Item.Properties().durability(type.getDurability(MK50_DURABILITY_MULTIPLIER)));
+        super(HumanArmorMaterials.MK50, type, new Item.Properties().durability(type.getDurability(MK50_DURABILITY_MULTIPLIER)));
     }
 
     @Override

@@ -1,8 +1,8 @@
 package com.human.mixin;
 
-import com.avp.common.registry.init.AVPDataKeys;
 import com.blib.common.network.data.DataAccessor;
 import com.blib.common.network.data.DataUser;
+import com.blib.common.registry.init.BLibDataKeys;
 import com.blib.common.util.TeleportUtil;
 import com.human.common.gameplay.entity.manager.GeneManager;
 import com.human.common.gameplay.gene.GeneOperationType;
@@ -31,7 +31,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class MixinLivingEntity_GeneCarrier extends Entity implements GeneCarrier, DataUser {
 
     @Unique
-    private final DataAccessor<Boolean> avp_human$hasWarpEffect = new DataAccessor<>(this, AVPDataKeys.ENTITY_HAS_WARP_EFFECT);
+    private final DataAccessor<Boolean> avp_human$hasWarpEffect = new DataAccessor<>(this, BLibDataKeys.ENTITY_HAS_WARP_EFFECT);
 
     @Unique
     private GeneManager avp_human$geneManager;

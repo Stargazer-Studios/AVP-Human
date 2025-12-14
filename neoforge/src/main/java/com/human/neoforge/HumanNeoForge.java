@@ -2,7 +2,6 @@ package com.human.neoforge;
 
 import com.avp.neoforge.service.NeoForgeRegistryService;
 import com.avp.service.Services;
-import com.blib.neoforge.BLibNeoForge;
 import com.human.Human;
 import com.human.common.data.worldgen.HumanVillageInjection;
 import com.human.common.registry.init.HumanVillagerProfessions;
@@ -11,15 +10,11 @@ import com.human.mixin.GiveGiftToHeroAccessor;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.level.GameRules;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
 import net.neoforged.neoforge.event.tick.LevelTickEvent;
 import net.neoforged.neoforge.event.village.VillagerTradesEvent;
@@ -31,38 +26,10 @@ public class HumanNeoForge {
 
     public HumanNeoForge(IEventBus modBus) {
         Human.initialize();
-        // TODO: Automate this somehow.
-        BLibNeoForge.finalizeMod(Human.MOD, modBus);
-
-        modBus.addListener(HumanNeoForge::registerSpawnPlacements);
 
         NeoForge.EVENT_BUS.addListener(HumanNeoForge::addNewVillageBuilding);
         NeoForge.EVENT_BUS.addListener(HumanNeoForge::addCustomTrades);
         NeoForge.EVENT_BUS.addListener(EventPriority.HIGH, HumanNeoForge::onWorldEndTick);
-    }
-
-    public static void registerSpawnPlacements(RegisterSpawnPlacementsEvent event) {
-        REGISTRY.getEntitySpawnDataEntries().forEach(spawnData -> {
-            if (spawnData.isPlacementDisabled()) {
-                return;
-            }
-
-            @SuppressWarnings("unchecked")
-            var entityType = (EntityType<Mob>) spawnData.getEntityType();
-            var placementData = spawnData.getPlacementData();
-            var placement = placementData.type();
-            var heightMap = placementData.heightmapType();
-            @SuppressWarnings("unchecked")
-            var spawnPredicate = (SpawnPlacements.SpawnPredicate<Mob>) placementData.spawnPredicate();
-
-            event.register(
-                entityType,
-                placement,
-                heightMap,
-                spawnPredicate,
-                RegisterSpawnPlacementsEvent.Operation.AND
-            );
-        });
     }
 
     // Inject Village houses

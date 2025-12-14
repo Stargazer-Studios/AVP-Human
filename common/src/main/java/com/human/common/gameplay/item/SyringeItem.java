@@ -177,7 +177,7 @@ public class SyringeItem extends Item {
                     .getDormantGeneMap()
                     .putAll(GeneDataUtil.toMap(syringeContents.geneBonusDataEntries()));
 
-                var resourceLocation = Genes.GENETIC_INTEGRITY.get().id();
+                var resourceLocation = Genes.GENETIC_INTEGRITY.id();
                 geneCarrier.getOrCreateGeneManager()
                     .getGeneContainer()
                     .getDormantGeneMap()

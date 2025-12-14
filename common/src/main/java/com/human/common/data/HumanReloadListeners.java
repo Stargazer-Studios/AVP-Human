@@ -1,18 +1,16 @@
 package com.human.common.data;
 
-import com.avp.service.Services;
+import com.blib.common.registry.impl.BLibReloadListenerRegistry;
+import com.human.Human;
 import net.minecraft.server.packs.resources.PreparableReloadListener;
 
 public class HumanReloadListeners {
 
-    public static final PreparableReloadListener GENE_BONUS_DATA_RELOAD_LISTENER = register(
-        GeneBonusDataReloadListener.DIRECTORY_NAME,
-        new GeneBonusDataReloadListener()
-    );
+    private static final BLibReloadListenerRegistry REGISTRY = Human.MOD.createReloadListenerRegistry();
 
-    private static PreparableReloadListener register(String id, PreparableReloadListener listener) {
-        return Services.REGISTRY.registerReloadListener(id, listener);
+    public static final PreparableReloadListener GENE_BONUS_DATA_RELOAD_LISTENER = new GeneBonusDataReloadListener();
+
+    public static void initialize() {
+        REGISTRY.register(GeneBonusDataReloadListener.DIRECTORY_NAME, GENE_BONUS_DATA_RELOAD_LISTENER);
     }
-
-    public static void initialize() {}
 }

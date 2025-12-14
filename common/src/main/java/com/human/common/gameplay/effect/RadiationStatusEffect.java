@@ -40,7 +40,7 @@ public class RadiationStatusEffect extends MobEffect {
             BLibEntityPredicates.isInvulnerable(livingEntity)
                 || livingEntity.getType().is(HumanEntityTypeTags.RADIATION_RESISTANT)
         ) {
-            livingEntity.removeEffect(HumanMobEffects.RADIATION.getHolder());
+            livingEntity.removeEffect(HumanMobEffects.RADIATION);
             return false;
         }
 
@@ -67,7 +67,7 @@ public class RadiationStatusEffect extends MobEffect {
         if (currentDuration >= threshold && amplifier < 2) {
             EFFECT_TRACKER.put(livingEntity, 0);
             livingEntity.addEffect(
-                new MobEffectInstance(HumanMobEffects.RADIATION.getHolder(), RadiationStatusEffect.EFFECT_DURATION_IN_TICKS, amplifier + 1)
+                new MobEffectInstance(HumanMobEffects.RADIATION, RadiationStatusEffect.EFFECT_DURATION_IN_TICKS, amplifier + 1)
             );
         } else {
             EFFECT_TRACKER.put(livingEntity, currentDuration + 1);

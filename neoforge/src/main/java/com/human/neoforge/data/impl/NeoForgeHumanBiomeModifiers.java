@@ -1,32 +1,23 @@
 package com.human.neoforge.data.impl;
 
-import com.avp.neoforge.data.BiomeFilterRegistryLookup;
-import com.avp.neoforge.service.NeoForgeRegistryService;
-import com.avp.service.Services;
-import com.human.HumanResources;
+import com.blib.neoforge.data.model.BiomeFilterRegistryLookup;
 import com.human.common.data.worldgen.HumanOres;
 import com.human.common.registry.key.HumanPlacedFeatureKeys;
 import com.human.neoforge.data.HumanFeatureKeys;
 import net.minecraft.core.HolderSet;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.biome.Biomes;
-import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.neoforged.neoforge.common.world.BiomeModifier;
 import net.neoforged.neoforge.common.world.BiomeModifiers;
-import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.neoforged.neoforge.registries.holdersets.AndHolderSet;
 import net.neoforged.neoforge.registries.holdersets.NotHolderSet;
 
 import java.util.List;
 
 public class NeoForgeHumanBiomeModifiers {
-
-    private static final NeoForgeRegistryService REGISTRY = (NeoForgeRegistryService) Services.REGISTRY;
 
     public static void bootstrapBiomeModifiers(BootstrapContext<BiomeModifier> bootstrap) {
         var biomes = bootstrap.lookup(Registries.BIOME);
@@ -35,35 +26,6 @@ public class NeoForgeHumanBiomeModifiers {
         var excludedBiomes = HolderSet.direct(biomes.getOrThrow(Biomes.DRIPSTONE_CAVES));
         var underGround = GenerationStep.Decoration.UNDERGROUND_ORES;
 
-        for (var spawnData : REGISTRY.getEntitySpawnDataEntries()) {
-            if (spawnData.isConfigDisabled()) {
-                continue;
-            }
-
-            var entityType = spawnData.getEntityType();
-            var entityTypePath = BuiltInRegistries.ENTITY_TYPE.getKey(entityType).getPath();
-            var spawnKey = ResourceKey.create(
-                NeoForgeRegistries.Keys.BIOME_MODIFIERS,
-                HumanResources.location("add_spawns_" + entityTypePath)
-            );
-            var config = spawnData.getConfigData();
-            var spawnSettings = config.spawnSettings();
-
-            bootstrap.register(
-                spawnKey,
-                new BiomeModifiers.AddSpawnsBiomeModifier(
-                    biomes.getOrThrow(config.biomeTagKey()),
-                    List.of(
-                        new MobSpawnSettings.SpawnerData(
-                            entityType,
-                            spawnSettings.weight(),
-                            spawnSettings.minGroupSize(),
-                            spawnSettings.maxGroupSize()
-                        )
-                    )
-                )
-            );
-        }
         bootstrap.register(
             HumanFeatureKeys.ADD_AUTUNITE_GEODE,
             new BiomeModifiers.AddFeaturesBiomeModifier(

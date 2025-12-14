@@ -67,7 +67,7 @@ public class Human {
     public static final NukedAshPlacement NUKED_ASH_PLACEMENT = new NukedAshPlacement();
 
     public static void initialize() {
-        LOGGER.info("Initializing AVP (Human) for mod loader '{}'", BLibServices.MOD_LOADER.getModLoaderName());
+        LOGGER.info("Initializing AVP (Human) for mod loader '{}'", BLib.getModLoaderType());
 
         HumanConfig.initialize();
 

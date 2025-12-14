@@ -1,11 +1,14 @@
 package com.human.common.registry.init;
 
-import com.avp.service.Services;
+import com.blib.common.registry.impl.BLibFurnaceFuelRegistry;
+import com.human.Human;
 import com.human.common.registry.init.item.HumanItems;
 
 public class HumanFuels {
 
+    private static final BLibFurnaceFuelRegistry REGISTRY = Human.MOD.createFurnaceFuelRegistry();
+
     public static void initialize() {
-        Services.REGISTRY.registerFurnaceFuel(HumanItems.CARBON_DUST, 800);
+        REGISTRY.register(HumanItems.CARBON_DUST, 800);
     }
 }
