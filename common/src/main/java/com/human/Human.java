@@ -2,7 +2,6 @@ package com.human;
 
 import com.blib.BLib;
 import com.blib.BLibMod;
-import com.blib.service.BLibServices;
 import com.human.common.HumanEvents;
 import com.human.common.config.HumanConfig;
 import com.human.common.data.HumanReloadListeners;
@@ -129,10 +128,10 @@ public class Human {
 
             // Listeners / Events
             HumanReloadListeners.initialize();
-        });
 
-        BLibServices.EVENT.afterLevelTick().register(Human::updatePowerSystem);
-        BLibServices.EVENT.onTagsUpdated().register(($1, $2) -> HumanEvents.onTagsUpdated());
+            MOD.events().afterLevelTick().register(Human::updatePowerSystem);
+            MOD.events().onTagsUpdated().register(($1, $2) -> HumanEvents.onTagsUpdated());
+        });
     }
 
     private static void updatePowerSystem(Level level) {

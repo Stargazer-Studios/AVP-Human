@@ -1,7 +1,7 @@
 package com.human.common.config;
 
-import com.avp.AVP;
 import com.blib.common.constant.PlayerStatConstants;
+import com.blib.config.BLibConfigs;
 import com.human.Human;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
 import mod.azure.azurelib.common.config.Config;
@@ -14,7 +14,7 @@ public class HumanConfig {
     public static HumanConfig INSTANCE;
 
     public static void initialize() {
-        INSTANCE = AVP.registerConfig(HumanConfig.class, ConfigFormats.json()).getConfigInstance();
+        INSTANCE = BLibConfigs.register(HumanConfig.class, ConfigFormats.json()).getConfigInstance();
     }
 
     @Configurable

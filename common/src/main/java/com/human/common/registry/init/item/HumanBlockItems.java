@@ -1,13 +1,14 @@
 package com.human.common.registry.init.item;
 
-import com.blib.BLibHolder;
-import com.blib.common.registry.impl.BLibItemRegistry;
+import com.blib.common.registry.BLibHolder;
+import com.blib.common.registry.BLibRegistry;
 import com.human.Human;
 import com.human.common.gameplay.block_item.AmmoChestBlockItem;
 import com.human.common.gameplay.block_item.LeadChestBlockItem;
 import com.human.common.gameplay.block_item.SentryTurretBlockItem;
 import com.human.common.registry.init.HumanBlocks;
 import com.human.common.registry.init.block.CoreBlocks;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
@@ -22,7 +23,7 @@ import java.util.stream.Collectors;
 
 public class HumanBlockItems {
 
-    private static final BLibItemRegistry REGISTRY = Human.MOD.createItemRegistry();
+    private static final BLibRegistry<Item> REGISTRY = Human.MOD.registries().create(BuiltInRegistries.ITEM);
 
     public static final BLibHolder<BlockItem> ALUMINUM_BLOCK = create("aluminum_block", CoreBlocks.ALUMINUM_BLOCK);
 

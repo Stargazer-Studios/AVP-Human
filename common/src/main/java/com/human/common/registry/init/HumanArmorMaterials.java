@@ -1,7 +1,7 @@
 package com.human.common.registry.init;
 
-import com.blib.BLibHolder;
-import com.blib.BLibRegistry;
+import com.blib.common.registry.BLibHolder;
+import com.blib.common.registry.BLibRegistry;
 import com.human.Human;
 import com.human.HumanResources;
 import com.human.compat.HumanCommonItemTags;
@@ -20,7 +20,7 @@ import java.util.function.Supplier;
 
 public class HumanArmorMaterials {
 
-    public static final BLibRegistry<ArmorMaterial> REGISTRY = Human.MOD.createRegistry(BuiltInRegistries.ARMOR_MATERIAL);
+    public static final BLibRegistry<ArmorMaterial> REGISTRY = Human.MOD.registries().create(BuiltInRegistries.ARMOR_MATERIAL);
 
     public static final BLibHolder<ArmorMaterial> MK50 = create(
         "mk50",

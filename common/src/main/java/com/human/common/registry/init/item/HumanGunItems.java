@@ -1,7 +1,7 @@
 package com.human.common.registry.init.item;
 
-import com.blib.BLibHolder;
-import com.blib.BLibRegistry;
+import com.blib.common.registry.BLibHolder;
+import com.blib.common.registry.BLibRegistry;
 import com.human.Human;
 import com.human.common.gameplay.item.gun.GunData;
 import com.human.service.HumanServices;
@@ -12,7 +12,7 @@ import java.util.function.Supplier;
 
 public class HumanGunItems {
 
-    public static final BLibRegistry<Item> REGISTRY = Human.MOD.createRegistry(BuiltInRegistries.ITEM);
+    public static final BLibRegistry<Item> REGISTRY = Human.MOD.registries().create(BuiltInRegistries.ITEM);
 
     public static final BLibHolder<Item> F903WE_RIFLE = create(
         "f903we_rifle",

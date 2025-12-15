@@ -4,6 +4,7 @@ import com.blib.common.data.tag.BLibBlockTags;
 import com.blib.common.gameplay.util.EnchantmentUtil;
 import com.blib.server.BlockBreakProgressManager;
 import com.blib.service.BLibServices;
+import com.human.Human;
 import com.human.common.config.HumanConfig;
 import com.human.common.gameplay.item.gun.attack.GunAttackConfig;
 import com.human.common.gameplay.item.gun.attack.GunHitResult;
@@ -59,7 +60,7 @@ public class BlockGunHitResultHandler {
                 // Only damage blocks if they should be destroyed.
                 || blockState.is(BLibBlockTags.SHOULD_NOT_BE_DESTROYED)
                 || (gunAttackConfig.shooter() instanceof Player player
-                    && !BLibServices.EVENT.beforeBlockBreak().dispatcher().invoke(level, player, blockPos, blockState))
+                    && !Human.MOD.events().beforeBlockBreak().dispatcher().invoke(level, player, blockPos, blockState))
         ) {
             return;
         }

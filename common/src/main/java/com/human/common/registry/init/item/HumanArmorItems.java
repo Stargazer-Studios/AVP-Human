@@ -1,12 +1,13 @@
 package com.human.common.registry.init.item;
 
-import com.blib.BLibHolder;
-import com.blib.common.registry.impl.BLibItemRegistry;
+import com.blib.common.registry.BLibHolder;
+import com.blib.common.registry.BLibRegistry;
 import com.human.Human;
 import com.human.common.gameplay.item.MK50ArmorItem;
 import com.human.common.gameplay.item.PressureSuitArmorItem;
 import com.human.common.registry.init.HumanArmorMaterials;
 import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
@@ -15,7 +16,7 @@ import java.util.function.Supplier;
 
 public class HumanArmorItems {
 
-    private static final BLibItemRegistry REGISTRY = Human.MOD.createItemRegistry();
+    private static final BLibRegistry<Item> REGISTRY = Human.MOD.registries().create(BuiltInRegistries.ITEM);
 
     private static final int STEEL_DURABILITY_MULTIPLIER = 21;
 

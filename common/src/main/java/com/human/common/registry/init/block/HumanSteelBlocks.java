@@ -1,8 +1,8 @@
 package com.human.common.registry.init.block;
 
-import com.blib.BLibHolder;
-import com.blib.BLibRegistry;
 import com.blib.common.gameplay.block.property.BlockPropertyBuilder;
+import com.blib.common.registry.BLibHolder;
+import com.blib.common.registry.BLibRegistry;
 import com.human.Human;
 import com.human.common.gameplay.block.HumanBlockSetTypes;
 import com.human.common.gameplay.block.property.HumanBlockProperties;
@@ -25,7 +25,7 @@ import java.util.function.Supplier;
 
 public class HumanSteelBlocks {
 
-    public static final BLibRegistry<Block> REGISTRY = Human.MOD.createRegistry(BuiltInRegistries.BLOCK);
+    public static final BLibRegistry<Block> REGISTRY = Human.MOD.registries().create(BuiltInRegistries.BLOCK);
 
     public static final BLibHolder<Block> CHISELED_STEEL = create("chiseled_steel", HumanBlockProperties.STEEL);
 

@@ -52,7 +52,7 @@ public class HumanKeybindingRegistry {
         Consumer<KeyInteractType> onKeyMappingActivated
     ) {
         return BLibServices.CLIENT_REGISTRY.registerKeyMapping(
-            Human.MOD.createResourceLocation(path),
+            Human.MOD.resources().createLocation(path),
             category,
             key,
             onKeyMappingActivated

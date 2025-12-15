@@ -1,6 +1,6 @@
 package com.human.common.util;
 
-import com.avp.AVP;
+import com.human.Human;
 import com.human.common.gameplay.entity.manager.GeneMap;
 import com.human.common.gameplay.gene.GeneBonusDataEntry;
 import com.human.common.gameplay.gene.GeneModifierKey;
@@ -19,7 +19,7 @@ public class GeneSerializationUtil {
                 var elementTag = listTag.getCompound(i);
 
                 GeneBonusDataEntry.CODEC.parse(new Dynamic<>(NbtOps.INSTANCE, elementTag))
-                    .resultOrPartial(AVP.LOGGER::error)
+                    .resultOrPartial(Human.LOGGER::error)
                     .ifPresent(entry -> geneMap.add(new GeneModifierKey(entry.id(), entry.operation()), entry.value()));
             }
         }
@@ -31,7 +31,7 @@ public class GeneSerializationUtil {
         for (var entry : geneMap.getBackingMap().entrySet()) {
             var geneEntry = new GeneBonusDataEntry(entry.getKey().resourceLocation(), entry.getKey().operation(), entry.getValue());
             GeneBonusDataEntry.CODEC.encodeStart(NbtOps.INSTANCE, geneEntry)
-                .resultOrPartial(AVP.LOGGER::error)
+                .resultOrPartial(Human.LOGGER::error)
                 .ifPresent(listTag::add);
         }
 

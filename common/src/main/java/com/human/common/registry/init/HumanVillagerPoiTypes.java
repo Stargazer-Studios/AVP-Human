@@ -1,7 +1,7 @@
 package com.human.common.registry.init;
 
-import com.blib.BLibHolder;
-import com.blib.BLibRegistry;
+import com.blib.common.registry.BLibHolder;
+import com.blib.common.registry.BLibRegistry;
 import com.human.Human;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
@@ -12,7 +12,7 @@ import java.util.function.Supplier;
 
 public class HumanVillagerPoiTypes {
 
-    private static final BLibRegistry<PoiType> REGISTRY = Human.MOD.createRegistry(BuiltInRegistries.POINT_OF_INTEREST_TYPE);
+    private static final BLibRegistry<PoiType> REGISTRY = Human.MOD.registries().create(BuiltInRegistries.POINT_OF_INTEREST_TYPE);
 
     public static final BLibHolder<PoiType> COMMISSARY_POI = register("commissary_poi", HumanBlocks.BLUEPRINT_BLOCK, 1, 1);
 

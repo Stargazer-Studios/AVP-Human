@@ -35,6 +35,6 @@ public class HumanFeatureKeys {
     public static final ResourceKey<BiomeModifier> ADD_ZINC_DRIPSTONE_CAVES = create("add_zinc_dripstone_caves");
 
     private static @NotNull ResourceKey<BiomeModifier> create(String path) {
-        return Human.MOD.createResourceKey(NeoForgeRegistries.Keys.BIOME_MODIFIERS, path);
+        return Human.MOD.resources().createKey(NeoForgeRegistries.Keys.BIOME_MODIFIERS, path);
     }
 }

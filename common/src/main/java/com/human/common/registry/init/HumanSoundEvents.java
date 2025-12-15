@@ -1,7 +1,7 @@
 package com.human.common.registry.init;
 
-import com.blib.BLibHolder;
-import com.blib.BLibRegistry;
+import com.blib.common.registry.BLibHolder;
+import com.blib.common.registry.BLibRegistry;
 import com.human.Human;
 import com.human.HumanResources;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -9,7 +9,7 @@ import net.minecraft.sounds.SoundEvent;
 
 public class HumanSoundEvents {
 
-    private static final BLibRegistry<SoundEvent> REGISTRY = Human.MOD.createRegistry(BuiltInRegistries.SOUND_EVENT);
+    private static final BLibRegistry<SoundEvent> REGISTRY = Human.MOD.registries().create(BuiltInRegistries.SOUND_EVENT);
 
     public static final BLibHolder<SoundEvent> ITEM_ARMOR_EQUIP_MK50 = create("item.armor.equip_mk50");
 

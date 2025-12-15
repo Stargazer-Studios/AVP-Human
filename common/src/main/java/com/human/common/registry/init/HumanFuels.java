@@ -6,7 +6,7 @@ import com.human.common.registry.init.item.HumanItems;
 
 public class HumanFuels {
 
-    private static final BLibFurnaceFuelRegistry REGISTRY = Human.MOD.createFurnaceFuelRegistry();
+    private static final BLibFurnaceFuelRegistry REGISTRY = Human.MOD.registries().createFurnaceFuelRegistry();
 
     public static void initialize() {
         REGISTRY.register(HumanItems.CARBON_DUST, 800);

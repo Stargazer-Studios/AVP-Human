@@ -1,12 +1,12 @@
 package com.human.common.gameplay.entity.living.human.marine;
 
-import com.avp.AVP;
 import com.blib.common.constant.PlayerStatConstants;
 import com.blib.common.gameplay.goap.GOAPUser;
 import com.blib.common.gameplay.model.inventory.BLibInventory;
 import com.blib.common.gameplay.model.inventory.BLibInventoryHolder;
 import com.blib.common.gameplay.util.ItemUtil;
 import com.blib.common.util.codec.schema.CodecSchemas;
+import com.human.Human;
 import com.human.common.config.HumanConfig;
 import com.human.common.gameplay.entity.living.human.AbstractHuman;
 import com.human.common.gameplay.entity.living.human.marine.ai.MarineGOAP;
@@ -185,7 +185,7 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
 
         if (compoundTag.contains(NBT_INVENTORY)) {
             BLibInventory.CODEC.decode(CodecSchemas.NBT, compoundTag.get(NBT_INVENTORY))
-                .inspectErr(tag -> AVP.LOGGER.error("Failed to load tag '{}'. Tag: {}", NBT_INVENTORY, tag))
+                .inspectErr(tag -> Human.LOGGER.error("Failed to load tag '{}'. Tag: {}", NBT_INVENTORY, tag))
                 .ifOk(loadedInventory -> Arrays.stream(loadedInventory.getSerializedItemStacks()).forEach(inventory::addItemStack));
         }
     }

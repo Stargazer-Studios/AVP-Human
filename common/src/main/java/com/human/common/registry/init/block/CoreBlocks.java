@@ -1,8 +1,8 @@
 package com.human.common.registry.init.block;
 
-import com.blib.BLibHolder;
-import com.blib.BLibRegistry;
 import com.blib.common.gameplay.block.property.BlockPropertyBuilder;
+import com.blib.common.registry.BLibHolder;
+import com.blib.common.registry.BLibRegistry;
 import com.human.Human;
 import com.human.common.gameplay.block.AshBlock;
 import com.human.common.gameplay.block.LithiumBlock;
@@ -19,7 +19,7 @@ import java.util.function.Supplier;
 
 public class CoreBlocks {
 
-    public static final BLibRegistry<Block> REGISTRY = Human.MOD.createRegistry(BuiltInRegistries.BLOCK);
+    public static final BLibRegistry<Block> REGISTRY = Human.MOD.registries().create(BuiltInRegistries.BLOCK);
 
     public static final BLibHolder<Block> ALUMINUM_BLOCK = create("aluminum_block", HumanBlockProperties.ALUMINUM);
 

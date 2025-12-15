@@ -1,7 +1,7 @@
 package com.human.common.registry.init;
 
-import com.blib.BLibHolder;
-import com.blib.BLibRegistry;
+import com.blib.common.registry.BLibHolder;
+import com.blib.common.registry.BLibRegistry;
 import com.blib.common.util.codec.stream.adapter.JustStreamCodecToMojangStreamCodecAdapter;
 import com.human.Human;
 import com.human.common.gameplay.component.ArmorCaseContainerContents;
@@ -19,7 +19,7 @@ import java.util.function.UnaryOperator;
 
 public class HumanDataComponents {
 
-    private static final BLibRegistry<DataComponentType<?>> REGISTRY = Human.MOD.createRegistry(BuiltInRegistries.DATA_COMPONENT_TYPE);
+    private static final BLibRegistry<DataComponentType<?>> REGISTRY = Human.MOD.registries().create(BuiltInRegistries.DATA_COMPONENT_TYPE);
 
     public static final BLibHolder<DataComponentType<Integer>> AMMUNITION = create(
         "ammunition",

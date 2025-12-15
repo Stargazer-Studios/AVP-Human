@@ -1,7 +1,7 @@
 package com.human.common.registry.init;
 
-import com.blib.BLibHolder;
-import com.blib.BLibRegistry;
+import com.blib.common.registry.BLibHolder;
+import com.blib.common.registry.BLibRegistry;
 import com.google.common.collect.ImmutableSet;
 import com.human.Human;
 import com.human.common.registry.key.HumanVillagerPoiKeys;
@@ -13,7 +13,7 @@ import net.minecraft.world.entity.npc.VillagerProfession;
 
 public class HumanVillagerProfessions {
 
-    private static final BLibRegistry<VillagerProfession> REGISTRY = Human.MOD.createRegistry(BuiltInRegistries.VILLAGER_PROFESSION);
+    private static final BLibRegistry<VillagerProfession> REGISTRY = Human.MOD.registries().create(BuiltInRegistries.VILLAGER_PROFESSION);
 
     public static final BLibHolder<VillagerProfession> COMMISSARY = create("commissary", HumanVillagerPoiKeys.COMMISSARY_POI_KEY);
 

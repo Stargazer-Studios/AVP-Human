@@ -1,8 +1,8 @@
 package com.human.common.registry.init.block;
 
-import com.blib.BLibHolder;
-import com.blib.BLibRegistry;
 import com.blib.common.gameplay.block.property.BlockPropertyBuilder;
+import com.blib.common.registry.BLibHolder;
+import com.blib.common.registry.BLibRegistry;
 import com.human.Human;
 import com.human.common.gameplay.block.property.HumanBlockProperties;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 
 public class HumanPlasticBlocks {
 
-    public static final BLibRegistry<Block> REGISTRY = Human.MOD.createRegistry(BuiltInRegistries.BLOCK);
+    public static final BLibRegistry<Block> REGISTRY = Human.MOD.registries().create(BuiltInRegistries.BLOCK);
 
     public static final Map<DyeColor, BLibHolder<Block>> DYE_COLOR_TO_CUT_PLASTIC =
         Collections.unmodifiableMap(

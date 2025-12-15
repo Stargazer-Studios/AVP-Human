@@ -1,7 +1,7 @@
 package com.human.common.registry.init;
 
-import com.blib.BLibHolder;
-import com.blib.BLibRegistry;
+import com.blib.common.registry.BLibHolder;
+import com.blib.common.registry.BLibRegistry;
 import com.human.Human;
 import com.human.common.gameplay.menu.IndustrialFurnaceMenu;
 import com.human.common.gameplay.menu.armor_case.ArmorCaseMenu;
@@ -12,7 +12,7 @@ import net.minecraft.world.inventory.MenuType;
 
 public class HumanMenuTypes {
 
-    private static final BLibRegistry<MenuType<?>> REGISTRY = Human.MOD.createRegistry(BuiltInRegistries.MENU);
+    private static final BLibRegistry<MenuType<?>> REGISTRY = Human.MOD.registries().create(BuiltInRegistries.MENU);
 
     public static final BLibHolder<MenuType<ArmorCaseMenu>> ARMOR_CASE = register("armor_case", ArmorCaseMenu::new);
 

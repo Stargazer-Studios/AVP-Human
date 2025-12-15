@@ -1,7 +1,7 @@
 package com.human.common.registry.init;
 
-import com.blib.BLibHolder;
-import com.blib.BLibRegistry;
+import com.blib.common.registry.BLibHolder;
+import com.blib.common.registry.BLibRegistry;
 import com.human.Human;
 import com.human.common.gameplay.effect.RadiationStatusEffect;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -11,7 +11,7 @@ import java.util.function.Supplier;
 
 public class HumanMobEffects {
 
-    private static final BLibRegistry<MobEffect> REGISTRY = Human.MOD.createRegistry(BuiltInRegistries.MOB_EFFECT);
+    private static final BLibRegistry<MobEffect> REGISTRY = Human.MOD.registries().create(BuiltInRegistries.MOB_EFFECT);
 
     public static final BLibHolder<MobEffect> RADIATION = register("radiation", RadiationStatusEffect::new);
 

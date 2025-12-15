@@ -352,7 +352,7 @@ public class HumanBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         var trapdoorTagProvider = getOrCreateTagBuilder(BlockTags.TRAPDOORS);
         var wallTagBuilder = getOrCreateTagBuilder(BlockTags.WALLS);
 
-        Human.MOD.getAllHolders(BuiltInRegistries.BLOCK).forEach(deferredHolder -> {
+        Human.MOD.registries().getAllHolders(BuiltInRegistries.BLOCK).forEach(deferredHolder -> {
             var block = deferredHolder.get();
 
             if (block instanceof ButtonBlock) {

@@ -1,7 +1,7 @@
 package com.human.common.registry.init;
 
-import com.blib.BLibHolder;
-import com.blib.BLibRegistry;
+import com.blib.common.registry.BLibHolder;
+import com.blib.common.registry.BLibRegistry;
 import com.human.Human;
 import com.human.common.gameplay.block.entity.AmmoChestBlockEntity;
 import com.human.common.gameplay.block.entity.IndustrialFurnaceBlockEntity;
@@ -21,7 +21,7 @@ import java.util.function.Supplier;
 
 public class HumanBlockEntityTypes {
 
-    private static final BLibRegistry<BlockEntityType<?>> REGISTRY = Human.MOD.createRegistry(BuiltInRegistries.BLOCK_ENTITY_TYPE);
+    private static final BLibRegistry<BlockEntityType<?>> REGISTRY = Human.MOD.registries().create(BuiltInRegistries.BLOCK_ENTITY_TYPE);
 
     public static final BLibHolder<BlockEntityType<IndustrialFurnaceBlockEntity>> INDUSTRIAL_FURNACE = create(
         "industrial_furnace",

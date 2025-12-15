@@ -1,7 +1,7 @@
 package com.human.common.registry.init;
 
-import com.blib.BLibHolder;
-import com.blib.BLibRegistry;
+import com.blib.common.registry.BLibHolder;
+import com.blib.common.registry.BLibRegistry;
 import com.human.Human;
 import com.human.common.gameplay.recipe.IndustrialFurnaceRecipe;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -14,11 +14,12 @@ import org.jetbrains.annotations.NotNull;
 
 public class HumanRecipes {
 
-    private static final BLibRegistry<RecipeSerializer<?>> SERIALIZER_REGISTRY = Human.MOD.createRegistry(
-        BuiltInRegistries.RECIPE_SERIALIZER
-    );
+    private static final BLibRegistry<RecipeSerializer<?>> SERIALIZER_REGISTRY = Human.MOD.registries()
+        .create(
+            BuiltInRegistries.RECIPE_SERIALIZER
+        );
 
-    private static final BLibRegistry<RecipeType<?>> TYPE_REGISTRY = Human.MOD.createRegistry(BuiltInRegistries.RECIPE_TYPE);
+    private static final BLibRegistry<RecipeType<?>> TYPE_REGISTRY = Human.MOD.registries().create(BuiltInRegistries.RECIPE_TYPE);
 
     public static final BLibHolder<? extends RecipeSerializer<IndustrialFurnaceRecipe>> INDUSTRIAL_FURNACE_RECIPE_SERIALIZER =
         create(

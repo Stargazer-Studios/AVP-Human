@@ -1,9 +1,10 @@
 package com.human.common.registry.init.item.block;
 
-import com.blib.BLibHolder;
-import com.blib.common.registry.impl.BLibItemRegistry;
+import com.blib.common.registry.BLibHolder;
+import com.blib.common.registry.BLibRegistry;
 import com.human.Human;
 import com.human.common.registry.init.block.HumanFerroaluminumBlocks;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -12,7 +13,7 @@ import java.util.function.Supplier;
 
 public class HumanFerroaluminumBlockItems {
 
-    private static final BLibItemRegistry REGISTRY = Human.MOD.createItemRegistry();
+    private static final BLibRegistry<Item> REGISTRY = Human.MOD.registries().create(BuiltInRegistries.ITEM);
 
     public static final BLibHolder<BlockItem> CHISELED_FERROALUMINUM = create(
         "chiseled_ferroaluminum",

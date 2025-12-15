@@ -1,8 +1,9 @@
 package com.human.common.registry.init;
 
-import com.blib.BLibHolder;
+import com.blib.common.registry.BLibHolder;
+import com.blib.common.registry.BLibRegistry;
 import com.blib.common.registry.SilencedEntityTypeBuilder;
-import com.blib.common.registry.impl.BLibEntityTypeRegistry;
+import com.blib.common.registry.impl.BLibEntityAttributeRegistry;
 import com.human.Human;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.human.common.gameplay.entity.machine.SentryTurret;
@@ -14,13 +15,16 @@ import com.human.common.gameplay.entity.projectile.ThrownGrenade;
 import com.human.common.gameplay.util.EyeColorGenerator;
 import com.human.common.gameplay.util.HairColorGenerator;
 import com.human.common.gameplay.util.SkinColorGenerator;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 
 public class HumanEntityTypes {
 
-    public static final BLibEntityTypeRegistry REGISTRY = Human.MOD.createEntityTypeRegistry();
+    private static final BLibEntityAttributeRegistry ATTRIBUTE_REGISTRY = Human.MOD.registries().createEntityAttributeRegistry();
+
+    private static final BLibRegistry<EntityType<?>> TYPE_REGISTRY = Human.MOD.registries().create(BuiltInRegistries.ENTITY_TYPE);
 
     public static final BLibHolder<EntityType<Flamethrow>> FLAMETHROW = create(
         "flamethrow",
@@ -86,12 +90,12 @@ public class HumanEntityTypes {
     );
 
     public static <T extends Entity> BLibHolder<EntityType<T>> create(String id, EntityType.Builder<T> builder) {
-        return REGISTRY.createHolder(id, () -> ((SilencedEntityTypeBuilder) builder).blib$buildWithoutDataFixerCheck());
+        return TYPE_REGISTRY.createHolder(id, () -> ((SilencedEntityTypeBuilder) builder).blib$buildWithoutDataFixerCheck());
     }
 
     public static void initialize() {
-        REGISTRY.registerAll();
-        REGISTRY.registerAttributes(MARINE, Marine::createMarineAttributes);
-        REGISTRY.registerAttributes(SENTRY_TURRET, SentryTurret::createSentryTurretAttributes);
+        TYPE_REGISTRY.registerAll();
+        ATTRIBUTE_REGISTRY.register(MARINE, Marine::createMarineAttributes);
+        ATTRIBUTE_REGISTRY.register(SENTRY_TURRET, SentryTurret::createSentryTurretAttributes);
     }
 }

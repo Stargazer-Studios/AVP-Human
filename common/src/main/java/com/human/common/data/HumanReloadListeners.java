@@ -6,7 +6,7 @@ import net.minecraft.server.packs.resources.PreparableReloadListener;
 
 public class HumanReloadListeners {
 
-    private static final BLibReloadListenerRegistry REGISTRY = Human.MOD.createReloadListenerRegistry();
+    private static final BLibReloadListenerRegistry REGISTRY = Human.MOD.registries().createReloadListenerRegistry();
 
     public static final PreparableReloadListener GENE_BONUS_DATA_RELOAD_LISTENER = new GeneBonusDataReloadListener();
 
