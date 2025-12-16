@@ -1,7 +1,7 @@
 package com.human.common.config;
 
+import com.blib.common.config.BLibConfigs;
 import com.blib.common.constant.PlayerStatConstants;
-import com.blib.config.BLibConfigs;
 import com.human.Human;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
 import mod.azure.azurelib.common.config.Config;

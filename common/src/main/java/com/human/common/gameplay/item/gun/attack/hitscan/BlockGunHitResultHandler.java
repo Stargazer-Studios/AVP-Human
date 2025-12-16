@@ -3,7 +3,6 @@ package com.human.common.gameplay.item.gun.attack.hitscan;
 import com.blib.common.data.tag.BLibBlockTags;
 import com.blib.common.gameplay.util.EnchantmentUtil;
 import com.blib.server.BlockBreakProgressManager;
-import com.blib.service.BLibServices;
 import com.human.Human;
 import com.human.common.config.HumanConfig;
 import com.human.common.gameplay.item.gun.attack.GunAttackConfig;
@@ -35,7 +34,7 @@ public class BlockGunHitResultHandler {
         damageBlock(gunAttackConfig, level, blockPos, blockState);
 
         var payload = new S2CBulletHitBlockPayload(blockPos, direction);
-        BLibServices.SERVER_NETWORKING.sendToAllClients(level.getServer(), payload);
+        Human.MOD.networking().sendToAllClients(level.getServer(), payload);
     }
 
     private static SoundEvent getRicochetSoundForSoundType(SoundType soundType) {

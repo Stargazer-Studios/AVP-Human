@@ -1,8 +1,8 @@
 package com.human.client.input.keybind;
 
 import com.blib.client.model.KeyInteractType;
-import com.blib.service.BLibServices;
 import com.human.Human;
+import com.human.client.HumanClient;
 import com.human.common.model.Crawler;
 import com.human.common.network.packet.C2SGunReloadPayload;
 import com.human.common.network.packet.C2SPlayerToggleCrawlPayload;
@@ -27,7 +27,7 @@ public class HumanKeybindingRegistry {
                 var crawler = (Crawler) player;
                 var shouldCrawl = keyMapping == KeyInteractType.PRESS;
                 crawler.setCrawling(shouldCrawl);
-                BLibServices.CLIENT_NETWORKING.sendToServer(new C2SPlayerToggleCrawlPayload(shouldCrawl));
+                Human.MOD.networking().sendToServer(new C2SPlayerToggleCrawlPayload(shouldCrawl));
             }
         }
     );
@@ -40,7 +40,7 @@ public class HumanKeybindingRegistry {
             var player = Minecraft.getInstance().player;
 
             if (player != null) {
-                BLibServices.CLIENT_NETWORKING.sendToServer(C2SGunReloadPayload.INSTANCE);
+                Human.MOD.networking().sendToServer(C2SGunReloadPayload.INSTANCE);
             }
         }
     );
@@ -51,12 +51,13 @@ public class HumanKeybindingRegistry {
         int key,
         Consumer<KeyInteractType> onKeyMappingActivated
     ) {
-        return BLibServices.CLIENT_REGISTRY.registerKeyMapping(
-            Human.MOD.resources().createLocation(path),
-            category,
-            key,
-            onKeyMappingActivated
-        );
+        return HumanClient.MOD.registries()
+            .registerKeyMapping(
+                Human.MOD.resources().createLocation(path),
+                category,
+                key,
+                onKeyMappingActivated
+            );
     }
 
     public static void initialize() {}

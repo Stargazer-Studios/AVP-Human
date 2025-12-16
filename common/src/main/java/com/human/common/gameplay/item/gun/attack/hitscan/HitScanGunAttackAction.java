@@ -2,7 +2,7 @@ package com.human.common.gameplay.item.gun.attack.hitscan;
 
 import com.blib.common.gameplay.util.BLibEntityPredicates;
 import com.blib.common.gameplay.util.EnchantmentUtil;
-import com.blib.service.BLibServices;
+import com.human.Human;
 import com.human.common.gameplay.item.gun.attack.GunAttackAction;
 import com.human.common.gameplay.item.gun.attack.GunAttackConfig;
 import com.human.common.gameplay.item.gun.attack.GunHitResult;
@@ -100,7 +100,7 @@ public class HitScanGunAttackAction implements GunAttackAction {
             // And then network their hit results to the server. While yes this opens the door for players to cheat
             // on servers, hit results are done this way so that the player's shots are visually accurate.
             // TODO: There is some cheating that can occur here on servers. Add server-side validation at some point.
-            BLibServices.CLIENT_NETWORKING.sendToServer(gunHitResultsPayload);
+            Human.MOD.networking().sendToServer(gunHitResultsPayload);
             return GunShootResult.SHOT;
         }
 

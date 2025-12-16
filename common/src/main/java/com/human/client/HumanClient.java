@@ -1,6 +1,7 @@
 package com.human.client;
 
-import com.blib.service.BLibServices;
+import com.blib.client.BLibClientMod;
+import com.human.Human;
 import com.human.client.input.keybind.HumanKeybindingRegistry;
 import com.human.client.render.armor.MK50ArmorRenderer;
 import com.human.client.render.armor.PressureArmorRenderer;
@@ -58,6 +59,8 @@ import java.util.List;
 
 public class HumanClient {
 
+    public static final BLibClientMod MOD = BLibClientMod.createFor(Human.MOD);
+
     public static void initialize() {
         registerArmorRenderers();
         registerBlockEntityRenderers();
@@ -67,186 +70,207 @@ public class HumanClient {
         registerMenuScreens();
 
         HumanKeybindingRegistry.initialize();
+
+        MOD.initialize();
     }
 
     private static void registerArmorRenderers() {
-        BLibServices.CLIENT_REGISTRY.registerArmorRenderer(
-            MK50ArmorRenderer::new,
-            List.of(
-                HumanArmorItems.MK50_HELMET,
-                HumanArmorItems.MK50_CHESTPLATE,
-                HumanArmorItems.MK50_LEGGINGS,
-                HumanArmorItems.MK50_BOOTS
-            )
-        );
-        BLibServices.CLIENT_REGISTRY.registerArmorRenderer(
-            PressureArmorRenderer::new,
-            List.of(
-                HumanArmorItems.PRESSURE_HELMET,
-                HumanArmorItems.PRESSURE_CHESTPLATE,
-                HumanArmorItems.PRESSURE_LEGGINGS,
-                HumanArmorItems.PRESSURE_BOOTS
-            )
-        );
-        BLibServices.CLIENT_REGISTRY.registerArmorRenderer(
-            TacticalArmorRenderer::new,
-            List.of(
-                HumanArmorItems.TACTICAL_HELMET,
-                HumanArmorItems.TACTICAL_CHESTPLATE,
-                HumanArmorItems.TACTICAL_LEGGINGS,
-                HumanArmorItems.TACTICAL_BOOTS
-            )
-        );
-        BLibServices.CLIENT_REGISTRY.registerArmorRenderer(
-            TacticalCamoArmorRenderer::new,
-            List.of(
-                HumanArmorItems.TACTICAL_CAMO_HELMET,
-                HumanArmorItems.TACTICAL_CAMO_CHESTPLATE,
-                HumanArmorItems.TACTICAL_CAMO_LEGGINGS,
-                HumanArmorItems.TACTICAL_CAMO_BOOTS
-            )
-        );
-        BLibServices.CLIENT_REGISTRY.registerArmorRenderer(
-            WYCommandoArmorRenderer::new,
-            List.of(
-                HumanArmorItems.WY_COMMANDO_HELMET,
-                HumanArmorItems.WY_COMMANDO_CHESTPLATE,
-                HumanArmorItems.WY_COMMANDO_LEGGINGS,
-                HumanArmorItems.WY_COMMANDO_BOOTS
-            )
-        );
-        BLibServices.CLIENT_REGISTRY.registerArmorRenderer(
-            WYEliteArmorRenderer::new,
-            List.of(
-                HumanArmorItems.WY_ELITE_HELMET,
-                HumanArmorItems.WY_ELITE_CHESTPLATE,
-                HumanArmorItems.WY_ELITE_LEGGINGS,
-                HumanArmorItems.WY_ELITE_BOOTS
-            )
-        );
+        MOD.registries()
+            .registerArmorRenderer(
+                MK50ArmorRenderer::new,
+                List.of(
+                    HumanArmorItems.MK50_HELMET,
+                    HumanArmorItems.MK50_CHESTPLATE,
+                    HumanArmorItems.MK50_LEGGINGS,
+                    HumanArmorItems.MK50_BOOTS
+                )
+            );
+        MOD.registries()
+            .registerArmorRenderer(
+                PressureArmorRenderer::new,
+                List.of(
+                    HumanArmorItems.PRESSURE_HELMET,
+                    HumanArmorItems.PRESSURE_CHESTPLATE,
+                    HumanArmorItems.PRESSURE_LEGGINGS,
+                    HumanArmorItems.PRESSURE_BOOTS
+                )
+            );
+        MOD.registries()
+            .registerArmorRenderer(
+                TacticalArmorRenderer::new,
+                List.of(
+                    HumanArmorItems.TACTICAL_HELMET,
+                    HumanArmorItems.TACTICAL_CHESTPLATE,
+                    HumanArmorItems.TACTICAL_LEGGINGS,
+                    HumanArmorItems.TACTICAL_BOOTS
+                )
+            );
+        MOD.registries()
+            .registerArmorRenderer(
+                TacticalCamoArmorRenderer::new,
+                List.of(
+                    HumanArmorItems.TACTICAL_CAMO_HELMET,
+                    HumanArmorItems.TACTICAL_CAMO_CHESTPLATE,
+                    HumanArmorItems.TACTICAL_CAMO_LEGGINGS,
+                    HumanArmorItems.TACTICAL_CAMO_BOOTS
+                )
+            );
+        MOD.registries()
+            .registerArmorRenderer(
+                WYCommandoArmorRenderer::new,
+                List.of(
+                    HumanArmorItems.WY_COMMANDO_HELMET,
+                    HumanArmorItems.WY_COMMANDO_CHESTPLATE,
+                    HumanArmorItems.WY_COMMANDO_LEGGINGS,
+                    HumanArmorItems.WY_COMMANDO_BOOTS
+                )
+            );
+        MOD.registries()
+            .registerArmorRenderer(
+                WYEliteArmorRenderer::new,
+                List.of(
+                    HumanArmorItems.WY_ELITE_HELMET,
+                    HumanArmorItems.WY_ELITE_CHESTPLATE,
+                    HumanArmorItems.WY_ELITE_LEGGINGS,
+                    HumanArmorItems.WY_ELITE_BOOTS
+                )
+            );
     }
 
     private static void registerBlockEntityRenderers() {
-        BLibServices.CLIENT_REGISTRY.registerBlockEntityRenderer(HumanBlockEntityTypes.AMMO_CHEST, ChestRenderer::new);
-        BLibServices.CLIENT_REGISTRY.registerBlockEntityRenderer(
-            HumanBlockEntityTypes.DESK_TERMINAL,
-            (BlockEntityRendererProvider.Context rendererDispatcherIn) -> new DeskTerminalRenderer()
-        );
-        BLibServices.CLIENT_REGISTRY.registerBlockEntityRenderer(HumanBlockEntityTypes.LEAD_CHEST, ChestRenderer::new);
-        BLibServices.CLIENT_REGISTRY.registerBlockEntityRenderer(
-            HumanBlockEntityTypes.RESONATOR,
-            (BlockEntityRendererProvider.Context rendererDispatcherIn) -> new ResonatorRenderer()
-        );
-        BLibServices.CLIENT_REGISTRY.registerBlockEntityRenderer(
-            HumanBlockEntityTypes.SOLAR_PANEL,
-            (BlockEntityRendererProvider.Context rendererDispatcherIn) -> new SolarPanelRenderer()
-        );
+        MOD.registries().registerBlockEntityRenderer(HumanBlockEntityTypes.AMMO_CHEST, ChestRenderer::new);
+        MOD.registries()
+            .registerBlockEntityRenderer(
+                HumanBlockEntityTypes.DESK_TERMINAL,
+                (BlockEntityRendererProvider.Context rendererDispatcherIn) -> new DeskTerminalRenderer()
+            );
+        MOD.registries().registerBlockEntityRenderer(HumanBlockEntityTypes.LEAD_CHEST, ChestRenderer::new);
+        MOD.registries()
+            .registerBlockEntityRenderer(
+                HumanBlockEntityTypes.RESONATOR,
+                (BlockEntityRendererProvider.Context rendererDispatcherIn) -> new ResonatorRenderer()
+            );
+        MOD.registries()
+            .registerBlockEntityRenderer(
+                HumanBlockEntityTypes.SOLAR_PANEL,
+                (BlockEntityRendererProvider.Context rendererDispatcherIn) -> new SolarPanelRenderer()
+            );
 
-        BLibServices.CLIENT_REGISTRY.registerItemColor(
-            (itemStack, i) -> i > 0 ? -1 : DyedItemColor.getOrDefault(itemStack, -1),
-            List.of(HumanArmorItems.MK50_HELMET)
-        );
-        BLibServices.CLIENT_REGISTRY.registerItemColor(
-            (itemStack, i) -> i > 0 ? -1 : DyedItemColor.getOrDefault(itemStack, -1),
-            List.of(HumanArmorItems.MK50_CHESTPLATE)
-        );
-        BLibServices.CLIENT_REGISTRY.registerItemColor(
-            (itemStack, i) -> i > 0 ? -1 : DyedItemColor.getOrDefault(itemStack, -1),
-            List.of(HumanArmorItems.MK50_LEGGINGS)
-        );
-        BLibServices.CLIENT_REGISTRY.registerItemColor(
-            (itemStack, i) -> i > 0 ? -1 : DyedItemColor.getOrDefault(itemStack, -1),
-            List.of(HumanArmorItems.MK50_BOOTS)
-        );
+        MOD.registries()
+            .registerItemColor(
+                (itemStack, i) -> i > 0 ? -1 : DyedItemColor.getOrDefault(itemStack, -1),
+                List.of(HumanArmorItems.MK50_HELMET)
+            );
+        MOD.registries()
+            .registerItemColor(
+                (itemStack, i) -> i > 0 ? -1 : DyedItemColor.getOrDefault(itemStack, -1),
+                List.of(HumanArmorItems.MK50_CHESTPLATE)
+            );
+        MOD.registries()
+            .registerItemColor(
+                (itemStack, i) -> i > 0 ? -1 : DyedItemColor.getOrDefault(itemStack, -1),
+                List.of(HumanArmorItems.MK50_LEGGINGS)
+            );
+        MOD.registries()
+            .registerItemColor(
+                (itemStack, i) -> i > 0 ? -1 : DyedItemColor.getOrDefault(itemStack, -1),
+                List.of(HumanArmorItems.MK50_BOOTS)
+            );
     }
 
     private static void registerBlockRenderLayers() {
-        BLibServices.CLIENT_REGISTRY.registerBlockRenderLayer(HumanFerroaluminumBlocks.FERROALUMINUM_CHAIN_FENCE, RenderType.cutout());
-        BLibServices.CLIENT_REGISTRY.registerBlockRenderLayer(HumanFerroaluminumBlocks.FERROALUMINUM_GRATE, RenderType.cutout());
-        BLibServices.CLIENT_REGISTRY.registerBlockRenderLayer(HumanSteelBlocks.STEEL_BARS, RenderType.cutout());
-        BLibServices.CLIENT_REGISTRY.registerBlockRenderLayer(HumanSteelBlocks.STEEL_CHAIN_FENCE, RenderType.cutout());
-        BLibServices.CLIENT_REGISTRY.registerBlockRenderLayer(HumanSteelBlocks.STEEL_GRATE, RenderType.cutout());
-        BLibServices.CLIENT_REGISTRY.registerBlockRenderLayer(HumanTitaniumBlocks.TITANIUM_CHAIN_FENCE, RenderType.cutout());
-        BLibServices.CLIENT_REGISTRY.registerBlockRenderLayer(HumanTitaniumBlocks.TITANIUM_GRATE, RenderType.cutout());
-        BLibServices.CLIENT_REGISTRY.registerBlockRenderLayer(HumanBlocks.RAZOR_WIRE, RenderType.cutout());
-        BLibServices.CLIENT_REGISTRY.registerBlockRenderLayer(HumanIndustrialGlassBlocks.INDUSTRIAL_GLASS_DOOR, RenderType.cutout());
-        BLibServices.CLIENT_REGISTRY.registerBlockRenderLayer(HumanIndustrialGlassBlocks.INDUSTRIAL_GLASS_TRAP_DOOR, RenderType.cutout());
-        BLibServices.CLIENT_REGISTRY.registerBlockRenderLayer(HumanFerroaluminumBlocks.FERROALUMINUM_DOOR, RenderType.cutout());
-        BLibServices.CLIENT_REGISTRY.registerBlockRenderLayer(HumanSteelBlocks.STEEL_DOOR, RenderType.cutout());
-        BLibServices.CLIENT_REGISTRY.registerBlockRenderLayer(HumanTitaniumBlocks.TITANIUM_DOOR, RenderType.cutout());
-        BLibServices.CLIENT_REGISTRY.registerBlockRenderLayer(HumanFerroaluminumBlocks.FERROALUMINUM_TRAP_DOOR, RenderType.cutout());
-        BLibServices.CLIENT_REGISTRY.registerBlockRenderLayer(CoreBlocks.TRINITITE_BLOCK, RenderType.translucent());
-        BLibServices.CLIENT_REGISTRY.registerBlockRenderLayer(HumanFerroaluminumBlocks.FERROALUMINUM_GRATE_SLAB, RenderType.cutout());
-        BLibServices.CLIENT_REGISTRY.registerBlockRenderLayer(HumanFerroaluminumBlocks.FERROALUMINUM_GRATE_STAIRS, RenderType.cutout());
-        BLibServices.CLIENT_REGISTRY.registerBlockRenderLayer(HumanSteelBlocks.STEEL_GRATE_SLAB, RenderType.cutout());
-        BLibServices.CLIENT_REGISTRY.registerBlockRenderLayer(HumanSteelBlocks.STEEL_GRATE_STAIRS, RenderType.cutout());
-        BLibServices.CLIENT_REGISTRY.registerBlockRenderLayer(HumanTitaniumBlocks.TITANIUM_GRATE_SLAB, RenderType.cutout());
-        BLibServices.CLIENT_REGISTRY.registerBlockRenderLayer(HumanTitaniumBlocks.TITANIUM_GRATE_STAIRS, RenderType.cutout());
+        MOD.registries().registerBlockRenderLayer(HumanFerroaluminumBlocks.FERROALUMINUM_CHAIN_FENCE, RenderType.cutout());
+        MOD.registries().registerBlockRenderLayer(HumanFerroaluminumBlocks.FERROALUMINUM_GRATE, RenderType.cutout());
+        MOD.registries().registerBlockRenderLayer(HumanSteelBlocks.STEEL_BARS, RenderType.cutout());
+        MOD.registries().registerBlockRenderLayer(HumanSteelBlocks.STEEL_CHAIN_FENCE, RenderType.cutout());
+        MOD.registries().registerBlockRenderLayer(HumanSteelBlocks.STEEL_GRATE, RenderType.cutout());
+        MOD.registries().registerBlockRenderLayer(HumanTitaniumBlocks.TITANIUM_CHAIN_FENCE, RenderType.cutout());
+        MOD.registries().registerBlockRenderLayer(HumanTitaniumBlocks.TITANIUM_GRATE, RenderType.cutout());
+        MOD.registries().registerBlockRenderLayer(HumanBlocks.RAZOR_WIRE, RenderType.cutout());
+        MOD.registries().registerBlockRenderLayer(HumanIndustrialGlassBlocks.INDUSTRIAL_GLASS_DOOR, RenderType.cutout());
+        MOD.registries().registerBlockRenderLayer(HumanIndustrialGlassBlocks.INDUSTRIAL_GLASS_TRAP_DOOR, RenderType.cutout());
+        MOD.registries().registerBlockRenderLayer(HumanFerroaluminumBlocks.FERROALUMINUM_DOOR, RenderType.cutout());
+        MOD.registries().registerBlockRenderLayer(HumanSteelBlocks.STEEL_DOOR, RenderType.cutout());
+        MOD.registries().registerBlockRenderLayer(HumanTitaniumBlocks.TITANIUM_DOOR, RenderType.cutout());
+        MOD.registries().registerBlockRenderLayer(HumanFerroaluminumBlocks.FERROALUMINUM_TRAP_DOOR, RenderType.cutout());
+        MOD.registries().registerBlockRenderLayer(CoreBlocks.TRINITITE_BLOCK, RenderType.translucent());
+        MOD.registries().registerBlockRenderLayer(HumanFerroaluminumBlocks.FERROALUMINUM_GRATE_SLAB, RenderType.cutout());
+        MOD.registries().registerBlockRenderLayer(HumanFerroaluminumBlocks.FERROALUMINUM_GRATE_STAIRS, RenderType.cutout());
+        MOD.registries().registerBlockRenderLayer(HumanSteelBlocks.STEEL_GRATE_SLAB, RenderType.cutout());
+        MOD.registries().registerBlockRenderLayer(HumanSteelBlocks.STEEL_GRATE_STAIRS, RenderType.cutout());
+        MOD.registries().registerBlockRenderLayer(HumanTitaniumBlocks.TITANIUM_GRATE_SLAB, RenderType.cutout());
+        MOD.registries().registerBlockRenderLayer(HumanTitaniumBlocks.TITANIUM_GRATE_STAIRS, RenderType.cutout());
 
-        BLibServices.CLIENT_REGISTRY.registerBlockRenderLayer(HumanIndustrialGlassBlocks.INDUSTRIAL_GLASS, RenderType.cutout());
-        BLibServices.CLIENT_REGISTRY.registerBlockRenderLayer(HumanIndustrialGlassBlocks.INDUSTRIAL_GLASS_SLAB, RenderType.cutout());
-        BLibServices.CLIENT_REGISTRY.registerBlockRenderLayer(HumanIndustrialGlassBlocks.INDUSTRIAL_GLASS_STAIRS, RenderType.cutout());
+        MOD.registries().registerBlockRenderLayer(HumanIndustrialGlassBlocks.INDUSTRIAL_GLASS, RenderType.cutout());
+        MOD.registries().registerBlockRenderLayer(HumanIndustrialGlassBlocks.INDUSTRIAL_GLASS_SLAB, RenderType.cutout());
+        MOD.registries().registerBlockRenderLayer(HumanIndustrialGlassBlocks.INDUSTRIAL_GLASS_STAIRS, RenderType.cutout());
         HumanIndustrialGlassBlocks.DYE_COLOR_TO_INDUSTRIAL_GLASS.values()
-            .forEach(blockSupplier -> BLibServices.CLIENT_REGISTRY.registerBlockRenderLayer(blockSupplier, RenderType.translucent()));
-        BLibServices.CLIENT_REGISTRY.registerBlockRenderLayer(HumanIndustrialGlassBlocks.INDUSTRIAL_GLASS_PANE, RenderType.cutout());
+            .forEach(blockSupplier -> MOD.registries().registerBlockRenderLayer(blockSupplier, RenderType.translucent()));
+        MOD.registries().registerBlockRenderLayer(HumanIndustrialGlassBlocks.INDUSTRIAL_GLASS_PANE, RenderType.cutout());
         HumanIndustrialGlassBlocks.DYE_COLOR_TO_INDUSTRIAL_GLASS_PANE.values()
-            .forEach(blockSupplier -> BLibServices.CLIENT_REGISTRY.registerBlockRenderLayer(blockSupplier, RenderType.translucent()));
+            .forEach(blockSupplier -> MOD.registries().registerBlockRenderLayer(blockSupplier, RenderType.translucent()));
         HumanPlasticBlocks.DYE_COLOR_TO_PLASTIC_GRATE.values()
-            .forEach(blockSupplier -> BLibServices.CLIENT_REGISTRY.registerBlockRenderLayer(blockSupplier, RenderType.cutout()));
+            .forEach(blockSupplier -> MOD.registries().registerBlockRenderLayer(blockSupplier, RenderType.cutout()));
         HumanPlasticBlocks.DYE_COLOR_TO_PLASTIC_GRATE_SLAB.values()
-            .forEach(blockSupplier -> BLibServices.CLIENT_REGISTRY.registerBlockRenderLayer(blockSupplier, RenderType.cutout()));
+            .forEach(blockSupplier -> MOD.registries().registerBlockRenderLayer(blockSupplier, RenderType.cutout()));
         HumanPlasticBlocks.DYE_COLOR_TO_PLASTIC_GRATE_STAIRS.values()
-            .forEach(blockSupplier -> BLibServices.CLIENT_REGISTRY.registerBlockRenderLayer(blockSupplier, RenderType.cutout()));
+            .forEach(blockSupplier -> MOD.registries().registerBlockRenderLayer(blockSupplier, RenderType.cutout()));
     }
 
     private static void registerEntityRenderers() {
-        BLibServices.CLIENT_REGISTRY.registerEntityRenderer(HumanEntityTypes.FLAMETHROW, FlamethrowRenderer::new);
-        BLibServices.CLIENT_REGISTRY.registerEntityRenderer(HumanEntityTypes.GRENADE_THROWN, ThrownItemRenderer::new);
-        BLibServices.CLIENT_REGISTRY.registerEntityRenderer(HumanEntityTypes.MARINE, MarineRenderer::new);
-        BLibServices.CLIENT_REGISTRY.registerEntityRenderer(HumanEntityTypes.MUSHROOM_CLOUD, MushroomCloudRenderer::new);
-        BLibServices.CLIENT_REGISTRY.registerEntityRenderer(HumanEntityTypes.NUKE, NukeRenderer::new);
-        BLibServices.CLIENT_REGISTRY.registerEntityRenderer(HumanEntityTypes.ROCKET, RocketRenderer::new);
-        BLibServices.CLIENT_REGISTRY.registerEntityRenderer(HumanEntityTypes.SENTRY_TURRET, SentryTurretRenderer::new);
+        MOD.registries().registerEntityRenderer(HumanEntityTypes.FLAMETHROW, FlamethrowRenderer::new);
+        MOD.registries().registerEntityRenderer(HumanEntityTypes.GRENADE_THROWN, ThrownItemRenderer::new);
+        MOD.registries().registerEntityRenderer(HumanEntityTypes.MARINE, MarineRenderer::new);
+        MOD.registries().registerEntityRenderer(HumanEntityTypes.MUSHROOM_CLOUD, MushroomCloudRenderer::new);
+        MOD.registries().registerEntityRenderer(HumanEntityTypes.NUKE, NukeRenderer::new);
+        MOD.registries().registerEntityRenderer(HumanEntityTypes.ROCKET, RocketRenderer::new);
+        MOD.registries().registerEntityRenderer(HumanEntityTypes.SENTRY_TURRET, SentryTurretRenderer::new);
     }
 
     private static void registerItemRenderers() {
-        BLibServices.CLIENT_REGISTRY.registerItemRenderer(HumanItems.ARMOR_CASE, name -> () -> new SimpleItemRenderer(name));
-        BLibServices.CLIENT_REGISTRY.registerItemRenderer(HumanBlockItems.DESK_TERMINAL_BLOCK, name -> DeskTerminalItemRenderer::new);
-        BLibServices.CLIENT_REGISTRY.registerItemRenderer(HumanGunItems.F903WE_RIFLE, name -> () -> new F903WEItemRenderer(name));
-        BLibServices.CLIENT_REGISTRY.registerItemRenderer(
-            HumanGunItems.FLAMETHROWER_SEVASTOPOL,
-            name -> () -> new FlamethrowerItemRenderer(name)
-        );
-        BLibServices.CLIENT_REGISTRY.registerItemRenderer(HumanGunItems.M37_12_SHOTGUN, name -> () -> new M3712ShotgunItemRenderer(name));
-        BLibServices.CLIENT_REGISTRY.registerItemRenderer(
-            HumanGunItems.M41A_PULSE_RIFLE,
-            name -> () -> new M41APulseRifleItemRenderer(name)
-        );
-        BLibServices.CLIENT_REGISTRY.registerItemRenderer(
-            HumanGunItems.M42A3_SNIPER_RIFLE,
-            name -> () -> new M42A3SniperRifleItemRenderer(name)
-        );
-        BLibServices.CLIENT_REGISTRY.registerItemRenderer(
-            HumanGunItems.M4RA_BATTLE_RIFLE,
-            name -> () -> new M4RABattleRifleItemRenderer(name)
-        );
-        BLibServices.CLIENT_REGISTRY.registerItemRenderer(HumanGunItems.M56_SMARTGUN, name -> () -> new M56SmartgunItemRenderer(name));
-        BLibServices.CLIENT_REGISTRY.registerItemRenderer(
-            HumanGunItems.M6B_ROCKET_LAUNCHER,
-            name -> () -> new M6BRocketLauncherItemRenderer(name)
-        );
-        BLibServices.CLIENT_REGISTRY.registerItemRenderer(
-            HumanGunItems.M88MOD4_COMBAT_PISTOL,
-            name -> () -> new M88Mod4CombatPistolItemRenderer(name)
-        );
-        BLibServices.CLIENT_REGISTRY.registerItemRenderer(HumanGunItems.OLD_PAINLESS, name -> () -> new OldPainlessItemRenderer(name));
-        BLibServices.CLIENT_REGISTRY.registerItemRenderer(HumanBlockItems.RESONATOR_BLOCK, name -> ResonatorItemRenderer::new);
-        BLibServices.CLIENT_REGISTRY.registerItemRenderer(HumanBlockItems.SENTRY_TURRET, name -> SentryTurretItemRenderer::new);
-        BLibServices.CLIENT_REGISTRY.registerItemRenderer(HumanGunItems.ZX_76_SHOTGUN, name -> () -> new ZX76ShotgunItemRenderer(name));
+        MOD.registries().registerItemRenderer(HumanItems.ARMOR_CASE, name -> () -> new SimpleItemRenderer(name));
+        MOD.registries().registerItemRenderer(HumanBlockItems.DESK_TERMINAL_BLOCK, name -> DeskTerminalItemRenderer::new);
+        MOD.registries().registerItemRenderer(HumanGunItems.F903WE_RIFLE, name -> () -> new F903WEItemRenderer(name));
+        MOD.registries()
+            .registerItemRenderer(
+                HumanGunItems.FLAMETHROWER_SEVASTOPOL,
+                name -> () -> new FlamethrowerItemRenderer(name)
+            );
+        MOD.registries().registerItemRenderer(HumanGunItems.M37_12_SHOTGUN, name -> () -> new M3712ShotgunItemRenderer(name));
+        MOD.registries()
+            .registerItemRenderer(
+                HumanGunItems.M41A_PULSE_RIFLE,
+                name -> () -> new M41APulseRifleItemRenderer(name)
+            );
+        MOD.registries()
+            .registerItemRenderer(
+                HumanGunItems.M42A3_SNIPER_RIFLE,
+                name -> () -> new M42A3SniperRifleItemRenderer(name)
+            );
+        MOD.registries()
+            .registerItemRenderer(
+                HumanGunItems.M4RA_BATTLE_RIFLE,
+                name -> () -> new M4RABattleRifleItemRenderer(name)
+            );
+        MOD.registries().registerItemRenderer(HumanGunItems.M56_SMARTGUN, name -> () -> new M56SmartgunItemRenderer(name));
+        MOD.registries()
+            .registerItemRenderer(
+                HumanGunItems.M6B_ROCKET_LAUNCHER,
+                name -> () -> new M6BRocketLauncherItemRenderer(name)
+            );
+        MOD.registries()
+            .registerItemRenderer(
+                HumanGunItems.M88MOD4_COMBAT_PISTOL,
+                name -> () -> new M88Mod4CombatPistolItemRenderer(name)
+            );
+        MOD.registries().registerItemRenderer(HumanGunItems.OLD_PAINLESS, name -> () -> new OldPainlessItemRenderer(name));
+        MOD.registries().registerItemRenderer(HumanBlockItems.RESONATOR_BLOCK, name -> ResonatorItemRenderer::new);
+        MOD.registries().registerItemRenderer(HumanBlockItems.SENTRY_TURRET, name -> SentryTurretItemRenderer::new);
+        MOD.registries().registerItemRenderer(HumanGunItems.ZX_76_SHOTGUN, name -> () -> new ZX76ShotgunItemRenderer(name));
     }
 
     private static void registerMenuScreens() {
-        BLibServices.CLIENT_REGISTRY.registerMenuScreen(HumanMenuTypes.ARMOR_CASE, ArmorCaseScreen::new);
-        BLibServices.CLIENT_REGISTRY.registerMenuScreen(HumanMenuTypes.INDUSTRIAL_FURNACE_MENU, IndustrialFurnaceScreen::new);
+        MOD.registries().registerMenuScreen(HumanMenuTypes.ARMOR_CASE, ArmorCaseScreen::new);
+        MOD.registries().registerMenuScreen(HumanMenuTypes.INDUSTRIAL_FURNACE_MENU, IndustrialFurnaceScreen::new);
     }
 }

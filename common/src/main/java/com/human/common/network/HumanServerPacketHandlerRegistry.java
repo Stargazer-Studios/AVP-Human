@@ -1,7 +1,8 @@
 package com.human.common.network;
 
-import com.avp.service.Services;
 import com.blib.common.network.model.NetworkHandler;
+import com.blib.common.registry.impl.BLibNetworkRegistry;
+import com.human.Human;
 import com.human.client.network.HumanClientListener;
 import com.human.common.network.packet.C2SGunHitResultsPayload;
 import com.human.common.network.packet.C2SGunReloadPayload;
@@ -11,27 +12,29 @@ import com.human.common.network.packet.S2CGunRecoilPayload;
 
 public class HumanServerPacketHandlerRegistry {
 
+    private static final BLibNetworkRegistry REGISTRY = Human.MOD.registries().createNetworkRegistry();
+
     public static void initialize() {
         registerServerBoundPacketHandlers();
         registerClientBoundPacketHandlers();
     }
 
     private static void registerServerBoundPacketHandlers() {
-        Services.REGISTRY.registerPacketHandlers(
+        REGISTRY.registerPacketHandler(
             new NetworkHandler.FromClient<>(
                 C2SGunHitResultsPayload.TYPE,
                 C2SGunHitResultsPayload.CODEC,
                 HumanServerListener::handleGunHitResultsPayload
             )
         );
-        Services.REGISTRY.registerPacketHandlers(
+        REGISTRY.registerPacketHandler(
             new NetworkHandler.FromClient<>(
                 C2SGunReloadPayload.TYPE,
                 C2SGunReloadPayload.CODEC,
                 HumanServerListener::handleGunReloadPayload
             )
         );
-        Services.REGISTRY.registerPacketHandlers(
+        REGISTRY.registerPacketHandler(
             new NetworkHandler.FromClient<>(
                 C2SPlayerToggleCrawlPayload.TYPE,
                 C2SPlayerToggleCrawlPayload.CODEC,
@@ -41,14 +44,14 @@ public class HumanServerPacketHandlerRegistry {
     }
 
     private static void registerClientBoundPacketHandlers() {
-        Services.REGISTRY.registerPacketHandlers(
+        REGISTRY.registerPacketHandler(
             new NetworkHandler.FromServer<>(
                 S2CBulletHitBlockPayload.TYPE,
                 S2CBulletHitBlockPayload.CODEC,
                 (payload, player) -> HumanClientListener.handleBulletHitBlockPayload(payload)
             )
         );
-        Services.REGISTRY.registerPacketHandlers(
+        REGISTRY.registerPacketHandler(
             new NetworkHandler.FromServer<>(
                 S2CGunRecoilPayload.TYPE,
                 S2CGunRecoilPayload.CODEC,

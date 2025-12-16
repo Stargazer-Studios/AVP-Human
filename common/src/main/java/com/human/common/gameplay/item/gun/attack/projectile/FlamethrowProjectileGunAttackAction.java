@@ -1,7 +1,7 @@
 package com.human.common.gameplay.item.gun.attack.projectile;
 
 import com.blib.common.gameplay.util.EnchantmentUtil;
-import com.blib.service.BLibServices;
+import com.human.Human;
 import com.human.common.gameplay.entity.projectile.Flamethrow;
 import com.human.common.gameplay.item.gun.attack.GunAttackAction;
 import com.human.common.gameplay.item.gun.attack.GunAttackConfig;
@@ -31,7 +31,7 @@ public class FlamethrowProjectileGunAttackAction implements GunAttackAction {
         flamethrow.shootFromRotation(shooter, shooter.getXRot(), shooter.getYRot(), 0.0F, 1.5F, 1.0F);
 
         if (shooter instanceof ServerPlayer serverPlayer) {
-            BLibServices.SERVER_NETWORKING.sendToClient(serverPlayer, new S2CGunRecoilPayload(gunAttackConfig.fireModeConfig().recoil()));
+            Human.MOD.networking().sendToClient(serverPlayer, new S2CGunRecoilPayload(gunAttackConfig.fireModeConfig().recoil()));
         }
 
         level.addFreshEntity(flamethrow);
