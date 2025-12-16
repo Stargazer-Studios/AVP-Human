@@ -1,7 +1,5 @@
 package com.human.neoforge;
 
-import com.avp.neoforge.service.NeoForgeRegistryService;
-import com.avp.service.Services;
 import com.human.Human;
 import com.human.common.data.worldgen.HumanVillageInjection;
 import com.human.common.registry.init.HumanVillagerProfessions;
@@ -17,18 +15,14 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
 import net.neoforged.neoforge.event.tick.LevelTickEvent;
-import net.neoforged.neoforge.event.village.VillagerTradesEvent;
 
 @Mod(Human.MOD_ID)
 public class HumanNeoForge {
-
-    private static final NeoForgeRegistryService REGISTRY = (NeoForgeRegistryService) Services.REGISTRY;
 
     public HumanNeoForge(IEventBus modBus) {
         Human.initialize();
 
         NeoForge.EVENT_BUS.addListener(HumanNeoForge::addNewVillageBuilding);
-        NeoForge.EVENT_BUS.addListener(HumanNeoForge::addCustomTrades);
         NeoForge.EVENT_BUS.addListener(EventPriority.HIGH, HumanNeoForge::onWorldEndTick);
     }
 
@@ -89,16 +83,5 @@ public class HumanNeoForge {
         Human.CUSTOM_SPAWNER.tick(serverLevel, serverLevel.getGameRules().getBoolean(GameRules.RULE_DOMOBSPAWNING), true);
         Human.NUKED_ASH_PLACEMENT.tick(serverLevel);
         gifts.put(HumanVillagerProfessions.COMMISSARY.get(), HumanVillagerGiftKeys.COMMISSARY_GIFT_LOOT_TABLE);
-    }
-
-    private static void addCustomTrades(VillagerTradesEvent event) {
-        var trades = event.getTrades();
-
-        REGISTRY.getVillagerTradeData()
-            .forEach(villagerTradeData -> {
-                if (event.getType() == villagerTradeData.v1().get()) {
-                    trades.get(villagerTradeData.v2()).addAll(villagerTradeData.v3());
-                }
-            });
     }
 }

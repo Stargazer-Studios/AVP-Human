@@ -283,14 +283,6 @@ public class EnUsBlockProvider {
         addBlock(builder, HumanSteelBlocks.STEEL_FASTENED_SIDING_STAIRS, "Steel Fastened Siding Stairs");
         addBlock(builder, HumanTitaniumBlocks.TITANIUM_FASTENED_SIDING_SLAB, "Titanium Fastened Siding Slab");
         addBlock(builder, HumanTitaniumBlocks.TITANIUM_FASTENED_SIDING_STAIRS, "Titanium Fastened Siding Stairs");
-
-        // FIXME:
-        // AVPRegistryValidation.throwIfMissingEntries(
-        // Human.MOD.getAllHolders(BuiltInRegistries.BLOCK),
-        // TOUCHED_ENTRIES::contains,
-        // Block::getDescriptionId,
-        // "Block translation did not complete successfully - there are unhandled blocks that need to be handled."
-        // );
     };
 
     private static void addBlock(

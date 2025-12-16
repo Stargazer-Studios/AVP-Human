@@ -2,6 +2,7 @@ package com.human.common.registry.init.item;
 
 import com.blib.common.registry.BLibHolder;
 import com.blib.common.registry.BLibRegistry;
+import com.blib.common.registry.impl.BLibAzureLibIdentityRegistry;
 import com.human.Human;
 import com.human.common.gameplay.block_item.AmmoChestBlockItem;
 import com.human.common.gameplay.block_item.LeadChestBlockItem;
@@ -24,6 +25,8 @@ import java.util.stream.Collectors;
 public class HumanBlockItems {
 
     private static final BLibRegistry<Item> REGISTRY = Human.MOD.registries().create(BuiltInRegistries.ITEM);
+
+    private static final BLibAzureLibIdentityRegistry IDENTITY_REGISTRY = Human.MOD.registries().createAzureLibIdentityRegistry();
 
     public static final BLibHolder<BlockItem> ALUMINUM_BLOCK = create("aluminum_block", CoreBlocks.ALUMINUM_BLOCK);
 
@@ -173,8 +176,7 @@ public class HumanBlockItems {
 
     public static void initialize() {
         REGISTRY.registerAll();
-        // FIXME:
-        // Services.REGISTRY.registerAzureLibIdentity(RESONATOR_BLOCK);
-        // Services.REGISTRY.registerAzureLibIdentity(SENTRY_TURRET);
+        IDENTITY_REGISTRY.register(RESONATOR_BLOCK);
+        IDENTITY_REGISTRY.register(SENTRY_TURRET);
     }
 }

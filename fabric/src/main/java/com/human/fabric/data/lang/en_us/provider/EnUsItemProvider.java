@@ -158,17 +158,6 @@ public class EnUsItemProvider {
 
         // Spawn Egg Items
         addItem(builder, HumanSpawnEggItems.MARINE_SPAWN_EGG, "Marine Spawn Egg");
-
-        // FIXME:
-        // AVPRegistryValidation.throwIfMissingEntries(
-        // Human.MOD.getAllHolders(BuiltInRegistries.ITEM)
-        // .stream()
-        // .filter(deferredHolder -> !(deferredHolder.get() instanceof BlockItem))
-        // .toList(),
-        // TOUCHED_ENTRIES::contains,
-        // Item::getDescriptionId,
-        // "Item translation did not complete successfully - there are unhandled items that need to be handled."
-        // );
     };
 
     private static void addItem(

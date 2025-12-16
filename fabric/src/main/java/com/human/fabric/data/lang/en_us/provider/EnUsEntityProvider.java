@@ -20,15 +20,6 @@ public class EnUsEntityProvider {
         addEntity(builder, HumanEntityTypes.NUKE, "Nuke");
         addEntity(builder, HumanEntityTypes.ROCKET, "Rocket");
         addEntity(builder, HumanEntityTypes.SENTRY_TURRET, "Sentry Turret");
-
-        // FIXME:
-        // AVPRegistryValidation.throwIfMissingEntries(
-        // Human.MOD.getAllHolders(BuiltInRegistries.ENTITY_TYPE),
-        // TOUCHED_ENTRIES::contains,
-        // EntityType::getDescriptionId,
-        // "Entity type translation did not complete successfully - there are unhandled entity types that need to be
-        // handled."
-        // );
     };
 
     private static void addEntity(

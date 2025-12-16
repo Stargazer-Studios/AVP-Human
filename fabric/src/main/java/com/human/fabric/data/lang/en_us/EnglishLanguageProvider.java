@@ -81,8 +81,6 @@ public class EnglishLanguageProvider extends FabricLanguageProvider {
         EnUsEnchantmentTagProvider.CONSUMER.accept(builder);
         EnUsEntityTypeTagProvider.CONSUMER.accept(builder);
         EnUsItemTagProvider.CONSUMER.accept(builder);
-        // FIXME:
-        // EnUsMobEffectTagProvider.CONSUMER.accept(builder);
 
         // Tooltips
         EnUsTooltipProvider.CONSUMER.accept(builder);

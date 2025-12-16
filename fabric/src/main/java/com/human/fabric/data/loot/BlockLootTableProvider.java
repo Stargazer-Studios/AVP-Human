@@ -47,15 +47,6 @@ public class BlockLootTableProvider extends FabricBlockLootTableProvider {
         generateSlabDrops();
         generateCustomDrops();
         generateOtherDrops();
-
-        // FIXME:
-        // AVPRegistryValidation.throwIfMissingEntries(
-        // Human.MOD.getAllHolders(BuiltInRegistries.BLOCK),
-        // TOUCHED_ENTRIES::contains,
-        // Block::getDescriptionId,
-        // "Block loot table generation did not complete successfully - there are unhandled blocks that need to be
-        // handled."
-        // );
     }
 
     private void generateSelfDrops() {

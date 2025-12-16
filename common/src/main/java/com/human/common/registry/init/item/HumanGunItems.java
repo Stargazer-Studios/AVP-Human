@@ -2,6 +2,7 @@ package com.human.common.registry.init.item;
 
 import com.blib.common.registry.BLibHolder;
 import com.blib.common.registry.BLibRegistry;
+import com.blib.common.registry.impl.BLibAzureLibIdentityRegistry;
 import com.human.Human;
 import com.human.common.gameplay.item.gun.GunData;
 import com.human.service.HumanServices;
@@ -13,6 +14,8 @@ import java.util.function.Supplier;
 public class HumanGunItems {
 
     public static final BLibRegistry<Item> REGISTRY = Human.MOD.registries().create(BuiltInRegistries.ITEM);
+
+    private static final BLibAzureLibIdentityRegistry IDENTITY_REGISTRY = Human.MOD.registries().createAzureLibIdentityRegistry();
 
     public static final BLibHolder<Item> F903WE_RIFLE = create(
         "f903we_rifle",
@@ -75,17 +78,16 @@ public class HumanGunItems {
 
     public static void initialize() {
         REGISTRY.registerAll();
-        // FIXME:
-        // Services.REGISTRY.registerAzureLibIdentity(F903WE_RIFLE);
-        // Services.REGISTRY.registerAzureLibIdentity(FLAMETHROWER_SEVASTOPOL);
-        // Services.REGISTRY.registerAzureLibIdentity(M37_12_SHOTGUN);
-        // Services.REGISTRY.registerAzureLibIdentity(M41A_PULSE_RIFLE);
-        // Services.REGISTRY.registerAzureLibIdentity(M42A3_SNIPER_RIFLE);
-        // Services.REGISTRY.registerAzureLibIdentity(M4RA_BATTLE_RIFLE);
-        // Services.REGISTRY.registerAzureLibIdentity(M56_SMARTGUN);
-        // Services.REGISTRY.registerAzureLibIdentity(M6B_ROCKET_LAUNCHER);
-        // Services.REGISTRY.registerAzureLibIdentity(M88MOD4_COMBAT_PISTOL);
-        // Services.REGISTRY.registerAzureLibIdentity(OLD_PAINLESS);
-        // Services.REGISTRY.registerAzureLibIdentity(ZX_76_SHOTGUN);
+        IDENTITY_REGISTRY.register(F903WE_RIFLE);
+        IDENTITY_REGISTRY.register(FLAMETHROWER_SEVASTOPOL);
+        IDENTITY_REGISTRY.register(M37_12_SHOTGUN);
+        IDENTITY_REGISTRY.register(M41A_PULSE_RIFLE);
+        IDENTITY_REGISTRY.register(M42A3_SNIPER_RIFLE);
+        IDENTITY_REGISTRY.register(M4RA_BATTLE_RIFLE);
+        IDENTITY_REGISTRY.register(M56_SMARTGUN);
+        IDENTITY_REGISTRY.register(M6B_ROCKET_LAUNCHER);
+        IDENTITY_REGISTRY.register(M88MOD4_COMBAT_PISTOL);
+        IDENTITY_REGISTRY.register(OLD_PAINLESS);
+        IDENTITY_REGISTRY.register(ZX_76_SHOTGUN);
     }
 }
