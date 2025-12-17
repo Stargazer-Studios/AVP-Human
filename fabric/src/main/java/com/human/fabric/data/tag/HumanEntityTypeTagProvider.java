@@ -1,5 +1,6 @@
 package com.human.fabric.data.tag;
 
+import com.alien.common.registry.tag.AlienEntityTypeTags;
 import com.blib.common.data.tag.BLibEntityTypeTags;
 import com.human.common.registry.init.HumanEntityTypes;
 import com.human.common.registry.tag.HumanEntityTypeTags;
@@ -21,6 +22,10 @@ public class HumanEntityTypeTagProvider extends FabricTagProvider.EntityTypeTagP
     protected void addTags(HolderLookup.Provider wrapperLookup) {
         addHumanoids();
         addRadiationResistant();
+
+        // Compatibility
+        addHatedByXenomorphs();
+        addHosts();
     }
 
     private void addHumanoids() {
@@ -34,5 +39,15 @@ public class HumanEntityTypeTagProvider extends FabricTagProvider.EntityTypeTagP
         getOrCreateTagBuilder(HumanEntityTypeTags.RADIATION_RESISTANT)
             .addOptionalTag(EntityTypeTags.UNDEAD)
             .add(EntityType.CREEPER);
+    }
+
+    private void addHatedByXenomorphs() {
+        getOrCreateTagBuilder(AlienEntityTypeTags.HATED_BY_XENOMORPHS)
+            .add(HumanEntityTypes.MARINE.get());
+    }
+
+    private void addHosts() {
+        getOrCreateTagBuilder(AlienEntityTypeTags.HOSTS)
+            .add(HumanEntityTypes.MARINE.get());
     }
 }
