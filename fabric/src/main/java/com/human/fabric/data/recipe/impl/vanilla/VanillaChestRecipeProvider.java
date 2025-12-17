@@ -2,7 +2,7 @@ package com.human.fabric.data.recipe.impl.vanilla;
 
 import com.blib.fabric.data.recipe.builder.RecipeBuilder;
 import com.human.common.registry.init.item.HumanBlockItems;
-import com.human.compat.HumanCommonItemTags;
+import com.human.compatibility.HumanCommonItemTags;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.world.item.Items;
 

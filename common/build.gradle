@@ -38,6 +38,9 @@ dependencies {
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${project.jei_version}"
     compileOnly "me.shedaniel:RoughlyEnoughItems-api-neoforge:${project.rei_version}"
     compileOnly "me.shedaniel:RoughlyEnoughItems-neoforge:${project.rei_version}"
+
+    // Compatibility
+    compileOnly "com.avp.alien:avp_alien-common-1.21.1:${project.avp_alien_version}"
 }
 
 configurations.configureEach {

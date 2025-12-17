@@ -4,7 +4,7 @@ import com.blib.common.registry.BLibHolder;
 import com.blib.common.registry.BLibRegistry;
 import com.human.Human;
 import com.human.HumanResources;
-import com.human.compat.HumanCommonItemTags;
+import com.human.compatibility.HumanCommonItemTags;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.sounds.SoundEvent;

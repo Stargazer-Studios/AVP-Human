@@ -10,7 +10,7 @@ import com.human.common.registry.init.block.HumanFerroaluminumBlocks;
 import com.human.common.registry.init.block.HumanSteelBlocks;
 import com.human.common.registry.init.block.HumanTitaniumBlocks;
 import com.human.common.registry.init.item.HumanItems;
-import com.human.compat.HumanCommonItemTags;
+import com.human.compatibility.HumanCommonItemTags;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;

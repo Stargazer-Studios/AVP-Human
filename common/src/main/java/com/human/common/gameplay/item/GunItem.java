@@ -6,7 +6,7 @@ import com.human.common.gameplay.item.gun.pipeline.GunShootContext;
 import com.human.common.gameplay.item.old_painless.OldPainlessAnimationRefs;
 import com.human.common.registry.init.HumanDataComponents;
 import com.human.common.registry.init.item.HumanGunItems;
-import com.human.compat.HumanCommonItemTags;
+import com.human.compatibility.HumanCommonItemTags;
 import mod.azure.azurelib.common.animation.dispatch.command.AzCommand;
 import mod.azure.azurelib.common.animation.play_behavior.AzPlayBehaviors;
 import net.minecraft.network.chat.Component;

@@ -1,8 +1,10 @@
 package com.human.common.gameplay.entity.projectile;
 
+import com.alien.common.data.AlienVariantTypes;
 import com.blib.common.util.DirectionUtil;
 import com.human.common.registry.init.HumanEntityTypes;
 import com.human.common.registry.key.HumanDamageTypeKeys;
+import com.human.compatibility.avp_alien.AVPAlien;
 import com.just.core.traversal.BFS;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -110,13 +112,15 @@ public class Flamethrow extends ThrowableProjectile {
 
     private boolean shouldPlaceFireAt(BlockPos pos) {
         var state = level().getBlockState(pos);
-        // FIXME:
-        // var alienVariantType = AlienVariantTypes.getForOrNull(state);
-        //
-        // if (alienVariantType == AlienVariantTypes.NETHER) {
-        // // If the state being replaced is a nether variant type (nether resin), then don't replace it with fire.
-        // return false;
-        // }
+
+        if (AVPAlien.MOD.isLoaded()) {
+            var alienVariantType = AlienVariantTypes.getForOrNull(state);
+
+            if (alienVariantType == AlienVariantTypes.NETHER) {
+                // If the state being replaced is a nether variant type (nether resin), then don't replace it with fire.
+                return false;
+            }
+        }
 
         return state.canBeReplaced() && state.getFluidState().isEmpty();
     }

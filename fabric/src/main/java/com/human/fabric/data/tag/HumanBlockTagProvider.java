@@ -12,7 +12,7 @@ import com.human.common.registry.init.block.HumanPlasticBlocks;
 import com.human.common.registry.init.block.HumanSteelBlocks;
 import com.human.common.registry.init.block.HumanTitaniumBlocks;
 import com.human.common.registry.tag.HumanBlockTags;
-import com.human.compat.HumanCommonBlockTags;
+import com.human.compatibility.HumanCommonBlockTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.core.HolderLookup;

@@ -1,10 +1,12 @@
 package com.human.common.util;
 
+import com.alien.common.registry.key.AlienDamageTypeKeys;
 import com.human.common.gameplay.entity.manager.GeneContainer;
 import com.human.common.gameplay.gene.Gene;
 import com.human.common.gameplay.gene.GeneOperationType;
 import com.human.common.gameplay.gene.Genes;
 import com.human.common.model.GeneCarrier;
+import com.human.compatibility.avp_alien.AVPAlien;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
@@ -18,10 +20,11 @@ public class GeneResistanceHurtUtil {
     ) {
         var geneContainer = geneCarrier.getOrCreateGeneManager().getGeneContainer();
 
-        // FIXME:
-        // if (damageSource.is(AVPDamageTypeKeys.ACID)) {
-        // return applyGeneResistanceToDamage(geneContainer, Genes.ACID_RESISTANCE, damage);
-        // }
+        if (AVPAlien.MOD.isLoaded()) {
+            if (damageSource.is(AlienDamageTypeKeys.ACID)) {
+                return applyGeneResistanceToDamage(geneContainer, Genes.ACID_RESISTANCE, damage);
+            }
+        }
 
         if (damageSource.is(DamageTypeTags.IS_FIRE)) {
             return applyGeneResistanceToDamage(geneContainer, Genes.FIRE_RESISTANCE, damage);

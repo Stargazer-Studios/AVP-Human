@@ -1,4 +1,4 @@
-package com.human.compat;
+package com.human.compatibility;
 
 import com.compatibility.CommonConstants;
 import net.minecraft.core.registries.Registries;

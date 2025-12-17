@@ -3,7 +3,7 @@ package com.human.fabric.data.recipe.impl;
 import com.blib.fabric.data.recipe.RecipeTemplates;
 import com.blib.fabric.data.recipe.builder.RecipeBuilder;
 import com.human.common.registry.init.item.HumanItems;
-import com.human.compat.HumanCommonItemTags;
+import com.human.compatibility.HumanCommonItemTags;
 
 public class ToolRecipeProvider {
 

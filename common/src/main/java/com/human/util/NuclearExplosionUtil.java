@@ -1,11 +1,15 @@
 package com.human.util;
 
+import com.alien.common.gameplay.entity.living.alien.Alien;
+import com.alien.common.model.alien.variant.AlienVariant;
+import com.alien.common.util.AlienTransitionUtil;
 import com.blib.common.gameplay.explosion.Explosion;
 import com.blib.common.gameplay.explosion.ExplosionProgressTracker;
 import com.blib.common.util.ExplosionUtil;
 import com.human.Human;
 import com.human.common.gameplay.entity.nuke.MushroomCloudEntity;
 import com.human.common.gameplay.explosion.nuke.NuclearExplosionEffects;
+import com.human.compatibility.avp_alien.AVPAlien;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.phys.Vec3;
@@ -29,10 +33,11 @@ public class NuclearExplosionUtil {
                     var distance = entity.distanceToSqr(center);
                     var damage = ExplosionUtil.computeDamage(radius, 5, 1000, distance);
 
-                    // FIXME:
-                    // if (entity instanceof Alien alien) {
-                    // AlienTransitionUtil.transitionIntoVariant(alien, AlienVariant.IRRADIATED);
-                    // }
+                    if (AVPAlien.MOD.isLoaded()) {
+                        if (entity instanceof Alien alien) {
+                            AlienTransitionUtil.transitionIntoVariant(alien, AlienVariant.IRRADIATED);
+                        }
+                    }
 
                     entity.igniteForSeconds(15);
                     entity.hurt(level.damageSources().explosion(null), (float) damage);
