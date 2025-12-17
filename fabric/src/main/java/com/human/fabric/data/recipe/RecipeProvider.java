@@ -30,7 +30,7 @@ public class RecipeProvider extends FabricRecipeProvider {
 
     @Override
     public void buildRecipes(RecipeOutput recipeOutput) {
-        var builder = RecipeBuilder.with(Human.MOD, recipeOutput);
+        var builder = RecipeBuilder.with(Human.MOD, recipeOutput, this::withConditions);
         IndustrialFurnaceRecipeBuilder.ensureRegistration(recipeOutput);
 
         ArmorRecipeProvider.provide(builder);
