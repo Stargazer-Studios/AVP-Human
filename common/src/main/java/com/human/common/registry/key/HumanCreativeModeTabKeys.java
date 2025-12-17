@@ -9,6 +9,8 @@ public class HumanCreativeModeTabKeys {
 
     public static final ResourceKey<CreativeModeTab> BLOCKS_KEY = create("human_blocks");
 
+    public static final ResourceKey<CreativeModeTab> COLORED_BLOCKS_KEY = create("human_colored_blocks");
+
     public static final ResourceKey<CreativeModeTab> COMBAT_KEY = create("human_combat");
 
     public static final ResourceKey<CreativeModeTab> INGREDIENTS_KEY = create("human_ingredients");

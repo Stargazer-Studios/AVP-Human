@@ -3,18 +3,24 @@ package com.human.common.registry.init.creative_mode_tab;
 import com.blib.common.registry.BLibHolder;
 import com.blib.common.registry.BLibRegistry;
 import com.human.Human;
+import com.human.common.registry.init.HumanBlocks;
+import com.human.common.registry.init.block.HumanPlasticBlocks;
 import com.human.common.registry.init.creative_mode_tab.initializer.BlocksCreativeModeTabInitializer;
+import com.human.common.registry.init.creative_mode_tab.initializer.ColoredBlocksCreativeModeTabInitializer;
 import com.human.common.registry.init.creative_mode_tab.initializer.CombatCreativeModeTabInitializer;
 import com.human.common.registry.init.creative_mode_tab.initializer.IngredientsCreativeModeTabInitializer;
 import com.human.common.registry.init.creative_mode_tab.initializer.SpawnEggsCreativeModeTabInitializer;
 import com.human.common.registry.init.creative_mode_tab.initializer.ToolsAndUtilitiesCreativeModeTabInitializer;
+import com.human.common.registry.init.item.HumanGunItems;
+import com.human.common.registry.init.item.HumanItems;
+import com.human.common.registry.init.item.HumanSpawnEggItems;
 import com.human.common.registry.key.HumanCreativeModeTabKeys;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Blocks;
 
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -27,31 +33,37 @@ public class HumanCreativeModeTabs {
 
     public static final BLibHolder<CreativeModeTab> BLOCKS = create(
         HumanCreativeModeTabKeys.BLOCKS_KEY,
-        () -> new ItemStack(Blocks.CRAFTING_TABLE),
+        () -> new ItemStack(HumanBlocks.BLUEPRINT_BLOCK.get()),
         BlocksCreativeModeTabInitializer.OUTPUT_CONSUMER
+    );
+
+    public static final BLibHolder<CreativeModeTab> COLORED_BLOCKS = create(
+        HumanCreativeModeTabKeys.COLORED_BLOCKS_KEY,
+        () -> new ItemStack(HumanPlasticBlocks.DYE_COLOR_TO_PLASTIC.get(DyeColor.WHITE).get()),
+        ColoredBlocksCreativeModeTabInitializer.OUTPUT_CONSUMER
     );
 
     public static final BLibHolder<CreativeModeTab> COMBAT = create(
         HumanCreativeModeTabKeys.COMBAT_KEY,
-        () -> new ItemStack(Blocks.CRAFTING_TABLE),
+        () -> new ItemStack(HumanGunItems.M41A_PULSE_RIFLE.get()),
         CombatCreativeModeTabInitializer.OUTPUT_CONSUMER
     );
 
     public static final BLibHolder<CreativeModeTab> INGREDIENTS = create(
         HumanCreativeModeTabKeys.INGREDIENTS_KEY,
-        () -> new ItemStack(Blocks.CRAFTING_TABLE),
+        () -> new ItemStack(HumanItems.BLUEPRINT_M41A_PULSE_RIFLE.get()),
         IngredientsCreativeModeTabInitializer.OUTPUT_CONSUMER
     );
 
     public static final BLibHolder<CreativeModeTab> SPAWN_EGGS = create(
         HumanCreativeModeTabKeys.SPAWN_EGGS_KEY,
-        () -> new ItemStack(Blocks.CRAFTING_TABLE),
+        () -> new ItemStack(HumanSpawnEggItems.MARINE_SPAWN_EGG.get()),
         SpawnEggsCreativeModeTabInitializer.OUTPUT_CONSUMER
     );
 
     public static final BLibHolder<CreativeModeTab> TOOLS_AND_UTILITIES = create(
         HumanCreativeModeTabKeys.TOOLS_AND_UTILITIES_KEY,
-        () -> new ItemStack(Blocks.CRAFTING_TABLE),
+        () -> new ItemStack(HumanItems.CANISTER.get()),
         ToolsAndUtilitiesCreativeModeTabInitializer.OUTPUT_CONSUMER
     );
 
