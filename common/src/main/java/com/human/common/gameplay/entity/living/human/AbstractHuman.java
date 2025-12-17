@@ -55,12 +55,12 @@ public abstract class AbstractHuman extends PathfinderMob implements DataUser {
     public AbstractHuman(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level);
 
-        this.beardVariant = new DataAccessor<>(this, HumanDataKeys.MARINE_BEARD_VARIANT);
-        this.eyeColor = new DataAccessor<>(this, HumanDataKeys.MARINE_EYE_COLOR);
-        this.hairColor = new DataAccessor<>(this, HumanDataKeys.MARINE_HAIR_COLOR);
-        this.hairVariant = new DataAccessor<>(this, HumanDataKeys.MARINE_HAIR_VARIANT);
-        this.isMale = new DataAccessor<>(this, HumanDataKeys.MARINE_IS_MALE);
-        this.skinColor = new DataAccessor<>(this, HumanDataKeys.MARINE_SKIN_COLOR);
+        this.beardVariant = new DataAccessor<>(this, HumanDataKeys.MARINE_BEARD_VARIANT.get());
+        this.eyeColor = new DataAccessor<>(this, HumanDataKeys.MARINE_EYE_COLOR.get());
+        this.hairColor = new DataAccessor<>(this, HumanDataKeys.MARINE_HAIR_COLOR.get());
+        this.hairVariant = new DataAccessor<>(this, HumanDataKeys.MARINE_HAIR_VARIANT.get());
+        this.isMale = new DataAccessor<>(this, HumanDataKeys.MARINE_IS_MALE.get());
+        this.skinColor = new DataAccessor<>(this, HumanDataKeys.MARINE_SKIN_COLOR.get());
 
         this.movementAnalyzer = new MovementAnalyzer(this);
         this.navigationManager = new HumanNavigationManager(this, moveControl);
