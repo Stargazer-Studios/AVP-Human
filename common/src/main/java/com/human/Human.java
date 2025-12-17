@@ -17,7 +17,7 @@ import com.human.common.registry.init.HumanArmorMaterials;
 import com.human.common.registry.init.HumanBlockEntityTypes;
 import com.human.common.registry.init.HumanBlocks;
 import com.human.common.registry.init.HumanDataComponents;
-import com.human.common.registry.init.HumanDataKeys;
+import com.human.common.registry.init.HumanDataSyncKeys;
 import com.human.common.registry.init.HumanEntitySpawns;
 import com.human.common.registry.init.HumanEntityTypes;
 import com.human.common.registry.init.HumanFuels;
@@ -107,7 +107,7 @@ public class Human {
             HumanVillagerProfessions.initialize();
             HumanVillagerTrades.initialize();
 
-            HumanDataKeys.initialize();
+            HumanDataSyncKeys.initialize();
 
             HumanPacketDirectionRegistry.initialize();
             HumanServerPacketHandlerRegistry.initialize();

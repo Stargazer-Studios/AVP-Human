@@ -8,7 +8,7 @@ import com.human.common.gameplay.entity.manager.GeneManager;
 import com.human.common.gameplay.gene.GeneOperationType;
 import com.human.common.gameplay.gene.Genes;
 import com.human.common.model.GeneCarrier;
-import com.human.common.registry.init.HumanDataKeys;
+import com.human.common.registry.init.HumanDataSyncKeys;
 import com.human.common.util.GeneResistanceHurtUtil;
 import com.human.compatibility.avp_alien.AVPAlien;
 import net.minecraft.core.particles.ParticleTypes;
@@ -33,7 +33,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class MixinLivingEntity_GeneCarrier extends Entity implements GeneCarrier, DataUser {
 
     @Unique
-    private final DataAccessor<Boolean> avp_human$hasWarpEffect = new DataAccessor<>(this, HumanDataKeys.ENTITY_HAS_WARP_EFFECT.get());
+    private final DataAccessor<Boolean> avp_human$hasWarpEffect = new DataAccessor<>(this, HumanDataSyncKeys.ENTITY_HAS_WARP_EFFECT.get());
 
     @Unique
     private GeneManager avp_human$geneManager;

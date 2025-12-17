@@ -11,7 +11,7 @@ import com.mojang.serialization.Codec;
 
 import java.util.function.Function;
 
-public class HumanDataKeys {
+public class HumanDataSyncKeys {
 
     private static final BLibRegistry<DataSyncKey<?>> REGISTRY = Human.MOD.registries().create(BLibBuiltInRegistries.DATA_SYNC_KEYS);
 

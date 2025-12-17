@@ -4,7 +4,7 @@ import com.blib.common.network.data.DataAccessor;
 import com.blib.common.network.data.DataUser;
 import com.blib.common.util.MovementAnalyzer;
 import com.human.common.config.HumanConfig;
-import com.human.common.registry.init.HumanDataKeys;
+import com.human.common.registry.init.HumanDataSyncKeys;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -55,12 +55,12 @@ public abstract class AbstractHuman extends PathfinderMob implements DataUser {
     public AbstractHuman(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level);
 
-        this.beardVariant = new DataAccessor<>(this, HumanDataKeys.MARINE_BEARD_VARIANT.get());
-        this.eyeColor = new DataAccessor<>(this, HumanDataKeys.MARINE_EYE_COLOR.get());
-        this.hairColor = new DataAccessor<>(this, HumanDataKeys.MARINE_HAIR_COLOR.get());
-        this.hairVariant = new DataAccessor<>(this, HumanDataKeys.MARINE_HAIR_VARIANT.get());
-        this.isMale = new DataAccessor<>(this, HumanDataKeys.MARINE_IS_MALE.get());
-        this.skinColor = new DataAccessor<>(this, HumanDataKeys.MARINE_SKIN_COLOR.get());
+        this.beardVariant = new DataAccessor<>(this, HumanDataSyncKeys.MARINE_BEARD_VARIANT.get());
+        this.eyeColor = new DataAccessor<>(this, HumanDataSyncKeys.MARINE_EYE_COLOR.get());
+        this.hairColor = new DataAccessor<>(this, HumanDataSyncKeys.MARINE_HAIR_COLOR.get());
+        this.hairVariant = new DataAccessor<>(this, HumanDataSyncKeys.MARINE_HAIR_VARIANT.get());
+        this.isMale = new DataAccessor<>(this, HumanDataSyncKeys.MARINE_IS_MALE.get());
+        this.skinColor = new DataAccessor<>(this, HumanDataSyncKeys.MARINE_SKIN_COLOR.get());
 
         this.movementAnalyzer = new MovementAnalyzer(this);
         this.navigationManager = new HumanNavigationManager(this, moveControl);
