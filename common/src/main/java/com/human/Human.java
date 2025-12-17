@@ -5,6 +5,7 @@ import com.blib.BLibMod;
 import com.human.common.HumanEvents;
 import com.human.common.config.HumanConfig;
 import com.human.common.data.HumanReloadListeners;
+import com.human.common.data.fixer.migration.HumanDataMigrations;
 import com.human.common.gameplay.entity.living.human.marine.ai.MarineGOAP;
 import com.human.common.gameplay.gene.Genes;
 import com.human.common.gameplay.level.patrol.MarinePatrolSpawner;
@@ -128,6 +129,8 @@ public class Human {
 
             // Listeners / Events
             HumanReloadListeners.initialize();
+
+            HumanDataMigrations.initialize();
 
             MOD.events().afterLevelTick().register(Human::updatePowerSystem);
             MOD.events().onTagsUpdated().register(($1, $2) -> HumanEvents.onTagsUpdated());
