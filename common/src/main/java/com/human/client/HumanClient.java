@@ -1,5 +1,7 @@
 package com.human.client;
 
+import com.alien.client.render.entity.head.EntityHeadDataCache;
+import com.alien.client.render.entity.parasite.attachment.ParasiteHeadAttachmentOffsetDataCache;
 import com.blib.client.BLibClientMod;
 import com.human.Human;
 import com.human.client.input.keybind.HumanKeybindingRegistry;
@@ -49,6 +51,9 @@ import com.human.common.registry.init.item.HumanArmorItems;
 import com.human.common.registry.init.item.HumanBlockItems;
 import com.human.common.registry.init.item.HumanGunItems;
 import com.human.common.registry.init.item.HumanItems;
+import com.human.compatibility.avp_alien.AVPAlien;
+import com.human.compatibility.avp_alien.HumanEntityHeadData;
+import com.human.compatibility.avp_alien.HumanParasiteAttachmentOffsetData;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.blockentity.ChestRenderer;
@@ -70,6 +75,11 @@ public class HumanClient {
         registerMenuScreens();
 
         HumanKeybindingRegistry.initialize();
+
+        if (AVPAlien.MOD.isLoaded()) {
+            registerEntityHeadData();
+            registerParasiteHeadAttachmentOffsetData();
+        }
 
         MOD.initialize();
     }
@@ -217,6 +227,10 @@ public class HumanClient {
             .forEach(blockSupplier -> MOD.registries().registerBlockRenderLayer(blockSupplier, RenderType.cutout()));
     }
 
+    private static void registerEntityHeadData() {
+        EntityHeadDataCache.put(HumanEntityTypes.MARINE.get(), HumanEntityHeadData.MARINE);
+    }
+
     private static void registerEntityRenderers() {
         MOD.registries().registerEntityRenderer(HumanEntityTypes.FLAMETHROW, FlamethrowRenderer::new);
         MOD.registries().registerEntityRenderer(HumanEntityTypes.GRENADE_THROWN, ThrownItemRenderer::new);
@@ -272,5 +286,9 @@ public class HumanClient {
     private static void registerMenuScreens() {
         MOD.registries().registerMenuScreen(HumanMenuTypes.ARMOR_CASE, ArmorCaseScreen::new);
         MOD.registries().registerMenuScreen(HumanMenuTypes.INDUSTRIAL_FURNACE_MENU, IndustrialFurnaceScreen::new);
+    }
+
+    private static void registerParasiteHeadAttachmentOffsetData() {
+        ParasiteHeadAttachmentOffsetDataCache.put(HumanEntityTypes.MARINE.get(), HumanParasiteAttachmentOffsetData.MARINE);
     }
 }
