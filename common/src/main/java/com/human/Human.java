@@ -16,6 +16,7 @@ import com.human.common.registry.GeneBonusDataRegistry;
 import com.human.common.registry.init.HumanArmorMaterials;
 import com.human.common.registry.init.HumanBlockEntityTypes;
 import com.human.common.registry.init.HumanBlocks;
+import com.human.common.registry.init.HumanCommands;
 import com.human.common.registry.init.HumanDataComponents;
 import com.human.common.registry.init.HumanDataSyncKeys;
 import com.human.common.registry.init.HumanEntitySpawns;
@@ -123,6 +124,8 @@ public class Human {
             HumanFuels.initialize();
 
             HumanCreativeModeTabs.initialize();
+
+            HumanCommands.initialize();
 
             // AI
             Genes.initialize();
