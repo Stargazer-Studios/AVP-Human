@@ -10,28 +10,17 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SpawnEggItem;
 
-import java.util.function.Supplier;
-
 public class HumanSpawnEggItems {
 
     public static final BLibRegistry<Item> REGISTRY = Human.MOD.registries().create(BuiltInRegistries.ITEM);
 
-    public static final BLibHolder<SpawnEggItem> MARINE_SPAWN_EGG = create(
-        "marine",
-        HumanEntityTypes.MARINE,
-        0x5a5941,
-        0x414441
-    );
+    public static final BLibHolder<SpawnEggItem> MARINE_SPAWN_EGG = create("marine", HumanEntityTypes.MARINE);
 
-    private static <E extends Mob> BLibHolder<SpawnEggItem> create(
-        String baseId,
-        Supplier<EntityType<E>> entityTypeSupplier,
-        int primaryColor,
-        int secondaryColor
-    ) {
-        var supplier = Human.MOD.factories()
-            .createSpawnEggSupplier(entityTypeSupplier, primaryColor, secondaryColor, new Item.Properties());
-        return REGISTRY.createHolder(baseId + "_spawn_egg", supplier);
+    private static <E extends Mob> BLibHolder<SpawnEggItem> create(String path, BLibHolder<EntityType<E>> holder) {
+        return REGISTRY.createHolder(
+            path + "_spawn_egg",
+            Human.MOD.factories().createSpawnEggSupplier(holder, 0xFFFFFF, 0xFFFFFF, new Item.Properties())
+        );
     }
 
     public static void initialize() {
