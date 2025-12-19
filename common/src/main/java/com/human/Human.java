@@ -2,7 +2,6 @@ package com.human;
 
 import com.blib.BLib;
 import com.blib.BLibMod;
-import com.human.common.HumanEvents;
 import com.human.common.config.HumanConfig;
 import com.human.common.data.HumanReloadListeners;
 import com.human.common.data.fixer.migration.HumanDataMigrations;
@@ -13,6 +12,7 @@ import com.human.common.gameplay.power.PowerSystem;
 import com.human.common.gameplay.worldgen.biome.NukedAshPlacement;
 import com.human.common.network.HumanPacketDirectionRegistry;
 import com.human.common.network.HumanServerPacketHandlerRegistry;
+import com.human.common.registry.GeneBonusDataRegistry;
 import com.human.common.registry.init.HumanArmorMaterials;
 import com.human.common.registry.init.HumanBlockEntityTypes;
 import com.human.common.registry.init.HumanBlocks;
@@ -103,6 +103,7 @@ public class Human {
             HumanSteelBlockItems.initialize();
             HumanTitaniumBlockItems.initialize();
 
+            // Villagers
             HumanVillagerPoiTypes.initialize();
             HumanVillagerProfessions.initialize();
             HumanVillagerTrades.initialize();
@@ -133,7 +134,7 @@ public class Human {
             HumanDataMigrations.initialize();
 
             MOD.events().postLevelTick().register(Human::updatePowerSystem);
-            MOD.events().onTagsUpdated().register(($1, $2) -> HumanEvents.onTagsUpdated());
+            MOD.events().onTagsUpdated().register(($1, $2) -> GeneBonusDataRegistry.rebuildLookupMappings());
         });
     }
 
