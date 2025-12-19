@@ -132,7 +132,7 @@ public class Human {
 
             HumanDataMigrations.initialize();
 
-            MOD.events().afterLevelTick().register(Human::updatePowerSystem);
+            MOD.events().postLevelTick().register(Human::updatePowerSystem);
             MOD.events().onTagsUpdated().register(($1, $2) -> HumanEvents.onTagsUpdated());
         });
     }

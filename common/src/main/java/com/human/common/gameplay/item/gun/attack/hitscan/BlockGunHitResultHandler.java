@@ -59,7 +59,7 @@ public class BlockGunHitResultHandler {
                 // Only damage blocks if they should be destroyed.
                 || blockState.is(BLibBlockTags.SHOULD_NOT_BE_DESTROYED)
                 || (gunAttackConfig.shooter() instanceof Player player
-                    && !Human.MOD.events().beforeBlockBreak().dispatcher().invoke(level, player, blockPos, blockState))
+                    && !Human.MOD.events().preBlockBreak().dispatcher().invoke(level, player, blockPos, blockState))
         ) {
             return;
         }
