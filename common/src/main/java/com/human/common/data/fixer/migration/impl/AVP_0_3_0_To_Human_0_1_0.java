@@ -1,6 +1,5 @@
 package com.human.common.data.fixer.migration.impl;
 
-import com.alien.AlienResources;
 import com.blib.common.data.fixer.BLibDataFixerRegistry;
 import com.blib.common.data.fixer.migration.BLibDataMigration;
 import com.blib.common.model.Version;
@@ -68,7 +67,11 @@ public class AVP_0_3_0_To_Human_0_1_0 implements BLibDataMigration {
         ResourceKey<Registry<T>> registry,
         String path
     ) {
-        return new BLibDataFixerRegistry.Entry.Resource(registry, createAvpResourceLocation(path), AlienResources.location(path));
+        return new BLibDataFixerRegistry.Entry.Resource(
+            registry,
+            createAvpResourceLocation(path),
+            Human.MOD.resources().createLocation(path)
+        );
     }
 
     private static void registerMigrationsForRegistry(Registry<?> registry) {
