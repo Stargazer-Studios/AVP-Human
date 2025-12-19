@@ -1,6 +1,5 @@
 package com.human.mixin;
 
-import com.alien.common.util.AcidBleedUtil;
 import com.blib.common.network.data.DataAccessor;
 import com.blib.common.network.data.DataUser;
 import com.blib.common.util.TeleportUtil;
@@ -10,7 +9,7 @@ import com.human.common.gameplay.gene.Genes;
 import com.human.common.model.GeneCarrier;
 import com.human.common.registry.init.HumanDataSyncKeys;
 import com.human.common.util.GeneResistanceHurtUtil;
-import com.human.compatibility.avp_alien.AVPAlien;
+import com.human.mixin_util.MixinLivingEntity_GeneCarrier$Compatibility;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.tags.DamageTypeTags;
@@ -179,20 +178,7 @@ public abstract class MixinLivingEntity_GeneCarrier extends Entity implements Ge
 
     @Unique
     private void avp_human$handleAcidBloodGene(DamageSource damageSource, float damage) {
-        if (!AVPAlien.MOD.isLoaded()) {
-            return;
-        }
-
-        // TODO: Factor in additive in here.
-        var acidBloodChance = getOrCreateGeneManager().getGeneContainer()
-            .getActiveGeneMap()
-            .getValue(Genes.ACIDIC_BLOOD, GeneOperationType.MULTIPLICATIVE);
-
-        if (getRandom().nextDouble() < acidBloodChance && damageSource != damageSources().genericKill()) {
-            var self = LivingEntity.class.cast(this);
-            var randomPos = AcidBleedUtil.computeRandomPosFromBoundingBox(self);
-            AcidBleedUtil.spawnAcid(self, damage, randomPos);
-        }
+        MixinLivingEntity_GeneCarrier$Compatibility.runAcidicBloodGeneEffects(this, damageSource, damage);
     }
 
     @Unique
