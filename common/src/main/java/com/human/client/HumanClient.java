@@ -76,12 +76,12 @@ public class HumanClient {
 
         HumanKeybindingRegistry.initialize();
 
-        if (AVPAlien.MOD.isLoaded()) {
-            registerEntityHeadData();
-            registerParasiteHeadAttachmentOffsetData();
-        }
-
-        MOD.initialize();
+        MOD.initialize(() -> {
+            if (AVPAlien.MOD.isLoaded()) {
+                registerEntityHeadData();
+                registerParasiteHeadAttachmentOffsetData();
+            }
+        });
     }
 
     private static void registerArmorRenderers() {
@@ -228,7 +228,7 @@ public class HumanClient {
     }
 
     private static void registerEntityHeadData() {
-        EntityHeadDataCache.put(HumanEntityTypes.MARINE.get(), HumanEntityHeadData.MARINE);
+        EntityHeadDataCache.put(MOD, HumanEntityTypes.MARINE.get(), HumanEntityHeadData.MARINE);
     }
 
     private static void registerEntityRenderers() {
@@ -289,6 +289,6 @@ public class HumanClient {
     }
 
     private static void registerParasiteHeadAttachmentOffsetData() {
-        ParasiteHeadAttachmentOffsetDataCache.put(HumanEntityTypes.MARINE.get(), HumanParasiteAttachmentOffsetData.MARINE);
+        ParasiteHeadAttachmentOffsetDataCache.put(MOD, HumanEntityTypes.MARINE.get(), HumanParasiteAttachmentOffsetData.MARINE);
     }
 }
