@@ -4,7 +4,6 @@ import com.blib.common.constant.PlayerStatConstants;
 import com.blib.common.gameplay.goap.GOAPUser;
 import com.blib.common.gameplay.model.inventory.BLibInventory;
 import com.blib.common.gameplay.model.inventory.BLibInventoryHolder;
-import com.blib.common.gameplay.util.ItemUtil;
 import com.blib.common.util.codec.schema.CodecSchemas;
 import com.human.Human;
 import com.human.common.config.HumanConfig;
@@ -14,7 +13,6 @@ import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resi
 import com.human.common.registry.init.item.HumanArmorItems;
 import com.human.common.registry.init.item.HumanGunItems;
 import com.human.common.registry.init.item.HumanItems;
-import com.just.core.functional.option.Option;
 import com.just.goap.graph.Graph;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
@@ -118,11 +116,12 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
 
     @Override
     protected void dropEquipment() {
-        super.dropEquipment();
-        Arrays.stream(inventory.getSerializedItemStacks())
-            .map(itemStack -> ItemUtil.drop(this, itemStack, true, false))
-            .flatMap(Option::toStream)
-            .forEach(itemEntity -> level().addFreshEntity(itemEntity));
+        // TODO: Implement this in the future.
+        // super.dropEquipment();
+        // Arrays.stream(inventory.getSerializedItemStacks())
+        // .map(itemStack -> ItemUtil.drop(this, itemStack, true, false))
+        // .flatMap(Option::toStream)
+        // .forEach(itemEntity -> level().addFreshEntity(itemEntity));
     }
 
     @Override
