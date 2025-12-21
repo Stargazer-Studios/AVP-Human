@@ -228,7 +228,7 @@ public class HumanClient {
     }
 
     private static void registerEntityHeadData() {
-        EntityHeadDataCache.put(MOD, HumanEntityTypes.MARINE.get(), HumanEntityHeadData.MARINE);
+        EntityHeadDataCache.put(MOD, HumanEntityTypes.MARINE, HumanEntityHeadData.MARINE);
     }
 
     private static void registerEntityRenderers() {
@@ -289,6 +289,6 @@ public class HumanClient {
     }
 
     private static void registerParasiteHeadAttachmentOffsetData() {
-        ParasiteHeadAttachmentOffsetDataCache.put(MOD, HumanEntityTypes.MARINE.get(), HumanParasiteAttachmentOffsetData.MARINE);
+        ParasiteHeadAttachmentOffsetDataCache.put(MOD, HumanEntityTypes.MARINE, HumanParasiteAttachmentOffsetData.MARINE);
     }
 }

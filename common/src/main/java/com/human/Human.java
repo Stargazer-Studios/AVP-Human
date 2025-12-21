@@ -72,73 +72,75 @@ public class Human {
 
         HumanConfig.initialize();
 
-        MOD.initialize(() -> {
-            HumanSoundEvents.initialize();
-            HumanArmorMaterials.initialize();
-            HumanDataComponents.initialize();
-            HumanEntityTypes.initialize();
+        MOD.initialize(Human::runInitialization);
+    }
 
-            // Blocks
-            CoreBlocks.initialize();
-            HumanBlocks.initialize();
-            HumanFerroaluminumBlocks.initialize();
-            HumanIndustrialConcreteBlocks.initialize();
-            HumanIndustrialGlassBlocks.initialize();
-            HumanPaddingBlocks.initialize();
-            HumanPlasticBlocks.initialize();
-            HumanSteelBlocks.initialize();
-            HumanTitaniumBlocks.initialize();
+    private static void runInitialization() {
+        HumanSoundEvents.initialize();
+        HumanArmorMaterials.initialize();
+        HumanDataComponents.initialize();
+        HumanEntityTypes.initialize();
 
-            HumanBlockEntityTypes.initialize();
+        // Blocks
+        CoreBlocks.initialize();
+        HumanBlocks.initialize();
+        HumanFerroaluminumBlocks.initialize();
+        HumanIndustrialConcreteBlocks.initialize();
+        HumanIndustrialGlassBlocks.initialize();
+        HumanPaddingBlocks.initialize();
+        HumanPlasticBlocks.initialize();
+        HumanSteelBlocks.initialize();
+        HumanTitaniumBlocks.initialize();
 
-            // Items
-            HumanItems.initialize();
-            HumanGunItems.initialize();
-            HumanBlockItems.initialize();
-            HumanFerroaluminumBlockItems.initialize();
-            HumanIndustrialConcreteBlockItems.initialize();
-            HumanIndustrialGlassBlockItems.initialize();
-            HumanPaddingBlockItems.initialize();
-            HumanPlasticBlockItems.initialize();
-            HumanSpawnEggItems.initialize();
-            HumanSteelBlockItems.initialize();
-            HumanTitaniumBlockItems.initialize();
+        HumanBlockEntityTypes.initialize();
 
-            // Villagers
-            HumanVillagerPoiTypes.initialize();
-            HumanVillagerProfessions.initialize();
-            HumanVillagerTrades.initialize();
+        // Items
+        HumanItems.initialize();
+        HumanGunItems.initialize();
+        HumanBlockItems.initialize();
+        HumanFerroaluminumBlockItems.initialize();
+        HumanIndustrialConcreteBlockItems.initialize();
+        HumanIndustrialGlassBlockItems.initialize();
+        HumanPaddingBlockItems.initialize();
+        HumanPlasticBlockItems.initialize();
+        HumanSpawnEggItems.initialize();
+        HumanSteelBlockItems.initialize();
+        HumanTitaniumBlockItems.initialize();
 
-            HumanDataSyncKeys.initialize();
+        // Villagers
+        HumanVillagerPoiTypes.initialize();
+        HumanVillagerProfessions.initialize();
+        HumanVillagerTrades.initialize();
 
-            HumanPacketDirectionRegistry.initialize();
-            HumanServerPacketHandlerRegistry.initialize();
-            HumanMenuTypes.initialize();
-            HumanMobEffects.initialize();
+        HumanDataSyncKeys.initialize();
 
-            HumanArmorItems.initialize();
+        HumanPacketDirectionRegistry.initialize();
+        HumanServerPacketHandlerRegistry.initialize();
+        HumanMenuTypes.initialize();
+        HumanMobEffects.initialize();
 
-            HumanRecipes.initialize();
+        HumanArmorItems.initialize();
 
-            HumanEntitySpawns.initialize();
-            HumanFuels.initialize();
+        HumanRecipes.initialize();
 
-            HumanCreativeModeTabs.initialize();
+        HumanEntitySpawns.initialize();
+        HumanFuels.initialize();
 
-            HumanCommands.initialize();
+        HumanCreativeModeTabs.initialize();
 
-            // AI
-            Genes.initialize();
-            MarineGOAP.initialize();
+        HumanCommands.initialize();
 
-            // Listeners / Events
-            HumanReloadListeners.initialize();
+        // AI
+        Genes.initialize();
+        MarineGOAP.initialize();
 
-            HumanDataMigrations.initialize();
+        // Listeners / Events
+        HumanReloadListeners.initialize();
 
-            MOD.events().postLevelTick().register(Human::updatePowerSystem);
-            MOD.events().onTagsUpdated().register(($1, $2) -> GeneBonusDataRegistry.rebuildLookupMappings());
-        });
+        HumanDataMigrations.initialize();
+
+        MOD.events().postLevelTick().register(Human::updatePowerSystem);
+        MOD.events().onTagsUpdated().register(($1, $2) -> GeneBonusDataRegistry.rebuildLookupMappings());
     }
 
     private static void updatePowerSystem(Level level) {
