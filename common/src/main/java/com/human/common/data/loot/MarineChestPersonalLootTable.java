@@ -1,5 +1,10 @@
 package com.human.common.data.loot;
 
+import com.alien.common.registry.init.item.AlienItems;
+import com.blib.common.data.loot.condition.item.BLibLootItemModLoadedCondition;
+import com.human.compatibility.avp_alien.AVPAlien;
+import com.human.compatibility.avp_predator.AVPPredator;
+import com.predator.common.registry.init.item.PredatorItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -80,15 +85,24 @@ public class MarineChestPersonalLootTable {
         )
         .withPool(
             LootPool.lootPool()
+                .when(BLibLootItemModLoadedCondition.isModLoaded(AVPAlien.MOD.id()))
                 .setRolls(ConstantValue.exactly(1))
+                .add(EmptyLootItem.emptyItem().setWeight(1))
                 .add(
-                    EmptyLootItem.emptyItem().setWeight(1)
+                    LootItem.lootTableItem(AlienItems.ALIEN_MUSIC_DISC_1_FRAGMENT.get())
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
+                        .setWeight(1)
                 )
-            // FIXME:
-            // .add(
-            // LootItem.lootTableItem(AlienItems.ALIEN_MUSIC_DISC_1_FRAGMENT.get())
-            // .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
-            // .setWeight(1)
-            // )
+        )
+        .withPool(
+            LootPool.lootPool()
+                .when(BLibLootItemModLoadedCondition.isModLoaded(AVPPredator.MOD.id()))
+                .setRolls(ConstantValue.exactly(1))
+                .add(EmptyLootItem.emptyItem().setWeight(1))
+                .add(
+                    LootItem.lootTableItem(PredatorItems.PREDATOR_MUSIC_DISC_1_FRAGMENT.get())
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
+                        .setWeight(1)
+                )
         );
 }
