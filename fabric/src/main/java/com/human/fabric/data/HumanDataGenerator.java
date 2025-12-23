@@ -23,6 +23,9 @@ import com.human.fabric.data.worldgen.HumanCaveConfigurations;
 import com.human.fabric.data.worldgen.HumanCavePlacements;
 import com.human.fabric.data.worldgen.HumanOreConfigurations;
 import com.human.fabric.data.worldgen.HumanOrePlacements;
+import com.human.fabric.data.worldgen.HumanStructureSets;
+import com.human.fabric.data.worldgen.HumanStructureTemplatePools;
+import com.human.fabric.data.worldgen.HumanStructures;
 import com.human.fabric.data.worldgen.HumanWorldGenProvider;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
@@ -76,8 +79,14 @@ public class HumanDataGenerator implements DataGeneratorEntrypoint {
     public void buildRegistry(RegistrySetBuilder registryBuilder) {
         registryBuilder.add(Registries.CONFIGURED_FEATURE, HumanCaveConfigurations::bootstrap);
         registryBuilder.add(Registries.CONFIGURED_FEATURE, HumanOreConfigurations::bootstrap);
+
         registryBuilder.add(Registries.DAMAGE_TYPE, DamageTypeBootstrapper::bootstrap);
+
         registryBuilder.add(Registries.PLACED_FEATURE, HumanCavePlacements::bootstrap);
         registryBuilder.add(Registries.PLACED_FEATURE, HumanOrePlacements::bootstrap);
+
+        registryBuilder.add(Registries.STRUCTURE, HumanStructures::bootstrap);
+        registryBuilder.add(Registries.STRUCTURE_SET, HumanStructureSets::bootstrap);
+        registryBuilder.add(Registries.TEMPLATE_POOL, HumanStructureTemplatePools::bootstrap);
     }
 }

@@ -4,6 +4,7 @@ import com.blib.common.data.fixer.BLibDataFixerRegistry;
 import com.blib.common.data.fixer.migration.BLibDataMigration;
 import com.blib.common.model.Version;
 import com.human.Human;
+import com.human.common.gameplay.worldgen.structure.HumanMarineCampStructure;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -32,7 +33,7 @@ public class AVP_0_3_0_To_Human_0_1_0 implements BLibDataMigration {
     }
 
     private static void registerStructureDataFixes() {
-        register(createResourceKeyEntry(Registries.STRUCTURE, "marine_camp_grass"));
+        register(createResourceKeyEntry(Registries.STRUCTURE, HumanMarineCampStructure.NAME));
         register(createResourceKeyEntry(Registries.STRUCTURE, "mobile_lab"));
         register(createResourceKeyEntry(Registries.STRUCTURE, "outpost_comm_bottom"));
         register(createResourceKeyEntry(Registries.STRUCTURE, "outpost_munition"));
@@ -41,7 +42,7 @@ public class AVP_0_3_0_To_Human_0_1_0 implements BLibDataMigration {
     }
 
     private static void registerStructureSetDataFixes() {
-        register(createResourceKeyEntry(Registries.STRUCTURE_SET, "marine_camp_grass"));
+        register(createResourceKeyEntry(Registries.STRUCTURE_SET, HumanMarineCampStructure.NAME));
         register(createResourceKeyEntry(Registries.STRUCTURE_SET, "mobile_lab"));
         register(createResourceKeyEntry(Registries.STRUCTURE_SET, "outpost_comm_bottom"));
         register(createResourceKeyEntry(Registries.STRUCTURE_SET, "outpost_munition"));
@@ -51,7 +52,7 @@ public class AVP_0_3_0_To_Human_0_1_0 implements BLibDataMigration {
 
     private static void registerTemplatePoolDataFixes() {
         register(createResourceKeyEntry(Registries.TEMPLATE_POOL, "marine"));
-        register(createResourceKeyEntry(Registries.TEMPLATE_POOL, "marine_camp_grass"));
+        register(createResourceKeyEntry(Registries.TEMPLATE_POOL, HumanMarineCampStructure.NAME));
         register(createResourceKeyEntry(Registries.TEMPLATE_POOL, "marine_summon"));
         register(createResourceKeyEntry(Registries.TEMPLATE_POOL, "mobile_lab"));
         register(createResourceKeyEntry(Registries.TEMPLATE_POOL, "outpost_comm_bottom"));

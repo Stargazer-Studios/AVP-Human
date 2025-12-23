@@ -26,6 +26,7 @@ import com.human.common.registry.init.HumanMenuTypes;
 import com.human.common.registry.init.HumanMobEffects;
 import com.human.common.registry.init.HumanRecipes;
 import com.human.common.registry.init.HumanSoundEvents;
+import com.human.common.registry.init.HumanStructureTypes;
 import com.human.common.registry.init.HumanVillagerPoiTypes;
 import com.human.common.registry.init.HumanVillagerProfessions;
 import com.human.common.registry.init.HumanVillagerTrades;
@@ -129,6 +130,8 @@ public class Human {
         HumanCreativeModeTabs.initialize();
 
         HumanCommands.initialize();
+
+        HumanStructureTypes.initialize();
 
         // AI
         Genes.initialize();

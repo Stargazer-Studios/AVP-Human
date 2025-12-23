@@ -18,10 +18,10 @@ public class HumanWorldGenProvider extends FabricDynamicRegistryProvider {
     protected void configure(HolderLookup.Provider registries, Entries entries) {
         entries.addAll(registries.lookupOrThrow(Registries.CONFIGURED_FEATURE));
         entries.addAll(registries.lookupOrThrow(Registries.PLACED_FEATURE));
-        // entries.addAll(registries.lookupOrThrow(Registries.BIOME));
-        // entries.addAll(registries.lookupOrThrow(Registries.STRUCTURE));
-        // entries.addAll(registries.lookupOrThrow(Registries.STRUCTURE_SET));
-        // entries.addAll(registries.lookupOrThrow(Registries.TEMPLATE_POOL));
+
+        entries.addAll(registries.lookupOrThrow(Registries.STRUCTURE));
+        entries.addAll(registries.lookupOrThrow(Registries.STRUCTURE_SET));
+        entries.addAll(registries.lookupOrThrow(Registries.TEMPLATE_POOL));
     }
 
     @Override

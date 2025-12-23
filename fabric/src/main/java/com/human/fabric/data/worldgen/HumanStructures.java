@@ -1,0 +1,52 @@
+package com.human.fabric.data.worldgen;
+
+import com.human.common.gameplay.worldgen.structure.HumanMarineCampStructure;
+import com.human.common.registry.key.HumanStructureKeys;
+import com.human.common.registry.key.HumanStructureTemplatePoolKeys;
+import net.minecraft.core.HolderSet;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.world.level.biome.Biomes;
+import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.structure.Structure;
+import net.minecraft.world.level.levelgen.structure.TerrainAdjustment;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+import java.util.Map;
+
+public class HumanStructures {
+
+    public static void bootstrap(BootstrapContext<Structure> registry) {
+        var structure = createHumanMarineCampStructure(registry);
+
+        registry.register(HumanStructureKeys.MARINE_CAMP_GRASS, structure);
+    }
+
+    private static @NotNull HumanMarineCampStructure createHumanMarineCampStructure(BootstrapContext<Structure> registry) {
+        var biomeLookup = registry.lookup(Registries.BIOME);
+        var templatePoolLookup = registry.lookup(Registries.TEMPLATE_POOL);
+
+        var biomes = HolderSet.direct(
+            List.of(
+                biomeLookup.getOrThrow(Biomes.BIRCH_FOREST),
+                biomeLookup.getOrThrow(Biomes.FLOWER_FOREST),
+                biomeLookup.getOrThrow(Biomes.FOREST),
+                biomeLookup.getOrThrow(Biomes.OLD_GROWTH_BIRCH_FOREST),
+                biomeLookup.getOrThrow(Biomes.PLAINS),
+                biomeLookup.getOrThrow(Biomes.SUNFLOWER_PLAINS),
+                biomeLookup.getOrThrow(Biomes.TAIGA)
+            )
+        );
+
+        var structureSettings = new Structure.StructureSettings.Builder(biomes)
+            .generationStep(GenerationStep.Decoration.TOP_LAYER_MODIFICATION)
+            .spawnOverrides(Map.of())
+            .terrainAdapation(TerrainAdjustment.BEARD_BOX)
+            .build();
+
+        var startPool = templatePoolLookup.getOrThrow(HumanStructureTemplatePoolKeys.MARINE_CAMP_GRASS);
+
+        return new HumanMarineCampStructure(structureSettings, startPool);
+    }
+}
