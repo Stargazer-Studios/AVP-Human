@@ -4,6 +4,7 @@ import com.blib.common.registry.BLibHolder;
 import com.blib.common.registry.BLibRegistry;
 import com.human.Human;
 import com.human.common.gameplay.worldgen.structure.HumanMarineCampStructure;
+import com.human.common.gameplay.worldgen.structure.HumanMobileLabStructure;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.levelgen.structure.Structure;
@@ -16,6 +17,11 @@ public class HumanStructureTypes {
     public static final BLibHolder<StructureType<HumanMarineCampStructure>> MARINE_CAMP = create(
         HumanMarineCampStructure.NAME,
         HumanMarineCampStructure.CODEC
+    );
+
+    public static final BLibHolder<StructureType<HumanMobileLabStructure>> MOBILE_LAB = create(
+        HumanMobileLabStructure.NAME,
+        HumanMobileLabStructure.CODEC
     );
 
     private static <T extends Structure> BLibHolder<StructureType<T>> create(String path, MapCodec<T> codec) {

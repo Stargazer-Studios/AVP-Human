@@ -2,6 +2,7 @@ package com.human.fabric.data.worldgen;
 
 import com.human.Human;
 import com.human.common.gameplay.worldgen.structure.HumanMarineCampStructure;
+import com.human.common.gameplay.worldgen.structure.HumanMobileLabStructure;
 import com.human.common.registry.key.HumanStructureTemplatePoolKeys;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.registries.Registries;
@@ -24,6 +25,20 @@ public class HumanStructureTemplatePools {
                 List.of(
                     Pair.of(
                         StructurePoolElement.single(Human.MOD.resources().createLocation(HumanMarineCampStructure.NAME).toString())
+                            .apply(StructureTemplatePool.Projection.RIGID),
+                        1
+                    )
+                )
+            )
+        );
+
+        registry.register(
+            HumanStructureTemplatePoolKeys.MOBILE_LAB,
+            new StructureTemplatePool(
+                templatePoolLookup.getOrThrow(Pools.EMPTY),
+                List.of(
+                    Pair.of(
+                        StructurePoolElement.single(Human.MOD.resources().createLocation(HumanMobileLabStructure.NAME).toString())
                             .apply(StructureTemplatePool.Projection.RIGID),
                         1
                     )
