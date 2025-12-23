@@ -41,6 +41,7 @@ dependencies {
 
     // Compatibility
     compileOnly "com.avp.alien:avp_alien-common-1.21.1:${project.avp_alien_version}"
+    compileOnly "com.avp.predator:avp_predator-common-1.21.1:${project.avp_predator_version}"
 }
 
 configurations.configureEach {
