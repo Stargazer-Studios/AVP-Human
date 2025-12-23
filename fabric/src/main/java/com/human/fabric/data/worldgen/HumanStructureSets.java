@@ -14,6 +14,14 @@ public class HumanStructureSets {
         var structureLookup = registry.lookup(Registries.STRUCTURE);
 
         registry.register(
+            HumanStructureSetKeys.COMMUNICATIONS_OUTPOST,
+            new StructureSet(
+                structureLookup.getOrThrow(HumanStructureKeys.COMMUNICATIONS_OUTPOST),
+                new RandomSpreadStructurePlacement(40, 15, RandomSpreadType.TRIANGULAR, 1234764890)
+            )
+        );
+
+        registry.register(
             HumanStructureSetKeys.MARINE_CAMP_GRASS,
             new StructureSet(
                 structureLookup.getOrThrow(HumanStructureKeys.MARINE_CAMP_GRASS),

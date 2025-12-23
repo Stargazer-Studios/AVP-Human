@@ -1,6 +1,7 @@
 package com.human.common.registry.key;
 
 import com.human.Human;
+import com.human.common.gameplay.worldgen.structure.HumanCommunicationsOutpostStructure;
 import com.human.common.gameplay.worldgen.structure.HumanMarineCampStructure;
 import com.human.common.gameplay.worldgen.structure.HumanMobileLabStructure;
 import net.minecraft.core.registries.Registries;
@@ -8,6 +9,8 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.structure.StructureSet;
 
 public class HumanStructureSetKeys {
+
+    public static final ResourceKey<StructureSet> COMMUNICATIONS_OUTPOST = create(HumanCommunicationsOutpostStructure.NAME);
 
     public static final ResourceKey<StructureSet> MARINE_CAMP_GRASS = create(HumanMarineCampStructure.NAME);
 

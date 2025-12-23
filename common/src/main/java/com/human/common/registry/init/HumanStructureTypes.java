@@ -3,6 +3,7 @@ package com.human.common.registry.init;
 import com.blib.common.registry.BLibHolder;
 import com.blib.common.registry.BLibRegistry;
 import com.human.Human;
+import com.human.common.gameplay.worldgen.structure.HumanCommunicationsOutpostStructure;
 import com.human.common.gameplay.worldgen.structure.HumanMarineCampStructure;
 import com.human.common.gameplay.worldgen.structure.HumanMobileLabStructure;
 import com.mojang.serialization.MapCodec;
@@ -13,6 +14,11 @@ import net.minecraft.world.level.levelgen.structure.StructureType;
 public class HumanStructureTypes {
 
     private static final BLibRegistry<StructureType<?>> REGISTRY = Human.MOD.registries().create(BuiltInRegistries.STRUCTURE_TYPE);
+
+    public static final BLibHolder<StructureType<HumanCommunicationsOutpostStructure>> COMMUNICATIONS_OUTPOST = create(
+        HumanCommunicationsOutpostStructure.NAME,
+        HumanCommunicationsOutpostStructure.CODEC
+    );
 
     public static final BLibHolder<StructureType<HumanMarineCampStructure>> MARINE_CAMP = create(
         HumanMarineCampStructure.NAME,
