@@ -5,6 +5,7 @@ import com.human.common.registry.init.HumanStructureTypes;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.Holder;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.heightproviders.ConstantHeight;
@@ -47,6 +48,47 @@ public class HumanMarineCampStructure extends JigsawBackedStructure {
             DimensionPadding.ZERO,
             LiquidSettings.APPLY_WATERLOGGING
         );
+    }
+
+    @Override
+    protected @NotNull Optional<GenerationStub> findGenerationPoint(@NotNull GenerationContext generationContext) {
+        if (!extraSpawningChecks(generationContext)) {
+            return Optional.empty();
+        }
+
+        return super.findGenerationPoint(generationContext);
+    }
+
+    private boolean extraSpawningChecks(@NotNull Structure.GenerationContext generationContext) {
+        // Grabs the chunk position we are at
+        var chunkPos = generationContext.chunkPos();
+
+        // Get first non-air block.
+        var occupiedYPos = generationContext.chunkGenerator()
+            .getFirstOccupiedHeight(
+                chunkPos.getMinBlockX(),
+                chunkPos.getMinBlockZ(),
+                Heightmap.Types.WORLD_SURFACE_WG,
+                generationContext.heightAccessor(),
+                generationContext.randomState()
+            );
+
+        // Get column of blocks at corner of the chunk. BEWARE, getBaseColumn is an expensive call. Call this as few
+        // times as possible for your checks. Note, this column of blocks only has the raw terrain of the world which
+        // for the Overworld is Stone, Water, and Air.
+        var columnOfBlocks = generationContext.chunkGenerator()
+            .getBaseColumn(
+                chunkPos.getBlockX(0),
+                chunkPos.getBlockZ(0),
+                generationContext.heightAccessor(),
+                generationContext.randomState()
+            );
+
+        // Grab the block at the specified Y value.
+        var blockState = columnOfBlocks.getBlock(occupiedYPos);
+
+        // Checks to make sure our structure only spawns if the spot does NOT have water.
+        return !blockState.getFluidState().is(FluidTags.WATER);
     }
 
     @Override

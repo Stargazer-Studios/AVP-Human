@@ -25,7 +25,7 @@
 - N/A
 
 ## 🐞 Fixes
-- N/A
+- Fixed marine camps sometimes generating in water.
 
 ## 🧪 Experimental
 - N/A
