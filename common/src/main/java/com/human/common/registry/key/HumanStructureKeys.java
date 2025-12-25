@@ -5,6 +5,8 @@ import com.human.common.gameplay.worldgen.structure.HumanCommunicationsOutpostSt
 import com.human.common.gameplay.worldgen.structure.HumanMarineCampStructure;
 import com.human.common.gameplay.worldgen.structure.HumanMobileLabStructure;
 import com.human.common.gameplay.worldgen.structure.HumanMunitionsOutpostStructure;
+import com.human.common.gameplay.worldgen.structure.HumanSupplyOutpostBadlandsStructure;
+import com.human.common.gameplay.worldgen.structure.HumanSupplyOutpostDesertStructure;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.structure.Structure;
@@ -18,6 +20,10 @@ public class HumanStructureKeys {
     public static final ResourceKey<Structure> MOBILE_LAB = create(HumanMobileLabStructure.NAME);
 
     public static final ResourceKey<Structure> MUNITIONS_OUTPOST = create(HumanMunitionsOutpostStructure.NAME);
+
+    public static final ResourceKey<Structure> SUPPLY_OUTPOST_BADLANDS = create(HumanSupplyOutpostBadlandsStructure.NAME);
+
+    public static final ResourceKey<Structure> SUPPLY_OUTPOST_DESERT = create(HumanSupplyOutpostDesertStructure.NAME);
 
     private static ResourceKey<Structure> create(String path) {
         return Human.MOD.resources().createKey(Registries.STRUCTURE, path);

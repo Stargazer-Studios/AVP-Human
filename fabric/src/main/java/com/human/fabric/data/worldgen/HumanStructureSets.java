@@ -44,5 +44,21 @@ public class HumanStructureSets {
                 new RandomSpreadStructurePlacement(40, 15, RandomSpreadType.TRIANGULAR, 1534767890)
             )
         );
+
+        registry.register(
+            HumanStructureSetKeys.SUPPLY_OUTPOST_BADLANDS,
+            new StructureSet(
+                structureLookup.getOrThrow(HumanStructureKeys.SUPPLY_OUTPOST_BADLANDS),
+                new RandomSpreadStructurePlacement(40, 15, RandomSpreadType.TRIANGULAR, 1787767890)
+            )
+        );
+
+        registry.register(
+            HumanStructureSetKeys.SUPPLY_OUTPOST_DESERT,
+            new StructureSet(
+                structureLookup.getOrThrow(HumanStructureKeys.SUPPLY_OUTPOST_DESERT),
+                new RandomSpreadStructurePlacement(40, 15, RandomSpreadType.TRIANGULAR, 1587767890)
+            )
+        );
     }
 }

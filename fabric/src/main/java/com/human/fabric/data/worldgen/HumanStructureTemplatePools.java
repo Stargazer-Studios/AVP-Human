@@ -5,6 +5,8 @@ import com.human.common.gameplay.worldgen.structure.HumanCommunicationsOutpostSt
 import com.human.common.gameplay.worldgen.structure.HumanMarineCampStructure;
 import com.human.common.gameplay.worldgen.structure.HumanMobileLabStructure;
 import com.human.common.gameplay.worldgen.structure.HumanMunitionsOutpostStructure;
+import com.human.common.gameplay.worldgen.structure.HumanSupplyOutpostBadlandsStructure;
+import com.human.common.gameplay.worldgen.structure.HumanSupplyOutpostDesertStructure;
 import com.human.common.registry.key.HumanStructureTemplatePoolKeys;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.HolderGetter;
@@ -19,7 +21,11 @@ import java.util.List;
 
 public class HumanStructureTemplatePools {
 
-    public static final String BASE_PATH = "outpost/comm/";
+    public static final String COMMUNICATIONS_OUTPOST_BASE_PATH = "outpost/comm/";
+
+    public static final String MUNITION_OUTPOST_BASE_PATH = "outpost/munition/";
+
+    public static final String SUPPLY_OUTPOST_BASE_PATH = "outpost/supply/";
 
     public static void bootstrap(BootstrapContext<StructureTemplatePool> registry) {
         var templatePoolLookup = registry.lookup(Registries.TEMPLATE_POOL);
@@ -34,7 +40,18 @@ public class HumanStructureTemplatePools {
         );
         registry.register(HumanStructureTemplatePoolKeys.MARINE_CAMP_GRASS, createMarineCampGrassStructureTemplatePool(templatePoolLookup));
         registry.register(HumanStructureTemplatePoolKeys.MOBILE_LAB, createMobileLabStructureTemplatePool(templatePoolLookup));
-        registry.register(HumanStructureTemplatePoolKeys.MUNITIONS_OUTPOST, createMunitionsOutpostStructureTemplatePool(templatePoolLookup));
+        registry.register(
+            HumanStructureTemplatePoolKeys.MUNITIONS_OUTPOST,
+            createMunitionsOutpostStructureTemplatePool(templatePoolLookup)
+        );
+        registry.register(
+            HumanStructureTemplatePoolKeys.SUPPLY_OUTPOST_BADLANDS,
+            createSupplyOutpostStructureTemplatePool(templatePoolLookup, HumanSupplyOutpostBadlandsStructure.NAME)
+        );
+        registry.register(
+            HumanStructureTemplatePoolKeys.SUPPLY_OUTPOST_DESERT,
+            createSupplyOutpostStructureTemplatePool(templatePoolLookup, HumanSupplyOutpostDesertStructure.NAME)
+        );
     }
 
     private static @NotNull StructureTemplatePool createCommunicationsOutpostBottomTemplatePool(
@@ -45,7 +62,9 @@ public class HumanStructureTemplatePools {
             List.of(
                 Pair.of(
                     StructurePoolElement.single(
-                        Human.MOD.resources().createLocation(BASE_PATH + HumanCommunicationsOutpostStructure.NAME).toString()
+                        Human.MOD.resources()
+                            .createLocation(COMMUNICATIONS_OUTPOST_BASE_PATH + HumanCommunicationsOutpostStructure.NAME)
+                            .toString()
                     )
                         .apply(StructureTemplatePool.Projection.RIGID),
                     1
@@ -62,7 +81,9 @@ public class HumanStructureTemplatePools {
             List.of(
                 Pair.of(
                     StructurePoolElement.single(
-                        Human.MOD.resources().createLocation(BASE_PATH + HumanCommunicationsOutpostStructure.NAME_TOP).toString()
+                        Human.MOD.resources()
+                            .createLocation(COMMUNICATIONS_OUTPOST_BASE_PATH + HumanCommunicationsOutpostStructure.NAME_TOP)
+                            .toString()
                     )
                         .apply(StructureTemplatePool.Projection.RIGID),
                     1
@@ -109,8 +130,24 @@ public class HumanStructureTemplatePools {
             List.of(
                 Pair.of(
                     StructurePoolElement.single(
-                            Human.MOD.resources().createLocation(BASE_PATH + HumanMunitionsOutpostStructure.NAME).toString()
-                        )
+                        Human.MOD.resources().createLocation(MUNITION_OUTPOST_BASE_PATH + HumanMunitionsOutpostStructure.NAME).toString()
+                    )
+                        .apply(StructureTemplatePool.Projection.RIGID),
+                    1
+                )
+            )
+        );
+    }
+
+    private static @NotNull StructureTemplatePool createSupplyOutpostStructureTemplatePool(
+        HolderGetter<StructureTemplatePool> templatePoolLookup,
+        String name
+    ) {
+        return new StructureTemplatePool(
+            templatePoolLookup.getOrThrow(Pools.EMPTY),
+            List.of(
+                Pair.of(
+                    StructurePoolElement.single(Human.MOD.resources().createLocation(SUPPLY_OUTPOST_BASE_PATH + name).toString())
                         .apply(StructureTemplatePool.Projection.RIGID),
                     1
                 )

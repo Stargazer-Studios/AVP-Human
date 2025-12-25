@@ -4,19 +4,27 @@ import com.human.common.gameplay.worldgen.structure.HumanCommunicationsOutpostSt
 import com.human.common.gameplay.worldgen.structure.HumanMarineCampStructure;
 import com.human.common.gameplay.worldgen.structure.HumanMobileLabStructure;
 import com.human.common.gameplay.worldgen.structure.HumanMunitionsOutpostStructure;
+import com.human.common.gameplay.worldgen.structure.HumanSupplyOutpostBadlandsStructure;
+import com.human.common.gameplay.worldgen.structure.HumanSupplyOutpostDesertStructure;
+import com.human.common.gameplay.worldgen.structure.HumanSupplyOutpostStructure;
 import com.human.common.registry.key.HumanStructureKeys;
 import com.human.common.registry.key.HumanStructureTemplatePoolKeys;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.TerrainAdjustment;
+import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.Map;
+import java.util.function.BiFunction;
 
 public class HumanStructures {
 
@@ -25,6 +33,24 @@ public class HumanStructures {
         registry.register(HumanStructureKeys.MARINE_CAMP_GRASS, createHumanMarineCampStructure(registry));
         registry.register(HumanStructureKeys.MOBILE_LAB, createHumanMobileLabStructure(registry));
         registry.register(HumanStructureKeys.MUNITIONS_OUTPOST, createHumanMunitionsOutpostStructure(registry));
+        registry.register(
+            HumanStructureKeys.SUPPLY_OUTPOST_BADLANDS,
+            createHumanSupplyOutpostStructure(
+                registry,
+                List.of(Biomes.BADLANDS, Biomes.WOODED_BADLANDS),
+                HumanStructureTemplatePoolKeys.SUPPLY_OUTPOST_BADLANDS,
+                HumanSupplyOutpostBadlandsStructure::new
+            )
+        );
+        registry.register(
+            HumanStructureKeys.SUPPLY_OUTPOST_DESERT,
+            createHumanSupplyOutpostStructure(
+                registry,
+                List.of(Biomes.DESERT),
+                HumanStructureTemplatePoolKeys.SUPPLY_OUTPOST_DESERT,
+                HumanSupplyOutpostDesertStructure::new
+            )
+        );
     }
 
     private static @NotNull HumanCommunicationsOutpostStructure createHumanCommunicationsOutpostStructure(
@@ -129,5 +155,27 @@ public class HumanStructures {
         var startPool = templatePoolLookup.getOrThrow(HumanStructureTemplatePoolKeys.MUNITIONS_OUTPOST);
 
         return new HumanMunitionsOutpostStructure(structureSettings, startPool);
+    }
+
+    private static @NotNull HumanSupplyOutpostStructure createHumanSupplyOutpostStructure(
+        BootstrapContext<Structure> registry,
+        List<ResourceKey<Biome>> biomeKeys,
+        ResourceKey<StructureTemplatePool> templatePoolResourceKey,
+        BiFunction<Structure.StructureSettings, Holder.Reference<StructureTemplatePool>, HumanSupplyOutpostStructure> structureFactory
+    ) {
+        var biomeLookup = registry.lookup(Registries.BIOME);
+        var templatePoolLookup = registry.lookup(Registries.TEMPLATE_POOL);
+
+        var biomesHolder = HolderSet.direct(biomeKeys.stream().map(biomeLookup::getOrThrow).toList());
+
+        var structureSettings = new Structure.StructureSettings.Builder(biomesHolder)
+            .generationStep(GenerationStep.Decoration.SURFACE_STRUCTURES)
+            .spawnOverrides(Map.of())
+            .terrainAdapation(TerrainAdjustment.BEARD_BOX)
+            .build();
+
+        var startPool = templatePoolLookup.getOrThrow(templatePoolResourceKey);
+
+        return structureFactory.apply(structureSettings, startPool);
     }
 }

@@ -7,6 +7,8 @@ import com.human.common.gameplay.worldgen.structure.HumanCommunicationsOutpostSt
 import com.human.common.gameplay.worldgen.structure.HumanMarineCampStructure;
 import com.human.common.gameplay.worldgen.structure.HumanMobileLabStructure;
 import com.human.common.gameplay.worldgen.structure.HumanMunitionsOutpostStructure;
+import com.human.common.gameplay.worldgen.structure.HumanSupplyOutpostBadlandsStructure;
+import com.human.common.gameplay.worldgen.structure.HumanSupplyOutpostDesertStructure;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.levelgen.structure.Structure;
@@ -34,6 +36,16 @@ public class HumanStructureTypes {
     public static final BLibHolder<StructureType<HumanMunitionsOutpostStructure>> MUNITIONS_OUTPOST = create(
         HumanMunitionsOutpostStructure.NAME,
         HumanMunitionsOutpostStructure.CODEC
+    );
+
+    public static final BLibHolder<StructureType<HumanSupplyOutpostBadlandsStructure>> SUPPLY_OUTPOST_BADLANDS = create(
+        HumanSupplyOutpostBadlandsStructure.NAME,
+        HumanSupplyOutpostBadlandsStructure.CODEC
+    );
+
+    public static final BLibHolder<StructureType<HumanSupplyOutpostDesertStructure>> SUPPLY_OUTPOST_DESERT = create(
+        HumanSupplyOutpostDesertStructure.NAME,
+        HumanSupplyOutpostDesertStructure.CODEC
     );
 
     private static <T extends Structure> BLibHolder<StructureType<T>> create(String path, MapCodec<T> codec) {
