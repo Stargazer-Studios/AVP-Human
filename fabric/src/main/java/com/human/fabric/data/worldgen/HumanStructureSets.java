@@ -36,5 +36,13 @@ public class HumanStructureSets {
                 new RandomSpreadStructurePlacement(40, 15, RandomSpreadType.TRIANGULAR, 1287767890)
             )
         );
+
+        registry.register(
+            HumanStructureSetKeys.MUNITIONS_OUTPOST,
+            new StructureSet(
+                structureLookup.getOrThrow(HumanStructureKeys.MUNITIONS_OUTPOST),
+                new RandomSpreadStructurePlacement(40, 15, RandomSpreadType.TRIANGULAR, 1534767890)
+            )
+        );
     }
 }

@@ -6,6 +6,7 @@ import com.human.Human;
 import com.human.common.gameplay.worldgen.structure.HumanCommunicationsOutpostStructure;
 import com.human.common.gameplay.worldgen.structure.HumanMarineCampStructure;
 import com.human.common.gameplay.worldgen.structure.HumanMobileLabStructure;
+import com.human.common.gameplay.worldgen.structure.HumanMunitionsOutpostStructure;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.levelgen.structure.Structure;
@@ -28,6 +29,11 @@ public class HumanStructureTypes {
     public static final BLibHolder<StructureType<HumanMobileLabStructure>> MOBILE_LAB = create(
         HumanMobileLabStructure.NAME,
         HumanMobileLabStructure.CODEC
+    );
+
+    public static final BLibHolder<StructureType<HumanMunitionsOutpostStructure>> MUNITIONS_OUTPOST = create(
+        HumanMunitionsOutpostStructure.NAME,
+        HumanMunitionsOutpostStructure.CODEC
     );
 
     private static <T extends Structure> BLibHolder<StructureType<T>> create(String path, MapCodec<T> codec) {

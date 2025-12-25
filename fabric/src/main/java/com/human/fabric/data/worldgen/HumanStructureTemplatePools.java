@@ -4,6 +4,7 @@ import com.human.Human;
 import com.human.common.gameplay.worldgen.structure.HumanCommunicationsOutpostStructure;
 import com.human.common.gameplay.worldgen.structure.HumanMarineCampStructure;
 import com.human.common.gameplay.worldgen.structure.HumanMobileLabStructure;
+import com.human.common.gameplay.worldgen.structure.HumanMunitionsOutpostStructure;
 import com.human.common.registry.key.HumanStructureTemplatePoolKeys;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.HolderGetter;
@@ -33,6 +34,7 @@ public class HumanStructureTemplatePools {
         );
         registry.register(HumanStructureTemplatePoolKeys.MARINE_CAMP_GRASS, createMarineCampGrassStructureTemplatePool(templatePoolLookup));
         registry.register(HumanStructureTemplatePoolKeys.MOBILE_LAB, createMobileLabStructureTemplatePool(templatePoolLookup));
+        registry.register(HumanStructureTemplatePoolKeys.MUNITIONS_OUTPOST, createMunitionsOutpostStructureTemplatePool(templatePoolLookup));
     }
 
     private static @NotNull StructureTemplatePool createCommunicationsOutpostBottomTemplatePool(
@@ -92,6 +94,23 @@ public class HumanStructureTemplatePools {
             List.of(
                 Pair.of(
                     StructurePoolElement.single(Human.MOD.resources().createLocation(HumanMobileLabStructure.NAME).toString())
+                        .apply(StructureTemplatePool.Projection.RIGID),
+                    1
+                )
+            )
+        );
+    }
+
+    private static @NotNull StructureTemplatePool createMunitionsOutpostStructureTemplatePool(
+        HolderGetter<StructureTemplatePool> templatePoolLookup
+    ) {
+        return new StructureTemplatePool(
+            templatePoolLookup.getOrThrow(Pools.EMPTY),
+            List.of(
+                Pair.of(
+                    StructurePoolElement.single(
+                            Human.MOD.resources().createLocation(BASE_PATH + HumanMunitionsOutpostStructure.NAME).toString()
+                        )
                         .apply(StructureTemplatePool.Projection.RIGID),
                     1
                 )

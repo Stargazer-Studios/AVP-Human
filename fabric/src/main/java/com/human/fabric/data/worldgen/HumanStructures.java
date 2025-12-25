@@ -3,6 +3,7 @@ package com.human.fabric.data.worldgen;
 import com.human.common.gameplay.worldgen.structure.HumanCommunicationsOutpostStructure;
 import com.human.common.gameplay.worldgen.structure.HumanMarineCampStructure;
 import com.human.common.gameplay.worldgen.structure.HumanMobileLabStructure;
+import com.human.common.gameplay.worldgen.structure.HumanMunitionsOutpostStructure;
 import com.human.common.registry.key.HumanStructureKeys;
 import com.human.common.registry.key.HumanStructureTemplatePoolKeys;
 import net.minecraft.core.HolderSet;
@@ -23,6 +24,7 @@ public class HumanStructures {
         registry.register(HumanStructureKeys.COMMUNICATIONS_OUTPOST, createHumanCommunicationsOutpostStructure(registry));
         registry.register(HumanStructureKeys.MARINE_CAMP_GRASS, createHumanMarineCampStructure(registry));
         registry.register(HumanStructureKeys.MOBILE_LAB, createHumanMobileLabStructure(registry));
+        registry.register(HumanStructureKeys.MUNITIONS_OUTPOST, createHumanMunitionsOutpostStructure(registry));
     }
 
     private static @NotNull HumanCommunicationsOutpostStructure createHumanCommunicationsOutpostStructure(
@@ -102,5 +104,30 @@ public class HumanStructures {
         var startPool = templatePoolLookup.getOrThrow(HumanStructureTemplatePoolKeys.MOBILE_LAB);
 
         return new HumanMobileLabStructure(structureSettings, startPool);
+    }
+
+    private static @NotNull HumanMunitionsOutpostStructure createHumanMunitionsOutpostStructure(
+        BootstrapContext<Structure> registry
+    ) {
+        var biomeLookup = registry.lookup(Registries.BIOME);
+        var templatePoolLookup = registry.lookup(Registries.TEMPLATE_POOL);
+
+        var biomes = HolderSet.direct(
+            List.of(
+                biomeLookup.getOrThrow(Biomes.OLD_GROWTH_PINE_TAIGA),
+                biomeLookup.getOrThrow(Biomes.OLD_GROWTH_SPRUCE_TAIGA),
+                biomeLookup.getOrThrow(Biomes.SNOWY_TAIGA)
+            )
+        );
+
+        var structureSettings = new Structure.StructureSettings.Builder(biomes)
+            .generationStep(GenerationStep.Decoration.TOP_LAYER_MODIFICATION)
+            .spawnOverrides(Map.of())
+            .terrainAdapation(TerrainAdjustment.BEARD_BOX)
+            .build();
+
+        var startPool = templatePoolLookup.getOrThrow(HumanStructureTemplatePoolKeys.MUNITIONS_OUTPOST);
+
+        return new HumanMunitionsOutpostStructure(structureSettings, startPool);
     }
 }
