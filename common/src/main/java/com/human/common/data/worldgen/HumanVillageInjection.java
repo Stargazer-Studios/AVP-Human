@@ -16,29 +16,35 @@ public class HumanVillageInjection {
     public static void addBuildingToPool(
         Registry<StructureTemplatePool> templatePoolRegistry,
         Registry<StructureProcessorList> processorListRegistry,
-        ResourceLocation poolRL,
-        String nbtPieceRL,
+        ResourceLocation targetResourceLocation,
+        ResourceLocation resourceLocation,
         int weight
     ) {
-        if (processorListRegistry.getHolder(BLibStructureProcessorListKeys.EMPTY_PROCESSOR_LIST_KEY).isEmpty()) {
+        var holderOptional = processorListRegistry.getHolder(BLibStructureProcessorListKeys.EMPTY_PROCESSOR_LIST_KEY);
+
+        if (holderOptional.isEmpty()) {
             return;
         }
 
-        var emptyProcessorList = processorListRegistry.getHolder(BLibStructureProcessorListKeys.EMPTY_PROCESSOR_LIST_KEY).get();
-        var pool = templatePoolRegistry.get(poolRL);
+        var emptyProcessorList = holderOptional.get();
+        var structureTemplatePool = templatePoolRegistry.get(targetResourceLocation);
 
-        if (pool == null) {
+        if (structureTemplatePool == null) {
             return;
         }
 
-        var piece = SinglePoolElement.legacy(nbtPieceRL, emptyProcessorList).apply(StructureTemplatePool.Projection.RIGID);
+        var legacySinglePoolElement = SinglePoolElement.legacy(resourceLocation.toString(), emptyProcessorList)
+            .apply(StructureTemplatePool.Projection.RIGID);
+        var structurePoolAccessor = (StructurePoolAccessor) structureTemplatePool;
 
         for (var i = 0; i < weight; i++) {
-            ((StructurePoolAccessor) pool).getElements().add(piece);
+            structurePoolAccessor.getElements().add(legacySinglePoolElement);
         }
 
-        var listOfPieceEntries = new ArrayList<>(((StructurePoolAccessor) pool).getElementCounts());
-        listOfPieceEntries.add(new Pair<>(piece, weight));
-        ((StructurePoolAccessor) pool).setElementCounts(listOfPieceEntries);
+        var listOfPieceEntries = new ArrayList<>(structurePoolAccessor.getElementCounts());
+
+        listOfPieceEntries.add(new Pair<>(legacySinglePoolElement, weight));
+
+        structurePoolAccessor.setElementCounts(listOfPieceEntries);
     }
 }
