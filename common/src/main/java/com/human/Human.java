@@ -52,6 +52,7 @@ import com.human.common.registry.init.item.block.HumanPlasticBlockItems;
 import com.human.common.registry.init.item.block.HumanSteelBlockItems;
 import com.human.common.registry.init.item.block.HumanTitaniumBlockItems;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -64,7 +65,7 @@ public class Human {
 
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-    public static final MarinePatrolSpawner CUSTOM_SPAWNER = new MarinePatrolSpawner();
+    public static final MarinePatrolSpawner MARINE_PATROL_SPAWNER = new MarinePatrolSpawner();
 
     public static final NukedAshPlacement NUKED_ASH_PLACEMENT = new NukedAshPlacement();
 
@@ -142,15 +143,28 @@ public class Human {
 
         HumanDataMigrations.initialize();
 
-        MOD.events().postLevelTick().register(Human::updatePowerSystem);
+        MOD.events().postLevelTick().register(Human::tickMarinePatrolSpawner);
+        MOD.events().postLevelTick().register(Human::tickNukeAshPlacement);
+        MOD.events().postLevelTick().register(Human::tickPowerSystem);
         MOD.events().onTagsUpdated().register(($1, $2) -> GeneBonusDataRegistry.rebuildLookupMappings());
     }
 
-    private static void updatePowerSystem(Level level) {
-        if (level.isClientSide) {
-            return;
+    private static void tickMarinePatrolSpawner(Level level) {
+        if (!level.isClientSide) {
+            var serverLevel = (ServerLevel) level;
+            Human.MARINE_PATROL_SPAWNER.tick(serverLevel, serverLevel.getGameRules().getBoolean(GameRules.RULE_DOMOBSPAWNING), true);
         }
+    }
 
-        PowerSystem.get((ServerLevel) level).tick();
+    private static void tickNukeAshPlacement(Level level) {
+        if (!level.isClientSide) {
+            Human.NUKED_ASH_PLACEMENT.tick((ServerLevel) level);
+        }
+    }
+
+    private static void tickPowerSystem(Level level) {
+        if (!level.isClientSide) {
+            PowerSystem.get((ServerLevel) level).tick();
+        }
     }
 }

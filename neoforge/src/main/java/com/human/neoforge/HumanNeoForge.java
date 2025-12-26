@@ -5,8 +5,6 @@ import com.human.common.gameplay.worldgen.structure.HumanCommissaryVillagerHouse
 import com.human.common.registry.init.HumanVillagerProfessions;
 import com.human.common.registry.key.HumanVillagerGiftKeys;
 import com.human.mixin.GiveGiftToHeroAccessor;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.GameRules;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -20,25 +18,18 @@ public class HumanNeoForge {
     public HumanNeoForge(IEventBus modBus) {
         Human.initialize();
 
-        NeoForge.EVENT_BUS.addListener(HumanNeoForge::addNewVillageBuilding);
+        NeoForge.EVENT_BUS.addListener(HumanNeoForge::addNewVillageBuildings);
         NeoForge.EVENT_BUS.addListener(EventPriority.HIGH, HumanNeoForge::onWorldEndTick);
     }
 
-    // Inject Village houses
-    private static void addNewVillageBuilding(ServerAboutToStartEvent event) {
+    private static void addNewVillageBuildings(ServerAboutToStartEvent event) {
         HumanCommissaryVillagerHouseInjector.inject(event.getServer());
     }
 
-    // Marine Spawns and Ash placement in nuked zones
     private static void onWorldEndTick(LevelTickEvent.Post event) {
-        if (event.getLevel().isClientSide)
-            return;
-
-        var serverLevel = (ServerLevel) event.getLevel();
-        var gifts = GiveGiftToHeroAccessor.getGifts();
-
-        Human.CUSTOM_SPAWNER.tick(serverLevel, serverLevel.getGameRules().getBoolean(GameRules.RULE_DOMOBSPAWNING), true);
-        Human.NUKED_ASH_PLACEMENT.tick(serverLevel);
-        gifts.put(HumanVillagerProfessions.COMMISSARY.get(), HumanVillagerGiftKeys.COMMISSARY_GIFT_LOOT_TABLE);
+        if (!event.getLevel().isClientSide) {
+            var gifts = GiveGiftToHeroAccessor.getGifts();
+            gifts.put(HumanVillagerProfessions.COMMISSARY.get(), HumanVillagerGiftKeys.COMMISSARY_GIFT_LOOT_TABLE);
+        }
     }
 }

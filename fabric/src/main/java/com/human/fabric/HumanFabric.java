@@ -11,7 +11,6 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.GameRules;
 
 public class HumanFabric implements ModInitializer {
 
@@ -29,14 +28,7 @@ public class HumanFabric implements ModInitializer {
     }
 
     private void onWorldTick(ServerLevel serverLevel) {
-        Human.CUSTOM_SPAWNER.tick(serverLevel, serverLevel.getGameRules().getBoolean(GameRules.RULE_DOMOBSPAWNING), true);
-        Human.NUKED_ASH_PLACEMENT.tick(serverLevel);
-        modifyGifts();
-    }
-
-    public static void modifyGifts() {
         var gifts = GiveGiftToHeroAccessor.getGifts();
-
         gifts.put(HumanVillagerProfessions.COMMISSARY.get(), HumanVillagerGiftKeys.COMMISSARY_GIFT_LOOT_TABLE);
     }
 }
