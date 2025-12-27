@@ -10,6 +10,7 @@ import com.human.common.gameplay.gene.Genes;
 import com.human.common.gameplay.level.patrol.MarinePatrolSpawner;
 import com.human.common.gameplay.power.PowerSystem;
 import com.human.common.gameplay.worldgen.biome.NukedAshPlacement;
+import com.human.common.gameplay.worldgen.structure.HumanCommissaryVillagerHouseInjector;
 import com.human.common.network.HumanPacketDirectionRegistry;
 import com.human.common.network.HumanServerPacketHandlerRegistry;
 import com.human.common.registry.GeneBonusDataRegistry;
@@ -51,6 +52,9 @@ import com.human.common.registry.init.item.block.HumanPaddingBlockItems;
 import com.human.common.registry.init.item.block.HumanPlasticBlockItems;
 import com.human.common.registry.init.item.block.HumanSteelBlockItems;
 import com.human.common.registry.init.item.block.HumanTitaniumBlockItems;
+import com.human.common.registry.key.HumanVillagerGiftKeys;
+import com.human.mixin.GiveGiftToHeroAccessor;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
@@ -147,6 +151,13 @@ public class Human {
         MOD.events().postLevelTick().register(Human::tickNukeAshPlacement);
         MOD.events().postLevelTick().register(Human::tickPowerSystem);
         MOD.events().onTagsUpdated().register(($1, $2) -> GeneBonusDataRegistry.rebuildLookupMappings());
+        MOD.events().serverStarting().register(HumanCommissaryVillagerHouseInjector::inject);
+        MOD.events().serverStarting().register(Human::injectVillagerGifts);
+    }
+
+    private static void injectVillagerGifts(MinecraftServer minecraftServer) {
+        var gifts = GiveGiftToHeroAccessor.getGifts();
+        gifts.put(HumanVillagerProfessions.COMMISSARY.get(), HumanVillagerGiftKeys.COMMISSARY_GIFT_LOOT_TABLE);
     }
 
     private static void tickMarinePatrolSpawner(Level level) {
