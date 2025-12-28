@@ -6,6 +6,7 @@ import com.blib.common.registry.BLibHolder;
 import com.blib.common.registry.BLibRegistry;
 import com.human.Human;
 import com.human.HumanResources;
+import com.human.common.gameplay.entity.living.human.AbstractHuman;
 import com.just.codec.stream.impl.StreamCodecs;
 import com.mojang.serialization.Codec;
 
@@ -61,6 +62,12 @@ public class HumanDataSyncKeys {
         builder -> builder.networkSynchronized(StreamCodecs.BOOLEAN)
             .persistent("isMale", Codec.BOOL)
             .build(true)
+    );
+
+    public static final BLibHolder<DataSyncKey<Integer>> MARINE_TICKS_UNTIL_BORED = create(
+        "marine_ticks_until_bored",
+        builder -> builder.persistent("marineTicksUntilBored", Codec.INT)
+            .build(AbstractHuman.MIN_IDLE_TIME_IN_TICKS)
     );
 
     private static <T> BLibHolder<DataSyncKey<T>> create(String path, Function<DataSyncKey.Builder<T>, DataSyncKey<T>> factory) {

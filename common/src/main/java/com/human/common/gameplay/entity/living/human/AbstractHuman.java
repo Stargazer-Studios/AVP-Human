@@ -5,6 +5,7 @@ import com.blib.common.network.data.DataUser;
 import com.blib.common.util.MovementAnalyzer;
 import com.human.common.config.HumanConfig;
 import com.human.common.registry.init.HumanDataSyncKeys;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -21,6 +22,10 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public abstract class AbstractHuman extends PathfinderMob implements DataUser {
+
+    public static final int MAX_IDLE_TIME_IN_TICKS = 12 * 20;
+
+    public static final int MIN_IDLE_TIME_IN_TICKS = 7 * 20;
 
     public static AttributeSupplier.Builder applyFrom(HumanConfig.StatsConfigs.AdvancedStats config, AttributeSupplier.Builder builder) {
         builder.add(Attributes.ARMOR, config.armor);
@@ -46,6 +51,8 @@ public abstract class AbstractHuman extends PathfinderMob implements DataUser {
 
     public final DataAccessor<Integer> skinColor;
 
+    public final DataAccessor<Integer> ticksUntilBored;
+
     protected final MovementAnalyzer movementAnalyzer;
 
     private final HumanNavigationManager navigationManager;
@@ -65,7 +72,11 @@ public abstract class AbstractHuman extends PathfinderMob implements DataUser {
         this.movementAnalyzer = new MovementAnalyzer(this);
         this.navigationManager = new HumanNavigationManager(this, moveControl);
         this.humanFeatureManager = new HumanFeatureManager(this);
+
+        this.ticksUntilBored = new DataAccessor<>(this, HumanDataSyncKeys.MARINE_TICKS_UNTIL_BORED.get());
     }
+
+    public abstract void runAttackAnimations();
 
     @Override
     public int getAmbientSoundInterval() {
@@ -87,12 +98,14 @@ public abstract class AbstractHuman extends PathfinderMob implements DataUser {
         return SoundEvents.GENERIC_HURT;
     }
 
-    public abstract void runAttackAnimations();
-
     @Override
     public void tick() {
         super.tick();
         movementAnalyzer.tick();
+
+        if (!level().isClientSide()) {
+            ticksUntilBored.set(Math.max(ticksUntilBored.get() - 1, 0));
+        }
     }
 
     @Override
@@ -119,12 +132,10 @@ public abstract class AbstractHuman extends PathfinderMob implements DataUser {
         }
     }
 
-    void setMoveControl(MoveControl moveControl) {
-        this.moveControl = moveControl;
-    }
-
-    void setNavigation(PathNavigation navigation) {
-        this.navigation = navigation;
+    @Override
+    public void readAdditionalSaveData(@NotNull CompoundTag compound) {
+        super.readAdditionalSaveData(compound);
+        resetTicksUntilBored();
     }
 
     public HumanFeatureManager getHumanFeatureManager() {
@@ -143,5 +154,21 @@ public abstract class AbstractHuman extends PathfinderMob implements DataUser {
         }
 
         beardVariant.set(variantIndex);
+    }
+
+    public int getTicksUntilBored() {
+        return ticksUntilBored.get();
+    }
+
+    public void resetTicksUntilBored() {
+        this.ticksUntilBored.set(getRandom().nextIntBetweenInclusive(MIN_IDLE_TIME_IN_TICKS, MAX_IDLE_TIME_IN_TICKS));
+    }
+
+    void setMoveControl(MoveControl moveControl) {
+        this.moveControl = moveControl;
+    }
+
+    void setNavigation(PathNavigation navigation) {
+        this.navigation = navigation;
     }
 }
