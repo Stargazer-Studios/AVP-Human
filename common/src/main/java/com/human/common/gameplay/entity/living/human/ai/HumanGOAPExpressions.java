@@ -1,4 +1,4 @@
-package com.human.common.gameplay.entity.living.human.marine.ai;
+package com.human.common.gameplay.entity.living.human.ai;
 
 import com.human.common.gameplay.entity.living.human.marine.ai.model.ItemTarget;
 import com.just.goap.condition.expression.Expression;

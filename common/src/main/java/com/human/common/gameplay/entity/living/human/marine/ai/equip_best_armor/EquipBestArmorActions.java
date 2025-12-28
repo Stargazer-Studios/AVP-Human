@@ -1,8 +1,8 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor;
 
 import com.blib.common.gameplay.model.inventory.BLibInventory;
+import com.human.common.gameplay.entity.living.human.ai.HumanGOAPExpressions;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
-import com.human.common.gameplay.entity.living.human.marine.ai.HumanGOAPExpressions;
 import com.human.common.gameplay.entity.living.human.marine.ai.action.EquipItemAction;
 import com.human.common.gameplay.entity.living.human.marine.ai.model.ArmorSetTarget;
 import com.human.common.gameplay.entity.living.human.marine.ai.model.ItemTarget;
