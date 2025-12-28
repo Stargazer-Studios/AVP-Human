@@ -2,7 +2,7 @@ package com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor
 
 import com.blib.common.gameplay.model.inventory.BLibInventory;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
-import com.human.common.gameplay.entity.living.human.marine.ai.AVPExpressions;
+import com.human.common.gameplay.entity.living.human.marine.ai.HumanGOAPExpressions;
 import com.human.common.gameplay.entity.living.human.marine.ai.action.EquipItemAction;
 import com.human.common.gameplay.entity.living.human.marine.ai.model.ArmorSetTarget;
 import com.human.common.gameplay.entity.living.human.marine.ai.model.ItemTarget;
@@ -31,7 +31,7 @@ public class EquipBestArmorActions {
 
     public static final Action<Marine> EQUIP_BEST_ARMOR_PIECES = Action.<Marine>builder("EquipBestArmorPiecesAction")
         .addPrecondition(EquipBestArmorSensors.IS_ANY_BEST_ARMOR_SET_PIECE_IN_INVENTORY.key(), Expressions.Boolean.isTrue())
-        .addPrecondition(EquipBestArmorSensors.BEST_ARMOR_SET_TARGET.key(), AVPExpressions.ArmorSetTarget.isNotEmpty())
+        .addPrecondition(EquipBestArmorSensors.BEST_ARMOR_SET_TARGET.key(), HumanGOAPExpressions.ArmorSetTarget.isNotEmpty())
         .addEffect(EquipBestArmorSensors.ARE_ALL_BEST_ARMOR_SET_PIECES_EQUIPPED.key().asDerived(), true)
         .withPerformCallback((marine, b, c) -> {
             var bestArmorTarget = b.getOrDefault(EquipBestArmorSensors.BEST_ARMOR_SET_TARGET.key(), ArmorSetTarget.EMPTY);

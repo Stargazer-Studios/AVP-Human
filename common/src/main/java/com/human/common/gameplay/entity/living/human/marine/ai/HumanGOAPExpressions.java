@@ -4,7 +4,7 @@ import com.human.common.gameplay.entity.living.human.marine.ai.model.ItemTarget;
 import com.just.goap.condition.expression.Expression;
 import com.just.goap.condition.expression.Expressions;
 
-public class AVPExpressions {
+public class HumanGOAPExpressions {
 
     public static class ArmorSetTarget {
 
