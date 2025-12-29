@@ -18,6 +18,7 @@ public class ExtinguishFireActions {
 
     public static final Action<Marine> PLACE_WATER_AT_FEET_ACTION = Action.<Marine>builder("PlaceWaterAtFeetAction")
         .addPrecondition(GOAPSensors.IS_ON_GROUND.key(), Expressions.Boolean.isTrue())
+        .addPrecondition(MarineGOAPSensors.IS_IN_ULTRA_WARM_DIMENSION.key(), Expressions.Boolean.isFalse())
         .addPrecondition(ExtinguishFireSensors.HAS_WATER_BUCKET_EQUIPPED.key(), Expressions.Boolean.isTrue())
         .addPrecondition(MarineGOAPSensors.IS_CURRENT_BLOCK_POS_REPLACEABLE.key(), Expressions.Boolean.isTrue())
         .addEffect(GOAPSensors.IS_ON_FIRE.key().asDerived(), false)
