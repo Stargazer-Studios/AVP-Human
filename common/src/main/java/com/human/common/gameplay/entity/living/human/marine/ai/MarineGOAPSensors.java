@@ -12,6 +12,11 @@ public class MarineGOAPSensors {
         entity -> entity.level().getBlockState(entity.blockPosition()).canBeReplaced()
     );
 
+    public static final Sensor.Mono<Entity, Boolean> IS_IN_ULTRA_WARM_DIMENSION = Sensors.map(
+        StateKey.sensed("is_in_ultra_warm_dimension"),
+        entity -> entity.level().dimensionType().ultraWarm()
+    );
+
     private MarineGOAPSensors() {
         throw new UnsupportedOperationException();
     }
