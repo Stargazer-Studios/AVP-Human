@@ -13,13 +13,17 @@ import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resi
 import com.human.common.registry.init.item.HumanArmorItems;
 import com.human.common.registry.init.item.HumanGunItems;
 import com.human.common.registry.init.item.HumanItems;
+import com.just.codec.impl.Codecs;
+import com.just.core.functional.option.Option;
 import com.just.goap.graph.Graph;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.Mob;
@@ -40,6 +44,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 import java.util.function.Supplier;
 
 public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUser<Marine> {
@@ -51,6 +56,8 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
     public static final float FOLLOW_RANGE = 20F;
 
     private static final String NBT_INVENTORY = "inventory";
+
+    private static final String NBT_LEADER_UUID = "leaderUUID";
 
     @Deprecated
     private static final String NBT_PERSONAL_INVENTORY = "personalInventory";
@@ -98,10 +105,13 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
 
     private final BLibInventory inventory;
 
+    private Option<UUID> leaderUUIDOption;
+
     public Marine(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level);
         this.animationDispatcher = new MarineAnimationDispatcher(this);
         this.inventory = new BLibInventory(27);
+        this.leaderUUIDOption = Option.none();
     }
 
     @Override
@@ -158,6 +168,13 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
             return InteractionResult.sidedSuccess(level().isClientSide);
         }
 
+        if (itemStack.getItem() == Items.DIAMOND && !hasLeader()) {
+            itemStack.consume(1, player);
+            setLeader(player);
+            // TODO: Grant advancement here, maybe?
+            return InteractionResult.sidedSuccess(level().isClientSide);
+        }
+
         return super.mobInteract(player, interactionHand);
     }
 
@@ -187,12 +204,45 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
                 .inspectErr(tag -> Human.LOGGER.error("Failed to load tag '{}'. Tag: {}", NBT_INVENTORY, tag))
                 .ifOk(loadedInventory -> Arrays.stream(loadedInventory.getSerializedItemStacks()).forEach(inventory::addItemStack));
         }
+
+        if (compoundTag.contains(NBT_LEADER_UUID)) {
+            Codecs.UUID.decode(CodecSchemas.NBT, compoundTag.get(NBT_LEADER_UUID))
+                .ifOk(uuid -> this.leaderUUIDOption = Option.ofNullable(uuid));
+        }
     }
 
     @Override
     public void addAdditionalSaveData(@NotNull CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
         compoundTag.put(NBT_INVENTORY, BLibInventory.CODEC.encode(CodecSchemas.NBT, inventory));
+        leaderUUIDOption.ifSome(leaderUUID -> compoundTag.put(NBT_LEADER_UUID, Codecs.UUID.encode(CodecSchemas.NBT, leaderUUID)));
+    }
+
+    public Option<UUID> getLeaderUUID() {
+        return leaderUUIDOption;
+    }
+
+    public Option<Entity> getLeader() {
+        // TODO: Switch this from 'andThen' to 'map' once Just fixes null not being a valid return choice.
+        return getLeaderUUID().andThen(
+            uuid -> Option.ofNullable(level() instanceof ServerLevel serverLevel ? serverLevel.getEntity(uuid) : null)
+        );
+    }
+
+    public boolean hasLeader() {
+        return leaderUUIDOption.isSome();
+    }
+
+    public void setLeader(Entity entity) {
+        setLeaderUUID(entity.getUUID());
+    }
+
+    public void setLeaderUUID(UUID leaderUUID) {
+        this.leaderUUIDOption = Option.some(leaderUUID);
+    }
+
+    public void removeLeader() {
+        this.leaderUUIDOption = Option.none();
     }
 
     private void addInitialArmor() {

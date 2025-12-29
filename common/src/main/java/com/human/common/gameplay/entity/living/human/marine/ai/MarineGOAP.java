@@ -12,6 +12,9 @@ import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.
 import com.human.common.gameplay.entity.living.human.marine.ai.extinguish_fire.ExtinguishFireActions;
 import com.human.common.gameplay.entity.living.human.marine.ai.extinguish_fire.ExtinguishFireGoals;
 import com.human.common.gameplay.entity.living.human.marine.ai.extinguish_fire.ExtinguishFireSensors;
+import com.human.common.gameplay.entity.living.human.marine.ai.follow_leader.FollowLeaderActions;
+import com.human.common.gameplay.entity.living.human.marine.ai.follow_leader.FollowLeaderGoals;
+import com.human.common.gameplay.entity.living.human.marine.ai.follow_leader.FollowLeaderSensors;
 import com.human.common.gameplay.entity.living.human.marine.ai.idle.IdleActions;
 import com.human.common.gameplay.entity.living.human.marine.ai.idle.IdleGoals;
 import com.human.common.gameplay.entity.living.human.marine.ai.idle.IdleSensors;
@@ -25,6 +28,7 @@ public class MarineGOAP {
         .apply(MarineGOAP::addEquipBestArmorPackage)
         .apply(MarineGOAP::addExtinguishSelfPackage)
         .apply(MarineGOAP::addSatisfyBoredomPackage)
+        .apply(MarineGOAP::addStayCloseToLeaderPackage)
         .build();
 
     private static void addSensorsPackage(Graph.Builder<Marine> graphBuilder) {
@@ -100,8 +104,25 @@ public class MarineGOAP {
         // Actions that can complete the goal.
         graphBuilder.addAction(IdleActions.WANDER_ACTION);
 
+        // Used for preventing wandering if marine has a leader.
+        graphBuilder.addSensor(FollowLeaderSensors.HAS_LEADER);
         // Used for determining when the marine should wander around.
         graphBuilder.addSensor(IdleSensors.IS_BORED);
+    }
+
+    private static void addStayCloseToLeaderPackage(Graph.Builder<Marine> graphBuilder) {
+        // The goal we want to complete.
+        graphBuilder.addGoal(FollowLeaderGoals.STAY_CLOSE_TO_LEADER_GOAL);
+
+        // Actions that can complete the goal.
+        graphBuilder.addAction(FollowLeaderActions.MOVE_CLOSER_TO_LEADER_ACTION);
+
+        // Used for determining if the marine is able to follow the leader.
+        graphBuilder.addSensor(FollowLeaderSensors.CAN_FOLLOW_LEADER);
+        // Used for determining if the marine has a leader to follow.
+        graphBuilder.addSensor(FollowLeaderSensors.HAS_LEADER);
+        // Used for determining if the marine is too far away from the leader.
+        graphBuilder.addSensor(FollowLeaderSensors.IS_CLOSE_TO_LEADER);
     }
 
     public static void initialize() {}
