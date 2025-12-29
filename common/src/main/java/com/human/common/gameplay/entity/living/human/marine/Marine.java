@@ -4,12 +4,14 @@ import com.blib.common.constant.PlayerStatConstants;
 import com.blib.common.gameplay.goap.GOAPUser;
 import com.blib.common.gameplay.model.inventory.BLibInventory;
 import com.blib.common.gameplay.model.inventory.BLibInventoryHolder;
+import com.blib.common.gameplay.util.ItemUtil;
 import com.blib.common.util.codec.schema.CodecSchemas;
 import com.human.Human;
 import com.human.common.config.HumanConfig;
 import com.human.common.gameplay.entity.living.human.AbstractHuman;
 import com.human.common.gameplay.entity.living.human.marine.ai.MarineGOAP;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.FRIStrategies;
+import com.human.common.registry.init.HumanDataComponents;
 import com.human.common.registry.init.item.HumanArmorItems;
 import com.human.common.registry.init.item.HumanGunItems;
 import com.human.common.registry.init.item.HumanItems;
@@ -126,12 +128,12 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
 
     @Override
     protected void dropEquipment() {
-        // TODO: Implement this in the future.
-        // super.dropEquipment();
-        // Arrays.stream(inventory.getSerializedItemStacks())
-        // .map(itemStack -> ItemUtil.drop(this, itemStack, true, false))
-        // .flatMap(Option::toStream)
-        // .forEach(itemEntity -> level().addFreshEntity(itemEntity));
+        super.dropEquipment();
+        Arrays.stream(inventory.getSerializedItemStacks())
+            .filter(itemStack -> !itemStack.has(HumanDataComponents.MARINE_OWNED.get()))
+            .map(itemStack -> ItemUtil.drop(this, itemStack, true, false))
+            .flatMap(Option::toStream)
+            .forEach(itemEntity -> level().addFreshEntity(itemEntity));
     }
 
     @Override
@@ -141,10 +143,9 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
         @NotNull MobSpawnType spawnType,
         @Nullable SpawnGroupData spawnGroupData
     ) {
-        addInitialWeapon();
-        inventory.addItem(HumanItems.GRENADE.get());
-
         addInitialArmor();
+        addInitialGrenade();
+        addInitialWeapon();
 
         return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
     }
@@ -249,7 +250,11 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
         var randomArmorSetIndex = getRandom().nextInt(DEFAULT_ARMOR_SETS.size());
         var selectedArmor = DEFAULT_ARMOR_SETS.get(randomArmorSetIndex)
             .stream()
-            .map(itemSupplier -> new ItemStack(itemSupplier.get()))
+            .map(itemSupplier -> {
+                var itemStack = new ItemStack(itemSupplier.get());
+                itemStack.set(HumanDataComponents.MARINE_OWNED.get(), true);
+                return itemStack;
+            })
             .toArray(ItemStack[]::new);
 
         for (var i = 0; i < ARMOR_EQUIPMENT_SLOTS.size(); i++) {
@@ -257,9 +262,16 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
         }
     }
 
+    private void addInitialGrenade() {
+        var grenadeItemStack = new ItemStack(HumanItems.GRENADE.get());
+        grenadeItemStack.set(HumanDataComponents.MARINE_OWNED.get(), true);
+        inventory.addItemStack(grenadeItemStack);
+    }
+
     private void addInitialWeapon() {
-        inventory.addItemStack(
-            new ItemStack(USABLE_WEAPON_ITEM_SUPPLIERS.get(random.nextInt(USABLE_WEAPON_ITEM_SUPPLIERS.size())).get())
-        );
+        var randomIndex = random.nextInt(USABLE_WEAPON_ITEM_SUPPLIERS.size());
+        var itemStack = new ItemStack(USABLE_WEAPON_ITEM_SUPPLIERS.get(randomIndex).get());
+        itemStack.set(HumanDataComponents.MARINE_OWNED.get(), true);
+        inventory.addItemStack(itemStack);
     }
 }

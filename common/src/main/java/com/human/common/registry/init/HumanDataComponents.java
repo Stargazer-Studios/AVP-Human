@@ -63,6 +63,13 @@ public class HumanDataComponents {
             .cacheEncoding()
     );
 
+    public static final BLibHolder<DataComponentType<Boolean>> MARINE_OWNED = create(
+        "marine_owned",
+        builder -> builder.persistent(Codec.BOOL)
+            .networkSynchronized(ByteBufCodecs.BOOL)
+            .cacheEncoding()
+    );
+
     public static final BLibHolder<DataComponentType<SyringeContents>> SYRINGE_CONTENTS = create(
         "syringe_contents",
         builder -> builder.persistent(SyringeContents.CODEC)
