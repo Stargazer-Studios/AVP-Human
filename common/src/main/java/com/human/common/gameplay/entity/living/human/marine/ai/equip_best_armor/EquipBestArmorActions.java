@@ -1,14 +1,11 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor;
 
-import com.blib.common.gameplay.model.inventory.BLibInventory;
 import com.human.common.gameplay.entity.living.human.ai.HumanGOAPExpressions;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
-import com.human.common.gameplay.entity.living.human.marine.ai.action.EquipItemAction;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.action.EquipBestArmorPiecesFromInventoryAction;
 import com.human.common.gameplay.entity.living.human.marine.ai.model.ArmorSetTarget;
-import com.human.common.gameplay.entity.living.human.marine.ai.model.ItemTarget;
 import com.just.goap.Action;
 import com.just.goap.condition.expression.Expressions;
-import net.minecraft.world.entity.EquipmentSlot;
 
 public class EquipBestArmorActions {
 
@@ -29,37 +26,13 @@ public class EquipBestArmorActions {
         })
         .build();
 
-    public static final Action<Marine> EQUIP_BEST_ARMOR_PIECES = Action.<Marine>builder("EquipBestArmorPiecesAction")
+    public static final Action<Marine> EQUIP_BEST_ARMOR_PIECES_FROM_INVENTORY = Action.<Marine>builder(
+        "EquipBestArmorPiecesFromInventoryAction"
+    )
         .addPrecondition(EquipBestArmorSensors.IS_ANY_BEST_ARMOR_SET_PIECE_IN_INVENTORY.key(), Expressions.Boolean.isTrue())
         .addPrecondition(EquipBestArmorSensors.BEST_ARMOR_SET_TARGET.key(), HumanGOAPExpressions.ArmorSetTarget.isNotEmpty())
         .addEffect(EquipBestArmorSensors.ARE_ALL_BEST_ARMOR_SET_PIECES_EQUIPPED.key().asDerived(), true)
-        .withPerformCallback((marine, b, c) -> {
-            var bestArmorTarget = b.getOrDefault(EquipBestArmorSensors.BEST_ARMOR_SET_TARGET.key(), ArmorSetTarget.EMPTY);
-
-            if (bestArmorTarget.isEmpty()) {
-                return Action.Signal.ABORT;
-            }
-
-            var signal = Action.Signal.CONTINUE;
-
-            if (bestArmorTarget.helmet() instanceof ItemTarget.Inventory(BLibInventory.Entry entry)) {
-                signal = EquipItemAction.perform(marine, entry, EquipmentSlot.HEAD);
-            }
-
-            if (bestArmorTarget.chestplate() instanceof ItemTarget.Inventory(BLibInventory.Entry entry)) {
-                signal = EquipItemAction.perform(marine, entry, EquipmentSlot.CHEST);
-            }
-
-            if (bestArmorTarget.leggings() instanceof ItemTarget.Inventory(BLibInventory.Entry entry)) {
-                signal = EquipItemAction.perform(marine, entry, EquipmentSlot.LEGS);
-            }
-
-            if (bestArmorTarget.boots() instanceof ItemTarget.Inventory(BLibInventory.Entry entry)) {
-                signal = EquipItemAction.perform(marine, entry, EquipmentSlot.FEET);
-            }
-
-            return signal;
-        })
+        .withPerformCallback(EquipBestArmorPiecesFromInventoryAction::perform)
         .build();
 
     private EquipBestArmorActions() {

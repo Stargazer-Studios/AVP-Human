@@ -52,7 +52,7 @@ public class MarineGOAP {
     private static void addEquipBestArmorPackage(Graph.Builder<Marine> graphBuilder) {
         graphBuilder.addGoal(EquipBestArmorGoals.EQUIP_BEST_ARMOR_GOAL);
 
-        graphBuilder.addAction(EquipBestArmorActions.EQUIP_BEST_ARMOR_PIECES);
+        graphBuilder.addAction(EquipBestArmorActions.EQUIP_BEST_ARMOR_PIECES_FROM_INVENTORY);
 
         // Best armor set sensor.
         graphBuilder.addSensor(EquipBestArmorSensors.BEST_ARMOR_SET_TARGET);
