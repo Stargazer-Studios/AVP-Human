@@ -9,9 +9,7 @@ import com.human.common.registry.init.item.HumanArmorItems;
 import com.just.goap.StateKey;
 import com.just.goap.sensor.Sensor;
 import com.just.goap.sensor.Sensors;
-import com.just.goap.state.ReadableWorldState;
 import net.minecraft.world.entity.LivingEntity;
-import org.jetbrains.annotations.NotNull;
 
 public class EquipBestArmorSensors {
 
@@ -46,7 +44,7 @@ public class EquipBestArmorSensors {
 
     public static final Sensor.Mono<LivingEntity, ArmorSetTarget> MK50_ARMOR_SET_TARGET = Sensors.lazyCompose(
         StateKey.sensed("mk50_armor_set"),
-        (livingEntity, worldState) -> getFullArmorSetOrEmpty(livingEntity, worldState, MK50_ARMOR_SET)
+        (livingEntity, worldState) -> ItemSenseUtil.findFullArmorSetInWorldState(livingEntity, worldState, MK50_ARMOR_SET)
     );
 
     public static final Sensor.Mono<LivingEntity, ArmorSetTarget> NETHER_CHITIN_ARMOR_SET_TARGET = Sensors.lazyCompose(
@@ -66,7 +64,7 @@ public class EquipBestArmorSensors {
 
     public static final Sensor.Mono<LivingEntity, ArmorSetTarget> PRESSURE_SUIT_ARMOR_SET_TARGET = Sensors.lazyCompose(
         StateKey.sensed("pressure_suit_armor_set"),
-        (livingEntity, worldState) -> getFullArmorSetOrEmpty(livingEntity, worldState, PRESSURE_SUIT_ARMOR_SET)
+        (livingEntity, worldState) -> ItemSenseUtil.findFullArmorSetInWorldState(livingEntity, worldState, PRESSURE_SUIT_ARMOR_SET)
     );
 
     public static final Sensor.Mono<LivingEntity, ArmorSetTarget> BEST_ARMOR_SET_TARGET = Sensors.lazyCompose(
@@ -91,43 +89,6 @@ public class EquipBestArmorSensors {
         StateKey.sensed("are_all_best_armor_set_pieces_equipped"),
         (livingEntity, bestArmorSetTarget) -> bestArmorSetTarget.allNoneOrMatch(ItemTarget.Location.EQUIPPED)
     );
-
-    private static @NotNull ArmorSetTarget getFullArmorSetOrEmpty(
-        LivingEntity livingEntity,
-        ReadableWorldState worldState,
-        ArmorSet armorSet
-    ) {
-        var helmetTarget = ItemSenseUtil.findItemInWorldState(livingEntity, worldState, armorSet.helmet().get());
-
-        if (helmetTarget.location() == ItemTarget.Location.NONE) {
-            return ArmorSetTarget.EMPTY;
-        }
-
-        var chestplateTarget = ItemSenseUtil.findItemInWorldState(livingEntity, worldState, armorSet.chestplate().get());
-
-        if (chestplateTarget.location() == ItemTarget.Location.NONE) {
-            return ArmorSetTarget.EMPTY;
-        }
-
-        var chitinLeggingsTarget = ItemSenseUtil.findItemInWorldState(livingEntity, worldState, armorSet.leggings().get());
-
-        if (chitinLeggingsTarget.location() == ItemTarget.Location.NONE) {
-            return ArmorSetTarget.EMPTY;
-        }
-
-        var chitinBootsTarget = ItemSenseUtil.findItemInWorldState(livingEntity, worldState, armorSet.boots().get());
-
-        if (chitinBootsTarget.location() == ItemTarget.Location.NONE) {
-            return ArmorSetTarget.EMPTY;
-        }
-
-        return new ArmorSetTarget(
-            helmetTarget,
-            chestplateTarget,
-            chitinLeggingsTarget,
-            chitinBootsTarget
-        );
-    }
 
     private EquipBestArmorSensors() {
         throw new UnsupportedOperationException();

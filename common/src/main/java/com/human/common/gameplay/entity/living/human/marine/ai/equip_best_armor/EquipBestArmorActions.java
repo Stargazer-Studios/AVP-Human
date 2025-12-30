@@ -9,7 +9,7 @@ import com.just.goap.condition.expression.Expressions;
 
 public class EquipBestArmorActions {
 
-    public static final Action<Marine> PICK_UP_BEST_ARMOR_PIECES = Action.<Marine>builder("PickUpBestArmorPiecesAction")
+    public static final Action<Marine> PICK_UP_BEST_ARMOR_PIECES_ACTION = Action.<Marine>builder("PickUpBestArmorPiecesAction")
         .addPrecondition(EquipBestArmorSensors.IS_ANY_BEST_ARMOR_SET_PIECE_IN_WORLD.key(), Expressions.Boolean.isTrue())
         .addEffect(EquipBestArmorSensors.IS_ANY_BEST_ARMOR_SET_PIECE_IN_WORLD.key().asDerived(), false)
         .addEffect(EquipBestArmorSensors.IS_ANY_BEST_ARMOR_SET_PIECE_IN_INVENTORY.key().asDerived(), true)
@@ -26,7 +26,7 @@ public class EquipBestArmorActions {
         })
         .build();
 
-    public static final Action<Marine> EQUIP_BEST_ARMOR_PIECES_FROM_INVENTORY = Action.<Marine>builder(
+    public static final Action<Marine> EQUIP_BEST_ARMOR_PIECES_FROM_INVENTORY_ACTION = Action.<Marine>builder(
         "EquipBestArmorPiecesFromInventoryAction"
     )
         .addPrecondition(EquipBestArmorSensors.IS_ANY_BEST_ARMOR_SET_PIECE_IN_INVENTORY.key(), Expressions.Boolean.isTrue())

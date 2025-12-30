@@ -2,16 +2,56 @@ package com.human.common.gameplay.entity.living.human.marine.ai.util;
 
 import com.blib.common.gameplay.goap.GOAPSensors;
 import com.blib.common.gameplay.model.inventory.BLibInventoryHolder;
+import com.human.common.gameplay.entity.living.human.marine.ai.model.ArmorSet;
+import com.human.common.gameplay.entity.living.human.marine.ai.model.ArmorSetTarget;
 import com.human.common.gameplay.entity.living.human.marine.ai.model.ItemTarget;
 import com.just.goap.state.ReadableWorldState;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 public class ItemSenseUtil {
+
+    public static @NotNull ArmorSetTarget findFullArmorSetInWorldState(
+        LivingEntity livingEntity,
+        ReadableWorldState worldState,
+        ArmorSet armorSet
+    ) {
+        var helmetTarget = findItemInWorldState(livingEntity, worldState, armorSet.helmet().get());
+
+        if (helmetTarget.location() == ItemTarget.Location.NONE) {
+            return ArmorSetTarget.EMPTY;
+        }
+
+        var chestplateTarget = findItemInWorldState(livingEntity, worldState, armorSet.chestplate().get());
+
+        if (chestplateTarget.location() == ItemTarget.Location.NONE) {
+            return ArmorSetTarget.EMPTY;
+        }
+
+        var chitinLeggingsTarget = findItemInWorldState(livingEntity, worldState, armorSet.leggings().get());
+
+        if (chitinLeggingsTarget.location() == ItemTarget.Location.NONE) {
+            return ArmorSetTarget.EMPTY;
+        }
+
+        var chitinBootsTarget = findItemInWorldState(livingEntity, worldState, armorSet.boots().get());
+
+        if (chitinBootsTarget.location() == ItemTarget.Location.NONE) {
+            return ArmorSetTarget.EMPTY;
+        }
+
+        return new ArmorSetTarget(
+            helmetTarget,
+            chestplateTarget,
+            chitinLeggingsTarget,
+            chitinBootsTarget
+        );
+    }
 
     public static ItemTarget findItemInWorldState(LivingEntity livingEntity, ReadableWorldState worldState, Item targetItem) {
         // If an armor item, check to see if it's equipped in an equipment slot.
