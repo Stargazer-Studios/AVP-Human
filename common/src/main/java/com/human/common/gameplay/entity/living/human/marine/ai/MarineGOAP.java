@@ -73,6 +73,7 @@ public class MarineGOAP {
         graphBuilder.addAction(ExtinguishFireActions.PLACE_WATER_AT_FEET_ACTION);
 
         graphBuilder.addSensor(ExtinguishFireSensors.HAS_WATER_BUCKET_EQUIPPED);
+        graphBuilder.addSensor(MarineGOAPSensors.IS_IN_ULTRA_WARM_DIMENSION);
         graphBuilder.addSensor(ExtinguishFireSensors.WATER_BUCKET_IN_INVENTORY);
     }
 
