@@ -110,11 +110,14 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
 
     private Option<UUID> leaderUUIDOption;
 
+    private MarineMode mode;
+
     public Marine(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level);
         this.animationDispatcher = new MarineAnimationDispatcher(this);
         this.inventory = new BLibInventory(27);
         this.leaderUUIDOption = Option.none();
+        this.mode = MarineMode.FOLLOW;
     }
 
     @Override
@@ -178,6 +181,16 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
 
                 return InteractionResult.sidedSuccess(level().isClientSide);
             }
+
+            if (itemStack.isEmpty()) {
+                if (!level().isClientSide) {
+                    this.mode = mode == MarineMode.FOLLOW
+                        ? MarineMode.HOLD
+                        : MarineMode.FOLLOW;
+                }
+
+                return InteractionResult.sidedSuccess(level().isClientSide);
+            }
         }
 
         return super.mobInteract(player, interactionHand);
@@ -225,6 +238,10 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
 
     public Option<UUID> getLeaderUUID() {
         return leaderUUIDOption;
+    }
+
+    public MarineMode getMode() {
+        return mode;
     }
 
     public Option<Entity> getLeader() {
