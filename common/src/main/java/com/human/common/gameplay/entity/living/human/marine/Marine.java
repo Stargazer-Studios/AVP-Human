@@ -46,6 +46,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.function.Supplier;
 
@@ -154,26 +155,29 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
     protected @NotNull InteractionResult mobInteract(@NotNull Player player, @NotNull InteractionHand interactionHand) {
         var itemStack = player.getItemInHand(interactionHand);
 
-        if (
-            itemStack.getItem() instanceof ArmorItem
-                || itemStack.getItem() == Items.WATER_BUCKET
-                || FRIStrategies.isValid(itemStack)
-        ) {
-            if (!level().isClientSide) {
-                var item = new ItemStack(itemStack.getItem(), 1);
-                item.applyComponents(itemStack.getComponents());
-                itemStack.consume(1, player);
-                inventory.addItemStack(item);
-            }
-
-            return InteractionResult.sidedSuccess(level().isClientSide);
-        }
-
         if (itemStack.getItem() == Items.DIAMOND && !hasLeader()) {
             itemStack.consume(1, player);
             setLeader(player);
             // TODO: Grant advancement here, maybe?
             return InteractionResult.sidedSuccess(level().isClientSide);
+        }
+
+        // Only leaders can give marines items.
+        if (getLeaderUUID().isSomeAnd(uuid -> Objects.equals(uuid, player.getUUID()))) {
+            if (
+                itemStack.getItem() instanceof ArmorItem
+                    || itemStack.getItem() == Items.WATER_BUCKET
+                    || FRIStrategies.isValid(itemStack)
+            ) {
+                if (!level().isClientSide) {
+                    var item = new ItemStack(itemStack.getItem(), 1);
+                    item.applyComponents(itemStack.getComponents());
+                    itemStack.consume(1, player);
+                    inventory.addItemStack(item);
+                }
+
+                return InteractionResult.sidedSuccess(level().isClientSide);
+            }
         }
 
         return super.mobInteract(player, interactionHand);
