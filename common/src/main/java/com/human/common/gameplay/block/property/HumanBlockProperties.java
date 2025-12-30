@@ -22,7 +22,6 @@ public class HumanBlockProperties {
         .mapColor(MapColor.SNOW)
         .replaceable()
         .forceSolidOff()
-        .randomTicks()
         .strength(0.1F)
         .requiresCorrectToolForDrops()
         .sound(SoundType.SNOW)
