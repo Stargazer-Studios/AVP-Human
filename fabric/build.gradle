@@ -94,17 +94,17 @@ dependencies {
         exclude group: project.group
     }
     // Uncomment to test compatibility.
-//    modRuntimeOnly("com.avp.alien:avp_alien-fabric-1.21.1:${project.avp_alien_version}") {
-//        exclude group: project.group
-//    }
+    modLocalRuntime("com.avp.alien:avp_alien-fabric-1.21.1:${project.avp_alien_version}") {
+        exclude group: project.group
+    }
 
     modCompileOnly("com.avp.predator:avp_predator-fabric-1.21.1:${project.avp_predator_version}") {
         exclude group: project.group
     }
     // Uncomment to test compatibility.
-//    modRuntimeOnly("com.avp.predator:avp_predator-fabric-1.21.1:${project.avp_predator_version}") {
-//        exclude group: project.group
-//    }
+    modLocalRuntime("com.avp.predator:avp_predator-fabric-1.21.1:${project.avp_predator_version}") {
+        exclude group: project.group
+    }
 }
 
 loom {
