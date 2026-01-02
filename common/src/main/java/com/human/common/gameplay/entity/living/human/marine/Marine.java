@@ -75,12 +75,23 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
         )
     );
 
-    private static final List<Supplier<Item>> USABLE_WEAPON_ITEM_SUPPLIERS = List.of(
-        HumanGunItems.M88MOD4_COMBAT_PISTOL,
-        HumanGunItems.M37_12_SHOTGUN,
+    private static final List<Supplier<Item>> PRIMARY_WEAPON_ITEM_SUPPLIERS = List.of(
         HumanGunItems.F903WE_RIFLE,
+        HumanGunItems.FLAMETHROWER_SEVASTOPOL,
+        HumanGunItems.M37_12_SHOTGUN,
         HumanGunItems.M41A_PULSE_RIFLE,
+        HumanGunItems.M42A3_SNIPER_RIFLE,
         HumanGunItems.M4RA_BATTLE_RIFLE,
+        HumanGunItems.M56_SMARTGUN,
+        HumanGunItems.M6B_ROCKET_LAUNCHER,
+        HumanGunItems.ZX_76_SHOTGUN
+    );
+
+    private static final List<Supplier<Item>> SECONDARY_WEAPON_ITEM_SUPPLIERS = List.of(
+        HumanGunItems.M88MOD4_COMBAT_PISTOL
+    );
+
+    private static final List<Supplier<Item>> MELEE_WEAPON_ITEM_SUPPLIERS = List.of(
         () -> Items.IRON_AXE,
         () -> Items.IRON_SWORD
     );
@@ -141,7 +152,9 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
     ) {
         addInitialArmor();
         addInitialGrenade();
-        addInitialWeapon();
+        addWeaponFromPool(PRIMARY_WEAPON_ITEM_SUPPLIERS);
+        addWeaponFromPool(SECONDARY_WEAPON_ITEM_SUPPLIERS);
+        addWeaponFromPool(MELEE_WEAPON_ITEM_SUPPLIERS);
 
         return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
     }
@@ -269,10 +282,16 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
         inventory.addItemStack(grenadeItemStack);
     }
 
-    private void addInitialWeapon() {
-        var randomIndex = random.nextInt(USABLE_WEAPON_ITEM_SUPPLIERS.size());
-        var itemStack = new ItemStack(USABLE_WEAPON_ITEM_SUPPLIERS.get(randomIndex).get());
+    private void addWeaponFromPool(List<Supplier<Item>> itemSupplierPool) {
+        var randomIndex = random.nextInt(itemSupplierPool.size());
+        var item = itemSupplierPool.get(randomIndex).get();
+        var itemStack = new ItemStack(item);
         itemStack.set(HumanDataComponents.MARINE_OWNED.get(), true);
+
+        if (item instanceof GunItem gunItem) {
+            itemStack.set(HumanDataComponents.AMMUNITION.get(), gunItem.getGunConfig().maximumAmmunition());
+        }
+
         inventory.addItemStack(itemStack);
     }
 }
