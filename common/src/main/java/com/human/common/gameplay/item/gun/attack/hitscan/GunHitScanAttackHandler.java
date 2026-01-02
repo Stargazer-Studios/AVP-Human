@@ -28,18 +28,20 @@ public class GunHitScanAttackHandler {
 
         var gunAttackConfig = new GunAttackConfig(gunConfig, gunConfig.getDefaultFireMode(), shooter, itemStack);
 
-        payload.gunHitResults().forEach(gunHitResult -> {
+        for (var pierceIndex = 0; pierceIndex < payload.gunHitResults().size(); pierceIndex++) {
+            var gunHitResult = payload.gunHitResults().get(pierceIndex);
+
             switch (gunHitResult) {
-                case GunHitResult.Block result -> BlockGunHitResultHandler.handle(gunAttackConfig, result);
+                case GunHitResult.Block result -> BlockGunHitResultHandler.handle(gunAttackConfig, result, pierceIndex);
                 case GunHitResult.Entity result -> {
                     var entityUUID = result.entityUUID();
                     var entity = level.getEntity(entityUUID);
 
                     if (entity != null) {
-                        EntityGunHitResultHandler.handle(gunAttackConfig, entity);
+                        EntityGunHitResultHandler.handle(gunAttackConfig, entity, pierceIndex);
                     }
                 }
             }
-        });
+        }
     }
 }

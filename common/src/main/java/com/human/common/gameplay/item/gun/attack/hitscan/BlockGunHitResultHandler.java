@@ -21,7 +21,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class BlockGunHitResultHandler {
 
-    public static void handle(GunAttackConfig gunAttackConfig, GunHitResult.Block gunHitResult) {
+    public static void handle(GunAttackConfig gunAttackConfig, GunHitResult.Block gunHitResult, int pierceIndex) {
         var blockPos = gunHitResult.blockPos();
         var direction = gunHitResult.direction();
         var level = gunAttackConfig.shooter().level();
@@ -31,7 +31,7 @@ public class BlockGunHitResultHandler {
         var ricochetSoundEvent = getRicochetSoundForSoundType(soundType);
         level.playSound(null, blockPos, ricochetSoundEvent, SoundSource.BLOCKS);
 
-        damageBlock(gunAttackConfig, level, blockPos, blockState);
+        damageBlock(gunAttackConfig, level, blockPos, blockState, pierceIndex);
 
         var payload = new S2CBulletHitBlockPayload(blockPos, direction);
         Human.MOD.networking().sendToAllClients(level.getServer(), payload);
@@ -52,7 +52,13 @@ public class BlockGunHitResultHandler {
         return ricochetSfx;
     }
 
-    private static void damageBlock(GunAttackConfig gunAttackConfig, Level level, BlockPos blockPos, BlockState blockState) {
+    private static void damageBlock(
+        GunAttackConfig gunAttackConfig,
+        Level level,
+        BlockPos blockPos,
+        BlockState blockState,
+        int pierceIndex
+    ) {
         if (
             !HumanConfig.INSTANCE.weaponConfigs.BULLETS_DAMAGE_BLOCKS_ENABLED
                 || !level.getGameRules().getBoolean(GameRules.RULE_PROJECTILESCANBREAKBLOCKS)
@@ -65,7 +71,10 @@ public class BlockGunHitResultHandler {
         }
 
         var powerLevel = EnchantmentUtil.getLevel(level, gunAttackConfig.gunItemStack(), Enchantments.POWER);
-        var damage = gunAttackConfig.fireModeConfig().damage() * (1 + (0.25F * powerLevel));
+        var baseDamage = gunAttackConfig.fireModeConfig().damage() * (1 + (0.25F * powerLevel));
+        var multiplier = 1.0F - (0.2F * pierceIndex);
+        var damage = baseDamage * multiplier;
+
         BlockBreakProgressManager.damage(level, blockPos, damage);
     }
 }

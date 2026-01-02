@@ -29,6 +29,7 @@
 
 ## ♻️ Changes
 - Guns enchanted with infinity now still need to be reloaded, but no longer consume bullets.
+- Guns enchanted with piercing now deal reduced damage with each pierce (-20% damage each pierce).
 
 ## 🐞 Fixes
 - Fixed marine camps sometimes generating in water.

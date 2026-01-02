@@ -14,7 +14,7 @@ import net.minecraft.world.item.enchantment.Enchantments;
 
 public class EntityGunHitResultHandler {
 
-    public static void handle(GunAttackConfig gunAttackConfig, Entity hitEntity) {
+    public static void handle(GunAttackConfig gunAttackConfig, Entity hitEntity, int pierceIndex) {
         var shooter = gunAttackConfig.shooter();
         var level = (ServerLevel) shooter.level();
 
@@ -29,7 +29,9 @@ public class EntityGunHitResultHandler {
         }
 
         var powerLevel = EnchantmentUtil.getLevel(level, gunAttackConfig.gunItemStack(), Enchantments.POWER);
-        var damage = gunAttackConfig.fireModeConfig().damage() * (1 + (0.25F * powerLevel));
+        var baseDamage = gunAttackConfig.fireModeConfig().damage() * (1 + (0.25F * powerLevel));
+        var multiplier = 1.0F - (0.2F * pierceIndex);
+        var damage = baseDamage * multiplier;
         var registry = shooter.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE);
         var damageSource = new DamageSource(registry.getHolderOrThrow(HumanDamageTypeKeys.BULLET), shooter);
 
