@@ -1,11 +1,13 @@
 package com.human.common.gameplay.item.gun.pipeline.step.impl;
 
+import com.blib.common.gameplay.util.EnchantmentUtil;
 import com.human.common.gameplay.item.gun.GunReloading;
 import com.human.common.gameplay.item.gun.pipeline.GunShootContext;
 import com.human.common.gameplay.item.gun.pipeline.GunShootResult;
 import com.human.common.gameplay.item.gun.pipeline.step.GunShootStep;
 import com.human.common.registry.init.item.HumanGunItems;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.enchantment.Enchantments;
 
 public class CheckReloadingStep implements GunShootStep {
 
@@ -38,6 +40,12 @@ public class CheckReloadingStep implements GunShootStep {
             gunItem == HumanGunItems.OLD_PAINLESS.get()
                 && supplier != null
         ) {
+            var hasInfinity = EnchantmentUtil.getLevel(level, context.itemStack(), Enchantments.INFINITY) > 0;
+
+            if (hasInfinity) {
+                return GunShootResult.CONTINUE;
+            }
+
             var ammunitionItem = supplier.get();
             var amountToConsume = gunConfig.getDefaultFireMode().consumedAmmunitionPerShot();
             // Run a simulation to see if we can succeed in consuming a single bullet.
