@@ -28,7 +28,7 @@
   - Thanks to Danlogo for contributing the texture!
 
 ## ♻️ Changes
-- N/A
+- Guns enchanted with infinity now still need to be reloaded, but no longer consume bullets.
 
 ## 🐞 Fixes
 - Fixed marine camps sometimes generating in water.

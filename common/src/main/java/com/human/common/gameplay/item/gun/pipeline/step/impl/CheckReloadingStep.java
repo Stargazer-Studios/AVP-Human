@@ -18,7 +18,6 @@ public class CheckReloadingStep implements GunShootStep {
         var currentAmmunition = context.currentAmmunition();
         var gunConfig = context.gunConfig();
         var gunItem = context.gunItem();
-        var hasInfinity = context.hasInfinity();
         var isShooterImmortal = context.isShooterImmortal();
         var shooter = context.shooter();
         var level = shooter.level();
@@ -29,8 +28,6 @@ public class CheckReloadingStep implements GunShootStep {
             !(shooter instanceof Player player)
                 // OR player is immortal...
                 || isShooterImmortal
-                // OR player has infinity on the weapon...
-                || hasInfinity
         ) {
             // Then don't bother checking for reload requirements, just continue.
             return GunShootResult.CONTINUE;

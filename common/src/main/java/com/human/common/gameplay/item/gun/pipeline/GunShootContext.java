@@ -1,7 +1,6 @@
 package com.human.common.gameplay.item.gun.pipeline;
 
 import com.blib.common.gameplay.util.BLibEntityPredicates;
-import com.blib.common.gameplay.util.EnchantmentUtil;
 import com.human.common.gameplay.item.GunItem;
 import com.human.common.gameplay.item.gun.FireModeConfig;
 import com.human.common.gameplay.item.gun.GunConfig;
@@ -18,7 +17,6 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.Enchantments;
 
 import java.util.List;
 
@@ -27,7 +25,6 @@ public record GunShootContext(
     FireModeConfig fireModeConfig,
     GunConfig gunConfig,
     GunItem gunItem,
-    boolean hasInfinity,
     boolean isFirstTick,
     boolean isShooterImmortal,
     ItemStack itemStack,
@@ -58,7 +55,6 @@ public record GunShootContext(
             gunItem.getGunConfig().getDefaultFireMode(),
             gunItem.getGunConfig(),
             gunItem,
-            EnchantmentUtil.getLevel(shooter.level(), itemStack, Enchantments.INFINITY) > 0,
             tickProgress == 0,
             BLibEntityPredicates.isInvulnerable(shooter),
             itemStack,
@@ -108,7 +104,7 @@ public record GunShootContext(
     }
 
     private void consumeAmmunition() {
-        if (!isShooterImmortal && !hasInfinity) {
+        if (!isShooterImmortal) {
             itemStack.set(
                 HumanDataComponents.AMMUNITION.get(),
                 Math.max(currentAmmunition - fireModeConfig.consumedAmmunitionPerShot(), 0)

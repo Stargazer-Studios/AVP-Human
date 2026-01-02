@@ -57,9 +57,10 @@ public class GunReloading {
         var reloadAmount = gunConfig.reloadAmount();
         var neededAmmunition = (int) Math.ceil((maximumAmmunition - currentAmmunition) / ((float) reloadAmount));
 
+        var hasInfinity = EnchantmentUtil.getLevel(player.level(), itemStack, Enchantments.INFINITY) > 0;
         var isPlayerImmortal = BLibEntityPredicates.isInvulnerable(player);
         // Result is how much we DIDN'T consume.
-        var result = isPlayerImmortal
+        var result = hasInfinity || isPlayerImmortal
             // If the player is immortal, then assume they can get a full reload.
             ? ItemConsumptionResult.Full.INSTANCE
             // Otherwise, the player needs to use actual ammunition.
