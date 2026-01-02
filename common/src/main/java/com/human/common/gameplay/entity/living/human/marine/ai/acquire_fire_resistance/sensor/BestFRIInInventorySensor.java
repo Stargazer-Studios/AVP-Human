@@ -20,7 +20,7 @@ public class BestFRIInInventorySensor {
         T livingEntityWithInventory,
         ReadableWorldState worldState
     ) {
-        var bestScore = Double.MIN_VALUE;
+        var bestScore = -Double.MIN_VALUE;
         BLibInventory.Entry bestEntry = null;
         FRIStrategy bestStrategy = null;
 

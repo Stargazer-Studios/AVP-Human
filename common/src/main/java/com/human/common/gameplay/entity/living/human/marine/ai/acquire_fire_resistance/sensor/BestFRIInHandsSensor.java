@@ -21,7 +21,7 @@ public class BestFRIInHandsSensor {
         LivingEntity livingEntity,
         ReadableWorldState worldState
     ) {
-        var bestScore = Double.MIN_VALUE;
+        var bestScore = -Double.MIN_VALUE;
         EquipmentSlot bestEquipmentSlot = null;
         FRIStrategy bestStrategy = null;
 
