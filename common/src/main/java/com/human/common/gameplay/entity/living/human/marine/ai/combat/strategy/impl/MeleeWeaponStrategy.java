@@ -88,9 +88,7 @@ public class MeleeWeaponStrategy implements WeaponStrategy {
             var equipmentSlot = equippedWeapon.itemTarget().equipmentSlot();
             var itemStack = livingEntity.getItemBySlot(equipmentSlot);
 
-            var modifiedAttackDamage = computeModifiedAttribute(mob, Attributes.ATTACK_DAMAGE, itemStack, equippedWeapon);
-
-            target.hurt(mob.level().damageSources().mobAttack(mob), (float) modifiedAttackDamage);
+            mob.doHurtTarget(target);
 
             var modifiedAttackSpeed = computeModifiedAttribute(mob, Attributes.ATTACK_SPEED, itemStack, equippedWeapon);
 
