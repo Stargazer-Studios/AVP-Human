@@ -13,6 +13,7 @@ import com.human.common.gameplay.entity.living.human.marine.ai.MarineGOAP;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.FRIStrategies;
 import com.human.common.gameplay.entity.living.human.marine.ai.combat.strategy.WeaponStrategies;
 import com.human.common.gameplay.item.GunItem;
+import com.human.common.gameplay.item.ItemCooldownUser;
 import com.human.common.registry.init.HumanDataComponents;
 import com.human.common.registry.init.item.HumanArmorItems;
 import com.human.common.registry.init.item.HumanGunItems;
@@ -37,6 +38,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemCooldowns;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -50,7 +52,7 @@ import java.util.Objects;
 import java.util.UUID;
 import java.util.function.Supplier;
 
-public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUser<Marine> {
+public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUser<Marine>, ItemCooldownUser {
 
     public static final float ARMOR = 2.0F;
 
@@ -113,6 +115,8 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
 
     private final BLibInventory inventory;
 
+    private final ItemCooldowns itemCooldowns;
+
     private Option<UUID> leaderUUIDOption;
 
     private MarineMode mode;
@@ -121,6 +125,7 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
         super(entityType, level);
         this.animationDispatcher = new MarineAnimationDispatcher(this);
         this.inventory = new BLibInventory(27);
+        this.itemCooldowns = new ItemCooldowns();
         this.leaderUUIDOption = Option.none();
         this.mode = MarineMode.FOLLOW;
     }
@@ -128,6 +133,15 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
     @Override
     public @Nullable Graph<Marine> getCurrentGraph() {
         return MarineGOAP.GRAPH;
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+
+        if (!level().isClientSide) {
+            itemCooldowns.tick();
+        }
     }
 
     @Override
@@ -230,6 +244,11 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
         super.addAdditionalSaveData(compoundTag);
         compoundTag.put(NBT_INVENTORY, BLibInventory.CODEC.encode(CodecSchemas.NBT, inventory));
         leaderUUIDOption.ifSome(leaderUUID -> compoundTag.put(NBT_LEADER_UUID, Codecs.UUID.encode(CodecSchemas.NBT, leaderUUID)));
+    }
+
+    @Override
+    public ItemCooldowns getItemCooldowns() {
+        return itemCooldowns;
     }
 
     public Option<UUID> getLeaderUUID() {

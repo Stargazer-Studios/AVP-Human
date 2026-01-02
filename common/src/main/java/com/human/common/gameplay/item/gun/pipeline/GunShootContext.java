@@ -2,6 +2,7 @@ package com.human.common.gameplay.item.gun.pipeline;
 
 import com.blib.common.gameplay.util.BLibEntityPredicates;
 import com.human.common.gameplay.item.GunItem;
+import com.human.common.gameplay.item.ItemCooldownUser;
 import com.human.common.gameplay.item.gun.FireModeConfig;
 import com.human.common.gameplay.item.gun.GunConfig;
 import com.human.common.gameplay.item.gun.attack.GunAttackConfig;
@@ -15,7 +16,6 @@ import com.just.core.functional.option.Option;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
@@ -98,8 +98,10 @@ public record GunShootContext(
 
         playPrimaryShootSoundEffects();
 
-        if (shooter instanceof Player player) {
-            player.getCooldowns().addCooldown(gunItem, fireModeConfig.cooldownInTicks());
+        var itemCooldowns = ItemCooldownUser.getItemCooldownsOrNull(shooter);
+
+        if (itemCooldowns != null) {
+            itemCooldowns.addCooldown(gunItem, fireModeConfig.cooldownInTicks());
         }
     }
 

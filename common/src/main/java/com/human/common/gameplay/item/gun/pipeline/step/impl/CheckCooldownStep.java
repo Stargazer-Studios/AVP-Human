@@ -1,9 +1,9 @@
 package com.human.common.gameplay.item.gun.pipeline.step.impl;
 
+import com.human.common.gameplay.item.ItemCooldownUser;
 import com.human.common.gameplay.item.gun.pipeline.GunShootContext;
 import com.human.common.gameplay.item.gun.pipeline.GunShootResult;
 import com.human.common.gameplay.item.gun.pipeline.step.GunShootStep;
-import net.minecraft.world.entity.player.Player;
 
 public class CheckCooldownStep implements GunShootStep {
 
@@ -13,10 +13,15 @@ public class CheckCooldownStep implements GunShootStep {
 
     @Override
     public GunShootResult apply(GunShootContext context) {
-        if (
-            context.shooter() instanceof Player player &&
-                player.getCooldowns().isOnCooldown(context.gunItem())
-        ) {
+        var shooter = context.shooter();
+
+        var itemCooldowns = ItemCooldownUser.getItemCooldownsOrNull(shooter);
+
+        if (itemCooldowns == null) {
+            return GunShootResult.CONTINUE;
+        }
+
+        if (itemCooldowns.isOnCooldown(context.gunItem())) {
             return GunShootResult.COOLDOWN;
         }
 
