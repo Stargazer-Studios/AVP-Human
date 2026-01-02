@@ -11,6 +11,8 @@ import com.human.common.config.HumanConfig;
 import com.human.common.gameplay.entity.living.human.AbstractHuman;
 import com.human.common.gameplay.entity.living.human.marine.ai.MarineGOAP;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.FRIStrategies;
+import com.human.common.gameplay.entity.living.human.marine.ai.combat.strategy.WeaponStrategies;
+import com.human.common.gameplay.item.GunItem;
 import com.human.common.registry.init.HumanDataComponents;
 import com.human.common.registry.init.item.HumanArmorItems;
 import com.human.common.registry.init.item.HumanGunItems;
@@ -175,6 +177,7 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
             if (
                 itemStack.getItem() instanceof ArmorItem
                     || itemStack.getItem() == Items.WATER_BUCKET
+                    || WeaponStrategies.isValid(itemStack)
                     || FRIStrategies.isValid(itemStack)
             ) {
                 if (!level().isClientSide) {

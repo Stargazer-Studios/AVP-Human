@@ -6,6 +6,9 @@ import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.FRIActions;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.FRIGoals;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.FRISensors;
+import com.human.common.gameplay.entity.living.human.marine.ai.combat.CombatActions;
+import com.human.common.gameplay.entity.living.human.marine.ai.combat.CombatGoals;
+import com.human.common.gameplay.entity.living.human.marine.ai.combat.CombatSensors;
 import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.EquipBestArmorActions;
 import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.EquipBestArmorGoals;
 import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.EquipBestArmorSensors;
@@ -19,12 +22,14 @@ import com.human.common.gameplay.entity.living.human.marine.ai.idle.IdleActions;
 import com.human.common.gameplay.entity.living.human.marine.ai.idle.IdleGoals;
 import com.human.common.gameplay.entity.living.human.marine.ai.idle.IdleSensors;
 import com.just.goap.graph.Graph;
+import net.minecraft.world.entity.monster.Monster;
 
 public class MarineGOAP {
 
     public static final Graph<Marine> GRAPH = Graph.<Marine>builder()
         .apply(MarineGOAP::addSensorsPackage)
         .apply(MarineGOAP::addAcquireFireResistancePackage)
+        .apply(MarineGOAP::addCombatPackage)
         .apply(MarineGOAP::addEquipBestArmorPackage)
         .apply(MarineGOAP::addExtinguishSelfPackage)
         .apply(MarineGOAP::addSatisfyBoredomPackage)
@@ -34,6 +39,7 @@ public class MarineGOAP {
     private static void addSensorsPackage(Graph.Builder<Marine> graphBuilder) {
         // Entities.
         graphBuilder.addSensor(GOAPSensors.NEARBY_ENTITIES);
+        graphBuilder.addSensor(GOAPSensors.NEARBY_LIVING_ENTITIES);
         graphBuilder.addSensor(GOAPSensors.NEARBY_ITEM_ENTITIES);
         // Environment.
         graphBuilder.addSensor(GOAPSensors.NEARBY_BLOCK_POSITIONS);
@@ -48,6 +54,58 @@ public class MarineGOAP {
         graphBuilder.addSensor(GOAPSensors.HAS_FIRE_RESISTANCE);
         graphBuilder.addSensor(GOAPSensors.HEALTH_RATIO);
         graphBuilder.addSensor(GOAPSensors.IS_ON_FIRE);
+    }
+
+    private static void addAcquireFireResistancePackage(Graph.Builder<Marine> graphBuilder) {
+        // The goal we want to complete.
+        graphBuilder.addGoal(FRIGoals.ACQUIRE_FIRE_RESISTANCE_GOAL);
+
+        // Actions that can complete the goal.
+        graphBuilder.addAction(FRIActions.MOVE_TO_BEST_FRI);
+        graphBuilder.addAction(FRIActions.pickUpBestFRIFactory());
+        graphBuilder.addAction(FRIActions.equipBestFRIFactory());
+        graphBuilder.addAction(FRIActions.USE_BEST_FRI);
+
+        // Used for locating best FRI.
+        graphBuilder.addSensor(FRISensors.BEST_FRI);
+        graphBuilder.addSensor(FRISensors.BEST_FRI_LOCATION);
+        // Used for locating best FRI on self.
+        graphBuilder.addSensor(FRISensors.BEST_FRI_IN_HANDS);
+        graphBuilder.addSensor(FRISensors.BEST_FRI_IN_INVENTORY);
+        // Used for locating best FRI in world.
+        graphBuilder.addSensor(FRISensors.BEST_FRI_IN_WORLD);
+        graphBuilder.addSensor(FRISensors.IS_BEST_WORLD_FRI_IN_RANGE);
+    }
+
+    private static void addCombatPackage(Graph.Builder<Marine> graphBuilder) {
+        // The goal we want to complete.
+        graphBuilder.addGoal(CombatGoals.HAS_WEAPON_GOAL);
+        graphBuilder.addGoal(CombatGoals.NO_ATTACK_TARGET_GOAL);
+
+        // Actions that can complete the goal.
+        graphBuilder.addAction(CombatActions.MOVE_TO_BEST_WEAPON);
+        graphBuilder.addAction(CombatActions.pickUpBestWeaponFactory());
+        graphBuilder.addAction(CombatActions.equipBestWeaponFactory());
+        graphBuilder.addAction(CombatActions.MOVE_UNTIL_ATTACK_TARGET_IN_RANGE_FOR_EQUIPPED_BEST_WEAPON_ACTION);
+        graphBuilder.addAction(CombatActions.USE_BEST_WEAPON);
+
+        // Used for sensing an attackable target.
+        graphBuilder.addSensor(CombatSensors.attackTargetFactory(livingEntity -> livingEntity instanceof Monster));
+        // Used for locating best weapon.
+        graphBuilder.addSensor(CombatSensors.BEST_WEAPON);
+        graphBuilder.addSensor(CombatSensors.BEST_WEAPON_LOCATION);
+        // Used for locating best weapon on self.
+        graphBuilder.addSensor(CombatSensors.BEST_WEAPON_IN_HANDS);
+        graphBuilder.addSensor(CombatSensors.BEST_WEAPON_IN_INVENTORY);
+        // Used for locating best weapon in world.
+        graphBuilder.addSensor(CombatSensors.BEST_WEAPON_IN_WORLD);
+        graphBuilder.addSensor(CombatSensors.IS_BEST_WORLD_WEAPON_IN_RANGE);
+        // Used for checking if entity has an attack target.
+        graphBuilder.addSensor(CombatSensors.HAS_ATTACK_TARGET);
+        // Used for checking if the entity has a weapon (either in their inventory or in their hands).
+        graphBuilder.addSensor(CombatSensors.HAS_WEAPON);
+        // Used for checking if the attack target is in range of the agent's currently equipped best weapon.
+        graphBuilder.addSensor(CombatSensors.IS_ATTACK_TARGET_IN_RANGE_OF_EQUIPPED_BEST_WEAPON);
     }
 
     private static void addEquipBestArmorPackage(Graph.Builder<Marine> graphBuilder) {
@@ -76,27 +134,6 @@ public class MarineGOAP {
         graphBuilder.addSensor(ExtinguishFireSensors.HAS_WATER_BUCKET_EQUIPPED);
         graphBuilder.addSensor(MarineGOAPSensors.IS_IN_ULTRA_WARM_DIMENSION);
         graphBuilder.addSensor(ExtinguishFireSensors.WATER_BUCKET_IN_INVENTORY);
-    }
-
-    private static void addAcquireFireResistancePackage(Graph.Builder<Marine> graphBuilder) {
-        // The goal we want to complete.
-        graphBuilder.addGoal(FRIGoals.ACQUIRE_FIRE_RESISTANCE_GOAL);
-
-        // Actions that can complete the goal.
-        graphBuilder.addAction(FRIActions.MOVE_TO_BEST_FRI);
-        graphBuilder.addAction(FRIActions.pickUpBestFRIFactory());
-        graphBuilder.addAction(FRIActions.equipBestFRIFactory());
-        graphBuilder.addAction(FRIActions.USE_BEST_FRI);
-
-        // Used for locating best FRI.
-        graphBuilder.addSensor(FRISensors.BEST_FRI);
-        graphBuilder.addSensor(FRISensors.BEST_FRI_LOCATION);
-        // Used for locating best FRI on self.
-        graphBuilder.addSensor(FRISensors.BEST_FRI_IN_HANDS);
-        graphBuilder.addSensor(FRISensors.BEST_FRI_IN_INVENTORY);
-        // Used for locating best FRI in world.
-        graphBuilder.addSensor(FRISensors.BEST_FRI_IN_WORLD);
-        graphBuilder.addSensor(FRISensors.IS_BEST_WORLD_FRI_IN_RANGE);
     }
 
     private static void addSatisfyBoredomPackage(Graph.Builder<Marine> graphBuilder) {

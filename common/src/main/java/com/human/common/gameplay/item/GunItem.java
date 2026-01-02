@@ -110,13 +110,10 @@ public class GunItem extends Item {
     @Override
     public void onUseTick(@NotNull Level level, @NotNull LivingEntity livingEntity, @NotNull ItemStack itemStack, int tickCountdown) {
         // Lack of server/client side check here is deliberate.
-        if (!(livingEntity instanceof Player player)) {
-            return;
-        }
 
         var tickProgress = Math.abs(START_TICK_PROGRESS - tickCountdown);
 
-        GunShootContext.create(player, itemStack, tickProgress)
+        GunShootContext.create(livingEntity, itemStack, tickProgress)
             .map(GunShootContext::shoot)
             .ifSome(result -> {
                 switch (result) {
