@@ -13,7 +13,6 @@ import com.human.common.gameplay.item.gun.pipeline.step.impl.CheckShootDelayStep
 import com.human.common.registry.init.HumanDataComponents;
 import com.human.common.util.GunLightUtil;
 import com.just.core.functional.option.Option;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -121,26 +120,26 @@ public record GunShootContext(
     }
 
     private void playSecondaryShootSoundEffect() {
-        var level = shooter.level();
         var shootDelayInTicks = fireModeConfig.shootDelayInTicks();
         var secondaryShootSoundFrequencyInTicks = fireModeConfig.secondaryShootSoundFrequencyInTicks();
         var secondaryShootSoundEvent = fireModeConfig.secondaryShootSoundEvent();
 
         if (
-            secondaryShootSoundEvent != null &&
-                (tickProgress == shootDelayInTicks || (tickProgress + shootDelayInTicks)
-                    % secondaryShootSoundFrequencyInTicks == 0)
+            secondaryShootSoundEvent != null
+                && (tickProgress == shootDelayInTicks
+                    || (tickProgress + shootDelayInTicks) % secondaryShootSoundFrequencyInTicks == 0)
         ) {
-            level.playSound(null, shooter.blockPosition(), secondaryShootSoundEvent.get(), SoundSource.PLAYERS);
+            shooter.level()
+                .playSound(null, shooter.blockPosition(), secondaryShootSoundEvent.get(), shooter.getSoundSource());
         }
     }
 
     private void playPrimaryShootSoundEffects() {
-        var level = shooter.level();
         var primaryShootSoundFrequencyInTicks = fireModeConfig.primaryShootSoundFrequencyInTicks();
 
         if (primaryShootSoundFrequencyInTicks <= 0 || tickProgress % primaryShootSoundFrequencyInTicks == 0) {
-            level.playSound(null, shooter.blockPosition(), fireModeConfig.primaryShootSoundEvent().get(), SoundSource.PLAYERS);
+            shooter.level()
+                .playSound(null, shooter.blockPosition(), fireModeConfig.primaryShootSoundEvent().get(), shooter.getSoundSource());
         }
     }
 
