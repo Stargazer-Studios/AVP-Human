@@ -4,6 +4,7 @@ import com.blib.common.gameplay.model.inventory.BLibInventory;
 import com.human.common.gameplay.entity.living.human.marine.ai.combat.CombatSensors;
 import com.human.common.gameplay.entity.living.human.marine.ai.combat.strategy.WeaponStrategy;
 import com.human.common.gameplay.item.GunItem;
+import com.human.common.gameplay.item.gun.FireModeConfig;
 import com.human.common.registry.init.HumanDataComponents;
 import com.human.common.registry.tag.HumanItemTags;
 import com.just.core.functional.option.Option;
@@ -44,8 +45,27 @@ public class GunStrategy implements WeaponStrategy {
 
     @Override
     public double score(LivingEntity livingEntity, ReadableWorldState worldState, ItemStack itemStack) {
-        // TODO:
-        return 0;
+        if (itemStack.getItem() instanceof GunItem gunItem) {
+            var fireMode = gunItem.getGunConfig().getDefaultFireMode();
+            var targetOption = worldState.getOrDefault(CombatSensors.ATTACK_TARGET_KEY, Option.none());
+
+            if (targetOption.isNone()) {
+                return -Double.MIN_VALUE;
+            }
+
+            var target = targetOption.unwrap();
+            var distance = livingEntity.distanceTo(target);
+            var rangeFit = rangeFit(distance, fireMode.range());
+
+            var timeToContact = computeTimeToContact(target, distance);
+            var timeToKill = computeTimeToKill(target, fireMode);
+            var pressureRatio = timeToKill / timeToContact;
+            var frequencyFit = Math.exp(-pressureRatio);
+
+            return rangeFit * frequencyFit;
+        }
+
+        return -Double.MIN_VALUE;
     }
 
     @Override
@@ -101,5 +121,27 @@ public class GunStrategy implements WeaponStrategy {
         });
 
         return Action.Signal.CONTINUE;
+    }
+
+    private double computeTimeToContact(LivingEntity target, float distance) {
+        var targetSpeed = target.getDeltaMovement().horizontalDistance();
+        // Prevent divide-by-zero / stationary targets.
+        return targetSpeed > 0.001
+            ? distance / targetSpeed
+            : Double.POSITIVE_INFINITY;
+    }
+
+    private double computeTimeToKill(LivingEntity target, FireModeConfig fireMode) {
+        var shotsNeeded = Math.ceil(target.getHealth() / fireMode.damage());
+        var timePerShot = fireMode.cooldownInTicks() / 20.0;
+        return shotsNeeded * timePerShot;
+    }
+
+    // TODO: Rewrite this once gun damage falloff is added.
+    private double rangeFit(double distance, double weaponRange) {
+        var preferredDistance = weaponRange * 0.6;
+        var sigma = weaponRange * 0.4;
+        var difference = distance - preferredDistance;
+        return Math.exp(-(difference * difference) / (2 * sigma * sigma));
     }
 }
