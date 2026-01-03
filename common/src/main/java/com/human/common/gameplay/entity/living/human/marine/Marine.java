@@ -215,6 +215,10 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
             }
         }
 
+        if (itemStack.getItem() instanceof GunItem) {
+            return InteractionResult.CONSUME;
+        }
+
         return super.mobInteract(player, interactionHand);
     }
 
