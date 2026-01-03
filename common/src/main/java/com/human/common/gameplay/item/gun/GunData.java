@@ -70,8 +70,8 @@ public class GunData {
         .withFireMode(
             FireModeConfig.builder()
                 .withConsumedAmmunitionPerShot(4)
-                .withDamage(2F * 2 * 4) // 4 bullets per shot in burst mode
                 .withCooldownInTicks(10)
+                .withDamage(2F * 2 * 4) // 4 bullets per shot in burst mode
                 .withRange(64)
                 .withRecoil(2.25F)
                 .withPrimaryShootSound(HumanSoundEvents.WEAPON_M41A_PULSE_RIFLE_SHOOT)
@@ -153,8 +153,8 @@ public class GunData {
         .withAmmunitionItemSupplier(() -> Objects.requireNonNull(HumanItems.SMALL_BULLET.get()))
         .withFireMode(
             FireModeConfig.builder()
-                .withCooldownInTicks(4)
-                .withDamage(5F * 1)
+                .withCooldownInTicks(5)
+                .withDamage(3F * 1)
                 .withRange(32)
                 .withRecoil(0.35F)
                 .withReloadStartSound(HumanSoundEvents.WEAPON_M88_MOD_4_COMBAT_PISTOL_RELOAD)
