@@ -67,6 +67,10 @@ public class HumanClient {
     public static final BLibClientMod MOD = BLibClientMod.createFor(Human.MOD);
 
     public static void initialize() {
+        MOD.initialize(HumanClient::runInitialization);
+    }
+
+    private static void runInitialization() {
         registerArmorRenderers();
         registerBlockEntityRenderers();
         registerBlockRenderLayers();
@@ -76,12 +80,12 @@ public class HumanClient {
 
         HumanKeybindingRegistry.initialize();
 
-        MOD.initialize(() -> {
-            if (AVPAlien.MOD.isLoaded()) {
+        if (AVPAlien.MOD.isLoaded()) {
+            MOD.events().onClientSetup().register(() -> {
                 registerEntityHeadData();
                 registerParasiteHeadAttachmentOffsetData();
-            }
-        });
+            });
+        }
     }
 
     private static void registerArmorRenderers() {
@@ -228,7 +232,7 @@ public class HumanClient {
     }
 
     private static void registerEntityHeadData() {
-        EntityHeadDataCache.put(MOD, HumanEntityTypes.MARINE, HumanEntityHeadData.MARINE);
+        EntityHeadDataCache.put(HumanEntityTypes.MARINE, HumanEntityHeadData.MARINE);
     }
 
     private static void registerEntityRenderers() {
@@ -289,6 +293,6 @@ public class HumanClient {
     }
 
     private static void registerParasiteHeadAttachmentOffsetData() {
-        ParasiteHeadAttachmentOffsetDataCache.put(MOD, HumanEntityTypes.MARINE, HumanParasiteAttachmentOffsetData.MARINE);
+        ParasiteHeadAttachmentOffsetDataCache.put(HumanEntityTypes.MARINE, HumanParasiteAttachmentOffsetData.MARINE);
     }
 }
