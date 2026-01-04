@@ -14,6 +14,7 @@ import net.minecraft.advancements.critereon.ImpossibleTrigger;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 
 import java.util.function.Consumer;
@@ -40,6 +41,8 @@ public class HumanAdvancementProvider {
         var smeltPlasticAdvancement = addSmeltPlasticAdvancement(blastSteelAdvancement, consumer);
 
         var hasGunAdvancement = addHasGunAdvancement(smeltPlasticAdvancement, consumer);
+
+        var hireMarineAdvancement = addHireMarineAdvancement(hasGunAdvancement, consumer);
 
         var equipFullArmorSetWithArmorCaseAdvancement = addEquipFullArmorSetWithArmorCaseAdvancement(smeltPlasticAdvancement, consumer);
 
@@ -142,6 +145,23 @@ public class HumanAdvancementProvider {
                 false
             )
             .save(consumer, HumanAdvancements.HAS_GUN.getResourceLocation().toString());
+    }
+
+    private static AdvancementHolder addHireMarineAdvancement(AdvancementHolder parent, Consumer<AdvancementHolder> consumer) {
+        return Advancement.Builder.advancement()
+            .addCriterion("hire_marine", CriteriaTriggers.IMPOSSIBLE.createCriterion(new ImpossibleTrigger.TriggerInstance()))
+            .parent(parent)
+            .display(
+                Items.DIAMOND,
+                HumanAdvancements.HIRE_MARINE.getTitleComponent(),
+                HumanAdvancements.HIRE_MARINE.getDescriptionComponent(),
+                null,
+                AdvancementType.TASK,
+                true,
+                true,
+                false
+            )
+            .save(consumer, HumanAdvancements.HIRE_MARINE.getResourceLocation().toString());
     }
 
     private static AdvancementHolder addSmeltBrassAdvancement(AdvancementHolder parent, Consumer<AdvancementHolder> consumer) {

@@ -13,6 +13,8 @@ public class HumanAdvancements {
 
     public static final BLibAdvancementAccess HAS_GUN = create("has_gun");
 
+    public static final BLibAdvancementAccess HIRE_MARINE = create("hire_marine");
+
     public static final BLibAdvancementAccess ROOT = create("root");
 
     public static final BLibAdvancementAccess SMELT_BRASS = create("smelt_brass");

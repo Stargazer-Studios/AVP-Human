@@ -50,6 +50,13 @@ public class EnUsAdvancementProvider {
 
         addAdvancement(
             builder,
+            HumanAdvancements.HIRE_MARINE,
+            "Fresh Meat",
+            "Give a marine diamonds to start creating your own personal army"
+        );
+
+        addAdvancement(
+            builder,
             HumanAdvancements.SMELT_BRASS,
             "Brass Ring",
             "Smelt raw brass in a furnace"

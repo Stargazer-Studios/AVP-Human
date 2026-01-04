@@ -8,6 +8,7 @@ import com.blib.common.gameplay.util.ItemUtil;
 import com.blib.common.util.codec.schema.CodecSchemas;
 import com.human.Human;
 import com.human.common.config.HumanConfig;
+import com.human.common.data.HumanAdvancements;
 import com.human.common.gameplay.entity.living.human.AbstractHuman;
 import com.human.common.gameplay.entity.living.human.marine.ai.MarineGOAP;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.FRIStrategies;
@@ -23,6 +24,7 @@ import com.just.core.functional.option.Option;
 import com.just.goap.graph.Graph;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -182,6 +184,11 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
         if (itemStack.getItem() == Items.DIAMOND && !hasLeader()) {
             itemStack.consume(1, player);
             setLeader(player);
+
+            if (!level().isClientSide) {
+                HumanAdvancements.HIRE_MARINE.grant((ServerPlayer) player);
+            }
+
             // TODO: Grant advancement here, maybe?
             return InteractionResult.sidedSuccess(level().isClientSide);
         }
