@@ -52,6 +52,8 @@
 - Increased pulse rifle cooldown (4 -> 10 ticks).
 - Increased pistol cooldown (4 -> 5 ticks).
 - Decreased pistol damage (5 -> 3 half-hearts).
+- Resin blocks can no longer be smelted in the industrial furnace.
+  - This was an unintended 'feature' that was added. We'll have faster ways to smelt resin in the near future!
 
 ## 🐞 Fixes
 - Fixed marine camps sometimes generating in water.
