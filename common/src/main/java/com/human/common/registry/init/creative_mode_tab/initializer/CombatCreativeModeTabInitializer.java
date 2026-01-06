@@ -1,11 +1,19 @@
 package com.human.common.registry.init.creative_mode_tab.initializer;
 
+import com.blib.common.registry.BLibHolder;
 import com.human.common.registry.init.HumanBlocks;
 import com.human.common.registry.init.item.HumanArmorItems;
 import com.human.common.registry.init.item.HumanGunItems;
 import com.human.common.registry.init.item.HumanItems;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.DyeItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.DyedItemColor;
+import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
 import java.util.function.Consumer;
 
 public class CombatCreativeModeTabInitializer {
@@ -40,10 +48,10 @@ public class CombatCreativeModeTabInitializer {
         CreativeModeTabUtil.accept(output, HumanArmorItems.MK50_LEGGINGS);
         CreativeModeTabUtil.accept(output, HumanArmorItems.MK50_BOOTS);
 
-        CreativeModeTabUtil.accept(output, HumanArmorItems.PRESSURE_HELMET);
-        CreativeModeTabUtil.accept(output, HumanArmorItems.PRESSURE_CHESTPLATE);
-        CreativeModeTabUtil.accept(output, HumanArmorItems.PRESSURE_LEGGINGS);
-        CreativeModeTabUtil.accept(output, HumanArmorItems.PRESSURE_BOOTS);
+        CreativeModeTabUtil.accept(output, applyPressureSuitDyeColor(HumanArmorItems.PRESSURE_HELMET));
+        CreativeModeTabUtil.accept(output, applyPressureSuitDyeColor(HumanArmorItems.PRESSURE_CHESTPLATE));
+        CreativeModeTabUtil.accept(output, applyPressureSuitDyeColor(HumanArmorItems.PRESSURE_LEGGINGS));
+        CreativeModeTabUtil.accept(output, applyPressureSuitDyeColor(HumanArmorItems.PRESSURE_BOOTS));
 
         CreativeModeTabUtil.accept(output, HumanArmorItems.STEEL_HELMET);
         CreativeModeTabUtil.accept(output, HumanArmorItems.STEEL_CHESTPLATE);
@@ -75,4 +83,10 @@ public class CombatCreativeModeTabInitializer {
         CreativeModeTabUtil.accept(output, HumanArmorItems.WY_ELITE_LEGGINGS);
         CreativeModeTabUtil.accept(output, HumanArmorItems.WY_ELITE_BOOTS);
     };
+
+    private static @NotNull ItemStack applyPressureSuitDyeColor(BLibHolder<ArmorItem> pressureChestplate) {
+        var chestplateItemStack = new ItemStack(pressureChestplate.get(), 1);
+        chestplateItemStack = DyedItemColor.applyDyes(chestplateItemStack, List.of(DyeItem.byColor(DyeColor.BLUE)));
+        return chestplateItemStack;
+    }
 }

@@ -7,7 +7,7 @@
 - N/A
 
 ## ✨ What's New
-- N/A
+- Pressure suits are now dyeable.
 
 ## ♻️ Changes
 - N/A

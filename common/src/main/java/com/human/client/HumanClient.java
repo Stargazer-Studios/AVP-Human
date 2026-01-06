@@ -3,6 +3,7 @@ package com.human.client;
 import com.alien.client.render.entity.head.EntityHeadDataCache;
 import com.alien.client.render.entity.parasite.attachment.ParasiteHeadAttachmentOffsetDataCache;
 import com.blib.client.BLibClientMod;
+import com.blib.common.registry.BLibHolder;
 import com.human.Human;
 import com.human.client.input.keybind.HumanKeybindingRegistry;
 import com.human.client.render.armor.MK50ArmorRenderer;
@@ -58,6 +59,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.blockentity.ChestRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.component.DyedItemColor;
 
 import java.util.List;
@@ -75,6 +77,7 @@ public class HumanClient {
         registerBlockEntityRenderers();
         registerBlockRenderLayers();
         registerEntityRenderers();
+        registerItemColors();
         registerItemRenderers();
         registerMenuScreens();
 
@@ -169,26 +172,25 @@ public class HumanClient {
                 HumanBlockEntityTypes.SOLAR_PANEL,
                 (BlockEntityRendererProvider.Context rendererDispatcherIn) -> new SolarPanelRenderer()
             );
+    }
 
+    private static void registerItemColors() {
+        registerItemColor(HumanArmorItems.MK50_HELMET);
+        registerItemColor(HumanArmorItems.MK50_CHESTPLATE);
+        registerItemColor(HumanArmorItems.MK50_LEGGINGS);
+        registerItemColor(HumanArmorItems.MK50_BOOTS);
+
+        registerItemColor(HumanArmorItems.PRESSURE_HELMET);
+        registerItemColor(HumanArmorItems.PRESSURE_CHESTPLATE);
+        registerItemColor(HumanArmorItems.PRESSURE_LEGGINGS);
+        registerItemColor(HumanArmorItems.PRESSURE_BOOTS);
+    }
+
+    private static void registerItemColor(BLibHolder<ArmorItem> holder) {
         MOD.registries()
             .registerItemColor(
                 (itemStack, i) -> i > 0 ? -1 : DyedItemColor.getOrDefault(itemStack, -1),
-                List.of(HumanArmorItems.MK50_HELMET)
-            );
-        MOD.registries()
-            .registerItemColor(
-                (itemStack, i) -> i > 0 ? -1 : DyedItemColor.getOrDefault(itemStack, -1),
-                List.of(HumanArmorItems.MK50_CHESTPLATE)
-            );
-        MOD.registries()
-            .registerItemColor(
-                (itemStack, i) -> i > 0 ? -1 : DyedItemColor.getOrDefault(itemStack, -1),
-                List.of(HumanArmorItems.MK50_LEGGINGS)
-            );
-        MOD.registries()
-            .registerItemColor(
-                (itemStack, i) -> i > 0 ? -1 : DyedItemColor.getOrDefault(itemStack, -1),
-                List.of(HumanArmorItems.MK50_BOOTS)
+                List.of(holder)
             );
     }
 
