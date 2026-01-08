@@ -16,7 +16,7 @@ public class MoveUntilAttackTargetInRangeForEquippedBestWeaponAction {
     public static Action.Signal perform(PathfinderMob pathfinderMob, ReadableWorldState worldState, Blackboard blackboard) {
         var weaponStrategyResultOption = worldState.getOrDefault(CombatSensors.BEST_WEAPON_IN_HANDS.key(), Option.none());
 
-        var attackTargetOption = worldState.getOrDefault(CombatSensors.ATTACK_TARGET_KEY, Option.none());
+        var attackTargetOption = worldState.getOrDefault(CombatSensors.NEAREST_ATTACKABLE_TARGET.key(), Option.none());
 
         if (weaponStrategyResultOption.isNone() || attackTargetOption.isNone()) {
             return Action.Signal.ABORT;
@@ -26,7 +26,7 @@ public class MoveUntilAttackTargetInRangeForEquippedBestWeaponAction {
         var pathToAttackTargetOrNull = blackboard.getOrNull(PATH_TO_ATTACK_TARGET);
 
         if (pathToAttackTargetOrNull == null || pathToAttackTargetOrNull.isDone()) {
-            pathToAttackTargetOrNull = pathfinderMob.getNavigation().createPath(attackTarget, 0);
+            pathToAttackTargetOrNull = pathfinderMob.getNavigation().createPath(attackTarget, 1);
             blackboard.set(PATH_TO_ATTACK_TARGET, pathToAttackTargetOrNull);
         }
 

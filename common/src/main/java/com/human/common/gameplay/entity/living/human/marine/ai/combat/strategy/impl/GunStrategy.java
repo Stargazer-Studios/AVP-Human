@@ -47,7 +47,7 @@ public class GunStrategy implements WeaponStrategy {
     public double score(LivingEntity livingEntity, ReadableWorldState worldState, ItemStack itemStack) {
         if (itemStack.getItem() instanceof GunItem gunItem) {
             var fireMode = gunItem.getGunConfig().getDefaultFireMode();
-            var targetOption = worldState.getOrDefault(CombatSensors.ATTACK_TARGET_KEY, Option.none());
+            var targetOption = worldState.getOrDefault(CombatSensors.NEAREST_ATTACKABLE_TARGET.key(), Option.none());
 
             if (targetOption.isNone()) {
                 return -Double.MIN_VALUE;

@@ -89,8 +89,17 @@ public class MarineGOAP {
         graphBuilder.addAction(CombatActions.MOVE_UNTIL_ATTACK_TARGET_IN_RANGE_FOR_EQUIPPED_BEST_WEAPON_ACTION);
         graphBuilder.addAction(CombatActions.USE_BEST_WEAPON);
 
-        // Used for sensing an attackable target.
-        graphBuilder.addSensor(CombatSensors.attackTargetFactory(livingEntity -> livingEntity instanceof Monster));
+        // Used for sensing attackable targets.
+        graphBuilder.addSensor(
+            CombatSensors.nearbyAttackableTargetsFactory(
+                (marine, livingEntity) -> livingEntity instanceof Monster
+                    && marine.getSensing().hasLineOfSight(livingEntity)
+            )
+        );
+        // Used for sensing attackable targets in a sorted order based on distance.
+        graphBuilder.addSensor(CombatSensors.NEAREST_ATTACKABLE_TARGETS);
+        // Used for picking out the closest attackable target.
+        graphBuilder.addSensor(CombatSensors.NEAREST_ATTACKABLE_TARGET);
         // Used for locating best weapon.
         graphBuilder.addSensor(CombatSensors.BEST_WEAPON);
         graphBuilder.addSensor(CombatSensors.BEST_WEAPON_LOCATION);
