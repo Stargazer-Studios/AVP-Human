@@ -23,7 +23,7 @@ public class MoveToPosAction {
         var pathOrNull = blackboard.getOrNull(PATH);
         var navigation = pathfinderMob.getNavigation();
 
-        if (pathOrNull == null) {
+        if (pathOrNull == null || !pathOrNull.canReach()) {
             var position = positionSupplier.get();
 
             if (position == null) {
@@ -32,7 +32,7 @@ public class MoveToPosAction {
 
             pathOrNull = navigation.createPath(position.x, position.y, position.z, 1);
 
-            if (pathOrNull != null) {
+            if (pathOrNull != null && pathOrNull.canReach()) {
                 blackboard.set(PATH, pathOrNull);
                 navigation.moveTo(pathOrNull, speedMultiplier);
 
