@@ -21,7 +21,6 @@ public class MoveToPosAction {
         double speedMultiplier
     ) {
         var pathOrNull = blackboard.getOrNull(PATH);
-        var navigation = pathfinderMob.getNavigation();
 
         if (pathOrNull == null || !pathOrNull.canReach()) {
             var position = positionSupplier.get();
@@ -29,6 +28,8 @@ public class MoveToPosAction {
             if (position == null) {
                 return MoveResult.POSITION_NOT_FOUND;
             }
+
+            var navigation = pathfinderMob.getNavigation();
 
             pathOrNull = navigation.createPath(position.x, position.y, position.z, 1);
 
