@@ -40,6 +40,7 @@ public class EntityGunHitResultHandler {
         // Apply post-effects.
         if (wasHurt && hitEntity instanceof LivingEntity livingEntity) {
             livingEntity.invulnerableTime = 0;
+            shooter.setLastHurtMob(livingEntity);
             livingEntity.setLastHurtByMob(shooter);
 
             applyKnockbackEffects(gunAttackConfig, livingEntity, shooter);
