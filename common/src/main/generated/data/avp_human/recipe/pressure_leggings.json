@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "tag": "c:ingots/aluminum"
+    },
+    "D": {
+      "tag": "minecraft:wool"
+    }
+  },
+  "pattern": [
+    "ADA",
+    "D D",
+    "A A"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avp_human:pressure_leggings"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "values": [
+    "#avp_human:industrial_glass_block",
+    "#avp_human:industrial_glass_pane",
+    "avp_human:industrial_glass_door",
+    "avp_human:industrial_glass_slab",
+    "avp_human:industrial_glass_stairs",
+    "avp_human:industrial_glass_trapdoor"
+  ]
+}

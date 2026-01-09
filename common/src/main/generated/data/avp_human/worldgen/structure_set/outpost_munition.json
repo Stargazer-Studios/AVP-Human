@@ -1,0 +1,15 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 1534767890,
+    "separation": 15,
+    "spacing": 40,
+    "spread_type": "triangular"
+  },
+  "structures": [
+    {
+      "structure": "avp_human:outpost_munition",
+      "weight": 1
+    }
+  ]
+}

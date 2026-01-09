@@ -1,0 +1,25 @@
+{
+  "entityTypePredicate": "minecraft:camel",
+  "geneBonusDataEntries": [
+    {
+      "id": "avp_human:fire_resistance",
+      "operation": "MULTIPLICATIVE",
+      "value": 0.1
+    },
+    {
+      "id": "avp_human:move_speed",
+      "operation": "ADDITIVE",
+      "value": 0.02
+    },
+    {
+      "id": "avp_human:cold_resistance",
+      "operation": "MULTIPLICATIVE",
+      "value": -0.05
+    },
+    {
+      "id": "avp_human:intelligence",
+      "operation": "ADDITIVE",
+      "value": -5.0
+    }
+  ]
+}

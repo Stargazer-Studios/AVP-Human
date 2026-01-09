@@ -1,0 +1,33 @@
+{
+  "parent": "avp_human:humans/root",
+  "criteria": {
+    "brass": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avp_human:brass_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.humans.smelt_brass.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "avp_human:brass_ingot"
+    },
+    "title": {
+      "translate": "advancements.humans.smelt_brass.title"
+    }
+  },
+  "requirements": [
+    [
+      "brass"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

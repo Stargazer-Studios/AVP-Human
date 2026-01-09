@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "tag": "c:ingots/aluminum"
+    },
+    "D": {
+      "tag": "minecraft:wool"
+    }
+  },
+  "pattern": [
+    "A A",
+    "ADA",
+    "DAD"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avp_human:pressure_chestplate"
+  }
+}

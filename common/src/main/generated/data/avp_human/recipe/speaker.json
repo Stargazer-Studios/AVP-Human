@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "tag": "c:ingots/aluminum"
+    },
+    "N": {
+      "item": "avp_human:neodymium_magnet"
+    },
+    "P": {
+      "item": "avp_human:polymer"
+    },
+    "R": {
+      "item": "avp_human:regulator"
+    }
+  },
+  "pattern": [
+    "PAP",
+    "ANA",
+    "PRP"
+  ],
+  "result": {
+    "count": 8,
+    "id": "avp_human:speaker"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 1287767890,
+    "separation": 15,
+    "spacing": 40,
+    "spread_type": "triangular"
+  },
+  "structures": [
+    {
+      "structure": "avp_human:mobile_lab",
+      "weight": 1
+    }
+  ]
+}

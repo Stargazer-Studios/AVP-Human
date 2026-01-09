@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "avp_human:block/purple_cut_plastic",
+    "side": "avp_human:block/purple_cut_plastic",
+    "top": "avp_human:block/purple_cut_plastic"
+  }
+}

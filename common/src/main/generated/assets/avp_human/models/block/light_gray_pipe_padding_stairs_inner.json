@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "avp_human:block/light_gray_pipe_padding",
+    "side": "avp_human:block/light_gray_pipe_padding",
+    "top": "avp_human:block/light_gray_pipe_padding"
+  }
+}

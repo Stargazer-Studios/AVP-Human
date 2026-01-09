@@ -1,0 +1,41 @@
+{
+  "parent": "avp_human:humans/smelt_plastic",
+  "criteria": {
+    "gun": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#avp_human:guns"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.humans.has_gun.description"
+    },
+    "icon": {
+      "components": {
+        "azurelib:az_id": [
+          -894811734,
+          53430478,
+          -1112845076,
+          214155329
+        ]
+      },
+      "count": 1,
+      "id": "avp_human:m41a_pulse_rifle"
+    },
+    "title": {
+      "translate": "advancements.humans.has_gun.title"
+    }
+  },
+  "requirements": [
+    [
+      "gun"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

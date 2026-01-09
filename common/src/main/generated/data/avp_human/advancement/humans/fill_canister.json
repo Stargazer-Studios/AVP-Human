@@ -1,0 +1,26 @@
+{
+  "parent": "avp_human:humans/smelt_titanium",
+  "criteria": {
+    "fill_canister": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.humans.fill_canister.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "avp_human:lava_canister"
+    },
+    "title": {
+      "translate": "advancements.humans.fill_canister.title"
+    }
+  },
+  "requirements": [
+    [
+      "fill_canister"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

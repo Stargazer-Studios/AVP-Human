@@ -1,0 +1,25 @@
+{
+  "entityTypePredicate": "minecraft:mooshroom",
+  "geneBonusDataEntries": [
+    {
+      "id": "avp_human:armor",
+      "operation": "ADDITIVE",
+      "value": -0.25
+    },
+    {
+      "id": "avp_human:armor_toughness",
+      "operation": "ADDITIVE",
+      "value": -0.25
+    },
+    {
+      "id": "avp_human:genetic_integrity",
+      "operation": "ADDITIVE",
+      "value": -0.2
+    },
+    {
+      "id": "avp_human:intelligence",
+      "operation": "ADDITIVE",
+      "value": -10.0
+    }
+  ]
+}

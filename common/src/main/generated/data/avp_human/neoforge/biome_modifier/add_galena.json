@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#minecraft:is_overworld",
+  "features": "avp_human:galena_ore",
+  "step": "underground_ores"
+}

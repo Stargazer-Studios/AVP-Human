@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": {
+      "tag": "c:nuggets/gold"
+    },
+    "I": {
+      "tag": "avp_human:industrial_glass_pane"
+    },
+    "L": {
+      "item": "minecraft:lever"
+    },
+    "R": {
+      "tag": "c:dusts/redstone"
+    },
+    "S": {
+      "tag": "c:silicon"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "ILI",
+    "RGR"
+  ],
+  "result": {
+    "count": 2,
+    "id": "avp_human:transistor"
+  }
+}

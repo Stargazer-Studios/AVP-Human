@@ -1,0 +1,15 @@
+{
+  "entityTypePredicate": "minecraft:cow",
+  "geneBonusDataEntries": [
+    {
+      "id": "avp_human:bonus_embryo_count",
+      "operation": "ADDITIVE",
+      "value": 0.25
+    },
+    {
+      "id": "avp_human:intelligence",
+      "operation": "ADDITIVE",
+      "value": -10.0
+    }
+  ]
+}

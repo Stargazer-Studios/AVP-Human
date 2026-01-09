@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_monazite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avp_human:raw_monazite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "avp_human:neodymium_magnet_from_smelting_raw_monazite"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_raw_monazite"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "avp_human:neodymium_magnet_from_smelting_raw_monazite"
+    ]
+  }
+}

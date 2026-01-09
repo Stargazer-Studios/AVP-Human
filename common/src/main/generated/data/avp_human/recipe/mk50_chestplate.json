@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "tag": "c:ingots/aluminum"
+    },
+    "C": {
+      "tag": "c:ingots/lead"
+    },
+    "D": {
+      "tag": "c:leathers"
+    }
+  },
+  "pattern": [
+    "A A",
+    "CAC",
+    "DAD"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avp_human:mk50_chestplate"
+  }
+}

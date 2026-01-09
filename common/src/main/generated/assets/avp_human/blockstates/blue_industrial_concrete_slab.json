@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "avp_human:block/blue_industrial_concrete_slab"
+    },
+    "type=double": {
+      "model": "avp_human:block/blue_industrial_concrete"
+    },
+    "type=top": {
+      "model": "avp_human:block/blue_industrial_concrete_slab_top"
+    }
+  }
+}

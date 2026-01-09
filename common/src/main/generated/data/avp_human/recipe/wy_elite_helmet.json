@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "tag": "c:ingots/steel"
+    },
+    "B": {
+      "tag": "avp_human:plastic"
+    },
+    "C": {
+      "tag": "avp_human:industrial_glass_pane"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "BCB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avp_human:wy_elite_helmet"
+  }
+}

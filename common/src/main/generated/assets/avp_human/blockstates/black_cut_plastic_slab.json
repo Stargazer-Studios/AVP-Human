@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "avp_human:block/black_cut_plastic_slab"
+    },
+    "type=double": {
+      "model": "avp_human:block/black_cut_plastic"
+    },
+    "type=top": {
+      "model": "avp_human:block/black_cut_plastic_slab_top"
+    }
+  }
+}

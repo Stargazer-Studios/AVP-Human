@@ -1,0 +1,23 @@
+{
+  "values": [
+    "minecraft:freeze",
+    "minecraft:cactus",
+    "minecraft:campfire",
+    "minecraft:cramming",
+    "minecraft:drown",
+    "minecraft:fall",
+    "minecraft:hot_floor",
+    "minecraft:in_fire",
+    "minecraft:in_wall",
+    "minecraft:fireworks",
+    "minecraft:on_fire",
+    "avp_human:radiation",
+    "avp_human:razor_wire",
+    "minecraft:starve",
+    "minecraft:sting",
+    "minecraft:sweet_berry_bush",
+    "minecraft:thorns",
+    "minecraft:wind_charge",
+    "minecraft:wither"
+  ]
+}

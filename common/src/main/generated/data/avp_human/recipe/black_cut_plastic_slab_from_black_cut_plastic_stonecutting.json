@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "avp_human:black_cut_plastic"
+  },
+  "result": {
+    "count": 2,
+    "id": "avp_human:black_cut_plastic_slab"
+  }
+}

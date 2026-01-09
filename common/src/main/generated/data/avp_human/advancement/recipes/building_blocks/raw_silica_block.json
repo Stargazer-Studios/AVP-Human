@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_silica": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avp_human:raw_silica"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_silicon": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:silicon"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "avp_human:raw_silica_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_raw_silica",
+      "has_silicon"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "avp_human:raw_silica_block"
+    ]
+  }
+}

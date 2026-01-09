@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "D": {
+      "tag": "minecraft:planks"
+    },
+    "P": {
+      "item": "avp_human:polymer"
+    }
+  },
+  "pattern": [
+    "A A",
+    "P P",
+    "D D"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avp_human:blueprint_block"
+  }
+}

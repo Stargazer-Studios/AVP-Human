@@ -1,0 +1,15 @@
+{
+  "entityTypePredicate": "minecraft:vindicator",
+  "geneBonusDataEntries": [
+    {
+      "id": "avp_human:attack_damage",
+      "operation": "ADDITIVE",
+      "value": 6.5
+    },
+    {
+      "id": "avp_human:intelligence",
+      "operation": "ADDITIVE",
+      "value": 15.0
+    }
+  ]
+}

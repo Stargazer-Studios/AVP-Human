@@ -1,0 +1,15 @@
+{
+  "entityTypePredicate": "minecraft:creeper",
+  "geneBonusDataEntries": [
+    {
+      "id": "avp_human:intelligence",
+      "operation": "ADDITIVE",
+      "value": 5.0
+    },
+    {
+      "id": "avp_human:acid_volatility",
+      "operation": "ADDITIVE",
+      "value": 0.34
+    }
+  ]
+}

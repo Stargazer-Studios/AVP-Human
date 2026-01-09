@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "avp_human:barrel"
+    },
+    {
+      "item": "minecraft:observer"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "avp_human:smart_barrel"
+  }
+}

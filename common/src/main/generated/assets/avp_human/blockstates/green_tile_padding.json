@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "avp_human:block/green_tile_padding"
+    }
+  }
+}

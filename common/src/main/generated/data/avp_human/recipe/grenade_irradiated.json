@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "tag": "c:nuggets/steel"
+    },
+    "B": {
+      "item": "minecraft:gunpowder"
+    },
+    "C": {
+      "tag": "avp_human:uranium_nugget_like"
+    }
+  },
+  "pattern": [
+    "ACA",
+    "ABA"
+  ],
+  "result": {
+    "count": 4,
+    "id": "avp_human:grenade_irradiated"
+  }
+}

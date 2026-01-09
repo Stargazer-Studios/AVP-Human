@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "avp_human:block/yellow_pipe_padding_slab"
+    },
+    "type=double": {
+      "model": "avp_human:block/yellow_pipe_padding"
+    },
+    "type=top": {
+      "model": "avp_human:block/yellow_pipe_padding_slab_top"
+    }
+  }
+}

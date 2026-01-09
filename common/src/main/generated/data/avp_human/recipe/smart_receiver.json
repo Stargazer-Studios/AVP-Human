@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "avp_human:capacitor"
+    },
+    "B": {
+      "item": "avp_human:battery_pack"
+    },
+    "C": {
+      "item": "avp_human:cpu"
+    },
+    "L": {
+      "item": "avp_human:led_display"
+    },
+    "P": {
+      "item": "avp_human:polymer"
+    },
+    "R": {
+      "item": "avp_human:receiver"
+    }
+  },
+  "pattern": [
+    " R ",
+    "CLB",
+    "PAP"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avp_human:smart_receiver"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.7,
+  "ingredient": {
+    "item": "avp_human:raw_crude_iron"
+  },
+  "result": {
+    "id": "avp_human:steel_ingot"
+  }
+}

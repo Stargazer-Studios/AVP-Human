@@ -1,0 +1,10 @@
+{
+  "entityTypePredicate": "minecraft:horse",
+  "geneBonusDataEntries": [
+    {
+      "id": "avp_human:move_speed",
+      "operation": "ADDITIVE",
+      "value": 0.025
+    }
+  ]
+}

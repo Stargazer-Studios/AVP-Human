@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "avp_human:titanium_siding_stairs_from_titanium_siding_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_titanium_siding": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avp_human:titanium_siding"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_titanium_siding"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "avp_human:titanium_siding_stairs_from_titanium_siding_stonecutting"
+    ]
+  }
+}

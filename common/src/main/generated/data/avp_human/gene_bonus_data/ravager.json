@@ -1,0 +1,30 @@
+{
+  "entityTypePredicate": "minecraft:ravager",
+  "geneBonusDataEntries": [
+    {
+      "id": "avp_human:attack_damage",
+      "operation": "ADDITIVE",
+      "value": 6.0
+    },
+    {
+      "id": "avp_human:knockback_resistance",
+      "operation": "ADDITIVE",
+      "value": 0.1
+    },
+    {
+      "id": "avp_human:max_health",
+      "operation": "MULTIPLICATIVE",
+      "value": 0.25
+    },
+    {
+      "id": "avp_human:intelligence",
+      "operation": "ADDITIVE",
+      "value": -10.0
+    },
+    {
+      "id": "avp_human:move_speed",
+      "operation": "ADDITIVE",
+      "value": -0.005
+    }
+  ]
+}

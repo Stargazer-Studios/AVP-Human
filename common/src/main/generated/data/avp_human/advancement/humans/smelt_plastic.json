@@ -1,0 +1,33 @@
+{
+  "parent": "avp_human:humans/blast_steel",
+  "criteria": {
+    "polymer": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avp_human:polymer"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.humans.smelt_plastic.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "avp_human:polymer"
+    },
+    "title": {
+      "translate": "advancements.humans.smelt_plastic.title"
+    }
+  },
+  "requirements": [
+    [
+      "polymer"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

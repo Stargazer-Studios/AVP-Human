@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "tag": "c:ingots/aluminum"
+    },
+    "C": {
+      "item": "avp_human:capacitor"
+    },
+    "L": {
+      "tag": "c:dusts/lithium"
+    }
+  },
+  "pattern": [
+    "ACA",
+    "LLL",
+    "ACL"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avp_human:battery_pack"
+  }
+}

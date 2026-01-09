@@ -1,0 +1,33 @@
+{
+  "parent": "avp_human:humans/root",
+  "criteria": {
+    "steel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avp_human:steel_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.humans.blast_steel.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "avp_human:steel_ingot"
+    },
+    "title": {
+      "translate": "advancements.humans.blast_steel.title"
+    }
+  },
+  "requirements": [
+    [
+      "steel"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

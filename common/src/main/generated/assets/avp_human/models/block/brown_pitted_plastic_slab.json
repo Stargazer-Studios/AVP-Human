@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "avp_human:block/brown_pitted_plastic",
+    "side": "avp_human:block/brown_pitted_plastic",
+    "top": "avp_human:block/brown_pitted_plastic"
+  }
+}

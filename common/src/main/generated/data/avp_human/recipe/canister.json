@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:bucket"
+    },
+    "P": {
+      "item": "minecraft:piston"
+    },
+    "R": {
+      "item": "avp_human:redstone_crystal"
+    },
+    "T": {
+      "tag": "c:ingots/titanium"
+    }
+  },
+  "pattern": [
+    "TRT",
+    "TPT",
+    "TBT"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avp_human:canister"
+  }
+}

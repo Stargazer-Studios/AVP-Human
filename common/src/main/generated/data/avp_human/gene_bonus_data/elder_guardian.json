@@ -1,0 +1,15 @@
+{
+  "entityTypePredicate": "minecraft:elder_guardian",
+  "geneBonusDataEntries": [
+    {
+      "id": "avp_human:thorns",
+      "operation": "ADDITIVE",
+      "value": 4.0
+    },
+    {
+      "id": "avp_human:attack_damage",
+      "operation": "ADDITIVE",
+      "value": 6.0
+    }
+  ]
+}

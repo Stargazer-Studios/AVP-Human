@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "avp_human:black_pipe_padding"
+  },
+  "result": {
+    "count": 1,
+    "id": "avp_human:black_pipe_padding_stairs"
+  }
+}

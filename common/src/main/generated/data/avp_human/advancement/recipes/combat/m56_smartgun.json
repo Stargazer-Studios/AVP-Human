@@ -1,0 +1,65 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_blueprint_m56_smartgun": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avp_human:blueprint_m56_smartgun"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_grip": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avp_human:grip"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_smart_barrel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avp_human:smart_barrel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_smart_receiver": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avp_human:smart_receiver"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "avp_human:m56_smartgun"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_blueprint_m56_smartgun",
+      "has_smart_barrel",
+      "has_grip",
+      "has_smart_receiver"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "avp_human:m56_smartgun"
+    ]
+  }
+}

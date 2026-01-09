@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "tag": "c:ingots/steel"
+    },
+    "B": {
+      "item": "avp_human:barrel"
+    }
+  },
+  "pattern": [
+    "BBB",
+    "A A",
+    "BBB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avp_human:minigun_barrel"
+  }
+}

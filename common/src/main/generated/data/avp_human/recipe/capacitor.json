@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": {
+      "tag": "c:nuggets/gold"
+    },
+    "L": {
+      "tag": "c:dusts/lithium"
+    },
+    "R": {
+      "tag": "c:dusts/redstone"
+    },
+    "S": {
+      "tag": "c:silicon"
+    }
+  },
+  "pattern": [
+    "GSS",
+    "RLL",
+    "GSS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avp_human:capacitor"
+  }
+}

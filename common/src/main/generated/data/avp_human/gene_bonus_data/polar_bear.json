@@ -1,0 +1,20 @@
+{
+  "entityTypePredicate": "minecraft:polar_bear",
+  "geneBonusDataEntries": [
+    {
+      "id": "avp_human:attack_damage",
+      "operation": "ADDITIVE",
+      "value": 3.0
+    },
+    {
+      "id": "avp_human:cold_resistance",
+      "operation": "MULTIPLICATIVE",
+      "value": 0.2
+    },
+    {
+      "id": "avp_human:max_health",
+      "operation": "MULTIPLICATIVE",
+      "value": 0.1
+    }
+  ]
+}

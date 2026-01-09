@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "avp_human:titanium_standing_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_titanium_standing": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avp_human:titanium_standing"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_titanium_standing"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "avp_human:titanium_standing_stairs"
+    ]
+  }
+}

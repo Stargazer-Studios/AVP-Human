@@ -1,0 +1,20 @@
+{
+  "entityTypePredicate": "minecraft:sheep",
+  "geneBonusDataEntries": [
+    {
+      "id": "avp_human:bonus_embryo_count",
+      "operation": "ADDITIVE",
+      "value": 0.4
+    },
+    {
+      "id": "avp_human:cold_resistance",
+      "operation": "MULTIPLICATIVE",
+      "value": 0.15
+    },
+    {
+      "id": "avp_human:intelligence",
+      "operation": "ADDITIVE",
+      "value": -10.0
+    }
+  ]
+}

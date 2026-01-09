@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "tag": "c:ingots/steel"
+    },
+    "B": {
+      "tag": "minecraft:wool"
+    },
+    "C": {
+      "item": "avp_human:polymer"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "C C"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avp_human:tactical_helmet"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "avp_human:diode"
+    },
+    "L": {
+      "tag": "c:ingots/lead"
+    },
+    "R": {
+      "item": "avp_human:resistor"
+    },
+    "S": {
+      "tag": "c:silicon"
+    }
+  },
+  "pattern": [
+    " D ",
+    "SLS",
+    " R "
+  ],
+  "result": {
+    "count": 2,
+    "id": "avp_human:regulator"
+  }
+}

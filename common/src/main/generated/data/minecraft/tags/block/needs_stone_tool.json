@@ -1,0 +1,12 @@
+{
+  "values": [
+    "#avp_human:ferroaluminum",
+    "#avp_human:padding",
+    "#avp_human:plastic",
+    "avp_human:bauxite_ore",
+    "avp_human:blueprint_block",
+    "avp_human:cable",
+    "avp_human:galena_ore",
+    "avp_human:raw_bauxite_block"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "entityTypePredicate": "minecraft:pig",
+  "geneBonusDataEntries": [
+    {
+      "id": "avp_human:bonus_embryo_count",
+      "operation": "ADDITIVE",
+      "value": 1.0
+    },
+    {
+      "id": "avp_human:intelligence",
+      "operation": "ADDITIVE",
+      "value": -15.0
+    },
+    {
+      "id": "avp_human:max_health",
+      "operation": "MULTIPLICATIVE",
+      "value": -0.1
+    }
+  ]
+}

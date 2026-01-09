@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "tag": "c:nuggets/steel"
+    },
+    "B": {
+      "item": "minecraft:gunpowder"
+    },
+    "C": {
+      "item": "minecraft:blaze_powder"
+    }
+  },
+  "pattern": [
+    "ACA",
+    "ABA"
+  ],
+  "result": {
+    "count": 4,
+    "id": "avp_human:grenade_incendiary"
+  }
+}

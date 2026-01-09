@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "avp_human:block/pink_plastic",
+    "side": "avp_human:block/pink_plastic",
+    "top": "avp_human:block/pink_plastic"
+  }
+}

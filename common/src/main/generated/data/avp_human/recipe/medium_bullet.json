@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "tag": "c:nuggets/brass"
+    },
+    "B": {
+      "item": "minecraft:gunpowder"
+    },
+    "C": {
+      "tag": "c:nuggets/steel"
+    },
+    "D": {
+      "tag": "c:nuggets/lead"
+    }
+  },
+  "pattern": [
+    "ADA",
+    "ABA",
+    "ACA"
+  ],
+  "result": {
+    "count": 16,
+    "id": "avp_human:medium_bullet"
+  }
+}

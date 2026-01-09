@@ -1,0 +1,26 @@
+{
+  "parent": "avp_human:humans/has_gun",
+  "criteria": {
+    "hire_marine": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.humans.hire_marine.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:diamond"
+    },
+    "title": {
+      "translate": "advancements.humans.hire_marine.title"
+    }
+  },
+  "requirements": [
+    [
+      "hire_marine"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

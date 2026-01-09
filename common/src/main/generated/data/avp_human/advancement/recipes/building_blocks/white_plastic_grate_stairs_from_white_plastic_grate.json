@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "avp_human:white_plastic_grate_stairs_from_white_plastic_grate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_white_plastic_grate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avp_human:white_plastic_grate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_white_plastic_grate"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "avp_human:white_plastic_grate_stairs_from_white_plastic_grate"
+    ]
+  }
+}

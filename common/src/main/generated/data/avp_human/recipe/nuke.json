@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "minecraft:clock"
+    },
+    "L": {
+      "tag": "c:ingots/lead"
+    },
+    "N": {
+      "item": "avp_human:neodymium_magnet"
+    },
+    "P": {
+      "item": "avp_human:cpu"
+    },
+    "S": {
+      "item": "avp_human:led_display"
+    },
+    "T": {
+      "item": "minecraft:tnt"
+    }
+  },
+  "pattern": [
+    "CSP",
+    "LNL",
+    "TTT"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avp_human:nuke"
+  }
+}

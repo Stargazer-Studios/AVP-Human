@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "avp_human:block/purple_plastic_grate_slab"
+    },
+    "type=double": {
+      "model": "avp_human:block/purple_plastic_grate"
+    },
+    "type=top": {
+      "model": "avp_human:block/purple_plastic_grate_slab_top"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "avp_human:block/titanium_plating",
+    "side": "avp_human:block/titanium_plating",
+    "top": "avp_human:block/titanium_plating"
+  }
+}

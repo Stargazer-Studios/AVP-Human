@@ -1,0 +1,11 @@
+{
+  "values": [
+    "avp_human:caseless_bullet",
+    "avp_human:heavy_bullet",
+    "avp_human:small_bullet",
+    "avp_human:medium_bullet",
+    "avp_human:shotgun_shell",
+    "avp_human:rocket",
+    "avp_human:fuel_tank"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "tag": "c:dusts/autunite"
+    },
+    "D": {
+      "tag": "c:gems/diamond"
+    },
+    "G": {
+      "tag": "c:ingots/gold"
+    }
+  },
+  "pattern": [
+    "GDG",
+    "AAA",
+    "GDG"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avp_human:nuclear_battery"
+  }
+}

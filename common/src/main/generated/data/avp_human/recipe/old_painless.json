@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "avp_human:blueprint_old_painless"
+    },
+    {
+      "item": "avp_human:minigun_barrel"
+    },
+    {
+      "item": "avp_human:grip"
+    },
+    {
+      "item": "avp_human:grip"
+    },
+    {
+      "item": "avp_human:receiver"
+    }
+  ],
+  "result": {
+    "components": {
+      "azurelib:az_id": [
+        112249650,
+        -323731025,
+        -1753955350,
+        -202743241
+      ]
+    },
+    "count": 1,
+    "id": "avp_human:old_painless"
+  }
+}

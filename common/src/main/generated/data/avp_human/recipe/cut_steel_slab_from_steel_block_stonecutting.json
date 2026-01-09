@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "avp_human:steel_block"
+  },
+  "result": {
+    "count": 8,
+    "id": "avp_human:cut_steel_slab"
+  }
+}

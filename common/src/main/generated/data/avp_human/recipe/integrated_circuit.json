@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "avp_human:diode"
+    },
+    "G": {
+      "item": "avp_human:regulator"
+    },
+    "L": {
+      "tag": "c:ingots/lead"
+    },
+    "O": {
+      "tag": "c:dusts/redstone"
+    },
+    "R": {
+      "item": "avp_human:resistor"
+    },
+    "S": {
+      "tag": "c:silicon"
+    },
+    "T": {
+      "item": "avp_human:transistor"
+    }
+  },
+  "pattern": [
+    "TSR",
+    "LOL",
+    "GSD"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avp_human:integrated_circuit"
+  }
+}

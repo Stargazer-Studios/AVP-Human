@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "tag": "c:nuggets/brass"
+    },
+    "B": {
+      "item": "minecraft:gunpowder"
+    },
+    "C": {
+      "item": "minecraft:clay_ball"
+    },
+    "D": {
+      "tag": "c:nuggets/lead"
+    }
+  },
+  "pattern": [
+    " D ",
+    "CBC",
+    "CAC"
+  ],
+  "result": {
+    "count": 16,
+    "id": "avp_human:caseless_bullet"
+  }
+}

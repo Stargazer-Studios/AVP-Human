@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_dusts/autunite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:dusts/autunite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ingots/titanium": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:ingots/titanium"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "avp_human:uranium_ingot_normal"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_dusts/autunite",
+      "has_ingots/titanium"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "avp_human:uranium_ingot_normal"
+    ]
+  }
+}

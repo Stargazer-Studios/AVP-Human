@@ -1,0 +1,16 @@
+{
+  "type": "avp_human:marine_camp_grass",
+  "biomes": [
+    "minecraft:birch_forest",
+    "minecraft:flower_forest",
+    "minecraft:forest",
+    "minecraft:old_growth_birch_forest",
+    "minecraft:plains",
+    "minecraft:sunflower_plains",
+    "minecraft:taiga"
+  ],
+  "spawn_overrides": {},
+  "start_pool": "avp_human:marine_camp_grass",
+  "step": "top_layer_modification",
+  "terrain_adaptation": "beard_box"
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "avp_human:block/steel_grate_slab"
+    },
+    "type=double": {
+      "model": "avp_human:block/steel_grate"
+    },
+    "type=top": {
+      "model": "avp_human:block/steel_grate_slab_top"
+    }
+  }
+}

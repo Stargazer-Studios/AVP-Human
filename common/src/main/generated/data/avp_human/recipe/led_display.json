@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "avp_human:integrated_circuit"
+    },
+    "I": {
+      "tag": "avp_human:industrial_glass_pane"
+    },
+    "L": {
+      "item": "avp_human:led"
+    },
+    "T": {
+      "tag": "c:dusts/lithium"
+    }
+  },
+  "pattern": [
+    "LTL",
+    "LIL",
+    "LCL"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avp_human:led_display"
+  }
+}

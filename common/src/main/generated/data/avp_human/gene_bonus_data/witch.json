@@ -1,0 +1,15 @@
+{
+  "entityTypePredicate": "minecraft:witch",
+  "geneBonusDataEntries": [
+    {
+      "id": "avp_human:intelligence",
+      "operation": "ADDITIVE",
+      "value": 15.0
+    },
+    {
+      "id": "avp_human:genetic_integrity",
+      "operation": "ADDITIVE",
+      "value": -0.2
+    }
+  ]
+}

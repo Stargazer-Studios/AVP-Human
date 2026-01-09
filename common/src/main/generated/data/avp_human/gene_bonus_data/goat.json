@@ -1,0 +1,20 @@
+{
+  "entityTypePredicate": "minecraft:goat",
+  "geneBonusDataEntries": [
+    {
+      "id": "avp_human:attack_damage",
+      "operation": "ADDITIVE",
+      "value": 1.0
+    },
+    {
+      "id": "avp_human:cold_resistance",
+      "operation": "MULTIPLICATIVE",
+      "value": 0.15
+    },
+    {
+      "id": "avp_human:intelligence",
+      "operation": "ADDITIVE",
+      "value": -10.0
+    }
+  ]
+}

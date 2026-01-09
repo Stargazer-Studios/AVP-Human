@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_light_blue_plastic_grate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avp_human:light_blue_plastic_grate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "avp_human:light_blue_plastic_grate_stairs_from_light_blue_plastic_grate_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_light_blue_plastic_grate"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "avp_human:light_blue_plastic_grate_stairs_from_light_blue_plastic_grate_stonecutting"
+    ]
+  }
+}

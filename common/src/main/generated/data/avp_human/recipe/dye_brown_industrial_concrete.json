@@ -1,0 +1,60 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "minecraft:brown_dye"
+    },
+    [
+      {
+        "item": "avp_human:pink_industrial_concrete"
+      },
+      {
+        "item": "avp_human:gray_industrial_concrete"
+      },
+      {
+        "item": "avp_human:green_industrial_concrete"
+      },
+      {
+        "item": "avp_human:red_industrial_concrete"
+      },
+      {
+        "item": "avp_human:light_blue_industrial_concrete"
+      },
+      {
+        "item": "avp_human:light_gray_industrial_concrete"
+      },
+      {
+        "item": "avp_human:cyan_industrial_concrete"
+      },
+      {
+        "item": "avp_human:purple_industrial_concrete"
+      },
+      {
+        "item": "avp_human:orange_industrial_concrete"
+      },
+      {
+        "item": "avp_human:lime_industrial_concrete"
+      },
+      {
+        "item": "avp_human:yellow_industrial_concrete"
+      },
+      {
+        "item": "avp_human:magenta_industrial_concrete"
+      },
+      {
+        "item": "avp_human:blue_industrial_concrete"
+      },
+      {
+        "item": "avp_human:white_industrial_concrete"
+      },
+      {
+        "item": "avp_human:black_industrial_concrete"
+      }
+    ]
+  ],
+  "result": {
+    "count": 1,
+    "id": "avp_human:brown_industrial_concrete"
+  }
+}

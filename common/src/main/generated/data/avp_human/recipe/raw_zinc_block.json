@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "A": {
+      "item": "avp_human:raw_zinc"
+    },
+    "B": {
+      "tag": "c:raw_materials/zinc"
+    }
+  },
+  "pattern": [
+    "BBB",
+    "BAB",
+    "BBB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avp_human:raw_zinc_block"
+  }
+}

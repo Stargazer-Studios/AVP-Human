@@ -1,0 +1,12 @@
+{
+  "values": [
+    "avp_human:autunite_dust",
+    "avp_human:uranium_nugget",
+    "avp_human:uranium_ingot",
+    "avp_human:autunite_block",
+    "avp_human:autunite_ore",
+    "avp_human:uranium_block",
+    "avp_human:trinitite_block",
+    "#c:ingots/uranium"
+  ]
+}

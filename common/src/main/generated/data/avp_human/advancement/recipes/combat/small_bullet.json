@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_gunpowder": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:gunpowder"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_nuggets/brass": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:nuggets/brass"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_nuggets/lead": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:nuggets/lead"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "avp_human:small_bullet"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_nuggets/brass",
+      "has_gunpowder",
+      "has_nuggets/lead"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "avp_human:small_bullet"
+    ]
+  }
+}

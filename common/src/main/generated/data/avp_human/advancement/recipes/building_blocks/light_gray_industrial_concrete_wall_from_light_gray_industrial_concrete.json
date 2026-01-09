@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_light_gray_industrial_concrete": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avp_human:light_gray_industrial_concrete"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "avp_human:light_gray_industrial_concrete_wall_from_light_gray_industrial_concrete"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_light_gray_industrial_concrete"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "avp_human:light_gray_industrial_concrete_wall_from_light_gray_industrial_concrete"
+    ]
+  }
+}

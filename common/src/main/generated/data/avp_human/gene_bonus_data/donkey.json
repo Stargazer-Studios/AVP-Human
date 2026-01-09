@@ -1,0 +1,15 @@
+{
+  "entityTypePredicate": "minecraft:donkey",
+  "geneBonusDataEntries": [
+    {
+      "id": "avp_human:move_speed",
+      "operation": "ADDITIVE",
+      "value": 0.015
+    },
+    {
+      "id": "avp_human:intelligence",
+      "operation": "ADDITIVE",
+      "value": -5.0
+    }
+  ]
+}

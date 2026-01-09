@@ -1,0 +1,37 @@
+{
+  "values": [
+    {
+      "id": "#minecraft:illager",
+      "required": false
+    },
+    {
+      "id": "#minecraft:illager_friends",
+      "required": false
+    },
+    {
+      "id": "#minecraft:undead",
+      "required": false
+    },
+    {
+      "id": "#minecraft:wither_friends",
+      "required": false
+    },
+    "minecraft:cave_spider",
+    "minecraft:creeper",
+    "minecraft:blaze",
+    "minecraft:breeze",
+    "minecraft:elder_guardian",
+    "minecraft:ghast",
+    "minecraft:guardian",
+    "minecraft:hoglin",
+    "minecraft:magma_cube",
+    "minecraft:piglin",
+    "minecraft:piglin_brute",
+    "minecraft:shulker",
+    "minecraft:silverfish",
+    "minecraft:slime",
+    "minecraft:spider",
+    "minecraft:vex",
+    "minecraft:warden"
+  ]
+}

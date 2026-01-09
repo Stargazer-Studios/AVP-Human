@@ -1,0 +1,15 @@
+{
+  "values": [
+    "avp_human:black_panel_padding",
+    "avp_human:light_gray_cut_plastic_slab",
+    "avp_human:gray_cut_plastic_slab",
+    "avp_human:black_industrial_concrete",
+    "minecraft:cyan_terracotta",
+    "minecraft:moss_block",
+    "avp_human:ferroaluminum_tread",
+    "avp_human:steel_tread",
+    "minecraft:gravel",
+    "avp_human:steel_grate",
+    "avp_human:titanium_tread"
+  ]
+}

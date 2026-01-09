@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "minecraft:dripstone_caves",
+  "features": "avp_human:zinc_ore_dripstone_caves",
+  "step": "underground_ores"
+}

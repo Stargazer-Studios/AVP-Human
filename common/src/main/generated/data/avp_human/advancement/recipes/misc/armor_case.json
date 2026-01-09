@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_chest": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:chest"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ingots/aluminum": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:ingots/aluminum"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_polymer": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avp_human:polymer"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "avp_human:armor_case"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_ingots/aluminum",
+      "has_polymer",
+      "has_chest"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "avp_human:armor_case"
+    ]
+  }
+}

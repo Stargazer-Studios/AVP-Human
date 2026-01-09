@@ -1,0 +1,26 @@
+{
+  "parent": "avp_human:humans/smelt_plastic",
+  "criteria": {
+    "equip_full_armor_set_with_armor_case": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.humans.equip_full_armor_set_with_armor_case.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "avp_human:armor_case"
+    },
+    "title": {
+      "translate": "advancements.humans.equip_full_armor_set_with_armor_case.title"
+    }
+  },
+  "requirements": [
+    [
+      "equip_full_armor_set_with_armor_case"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

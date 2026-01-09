@@ -1,0 +1,11 @@
+{
+  "type": "avp_human:outpost_comm_bottom",
+  "biomes": [
+    "minecraft:meadow",
+    "minecraft:savanna_plateau"
+  ],
+  "spawn_overrides": {},
+  "start_pool": "avp_human:outpost_comm_bottom",
+  "step": "top_layer_modification",
+  "terrain_adaptation": "beard_box"
+}

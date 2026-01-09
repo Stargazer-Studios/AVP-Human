@@ -1,0 +1,25 @@
+{
+  "values": [
+    "#avp_human:industrial_concrete",
+    "#avp_human:industrial_glass",
+    "#avp_human:steel",
+    "#avp_human:titanium",
+    "avp_human:ammo_chest",
+    "avp_human:battery",
+    "avp_human:deepslate_titanium_ore",
+    "avp_human:desk_terminal",
+    "avp_human:industrial_furnace_block",
+    "avp_human:infinite_power_generator",
+    "avp_human:lead_chest",
+    "avp_human:nuke",
+    "avp_human:raw_titanium_block",
+    "avp_human:redstone_generator",
+    "avp_human:resonator",
+    "avp_human:sentry_turret",
+    "avp_human:solar_panel",
+    "avp_human:thermal_generator",
+    "avp_human:wind_turbine",
+    "avp_human:trinitite_block",
+    "avp_human:uranium_block"
+  ]
+}

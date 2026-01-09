@@ -1,0 +1,65 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ingots/steel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:ingots/steel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_polymer": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avp_human:polymer"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_stone_button": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:stone_button"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "avp_human:receiver"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_tripwire_hook": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:tripwire_hook"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_ingots/steel",
+      "has_polymer",
+      "has_tripwire_hook",
+      "has_stone_button"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "avp_human:receiver"
+    ]
+  }
+}

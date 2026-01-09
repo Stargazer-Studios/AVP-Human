@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "avp_human:titanium_block"
+  },
+  "result": {
+    "count": 4,
+    "id": "avp_human:titanium_siding"
+  }
+}

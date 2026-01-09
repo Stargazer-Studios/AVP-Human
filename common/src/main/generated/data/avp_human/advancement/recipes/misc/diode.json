@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_dusts/redstone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:dusts/redstone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_nuggets/gold": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:nuggets/gold"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_silicon": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:silicon"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "avp_human:diode"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_nuggets/gold",
+      "has_dusts/redstone",
+      "has_silicon"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "avp_human:diode"
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "tag": "c:ingots/steel"
+    },
+    "B": {
+      "tag": "avp_human:plastic"
+    }
+  },
+  "pattern": [
+    "BBB",
+    "A A",
+    "B B"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avp_human:wy_elite_leggings"
+  }
+}

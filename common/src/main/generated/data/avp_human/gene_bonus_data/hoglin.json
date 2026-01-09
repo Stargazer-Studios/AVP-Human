@@ -1,0 +1,35 @@
+{
+  "entityTypePredicate": "minecraft:hoglin",
+  "geneBonusDataEntries": [
+    {
+      "id": "avp_human:attack_damage",
+      "operation": "ADDITIVE",
+      "value": 4.0
+    },
+    {
+      "id": "avp_human:fire_resistance",
+      "operation": "MULTIPLICATIVE",
+      "value": 0.2
+    },
+    {
+      "id": "avp_human:knockback_resistance",
+      "operation": "ADDITIVE",
+      "value": 0.1
+    },
+    {
+      "id": "avp_human:max_health",
+      "operation": "MULTIPLICATIVE",
+      "value": 0.15
+    },
+    {
+      "id": "avp_human:cold_resistance",
+      "operation": "MULTIPLICATIVE",
+      "value": -0.1
+    },
+    {
+      "id": "avp_human:intelligence",
+      "operation": "ADDITIVE",
+      "value": -10.0
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "tag": "c:nuggets/brass"
+    },
+    "C": {
+      "tag": "c:ingots/copper"
+    },
+    "I": {
+      "item": "avp_human:integrated_circuit"
+    },
+    "N": {
+      "item": "avp_human:neodymium_magnet"
+    }
+  },
+  "pattern": [
+    "BCB",
+    "NIN",
+    "BCB"
+  ],
+  "result": {
+    "count": 8,
+    "id": "avp_human:servo"
+  }
+}

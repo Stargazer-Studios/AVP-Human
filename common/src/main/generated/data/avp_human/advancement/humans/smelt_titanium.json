@@ -1,0 +1,33 @@
+{
+  "parent": "avp_human:humans/blast_steel",
+  "criteria": {
+    "titanium": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avp_human:titanium_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.humans.smelt_titanium.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "avp_human:titanium_ingot"
+    },
+    "title": {
+      "translate": "advancements.humans.smelt_titanium.title"
+    }
+  },
+  "requirements": [
+    [
+      "titanium"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "tag": "c:ingots/aluminum"
+    },
+    "B": {
+      "tag": "avp_human:industrial_glass_pane"
+    },
+    "E": {
+      "tag": "c:dusts/coal"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "B B",
+    "EEE"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avp_human:pressure_helmet"
+  }
+}

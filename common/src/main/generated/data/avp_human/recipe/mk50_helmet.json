@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "tag": "c:ingots/aluminum"
+    },
+    "B": {
+      "tag": "avp_human:industrial_glass_pane"
+    },
+    "C": {
+      "tag": "c:ingots/lead"
+    },
+    "E": {
+      "tag": "c:dusts/coal"
+    }
+  },
+  "pattern": [
+    "CAC",
+    "B B",
+    "AEA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avp_human:mk50_helmet"
+  }
+}

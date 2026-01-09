@@ -1,0 +1,76 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_barrel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avp_human:barrel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_blueprint_m41a_pulse_rifle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avp_human:blueprint_m41a_pulse_rifle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_grip": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avp_human:grip"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_smart_receiver": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avp_human:smart_receiver"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_stock": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avp_human:stock"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "avp_human:m41a_pulse_rifle"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_blueprint_m41a_pulse_rifle",
+      "has_barrel",
+      "has_grip",
+      "has_smart_receiver",
+      "has_stock"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "avp_human:m41a_pulse_rifle"
+    ]
+  }
+}

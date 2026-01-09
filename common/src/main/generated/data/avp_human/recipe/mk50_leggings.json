@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "tag": "c:ingots/aluminum"
+    },
+    "C": {
+      "tag": "c:ingots/lead"
+    },
+    "D": {
+      "tag": "c:leathers"
+    }
+  },
+  "pattern": [
+    "CDC",
+    "D D",
+    "A A"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avp_human:mk50_leggings"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "avp_human:steel_tread"
+  },
+  "result": {
+    "count": 2,
+    "id": "avp_human:steel_tread_slab"
+  }
+}

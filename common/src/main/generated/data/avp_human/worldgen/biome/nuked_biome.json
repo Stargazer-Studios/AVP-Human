@@ -1,0 +1,64 @@
+{
+  "carvers": {},
+  "downfall": 0.0,
+  "effects": {
+    "fog_color": 12632256,
+    "foliage_color": 9453889,
+    "grass_color": 7237230,
+    "particle": {
+      "options": {
+        "type": "minecraft:ash"
+      },
+      "probability": 0.5
+    },
+    "sky_color": 12237498,
+    "water_color": 6666343,
+    "water_fog_color": 10944384
+  },
+  "features": [],
+  "has_precipitation": false,
+  "spawn_costs": {
+    "minecraft:creeper": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    },
+    "minecraft:husk": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    },
+    "minecraft:stray": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    }
+  },
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [],
+    "misc": [],
+    "monster": [
+      {
+        "type": "minecraft:husk",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 1
+      },
+      {
+        "type": "minecraft:stray",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 1
+      },
+      {
+        "type": "minecraft:creeper",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 1
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 90.0
+}

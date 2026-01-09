@@ -1,0 +1,11 @@
+{
+  "type": "avp_human:outpost_supply_badland",
+  "biomes": [
+    "minecraft:badlands",
+    "minecraft:wooded_badlands"
+  ],
+  "spawn_overrides": {},
+  "start_pool": "avp_human:outpost_supply_badland",
+  "step": "surface_structures",
+  "terrain_adaptation": "beard_box"
+}

@@ -1,0 +1,20 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": {
+    "type": "neoforge:and",
+    "values": [
+      {
+        "type": "neoforge:or",
+        "values": [
+          "#minecraft:is_overworld"
+        ]
+      },
+      {
+        "type": "neoforge:not",
+        "value": "minecraft:dripstone_caves"
+      }
+    ]
+  },
+  "features": "avp_human:zinc_ore",
+  "step": "underground_ores"
+}

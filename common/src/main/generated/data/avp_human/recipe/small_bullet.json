@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "tag": "c:nuggets/brass"
+    },
+    "B": {
+      "item": "minecraft:gunpowder"
+    },
+    "C": {
+      "tag": "c:nuggets/lead"
+    }
+  },
+  "pattern": [
+    " C ",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "count": 24,
+    "id": "avp_human:small_bullet"
+  }
+}

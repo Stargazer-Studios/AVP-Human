@@ -1,0 +1,9 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": [
+    "minecraft:desert",
+    "minecraft:badlands"
+  ],
+  "features": "avp_human:lithium_ore_desert",
+  "step": "underground_ores"
+}

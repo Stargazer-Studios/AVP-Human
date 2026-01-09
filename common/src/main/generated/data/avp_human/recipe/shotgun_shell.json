@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "tag": "c:nuggets/brass"
+    },
+    "B": {
+      "item": "minecraft:gunpowder"
+    },
+    "C": {
+      "item": "avp_human:polymer"
+    },
+    "D": {
+      "tag": "c:nuggets/lead"
+    }
+  },
+  "pattern": [
+    "DDD",
+    "CBC",
+    "CAC"
+  ],
+  "result": {
+    "count": 12,
+    "id": "avp_human:shotgun_shell"
+  }
+}

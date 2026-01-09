@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "avp_human:item/blueprint_m6b_rocket_launcher"
+  }
+}

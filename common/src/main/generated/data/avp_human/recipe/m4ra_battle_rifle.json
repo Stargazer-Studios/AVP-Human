@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "avp_human:blueprint_m4ra_battle_rifle"
+    },
+    {
+      "item": "avp_human:barrel"
+    },
+    {
+      "item": "avp_human:grip"
+    },
+    {
+      "item": "avp_human:receiver"
+    },
+    {
+      "item": "avp_human:stock"
+    }
+  ],
+  "result": {
+    "components": {
+      "azurelib:az_id": [
+        -641536845,
+        -772518085,
+        -1399056363,
+        -1536814150
+      ]
+    },
+    "count": 1,
+    "id": "avp_human:m4ra_battle_rifle"
+  }
+}

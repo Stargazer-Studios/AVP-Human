@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "tag": "c:nuggets/gold"
+    },
+    "B": {
+      "tag": "c:dusts/redstone"
+    },
+    "C": {
+      "tag": "c:silicon"
+    }
+  },
+  "pattern": [
+    "AB",
+    " C",
+    "AB"
+  ],
+  "result": {
+    "count": 8,
+    "id": "avp_human:resistor"
+  }
+}

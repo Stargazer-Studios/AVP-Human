@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "avp_human:steel_bars"
+    },
+    {
+      "item": "minecraft:pink_concrete"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "avp_human:pink_industrial_concrete"
+  }
+}

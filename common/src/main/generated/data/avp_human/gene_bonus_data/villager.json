@@ -1,0 +1,10 @@
+{
+  "entityTypePredicate": "minecraft:villager",
+  "geneBonusDataEntries": [
+    {
+      "id": "avp_human:intelligence",
+      "operation": "ADDITIVE",
+      "value": 15.0
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_glass_pane_noside",
+  "textures": {
+    "pane": "avp_human:block/light_gray_industrial_glass"
+  }
+}

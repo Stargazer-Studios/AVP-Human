@@ -1,0 +1,15 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 1787767890,
+    "separation": 15,
+    "spacing": 40,
+    "spread_type": "triangular"
+  },
+  "structures": [
+    {
+      "structure": "avp_human:outpost_supply_badland",
+      "weight": 1
+    }
+  ]
+}
