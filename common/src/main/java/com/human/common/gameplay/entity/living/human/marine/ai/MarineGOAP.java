@@ -23,6 +23,10 @@ import com.human.common.gameplay.entity.living.human.marine.ai.idle.IdleGoals;
 import com.human.common.gameplay.entity.living.human.marine.ai.idle.IdleSensors;
 import com.human.common.registry.tag.HumanEntityTypeTags;
 import com.just.goap.graph.Graph;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+
+import java.util.Objects;
 
 public class MarineGOAP {
 
@@ -92,7 +96,7 @@ public class MarineGOAP {
         // Used for sensing attackable targets.
         graphBuilder.addSensor(
             CombatSensors.nearbyAttackableTargetsFactory(
-                (marine, livingEntity) -> livingEntity.getType().is(HumanEntityTypeTags.HATED_BY_MARINES)
+                (marine, livingEntity) -> isAThreat(marine, livingEntity)
                     && marine.getSensing().hasLineOfSight(livingEntity)
             )
         );
@@ -171,6 +175,39 @@ public class MarineGOAP {
         graphBuilder.addSensor(FollowLeaderSensors.HAS_LEADER);
         // Used for determining if the marine is too far away from the leader.
         graphBuilder.addSensor(FollowLeaderSensors.IS_CLOSE_TO_LEADER);
+    }
+
+    private static boolean isAThreat(Marine marine, LivingEntity livingEntity) {
+        if (livingEntity.getType().is(HumanEntityTypeTags.HATED_BY_MARINES)) {
+            return true;
+        }
+
+        if (livingEntity instanceof Mob mob) {
+            var leaderUUIDOption = marine.getLeaderUUID();
+            var mobTarget = mob.getTarget();
+
+            if (mobTarget != null) {
+                // Is the mob targeting me?
+                return Objects.equals(mobTarget.getUUID(), marine.getUUID())
+                    // OR is the mob targeting my leader?
+                    || leaderUUIDOption.isSomeAnd(mobTarget.getUUID()::equals);
+            }
+
+            // Was the mob hurt by my leader?
+            return marine.getLeader()
+                .isSomeAnd(leader -> {
+                    if (!(leader instanceof LivingEntity livingLeader)) {
+                        return false;
+                    }
+
+                    var leaderLastTarget = livingLeader.getLastHurtMob();
+
+                    return leaderLastTarget != null
+                        && Objects.equals(leaderLastTarget.getUUID(), livingEntity.getUUID());
+                });
+        }
+
+        return false;
     }
 
     public static void initialize() {}

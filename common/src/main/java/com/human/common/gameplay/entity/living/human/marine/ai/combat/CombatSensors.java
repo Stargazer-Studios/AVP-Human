@@ -44,7 +44,7 @@ public class CombatSensors {
     public static Compose<Mob, List<LivingEntity>, List<LivingEntity>> NEAREST_ATTACKABLE_TARGETS = Sensors.compose(
         NEARBY_ATTACKABLE_TARGETS_KEY,
         StateKey.sensed("nearest_attackable_targets"),
-        (mob, nearbyLivingEntities) -> nearbyLivingEntities.stream()
+        (mob, nearbyAttackableTargets) -> nearbyAttackableTargets.stream()
             .sorted(Comparator.comparingDouble(mob::distanceToSqr))
             .toList()
     );
@@ -52,8 +52,8 @@ public class CombatSensors {
     public static Compose<Mob, List<LivingEntity>, Option<LivingEntity>> NEAREST_ATTACKABLE_TARGET = Sensors.compose(
         NEAREST_ATTACKABLE_TARGETS.key(),
         StateKey.sensed("nearest_attackable_target"),
-        (mob, nearbyLivingEntities) -> {
-            var targetOption = nearbyLivingEntities.stream()
+        (mob, nearestAttackableTargets) -> {
+            var targetOption = nearestAttackableTargets.stream()
                 .findFirst()
                 .<Option<LivingEntity>>map(Option::some)
                 .orElse(Option.none());
