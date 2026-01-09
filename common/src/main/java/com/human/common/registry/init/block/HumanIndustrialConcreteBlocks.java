@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.WallBlock;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -32,7 +33,9 @@ public class HumanIndustrialConcreteBlocks {
                         dyeColor -> create(
                             dyeColor.getName() + "_industrial_concrete",
                             () -> new Block(HumanBlockProperties.DYE_COLOR_TO_INDUSTRIAL_CONCRETE_PROPERTIES.get(dyeColor).build())
-                        )
+                        ),
+                        (a, b) -> b,
+                        LinkedHashMap::new
                     )
                 )
         );
@@ -49,7 +52,9 @@ public class HumanIndustrialConcreteBlocks {
                                 DYE_COLOR_TO_INDUSTRIAL_CONCRETE.get(dyeColor).get().defaultBlockState(),
                                 HumanBlockProperties.DYE_COLOR_TO_INDUSTRIAL_CONCRETE_PROPERTIES.get(dyeColor).build()
                             )
-                        )
+                        ),
+                        (a, b) -> b,
+                        LinkedHashMap::new
                     )
                 )
         );
@@ -63,7 +68,9 @@ public class HumanIndustrialConcreteBlocks {
                         dyeColor -> create(
                             dyeColor.getName() + "_industrial_concrete_slab",
                             () -> new SlabBlock(HumanBlockProperties.DYE_COLOR_TO_INDUSTRIAL_CONCRETE_PROPERTIES.get(dyeColor).build())
-                        )
+                        ),
+                        (a, b) -> b,
+                        LinkedHashMap::new
                     )
                 )
         );
@@ -77,7 +84,9 @@ public class HumanIndustrialConcreteBlocks {
                         dyeColor -> create(
                             dyeColor.getName() + "_industrial_concrete_wall",
                             () -> new WallBlock(HumanBlockProperties.DYE_COLOR_TO_INDUSTRIAL_CONCRETE_PROPERTIES.get(dyeColor).build())
-                        )
+                        ),
+                        (a, b) -> b,
+                        LinkedHashMap::new
                     )
                 )
         );

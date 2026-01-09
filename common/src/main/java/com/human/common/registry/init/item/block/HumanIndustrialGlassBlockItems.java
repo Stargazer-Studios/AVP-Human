@@ -10,10 +10,7 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Map;
-import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
@@ -52,32 +49,30 @@ public class HumanIndustrialGlassBlockItems {
     );
 
     public static final Map<DyeColor, Supplier<BlockItem>> DYE_COLOR_TO_INDUSTRIAL_GLASS =
-        Collections.unmodifiableMap(
-            Arrays.stream(DyeColor.values())
-                .collect(
-                    Collectors.toMap(
-                        Function.identity(),
-                        dyeColor -> create(
-                            dyeColor.getName() + "_industrial_glass",
-                            HumanIndustrialGlassBlocks.DYE_COLOR_TO_INDUSTRIAL_GLASS.get(dyeColor)
-                        )
+        HumanIndustrialGlassBlocks.DYE_COLOR_TO_INDUSTRIAL_GLASS.entrySet()
+            .stream()
+            .collect(
+                Collectors.toMap(
+                    Map.Entry::getKey,
+                    entry -> create(
+                        entry.getKey().getName() + "_industrial_glass",
+                        entry.getValue()
                     )
                 )
-        );
+            );
 
     public static final Map<DyeColor, Supplier<BlockItem>> DYE_COLOR_TO_INDUSTRIAL_GLASS_PANE =
-        Collections.unmodifiableMap(
-            Arrays.stream(DyeColor.values())
-                .collect(
-                    Collectors.toMap(
-                        Function.identity(),
-                        dyeColor -> create(
-                            dyeColor.getName() + "_industrial_glass_pane",
-                            HumanIndustrialGlassBlocks.DYE_COLOR_TO_INDUSTRIAL_GLASS_PANE.get(dyeColor)
-                        )
+        HumanIndustrialGlassBlocks.DYE_COLOR_TO_INDUSTRIAL_GLASS_PANE.entrySet()
+            .stream()
+            .collect(
+                Collectors.toMap(
+                    Map.Entry::getKey,
+                    entry -> create(
+                        entry.getKey().getName() + "_industrial_glass_pane",
+                        entry.getValue()
                     )
                 )
-        );
+            );
 
     private static BLibHolder<BlockItem> create(String path, Supplier<? extends Block> blockSupplier) {
         return create(path, blockSupplier, new Item.Properties());

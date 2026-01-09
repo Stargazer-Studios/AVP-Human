@@ -7,16 +7,28 @@
     },
     "B": [
       {
+        "item": "avp_human:white_plastic"
+      },
+      {
+        "item": "avp_human:orange_plastic"
+      },
+      {
+        "item": "avp_human:magenta_plastic"
+      },
+      {
+        "item": "avp_human:light_blue_plastic"
+      },
+      {
+        "item": "avp_human:yellow_plastic"
+      },
+      {
+        "item": "avp_human:lime_plastic"
+      },
+      {
         "item": "avp_human:pink_plastic"
       },
       {
         "item": "avp_human:gray_plastic"
-      },
-      {
-        "item": "avp_human:red_plastic"
-      },
-      {
-        "item": "avp_human:light_blue_plastic"
       },
       {
         "item": "avp_human:light_gray_plastic"
@@ -28,25 +40,13 @@
         "item": "avp_human:purple_plastic"
       },
       {
-        "item": "avp_human:orange_plastic"
-      },
-      {
-        "item": "avp_human:lime_plastic"
-      },
-      {
-        "item": "avp_human:yellow_plastic"
+        "item": "avp_human:blue_plastic"
       },
       {
         "item": "avp_human:brown_plastic"
       },
       {
-        "item": "avp_human:magenta_plastic"
-      },
-      {
-        "item": "avp_human:blue_plastic"
-      },
-      {
-        "item": "avp_human:white_plastic"
+        "item": "avp_human:red_plastic"
       },
       {
         "item": "avp_human:black_plastic"

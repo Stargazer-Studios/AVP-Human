@@ -10,10 +10,7 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Map;
-import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
@@ -22,60 +19,56 @@ public class HumanIndustrialConcreteBlockItems {
     private static final BLibRegistry<Item> REGISTRY = Human.MOD.registries().create(BuiltInRegistries.ITEM);
 
     public static final Map<DyeColor, Supplier<BlockItem>> DYE_COLOR_TO_INDUSTRIAL_CONCRETE =
-        Collections.unmodifiableMap(
-            Arrays.stream(DyeColor.values())
-                .collect(
-                    Collectors.toMap(
-                        Function.identity(),
-                        dyeColor -> create(
-                            dyeColor.getName() + "_industrial_concrete",
-                            HumanIndustrialConcreteBlocks.DYE_COLOR_TO_INDUSTRIAL_CONCRETE.get(dyeColor)
-                        )
+        HumanIndustrialConcreteBlocks.DYE_COLOR_TO_INDUSTRIAL_CONCRETE.entrySet()
+            .stream()
+            .collect(
+                Collectors.toMap(
+                    Map.Entry::getKey,
+                    entry -> create(
+                        entry.getKey().getName() + "_industrial_concrete",
+                        entry.getValue()
                     )
                 )
-        );
+            );
 
     public static final Map<DyeColor, Supplier<BlockItem>> DYE_COLOR_TO_INDUSTRIAL_CONCRETE_SLAB =
-        Collections.unmodifiableMap(
-            Arrays.stream(DyeColor.values())
-                .collect(
-                    Collectors.toMap(
-                        Function.identity(),
-                        dyeColor -> create(
-                            dyeColor.getName() + "_industrial_concrete_slab",
-                            HumanIndustrialConcreteBlocks.DYE_COLOR_TO_INDUSTRIAL_CONCRETE_SLAB.get(dyeColor)
-                        )
+        HumanIndustrialConcreteBlocks.DYE_COLOR_TO_INDUSTRIAL_CONCRETE_SLAB.entrySet()
+            .stream()
+            .collect(
+                Collectors.toMap(
+                    Map.Entry::getKey,
+                    entry -> create(
+                        entry.getKey().getName() + "_industrial_concrete_slab",
+                        entry.getValue()
                     )
                 )
-        );
+            );
 
     public static final Map<DyeColor, Supplier<BlockItem>> DYE_COLOR_TO_INDUSTRIAL_CONCRETE_STAIRS =
-        Collections.unmodifiableMap(
-            Arrays.stream(DyeColor.values())
-                .collect(
-                    Collectors.toMap(
-                        Function.identity(),
-                        dyeColor -> create(
-                            dyeColor.getName() + "_industrial_concrete_stairs",
-                            HumanIndustrialConcreteBlocks.DYE_COLOR_TO_INDUSTRIAL_CONCRETE_STAIRS.get(dyeColor)
-                        )
+        HumanIndustrialConcreteBlocks.DYE_COLOR_TO_INDUSTRIAL_CONCRETE_STAIRS.entrySet()
+            .stream()
+            .collect(
+                Collectors.toMap(
+                    Map.Entry::getKey,
+                    entry -> create(
+                        entry.getKey().getName() + "_industrial_concrete_stairs",
+                        entry.getValue()
                     )
                 )
-        );
+            );
 
     public static final Map<DyeColor, Supplier<BlockItem>> DYE_COLOR_TO_INDUSTRIAL_CONCRETE_WALL =
-        Collections.unmodifiableMap(
-            Arrays.stream(DyeColor.values())
-                .collect(
-                    Collectors.toMap(
-                        Function.identity(),
-                        dyeColor -> create(
-                            dyeColor.getName() + "_industrial_concrete_wall",
-                            HumanIndustrialConcreteBlocks.DYE_COLOR_TO_INDUSTRIAL_CONCRETE_WALL.get(dyeColor)
-                        )
+        HumanIndustrialConcreteBlocks.DYE_COLOR_TO_INDUSTRIAL_CONCRETE_WALL.entrySet()
+            .stream()
+            .collect(
+                Collectors.toMap(
+                    Map.Entry::getKey,
+                    entry -> create(
+                        entry.getKey().getName() + "_industrial_concrete_wall",
+                        entry.getValue()
                     )
                 )
-        );
+            );
 
     private static BLibHolder<BlockItem> create(String path, Supplier<? extends Block> blockSupplier) {
         return create(path, blockSupplier, new Item.Properties());

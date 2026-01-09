@@ -19,6 +19,7 @@ import net.minecraft.world.level.block.state.properties.BlockSetType;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -71,7 +72,9 @@ public class HumanIndustrialGlassBlocks {
                                 dyeColor,
                                 HumanBlockProperties.DYE_COLOR_TO_INDUSTRIAL_GLASS_PROPERTIES.get(dyeColor).build()
                             )
-                        )
+                        ),
+                        (a, b) -> b,
+                        LinkedHashMap::new
                     )
                 )
         );
@@ -87,7 +90,9 @@ public class HumanIndustrialGlassBlocks {
                             () -> new IronBarsBlock(
                                 HumanBlockProperties.DYE_COLOR_TO_INDUSTRIAL_GLASS_PANE_PROPERTIES.get(dyeColor).build()
                             )
-                        )
+                        ),
+                        (a, b) -> b,
+                        LinkedHashMap::new
                     )
                 )
         );

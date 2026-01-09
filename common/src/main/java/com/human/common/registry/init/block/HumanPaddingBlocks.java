@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.StairBlock;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -32,7 +33,9 @@ public class HumanPaddingBlocks {
                         dyeColor -> create(
                             dyeColor.getName() + "_padding",
                             () -> new Block(HumanBlockProperties.DYE_COLOR_TO_PADDING_PROPERTIES.get(dyeColor).build())
-                        )
+                        ),
+                        (a, b) -> b,
+                        LinkedHashMap::new
                     )
                 )
         );
@@ -49,7 +52,9 @@ public class HumanPaddingBlocks {
                                 DYE_COLOR_TO_PADDING.get(dyeColor).get().defaultBlockState(),
                                 HumanBlockProperties.DYE_COLOR_TO_PADDING_PROPERTIES.get(dyeColor).build()
                             )
-                        )
+                        ),
+                        (a, b) -> b,
+                        LinkedHashMap::new
                     )
                 )
         );
@@ -63,7 +68,9 @@ public class HumanPaddingBlocks {
                         dyeColor -> create(
                             dyeColor.getName() + "_padding_slab",
                             () -> new SlabBlock(HumanBlockProperties.DYE_COLOR_TO_PADDING_PROPERTIES.get(dyeColor).build())
-                        )
+                        ),
+                        (a, b) -> b,
+                        LinkedHashMap::new
                     )
                 )
         );
@@ -77,7 +84,9 @@ public class HumanPaddingBlocks {
                         dyeColor -> create(
                             dyeColor.getName() + "_panel_padding",
                             () -> new Block(HumanBlockProperties.DYE_COLOR_TO_PADDING_PROPERTIES.get(dyeColor).build())
-                        )
+                        ),
+                        (a, b) -> b,
+                        LinkedHashMap::new
                     )
                 )
         );
@@ -94,7 +103,9 @@ public class HumanPaddingBlocks {
                                 DYE_COLOR_TO_PANEL_PADDING.get(dyeColor).get().defaultBlockState(),
                                 HumanBlockProperties.DYE_COLOR_TO_PADDING_PROPERTIES.get(dyeColor).build()
                             )
-                        )
+                        ),
+                        (a, b) -> b,
+                        LinkedHashMap::new
                     )
                 )
         );
@@ -108,7 +119,9 @@ public class HumanPaddingBlocks {
                         dyeColor -> create(
                             dyeColor.getName() + "_panel_padding_slab",
                             () -> new SlabBlock(HumanBlockProperties.DYE_COLOR_TO_PADDING_PROPERTIES.get(dyeColor).build())
-                        )
+                        ),
+                        (a, b) -> b,
+                        LinkedHashMap::new
                     )
                 )
         );
@@ -122,7 +135,9 @@ public class HumanPaddingBlocks {
                         dyeColor -> create(
                             dyeColor.getName() + "_pipe_padding",
                             () -> new RotatedPillarBlock(HumanBlockProperties.DYE_COLOR_TO_PADDING_PROPERTIES.get(dyeColor).build())
-                        )
+                        ),
+                        (a, b) -> b,
+                        LinkedHashMap::new
                     )
                 )
         );
@@ -139,7 +154,9 @@ public class HumanPaddingBlocks {
                                 DYE_COLOR_TO_PIPE_PADDING.get(dyeColor).get().defaultBlockState(),
                                 HumanBlockProperties.DYE_COLOR_TO_PADDING_PROPERTIES.get(dyeColor).build()
                             )
-                        )
+                        ),
+                        (a, b) -> b,
+                        LinkedHashMap::new
                     )
                 )
         );
@@ -153,7 +170,9 @@ public class HumanPaddingBlocks {
                         dyeColor -> create(
                             dyeColor.getName() + "_pipe_padding_slab",
                             () -> new SlabBlock(HumanBlockProperties.DYE_COLOR_TO_PADDING_PROPERTIES.get(dyeColor).build())
-                        )
+                        ),
+                        (a, b) -> b,
+                        LinkedHashMap::new
                     )
                 )
         );
@@ -167,7 +186,9 @@ public class HumanPaddingBlocks {
                         dyeColor -> create(
                             dyeColor.getName() + "_tile_padding",
                             () -> new Block(HumanBlockProperties.DYE_COLOR_TO_PADDING_PROPERTIES.get(dyeColor).build())
-                        )
+                        ),
+                        (a, b) -> b,
+                        LinkedHashMap::new
                     )
                 )
         );
@@ -184,7 +205,9 @@ public class HumanPaddingBlocks {
                                 DYE_COLOR_TO_TILE_PADDING.get(dyeColor).get().defaultBlockState(),
                                 HumanBlockProperties.DYE_COLOR_TO_PADDING_PROPERTIES.get(dyeColor).build()
                             )
-                        )
+                        ),
+                        (a, b) -> b,
+                        LinkedHashMap::new
                     )
                 )
         );
@@ -198,7 +221,9 @@ public class HumanPaddingBlocks {
                         dyeColor -> create(
                             dyeColor.getName() + "_tile_padding_slab",
                             () -> new SlabBlock(HumanBlockProperties.DYE_COLOR_TO_PADDING_PROPERTIES.get(dyeColor).build())
-                        )
+                        ),
+                        (a, b) -> b,
+                        LinkedHashMap::new
                     )
                 )
         );

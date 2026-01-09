@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.WaterloggedTransparentBlock;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -32,7 +33,9 @@ public class HumanPlasticBlocks {
                         dyeColor -> create(
                             dyeColor.getName() + "_cut_plastic",
                             () -> new Block(HumanBlockProperties.DYE_COLOR_TO_PLASTIC_PROPERTIES.get(dyeColor).build())
-                        )
+                        ),
+                        (a, b) -> b,
+                        LinkedHashMap::new
                     )
                 )
         );
@@ -49,7 +52,9 @@ public class HumanPlasticBlocks {
                                 DYE_COLOR_TO_CUT_PLASTIC.get(dyeColor).get().defaultBlockState(),
                                 HumanBlockProperties.DYE_COLOR_TO_PLASTIC_PROPERTIES.get(dyeColor).build()
                             )
-                        )
+                        ),
+                        (a, b) -> b,
+                        LinkedHashMap::new
                     )
                 )
         );
@@ -63,7 +68,9 @@ public class HumanPlasticBlocks {
                         dyeColor -> create(
                             dyeColor.getName() + "_cut_plastic_slab",
                             () -> new SlabBlock(HumanBlockProperties.DYE_COLOR_TO_PLASTIC_PROPERTIES.get(dyeColor).build())
-                        )
+                        ),
+                        (a, b) -> b,
+                        LinkedHashMap::new
                     )
                 )
         );
@@ -77,7 +84,9 @@ public class HumanPlasticBlocks {
                         dyeColor -> create(
                             dyeColor.getName() + "_framed_plastic",
                             () -> new Block(HumanBlockProperties.DYE_COLOR_TO_PLASTIC_PROPERTIES.get(dyeColor).build())
-                        )
+                        ),
+                        (a, b) -> b,
+                        LinkedHashMap::new
                     )
                 )
         );
@@ -91,7 +100,9 @@ public class HumanPlasticBlocks {
                         dyeColor -> create(
                             dyeColor.getName() + "_pitted_plastic",
                             () -> new Block(HumanBlockProperties.DYE_COLOR_TO_PLASTIC_PROPERTIES.get(dyeColor).build())
-                        )
+                        ),
+                        (a, b) -> b,
+                        LinkedHashMap::new
                     )
                 )
         );
@@ -108,7 +119,9 @@ public class HumanPlasticBlocks {
                                 DYE_COLOR_TO_PITTED_PLASTIC.get(dyeColor).get().defaultBlockState(),
                                 HumanBlockProperties.DYE_COLOR_TO_PLASTIC_PROPERTIES.get(dyeColor).build()
                             )
-                        )
+                        ),
+                        (a, b) -> b,
+                        LinkedHashMap::new
                     )
                 )
         );
@@ -122,7 +135,9 @@ public class HumanPlasticBlocks {
                         dyeColor -> create(
                             dyeColor.getName() + "_pitted_plastic_slab",
                             () -> new SlabBlock(HumanBlockProperties.DYE_COLOR_TO_PLASTIC_PROPERTIES.get(dyeColor).build())
-                        )
+                        ),
+                        (a, b) -> b,
+                        LinkedHashMap::new
                     )
                 )
         );
@@ -136,7 +151,9 @@ public class HumanPlasticBlocks {
                         dyeColor -> create(
                             dyeColor.getName() + "_plastic",
                             () -> new Block(HumanBlockProperties.DYE_COLOR_TO_PLASTIC_PROPERTIES.get(dyeColor).build())
-                        )
+                        ),
+                        (a, b) -> b,
+                        LinkedHashMap::new
                     )
                 )
         );
@@ -153,7 +170,9 @@ public class HumanPlasticBlocks {
                                 DYE_COLOR_TO_PLASTIC.get(dyeColor).get().defaultBlockState(),
                                 HumanBlockProperties.DYE_COLOR_TO_PLASTIC_PROPERTIES.get(dyeColor).build()
                             )
-                        )
+                        ),
+                        (a, b) -> b,
+                        LinkedHashMap::new
                     )
                 )
         );
@@ -167,7 +186,9 @@ public class HumanPlasticBlocks {
                         dyeColor -> create(
                             dyeColor.getName() + "_plastic_slab",
                             () -> new SlabBlock(HumanBlockProperties.DYE_COLOR_TO_PLASTIC_PROPERTIES.get(dyeColor).build())
-                        )
+                        ),
+                        (a, b) -> b,
+                        LinkedHashMap::new
                     )
                 )
         );
@@ -183,7 +204,9 @@ public class HumanPlasticBlocks {
                             () -> new WaterloggedTransparentBlock(
                                 HumanBlockProperties.DYE_COLOR_TO_PLASTIC_PROPERTIES.get(dyeColor).noOcclusion().build()
                             )
-                        )
+                        ),
+                        (a, b) -> b,
+                        LinkedHashMap::new
                     )
                 )
         );
@@ -200,7 +223,9 @@ public class HumanPlasticBlocks {
                                 DYE_COLOR_TO_PLASTIC_GRATE.get(dyeColor).get().defaultBlockState(),
                                 HumanBlockProperties.DYE_COLOR_TO_PLASTIC_PROPERTIES.get(dyeColor).noOcclusion().build()
                             )
-                        )
+                        ),
+                        (a, b) -> b,
+                        LinkedHashMap::new
                     )
                 )
         );
@@ -214,7 +239,9 @@ public class HumanPlasticBlocks {
                         dyeColor -> create(
                             dyeColor.getName() + "_plastic_grate_slab",
                             () -> new SlabBlock(HumanBlockProperties.DYE_COLOR_TO_PLASTIC_PROPERTIES.get(dyeColor).noOcclusion().build())
-                        )
+                        ),
+                        (a, b) -> b,
+                        LinkedHashMap::new
                     )
                 )
         );
