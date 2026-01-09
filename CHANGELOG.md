@@ -7,7 +7,7 @@
 - N/A
 
 ## ✨ What's New
-- N/A
+- Added wy commando armor item textures.
 
 ## ♻️ Changes
 - Reduced accuracy required for marines to pathfind to fire resistance items.
