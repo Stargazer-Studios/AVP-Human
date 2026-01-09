@@ -14,6 +14,7 @@
 - Reduced accuracy required for marines to pathfind to weapon items.
 
 ## 🐞 Fixes
+- Fixed marines not using a full nether chitin armor set to prevent fire damage.
 - Fixed marines not attacking the closest monsters to them first.
 - Fixed marines trying to shoot at monsters through walls.
   - This led to them getting "stuck" in their combat AI.

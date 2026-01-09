@@ -28,10 +28,13 @@ public class BestArmorSetTargetSensor {
             worldState.getOrDefault(GOAPSensors.IS_ON_FIRE.key(), false)
                 && !worldState.getOrDefault(GOAPSensors.HAS_FIRE_RESISTANCE.key(), false)
         ) {
-            return worldState.getOrDefault(
-                EquipBestArmorSensors.PLATED_NETHER_CHITIN_ARMOR_SET_TARGET.key(),
-                worldState.getOrDefault(EquipBestArmorSensors.NETHER_CHITIN_ARMOR_SET_TARGET.key(), ArmorSetTarget.EMPTY)
-            );
+            var platedChitinArmorSetTarget = worldState.getOrNull(EquipBestArmorSensors.PLATED_NETHER_CHITIN_ARMOR_SET_TARGET.key());
+
+            if (platedChitinArmorSetTarget != null && !platedChitinArmorSetTarget.isEmpty()) {
+                return platedChitinArmorSetTarget;
+            }
+
+            return worldState.getOrDefault(EquipBestArmorSensors.NETHER_CHITIN_ARMOR_SET_TARGET.key(), ArmorSetTarget.EMPTY);
         }
 
         if (
