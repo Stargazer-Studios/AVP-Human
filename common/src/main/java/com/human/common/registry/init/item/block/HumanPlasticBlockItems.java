@@ -10,6 +10,7 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -27,7 +28,9 @@ public class HumanPlasticBlockItems {
                     entry -> create(
                         entry.getKey().getName() + "_cut_plastic",
                         entry.getValue()
-                    )
+                    ),
+                    (a, b) -> b,
+                    LinkedHashMap::new
                 )
             );
 
@@ -40,7 +43,9 @@ public class HumanPlasticBlockItems {
                     entry -> create(
                         entry.getKey().getName() + "_cut_plastic_slab",
                         entry.getValue()
-                    )
+                    ),
+                    (a, b) -> b,
+                    LinkedHashMap::new
                 )
             );
 
@@ -53,7 +58,9 @@ public class HumanPlasticBlockItems {
                     entry -> create(
                         entry.getKey().getName() + "_cut_plastic_stairs",
                         entry.getValue()
-                    )
+                    ),
+                    (a, b) -> b,
+                    LinkedHashMap::new
                 )
             );
 
@@ -66,7 +73,9 @@ public class HumanPlasticBlockItems {
                     entry -> create(
                         entry.getKey().getName() + "_framed_plastic",
                         entry.getValue()
-                    )
+                    ),
+                    (a, b) -> b,
+                    LinkedHashMap::new
                 )
             );
 
@@ -79,7 +88,9 @@ public class HumanPlasticBlockItems {
                     entry -> create(
                         entry.getKey().getName() + "_pitted_plastic",
                         entry.getValue()
-                    )
+                    ),
+                    (a, b) -> b,
+                    LinkedHashMap::new
                 )
             );
 
@@ -92,7 +103,9 @@ public class HumanPlasticBlockItems {
                     entry -> create(
                         entry.getKey().getName() + "_pitted_plastic_slab",
                         entry.getValue()
-                    )
+                    ),
+                    (a, b) -> b,
+                    LinkedHashMap::new
                 )
             );
 
@@ -105,7 +118,9 @@ public class HumanPlasticBlockItems {
                     entry -> create(
                         entry.getKey().getName() + "_pitted_plastic_stairs",
                         entry.getValue()
-                    )
+                    ),
+                    (a, b) -> b,
+                    LinkedHashMap::new
                 )
             );
 
@@ -118,7 +133,9 @@ public class HumanPlasticBlockItems {
                     entry -> create(
                         entry.getKey().getName() + "_plastic",
                         entry.getValue()
-                    )
+                    ),
+                    (a, b) -> b,
+                    LinkedHashMap::new
                 )
             );
 
@@ -131,7 +148,9 @@ public class HumanPlasticBlockItems {
                     entry -> create(
                         entry.getKey().getName() + "_plastic_slab",
                         entry.getValue()
-                    )
+                    ),
+                    (a, b) -> b,
+                    LinkedHashMap::new
                 )
             );
 
@@ -144,7 +163,9 @@ public class HumanPlasticBlockItems {
                     entry -> create(
                         entry.getKey().getName() + "_plastic_stairs",
                         entry.getValue()
-                    )
+                    ),
+                    (a, b) -> b,
+                    LinkedHashMap::new
                 )
             );
 
@@ -157,7 +178,9 @@ public class HumanPlasticBlockItems {
                     entry -> create(
                         entry.getKey().getName() + "_plastic_grate",
                         entry.getValue()
-                    )
+                    ),
+                    (a, b) -> b,
+                    LinkedHashMap::new
                 )
             );
 
@@ -170,7 +193,9 @@ public class HumanPlasticBlockItems {
                     entry -> create(
                         entry.getKey().getName() + "_plastic_grate_slab",
                         entry.getValue()
-                    )
+                    ),
+                    (a, b) -> b,
+                    LinkedHashMap::new
                 )
             );
 
@@ -183,7 +208,9 @@ public class HumanPlasticBlockItems {
                     entry -> create(
                         entry.getKey().getName() + "_plastic_grate_stairs",
                         entry.getValue()
-                    )
+                    ),
+                    (a, b) -> b,
+                    LinkedHashMap::new
                 )
             );
 

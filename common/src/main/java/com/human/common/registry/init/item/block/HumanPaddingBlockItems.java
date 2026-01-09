@@ -10,6 +10,7 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -27,7 +28,9 @@ public class HumanPaddingBlockItems {
                     entry -> create(
                         entry.getKey().getName() + "_padding",
                         entry.getValue()
-                    )
+                    ),
+                    (a, b) -> b,
+                    LinkedHashMap::new
                 )
             );
 
@@ -40,7 +43,9 @@ public class HumanPaddingBlockItems {
                     entry -> create(
                         entry.getKey().getName() + "_padding_slab",
                         entry.getValue()
-                    )
+                    ),
+                    (a, b) -> b,
+                    LinkedHashMap::new
                 )
             );
 
@@ -53,7 +58,9 @@ public class HumanPaddingBlockItems {
                     entry -> create(
                         entry.getKey().getName() + "_padding_stairs",
                         entry.getValue()
-                    )
+                    ),
+                    (a, b) -> b,
+                    LinkedHashMap::new
                 )
             );
 
@@ -66,7 +73,9 @@ public class HumanPaddingBlockItems {
                     entry -> create(
                         entry.getKey().getName() + "_panel_padding",
                         entry.getValue()
-                    )
+                    ),
+                    (a, b) -> b,
+                    LinkedHashMap::new
                 )
             );
 
@@ -79,7 +88,9 @@ public class HumanPaddingBlockItems {
                     entry -> create(
                         entry.getKey().getName() + "_panel_padding_slab",
                         entry.getValue()
-                    )
+                    ),
+                    (a, b) -> b,
+                    LinkedHashMap::new
                 )
             );
 
@@ -92,7 +103,9 @@ public class HumanPaddingBlockItems {
                     entry -> create(
                         entry.getKey().getName() + "_panel_padding_stairs",
                         entry.getValue()
-                    )
+                    ),
+                    (a, b) -> b,
+                    LinkedHashMap::new
                 )
             );
 
@@ -105,7 +118,9 @@ public class HumanPaddingBlockItems {
                     entry -> create(
                         entry.getKey().getName() + "_pipe_padding",
                         entry.getValue()
-                    )
+                    ),
+                    (a, b) -> b,
+                    LinkedHashMap::new
                 )
             );
 
@@ -118,7 +133,9 @@ public class HumanPaddingBlockItems {
                     entry -> create(
                         entry.getKey().getName() + "_pipe_padding_slab",
                         entry.getValue()
-                    )
+                    ),
+                    (a, b) -> b,
+                    LinkedHashMap::new
                 )
             );
 
@@ -131,7 +148,9 @@ public class HumanPaddingBlockItems {
                     entry -> create(
                         entry.getKey().getName() + "_pipe_padding_stairs",
                         entry.getValue()
-                    )
+                    ),
+                    (a, b) -> b,
+                    LinkedHashMap::new
                 )
             );
 
@@ -144,7 +163,9 @@ public class HumanPaddingBlockItems {
                     entry -> create(
                         entry.getKey().getName() + "_tile_padding",
                         entry.getValue()
-                    )
+                    ),
+                    (a, b) -> b,
+                    LinkedHashMap::new
                 )
             );
 
@@ -157,7 +178,9 @@ public class HumanPaddingBlockItems {
                     entry -> create(
                         entry.getKey().getName() + "_tile_padding_slab",
                         entry.getValue()
-                    )
+                    ),
+                    (a, b) -> b,
+                    LinkedHashMap::new
                 )
             );
 
@@ -170,7 +193,9 @@ public class HumanPaddingBlockItems {
                     entry -> create(
                         entry.getKey().getName() + "_tile_padding_stairs",
                         entry.getValue()
-                    )
+                    ),
+                    (a, b) -> b,
+                    LinkedHashMap::new
                 )
             );
 

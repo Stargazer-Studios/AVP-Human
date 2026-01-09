@@ -10,6 +10,7 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -57,7 +58,9 @@ public class HumanIndustrialGlassBlockItems {
                     entry -> create(
                         entry.getKey().getName() + "_industrial_glass",
                         entry.getValue()
-                    )
+                    ),
+                    (a, b) -> b,
+                    LinkedHashMap::new
                 )
             );
 
@@ -70,7 +73,9 @@ public class HumanIndustrialGlassBlockItems {
                     entry -> create(
                         entry.getKey().getName() + "_industrial_glass_pane",
                         entry.getValue()
-                    )
+                    ),
+                    (a, b) -> b,
+                    LinkedHashMap::new
                 )
             );
 

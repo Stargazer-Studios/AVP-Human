@@ -10,6 +10,7 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -27,7 +28,9 @@ public class HumanIndustrialConcreteBlockItems {
                     entry -> create(
                         entry.getKey().getName() + "_industrial_concrete",
                         entry.getValue()
-                    )
+                    ),
+                    (a, b) -> b,
+                    LinkedHashMap::new
                 )
             );
 
@@ -40,7 +43,9 @@ public class HumanIndustrialConcreteBlockItems {
                     entry -> create(
                         entry.getKey().getName() + "_industrial_concrete_slab",
                         entry.getValue()
-                    )
+                    ),
+                    (a, b) -> b,
+                    LinkedHashMap::new
                 )
             );
 
@@ -53,7 +58,9 @@ public class HumanIndustrialConcreteBlockItems {
                     entry -> create(
                         entry.getKey().getName() + "_industrial_concrete_stairs",
                         entry.getValue()
-                    )
+                    ),
+                    (a, b) -> b,
+                    LinkedHashMap::new
                 )
             );
 
@@ -66,7 +73,9 @@ public class HumanIndustrialConcreteBlockItems {
                     entry -> create(
                         entry.getKey().getName() + "_industrial_concrete_wall",
                         entry.getValue()
-                    )
+                    ),
+                    (a, b) -> b,
+                    LinkedHashMap::new
                 )
             );
 
