@@ -20,12 +20,38 @@ public class HumanEntityTypeTagProvider extends FabricTagProvider.EntityTypeTagP
 
     @Override
     protected void addTags(HolderLookup.Provider wrapperLookup) {
+        addHatedByMarines();
         addHumanoids();
         addRadiationResistant();
 
         // Compatibility
         addHatedByXenomorphs();
         addHosts();
+    }
+
+    private void addHatedByMarines() {
+        getOrCreateTagBuilder(HumanEntityTypeTags.HATED_BY_MARINES)
+            .addOptionalTag(EntityTypeTags.ILLAGER)
+            .addOptionalTag(EntityTypeTags.ILLAGER_FRIENDS)
+            .addOptionalTag(EntityTypeTags.UNDEAD)
+            .addOptionalTag(EntityTypeTags.WITHER_FRIENDS)
+            .add(EntityType.CAVE_SPIDER)
+            .add(EntityType.CREEPER)
+            .add(EntityType.BLAZE)
+            .add(EntityType.BREEZE)
+            .add(EntityType.ELDER_GUARDIAN)
+            .add(EntityType.GHAST)
+            .add(EntityType.GUARDIAN)
+            .add(EntityType.HOGLIN)
+            .add(EntityType.MAGMA_CUBE)
+            .add(EntityType.PIGLIN)
+            .add(EntityType.PIGLIN_BRUTE)
+            .add(EntityType.SHULKER)
+            .add(EntityType.SILVERFISH)
+            .add(EntityType.SLIME)
+            .add(EntityType.SPIDER)
+            .add(EntityType.VEX)
+            .add(EntityType.WARDEN);
     }
 
     private void addHumanoids() {

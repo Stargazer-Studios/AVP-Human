@@ -8,10 +8,12 @@
 
 ## ✨ What's New
 - Added wy commando armor item textures.
+  - Thanks to Davianortis for contributing these!
 
 ## ♻️ Changes
 - Reduced accuracy required for marines to pathfind to fire resistance items.
 - Reduced accuracy required for marines to pathfind to weapon items.
+- Marine aggression towards mobs is now controlled by the `#avp_human:hated_by_marines` tag.
 
 ## 🐞 Fixes
 - Fixed marines not using a full nether chitin armor set to prevent fire damage.
@@ -23,7 +25,7 @@
 - N/A
 
 ## 🛠 Data Pack
-- N/A
+- Added `#avp_human:hated_by_marines` entity type tag.
 
 ## 🔬 Technical Changes
 - N/A

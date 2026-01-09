@@ -8,6 +8,7 @@ import java.util.function.Consumer;
 public class EnUsEntityTypeTagProvider {
 
     public static final Consumer<FabricLanguageProvider.TranslationBuilder> CONSUMER = builder -> {
+        builder.add(HumanEntityTypeTags.HATED_BY_MARINES, "Hated By Marines");
         builder.add(HumanEntityTypeTags.RADIATION_RESISTANT, "Radiation Resistant");
     };
 }

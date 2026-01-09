@@ -21,8 +21,8 @@ import com.human.common.gameplay.entity.living.human.marine.ai.follow_leader.Fol
 import com.human.common.gameplay.entity.living.human.marine.ai.idle.IdleActions;
 import com.human.common.gameplay.entity.living.human.marine.ai.idle.IdleGoals;
 import com.human.common.gameplay.entity.living.human.marine.ai.idle.IdleSensors;
+import com.human.common.registry.tag.HumanEntityTypeTags;
 import com.just.goap.graph.Graph;
-import net.minecraft.world.entity.monster.Monster;
 
 public class MarineGOAP {
 
@@ -92,7 +92,7 @@ public class MarineGOAP {
         // Used for sensing attackable targets.
         graphBuilder.addSensor(
             CombatSensors.nearbyAttackableTargetsFactory(
-                (marine, livingEntity) -> livingEntity instanceof Monster
+                (marine, livingEntity) -> livingEntity.getType().is(HumanEntityTypeTags.HATED_BY_MARINES)
                     && marine.getSensing().hasLineOfSight(livingEntity)
             )
         );
