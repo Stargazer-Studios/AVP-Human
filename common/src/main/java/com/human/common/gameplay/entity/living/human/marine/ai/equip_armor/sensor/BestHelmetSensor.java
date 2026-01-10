@@ -1,18 +1,18 @@
-package com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.sensor;
+package com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.sensor;
 
-import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.EquipBestArmorSensors;
-import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.strategy.ArmorStrategyResult;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.EquipArmorSensors;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.strategy.ArmorStrategyResult;
 import com.human.common.gameplay.entity.living.human.marine.ai.model.ItemTarget;
 import com.just.core.functional.option.Option;
 import com.just.goap.state.ReadableWorldState;
 import net.minecraft.world.entity.LivingEntity;
 
-public class BestBootsSensor {
+public class BestHelmetSensor {
 
     public static Option<ArmorStrategyResult<? extends ItemTarget>> sense(LivingEntity ignored, ReadableWorldState worldState) {
-        var equippedOption = worldState.getOrDefault(EquipBestArmorSensors.BEST_BOOTS_EQUIPPED.key(), Option.none());
-        var inventoryOption = worldState.getOrDefault(EquipBestArmorSensors.BEST_BOOTS_IN_INVENTORY.key(), Option.none());
-        var worldOption = worldState.getOrDefault(EquipBestArmorSensors.BEST_BOOTS_IN_WORLD.key(), Option.none());
+        var equippedOption = worldState.getOrDefault(EquipArmorSensors.BEST_HELMET_EQUIPPED.key(), Option.none());
+        var inventoryOption = worldState.getOrDefault(EquipArmorSensors.BEST_HELMET_IN_INVENTORY.key(), Option.none());
+        var worldOption = worldState.getOrDefault(EquipArmorSensors.BEST_HELMET_IN_WORLD.key(), Option.none());
 
         Option<ArmorStrategyResult<? extends ItemTarget>> bestOption = Option.none();
 

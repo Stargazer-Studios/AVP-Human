@@ -1,4 +1,4 @@
-package com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.strategy;
+package com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.strategy;
 
 import com.blib.common.gameplay.model.inventory.BLibInventory;
 import com.just.goap.state.ReadableWorldState;

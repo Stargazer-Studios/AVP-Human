@@ -9,9 +9,9 @@ import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resi
 import com.human.common.gameplay.entity.living.human.marine.ai.combat.CombatActions;
 import com.human.common.gameplay.entity.living.human.marine.ai.combat.CombatGoals;
 import com.human.common.gameplay.entity.living.human.marine.ai.combat.CombatSensors;
-import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.EquipBestArmorActions;
-import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.EquipBestArmorGoals;
-import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.EquipBestArmorSensors;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.EquipArmorActions;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.EquipArmorGoals;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.EquipArmorSensors;
 import com.human.common.gameplay.entity.living.human.marine.ai.extinguish_fire.ExtinguishFireActions;
 import com.human.common.gameplay.entity.living.human.marine.ai.extinguish_fire.ExtinguishFireGoals;
 import com.human.common.gameplay.entity.living.human.marine.ai.extinguish_fire.ExtinguishFireSensors;
@@ -122,40 +122,40 @@ public class MarineGOAP {
     }
 
     private static void addEquipBestArmorPackage(Graph.Builder<Marine> graphBuilder) {
-        graphBuilder.addGoal(EquipBestArmorGoals.EQUIP_BEST_ARMOR_GOAL);
+        graphBuilder.addGoal(EquipArmorGoals.EQUIP_BEST_ARMOR_GOAL);
 
-        graphBuilder.addAction(EquipBestArmorActions.EQUIP_BEST_ARMOR_PIECES_FROM_INVENTORY_ACTION);
+        graphBuilder.addAction(EquipArmorActions.EQUIP_BEST_ARMOR_PIECES_FROM_INVENTORY_ACTION);
 
         // Best helmet sensors.
-        graphBuilder.addSensor(EquipBestArmorSensors.BEST_HELMET);
-        graphBuilder.addSensor(EquipBestArmorSensors.BEST_HELMET_IN_WORLD);
-        graphBuilder.addSensor(EquipBestArmorSensors.BEST_HELMET_IN_INVENTORY);
-        graphBuilder.addSensor(EquipBestArmorSensors.BEST_HELMET_EQUIPPED);
+        graphBuilder.addSensor(EquipArmorSensors.BEST_HELMET);
+        graphBuilder.addSensor(EquipArmorSensors.BEST_HELMET_IN_WORLD);
+        graphBuilder.addSensor(EquipArmorSensors.BEST_HELMET_IN_INVENTORY);
+        graphBuilder.addSensor(EquipArmorSensors.BEST_HELMET_EQUIPPED);
         // Best chestplate sensors.
-        graphBuilder.addSensor(EquipBestArmorSensors.BEST_CHESTPLATE);
-        graphBuilder.addSensor(EquipBestArmorSensors.BEST_CHESTPLATE_IN_WORLD);
-        graphBuilder.addSensor(EquipBestArmorSensors.BEST_CHESTPLATE_IN_INVENTORY);
-        graphBuilder.addSensor(EquipBestArmorSensors.BEST_CHESTPLATE_EQUIPPED);
+        graphBuilder.addSensor(EquipArmorSensors.BEST_CHESTPLATE);
+        graphBuilder.addSensor(EquipArmorSensors.BEST_CHESTPLATE_IN_WORLD);
+        graphBuilder.addSensor(EquipArmorSensors.BEST_CHESTPLATE_IN_INVENTORY);
+        graphBuilder.addSensor(EquipArmorSensors.BEST_CHESTPLATE_EQUIPPED);
         // Best leggings sensors.
-        graphBuilder.addSensor(EquipBestArmorSensors.BEST_LEGGINGS);
-        graphBuilder.addSensor(EquipBestArmorSensors.BEST_LEGGINGS_IN_WORLD);
-        graphBuilder.addSensor(EquipBestArmorSensors.BEST_LEGGINGS_IN_INVENTORY);
-        graphBuilder.addSensor(EquipBestArmorSensors.BEST_LEGGINGS_EQUIPPED);
+        graphBuilder.addSensor(EquipArmorSensors.BEST_LEGGINGS);
+        graphBuilder.addSensor(EquipArmorSensors.BEST_LEGGINGS_IN_WORLD);
+        graphBuilder.addSensor(EquipArmorSensors.BEST_LEGGINGS_IN_INVENTORY);
+        graphBuilder.addSensor(EquipArmorSensors.BEST_LEGGINGS_EQUIPPED);
         // Best boots sensors.
-        graphBuilder.addSensor(EquipBestArmorSensors.BEST_BOOTS);
-        graphBuilder.addSensor(EquipBestArmorSensors.BEST_BOOTS_IN_WORLD);
-        graphBuilder.addSensor(EquipBestArmorSensors.BEST_BOOTS_IN_INVENTORY);
-        graphBuilder.addSensor(EquipBestArmorSensors.BEST_BOOTS_EQUIPPED);
+        graphBuilder.addSensor(EquipArmorSensors.BEST_BOOTS);
+        graphBuilder.addSensor(EquipArmorSensors.BEST_BOOTS_IN_WORLD);
+        graphBuilder.addSensor(EquipArmorSensors.BEST_BOOTS_IN_INVENTORY);
+        graphBuilder.addSensor(EquipArmorSensors.BEST_BOOTS_EQUIPPED);
         // Best armor set sensors.
-        graphBuilder.addSensor(EquipBestArmorSensors.BEST_ARMOR_SET_TARGET);
-        graphBuilder.addSensor(EquipBestArmorSensors.IS_ANY_BEST_ARMOR_SET_PIECE_IN_WORLD);
-        graphBuilder.addSensor(EquipBestArmorSensors.IS_ANY_BEST_ARMOR_SET_PIECE_IN_INVENTORY);
-        graphBuilder.addSensor(EquipBestArmorSensors.ARE_ALL_BEST_ARMOR_SET_PIECES_EQUIPPED);
+        graphBuilder.addSensor(EquipArmorSensors.BEST_ARMOR_SET_TARGET);
+        graphBuilder.addSensor(EquipArmorSensors.IS_ANY_BEST_ARMOR_SET_PIECE_IN_WORLD);
+        graphBuilder.addSensor(EquipArmorSensors.IS_ANY_BEST_ARMOR_SET_PIECE_IN_INVENTORY);
+        graphBuilder.addSensor(EquipArmorSensors.ARE_ALL_BEST_ARMOR_SET_PIECES_EQUIPPED);
         // Full set armor sensors.
-        graphBuilder.addSensor(EquipBestArmorSensors.MK50_ARMOR_SET_TARGET);
-        graphBuilder.addSensor(EquipBestArmorSensors.NETHER_CHITIN_ARMOR_SET_TARGET);
-        graphBuilder.addSensor(EquipBestArmorSensors.PLATED_NETHER_CHITIN_ARMOR_SET_TARGET);
-        graphBuilder.addSensor(EquipBestArmorSensors.PRESSURE_SUIT_ARMOR_SET_TARGET);
+        graphBuilder.addSensor(EquipArmorSensors.MK50_ARMOR_SET_TARGET);
+        graphBuilder.addSensor(EquipArmorSensors.NETHER_CHITIN_ARMOR_SET_TARGET);
+        graphBuilder.addSensor(EquipArmorSensors.PLATED_NETHER_CHITIN_ARMOR_SET_TARGET);
+        graphBuilder.addSensor(EquipArmorSensors.PRESSURE_SUIT_ARMOR_SET_TARGET);
     }
 
     private static void addExtinguishSelfPackage(Graph.Builder<Marine> graphBuilder) {

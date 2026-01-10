@@ -1,8 +1,8 @@
-package com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.sensor;
+package com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.sensor;
 
-import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.strategy.ArmorStrategies;
-import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.strategy.ArmorStrategy;
-import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.strategy.ArmorStrategyResult;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.strategy.ArmorStrategies;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.strategy.ArmorStrategy;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.strategy.ArmorStrategyResult;
 import com.human.common.gameplay.entity.living.human.marine.ai.model.ItemTarget;
 import com.just.core.functional.option.Option;
 import com.just.goap.state.ReadableWorldState;

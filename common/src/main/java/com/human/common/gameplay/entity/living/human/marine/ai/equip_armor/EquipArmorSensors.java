@@ -1,16 +1,16 @@
-package com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor;
+package com.human.common.gameplay.entity.living.human.marine.ai.equip_armor;
 
 import com.alien.common.registry.init.item.AlienArmorItems;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
-import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.sensor.ArmorInInventorySensor;
-import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.sensor.ArmorInWorldSensor;
-import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.sensor.BestArmorSetTargetSensor;
-import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.sensor.BestBootsSensor;
-import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.sensor.BestChestplateSensor;
-import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.sensor.BestHelmetSensor;
-import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.sensor.BestLeggingsSensor;
-import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.sensor.EquippedArmorSensor;
-import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.strategy.ArmorStrategyResult;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.sensor.ArmorInInventorySensor;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.sensor.ArmorInWorldSensor;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.sensor.BestArmorSetTargetSensor;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.sensor.BestBootsSensor;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.sensor.BestChestplateSensor;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.sensor.BestHelmetSensor;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.sensor.BestLeggingsSensor;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.sensor.EquippedArmorSensor;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.strategy.ArmorStrategyResult;
 import com.human.common.gameplay.entity.living.human.marine.ai.model.ArmorSet;
 import com.human.common.gameplay.entity.living.human.marine.ai.model.ArmorSetTarget;
 import com.human.common.gameplay.entity.living.human.marine.ai.model.ItemTarget;
@@ -24,7 +24,7 @@ import com.just.goap.sensor.Sensors;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ArmorItem;
 
-public class EquipBestArmorSensors {
+public class EquipArmorSensors {
 
     private static final ArmorSet MK50_ARMOR_SET = new ArmorSet(
         HumanArmorItems.MK50_HELMET,
@@ -196,7 +196,7 @@ public class EquipBestArmorSensors {
         (livingEntity, bestArmorSetTarget) -> bestArmorSetTarget.allNoneOrMatch(ItemTarget.Location.EQUIPPED)
     );
 
-    private EquipBestArmorSensors() {
+    private EquipArmorSensors() {
         throw new UnsupportedOperationException();
     }
 }

@@ -1,8 +1,8 @@
-package com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.strategy.impl;
+package com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.strategy.impl;
 
 import com.blib.common.gameplay.util.EnchantmentUtil;
 import com.human.common.gameplay.entity.living.human.ai.MathUtil;
-import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.strategy.ArmorStrategy;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.strategy.ArmorStrategy;
 import com.just.goap.state.ReadableWorldState;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ArmorItem;

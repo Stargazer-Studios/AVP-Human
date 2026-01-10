@@ -1,6 +1,6 @@
-package com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.strategy;
+package com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.strategy;
 
-import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.strategy.impl.OverallDefenseStrategy;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.strategy.impl.OverallDefenseStrategy;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 
