@@ -126,7 +126,27 @@ public class MarineGOAP {
 
         graphBuilder.addAction(EquipBestArmorActions.EQUIP_BEST_ARMOR_PIECES_FROM_INVENTORY_ACTION);
 
-        // Best armor set sensor.
+        // Best helmet sensors.
+        graphBuilder.addSensor(EquipBestArmorSensors.BEST_HELMET);
+        graphBuilder.addSensor(EquipBestArmorSensors.BEST_HELMET_IN_WORLD);
+        graphBuilder.addSensor(EquipBestArmorSensors.BEST_HELMET_IN_INVENTORY);
+        graphBuilder.addSensor(EquipBestArmorSensors.BEST_HELMET_EQUIPPED);
+        // Best chestplate sensors.
+        graphBuilder.addSensor(EquipBestArmorSensors.BEST_CHESTPLATE);
+        graphBuilder.addSensor(EquipBestArmorSensors.BEST_CHESTPLATE_IN_WORLD);
+        graphBuilder.addSensor(EquipBestArmorSensors.BEST_CHESTPLATE_IN_INVENTORY);
+        graphBuilder.addSensor(EquipBestArmorSensors.BEST_CHESTPLATE_EQUIPPED);
+        // Best leggings sensors.
+        graphBuilder.addSensor(EquipBestArmorSensors.BEST_LEGGINGS);
+        graphBuilder.addSensor(EquipBestArmorSensors.BEST_LEGGINGS_IN_WORLD);
+        graphBuilder.addSensor(EquipBestArmorSensors.BEST_LEGGINGS_IN_INVENTORY);
+        graphBuilder.addSensor(EquipBestArmorSensors.BEST_LEGGINGS_EQUIPPED);
+        // Best boots sensors.
+        graphBuilder.addSensor(EquipBestArmorSensors.BEST_BOOTS);
+        graphBuilder.addSensor(EquipBestArmorSensors.BEST_BOOTS_IN_WORLD);
+        graphBuilder.addSensor(EquipBestArmorSensors.BEST_BOOTS_IN_INVENTORY);
+        graphBuilder.addSensor(EquipBestArmorSensors.BEST_BOOTS_EQUIPPED);
+        // Best armor set sensors.
         graphBuilder.addSensor(EquipBestArmorSensors.BEST_ARMOR_SET_TARGET);
         graphBuilder.addSensor(EquipBestArmorSensors.IS_ANY_BEST_ARMOR_SET_PIECE_IN_WORLD);
         graphBuilder.addSensor(EquipBestArmorSensors.IS_ANY_BEST_ARMOR_SET_PIECE_IN_INVENTORY);

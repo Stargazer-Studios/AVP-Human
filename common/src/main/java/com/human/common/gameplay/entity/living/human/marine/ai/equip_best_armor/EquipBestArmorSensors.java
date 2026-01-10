@@ -1,7 +1,16 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor;
 
 import com.alien.common.registry.init.item.AlienArmorItems;
+import com.human.common.gameplay.entity.living.human.marine.Marine;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.sensor.ArmorInInventorySensor;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.sensor.ArmorInWorldSensor;
 import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.sensor.BestArmorSetTargetSensor;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.sensor.BestBootsSensor;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.sensor.BestChestplateSensor;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.sensor.BestHelmetSensor;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.sensor.BestLeggingsSensor;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.sensor.EquippedArmorSensor;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.strategy.ArmorStrategyResult;
 import com.human.common.gameplay.entity.living.human.marine.ai.model.ArmorSet;
 import com.human.common.gameplay.entity.living.human.marine.ai.model.ArmorSetTarget;
 import com.human.common.gameplay.entity.living.human.marine.ai.model.ItemTarget;
@@ -13,6 +22,7 @@ import com.just.goap.StateKey;
 import com.just.goap.sensor.Sensor;
 import com.just.goap.sensor.Sensors;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ArmorItem;
 
 public class EquipBestArmorSensors {
 
@@ -50,6 +60,93 @@ public class EquipBestArmorSensors {
                 AlienArmorItems.PLATED_NETHER_CHITIN_BOOTS
             )
             : null
+    );
+
+    public static final Sensor.Mono<Marine, Option<ArmorStrategyResult<? extends ItemTarget>>> BEST_HELMET = Sensors.lazyCompose(
+        StateKey.sensed("best_helmet"),
+        BestHelmetSensor::sense
+    );
+
+    public static final Sensor.Mono<Marine, Option<ArmorStrategyResult<ItemTarget.Equipped>>> BEST_HELMET_EQUIPPED = Sensors.lazyCompose(
+        StateKey.sensed("best_helmet_equipped"),
+        (livingEntity, worldState) -> EquippedArmorSensor.sense(ArmorItem.Type.HELMET, livingEntity, worldState)
+    );
+
+    public static final Sensor.Mono<Marine, Option<ArmorStrategyResult<ItemTarget.Inventory>>> BEST_HELMET_IN_INVENTORY = Sensors
+        .lazyCompose(
+            StateKey.sensed("best_helmet_in_inventory"),
+            (livingEntity, worldState) -> ArmorInInventorySensor.sense(ArmorItem.Type.HELMET, livingEntity, worldState)
+        );
+
+    public static final Sensor.Mono<LivingEntity, Option<ArmorStrategyResult<ItemTarget.World>>> BEST_HELMET_IN_WORLD = Sensors.lazyCompose(
+        StateKey.sensed("best_helmet_in_world"),
+        (livingEntity, worldState) -> ArmorInWorldSensor.sense(ArmorItem.Type.HELMET, livingEntity, worldState)
+    );
+
+    public static final Sensor.Mono<Marine, Option<ArmorStrategyResult<? extends ItemTarget>>> BEST_CHESTPLATE = Sensors.lazyCompose(
+        StateKey.sensed("best_chestplate"),
+        BestChestplateSensor::sense
+    );
+
+    public static final Sensor.Mono<Marine, Option<ArmorStrategyResult<ItemTarget.Equipped>>> BEST_CHESTPLATE_EQUIPPED = Sensors
+        .lazyCompose(
+            StateKey.sensed("best_chestplate_equipped"),
+            (livingEntity, worldState) -> EquippedArmorSensor.sense(ArmorItem.Type.CHESTPLATE, livingEntity, worldState)
+        );
+
+    public static final Sensor.Mono<Marine, Option<ArmorStrategyResult<ItemTarget.Inventory>>> BEST_CHESTPLATE_IN_INVENTORY = Sensors
+        .lazyCompose(
+            StateKey.sensed("best_chestplate_in_inventory"),
+            (livingEntity, worldState) -> ArmorInInventorySensor.sense(ArmorItem.Type.CHESTPLATE, livingEntity, worldState)
+        );
+
+    public static final Sensor.Mono<LivingEntity, Option<ArmorStrategyResult<ItemTarget.World>>> BEST_CHESTPLATE_IN_WORLD = Sensors
+        .lazyCompose(
+            StateKey.sensed("best_chestplate_in_world"),
+            (livingEntity, worldState) -> ArmorInWorldSensor.sense(ArmorItem.Type.CHESTPLATE, livingEntity, worldState)
+        );
+
+    public static final Sensor.Mono<Marine, Option<ArmorStrategyResult<? extends ItemTarget>>> BEST_LEGGINGS = Sensors.lazyCompose(
+        StateKey.sensed("best_leggings"),
+        BestLeggingsSensor::sense
+    );
+
+    public static final Sensor.Mono<Marine, Option<ArmorStrategyResult<ItemTarget.Equipped>>> BEST_LEGGINGS_EQUIPPED = Sensors.lazyCompose(
+        StateKey.sensed("best_leggings_equipped"),
+        (livingEntity, worldState) -> EquippedArmorSensor.sense(ArmorItem.Type.LEGGINGS, livingEntity, worldState)
+    );
+
+    public static final Sensor.Mono<Marine, Option<ArmorStrategyResult<ItemTarget.Inventory>>> BEST_LEGGINGS_IN_INVENTORY = Sensors
+        .lazyCompose(
+            StateKey.sensed("best_leggings_in_inventory"),
+            (livingEntity, worldState) -> ArmorInInventorySensor.sense(ArmorItem.Type.LEGGINGS, livingEntity, worldState)
+        );
+
+    public static final Sensor.Mono<LivingEntity, Option<ArmorStrategyResult<ItemTarget.World>>> BEST_LEGGINGS_IN_WORLD = Sensors
+        .lazyCompose(
+            StateKey.sensed("best_leggings_in_world"),
+            (livingEntity, worldState) -> ArmorInWorldSensor.sense(ArmorItem.Type.LEGGINGS, livingEntity, worldState)
+        );
+
+    public static final Sensor.Mono<Marine, Option<ArmorStrategyResult<? extends ItemTarget>>> BEST_BOOTS = Sensors.lazyCompose(
+        StateKey.sensed("best_boots"),
+        BestBootsSensor::sense
+    );
+
+    public static final Sensor.Mono<Marine, Option<ArmorStrategyResult<ItemTarget.Equipped>>> BEST_BOOTS_EQUIPPED = Sensors.lazyCompose(
+        StateKey.sensed("best_boots_equipped"),
+        (livingEntity, worldState) -> EquippedArmorSensor.sense(ArmorItem.Type.BOOTS, livingEntity, worldState)
+    );
+
+    public static final Sensor.Mono<Marine, Option<ArmorStrategyResult<ItemTarget.Inventory>>> BEST_BOOTS_IN_INVENTORY = Sensors
+        .lazyCompose(
+            StateKey.sensed("best_boots_in_inventory"),
+            (livingEntity, worldState) -> ArmorInInventorySensor.sense(ArmorItem.Type.BOOTS, livingEntity, worldState)
+        );
+
+    public static final Sensor.Mono<LivingEntity, Option<ArmorStrategyResult<ItemTarget.World>>> BEST_BOOTS_IN_WORLD = Sensors.lazyCompose(
+        StateKey.sensed("best_boots_in_world"),
+        (livingEntity, worldState) -> ArmorInWorldSensor.sense(ArmorItem.Type.BOOTS, livingEntity, worldState)
     );
 
     public static final Sensor.Mono<LivingEntity, ArmorSetTarget> MK50_ARMOR_SET_TARGET = Sensors.lazyCompose(

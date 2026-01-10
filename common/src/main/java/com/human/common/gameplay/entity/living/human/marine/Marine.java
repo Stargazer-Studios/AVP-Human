@@ -13,6 +13,7 @@ import com.human.common.gameplay.entity.living.human.AbstractHuman;
 import com.human.common.gameplay.entity.living.human.marine.ai.MarineGOAP;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.FRIStrategies;
 import com.human.common.gameplay.entity.living.human.marine.ai.combat.strategy.WeaponStrategies;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.strategy.ArmorStrategies;
 import com.human.common.gameplay.item.GunItem;
 import com.human.common.gameplay.item.ItemCooldownUser;
 import com.human.common.registry.init.HumanDataComponents;
@@ -79,6 +80,19 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
             HumanArmorItems.TACTICAL_CAMO_LEGGINGS,
             HumanArmorItems.TACTICAL_CAMO_BOOTS
         )
+        // TODO:
+        // List.of(
+        // HumanArmorItems.WY_COMMANDO_HELMET,
+        // HumanArmorItems.WY_COMMANDO_CHESTPLATE,
+        // HumanArmorItems.WY_COMMANDO_LEGGINGS,
+        // HumanArmorItems.WY_COMMANDO_BOOTS
+        // ),
+        // List.of(
+        // HumanArmorItems.WY_ELITE_HELMET,
+        // HumanArmorItems.WY_ELITE_CHESTPLATE,
+        // HumanArmorItems.WY_ELITE_LEGGINGS,
+        // HumanArmorItems.WY_ELITE_BOOTS
+        // )
     );
 
     private static final List<Supplier<Item>> PRIMARY_WEAPON_ITEM_SUPPLIERS = List.of(
@@ -196,8 +210,8 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
         // Only leaders can give marines items.
         if (getLeaderUUID().isSomeAnd(uuid -> Objects.equals(uuid, player.getUUID()))) {
             if (
-                itemStack.getItem() instanceof ArmorItem
-                    || itemStack.getItem() == Items.WATER_BUCKET
+                itemStack.getItem() == Items.WATER_BUCKET
+                    || ArmorStrategies.isValidItemStack(itemStack)
                     || WeaponStrategies.isValid(itemStack)
                     || FRIStrategies.isValidItemStack(itemStack)
             ) {

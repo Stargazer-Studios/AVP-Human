@@ -1,0 +1,9 @@
+package com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.strategy;
+
+import com.human.common.gameplay.entity.living.human.marine.ai.model.ItemTarget;
+
+public record ArmorStrategyResult<T extends ItemTarget>(
+    T itemTarget,
+    ArmorStrategy strategy,
+    double score
+) {}

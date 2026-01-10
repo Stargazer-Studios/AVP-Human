@@ -3,7 +3,10 @@ package com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor
 import com.blib.common.gameplay.goap.GOAPSensors;
 import com.human.common.gameplay.entity.ai.goap.HumanGOAPSensors;
 import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.EquipBestArmorSensors;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_best_armor.strategy.ArmorStrategyResult;
 import com.human.common.gameplay.entity.living.human.marine.ai.model.ArmorSetTarget;
+import com.human.common.gameplay.entity.living.human.marine.ai.model.ItemTarget;
+import com.just.core.functional.option.Option;
 import com.just.goap.state.ReadableWorldState;
 import net.minecraft.world.entity.LivingEntity;
 
@@ -42,17 +45,21 @@ public class BestArmorSetTargetSensor {
         // TODO: Equip leather boots if walking near powdered snow.
         // TODO: Favor fire protection if entity is on fire and has no fire resistance.
         // TODO: Favor blast protection if a creeper, boiler, TNT or grenade is nearby and about to explode.
-        // var helmet = ...
-        // TODO: Get score of current helmet
-        // TODO: Get score of helmets in inventory
-        // TODO: Get score of helmets in world
-        // TODO: Get item target or result w/ best score.
-        // TODO: Assign item target to helmet slot in ArmorSetTarget returned here.
-        // TODO: Repeat with chestplate, leggings and boots.
-        // var chestplate = ...
-        // var leggings = ...
-        // var boots = ...
-        return ArmorSetTarget.EMPTY;
+        var helmetWorldOption = worldState.getOrDefault(EquipBestArmorSensors.BEST_HELMET.key(), Option.none());
+        var chestplateOption = worldState.getOrDefault(EquipBestArmorSensors.BEST_CHESTPLATE.key(), Option.none());
+        var leggingsOption = worldState.getOrDefault(EquipBestArmorSensors.BEST_LEGGINGS.key(), Option.none());
+        var bootsOption = worldState.getOrDefault(EquipBestArmorSensors.BEST_BOOTS.key(), Option.none());
+
+        return new ArmorSetTarget(
+            helmetWorldOption.<ItemTarget>map(ArmorStrategyResult::itemTarget)
+                .unwrapOr(ItemTarget.None.INSTANCE),
+            chestplateOption.<ItemTarget>map(ArmorStrategyResult::itemTarget)
+                .unwrapOr(ItemTarget.None.INSTANCE),
+            leggingsOption.<ItemTarget>map(ArmorStrategyResult::itemTarget)
+                .unwrapOr(ItemTarget.None.INSTANCE),
+            bootsOption.<ItemTarget>map(ArmorStrategyResult::itemTarget)
+                .unwrapOr(ItemTarget.None.INSTANCE)
+        );
     }
 
     private static ArmorSetTarget getFullSetFireResistantArmor(ReadableWorldState worldState) {

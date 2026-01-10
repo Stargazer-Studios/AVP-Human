@@ -7,6 +7,8 @@
 - N/A
 
 ## ✨ What's New
+- Marines can now equip any armor given to them so long as it is better than their currently equipped armor.
+  - Marines by default spawn with a full set of either tactical armor or tactical camo armor.
 - Added wy commando armor item textures.
   - Thanks to Davianortis for contributing these!
 
