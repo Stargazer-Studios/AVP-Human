@@ -40,9 +40,10 @@ public class OverallDefenseStrategy implements ArmorStrategy {
             // Use netherite as a baseline for scoring. It's a really good armor set, stat-wise!
             var netherite = ArmorMaterials.NETHERITE.value();
             var material = armorItem.getMaterial().value();
-            var defenseFit = MathUtil.mapNormalized(material.getDefense(type), 0, netherite.getDefense(type));
-            var knockbackResistanceFit = MathUtil.mapNormalized(material.knockbackResistance(), 0, netherite.knockbackResistance());
-            var toughnessFit = MathUtil.mapNormalized(material.toughness(), 0, netherite.toughness());
+            // We use 50% above netherite values so that armors other than vanilla's strongest armor are viable choices.
+            var defenseFit = MathUtil.mapNormalized(material.getDefense(type), 0, netherite.getDefense(type) * 1.5);
+            var knockbackResistanceFit = MathUtil.mapNormalized(material.knockbackResistance(), 0, netherite.knockbackResistance() * 1.5);
+            var toughnessFit = MathUtil.mapNormalized(material.toughness(), 0, netherite.toughness() * 1.5);
 
             // TODO: Enchantment strategy here, perhaps.
             var protectionLevel = EnchantmentUtil.getLevel(livingEntity.level(), itemStack, Enchantments.PROTECTION);
