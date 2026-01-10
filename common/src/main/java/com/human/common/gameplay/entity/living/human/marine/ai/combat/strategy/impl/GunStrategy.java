@@ -1,6 +1,5 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.combat.strategy.impl;
 
-import com.blib.common.gameplay.model.inventory.BLibInventory;
 import com.human.common.gameplay.entity.living.human.marine.ai.combat.CombatSensors;
 import com.human.common.gameplay.entity.living.human.marine.ai.combat.strategy.WeaponStrategy;
 import com.human.common.gameplay.item.GunItem;
@@ -18,14 +17,12 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 
-import java.util.Collection;
-
 public class GunStrategy implements WeaponStrategy {
 
     private static final StateKey<Integer> TICK_COUNTDOWN = StateKey.sensed("tick_countdown");
 
     @Override
-    public boolean canUseItemStack(ItemStack itemStack) {
+    public boolean isValidItemStack(ItemStack itemStack) {
         if (!itemStack.is(HumanItemTags.GUNS)) {
             return false;
         }
@@ -34,13 +31,8 @@ public class GunStrategy implements WeaponStrategy {
     }
 
     @Override
-    public boolean isValid(LivingEntity livingEntity, ReadableWorldState worldState) {
+    public boolean isValidWorldState(LivingEntity livingEntity, ReadableWorldState worldState) {
         return true;
-    }
-
-    @Override
-    public Collection<BLibInventory.Entry> selectEntriesFromInventory(BLibInventory inventory) {
-        return inventory.filterEntriesByStack(this::canUseItemStack);
     }
 
     @Override

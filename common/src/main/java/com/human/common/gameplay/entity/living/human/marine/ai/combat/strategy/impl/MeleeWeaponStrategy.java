@@ -1,6 +1,5 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.combat.strategy.impl;
 
-import com.blib.common.gameplay.model.inventory.BLibInventory;
 import com.human.common.gameplay.entity.living.human.marine.ai.combat.CombatSensors;
 import com.human.common.gameplay.entity.living.human.marine.ai.combat.strategy.WeaponStrategy;
 import com.human.common.gameplay.entity.living.human.marine.ai.combat.strategy.WeaponStrategyResult;
@@ -23,14 +22,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 
-import java.util.Collection;
-
 public class MeleeWeaponStrategy implements WeaponStrategy {
 
     private static final StateKey<Integer> ATTACK_DELAY_IN_TICKS = StateKey.sensed("attack_delay_in_ticks");
 
     @Override
-    public boolean canUseItemStack(ItemStack itemStack) {
+    public boolean isValidItemStack(ItemStack itemStack) {
         // TODO: Replace with "melee weapons" tag.
         return itemStack.is(ItemTags.AXES)
             || itemStack.is(ItemTags.SWORDS)
@@ -38,13 +35,8 @@ public class MeleeWeaponStrategy implements WeaponStrategy {
     }
 
     @Override
-    public boolean isValid(LivingEntity livingEntity, ReadableWorldState worldState) {
+    public boolean isValidWorldState(LivingEntity livingEntity, ReadableWorldState worldState) {
         return true;
-    }
-
-    @Override
-    public Collection<BLibInventory.Entry> selectEntriesFromInventory(BLibInventory inventory) {
-        return inventory.filterEntriesByStack(this::canUseItemStack);
     }
 
     @Override

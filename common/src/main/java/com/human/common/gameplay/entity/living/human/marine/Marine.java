@@ -11,9 +11,9 @@ import com.human.common.config.HumanConfig;
 import com.human.common.data.HumanAdvancements;
 import com.human.common.gameplay.entity.living.human.AbstractHuman;
 import com.human.common.gameplay.entity.living.human.marine.ai.MarineGOAP;
-import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.FRIStrategies;
-import com.human.common.gameplay.entity.living.human.marine.ai.combat.strategy.WeaponStrategies;
-import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.strategy.ArmorStrategies;
+import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.FRIStrategySet;
+import com.human.common.gameplay.entity.living.human.marine.ai.combat.strategy.WeaponStrategySet;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.strategy.ArmorStrategySet;
 import com.human.common.gameplay.item.GunItem;
 import com.human.common.gameplay.item.ItemCooldownUser;
 import com.human.common.registry.init.HumanDataComponents;
@@ -211,9 +211,9 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
         if (getLeaderUUID().isSomeAnd(uuid -> Objects.equals(uuid, player.getUUID()))) {
             if (
                 itemStack.getItem() == Items.WATER_BUCKET
-                    || ArmorStrategies.isValidItemStack(itemStack)
-                    || WeaponStrategies.isValid(itemStack)
-                    || FRIStrategies.isValidItemStack(itemStack)
+                    || ArmorStrategySet.INSTANCE.isAnyValidFor(itemStack)
+                    || WeaponStrategySet.INSTANCE.isAnyValidFor(itemStack)
+                    || FRIStrategySet.INSTANCE.isAnyValidFor(itemStack)
             ) {
                 if (!level().isClientSide) {
                     var item = new ItemStack(itemStack.getItem(), 1);
