@@ -20,25 +20,23 @@ public class EquipBestArmorPiecesFromInventoryAction {
             return Action.Signal.ABORT;
         }
 
-        var signal = Action.Signal.CONTINUE;
-
         if (bestArmorTarget.helmet() instanceof ItemTarget.Inventory(BLibInventory.Entry entry)) {
-            signal = EquipItemAction.perform(marine, entry, EquipmentSlot.HEAD);
+            EquipItemAction.perform(marine, entry, EquipmentSlot.HEAD);
         }
 
         if (bestArmorTarget.chestplate() instanceof ItemTarget.Inventory(BLibInventory.Entry entry)) {
-            signal = EquipItemAction.perform(marine, entry, EquipmentSlot.CHEST);
+            EquipItemAction.perform(marine, entry, EquipmentSlot.CHEST);
         }
 
         if (bestArmorTarget.leggings() instanceof ItemTarget.Inventory(BLibInventory.Entry entry)) {
-            signal = EquipItemAction.perform(marine, entry, EquipmentSlot.LEGS);
+            EquipItemAction.perform(marine, entry, EquipmentSlot.LEGS);
         }
 
         if (bestArmorTarget.boots() instanceof ItemTarget.Inventory(BLibInventory.Entry entry)) {
-            signal = EquipItemAction.perform(marine, entry, EquipmentSlot.FEET);
+            EquipItemAction.perform(marine, entry, EquipmentSlot.FEET);
         }
 
-        return signal;
+        return Action.Signal.CONTINUE;
     }
 
     private EquipBestArmorPiecesFromInventoryAction() {
