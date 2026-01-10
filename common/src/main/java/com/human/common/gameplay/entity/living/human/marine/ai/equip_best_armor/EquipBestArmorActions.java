@@ -11,7 +11,6 @@ public class EquipBestArmorActions {
 
     public static final Action<Marine> PICK_UP_BEST_ARMOR_PIECES_ACTION = Action.<Marine>builder("PickUpBestArmorPiecesAction")
         .addPrecondition(EquipBestArmorSensors.IS_ANY_BEST_ARMOR_SET_PIECE_IN_WORLD.key(), Expressions.Boolean.isTrue())
-        .addEffect(EquipBestArmorSensors.IS_ANY_BEST_ARMOR_SET_PIECE_IN_WORLD.key().asDerived(), false)
         .addEffect(EquipBestArmorSensors.IS_ANY_BEST_ARMOR_SET_PIECE_IN_INVENTORY.key().asDerived(), true)
         .withPerformCallback((a, b, c) -> {
             var bestArmorTargetOption = b.getOrDefault(EquipBestArmorSensors.BEST_ARMOR_SET_TARGET.key(), ArmorSetTarget.EMPTY);
@@ -20,8 +19,6 @@ public class EquipBestArmorActions {
                 return Action.Signal.ABORT;
             }
 
-            // TODO: Take off current armor pieces and put them back into the inventory.
-            // TODO: Equip the parts of the "BETTER_ARMOR" state that are present.
             return Action.Signal.CONTINUE;
         })
         .build();
