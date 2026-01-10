@@ -14,10 +14,7 @@ public class BestArmorSetTargetSensor {
             worldState.getOrDefault(GOAPSensors.IS_IN_LAVA.key(), false)
                 && !worldState.getOrDefault(GOAPSensors.HAS_FIRE_RESISTANCE.key(), false)
         ) {
-            return worldState.getOrDefault(
-                EquipBestArmorSensors.PLATED_NETHER_CHITIN_ARMOR_SET_TARGET.key(),
-                worldState.getOrDefault(EquipBestArmorSensors.NETHER_CHITIN_ARMOR_SET_TARGET.key(), ArmorSetTarget.EMPTY)
-            );
+            return getFullSetFireResistantArmor(worldState);
         }
 
         if (worldState.getOrDefault(HumanGOAPSensors.IS_NEAR_RADIOACTIVE_BIOME.key(), false)) {
@@ -28,13 +25,7 @@ public class BestArmorSetTargetSensor {
             worldState.getOrDefault(GOAPSensors.IS_ON_FIRE.key(), false)
                 && !worldState.getOrDefault(GOAPSensors.HAS_FIRE_RESISTANCE.key(), false)
         ) {
-            var platedChitinArmorSetTarget = worldState.getOrNull(EquipBestArmorSensors.PLATED_NETHER_CHITIN_ARMOR_SET_TARGET.key());
-
-            if (platedChitinArmorSetTarget != null && !platedChitinArmorSetTarget.isEmpty()) {
-                return platedChitinArmorSetTarget;
-            }
-
-            return worldState.getOrDefault(EquipBestArmorSensors.NETHER_CHITIN_ARMOR_SET_TARGET.key(), ArmorSetTarget.EMPTY);
+            return getFullSetFireResistantArmor(worldState);
         }
 
         if (
@@ -62,5 +53,15 @@ public class BestArmorSetTargetSensor {
         // var leggings = ...
         // var boots = ...
         return ArmorSetTarget.EMPTY;
+    }
+
+    private static ArmorSetTarget getFullSetFireResistantArmor(ReadableWorldState worldState) {
+        var platedChitinArmorSetTarget = worldState.getOrNull(EquipBestArmorSensors.PLATED_NETHER_CHITIN_ARMOR_SET_TARGET.key());
+
+        if (platedChitinArmorSetTarget != null && !platedChitinArmorSetTarget.isEmpty()) {
+            return platedChitinArmorSetTarget;
+        }
+
+        return worldState.getOrDefault(EquipBestArmorSensors.NETHER_CHITIN_ARMOR_SET_TARGET.key(), ArmorSetTarget.EMPTY);
     }
 }

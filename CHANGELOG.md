@@ -23,6 +23,7 @@
 ## 🐞 Fixes
 - Fixed "lastHurtMob" field not being set when entities shoot mobs with guns.
 - Fixed marines not using a full nether chitin armor set to prevent fire damage.
+- Fixed marines not using a full nether chitin armor set to prevent lava damage.
 - Fixed marines not attacking the closest monsters to them first.
 - Fixed marines trying to shoot at monsters through walls.
   - This led to them getting "stuck" in their combat AI.
