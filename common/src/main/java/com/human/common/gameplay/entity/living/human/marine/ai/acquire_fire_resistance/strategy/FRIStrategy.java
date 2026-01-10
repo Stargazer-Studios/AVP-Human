@@ -11,15 +11,17 @@ import java.util.Collection;
 
 public interface FRIStrategy {
 
-    boolean canUseItemStack(ItemStack itemStack);
+    boolean isValidItemStack(ItemStack itemStack);
 
-    boolean isValid(LivingEntity livingEntity, ReadableWorldState worldState);
-
-    Collection<BLibInventory.Entry> selectEntriesFromInventory(BLibInventory inventory);
+    boolean isValidWorldState(LivingEntity livingEntity, ReadableWorldState worldState);
 
     double score(LivingEntity livingEntity, ReadableWorldState worldState, ItemStack itemStack);
 
     Action.Signal execute(LivingEntity livingEntity, ReadableWorldState worldState, Blackboard blackboard);
+
+    default Collection<BLibInventory.Entry> selectEntriesFromInventory(BLibInventory inventory) {
+        return inventory.filterEntriesByStack(this::isValidItemStack);
+    }
 
     /**
      * @param urgency             Higher means “use something now”.

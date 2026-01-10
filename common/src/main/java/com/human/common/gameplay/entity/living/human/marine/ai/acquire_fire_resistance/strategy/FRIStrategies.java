@@ -25,9 +25,9 @@ public class FRIStrategies {
         SPLASH_POTION
     );
 
-    public static boolean isValid(ItemStack itemStack) {
+    public static boolean isValidItemStack(ItemStack itemStack) {
         for (var strategy : STRATEGIES) {
-            if (strategy.canUseItemStack(itemStack)) {
+            if (strategy.isValidItemStack(itemStack)) {
                 return true;
             }
         }

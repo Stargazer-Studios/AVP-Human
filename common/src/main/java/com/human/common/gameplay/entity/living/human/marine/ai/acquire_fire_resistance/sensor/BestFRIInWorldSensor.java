@@ -27,7 +27,7 @@ public class BestFRIInWorldSensor {
         FRIStrategy bestStrategy = null;
 
         for (var strategy : FRIStrategies.STRATEGIES) {
-            if (!strategy.isValid(livingEntity, worldState)) {
+            if (!strategy.isValidWorldState(livingEntity, worldState)) {
                 continue;
             }
 
@@ -37,7 +37,7 @@ public class BestFRIInWorldSensor {
             for (var entry : itemEntities) {
                 var itemStack = entry.getItem();
 
-                if (!strategy.canUseItemStack(itemStack)) {
+                if (!strategy.isValidItemStack(itemStack)) {
                     continue;
                 }
 

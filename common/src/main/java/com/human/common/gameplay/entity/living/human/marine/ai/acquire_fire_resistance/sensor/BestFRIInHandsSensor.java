@@ -29,7 +29,7 @@ public class BestFRIInHandsSensor {
             var itemStack = livingEntity.getItemBySlot(equipmentSlot);
 
             for (var strategy : FRIStrategies.STRATEGIES) {
-                if (!strategy.canUseItemStack(itemStack) || !strategy.isValid(livingEntity, worldState)) {
+                if (!strategy.isValidItemStack(itemStack) || !strategy.isValidWorldState(livingEntity, worldState)) {
                     continue;
                 }
 

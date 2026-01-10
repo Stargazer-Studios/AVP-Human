@@ -38,12 +38,12 @@ public class EnchantedGoldenAppleFRIStrategy implements FRIStrategy {
         .toList();
 
     @Override
-    public boolean canUseItemStack(ItemStack itemStack) {
+    public boolean isValidItemStack(ItemStack itemStack) {
         return itemStack.is(Items.ENCHANTED_GOLDEN_APPLE);
     }
 
     @Override
-    public boolean isValid(LivingEntity livingEntity, ReadableWorldState worldState) {
+    public boolean isValidWorldState(LivingEntity livingEntity, ReadableWorldState worldState) {
         return true;
     }
 

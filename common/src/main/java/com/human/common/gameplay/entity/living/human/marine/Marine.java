@@ -199,7 +199,7 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
                 itemStack.getItem() instanceof ArmorItem
                     || itemStack.getItem() == Items.WATER_BUCKET
                     || WeaponStrategies.isValid(itemStack)
-                    || FRIStrategies.isValid(itemStack)
+                    || FRIStrategies.isValidItemStack(itemStack)
             ) {
                 if (!level().isClientSide) {
                     var item = new ItemStack(itemStack.getItem(), 1);

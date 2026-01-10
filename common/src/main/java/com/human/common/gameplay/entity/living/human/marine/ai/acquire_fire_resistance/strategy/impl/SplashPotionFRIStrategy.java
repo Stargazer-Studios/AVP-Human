@@ -1,7 +1,6 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.impl;
 
 import com.blib.common.gameplay.goap.GOAPSensors;
-import com.blib.common.gameplay.model.inventory.BLibInventory;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.FRIStrategy;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.FRIStrategyUtil;
 import com.just.goap.Action;
@@ -13,27 +12,18 @@ import net.minecraft.world.entity.projectile.ThrownPotion;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
-import java.util.Collection;
 import java.util.Objects;
 
 public class SplashPotionFRIStrategy implements FRIStrategy {
 
     @Override
-    public boolean canUseItemStack(ItemStack itemStack) {
+    public boolean isValidItemStack(ItemStack itemStack) {
         return itemStack.is(Items.SPLASH_POTION) && FRIStrategyUtil.fireResistanceTicksFromStack(itemStack) > 0;
     }
 
     @Override
-    public boolean isValid(LivingEntity livingEntity, ReadableWorldState worldState) {
+    public boolean isValidWorldState(LivingEntity livingEntity, ReadableWorldState worldState) {
         return worldState.getOrDefault(GOAPSensors.IS_ON_GROUND.key(), false);
-    }
-
-    @Override
-    public Collection<BLibInventory.Entry> selectEntriesFromInventory(BLibInventory inventory) {
-        return inventory.selectEntries(Items.SPLASH_POTION)
-            .stream()
-            .filter(entry -> FRIStrategyUtil.fireResistanceTicksFromStack(entry) > 0)
-            .toList();
     }
 
     @Override

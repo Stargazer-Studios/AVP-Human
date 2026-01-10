@@ -25,7 +25,7 @@ public class BestFRIInInventorySensor {
         FRIStrategy bestStrategy = null;
 
         for (var strategy : FRIStrategies.STRATEGIES) {
-            if (!strategy.isValid(livingEntityWithInventory, worldState)) {
+            if (!strategy.isValidWorldState(livingEntityWithInventory, worldState)) {
                 continue;
             }
 
@@ -34,7 +34,7 @@ public class BestFRIInInventorySensor {
             for (var entry : entries) {
                 var itemStack = entry.copyItemStack();
 
-                if (!strategy.canUseItemStack(itemStack)) {
+                if (!strategy.isValidItemStack(itemStack)) {
                     continue;
                 }
 
