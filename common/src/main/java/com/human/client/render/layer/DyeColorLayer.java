@@ -1,6 +1,5 @@
 package com.human.client.render.layer;
 
-import com.human.HumanResources;
 import mod.azure.azurelib.common.model.AzBone;
 import mod.azure.azurelib.common.render.AzRendererPipelineContext;
 import mod.azure.azurelib.common.render.layer.AzRenderLayer;
@@ -10,9 +9,13 @@ import net.minecraft.world.item.ItemStack;
 
 import java.util.UUID;
 
-public class PressureOuterLayer implements AzRenderLayer<UUID, ItemStack> {
+public class DyeColorLayer implements AzRenderLayer<UUID, ItemStack> {
 
-    private static final ResourceLocation TEXTURE = HumanResources.armorTextureLocation("pressure_outer");
+    private final ResourceLocation outerLayerResourceLocation;
+
+    public DyeColorLayer(ResourceLocation outerLayerResourceLocation) {
+        this.outerLayerResourceLocation = outerLayerResourceLocation;
+    }
 
     @Override
     public void preRender(AzRendererPipelineContext<UUID, ItemStack> context) {}
@@ -23,7 +26,7 @@ public class PressureOuterLayer implements AzRenderLayer<UUID, ItemStack> {
         context.setRenderColor(-1);
         context.setVertexConsumer(
             context.multiBufferSource()
-                .getBuffer(RenderType.armorCutoutNoCull(TEXTURE))
+                .getBuffer(RenderType.armorCutoutNoCull(outerLayerResourceLocation))
         );
         renderPipeline.reRender(context);
     }
