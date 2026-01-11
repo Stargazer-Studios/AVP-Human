@@ -107,7 +107,9 @@ public class HumanItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         getOrCreateTagBuilder(ItemTags.DYEABLE)
             .addTag(HumanItemTags.MK50_ARMOR)
-            .addTag(HumanItemTags.PRESSURE_ARMOR);
+            .addTag(HumanItemTags.PRESSURE_ARMOR)
+            .addTag(HumanItemTags.WY_COMMANDO_ARMOR)
+            .addTag(HumanItemTags.WY_ELITE_ARMOR);
 
         getOrCreateTagBuilder(BLibItemTags.RANGED_WEAPONS)
             .addTag(HumanItemTags.GUNS);

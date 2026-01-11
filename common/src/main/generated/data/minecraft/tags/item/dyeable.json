@@ -1,6 +1,8 @@
 {
   "values": [
     "#avp_human:mk50_armor",
-    "#avp_human:pressure_armor"
+    "#avp_human:pressure_armor",
+    "#avp_human:wy_commando_armor",
+    "#avp_human:wy_elite_armor"
   ]
 }

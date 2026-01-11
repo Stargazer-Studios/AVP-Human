@@ -184,6 +184,16 @@ public class HumanClient {
         registerItemColor(HumanArmorItems.PRESSURE_CHESTPLATE);
         registerItemColor(HumanArmorItems.PRESSURE_LEGGINGS);
         registerItemColor(HumanArmorItems.PRESSURE_BOOTS);
+
+        registerItemColor(HumanArmorItems.WY_COMMANDO_HELMET);
+        registerItemColor(HumanArmorItems.WY_COMMANDO_CHESTPLATE);
+        registerItemColor(HumanArmorItems.WY_COMMANDO_LEGGINGS);
+        registerItemColor(HumanArmorItems.WY_COMMANDO_BOOTS);
+
+        registerItemColor(HumanArmorItems.WY_ELITE_HELMET);
+        registerItemColor(HumanArmorItems.WY_ELITE_CHESTPLATE);
+        registerItemColor(HumanArmorItems.WY_ELITE_LEGGINGS);
+        registerItemColor(HumanArmorItems.WY_ELITE_BOOTS);
     }
 
     private static void registerItemColor(BLibHolder<ArmorItem> holder) {
