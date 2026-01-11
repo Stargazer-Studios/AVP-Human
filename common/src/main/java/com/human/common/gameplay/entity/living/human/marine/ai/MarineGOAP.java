@@ -210,21 +210,28 @@ public class MarineGOAP {
                 // Is the mob targeting me?
                 return Objects.equals(mobTarget.getUUID(), marine.getUUID())
                     // OR is the mob targeting my leader?
-                    || leaderUUIDOption.isSomeAnd(mobTarget.getUUID()::equals);
+                    || leaderUUIDOption.isSomeAnd(mobTarget.getUUID()::equals)
+                    // OR is the mob targeting an ally?
+                    // (an ally is defined as another marine with the same leader status (no leader or same leader).
+                    || (mobTarget instanceof Marine otherMarine
+                        && Objects.equals(otherMarine.getLeaderUUID(), leaderUUIDOption));
             }
 
-            // Was the mob hurt by my leader?
-            return marine.getLeader()
-                .isSomeAnd(leader -> {
-                    if (!(leader instanceof LivingEntity livingLeader)) {
-                        return false;
-                    }
+            var leaderOption = marine.getLeader();
 
-                    var leaderLastTarget = livingLeader.getLastHurtMob();
+            if (leaderOption.isSome()) {
+                var leader = leaderOption.unwrap();
 
-                    return leaderLastTarget != null
-                        && Objects.equals(leaderLastTarget.getUUID(), livingEntity.getUUID());
-                });
+                if (!(leader instanceof LivingEntity livingLeader)) {
+                    return false;
+                }
+
+                var leaderLastTarget = livingLeader.getLastHurtMob();
+
+                // Was the mob hurt by my leader?
+                return leaderLastTarget != null
+                    && Objects.equals(leaderLastTarget.getUUID(), livingEntity.getUUID());
+            }
         }
 
         return false;

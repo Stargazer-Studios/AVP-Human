@@ -22,6 +22,7 @@
   - The mob is part of the `#avp_human:hated_by_marines` entity type tag.
   - The mob is targeting them.
   - The mob is targeting their leader (if they have a leader).
+  - The mob is targeting an allied marine (a marine with no leader or the same leader).
   - The mob was attacked by their leader (if they have a leader).
 
 ## 🐞 Fixes
