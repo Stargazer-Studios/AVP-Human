@@ -1,9 +1,9 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.combat.strategy.impl;
 
+import com.human.common.gameplay.entity.living.human.ai.AttributeUtil;
 import com.human.common.gameplay.entity.living.human.marine.ai.combat.CombatSensors;
 import com.human.common.gameplay.entity.living.human.marine.ai.combat.strategy.WeaponStrategy;
 import com.human.common.gameplay.item.GunItem;
-import com.human.common.gameplay.item.gun.FireModeConfig;
 import com.human.common.registry.init.HumanDataComponents;
 import com.human.common.registry.tag.HumanItemTags;
 import com.just.core.functional.option.Option;
@@ -36,28 +36,22 @@ public class GunStrategy implements WeaponStrategy {
     }
 
     @Override
-    public double score(LivingEntity livingEntity, ReadableWorldState worldState, ItemStack itemStack) {
-        if (itemStack.getItem() instanceof GunItem gunItem) {
-            var fireMode = gunItem.getGunConfig().getDefaultFireMode();
-            var targetOption = worldState.getOrDefault(CombatSensors.NEAREST_ATTACKABLE_TARGET.key(), Option.none());
-
-            if (targetOption.isNone()) {
-                return -Double.MIN_VALUE;
-            }
-
-            var target = targetOption.unwrap();
-            var distance = livingEntity.distanceTo(target);
-            var rangeFit = rangeFit(distance, fireMode.range());
-
-            var timeToContact = computeTimeToContact(target, distance);
-            var timeToKill = computeTimeToKill(target, fireMode);
-            var pressureRatio = timeToKill / timeToContact;
-            var frequencyFit = Math.exp(-pressureRatio);
-
-            return rangeFit * frequencyFit;
+    public ScoreResult computeScore(LivingEntity livingEntity, ReadableWorldState worldState, ItemStack itemStack) {
+        if (!(livingEntity instanceof Mob mob)) {
+            return ScoreResult.zero();
         }
 
-        return -Double.MIN_VALUE;
+        var target = mob.getTarget();
+
+        if (target == null) {
+            return ScoreResult.zero();
+        }
+
+        var effectivenessScore = computeEffectivenessScore(mob, target, worldState, itemStack);
+        var rangeScore = computeRangeScore(mob, target, worldState, itemStack);
+        var riskScore = computeRiskScore(mob, target, worldState, itemStack);
+
+        return ScoreResult.of(Weights.DEFAULT, effectivenessScore, rangeScore, riskScore);
     }
 
     @Override
@@ -115,25 +109,51 @@ public class GunStrategy implements WeaponStrategy {
         return Action.Signal.CONTINUE;
     }
 
-    private double computeTimeToContact(LivingEntity target, float distance) {
-        var targetSpeed = target.getDeltaMovement().horizontalDistance();
-        // Prevent divide-by-zero / stationary targets.
-        return targetSpeed > 0.001
-            ? distance / targetSpeed
-            : Double.POSITIVE_INFINITY;
+    private double computeEffectivenessScore(Mob mob, LivingEntity target, ReadableWorldState worldState, ItemStack itemStack) {
+        if (itemStack.getItem() instanceof GunItem gunItem) {
+            var fireMode = gunItem.getGunConfig().getDefaultFireMode();
+            var attackDamage = fireMode.damage();
+            var attackSpeed = 20.0 / Math.max(fireMode.cooldownInTicks(), 0.001);
+            var damagePerSecond = attackDamage * attackSpeed;
+            var targetHealth = target.getHealth();
+            var timeToKillInSeconds = targetHealth / Math.max(damagePerSecond, 0.001);
+
+            // TODO: This is a very rough approximation and doesn't account for the target's held weapons.
+            var incomingDamagePerSecond = AttributeUtil.getAttributeBaseOrDefaultValue(target, Attributes.ATTACK_DAMAGE)
+                * AttributeUtil.getAttributeBaseOrDefaultValue(target, Attributes.ATTACK_SPEED);
+            // How long until the target can kill us?
+            var timeToFailureInSeconds = mob.getHealth() / Math.max(incomingDamagePerSecond, 0.001);
+            // If less than 1, the target killing us is faster than us killing the target.
+            // If greater than 1, the target killing us is slower than us killing the target.
+            var ratio = timeToFailureInSeconds / Math.max(timeToKillInSeconds, 0.001);
+            // Ex. 99 / 100 = 0.99... Larger ratios approach 1.
+            // 0.01 / 1.01 = 0.0099... Smaller ratios approach 0.
+            var effectiveness = ratio / (ratio + 1.0);
+
+            return Math.clamp(effectiveness, 0.0, 1.0);
+        }
+
+        return 0;
     }
 
-    private double computeTimeToKill(LivingEntity target, FireModeConfig fireMode) {
-        var shotsNeeded = Math.ceil(target.getHealth() / fireMode.damage());
-        var timePerShot = fireMode.cooldownInTicks() / 20.0;
-        return shotsNeeded * timePerShot;
+    private double computeRangeScore(Mob mob, LivingEntity target, ReadableWorldState worldState, ItemStack itemStack) {
+        var reach = getRangeForWeapon(mob, itemStack);
+        var distance = mob.distanceTo(target);
+
+        double rangeScore;
+
+        if (distance <= reach) {
+            rangeScore = 1.0;
+        } else {
+            var excess = distance - reach;
+            rangeScore = Math.exp(-excess * 2.5);
+        }
+
+        return rangeScore;
     }
 
-    // TODO: Rewrite this once gun damage falloff is added.
-    private double rangeFit(double distance, double weaponRange) {
-        var preferredDistance = weaponRange * 0.6;
-        var sigma = weaponRange * 0.4;
-        var difference = distance - preferredDistance;
-        return Math.exp(-(difference * difference) / (2 * sigma * sigma));
+    private double computeRiskScore(Mob mob, LivingEntity target, ReadableWorldState worldState, ItemStack itemStack) {
+        var targetAttackDamage = AttributeUtil.getAttributeBaseOrDefaultValue(target, Attributes.ATTACK_DAMAGE);
+        return Math.clamp(targetAttackDamage / mob.getHealth(), 0, 1);
     }
 }

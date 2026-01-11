@@ -3,9 +3,6 @@
 ## ✍️ Developer Notes
 - For help or other questions, concerns, etc. check out our Discord server: https://discord.gg/wp7mvmbkVb
 
-## ☢️ Breaking Changes
-- N/A
-
 ## ✨ What's New
 - WY commando armor can now be dyed.
 - WY elite armor can now be dyed.
@@ -30,16 +27,14 @@
 - Fixed marines not using a full nether chitin armor set to prevent fire damage.
 - Fixed marines not using a full nether chitin armor set to prevent lava damage.
 - Fixed marines not attacking the closest monsters to them first.
+- Fixed marines not looking at their target when using a melee weapon.
+- Fixed marines not accounting for sharpness on melee weapons.
+- Fixed marines not switching to the best melee weapon they have.
+- Fixed marines not picking up better melee weapons when one is nearby.
 - Fixed marines trying to shoot at monsters through walls.
   - This led to them getting "stuck" in their combat AI.
-
-## 🧪 Experimental
-- N/A
 
 ## 🛠 Data Pack
 - Added `#avp_human:hated_by_marines` entity type tag.
 - Added `#avp_human:wy_commando_armor` item tag.
 - Added `#avp_human:wy_elite_armor` item tag.
-
-## 🔬 Technical Changes
-- N/A

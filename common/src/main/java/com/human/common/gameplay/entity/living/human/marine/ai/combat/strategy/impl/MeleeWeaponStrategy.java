@@ -1,26 +1,23 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.combat.strategy.impl;
 
+import com.blib.common.gameplay.util.EnchantmentUtil;
+import com.human.common.gameplay.entity.living.human.ai.AttributeUtil;
 import com.human.common.gameplay.entity.living.human.marine.ai.combat.CombatSensors;
 import com.human.common.gameplay.entity.living.human.marine.ai.combat.strategy.WeaponStrategy;
-import com.human.common.gameplay.entity.living.human.marine.ai.combat.strategy.WeaponStrategyResult;
-import com.human.common.gameplay.entity.living.human.marine.ai.model.ItemTarget;
 import com.just.core.functional.option.Option;
 import com.just.goap.Action;
 import com.just.goap.StateKey;
 import com.just.goap.state.Blackboard;
 import com.just.goap.state.ReadableWorldState;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
+import net.minecraft.commands.arguments.EntityAnchorArgument;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.enchantment.Enchantments;
 
 public class MeleeWeaponStrategy implements WeaponStrategy {
 
@@ -40,19 +37,27 @@ public class MeleeWeaponStrategy implements WeaponStrategy {
     }
 
     @Override
-    public double score(LivingEntity livingEntity, ReadableWorldState worldState, ItemStack itemStack) {
-        // TODO:
-        return 0;
+    public ScoreResult computeScore(LivingEntity livingEntity, ReadableWorldState worldState, ItemStack itemStack) {
+        if (!(livingEntity instanceof Mob mob)) {
+            return ScoreResult.zero();
+        }
+
+        var target = mob.getTarget();
+
+        if (target == null) {
+            return ScoreResult.zero();
+        }
+
+        var effectivenessScore = computeEffectivenessScore(mob, target, worldState, itemStack);
+        var rangeScore = computeRangeScore(mob, target, worldState, itemStack);
+        var riskScore = computeRiskScore(mob, target, worldState, itemStack);
+
+        return ScoreResult.of(Weights.DEFAULT, effectivenessScore, rangeScore, riskScore);
     }
 
     @Override
     public double getRangeForWeapon(LivingEntity livingEntity, ItemStack itemStack) {
-        var attributes = livingEntity.getAttributes();
-        var attribute = Attributes.ENTITY_INTERACTION_RANGE;
-
-        return attributes.hasAttribute(attribute)
-            ? attributes.getBaseValue(attribute)
-            : attribute.value().getDefaultValue();
+        return AttributeUtil.getAttributeBaseOrDefaultValue(livingEntity, Attributes.ENTITY_INTERACTION_RANGE);
     }
 
     @Override
@@ -80,9 +85,13 @@ public class MeleeWeaponStrategy implements WeaponStrategy {
             var equipmentSlot = equippedWeapon.itemTarget().equipmentSlot();
             var itemStack = livingEntity.getItemBySlot(equipmentSlot);
 
+            // Always look at the target while attacking.
+            mob.lookAt(EntityAnchorArgument.Anchor.EYES, target.getEyePosition());
+            mob.getLookControl().setLookAt(target);
+            // Hurt the target.
             mob.doHurtTarget(target);
 
-            var modifiedAttackSpeed = computeModifiedAttribute(mob, Attributes.ATTACK_SPEED, itemStack, equippedWeapon);
+            var modifiedAttackSpeed = AttributeUtil.computeModifiedAttributeValue(mob, Attributes.ATTACK_SPEED, itemStack, equipmentSlot);
 
             blackboard.set(ATTACK_DELAY_IN_TICKS, Math.abs((int) (modifiedAttackSpeed * 20)));
         });
@@ -90,54 +99,56 @@ public class MeleeWeaponStrategy implements WeaponStrategy {
         return Action.Signal.CONTINUE;
     }
 
-    private static double computeModifiedAttribute(
-        Mob mob,
-        Holder<Attribute> attribute,
-        ItemStack itemStack,
-        WeaponStrategyResult<ItemTarget.Equipped> equippedWeapon
-    ) {
-        var baseValue = mob.getAttributes().hasAttribute(attribute)
-            ? mob.getAttributes().getBaseValue(attribute)
-            : attribute.value().getDefaultValue();
+    private double computeEffectivenessScore(Mob mob, LivingEntity target, ReadableWorldState worldState, ItemStack itemStack) {
+        var sharpnessLevel = EnchantmentUtil.getLevel(mob.level(), itemStack, Enchantments.SHARPNESS);
+        var sharpnessBonus = sharpnessLevel > 0
+            ? 1.0 + 0.5 * sharpnessLevel
+            : 0.0;
+        var attackDamage = AttributeUtil.computeModifiedAttributeValue(mob, Attributes.ATTACK_DAMAGE, itemStack, null)
+            + sharpnessBonus;
+        var attackSpeed = AttributeUtil.computeModifiedAttributeValue(mob, Attributes.ATTACK_SPEED, itemStack, null);
+        var damagePerSecond = attackDamage * attackSpeed;
+        var targetHealth = target.getHealth();
+        var timeToKillInSeconds = targetHealth / Math.max(damagePerSecond, 0.001);
 
-        return computeAttribute(itemStack, attribute, equippedWeapon.itemTarget().equipmentSlot(), baseValue);
+        // TODO: This is a very rough approximation and doesn't account for the target's held weapons.
+        var incomingDamagePerSecond = AttributeUtil.getAttributeBaseOrDefaultValue(target, Attributes.ATTACK_DAMAGE)
+            * AttributeUtil.getAttributeBaseOrDefaultValue(target, Attributes.ATTACK_SPEED);
+        // How long until the target can kill us?
+        var timeToFailureInSeconds = mob.getHealth() / Math.max(incomingDamagePerSecond, 0.001);
+        // If less than 1, the target killing us is faster than us killing the target.
+        // If greater than 1, the target killing us is slower than us killing the target.
+        var ratio = timeToFailureInSeconds / Math.max(timeToKillInSeconds, 0.001);
+        // Ex. 99 / 100 = 0.99... Larger ratios approach 1.
+        // 0.01 / 1.01 = 0.0099... Smaller ratios approach 0.
+        var effectiveness = ratio / (ratio + 1.0);
+
+        return Math.clamp(effectiveness, 0.0, 1.0);
     }
 
-    private static double computeAttribute(
-        ItemStack itemStack,
-        Holder<Attribute> attribute,
-        EquipmentSlot slot,
-        double baseValue
-    ) {
-        var modifiers = itemStack.getOrDefault(DataComponents.ATTRIBUTE_MODIFIERS, ItemAttributeModifiers.EMPTY);
+    private double computeRangeScore(Mob mob, LivingEntity target, ReadableWorldState worldState, ItemStack itemStack) {
+        var reach = getRangeForWeapon(mob, itemStack);
+        var distance = mob.distanceTo(target);
 
-        var value = baseValue;
+        double rangeScore;
 
-        for (var entry : modifiers.modifiers()) {
-            if (!entry.slot().test(slot) || !entry.attribute().equals(attribute)) {
-                continue;
-            }
-
-            var mod = entry.modifier();
-
-            switch (mod.operation()) {
-                case ADD_VALUE -> value += mod.amount();
-                case ADD_MULTIPLIED_BASE -> value += baseValue * mod.amount();
-            }
+        if (distance <= reach) {
+            rangeScore = 1.0;
+        } else {
+            var excess = distance - reach;
+            rangeScore = Math.exp(-excess * 2.5);
         }
 
-        for (var entry : modifiers.modifiers()) {
-            if (!entry.slot().test(slot) || !entry.attribute().equals(attribute)) {
-                continue;
-            }
+        return rangeScore;
+    }
 
-            var mod = entry.modifier();
-
-            if (mod.operation() == AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL) {
-                value += value * mod.amount();
-            }
+    private double computeRiskScore(Mob mob, LivingEntity target, ReadableWorldState worldState, ItemStack itemStack) {
+        if (target instanceof Creeper creeper && creeper.getSwellDir() > 0) {
+            return 1;
         }
 
-        return value;
+        var targetAttackDamage = AttributeUtil.getAttributeBaseOrDefaultValue(target, Attributes.ATTACK_DAMAGE);
+
+        return Math.clamp(targetAttackDamage / mob.getHealth(), 0, 1);
     }
 }
