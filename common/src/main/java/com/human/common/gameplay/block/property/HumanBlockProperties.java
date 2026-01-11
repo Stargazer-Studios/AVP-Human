@@ -11,6 +11,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -200,28 +201,37 @@ public class HumanBlockProperties {
         .sound(SoundType.COPPER)
         .strength(4, 4);
 
-    public static final Map<DyeColor, Block> DYE_COLOR_TO_CONCRETE_BLOCKS = Map.ofEntries(
-        Map.entry(DyeColor.BLACK, Blocks.BLACK_CONCRETE),
-        Map.entry(DyeColor.BLUE, Blocks.BLUE_CONCRETE),
-        Map.entry(DyeColor.BROWN, Blocks.BROWN_CONCRETE),
-        Map.entry(DyeColor.CYAN, Blocks.CYAN_CONCRETE),
-        Map.entry(DyeColor.GREEN, Blocks.GREEN_CONCRETE),
-        Map.entry(DyeColor.GRAY, Blocks.GRAY_CONCRETE),
-        Map.entry(DyeColor.LIGHT_BLUE, Blocks.LIGHT_BLUE_CONCRETE),
-        Map.entry(DyeColor.LIGHT_GRAY, Blocks.LIGHT_GRAY_CONCRETE),
-        Map.entry(DyeColor.LIME, Blocks.LIME_CONCRETE),
-        Map.entry(DyeColor.MAGENTA, Blocks.MAGENTA_CONCRETE),
-        Map.entry(DyeColor.ORANGE, Blocks.ORANGE_CONCRETE),
-        Map.entry(DyeColor.PINK, Blocks.PINK_CONCRETE),
-        Map.entry(DyeColor.PURPLE, Blocks.PURPLE_CONCRETE),
-        Map.entry(DyeColor.RED, Blocks.RED_CONCRETE),
-        Map.entry(DyeColor.YELLOW, Blocks.YELLOW_CONCRETE),
-        Map.entry(DyeColor.WHITE, Blocks.WHITE_CONCRETE)
+    public static final Map<DyeColor, Block> DYE_COLOR_TO_CONCRETE_BLOCKS = new LinkedHashMap<>(
+        Map.ofEntries(
+            Map.entry(DyeColor.BLACK, Blocks.BLACK_CONCRETE),
+            Map.entry(DyeColor.BLUE, Blocks.BLUE_CONCRETE),
+            Map.entry(DyeColor.BROWN, Blocks.BROWN_CONCRETE),
+            Map.entry(DyeColor.CYAN, Blocks.CYAN_CONCRETE),
+            Map.entry(DyeColor.GREEN, Blocks.GREEN_CONCRETE),
+            Map.entry(DyeColor.GRAY, Blocks.GRAY_CONCRETE),
+            Map.entry(DyeColor.LIGHT_BLUE, Blocks.LIGHT_BLUE_CONCRETE),
+            Map.entry(DyeColor.LIGHT_GRAY, Blocks.LIGHT_GRAY_CONCRETE),
+            Map.entry(DyeColor.LIME, Blocks.LIME_CONCRETE),
+            Map.entry(DyeColor.MAGENTA, Blocks.MAGENTA_CONCRETE),
+            Map.entry(DyeColor.ORANGE, Blocks.ORANGE_CONCRETE),
+            Map.entry(DyeColor.PINK, Blocks.PINK_CONCRETE),
+            Map.entry(DyeColor.PURPLE, Blocks.PURPLE_CONCRETE),
+            Map.entry(DyeColor.RED, Blocks.RED_CONCRETE),
+            Map.entry(DyeColor.YELLOW, Blocks.YELLOW_CONCRETE),
+            Map.entry(DyeColor.WHITE, Blocks.WHITE_CONCRETE)
+        )
     );
 
     public static final Map<DyeColor, BlockPropertyBuilder> DYE_COLOR_TO_CONCRETE_PROPERTIES = DYE_COLOR_TO_CONCRETE_BLOCKS.entrySet()
         .stream()
-        .collect(Collectors.toMap(Map.Entry::getKey, entry -> BlockPropertyBuilder.inherit(entry.getValue())));
+        .collect(
+            Collectors.toMap(
+                Map.Entry::getKey,
+                entry -> BlockPropertyBuilder.inherit(entry.getValue()),
+                (a, b) -> b,
+                LinkedHashMap::new
+            )
+        );
 
     public static final Map<DyeColor, BlockPropertyBuilder> DYE_COLOR_TO_INDUSTRIAL_CONCRETE_PROPERTIES = Arrays.stream(
         DyeColor.values()
@@ -230,7 +240,9 @@ public class HumanBlockProperties {
             Collectors.toMap(
                 Function.identity(),
                 dyeColor -> BlockPropertyBuilder.inherit(Blocks.IRON_BLOCK)
-                    .sound(SoundType.STONE)
+                    .sound(SoundType.STONE),
+                (a, b) -> b,
+                LinkedHashMap::new
             )
         );
 
@@ -241,7 +253,9 @@ public class HumanBlockProperties {
             Collectors.toMap(
                 Function.identity(),
                 dyeColor -> INDUSTRIAL_GLASS_SUPPLIER.get()
-                    .mapColor(dyeColor)
+                    .mapColor(dyeColor),
+                (a, b) -> b,
+                LinkedHashMap::new
             )
         );
 
@@ -252,7 +266,9 @@ public class HumanBlockProperties {
             Collectors.toMap(
                 Function.identity(),
                 dyeColor -> INDUSTRIAL_GLASS_PANE_SUPPLIER.get()
-                    .mapColor(dyeColor)
+                    .mapColor(dyeColor),
+                (a, b) -> b,
+                LinkedHashMap::new
             )
         );
 
@@ -261,7 +277,9 @@ public class HumanBlockProperties {
             Collectors.toMap(
                 Function.identity(),
                 dyeColor -> BlockPropertyBuilder.inherit(Blocks.WHITE_WOOL)
-                    .mapColor(dyeColor)
+                    .mapColor(dyeColor),
+                (a, b) -> b,
+                LinkedHashMap::new
             )
         );
 
