@@ -33,6 +33,10 @@ public class HumanItemTags {
 
     public static final TagKey<Item> URANIUM_NUGGET_LIKE = create("uranium_nugget_like");
 
+    public static final TagKey<Item> WY_COMMANDO_ARMOR = create("wy_commando_armor");
+
+    public static final TagKey<Item> WY_ELITE_ARMOR = create("wy_elite_armor");
+
     private static TagKey<Item> create(String name) {
         return TagKey.create(Registries.ITEM, HumanResources.location(name));
     }

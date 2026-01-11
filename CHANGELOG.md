@@ -35,6 +35,8 @@
 
 ## 🛠 Data Pack
 - Added `#avp_human:hated_by_marines` entity type tag.
+- Added `#avp_human:wy_commando_armor` item tag.
+- Added `#avp_human:wy_elite_armor` item tag.
 
 ## 🔬 Technical Changes
 - N/A

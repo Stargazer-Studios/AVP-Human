@@ -137,6 +137,22 @@ public class HumanItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 HumanArmorItems.PRESSURE_HELMET.get(),
                 HumanArmorItems.PRESSURE_LEGGINGS.get()
             );
+
+        getOrCreateTagBuilder(HumanItemTags.WY_COMMANDO_ARMOR)
+            .add(
+                HumanArmorItems.WY_COMMANDO_BOOTS.get(),
+                HumanArmorItems.WY_COMMANDO_CHESTPLATE.get(),
+                HumanArmorItems.WY_COMMANDO_HELMET.get(),
+                HumanArmorItems.WY_COMMANDO_LEGGINGS.get()
+            );
+
+        getOrCreateTagBuilder(HumanItemTags.WY_ELITE_ARMOR)
+            .add(
+                HumanArmorItems.WY_ELITE_BOOTS.get(),
+                HumanArmorItems.WY_ELITE_CHESTPLATE.get(),
+                HumanArmorItems.WY_ELITE_HELMET.get(),
+                HumanArmorItems.WY_ELITE_LEGGINGS.get()
+            );
     }
 
     private void addRadioactiveItems() {
