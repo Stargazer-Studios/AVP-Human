@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_industrial_glass_pane": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#avp_human:industrial_glass_pane"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ingots/steel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:ingots/steel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_red_plastic": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avp_human:red_plastic"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "avp_human:red_wy_elite_helmet"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_ingots/steel",
+      "has_red_plastic",
+      "has_industrial_glass_pane"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "avp_human:red_wy_elite_helmet"
+    ]
+  }
+}

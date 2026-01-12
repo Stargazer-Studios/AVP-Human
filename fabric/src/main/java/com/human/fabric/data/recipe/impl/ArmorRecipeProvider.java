@@ -4,6 +4,8 @@ import com.blib.fabric.data.recipe.RecipeTemplates;
 import com.blib.fabric.data.recipe.builder.RecipeBuilder;
 import com.blib.fabric.data.recipe.builder.ShapedRecipeBuilder;
 import com.compatibility.CommonItemTags;
+import com.human.common.gameplay.item.DyeItemColorUtil;
+import com.human.common.registry.init.block.HumanPlasticBlocks;
 import com.human.common.registry.init.item.HumanArmorItems;
 import com.human.common.registry.init.item.HumanItems;
 import com.human.common.registry.tag.HumanItemTags;
@@ -11,8 +13,12 @@ import com.human.compatibility.HumanCommonItemTags;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.DyeItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 public class ArmorRecipeProvider {
@@ -175,33 +181,47 @@ public class ArmorRecipeProvider {
     }
 
     private static void createWYEliteArmorSetRecipes(RecipeBuilder builder) {
-        Supplier<ShapedRecipeBuilder> wyEliteArmorBuilder = () -> builder.shaped()
-            .withCategory(RecipeCategory.COMBAT)
-            .define('A', HumanCommonItemTags.INGOTS_STEEL)
-            .define('B', HumanItemTags.PLASTIC);
+        for (var dyeColor : DyeColor.values()) {
+            Supplier<ShapedRecipeBuilder> wyEliteArmorBuilder = () -> builder.shaped()
+                .withCategory(RecipeCategory.COMBAT)
+                .define('A', HumanCommonItemTags.INGOTS_STEEL)
+                .define('B', HumanPlasticBlocks.DYE_COLOR_TO_PLASTIC.get(dyeColor));
 
-        wyEliteArmorBuilder.get()
-            .define('C', HumanItemTags.INDUSTRIAL_GLASS_PANE)
-            .pattern("ABA")
-            .pattern("BCB")
-            .into(1, HumanArmorItems.WY_ELITE_HELMET);
+            var wyEliteHelmetItemStack = new ItemStack(HumanArmorItems.WY_ELITE_HELMET.get(), 1);
+            wyEliteHelmetItemStack = DyeItemColorUtil.applyDyesForced(wyEliteHelmetItemStack, List.of(DyeItem.byColor(dyeColor)));
+            wyEliteArmorBuilder.get()
+                .define('C', HumanItemTags.INDUSTRIAL_GLASS_PANE)
+                .pattern("ABA")
+                .pattern("BCB")
+                .withCustomName(baseName -> dyeColor.getName() + "_" + baseName)
+                .into(wyEliteHelmetItemStack);
 
-        wyEliteArmorBuilder.get()
-            .pattern("B B")
-            .pattern("ABA")
-            .pattern("BAB")
-            .into(1, HumanArmorItems.WY_ELITE_CHESTPLATE);
+            var wyEliteChestplateItemStack = new ItemStack(HumanArmorItems.WY_ELITE_CHESTPLATE.get(), 1);
+            wyEliteChestplateItemStack = DyeItemColorUtil.applyDyesForced(wyEliteChestplateItemStack, List.of(DyeItem.byColor(dyeColor)));
+            wyEliteArmorBuilder.get()
+                .pattern("B B")
+                .pattern("ABA")
+                .pattern("BAB")
+                .withCustomName(baseName -> dyeColor.getName() + "_" + baseName)
+                .into(wyEliteChestplateItemStack);
 
-        wyEliteArmorBuilder.get()
-            .pattern("BBB")
-            .pattern("A A")
-            .pattern("B B")
-            .into(1, HumanArmorItems.WY_ELITE_LEGGINGS);
+            var wyEliteLeggingsItemStack = new ItemStack(HumanArmorItems.WY_ELITE_LEGGINGS.get(), 1);
+            wyEliteLeggingsItemStack = DyeItemColorUtil.applyDyesForced(wyEliteLeggingsItemStack, List.of(DyeItem.byColor(dyeColor)));
+            wyEliteArmorBuilder.get()
+                .pattern("BBB")
+                .pattern("A A")
+                .pattern("B B")
+                .withCustomName(baseName -> dyeColor.getName() + "_" + baseName)
+                .into(wyEliteLeggingsItemStack);
 
-        wyEliteArmorBuilder.get()
-            .pattern("B B")
-            .pattern("A A")
-            .into(1, HumanArmorItems.WY_ELITE_BOOTS);
+            var wyEliteBootsItemStack = new ItemStack(HumanArmorItems.WY_ELITE_BOOTS.get(), 1);
+            wyEliteBootsItemStack = DyeItemColorUtil.applyDyesForced(wyEliteBootsItemStack, List.of(DyeItem.byColor(dyeColor)));
+            wyEliteArmorBuilder.get()
+                .pattern("B B")
+                .pattern("A A")
+                .withCustomName(baseName -> dyeColor.getName() + "_" + baseName)
+                .into(wyEliteBootsItemStack);
+        }
     }
 
     private static void createStandardArmorSetRecipes(

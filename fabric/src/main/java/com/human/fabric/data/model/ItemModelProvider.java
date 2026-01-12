@@ -10,8 +10,10 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.data.models.BlockModelGenerators;
 import net.minecraft.data.models.ItemModelGenerators;
+import net.minecraft.data.models.model.ModelLocationUtils;
 import net.minecraft.data.models.model.ModelTemplate;
 import net.minecraft.data.models.model.ModelTemplates;
+import net.minecraft.data.models.model.TextureMapping;
 import net.minecraft.world.item.Item;
 import org.jetbrains.annotations.NotNull;
 
@@ -66,10 +68,10 @@ public class ItemModelProvider extends FabricModelProvider {
         generateStandardItem(generators, HumanArmorItems.WY_COMMANDO_CHESTPLATE);
         generateStandardItem(generators, HumanArmorItems.WY_COMMANDO_HELMET);
         generateStandardItem(generators, HumanArmorItems.WY_COMMANDO_LEGGINGS);
-        generateStandardItem(generators, HumanArmorItems.WY_ELITE_BOOTS);
-        generateStandardItem(generators, HumanArmorItems.WY_ELITE_CHESTPLATE);
-        generateStandardItem(generators, HumanArmorItems.WY_ELITE_HELMET);
-        generateStandardItem(generators, HumanArmorItems.WY_ELITE_LEGGINGS);
+        generateTwoLayeredItem(generators, HumanArmorItems.WY_ELITE_BOOTS);
+        generateTwoLayeredItem(generators, HumanArmorItems.WY_ELITE_CHESTPLATE);
+        generateTwoLayeredItem(generators, HumanArmorItems.WY_ELITE_HELMET);
+        generateTwoLayeredItem(generators, HumanArmorItems.WY_ELITE_LEGGINGS);
 
         generateStandardItem(generators, HumanItems.ALUMINUM_INGOT);
         generateStandardItem(generators, HumanItems.AUTUNITE_DUST);
@@ -179,6 +181,15 @@ public class ItemModelProvider extends FabricModelProvider {
 
     private void generateStandardItem(ItemModelGenerators generators, Item item, ModelTemplate modelTemplate) {
         generators.generateFlatItem(item, modelTemplate);
+    }
+
+    private void generateTwoLayeredItem(ItemModelGenerators generators, Supplier<? extends Item> itemSupplier) {
+        var item = itemSupplier.get();
+        var modelLocation = ModelLocationUtils.getModelLocation(item);
+        var layer0 = TextureMapping.getItemTexture(item);
+        var layer1 = TextureMapping.getItemTexture(item, "_overlay");
+
+        ModelTemplates.TWO_LAYERED_ITEM.create(modelLocation, TextureMapping.layered(layer0, layer1), generators.output);
     }
 
     @Override

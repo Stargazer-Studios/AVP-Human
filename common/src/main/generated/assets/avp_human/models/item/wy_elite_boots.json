@@ -1,6 +1,7 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "avp_human:item/wy_elite_boots"
+    "layer0": "avp_human:item/wy_elite_boots",
+    "layer1": "avp_human:item/wy_elite_boots_overlay"
   }
 }

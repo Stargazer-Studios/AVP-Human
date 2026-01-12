@@ -1,6 +1,7 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "avp_human:item/wy_elite_leggings"
+    "layer0": "avp_human:item/wy_elite_leggings",
+    "layer1": "avp_human:item/wy_elite_leggings_overlay"
   }
 }
