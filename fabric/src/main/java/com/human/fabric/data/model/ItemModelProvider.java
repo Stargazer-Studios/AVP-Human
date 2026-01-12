@@ -64,10 +64,10 @@ public class ItemModelProvider extends FabricModelProvider {
         generateStandardItem(generators, HumanArmorItems.TITANIUM_CHESTPLATE);
         generateStandardItem(generators, HumanArmorItems.TITANIUM_HELMET);
         generateStandardItem(generators, HumanArmorItems.TITANIUM_LEGGINGS);
-        generateStandardItem(generators, HumanArmorItems.WY_COMMANDO_BOOTS);
-        generateStandardItem(generators, HumanArmorItems.WY_COMMANDO_CHESTPLATE);
-        generateStandardItem(generators, HumanArmorItems.WY_COMMANDO_HELMET);
-        generateStandardItem(generators, HumanArmorItems.WY_COMMANDO_LEGGINGS);
+        generateTwoLayeredItem(generators, HumanArmorItems.WY_COMMANDO_BOOTS);
+        generateTwoLayeredItem(generators, HumanArmorItems.WY_COMMANDO_CHESTPLATE);
+        generateTwoLayeredItem(generators, HumanArmorItems.WY_COMMANDO_HELMET);
+        generateTwoLayeredItem(generators, HumanArmorItems.WY_COMMANDO_LEGGINGS);
         generateTwoLayeredItem(generators, HumanArmorItems.WY_ELITE_BOOTS);
         generateTwoLayeredItem(generators, HumanArmorItems.WY_ELITE_CHESTPLATE);
         generateTwoLayeredItem(generators, HumanArmorItems.WY_ELITE_HELMET);

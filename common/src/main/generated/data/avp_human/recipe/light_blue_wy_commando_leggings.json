@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "tag": "c:ingots/steel"
+    },
+    "B": {
+      "item": "avp_human:light_blue_plastic"
+    },
+    "C": {
+      "item": "avp_human:polymer"
+    }
+  },
+  "pattern": [
+    "CBC",
+    "A A",
+    "C C"
+  ],
+  "result": {
+    "components": {
+      "minecraft:dyed_color": {
+        "rgb": 3847130
+      }
+    },
+    "count": 1,
+    "id": "avp_human:wy_commando_leggings"
+  }
+}

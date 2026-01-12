@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ingots/steel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:ingots/steel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_light_blue_plastic": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avp_human:light_blue_plastic"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_polymer": {
+      "conditions": {
+        "items": [
+          {
+            "items": "avp_human:polymer"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "avp_human:light_blue_wy_commando_leggings"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_ingots/steel",
+      "has_light_blue_plastic",
+      "has_polymer"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "avp_human:light_blue_wy_commando_leggings"
+    ]
+  }
+}

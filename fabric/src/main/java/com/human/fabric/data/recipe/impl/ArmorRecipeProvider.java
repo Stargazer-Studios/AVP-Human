@@ -148,36 +148,50 @@ public class ArmorRecipeProvider {
     }
 
     private static void createWYCommandoArmorSetRecipes(RecipeBuilder builder) {
-        Supplier<ShapedRecipeBuilder> wyCommandoArmorBuilder = () -> builder.shaped()
-            .withCategory(RecipeCategory.COMBAT)
-            .define('A', HumanCommonItemTags.INGOTS_STEEL)
-            .define('B', HumanItemTags.PLASTIC);
+        for (var dyeColor : DyeColor.values()) {
+            Supplier<ShapedRecipeBuilder> wyCommandoArmorBuilder = () -> builder.shaped()
+                .withCategory(RecipeCategory.COMBAT)
+                .define('A', HumanCommonItemTags.INGOTS_STEEL)
+                .define('B', HumanPlasticBlocks.DYE_COLOR_TO_PLASTIC.get(dyeColor));
 
-        wyCommandoArmorBuilder.get()
-            .define('C', HumanItems.POLYMER)
-            .define('D', HumanItemTags.INDUSTRIAL_GLASS_PANE)
-            .pattern("ABA")
-            .pattern("CDC")
-            .into(1, HumanArmorItems.WY_COMMANDO_HELMET);
+            var helmetItemStack = new ItemStack(HumanArmorItems.WY_COMMANDO_HELMET.get(), 1);
+            helmetItemStack = DyeItemColorUtil.applyDyesForced(helmetItemStack, List.of(DyeItem.byColor(dyeColor)));
+            wyCommandoArmorBuilder.get()
+                .define('C', HumanItems.POLYMER)
+                .define('D', HumanItemTags.INDUSTRIAL_GLASS_PANE)
+                .pattern("ABA")
+                .pattern("CDC")
+                .withCustomName(baseName -> dyeColor.getName() + "_" + baseName)
+                .into(helmetItemStack);
 
-        wyCommandoArmorBuilder.get()
-            .define('C', HumanItems.POLYMER)
-            .pattern("C C")
-            .pattern("ABA")
-            .pattern("CAC")
-            .into(1, HumanArmorItems.WY_COMMANDO_CHESTPLATE);
+            var chestplateItemStack = new ItemStack(HumanArmorItems.WY_COMMANDO_CHESTPLATE.get(), 1);
+            chestplateItemStack = DyeItemColorUtil.applyDyesForced(chestplateItemStack, List.of(DyeItem.byColor(dyeColor)));
+            wyCommandoArmorBuilder.get()
+                .define('C', HumanItems.POLYMER)
+                .pattern("C C")
+                .pattern("ABA")
+                .pattern("CAC")
+                .withCustomName(baseName -> dyeColor.getName() + "_" + baseName)
+                .into(chestplateItemStack);
 
-        wyCommandoArmorBuilder.get()
-            .define('C', HumanItems.POLYMER)
-            .pattern("CBC")
-            .pattern("A A")
-            .pattern("C C")
-            .into(1, HumanArmorItems.WY_COMMANDO_LEGGINGS);
+            var leggingsItemStack = new ItemStack(HumanArmorItems.WY_COMMANDO_LEGGINGS.get(), 1);
+            leggingsItemStack = DyeItemColorUtil.applyDyesForced(leggingsItemStack, List.of(DyeItem.byColor(dyeColor)));
+            wyCommandoArmorBuilder.get()
+                .define('C', HumanItems.POLYMER)
+                .pattern("CBC")
+                .pattern("A A")
+                .pattern("C C")
+                .withCustomName(baseName -> dyeColor.getName() + "_" + baseName)
+                .into(leggingsItemStack);
 
-        wyCommandoArmorBuilder.get()
-            .pattern("B B")
-            .pattern("A A")
-            .into(1, HumanArmorItems.WY_COMMANDO_BOOTS);
+            var bootsItemStack = new ItemStack(HumanArmorItems.WY_COMMANDO_BOOTS.get(), 1);
+            bootsItemStack = DyeItemColorUtil.applyDyesForced(bootsItemStack, List.of(DyeItem.byColor(dyeColor)));
+            wyCommandoArmorBuilder.get()
+                .pattern("B B")
+                .pattern("A A")
+                .withCustomName(baseName -> dyeColor.getName() + "_" + baseName)
+                .into(bootsItemStack);
+        }
     }
 
     private static void createWYEliteArmorSetRecipes(RecipeBuilder builder) {
@@ -187,40 +201,40 @@ public class ArmorRecipeProvider {
                 .define('A', HumanCommonItemTags.INGOTS_STEEL)
                 .define('B', HumanPlasticBlocks.DYE_COLOR_TO_PLASTIC.get(dyeColor));
 
-            var wyEliteHelmetItemStack = new ItemStack(HumanArmorItems.WY_ELITE_HELMET.get(), 1);
-            wyEliteHelmetItemStack = DyeItemColorUtil.applyDyesForced(wyEliteHelmetItemStack, List.of(DyeItem.byColor(dyeColor)));
+            var helmetItemStack = new ItemStack(HumanArmorItems.WY_ELITE_HELMET.get(), 1);
+            helmetItemStack = DyeItemColorUtil.applyDyesForced(helmetItemStack, List.of(DyeItem.byColor(dyeColor)));
             wyEliteArmorBuilder.get()
                 .define('C', HumanItemTags.INDUSTRIAL_GLASS_PANE)
                 .pattern("ABA")
                 .pattern("BCB")
                 .withCustomName(baseName -> dyeColor.getName() + "_" + baseName)
-                .into(wyEliteHelmetItemStack);
+                .into(helmetItemStack);
 
-            var wyEliteChestplateItemStack = new ItemStack(HumanArmorItems.WY_ELITE_CHESTPLATE.get(), 1);
-            wyEliteChestplateItemStack = DyeItemColorUtil.applyDyesForced(wyEliteChestplateItemStack, List.of(DyeItem.byColor(dyeColor)));
+            var chestplateItemStack = new ItemStack(HumanArmorItems.WY_ELITE_CHESTPLATE.get(), 1);
+            chestplateItemStack = DyeItemColorUtil.applyDyesForced(chestplateItemStack, List.of(DyeItem.byColor(dyeColor)));
             wyEliteArmorBuilder.get()
                 .pattern("B B")
                 .pattern("ABA")
                 .pattern("BAB")
                 .withCustomName(baseName -> dyeColor.getName() + "_" + baseName)
-                .into(wyEliteChestplateItemStack);
+                .into(chestplateItemStack);
 
-            var wyEliteLeggingsItemStack = new ItemStack(HumanArmorItems.WY_ELITE_LEGGINGS.get(), 1);
-            wyEliteLeggingsItemStack = DyeItemColorUtil.applyDyesForced(wyEliteLeggingsItemStack, List.of(DyeItem.byColor(dyeColor)));
+            var leggingsItemStack = new ItemStack(HumanArmorItems.WY_ELITE_LEGGINGS.get(), 1);
+            leggingsItemStack = DyeItemColorUtil.applyDyesForced(leggingsItemStack, List.of(DyeItem.byColor(dyeColor)));
             wyEliteArmorBuilder.get()
                 .pattern("BBB")
                 .pattern("A A")
                 .pattern("B B")
                 .withCustomName(baseName -> dyeColor.getName() + "_" + baseName)
-                .into(wyEliteLeggingsItemStack);
+                .into(leggingsItemStack);
 
-            var wyEliteBootsItemStack = new ItemStack(HumanArmorItems.WY_ELITE_BOOTS.get(), 1);
-            wyEliteBootsItemStack = DyeItemColorUtil.applyDyesForced(wyEliteBootsItemStack, List.of(DyeItem.byColor(dyeColor)));
+            var bootsItemStack = new ItemStack(HumanArmorItems.WY_ELITE_BOOTS.get(), 1);
+            bootsItemStack = DyeItemColorUtil.applyDyesForced(bootsItemStack, List.of(DyeItem.byColor(dyeColor)));
             wyEliteArmorBuilder.get()
                 .pattern("B B")
                 .pattern("A A")
                 .withCustomName(baseName -> dyeColor.getName() + "_" + baseName)
-                .into(wyEliteBootsItemStack);
+                .into(bootsItemStack);
         }
     }
 

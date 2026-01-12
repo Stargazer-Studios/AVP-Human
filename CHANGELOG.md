@@ -12,6 +12,8 @@
   - Thanks to Davianortis for contributing these!
 
 ## ♻️ Changes
+- Updated wy commando armor model/textures.
+- Updated wy elite armor model/textures.
 - Reduced accuracy required for marines to pathfind to fire resistance items.
 - Reduced accuracy required for marines to pathfind to weapon items.
 - Marine aggression towards mobs is now controlled by the `#avp_human:hated_by_marines` entity type tag.
