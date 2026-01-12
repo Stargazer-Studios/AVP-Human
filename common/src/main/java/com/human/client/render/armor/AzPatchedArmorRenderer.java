@@ -8,15 +8,13 @@ import mod.azure.azurelib.common.render.armor.AzArmorRendererConfig;
 import mod.azure.azurelib.common.render.armor.AzArmorRendererPipeline;
 import mod.azure.azurelib.common.render.armor.AzArmorRendererPipelineContext;
 import mod.azure.azurelib.core.object.Color;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.DyedItemColor;
 
 import java.util.UUID;
 
-public abstract class AzDyeableArmorRenderer extends AzArmorRenderer {
+public abstract class AzPatchedArmorRenderer extends AzArmorRenderer {
 
-    public AzDyeableArmorRenderer(AzArmorRendererConfig config) {
+    public AzPatchedArmorRenderer(AzArmorRendererConfig config) {
         super(config);
     }
 
@@ -30,11 +28,7 @@ public abstract class AzDyeableArmorRenderer extends AzArmorRenderer {
 
                     @Override
                     public Color getRenderColor(ItemStack animatable, float partialTick, int packedLight) {
-                        return this.currentStack().is(ItemTags.DYEABLE)
-                            ? Color.ofOpaque(
-                                DyedItemColor.getOrDefault(this.currentStack(), Color.WHITE.getColor())
-                            )
-                            : Color.WHITE;
+                        return Color.WHITE;
                     }
                 };
             }

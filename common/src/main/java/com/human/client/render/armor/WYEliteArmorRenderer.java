@@ -5,7 +5,7 @@ import com.human.client.render.layer.DyeColorLayer;
 import mod.azure.azurelib.common.render.armor.AzArmorRendererConfig;
 import net.minecraft.resources.ResourceLocation;
 
-public class WYEliteArmorRenderer extends AzDyeableArmorRenderer {
+public class WYEliteArmorRenderer extends AzPatchedArmorRenderer {
 
     private static final String NAME = "wy_elite";
 

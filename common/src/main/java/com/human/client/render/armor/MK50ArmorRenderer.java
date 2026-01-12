@@ -5,7 +5,7 @@ import com.human.client.render.layer.DyeColorLayer;
 import mod.azure.azurelib.common.render.armor.AzArmorRendererConfig;
 import net.minecraft.resources.ResourceLocation;
 
-public class MK50ArmorRenderer extends AzDyeableArmorRenderer {
+public class MK50ArmorRenderer extends AzPatchedArmorRenderer {
 
     private static final String NAME = "mk50";
 

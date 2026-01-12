@@ -5,7 +5,7 @@ import com.human.client.render.layer.DyeColorLayer;
 import mod.azure.azurelib.common.render.armor.AzArmorRendererConfig;
 import net.minecraft.resources.ResourceLocation;
 
-public class PressureArmorRenderer extends AzDyeableArmorRenderer {
+public class PressureArmorRenderer extends AzPatchedArmorRenderer {
 
     private static final String NAME = "pressure";
 
