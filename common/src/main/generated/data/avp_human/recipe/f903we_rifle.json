@@ -19,14 +19,6 @@
     }
   ],
   "result": {
-    "components": {
-      "azurelib:az_id": [
-        653908208,
-        504712539,
-        -1598802340,
-        -2066089315
-      ]
-    },
     "count": 1,
     "id": "avp_human:f903we_rifle"
   }

@@ -19,14 +19,6 @@
     }
   ],
   "result": {
-    "components": {
-      "azurelib:az_id": [
-        -1734702269,
-        -775733123,
-        -1951216339,
-        2078317424
-      ]
-    },
     "count": 1,
     "id": "avp_human:m41a_pulse_rifle"
   }

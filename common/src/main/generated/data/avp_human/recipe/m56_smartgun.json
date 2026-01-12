@@ -16,14 +16,6 @@
     }
   ],
   "result": {
-    "components": {
-      "azurelib:az_id": [
-        -1725725675,
-        -2141305317,
-        -1530235232,
-        -531780786
-      ]
-    },
     "count": 1,
     "id": "avp_human:m56_smartgun"
   }

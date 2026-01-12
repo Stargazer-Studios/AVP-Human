@@ -16,14 +16,6 @@
     }
   ],
   "result": {
-    "components": {
-      "azurelib:az_id": [
-        -933490746,
-        1636843943,
-        -1518203112,
-        227933956
-      ]
-    },
     "count": 1,
     "id": "avp_human:m6b_rocket_launcher"
   }

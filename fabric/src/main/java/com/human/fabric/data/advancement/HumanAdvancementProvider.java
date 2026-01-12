@@ -6,6 +6,7 @@ import com.human.common.registry.init.block.HumanSteelBlocks;
 import com.human.common.registry.init.item.HumanGunItems;
 import com.human.common.registry.init.item.HumanItems;
 import com.human.common.registry.tag.HumanItemTags;
+import mod.azure.azurelib.AzureLib;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementType;
@@ -14,6 +15,7 @@ import net.minecraft.advancements.critereon.ImpossibleTrigger;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 
@@ -128,6 +130,10 @@ public class HumanAdvancementProvider {
     }
 
     private static AdvancementHolder addHasGunAdvancement(AdvancementHolder parent, Consumer<AdvancementHolder> consumer) {
+        var itemStack = new ItemStack(HumanGunItems.M41A_PULSE_RIFLE.get(), 1);
+
+        itemStack.remove(AzureLib.AZ_ID.get());
+
         return Advancement.Builder.advancement()
             .addCriterion(
                 "gun",
@@ -135,7 +141,7 @@ public class HumanAdvancementProvider {
             )
             .parent(parent)
             .display(
-                HumanGunItems.M41A_PULSE_RIFLE.get(),
+                itemStack,
                 HumanAdvancements.HAS_GUN.getTitleComponent(),
                 HumanAdvancements.HAS_GUN.getDescriptionComponent(),
                 null,

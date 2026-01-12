@@ -19,14 +19,6 @@
     }
   ],
   "result": {
-    "components": {
-      "azurelib:az_id": [
-        -1480991546,
-        -467386187,
-        -1174058125,
-        730681824
-      ]
-    },
     "count": 1,
     "id": "avp_human:zx_76_shotgun"
   }

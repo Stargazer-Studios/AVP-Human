@@ -16,14 +16,6 @@
     }
   ],
   "result": {
-    "components": {
-      "azurelib:az_id": [
-        -152295936,
-        -1462612291,
-        -2086291379,
-        304464720
-      ]
-    },
     "count": 1,
     "id": "avp_human:flamethrower_sevastopol"
   }

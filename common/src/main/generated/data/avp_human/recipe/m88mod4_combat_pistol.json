@@ -16,14 +16,6 @@
     }
   ],
   "result": {
-    "components": {
-      "azurelib:az_id": [
-        1617877877,
-        -31570579,
-        -1516210540,
-        447977088
-      ]
-    },
     "count": 1,
     "id": "avp_human:m88mod4_combat_pistol"
   }

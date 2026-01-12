@@ -19,14 +19,6 @@
     }
   ],
   "result": {
-    "components": {
-      "azurelib:az_id": [
-        -2069542729,
-        126371535,
-        -1448581430,
-        1274145360
-      ]
-    },
     "count": 1,
     "id": "avp_human:old_painless"
   }

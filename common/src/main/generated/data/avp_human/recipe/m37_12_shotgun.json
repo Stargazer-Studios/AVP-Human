@@ -19,14 +19,6 @@
     }
   ],
   "result": {
-    "components": {
-      "azurelib:az_id": [
-        -1677859989,
-        -1210234477,
-        -1988176605,
-        542299879
-      ]
-    },
     "count": 1,
     "id": "avp_human:m37_12_shotgun"
   }

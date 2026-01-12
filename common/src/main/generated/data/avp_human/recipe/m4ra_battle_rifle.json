@@ -19,14 +19,6 @@
     }
   ],
   "result": {
-    "components": {
-      "azurelib:az_id": [
-        88200837,
-        -146780468,
-        -1354233574,
-        863953497
-      ]
-    },
     "count": 1,
     "id": "avp_human:m4ra_battle_rifle"
   }

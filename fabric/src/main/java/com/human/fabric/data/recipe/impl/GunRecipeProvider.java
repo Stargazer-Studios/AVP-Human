@@ -1,13 +1,18 @@
 package com.human.fabric.data.recipe.impl;
 
+import com.blib.common.registry.BLibHolder;
 import com.blib.fabric.data.recipe.builder.RecipeBuilder;
 import com.human.common.registry.init.item.HumanGunItems;
 import com.human.common.registry.init.item.HumanItems;
 import com.human.common.registry.tag.HumanItemTags;
 import com.human.compatibility.HumanCommonItemTags;
+import mod.azure.azurelib.AzureLib;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
 
@@ -142,7 +147,12 @@ public class GunRecipeProvider {
             HumanGunItems.M42A3_SNIPER_RIFLE.get(),
             true
         );
-        createGenericGunRecipe(builder, HumanItems.BLUEPRINT_M4RA_BATTLE_RIFLE, HumanGunItems.M4RA_BATTLE_RIFLE.get(), true);
+        createGenericGunRecipe(
+            builder,
+            HumanItems.BLUEPRINT_M4RA_BATTLE_RIFLE,
+            HumanGunItems.M4RA_BATTLE_RIFLE.get(),
+            true
+        );
 
         builder.shapeless()
             .withCategory(RecipeCategory.COMBAT)
@@ -151,7 +161,7 @@ public class GunRecipeProvider {
             .requires(1, HumanItems.GRIP)
             .requires(1, HumanItems.SMART_RECEIVER)
             .requires(1, HumanItems.STOCK)
-            .into(1, HumanGunItems.M41A_PULSE_RIFLE);
+            .into(createItemStackNoAzureLibID(HumanGunItems.M41A_PULSE_RIFLE));
 
         builder.shapeless()
             .withCategory(RecipeCategory.COMBAT)
@@ -159,7 +169,7 @@ public class GunRecipeProvider {
             .requires(1, HumanItems.SMART_BARREL)
             .requires(1, HumanItems.GRIP)
             .requires(1, HumanItems.SMART_RECEIVER)
-            .into(1, HumanGunItems.M56_SMARTGUN);
+            .into(createItemStackNoAzureLibID(HumanGunItems.M56_SMARTGUN));
 
         builder.shapeless()
             .withCategory(RecipeCategory.COMBAT)
@@ -167,7 +177,7 @@ public class GunRecipeProvider {
             .requires(1, HumanItems.MINIGUN_BARREL)
             .requires(2, HumanItems.GRIP)
             .requires(1, HumanItems.RECEIVER)
-            .into(1, HumanGunItems.OLD_PAINLESS);
+            .into(createItemStackNoAzureLibID(HumanGunItems.OLD_PAINLESS));
 
         builder.shapeless()
             .withCategory(RecipeCategory.COMBAT)
@@ -175,7 +185,7 @@ public class GunRecipeProvider {
             .requires(1, HumanItems.ROCKET_BARREL)
             .requires(1, HumanItems.GRIP)
             .requires(1, HumanItems.SMART_RECEIVER)
-            .into(1, HumanGunItems.M6B_ROCKET_LAUNCHER);
+            .into(createItemStackNoAzureLibID(HumanGunItems.M6B_ROCKET_LAUNCHER));
     }
 
     private static void createGunPartRecipes(RecipeBuilder builder) {
@@ -251,7 +261,12 @@ public class GunRecipeProvider {
             .into(1, HumanItems.STOCK);
     }
 
-    private static void createGenericGunRecipe(RecipeBuilder builder, Supplier<Item> blueprintItem, Item result, boolean hasStock) {
+    private static void createGenericGunRecipe(
+        RecipeBuilder builder,
+        Supplier<Item> blueprintItem,
+        Item result,
+        boolean hasStock
+    ) {
         var shapeless = builder.shapeless()
             .withCategory(RecipeCategory.COMBAT)
             .requires(1, blueprintItem)
@@ -263,6 +278,18 @@ public class GunRecipeProvider {
             shapeless.requires(1, HumanItems.STOCK);
         }
 
-        shapeless.into(1, result);
+        shapeless.into(createItemStackNoAzureLibID(result));
+    }
+
+    private static @NotNull ItemStack createItemStackNoAzureLibID(BLibHolder<? extends ItemLike> holder) {
+        return createItemStackNoAzureLibID(holder.get());
+    }
+
+    private static @NotNull ItemStack createItemStackNoAzureLibID(ItemLike itemLike) {
+        var itemStack = new ItemStack(itemLike, 1);
+
+        itemStack.remove(AzureLib.AZ_ID.get());
+
+        return itemStack;
     }
 }

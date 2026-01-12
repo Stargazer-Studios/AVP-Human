@@ -19,14 +19,6 @@
     }
   ],
   "result": {
-    "components": {
-      "azurelib:az_id": [
-        -1804598543,
-        -1295563559,
-        -1459713071,
-        1996080
-      ]
-    },
     "count": 1,
     "id": "avp_human:m42a3_sniper_rifle"
   }

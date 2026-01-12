@@ -17,14 +17,6 @@
       "translate": "advancements.humans.has_gun.description"
     },
     "icon": {
-      "components": {
-        "azurelib:az_id": [
-          -836176789,
-          -965786038,
-          -1578384680,
-          280232877
-        ]
-      },
       "count": 1,
       "id": "avp_human:m41a_pulse_rifle"
     },
