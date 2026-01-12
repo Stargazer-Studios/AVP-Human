@@ -1,6 +1,7 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "avp_human:item/pressure_boots"
+    "layer0": "avp_human:item/pressure_boots",
+    "layer1": "avp_human:item/pressure_boots_overlay"
   }
 }

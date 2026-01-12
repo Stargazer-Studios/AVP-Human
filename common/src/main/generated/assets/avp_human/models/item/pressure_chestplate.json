@@ -1,6 +1,7 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "avp_human:item/pressure_chestplate"
+    "layer0": "avp_human:item/pressure_chestplate",
+    "layer1": "avp_human:item/pressure_chestplate_overlay"
   }
 }
