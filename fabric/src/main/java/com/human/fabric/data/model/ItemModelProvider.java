@@ -39,10 +39,10 @@ public class ItemModelProvider extends FabricModelProvider {
         generateStandardItem(generators, HumanItems.MEDIUM_BULLET);
         generateStandardItem(generators, HumanItems.SHOTGUN_SHELL);
         generateStandardItem(generators, HumanItems.FUEL_TANK);
-        generateStandardItem(generators, HumanArmorItems.MK50_BOOTS);
-        generateStandardItem(generators, HumanArmorItems.MK50_CHESTPLATE);
-        generateStandardItem(generators, HumanArmorItems.MK50_HELMET);
-        generateStandardItem(generators, HumanArmorItems.MK50_LEGGINGS);
+        generateTwoLayeredItem(generators, HumanArmorItems.MK50_BOOTS);
+        generateTwoLayeredItem(generators, HumanArmorItems.MK50_CHESTPLATE);
+        generateTwoLayeredItem(generators, HumanArmorItems.MK50_HELMET);
+        generateTwoLayeredItem(generators, HumanArmorItems.MK50_LEGGINGS);
         generateTwoLayeredItem(generators, HumanArmorItems.PRESSURE_BOOTS);
         generateTwoLayeredItem(generators, HumanArmorItems.PRESSURE_CHESTPLATE);
         generateTwoLayeredItem(generators, HumanArmorItems.PRESSURE_HELMET);
