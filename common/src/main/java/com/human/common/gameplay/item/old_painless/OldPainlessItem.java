@@ -32,11 +32,6 @@ public class OldPainlessItem extends GunItem {
 
     public OldPainlessItem() {
         super(GunData.OLD_PAINLESS);
-        this.idle = AzCommand.create(
-            OldPainlessAnimationRefs.MAIN_CONTROLLER_NAME,
-            OldPainlessAnimationRefs.IDLE_ANIMATION_NAME,
-            AzPlayBehaviors.LOOP
-        );
         this.shoot = AzCommand.compose(spinUp, spin);
     }
 

@@ -35,8 +35,6 @@ public class GunItem extends Item {
 
     private final GunConfig gunConfig;
 
-    public AzCommand idle;
-
     public AzCommand shoot;
 
     public static final AzCommand reload = AzCommand.create(
@@ -53,11 +51,6 @@ public class GunItem extends Item {
                 .attributes(createAttributes())
         );
         this.gunConfig = gunConfig;
-        idle = AzCommand.create(
-            OldPainlessAnimationRefs.MAIN_CONTROLLER_NAME,
-            OldPainlessAnimationRefs.IDLE_ANIMATION_NAME,
-            AzPlayBehaviors.LOOP
-        );
         shoot = AzCommand.create(
             OldPainlessAnimationRefs.MAIN_CONTROLLER_NAME,
             OldPainlessAnimationRefs.SHOOT_ANIMATION_NAME,
@@ -73,10 +66,6 @@ public class GunItem extends Item {
                 EquipmentSlotGroup.MAINHAND
             )
             .build();
-    }
-
-    protected void playReleaseUsingAnimations(Entity shooter, ItemStack itemStack) {
-        idle.sendForItem(shooter, itemStack);
     }
 
     protected void playUseAnimations(Entity shooter, ItemStack itemStack) {
@@ -102,7 +91,7 @@ public class GunItem extends Item {
             level.playSound(null, livingEntity.blockPosition(), shootFinishSoundEvent.get(), SoundSource.PLAYERS);
         }
 
-        playReleaseUsingAnimations(livingEntity, itemStack);
+        itemStack.set(HumanDataComponents.IS_FIRING.get(), false);
 
         super.releaseUsing(itemStack, level, livingEntity, i);
     }
@@ -144,14 +133,23 @@ public class GunItem extends Item {
     @Override
     public void inventoryTick(@NotNull ItemStack itemStack, @NotNull Level level, @NotNull Entity entity, int i, boolean bl) {
         var isFiring = itemStack.get(HumanDataComponents.IS_FIRING.get());
+        var cooldownsOrNull = entity instanceof LivingEntity livingEntity
+            ? ItemCooldownUser.getItemCooldownsOrNull(livingEntity)
+            : null;
+
+        var muzzleFlashDurationInTicks = 5;
+        var cooldownInTicks = gunConfig.getDefaultFireMode().cooldownInTicks();
+        var percentage = Math.clamp(muzzleFlashDurationInTicks / (float) cooldownInTicks, 0, 1);
+
+        var isCooldownActiveAndStale = cooldownsOrNull != null
+            && cooldownsOrNull.isOnCooldown(this)
+            && cooldownsOrNull.getCooldownPercent(this, 0) < 1 - percentage;
 
         if (
             Boolean.TRUE.equals(isFiring)
-                && entity instanceof LivingEntity livingEntity
-                && !livingEntity.isUsingItem()
+                && isCooldownActiveAndStale
         ) {
             itemStack.set(HumanDataComponents.IS_FIRING.get(), false);
-            playReleaseUsingAnimations(livingEntity, itemStack);
         }
 
         super.inventoryTick(itemStack, level, entity, i, bl);
