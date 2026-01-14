@@ -1,7 +1,7 @@
 package com.human.client.animation.item;
 
 import com.human.HumanResources;
-import com.human.common.gameplay.item.old_painless.OldPainlessAnimationRefs;
+import com.human.common.gameplay.item.gun.animation.dispatcher.impl.OldPainlessAnimationDispatcher;
 import mod.azure.azurelib.common.animation.AzAnimatorConfig;
 import mod.azure.azurelib.common.animation.controller.AzAnimationController;
 import mod.azure.azurelib.common.animation.controller.AzAnimationControllerContainer;
@@ -23,7 +23,7 @@ public class OldPainlessAnimator extends AzItemAnimator {
     @Override
     public void registerControllers(AzAnimationControllerContainer<ItemStack> animationControllerContainer) {
         animationControllerContainer.add(
-            AzAnimationController.builder(this, OldPainlessAnimationRefs.MAIN_CONTROLLER_NAME)
+            AzAnimationController.builder(this, OldPainlessAnimationDispatcher.CONTROLLER_MAIN)
                 .setTransitionLength(5)
                 .build()
         );

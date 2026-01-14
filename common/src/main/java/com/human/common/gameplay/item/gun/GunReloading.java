@@ -82,8 +82,8 @@ public class GunReloading {
             return;
         }
 
-        // TODO: Shouldn't be here.
-        GunItem.reload.sendForItem(player, itemStack);
+        gunConfig.animationDispatcher()
+            .reload(player, itemStack);
 
         var fireModeConfig = gunConfig.getDefaultFireMode();
         var reloadStartSoundEvent = fireModeConfig.reloadStartSoundEvent();

@@ -3,12 +3,9 @@ package com.human.common.gameplay.item;
 import com.blib.common.gameplay.util.TooltipUtil;
 import com.human.common.gameplay.item.gun.GunConfig;
 import com.human.common.gameplay.item.gun.pipeline.GunShootContext;
-import com.human.common.gameplay.item.old_painless.OldPainlessAnimationRefs;
 import com.human.common.registry.init.HumanDataComponents;
 import com.human.common.registry.init.item.HumanGunItems;
 import com.human.compatibility.HumanCommonItemTags;
-import mod.azure.azurelib.common.animation.dispatch.command.AzCommand;
-import mod.azure.azurelib.common.animation.play_behavior.AzPlayBehaviors;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -35,14 +32,6 @@ public class GunItem extends Item {
 
     private final GunConfig gunConfig;
 
-    public AzCommand shoot;
-
-    public static final AzCommand reload = AzCommand.create(
-        OldPainlessAnimationRefs.MAIN_CONTROLLER_NAME,
-        OldPainlessAnimationRefs.RELOAD_ANIMATION_NAME,
-        AzPlayBehaviors.PLAY_ONCE
-    );
-
     public GunItem(GunConfig gunConfig) {
         super(
             new Item.Properties().stacksTo(1)
@@ -51,11 +40,6 @@ public class GunItem extends Item {
                 .attributes(createAttributes())
         );
         this.gunConfig = gunConfig;
-        shoot = AzCommand.create(
-            OldPainlessAnimationRefs.MAIN_CONTROLLER_NAME,
-            OldPainlessAnimationRefs.SHOOT_ANIMATION_NAME,
-            AzPlayBehaviors.PLAY_ONCE
-        );
     }
 
     private static ItemAttributeModifiers createAttributes() {
@@ -69,7 +53,8 @@ public class GunItem extends Item {
     }
 
     protected void playUseAnimations(Entity shooter, ItemStack itemStack) {
-        shoot.sendForItem(shooter, itemStack);
+        gunConfig.animationDispatcher()
+            .shoot(shooter, itemStack);
     }
 
     @Override
@@ -137,19 +122,21 @@ public class GunItem extends Item {
             ? ItemCooldownUser.getItemCooldownsOrNull(livingEntity)
             : null;
 
-        var muzzleFlashDurationInTicks = 5;
-        var cooldownInTicks = gunConfig.getDefaultFireMode().cooldownInTicks();
-        var percentage = Math.clamp(muzzleFlashDurationInTicks / (float) cooldownInTicks, 0, 1);
+        if (cooldownsOrNull != null) {
 
-        var isCooldownActiveAndStale = cooldownsOrNull != null
-            && cooldownsOrNull.isOnCooldown(this)
-            && cooldownsOrNull.getCooldownPercent(this, 0) < 1 - percentage;
+            var isCooldownActive = cooldownsOrNull.isOnCooldown(this);
 
-        if (
-            Boolean.TRUE.equals(isFiring)
-                && isCooldownActiveAndStale
-        ) {
-            itemStack.set(HumanDataComponents.IS_FIRING.get(), false);
+            if (isCooldownActive) {
+                var muzzleFlashDurationInTicks = 5;
+                var cooldownInTicks = gunConfig.getDefaultFireMode().cooldownInTicks();
+                var percentage = Math.clamp(muzzleFlashDurationInTicks / (float) cooldownInTicks, 0, 1);
+
+                var isCooldownStale = cooldownsOrNull.getCooldownPercent(this, 0) < 1 - percentage;
+
+                if (Boolean.TRUE.equals(isFiring) && isCooldownStale) {
+                    itemStack.set(HumanDataComponents.IS_FIRING.get(), false);
+                }
+            }
         }
 
         super.inventoryTick(itemStack, level, entity, i, bl);
