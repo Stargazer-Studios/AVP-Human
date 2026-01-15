@@ -8,7 +8,7 @@ import net.minecraft.world.entity.ai.util.LandRandomPos;
 
 public class WanderAction {
 
-    public static Action.Signal perform(Action.Context<Marine> context) {
+    public static Action.Signal perform(Action.Context<? extends Marine> context) {
         var marine = context.getActor();
         var blackboard = context.getBlackboard(Blackboard.Scope.ACTION);
         var moveResult = MoveToPosAction.perform(
@@ -28,7 +28,7 @@ public class WanderAction {
         };
     }
 
-    public static void onFinish(Action.Context<Marine> context) {
+    public static void onFinish(Action.Context<? extends Marine> context) {
         var marine = context.getActor();
         marine.getNavigation().stop();
     }

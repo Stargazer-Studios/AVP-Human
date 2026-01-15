@@ -11,7 +11,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 
 public class EquipBestArmorSetFromInventoryAction {
 
-    public static Action.Signal perform(Action.Context<Marine> context) {
+    public static Action.Signal perform(Action.Context<? extends Marine> context) {
         var marine = context.getActor();
         var worldState = context.getWorldState();
         var bestArmorTarget = worldState.getOrDefault(EquipArmorSensors.BEST_ARMOR_SET_TARGET.key(), ArmorSetTarget.EMPTY);

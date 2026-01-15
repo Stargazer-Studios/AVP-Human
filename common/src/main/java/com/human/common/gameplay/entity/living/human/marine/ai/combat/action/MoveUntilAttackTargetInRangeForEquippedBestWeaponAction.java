@@ -12,7 +12,7 @@ public class MoveUntilAttackTargetInRangeForEquippedBestWeaponAction {
 
     private static final StateKey<Path> PATH_TO_ATTACK_TARGET = StateKey.sensed("path_to_attack_target");
 
-    public static Action.Signal perform(Action.Context<PathfinderMob> context) {
+    public static Action.Signal perform(Action.Context<? extends PathfinderMob> context) {
         var pathfinderMob = context.getActor();
         var worldState = context.getWorldState();
         var blackboard = context.getBlackboard(Blackboard.Scope.ACTION);
@@ -39,7 +39,7 @@ public class MoveUntilAttackTargetInRangeForEquippedBestWeaponAction {
         return Action.Signal.CONTINUE;
     }
 
-    public static void onFinish(Action.Context<PathfinderMob> context) {
+    public static void onFinish(Action.Context<? extends PathfinderMob> context) {
         var pathfinderMob = context.getActor();
         pathfinderMob.getNavigation().stop();
     }

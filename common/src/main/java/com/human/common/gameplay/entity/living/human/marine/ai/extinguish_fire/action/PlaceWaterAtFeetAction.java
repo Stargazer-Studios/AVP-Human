@@ -23,7 +23,7 @@ public class PlaceWaterAtFeetAction {
 
     private static final StateKey.Derived<Option<BlockPos>> WATER_POS_OPTION = StateKey.derived("water_pos_option");
 
-    public static Action.Signal perform(Action.Context<Marine> context) {
+    public static Action.Signal perform(Action.Context<? extends Marine> context) {
         var marine = context.getActor();
         var blackboard = context.getBlackboard(Blackboard.Scope.ACTION);
         var mainhandItemStack = marine.getMainHandItem();
@@ -55,7 +55,7 @@ public class PlaceWaterAtFeetAction {
             .orElse(marine.blockPosition());
     }
 
-    public static void onFinish(Action.Context<Marine> context) {
+    public static void onFinish(Action.Context<? extends Marine> context) {
         var marine = context.getActor();
         var blackboard = context.getBlackboard(Blackboard.Scope.ACTION);
         var waterPosOption = blackboard.getOrDefault(WATER_POS_OPTION, Option.none());

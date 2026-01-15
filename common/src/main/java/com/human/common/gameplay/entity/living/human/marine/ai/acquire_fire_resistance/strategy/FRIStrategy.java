@@ -6,7 +6,7 @@ import net.minecraft.world.entity.LivingEntity;
 
 public interface FRIStrategy extends ItemStrategy {
 
-    Action.Signal execute(Action.Context<LivingEntity> context);
+    Action.Signal execute(Action.Context<? extends LivingEntity> context);
 
     /**
      * @param urgency             Higher means “use something now”.

@@ -54,7 +54,7 @@ public class SplashPotionFRIStrategy implements FRIStrategy {
     }
 
     @Override
-    public Action.Signal execute(Action.Context<LivingEntity> context) {
+    public Action.Signal execute(Action.Context<? extends LivingEntity> context) {
         var livingEntity = context.getActor();
         var itemStack = livingEntity.getMainHandItem();
 

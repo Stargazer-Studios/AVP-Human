@@ -61,7 +61,7 @@ public class MeleeWeaponStrategy implements WeaponStrategy {
     }
 
     @Override
-    public Action.Signal execute(Action.Context<LivingEntity> context) {
+    public Action.Signal execute(Action.Context<? extends LivingEntity> context) {
         var livingEntity = context.getActor();
         var worldState = context.getWorldState();
         var blackboard = context.getBlackboard(Blackboard.Scope.ACTION);

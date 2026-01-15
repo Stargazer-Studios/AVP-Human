@@ -9,7 +9,7 @@ import net.minecraft.world.entity.PathfinderMob;
 
 public class MoveToFRIAction {
 
-    public static Action.Signal perform(Action.Context<PathfinderMob> context) {
+    public static Action.Signal perform(Action.Context<? extends PathfinderMob> context) {
         var pathfinderMob = context.getActor();
         var worldState = context.getWorldState();
         var blackboard = context.getBlackboard(Blackboard.Scope.ACTION);
@@ -27,7 +27,7 @@ public class MoveToFRIAction {
         };
     }
 
-    public static void onFinish(Action.Context<PathfinderMob> context) {
+    public static void onFinish(Action.Context<? extends PathfinderMob> context) {
         var pathfinderMob = context.getActor();
         pathfinderMob.getNavigation().stop();
     }

@@ -10,7 +10,7 @@ public interface WeaponStrategy extends ItemStrategy {
 
     double getRangeForWeapon(LivingEntity livingEntity, ItemStack itemStack);
 
-    Action.Signal execute(Action.Context<LivingEntity> context);
+    Action.Signal execute(Action.Context<? extends LivingEntity> context);
 
     ScoreResult computeScore(LivingEntity livingEntity, ReadableWorldState worldState, ItemStack itemStack);
 

@@ -78,7 +78,7 @@ public class EnchantedGoldenAppleFRIStrategy implements FRIStrategy {
     }
 
     @Override
-    public Action.Signal execute(Action.Context<LivingEntity> context) {
+    public Action.Signal execute(Action.Context<? extends LivingEntity> context) {
         var livingEntity = context.getActor();
         var blackboard = context.getBlackboard(Blackboard.Scope.ACTION);
         return ConsumeItemAction.perform(SoundEvents.GENERIC_EAT, livingEntity, blackboard, () -> onConsume(livingEntity));

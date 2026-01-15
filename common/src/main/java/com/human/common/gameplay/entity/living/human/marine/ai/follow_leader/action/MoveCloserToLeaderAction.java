@@ -13,14 +13,14 @@ public class MoveCloserToLeaderAction {
 
     private static final StateKey<Float> OLD_WATER_MALUS_COST = StateKey.sensed("old_water_malus_cost");
 
-    public static void onStart(Action.Context<Marine> context) {
+    public static void onStart(Action.Context<? extends Marine> context) {
         var marine = context.getActor();
         var blackboard = context.getBlackboard(Blackboard.Scope.ACTION);
         blackboard.set(OLD_WATER_MALUS_COST, marine.getPathfindingMalus(PathType.WATER));
         marine.setPathfindingMalus(PathType.WATER, 0.0F);
     }
 
-    public static Action.Signal perform(Action.Context<Marine> context) {
+    public static Action.Signal perform(Action.Context<? extends Marine> context) {
         var marine = context.getActor();
         var blackboard = context.getBlackboard(Blackboard.Scope.ACTION);
         var leaderOrNull = marine.getLeader().unwrapOr(null);
@@ -47,7 +47,7 @@ public class MoveCloserToLeaderAction {
         };
     }
 
-    public static void onFinish(Action.Context<Marine> context) {
+    public static void onFinish(Action.Context<? extends Marine> context) {
         var marine = context.getActor();
         var blackboard = context.getBlackboard(Blackboard.Scope.ACTION);
         marine.getNavigation().stop();
