@@ -3,7 +3,7 @@ package com.human.common.gameplay.entity.living.human.marine.ai.idle;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.human.common.gameplay.entity.living.human.marine.ai.follow_leader.FollowLeaderSensors;
 import com.human.common.gameplay.entity.living.human.marine.ai.idle.action.WanderAction;
-import com.just.goap.Action;
+import com.just.goap.action.Action;
 import com.just.goap.condition.expression.Expressions;
 
 public class IdleActions {

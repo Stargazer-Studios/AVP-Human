@@ -2,7 +2,7 @@ package com.human.common.gameplay.entity.living.human.marine.ai.follow_leader;
 
 import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.human.common.gameplay.entity.living.human.marine.ai.follow_leader.action.MoveCloserToLeaderAction;
-import com.just.goap.Action;
+import com.just.goap.action.Action;
 import com.just.goap.condition.expression.Expressions;
 
 public class FollowLeaderActions {

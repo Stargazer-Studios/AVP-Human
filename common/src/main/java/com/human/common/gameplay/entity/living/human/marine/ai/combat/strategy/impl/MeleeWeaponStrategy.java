@@ -5,8 +5,8 @@ import com.human.common.gameplay.entity.living.human.ai.AttributeUtil;
 import com.human.common.gameplay.entity.living.human.marine.ai.combat.CombatSensors;
 import com.human.common.gameplay.entity.living.human.marine.ai.combat.strategy.WeaponStrategy;
 import com.just.core.functional.option.Option;
-import com.just.goap.Action;
 import com.just.goap.StateKey;
+import com.just.goap.action.Action;
 import com.just.goap.state.Blackboard;
 import com.just.goap.state.ReadableWorldState;
 import net.minecraft.commands.arguments.EntityAnchorArgument;
@@ -61,7 +61,11 @@ public class MeleeWeaponStrategy implements WeaponStrategy {
     }
 
     @Override
-    public Action.Signal execute(LivingEntity livingEntity, ReadableWorldState worldState, Blackboard blackboard) {
+    public Action.Signal execute(Action.Context<LivingEntity> context) {
+        var livingEntity = context.getActor();
+        var worldState = context.getWorldState();
+        var blackboard = context.getBlackboard(Blackboard.Scope.ACTION);
+
         if (!(livingEntity instanceof Mob mob)) {
             return Action.Signal.ABORT;
         }

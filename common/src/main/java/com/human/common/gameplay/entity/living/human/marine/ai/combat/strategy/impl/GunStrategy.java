@@ -7,8 +7,8 @@ import com.human.common.gameplay.item.GunItem;
 import com.human.common.registry.init.HumanDataComponents;
 import com.human.common.registry.tag.HumanItemTags;
 import com.just.core.functional.option.Option;
-import com.just.goap.Action;
 import com.just.goap.StateKey;
+import com.just.goap.action.Action;
 import com.just.goap.state.Blackboard;
 import com.just.goap.state.ReadableWorldState;
 import net.minecraft.commands.arguments.EntityAnchorArgument;
@@ -69,7 +69,11 @@ public class GunStrategy implements WeaponStrategy {
     }
 
     @Override
-    public Action.Signal execute(LivingEntity livingEntity, ReadableWorldState worldState, Blackboard blackboard) {
+    public Action.Signal execute(Action.Context<LivingEntity> context) {
+        var livingEntity = context.getActor();
+        var worldState = context.getWorldState();
+        var blackboard = context.getBlackboard(Blackboard.Scope.ACTION);
+
         if (!(livingEntity instanceof Mob mob)) {
             return Action.Signal.ABORT;
         }

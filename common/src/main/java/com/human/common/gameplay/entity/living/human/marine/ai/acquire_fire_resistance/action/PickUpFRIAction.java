@@ -4,18 +4,14 @@ import com.blib.common.gameplay.model.inventory.BLibInventoryHolder;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.FRISensors;
 import com.human.common.gameplay.entity.living.human.marine.ai.action.PickUpItemAction;
 import com.just.core.functional.option.Option;
-import com.just.goap.Action;
-import com.just.goap.state.Blackboard;
-import com.just.goap.state.ReadableWorldState;
+import com.just.goap.action.Action;
 import net.minecraft.world.entity.LivingEntity;
 
 public class PickUpFRIAction {
 
-    public static <T extends LivingEntity & BLibInventoryHolder> Action.Signal perform(
-        T livingEntityWithInventory,
-        ReadableWorldState worldState,
-        Blackboard blackboard
-    ) {
+    public static <T extends LivingEntity & BLibInventoryHolder> Action.Signal perform(Action.Context<T> context) {
+        var livingEntityWithInventory = context.getActor();
+        var worldState = context.getWorldState();
         var worldItemTargetOption = worldState.getOrDefault(FRISensors.BEST_FRI_IN_WORLD.key(), Option.none());
 
         if (worldItemTargetOption.isNone()) {

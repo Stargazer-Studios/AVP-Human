@@ -3,10 +3,9 @@ package com.human.common.gameplay.entity.living.human.marine.ai.extinguish_fire.
 import com.blib.common.gameplay.model.inventory.BLibInventory;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.just.core.functional.option.Option;
-import com.just.goap.Action;
 import com.just.goap.StateKey;
+import com.just.goap.action.Action;
 import com.just.goap.state.Blackboard;
-import com.just.goap.state.ReadableWorldState;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
@@ -24,7 +23,9 @@ public class PlaceWaterAtFeetAction {
 
     private static final StateKey.Derived<Option<BlockPos>> WATER_POS_OPTION = StateKey.derived("water_pos_option");
 
-    public static Action.Signal perform(Marine marine, ReadableWorldState worldState, Blackboard blackboard) {
+    public static Action.Signal perform(Action.Context<Marine> context) {
+        var marine = context.getActor();
+        var blackboard = context.getBlackboard(Blackboard.Scope.ACTION);
         var mainhandItemStack = marine.getMainHandItem();
         var isWaterBucketEquipped = mainhandItemStack.is(Items.WATER_BUCKET);
 
@@ -54,7 +55,9 @@ public class PlaceWaterAtFeetAction {
             .orElse(marine.blockPosition());
     }
 
-    public static void onFinish(Marine marine, ReadableWorldState worldState, Blackboard blackboard) {
+    public static void onFinish(Action.Context<Marine> context) {
+        var marine = context.getActor();
+        var blackboard = context.getBlackboard(Blackboard.Scope.ACTION);
         var waterPosOption = blackboard.getOrDefault(WATER_POS_OPTION, Option.none());
 
         waterPosOption.ifSome(blockPos -> {

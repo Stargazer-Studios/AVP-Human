@@ -2,14 +2,15 @@ package com.human.common.gameplay.entity.living.human.marine.ai.idle.action;
 
 import com.human.common.gameplay.entity.ai.goap.MoveToPosAction;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
-import com.just.goap.Action;
+import com.just.goap.action.Action;
 import com.just.goap.state.Blackboard;
-import com.just.goap.state.ReadableWorldState;
 import net.minecraft.world.entity.ai.util.LandRandomPos;
 
 public class WanderAction {
 
-    public static Action.Signal perform(Marine marine, ReadableWorldState $2, Blackboard blackboard) {
+    public static Action.Signal perform(Action.Context<Marine> context) {
+        var marine = context.getActor();
+        var blackboard = context.getBlackboard(Blackboard.Scope.ACTION);
         var moveResult = MoveToPosAction.perform(
             marine,
             blackboard,
@@ -27,7 +28,8 @@ public class WanderAction {
         };
     }
 
-    public static void onFinish(Marine marine, ReadableWorldState $2, Blackboard $3) {
+    public static void onFinish(Action.Context<Marine> context) {
+        var marine = context.getActor();
         marine.getNavigation().stop();
     }
 

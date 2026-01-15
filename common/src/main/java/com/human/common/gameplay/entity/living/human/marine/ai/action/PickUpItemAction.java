@@ -1,7 +1,7 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.action;
 
 import com.blib.common.gameplay.model.inventory.BLibInventoryHolder;
-import com.just.goap.Action;
+import com.just.goap.action.Action;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 

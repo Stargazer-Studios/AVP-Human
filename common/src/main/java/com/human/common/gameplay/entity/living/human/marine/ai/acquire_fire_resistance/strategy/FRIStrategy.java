@@ -1,14 +1,12 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy;
 
 import com.human.common.gameplay.entity.ai.utility.item.ItemStrategy;
-import com.just.goap.Action;
-import com.just.goap.state.Blackboard;
-import com.just.goap.state.ReadableWorldState;
+import com.just.goap.action.Action;
 import net.minecraft.world.entity.LivingEntity;
 
 public interface FRIStrategy extends ItemStrategy {
 
-    Action.Signal execute(LivingEntity livingEntity, ReadableWorldState worldState, Blackboard blackboard);
+    Action.Signal execute(Action.Context<LivingEntity> context);
 
     /**
      * @param urgency             Higher means “use something now”.

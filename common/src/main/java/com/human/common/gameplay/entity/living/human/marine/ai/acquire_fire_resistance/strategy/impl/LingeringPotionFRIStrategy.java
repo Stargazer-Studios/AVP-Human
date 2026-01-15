@@ -3,8 +3,7 @@ package com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_res
 import com.blib.common.gameplay.goap.GOAPSensors;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.FRIStrategy;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.FRIStrategyUtil;
-import com.just.goap.Action;
-import com.just.goap.state.Blackboard;
+import com.just.goap.action.Action;
 import com.just.goap.state.ReadableWorldState;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.entity.LivingEntity;
@@ -56,7 +55,8 @@ public class LingeringPotionFRIStrategy implements FRIStrategy {
     }
 
     @Override
-    public Action.Signal execute(LivingEntity livingEntity, ReadableWorldState worldState, Blackboard blackboard) {
+    public Action.Signal execute(Action.Context<LivingEntity> context) {
+        var livingEntity = context.getActor();
         var itemStack = livingEntity.getMainHandItem();
 
         if (!itemStack.is(Items.LINGERING_POTION)) {

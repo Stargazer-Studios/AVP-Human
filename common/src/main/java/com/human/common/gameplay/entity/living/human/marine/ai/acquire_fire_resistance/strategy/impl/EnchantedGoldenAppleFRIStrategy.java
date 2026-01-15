@@ -5,7 +5,7 @@ import com.blib.common.gameplay.model.inventory.BLibInventory;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.FRIStrategy;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.FRIStrategyUtil;
 import com.human.common.gameplay.entity.living.human.marine.ai.action.ConsumeItemAction;
-import com.just.goap.Action;
+import com.just.goap.action.Action;
 import com.just.goap.state.Blackboard;
 import com.just.goap.state.ReadableWorldState;
 import net.minecraft.sounds.SoundEvents;
@@ -78,7 +78,9 @@ public class EnchantedGoldenAppleFRIStrategy implements FRIStrategy {
     }
 
     @Override
-    public Action.Signal execute(LivingEntity livingEntity, ReadableWorldState worldState, Blackboard blackboard) {
+    public Action.Signal execute(Action.Context<LivingEntity> context) {
+        var livingEntity = context.getActor();
+        var blackboard = context.getBlackboard(Blackboard.Scope.ACTION);
         return ConsumeItemAction.perform(SoundEvents.GENERIC_EAT, livingEntity, blackboard, () -> onConsume(livingEntity));
     }
 

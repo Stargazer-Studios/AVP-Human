@@ -4,11 +4,14 @@
 - For help or other questions, concerns, etc. check out our Discord server: https://discord.gg/wp7mvmbkVb
 
 ## ✨ What's New
+- BLib 0.2.0+ is now required.
 - WY commando armor can now be dyed.
 - WY elite armor can now be dyed.
 - Marines can now equip any armor given to them so long as it is better than their currently equipped armor.
   - Marines by default spawn with a full set of either tactical armor or tactical camo armor.
 - Added wy commando armor item textures.
+  - Thanks to Davianortis for contributing these!
+- Added wy elite armor item textures.
   - Thanks to Davianortis for contributing these!
 
 ## ♻️ Changes

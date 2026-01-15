@@ -7,7 +7,7 @@ import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resi
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.action.PickUpFRIAction;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.action.UseFRIAction;
 import com.human.common.gameplay.entity.living.human.marine.ai.model.ItemTarget;
-import com.just.goap.Action;
+import com.just.goap.action.Action;
 import com.just.goap.condition.expression.Expressions;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;

@@ -4,19 +4,15 @@ import com.blib.common.gameplay.model.inventory.BLibInventoryHolder;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.FRISensors;
 import com.human.common.gameplay.entity.living.human.marine.ai.action.EquipItemAction;
 import com.just.core.functional.option.Option;
-import com.just.goap.Action;
-import com.just.goap.state.Blackboard;
-import com.just.goap.state.ReadableWorldState;
+import com.just.goap.action.Action;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 
 public class EquipFRIAction {
 
-    public static <T extends LivingEntity & BLibInventoryHolder> Action.Signal perform(
-        T livingEntityWithInventory,
-        ReadableWorldState worldState,
-        Blackboard blackboard
-    ) {
+    public static <T extends LivingEntity & BLibInventoryHolder> Action.Signal perform(Action.Context<T> context) {
+        var livingEntityWithInventory = context.getActor();
+        var worldState = context.getWorldState();
         var inventoryItemTargetOption = worldState.getOrDefault(FRISensors.BEST_FRI_IN_INVENTORY.key(), Option.none());
 
         if (inventoryItemTargetOption.isNone()) {

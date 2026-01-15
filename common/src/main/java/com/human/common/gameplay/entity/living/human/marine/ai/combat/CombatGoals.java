@@ -1,7 +1,7 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.combat;
 
-import com.just.goap.Goal;
 import com.just.goap.condition.expression.Expressions;
+import com.just.goap.goal.Goal;
 
 public class CombatGoals {
 

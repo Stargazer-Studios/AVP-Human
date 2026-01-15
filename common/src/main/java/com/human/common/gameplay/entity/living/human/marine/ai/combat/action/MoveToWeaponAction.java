@@ -3,14 +3,16 @@ package com.human.common.gameplay.entity.living.human.marine.ai.combat.action;
 import com.human.common.gameplay.entity.ai.goap.MoveToPosAction;
 import com.human.common.gameplay.entity.living.human.marine.ai.combat.CombatSensors;
 import com.just.core.functional.option.Option;
-import com.just.goap.Action;
+import com.just.goap.action.Action;
 import com.just.goap.state.Blackboard;
-import com.just.goap.state.ReadableWorldState;
 import net.minecraft.world.entity.PathfinderMob;
 
 public class MoveToWeaponAction {
 
-    public static Action.Signal perform(PathfinderMob pathfinderMob, ReadableWorldState worldState, Blackboard blackboard) {
+    public static Action.Signal perform(Action.Context<PathfinderMob> context) {
+        var pathfinderMob = context.getActor();
+        var worldState = context.getWorldState();
+        var blackboard = context.getBlackboard(Blackboard.Scope.ACTION);
         var worldItemTargetOption = worldState.getOrDefault(CombatSensors.BEST_WEAPON_IN_WORLD.key(), Option.none());
 
         if (worldItemTargetOption.isNone()) {
@@ -25,7 +27,8 @@ public class MoveToWeaponAction {
         };
     }
 
-    public static void onFinish(PathfinderMob pathfinderMob, ReadableWorldState worldState, Blackboard blackboard) {
+    public static void onFinish(Action.Context<PathfinderMob> context) {
+        var pathfinderMob = context.getActor();
         pathfinderMob.getNavigation().stop();
     }
 

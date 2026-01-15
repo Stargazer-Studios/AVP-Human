@@ -6,14 +6,14 @@ import com.human.common.gameplay.entity.living.human.marine.ai.action.EquipItemA
 import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.EquipArmorSensors;
 import com.human.common.gameplay.entity.living.human.marine.ai.model.ArmorSetTarget;
 import com.human.common.gameplay.entity.living.human.marine.ai.model.ItemTarget;
-import com.just.goap.Action;
-import com.just.goap.state.Blackboard;
-import com.just.goap.state.ReadableWorldState;
+import com.just.goap.action.Action;
 import net.minecraft.world.entity.EquipmentSlot;
 
 public class EquipBestArmorSetFromInventoryAction {
 
-    public static Action.Signal perform(Marine marine, ReadableWorldState worldState, Blackboard $3) {
+    public static Action.Signal perform(Action.Context<Marine> context) {
+        var marine = context.getActor();
+        var worldState = context.getWorldState();
         var bestArmorTarget = worldState.getOrDefault(EquipArmorSensors.BEST_ARMOR_SET_TARGET.key(), ArmorSetTarget.EMPTY);
 
         if (bestArmorTarget.isEmpty()) {

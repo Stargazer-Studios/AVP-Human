@@ -1,7 +1,7 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.action;
 
-import com.just.goap.Action;
 import com.just.goap.StateKey;
+import com.just.goap.action.Action;
 import com.just.goap.state.Blackboard;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.LivingEntity;

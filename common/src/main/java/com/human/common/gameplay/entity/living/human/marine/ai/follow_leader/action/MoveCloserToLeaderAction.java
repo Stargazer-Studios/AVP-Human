@@ -2,12 +2,10 @@ package com.human.common.gameplay.entity.living.human.marine.ai.follow_leader.ac
 
 import com.human.common.gameplay.entity.ai.goap.MoveToPosAction;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
-import com.just.goap.Action;
 import com.just.goap.StateKey;
+import com.just.goap.action.Action;
 import com.just.goap.state.Blackboard;
-import com.just.goap.state.ReadableWorldState;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
 
@@ -15,12 +13,16 @@ public class MoveCloserToLeaderAction {
 
     private static final StateKey<Float> OLD_WATER_MALUS_COST = StateKey.sensed("old_water_malus_cost");
 
-    public static void onStart(PathfinderMob mob, ReadableWorldState $2, Blackboard blackboard) {
-        blackboard.set(OLD_WATER_MALUS_COST, mob.getPathfindingMalus(PathType.WATER));
-        mob.setPathfindingMalus(PathType.WATER, 0.0F);
+    public static void onStart(Action.Context<Marine> context) {
+        var marine = context.getActor();
+        var blackboard = context.getBlackboard(Blackboard.Scope.ACTION);
+        blackboard.set(OLD_WATER_MALUS_COST, marine.getPathfindingMalus(PathType.WATER));
+        marine.setPathfindingMalus(PathType.WATER, 0.0F);
     }
 
-    public static Action.Signal perform(Marine marine, ReadableWorldState $2, Blackboard blackboard) {
+    public static Action.Signal perform(Action.Context<Marine> context) {
+        var marine = context.getActor();
+        var blackboard = context.getBlackboard(Blackboard.Scope.ACTION);
         var leaderOrNull = marine.getLeader().unwrapOr(null);
 
         if (leaderOrNull == null) {
@@ -45,9 +47,11 @@ public class MoveCloserToLeaderAction {
         };
     }
 
-    public static void onFinish(PathfinderMob mob, ReadableWorldState $2, Blackboard blackboard) {
-        mob.getNavigation().stop();
-        mob.setPathfindingMalus(PathType.WATER, blackboard.getOrThrow(OLD_WATER_MALUS_COST));
+    public static void onFinish(Action.Context<Marine> context) {
+        var marine = context.getActor();
+        var blackboard = context.getBlackboard(Blackboard.Scope.ACTION);
+        marine.getNavigation().stop();
+        marine.setPathfindingMalus(PathType.WATER, blackboard.getOrThrow(OLD_WATER_MALUS_COST));
     }
 
     private static void teleportToAroundBlockPos(Marine marine, BlockPos pos) {

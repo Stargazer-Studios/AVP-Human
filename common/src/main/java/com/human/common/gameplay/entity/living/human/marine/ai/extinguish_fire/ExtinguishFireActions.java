@@ -5,7 +5,7 @@ import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.human.common.gameplay.entity.living.human.marine.ai.MarineGOAPSensors;
 import com.human.common.gameplay.entity.living.human.marine.ai.extinguish_fire.action.EquipWaterBucketAction;
 import com.human.common.gameplay.entity.living.human.marine.ai.extinguish_fire.action.PlaceWaterAtFeetAction;
-import com.just.goap.Action;
+import com.just.goap.action.Action;
 import com.just.goap.condition.expression.Expressions;
 
 public class ExtinguishFireActions {
