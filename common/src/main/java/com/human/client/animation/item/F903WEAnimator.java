@@ -1,7 +1,7 @@
 package com.human.client.animation.item;
 
 import com.human.HumanResources;
-import com.human.common.gameplay.item.old_painless.OldPainlessAnimationRefs;
+import com.human.common.gameplay.item.gun.animation.dispatcher.impl.DefaultGunAnimationDispatcher;
 import mod.azure.azurelib.common.animation.AzAnimatorConfig;
 import mod.azure.azurelib.common.animation.controller.AzAnimationController;
 import mod.azure.azurelib.common.animation.controller.AzAnimationControllerContainer;
@@ -10,20 +10,20 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-public class F903weAnimator extends AzItemAnimator {
+public class F903WEAnimator extends AzItemAnimator {
 
     private static final String NAME = "f903we_rifle";
 
     private static final ResourceLocation ANIMATION = HumanResources.itemAnimationLocation(NAME);
 
-    public F903weAnimator() {
+    public F903WEAnimator() {
         super(AzAnimatorConfig.defaultConfig());
     }
 
     @Override
     public void registerControllers(AzAnimationControllerContainer<ItemStack> animationControllerContainer) {
         animationControllerContainer.add(
-            AzAnimationController.builder(this, OldPainlessAnimationRefs.MAIN_CONTROLLER_NAME)
+            AzAnimationController.builder(this, DefaultGunAnimationDispatcher.CONTROLLER_MAIN)
                 .setTransitionLength(1)
                 .build()
         );

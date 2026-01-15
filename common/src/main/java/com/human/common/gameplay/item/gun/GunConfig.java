@@ -1,5 +1,6 @@
 package com.human.common.gameplay.item.gun;
 
+import com.human.common.gameplay.item.gun.animation.dispatcher.GunAnimationDispatcher;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -11,6 +12,7 @@ import java.util.function.Supplier;
 
 public record GunConfig(
     @Nullable Supplier<ItemLike> ammunitionItemSupplier,
+    GunAnimationDispatcher animationDispatcher,
     int durability,
     List<FireModeConfig> fireModeConfigs,
     int maximumAmmunition,
@@ -32,6 +34,8 @@ public record GunConfig(
 
         private Supplier<ItemLike> ammunitionItemSupplier;
 
+        private GunAnimationDispatcher animationDispatcher;
+
         private int durability;
 
         private int maximumAmmunition;
@@ -41,12 +45,18 @@ public record GunConfig(
         private int reloadTimeInTicks;
 
         private Builder() {
+            this.animationDispatcher = GunAnimationDispatcher.DEFAULT;
             this.fireModeConfigs = new ArrayList<>();
             this.reloadAmount = 1;
         }
 
         public Builder withAmmunitionItemSupplier(Supplier<ItemLike> ammunitionItemSupplier) {
             this.ammunitionItemSupplier = ammunitionItemSupplier;
+            return this;
+        }
+
+        public Builder withAnimationDispatcher(GunAnimationDispatcher animationDispatcher) {
+            this.animationDispatcher = animationDispatcher;
             return this;
         }
 
@@ -84,6 +94,7 @@ public record GunConfig(
 
             return new GunConfig(
                 ammunitionItemSupplier,
+                animationDispatcher,
                 durability,
                 Collections.unmodifiableList(fireModeConfigs),
                 maximumAmmunition,

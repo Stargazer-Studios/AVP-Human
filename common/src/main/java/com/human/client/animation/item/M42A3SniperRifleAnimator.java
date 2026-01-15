@@ -1,7 +1,7 @@
 package com.human.client.animation.item;
 
 import com.human.HumanResources;
-import com.human.common.gameplay.item.old_painless.OldPainlessAnimationRefs;
+import com.human.common.gameplay.item.gun.animation.dispatcher.impl.M42A3SniperRifleAnimationDispatcher;
 import mod.azure.azurelib.common.animation.AzAnimatorConfig;
 import mod.azure.azurelib.common.animation.controller.AzAnimationController;
 import mod.azure.azurelib.common.animation.controller.AzAnimationControllerContainer;
@@ -23,7 +23,7 @@ public class M42A3SniperRifleAnimator extends AzItemAnimator {
     @Override
     public void registerControllers(AzAnimationControllerContainer<ItemStack> animationControllerContainer) {
         animationControllerContainer.add(
-            AzAnimationController.builder(this, OldPainlessAnimationRefs.MAIN_CONTROLLER_NAME)
+            AzAnimationController.builder(this, M42A3SniperRifleAnimationDispatcher.CONTROLLER_MAIN)
                 .setTransitionLength(1)
                 .build()
         );

@@ -4,7 +4,6 @@ import com.human.HumanResources;
 import com.human.common.registry.init.HumanDataComponents;
 import mod.azure.azurelib.common.render.item.AzItemRenderer;
 import mod.azure.azurelib.common.render.item.AzItemRendererConfig;
-import mod.azure.azurelib.common.render.layer.AzAutoGlowingLayer;
 
 import java.util.List;
 import java.util.function.UnaryOperator;
@@ -29,7 +28,9 @@ public abstract class MuzzledGunItemRenderer extends AzItemRenderer {
                     HumanResources.itemTextureLocation(name)
                 )
             )
-                .addRenderLayer(new AzAutoGlowingLayer<>())
+                // TODO: An AzureLib bug prevents glow layers from working with "item w/ player arms" animations.
+                // Uncomment this once that bug is fixed.
+                // .addRenderLayer(new AzAutoGlowingLayer<>())
                 .useNewOffset(true)
                 .setPrerenderEntry(context -> {
                     var isFiring = context.animatable().get(HumanDataComponents.IS_FIRING.get());

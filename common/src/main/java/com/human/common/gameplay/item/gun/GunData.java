@@ -1,5 +1,7 @@
 package com.human.common.gameplay.item.gun;
 
+import com.human.common.gameplay.item.gun.animation.dispatcher.impl.M42A3SniperRifleAnimationDispatcher;
+import com.human.common.gameplay.item.gun.animation.dispatcher.impl.OldPainlessAnimationDispatcher;
 import com.human.common.gameplay.item.gun.attack.projectile.FlamethrowProjectileGunAttackAction;
 import com.human.common.gameplay.item.gun.attack.projectile.RocketProjectileGunAttackAction;
 import com.human.common.registry.init.HumanSoundEvents;
@@ -80,6 +82,7 @@ public class GunData {
         .build();
 
     public static final GunConfig M42A3_SNIPER_RIFLE = GunConfig.builder()
+        .withAnimationDispatcher(M42A3SniperRifleAnimationDispatcher.INSTANCE)
         .withDurability(1024)
         .withMaximumAmmunition(6)
         .withReloadTimeInTicks(20 * 7 + 10)
@@ -164,6 +167,7 @@ public class GunData {
         .build();
 
     public static final GunConfig OLD_PAINLESS = GunConfig.builder()
+        .withAnimationDispatcher(OldPainlessAnimationDispatcher.INSTANCE)
         .withDurability(4096)
         .withMaximumAmmunition(Integer.MAX_VALUE)
         .withReloadTimeInTicks(0)

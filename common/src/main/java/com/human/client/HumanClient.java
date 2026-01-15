@@ -25,7 +25,7 @@ import com.human.client.render.item.DeskTerminalItemRenderer;
 import com.human.client.render.item.ResonatorItemRenderer;
 import com.human.client.render.item.SentryTurretItemRenderer;
 import com.human.client.render.item.SimpleItemRenderer;
-import com.human.client.render.item.gun.FlamethrowerItemRenderer;
+import com.human.client.render.item.gun.SevastopolFlamethrowerItemRenderer;
 import com.human.client.render.item.gun.muzzled.impl.F903WEItemRenderer;
 import com.human.client.render.item.gun.muzzled.impl.M3712ShotgunItemRenderer;
 import com.human.client.render.item.gun.muzzled.impl.M41APulseRifleItemRenderer;
@@ -264,7 +264,7 @@ public class HumanClient {
         MOD.registries()
             .registerItemRenderer(
                 HumanGunItems.FLAMETHROWER_SEVASTOPOL,
-                name -> () -> new FlamethrowerItemRenderer(name)
+                name -> () -> new SevastopolFlamethrowerItemRenderer(name)
             );
         MOD.registries().registerItemRenderer(HumanGunItems.M37_12_SHOTGUN, name -> () -> new M3712ShotgunItemRenderer(name));
         MOD.registries()
