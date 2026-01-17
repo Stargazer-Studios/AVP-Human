@@ -22,7 +22,8 @@
     "MixinLivingEntity_NukedRadiation",
     "MixinMob_GeneCarrier",
     "MixinPlayer_CrawlPosing",
-    "MixinShearsItem_BreakRazorWire"
+    "MixinShearsItem_BreakRazorWire",
+    "MixinWolf_OwnableEntityPatch"
   ],
   "client": [
     "client.MixinGui_CrosshairPickEntityWithinGunRange",
