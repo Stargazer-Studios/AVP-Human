@@ -21,6 +21,9 @@ import com.human.common.gameplay.entity.living.human.marine.ai.follow_leader.Fol
 import com.human.common.gameplay.entity.living.human.marine.ai.idle.IdleActions;
 import com.human.common.gameplay.entity.living.human.marine.ai.idle.IdleGoals;
 import com.human.common.gameplay.entity.living.human.marine.ai.idle.IdleSensors;
+import com.human.common.gameplay.entity.living.human.marine.ai.place_torch.TorchActions;
+import com.human.common.gameplay.entity.living.human.marine.ai.place_torch.TorchGoals;
+import com.human.common.gameplay.entity.living.human.marine.ai.place_torch.TorchSensors;
 import com.human.common.gameplay.entity.living.human.marine.ai.tame_wolf.TameWolfActions;
 import com.human.common.gameplay.entity.living.human.marine.ai.tame_wolf.TameWolfGoals;
 import com.human.common.gameplay.entity.living.human.marine.ai.tame_wolf.TameWolfSensors;
@@ -42,6 +45,7 @@ public class MarineGOAP {
         .apply(MarineGOAP::addSatisfyBoredomPackage)
         .apply(MarineGOAP::addStayCloseToLeaderPackage)
         .apply(MarineGOAP::addTameWolfPackage)
+        .apply(MarineGOAP::addPlaceTorchPackage)
         .build();
 
     private static Graph.Builder<Marine> addSensorsPackage(Graph.Builder<Marine> graphBuilder) {
@@ -235,6 +239,35 @@ public class MarineGOAP {
         graphBuilder.addSensor(TameWolfSensors.HAS_BONE_EQUIPPED);
         // Bone collection sensor.
         graphBuilder.addSensor(TameWolfSensors.SHOULD_COLLECT_MORE_BONES);
+
+        return graphBuilder;
+    }
+
+    private static Graph.Builder<Marine> addPlaceTorchPackage(Graph.Builder<Marine> graphBuilder) {
+        // Goals for lighting dark areas and collecting torches.
+        graphBuilder.addGoal(TorchGoals.LIGHT_DARK_AREA_GOAL);
+        graphBuilder.addGoal(TorchGoals.COLLECT_TORCHES_GOAL);
+
+        // Actions for handling torches.
+        graphBuilder.addAction(TorchActions.MOVE_TO_TORCH);
+        graphBuilder.addAction(TorchActions.pickUpTorchFactory());
+        graphBuilder.addAction(TorchActions.equipTorchFactory());
+        graphBuilder.addAction(TorchActions.PLACE_TORCH);
+
+        // Torch detection sensors.
+        graphBuilder.addSensor(TorchSensors.NEAREST_TORCH_IN_WORLD);
+        graphBuilder.addSensor(TorchSensors.HAS_TORCH_IN_WORLD);
+        graphBuilder.addSensor(TorchSensors.IS_NEAREST_TORCH_IN_RANGE);
+        graphBuilder.addSensor(TorchSensors.TORCH_COUNT_IN_INVENTORY);
+        graphBuilder.addSensor(TorchSensors.HAS_TORCH_IN_INVENTORY);
+        graphBuilder.addSensor(TorchSensors.HAS_TORCH_EQUIPPED);
+        graphBuilder.addSensor(TorchSensors.SHOULD_COLLECT_MORE_TORCHES);
+        // Torch placement sensors.
+        graphBuilder.addSensor(TorchSensors.IS_IN_DARK_AREA);
+        graphBuilder.addSensor(TorchSensors.CAN_PLACE_TORCH_AT_FEET);
+        graphBuilder.addSensor(TorchSensors.TORCH_WALL_PLACEMENT_POS);
+        graphBuilder.addSensor(TorchSensors.CAN_PLACE_TORCH_ON_WALL);
+        graphBuilder.addSensor(TorchSensors.SHOULD_PLACE_TORCH);
 
         return graphBuilder;
     }

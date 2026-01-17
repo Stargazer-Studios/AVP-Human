@@ -1,0 +1,57 @@
+package com.human.common.gameplay.entity.living.human.marine.ai.place_torch;
+
+import com.blib.common.gameplay.goap.action.ActionMasks;
+import com.blib.common.gameplay.goap.action.BLibAction;
+import com.blib.common.gameplay.model.inventory.BLibInventoryHolder;
+import com.human.common.gameplay.entity.living.human.marine.Marine;
+import com.human.common.gameplay.entity.living.human.marine.ai.place_torch.action.EquipTorchAction;
+import com.human.common.gameplay.entity.living.human.marine.ai.place_torch.action.MoveToTorchAction;
+import com.human.common.gameplay.entity.living.human.marine.ai.place_torch.action.PickUpTorchAction;
+import com.human.common.gameplay.entity.living.human.marine.ai.place_torch.action.PlaceTorchAction;
+import com.just.goap.action.Action;
+import com.just.goap.condition.expression.Expressions;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.PathfinderMob;
+
+public class TorchActions {
+
+    public static final Action<PathfinderMob> MOVE_TO_TORCH = BLibAction.<PathfinderMob>builder("MoveToTorchAction")
+        .addMasks(ActionMasks.MOVE)
+        .addPrecondition(TorchSensors.HAS_TORCH_IN_WORLD.key(), Expressions.Boolean.isTrue())
+        .addPrecondition(TorchSensors.IS_NEAREST_TORCH_IN_RANGE.key(), Expressions.Boolean.isFalse())
+        .addEffect(TorchSensors.IS_NEAREST_TORCH_IN_RANGE.key().asDerived(), true)
+        .withPerformCallback(MoveToTorchAction::perform)
+        .withFinishCallback(MoveToTorchAction::onFinish)
+        .build();
+
+    public static <T extends LivingEntity & BLibInventoryHolder> Action<T> pickUpTorchFactory() {
+        return BLibAction.<T>builder("PickUpTorchAction")
+            .addPrecondition(TorchSensors.HAS_TORCH_IN_WORLD.key(), Expressions.Boolean.isTrue())
+            .addPrecondition(TorchSensors.IS_NEAREST_TORCH_IN_RANGE.key(), Expressions.Boolean.isTrue())
+            .addEffect(TorchSensors.HAS_TORCH_IN_INVENTORY.key().asDerived(), true)
+            .withPerformCallback(PickUpTorchAction::perform)
+            .build();
+    }
+
+    public static <T extends LivingEntity & BLibInventoryHolder> Action<T> equipTorchFactory() {
+        return BLibAction.<T>builder("EquipTorchAction")
+            .addMasks(ActionMasks.USE_OFF_HAND)
+            .addPrecondition(TorchSensors.HAS_TORCH_IN_INVENTORY.key(), Expressions.Boolean.isTrue())
+            .addPrecondition(TorchSensors.HAS_TORCH_EQUIPPED.key(), Expressions.Boolean.isFalse())
+            .addEffect(TorchSensors.HAS_TORCH_EQUIPPED.key().asDerived(), true)
+            .withPerformCallback(EquipTorchAction::perform)
+            .build();
+    }
+
+    public static final Action<Marine> PLACE_TORCH = BLibAction.<Marine>builder("PlaceTorchAction")
+        .addMasks(ActionMasks.USE_OFF_HAND)
+        .addPrecondition(TorchSensors.SHOULD_PLACE_TORCH.key(), Expressions.Boolean.isTrue())
+        .addPrecondition(TorchSensors.HAS_TORCH_EQUIPPED.key(), Expressions.Boolean.isTrue())
+        .addEffect(TorchSensors.IS_IN_DARK_AREA.key().asDerived(), false)
+        .withPerformCallback(PlaceTorchAction::perform)
+        .build();
+
+    private TorchActions() {
+        throw new UnsupportedOperationException();
+    }
+}
