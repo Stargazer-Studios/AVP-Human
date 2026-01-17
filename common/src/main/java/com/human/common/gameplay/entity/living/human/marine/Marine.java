@@ -1,6 +1,7 @@
 package com.human.common.gameplay.entity.living.human.marine;
 
 import com.blib.common.constant.PlayerStatConstants;
+import com.blib.common.gameplay.goap.GOAPSensors;
 import com.blib.common.gameplay.goap.GOAPUser;
 import com.blib.common.gameplay.model.inventory.BLibInventory;
 import com.blib.common.gameplay.model.inventory.BLibInventoryHolder;
@@ -24,7 +25,9 @@ import com.human.common.registry.init.item.HumanGunItems;
 import com.human.common.registry.init.item.HumanItems;
 import com.just.codec.impl.Codecs;
 import com.just.core.functional.option.Option;
+import com.just.goap.Agent;
 import com.just.goap.graph.Graph;
+import com.just.goap.plan.ReplanPolicies;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -155,7 +158,24 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
     }
 
     @Override
-    public @Nullable Graph<Marine> getCurrentGraph() {
+    public Agent.Builder<Marine> blib$applyGOAPAgentProperties(Agent.Builder<Marine> agentBuilder) {
+        return agentBuilder.withReplanPolicy(
+            ReplanPolicies.anyOf(
+                ReplanPolicies.ifNoActivePlans(),
+                // Replan every 20 ticks (every 1 second).
+                ReplanPolicies.custom(context -> context.agent().getActor().tickCount % 20 == 0),
+                ReplanPolicies.custom(context -> {
+                    var isOnFire = context.worldState().getOrDefault(GOAPSensors.IS_ON_FIRE.key(), false);
+                    var wasOnFire = context.previousWorldState().getOrDefault(GOAPSensors.IS_ON_FIRE.key(), false);
+                    // If we were previously not on fire, and now we're on fire, then replan.
+                    return !wasOnFire && isOnFire;
+                })
+            )
+        );
+    }
+
+    @Override
+    public @Nullable Graph<Marine> blib$getGOAPGraphOrNull() {
         return MarineGOAP.GRAPH;
     }
 
