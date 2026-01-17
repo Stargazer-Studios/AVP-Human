@@ -12,7 +12,7 @@ import java.util.Set;
 public final class NearbyBiomesSensor {
 
     // Radius in blocks.
-    private static final int RADIUS_BLOCKS = 16;
+    private static final int RADIUS_BLOCKS = 4;
 
     public static Set<Holder<Biome>> sense(Entity entity) {
         var level = entity.level();

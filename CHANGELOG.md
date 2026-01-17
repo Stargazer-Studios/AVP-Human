@@ -20,6 +20,7 @@
 - Reduced accuracy required for marines to pathfind to fire resistance items.
 - Reduced accuracy required for marines to pathfind to weapon items.
 - Marine aggression towards mobs is now controlled by the `#avp_human:hated_by_marines` entity type tag.
+- Reduced marine nearby biome detection radius (16 -> 4).
 - Marines will now target mobs under any of the following conditions:
   - The mob is part of the `#avp_human:hated_by_marines` entity type tag.
   - The mob is targeting them.
