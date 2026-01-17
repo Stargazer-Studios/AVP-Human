@@ -1,13 +1,13 @@
 package com.human.common.gameplay.entity.ai.utility.sensor;
 
-import com.blib.common.gameplay.goap.GOAPSensors;
 import com.human.common.gameplay.entity.ai.utility.item.ItemStrategy;
 import com.human.common.gameplay.entity.ai.utility.item.ItemStrategyResult;
+import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.human.common.gameplay.entity.living.human.marine.ai.model.ItemTarget;
 import com.just.core.functional.function.Function3;
 import com.just.core.functional.option.Option;
 import com.just.goap.state.ReadableWorldState;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.item.ItemEntity;
 import org.jetbrains.annotations.NotNull;
 
@@ -36,7 +36,7 @@ public class ItemInWorldSensor<S extends ItemStrategy, R extends ItemStrategyRes
     }
 
     public @NotNull Option<R> sense(
-        LivingEntity livingEntity,
+        Marine marine,
         ReadableWorldState worldState
     ) {
         var bestScore = -Double.MIN_VALUE;
@@ -44,11 +44,11 @@ public class ItemInWorldSensor<S extends ItemStrategy, R extends ItemStrategyRes
         S bestStrategy = null;
 
         for (var strategy : strategySupplier.get()) {
-            if (!strategy.isValidWorldState(livingEntity, worldState)) {
+            if (!strategy.isValidWorldState(marine, worldState)) {
                 continue;
             }
 
-            var itemEntities = worldState.getOrDefault(GOAPSensors.NEARBY_ITEM_ENTITIES.key(), List.of());
+            var itemEntities = marine.getEntitySenseCache().getByType(EntityType.ITEM);
 
             // TODO: Access by item -> item entities map first, then filter item entities as current impl does.
             for (var entry : itemEntities) {
@@ -58,7 +58,7 @@ public class ItemInWorldSensor<S extends ItemStrategy, R extends ItemStrategyRes
                     continue;
                 }
 
-                var newScore = strategy.score(livingEntity, worldState, itemStack);
+                var newScore = strategy.score(marine, worldState, itemStack);
 
                 if (newScore > bestScore) {
                     bestScore = newScore;

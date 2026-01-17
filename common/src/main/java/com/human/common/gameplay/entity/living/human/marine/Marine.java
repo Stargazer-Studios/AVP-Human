@@ -9,6 +9,8 @@ import com.blib.common.util.codec.schema.CodecSchemas;
 import com.human.Human;
 import com.human.common.config.HumanConfig;
 import com.human.common.data.HumanAdvancements;
+import com.human.common.gameplay.entity.BiomeSenseCache;
+import com.human.common.gameplay.entity.EntitySenseCache;
 import com.human.common.gameplay.entity.living.human.AbstractHuman;
 import com.human.common.gameplay.entity.living.human.marine.ai.MarineGOAP;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.FRIStrategySet;
@@ -129,6 +131,10 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
 
     private final MarineAnimationDispatcher animationDispatcher;
 
+    private final BiomeSenseCache biomeSenseCache;
+
+    private final EntitySenseCache entitySenseCache;
+
     private final BLibInventory inventory;
 
     private final ItemCooldowns itemCooldowns;
@@ -140,6 +146,8 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
     public Marine(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level);
         this.animationDispatcher = new MarineAnimationDispatcher(this);
+        this.biomeSenseCache = new BiomeSenseCache(this, 40);
+        this.entitySenseCache = new EntitySenseCache(this, 40);
         this.inventory = new BLibInventory(27);
         this.itemCooldowns = new ItemCooldowns();
         this.leaderUUIDOption = Option.none();
@@ -269,6 +277,14 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
         super.addAdditionalSaveData(compoundTag);
         compoundTag.put(NBT_INVENTORY, BLibInventory.CODEC.encode(CodecSchemas.NBT, inventory));
         leaderUUIDOption.ifSome(leaderUUID -> compoundTag.put(NBT_LEADER_UUID, Codecs.UUID.encode(CodecSchemas.NBT, leaderUUID)));
+    }
+
+    public BiomeSenseCache getBiomeSenseCache() {
+        return biomeSenseCache;
+    }
+
+    public EntitySenseCache getEntitySenseCache() {
+        return entitySenseCache;
     }
 
     @Override

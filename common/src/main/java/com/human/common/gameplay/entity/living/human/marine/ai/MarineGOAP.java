@@ -40,15 +40,10 @@ public class MarineGOAP {
         .apply(MarineGOAP::addStayCloseToLeaderPackage)
         .build();
 
-    private static void addSensorsPackage(Graph.Builder<Marine> graphBuilder) {
-        // Entities.
-        graphBuilder.addSensor(GOAPSensors.NEARBY_ENTITIES);
-        graphBuilder.addSensor(GOAPSensors.NEARBY_LIVING_ENTITIES);
-        graphBuilder.addSensor(GOAPSensors.NEARBY_ITEM_ENTITIES);
+    private static Graph.Builder<Marine> addSensorsPackage(Graph.Builder<Marine> graphBuilder) {
         // Environment.
         graphBuilder.addSensor(GOAPSensors.NEARBY_BLOCK_POSITIONS);
         graphBuilder.addSensor(MarineGOAPSensors.IS_CURRENT_BLOCK_POS_REPLACEABLE);
-        graphBuilder.addSensor(HumanGOAPSensors.NEARBY_BIOMES);
         graphBuilder.addSensor(HumanGOAPSensors.IS_NEAR_RADIOACTIVE_BIOME);
         graphBuilder.addSensor(GOAPSensors.IS_IN_LAVA);
         graphBuilder.addSensor(GOAPSensors.IS_ON_GROUND);

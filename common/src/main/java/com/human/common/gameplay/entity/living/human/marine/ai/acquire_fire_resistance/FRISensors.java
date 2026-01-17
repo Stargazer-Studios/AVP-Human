@@ -33,7 +33,7 @@ public class FRISensors {
                 .build()::sense
         );
 
-    public static final Sensor.Mono<LivingEntity, Option<FRIStrategyResult<ItemTarget.World>>> BEST_FRI_IN_WORLD = Sensors.lazyCompose(
+    public static final Sensor.Mono<Marine, Option<FRIStrategyResult<ItemTarget.World>>> BEST_FRI_IN_WORLD = Sensors.lazyCompose(
         StateKey.sensed("best_fri_in_world"),
         ItemInWorldSensor.builder(FRIStrategySet.INSTANCE::getAll, FRIStrategyResult::new)
             .build()::sense

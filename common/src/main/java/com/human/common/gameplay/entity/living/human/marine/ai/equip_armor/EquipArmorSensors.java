@@ -76,7 +76,7 @@ public class EquipArmorSensors {
                 .build()::sense
         );
 
-    public static final Sensor.Mono<LivingEntity, Option<ArmorStrategyResult<ItemTarget.World>>> BEST_HELMET_IN_WORLD = Sensors.lazyCompose(
+    public static final Sensor.Mono<Marine, Option<ArmorStrategyResult<ItemTarget.World>>> BEST_HELMET_IN_WORLD = Sensors.lazyCompose(
         StateKey.sensed("best_helmet_in_world"),
         ItemInWorldSensor.builder(() -> ArmorStrategySet.INSTANCE.getForType(ArmorItem.Type.HELMET), ArmorStrategyResult::new)
             .build()::sense
@@ -106,7 +106,7 @@ public class EquipArmorSensors {
                 .build()::sense
         );
 
-    public static final Sensor.Mono<LivingEntity, Option<ArmorStrategyResult<ItemTarget.World>>> BEST_CHESTPLATE_IN_WORLD = Sensors
+    public static final Sensor.Mono<Marine, Option<ArmorStrategyResult<ItemTarget.World>>> BEST_CHESTPLATE_IN_WORLD = Sensors
         .lazyCompose(
             StateKey.sensed("best_chestplate_in_world"),
             ItemInWorldSensor.builder(() -> ArmorStrategySet.INSTANCE.getForType(ArmorItem.Type.CHESTPLATE), ArmorStrategyResult::new)
@@ -136,7 +136,7 @@ public class EquipArmorSensors {
                 .build()::sense
         );
 
-    public static final Sensor.Mono<LivingEntity, Option<ArmorStrategyResult<ItemTarget.World>>> BEST_LEGGINGS_IN_WORLD = Sensors
+    public static final Sensor.Mono<Marine, Option<ArmorStrategyResult<ItemTarget.World>>> BEST_LEGGINGS_IN_WORLD = Sensors
         .lazyCompose(
             StateKey.sensed("best_leggings_in_world"),
             ItemInWorldSensor.builder(() -> ArmorStrategySet.INSTANCE.getForType(ArmorItem.Type.LEGGINGS), ArmorStrategyResult::new)
@@ -166,7 +166,7 @@ public class EquipArmorSensors {
                 .build()::sense
         );
 
-    public static final Sensor.Mono<LivingEntity, Option<ArmorStrategyResult<ItemTarget.World>>> BEST_BOOTS_IN_WORLD = Sensors.lazyCompose(
+    public static final Sensor.Mono<Marine, Option<ArmorStrategyResult<ItemTarget.World>>> BEST_BOOTS_IN_WORLD = Sensors.lazyCompose(
         StateKey.sensed("best_boots_in_world"),
         ItemInWorldSensor.builder(() -> ArmorStrategySet.INSTANCE.getForType(ArmorItem.Type.BOOTS), ArmorStrategyResult::new)
             .build()::sense
@@ -181,26 +181,26 @@ public class EquipArmorSensors {
             .build()::sense
     );
 
-    public static final Sensor.Mono<LivingEntity, ArmorSetTarget> MK50_ARMOR_SET_TARGET = Sensors.lazyCompose(
+    public static final Sensor.Mono<Marine, ArmorSetTarget> MK50_ARMOR_SET_TARGET = Sensors.lazyCompose(
         StateKey.sensed("mk50_armor_set"),
         (livingEntity, worldState) -> ItemSenseUtil.findFullArmorSetInWorldState(livingEntity, worldState, MK50_ARMOR_SET)
     );
 
-    public static final Sensor.Mono<LivingEntity, ArmorSetTarget> NETHER_CHITIN_ARMOR_SET_TARGET = Sensors.lazyCompose(
+    public static final Sensor.Mono<Marine, ArmorSetTarget> NETHER_CHITIN_ARMOR_SET_TARGET = Sensors.lazyCompose(
         StateKey.sensed("nether_chitin_armor_set"),
         (livingEntity, worldState) -> NETHER_CHITIN_ARMOR_SET_OPTION.map(
             armorSet -> ItemSenseUtil.findFullArmorSetInWorldState(livingEntity, worldState, armorSet)
         ).unwrapOr(ArmorSetTarget.EMPTY)
     );
 
-    public static final Sensor.Mono<LivingEntity, ArmorSetTarget> PLATED_NETHER_CHITIN_ARMOR_SET_TARGET = Sensors.lazyCompose(
+    public static final Sensor.Mono<Marine, ArmorSetTarget> PLATED_NETHER_CHITIN_ARMOR_SET_TARGET = Sensors.lazyCompose(
         StateKey.sensed("plated_nether_chitin_armor_set"),
         (livingEntity, worldState) -> PLATED_NETHER_CHITIN_ARMOR_SET_OPTION.map(
             armorSet -> ItemSenseUtil.findFullArmorSetInWorldState(livingEntity, worldState, armorSet)
         ).unwrapOr(ArmorSetTarget.EMPTY)
     );
 
-    public static final Sensor.Mono<LivingEntity, ArmorSetTarget> PRESSURE_SUIT_ARMOR_SET_TARGET = Sensors.lazyCompose(
+    public static final Sensor.Mono<Marine, ArmorSetTarget> PRESSURE_SUIT_ARMOR_SET_TARGET = Sensors.lazyCompose(
         StateKey.sensed("pressure_suit_armor_set"),
         (livingEntity, worldState) -> ItemSenseUtil.findFullArmorSetInWorldState(livingEntity, worldState, PRESSURE_SUIT_ARMOR_SET)
     );

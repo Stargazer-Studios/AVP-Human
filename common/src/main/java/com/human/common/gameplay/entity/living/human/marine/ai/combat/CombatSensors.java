@@ -1,6 +1,5 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.combat;
 
-import com.blib.common.gameplay.goap.GOAPSensors;
 import com.blib.common.gameplay.util.BLibEntityPredicates;
 import com.human.common.gameplay.entity.ai.utility.sensor.BestItemSensor;
 import com.human.common.gameplay.entity.ai.utility.sensor.EquippedItemSensor;
@@ -15,6 +14,7 @@ import com.just.core.functional.option.Option;
 import com.just.goap.StateKey;
 import com.just.goap.sensor.Compose;
 import com.just.goap.sensor.Compose2;
+import com.just.goap.sensor.Map;
 import com.just.goap.sensor.Sensor;
 import com.just.goap.sensor.Sensors;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -29,16 +29,17 @@ public class CombatSensors {
 
     public static final StateKey.Sensed<List<LivingEntity>> NEARBY_ATTACKABLE_TARGETS_KEY = StateKey.sensed("nearby_attackable_targets");
 
-    public static <T extends Mob> Compose<T, List<LivingEntity>, List<LivingEntity>> nearbyAttackableTargetsFactory(
-        BiPredicate<T, LivingEntity> targetPredicate
+    public static Map<Marine, List<LivingEntity>> nearbyAttackableTargetsFactory(
+        BiPredicate<Marine, LivingEntity> targetPredicate
     ) {
-        return Sensors.compose(
-            GOAPSensors.NEARBY_LIVING_ENTITIES.key(),
+        return Sensors.map(
             NEARBY_ATTACKABLE_TARGETS_KEY,
-            (mob, nearbyLivingEntities) -> nearbyLivingEntities.stream()
+            marine -> marine.getEntitySenseCache()
+                .getByClass(LivingEntity.class)
+                .stream()
                 .filter(
                     livingEntity -> BLibEntityPredicates.isAlive(livingEntity)
-                        && targetPredicate.test(mob, livingEntity)
+                        && targetPredicate.test(marine, livingEntity)
                 )
                 .toList()
         );
@@ -82,7 +83,7 @@ public class CombatSensors {
                 .build()::sense
         );
 
-    public static final Sensor.Mono<LivingEntity, Option<WeaponStrategyResult<ItemTarget.World>>> BEST_WEAPON_IN_WORLD = Sensors
+    public static final Sensor.Mono<Marine, Option<WeaponStrategyResult<ItemTarget.World>>> BEST_WEAPON_IN_WORLD = Sensors
         .lazyCompose(
             StateKey.sensed("best_weapon_in_world"),
             ItemInWorldSensor.builder(WeaponStrategySet.INSTANCE::getAll, WeaponStrategyResult::new)

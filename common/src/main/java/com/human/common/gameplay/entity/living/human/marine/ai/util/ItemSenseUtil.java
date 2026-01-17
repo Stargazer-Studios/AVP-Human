@@ -1,45 +1,43 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.util;
 
-import com.blib.common.gameplay.goap.GOAPSensors;
 import com.blib.common.gameplay.model.inventory.BLibInventoryHolder;
+import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.human.common.gameplay.entity.living.human.marine.ai.model.ArmorSet;
 import com.human.common.gameplay.entity.living.human.marine.ai.model.ArmorSetTarget;
 import com.human.common.gameplay.entity.living.human.marine.ai.model.ItemTarget;
 import com.just.goap.state.ReadableWorldState;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
-
 public class ItemSenseUtil {
 
     public static @NotNull ArmorSetTarget findFullArmorSetInWorldState(
-        LivingEntity livingEntity,
+        Marine marine,
         ReadableWorldState worldState,
         ArmorSet armorSet
     ) {
-        var helmetTarget = findItemInWorldState(livingEntity, worldState, armorSet.helmet().get());
+        var helmetTarget = findItemInWorldState(marine, worldState, armorSet.helmet().get());
 
         if (helmetTarget.location() == ItemTarget.Location.NONE) {
             return ArmorSetTarget.EMPTY;
         }
 
-        var chestplateTarget = findItemInWorldState(livingEntity, worldState, armorSet.chestplate().get());
+        var chestplateTarget = findItemInWorldState(marine, worldState, armorSet.chestplate().get());
 
         if (chestplateTarget.location() == ItemTarget.Location.NONE) {
             return ArmorSetTarget.EMPTY;
         }
 
-        var chitinLeggingsTarget = findItemInWorldState(livingEntity, worldState, armorSet.leggings().get());
+        var chitinLeggingsTarget = findItemInWorldState(marine, worldState, armorSet.leggings().get());
 
         if (chitinLeggingsTarget.location() == ItemTarget.Location.NONE) {
             return ArmorSetTarget.EMPTY;
         }
 
-        var chitinBootsTarget = findItemInWorldState(livingEntity, worldState, armorSet.boots().get());
+        var chitinBootsTarget = findItemInWorldState(marine, worldState, armorSet.boots().get());
 
         if (chitinBootsTarget.location() == ItemTarget.Location.NONE) {
             return ArmorSetTarget.EMPTY;
@@ -53,12 +51,12 @@ public class ItemSenseUtil {
         );
     }
 
-    public static ItemTarget findItemInWorldState(LivingEntity livingEntity, ReadableWorldState worldState, Item targetItem) {
+    public static ItemTarget findItemInWorldState(Marine marine, ReadableWorldState worldState, Item targetItem) {
         // If an armor item, check to see if it's equipped in an equipment slot.
         if (targetItem instanceof ArmorItem armorItem) {
             var equipmentSlot = armorItem.getEquipmentSlot();
 
-            var itemStackInEquipmentSlot = livingEntity.getItemBySlot(equipmentSlot);
+            var itemStackInEquipmentSlot = marine.getItemBySlot(equipmentSlot);
 
             if (itemStackInEquipmentSlot.is(targetItem)) {
                 return new ItemTarget.Equipped(equipmentSlot);
@@ -69,15 +67,15 @@ public class ItemSenseUtil {
         // TODO: If the item is an armor item, we should check armor cases in our hands for it.
         // TODO: If the item is generic, we should also check shulker boxes in our hands.
         // TODO: If the item is ammo, we should check ammo chests in our hands.
-        if (livingEntity.getMainHandItem().is(targetItem)) {
+        if (marine.getMainHandItem().is(targetItem)) {
             return new ItemTarget.Equipped(EquipmentSlot.MAINHAND);
-        } else if (livingEntity.getOffhandItem().is(targetItem)) {
+        } else if (marine.getOffhandItem().is(targetItem)) {
             return new ItemTarget.Equipped(EquipmentSlot.OFFHAND);
         }
 
         // At this point we may be able to reasonably assume the entity doesn't have the item on them. So we move
         // on to checking the entity's inventory.
-        if (livingEntity instanceof BLibInventoryHolder inventoryHolder) {
+        if (marine instanceof BLibInventoryHolder inventoryHolder) {
             var inventory = inventoryHolder.getInventory();
 
             var entriesWithItem = inventory.selectEntries(targetItem);
@@ -92,7 +90,7 @@ public class ItemSenseUtil {
         }
 
         // At this point we can assume the item is not in the entity's inventory. So, time to check the environment.
-        var nearbyItemEntities = worldState.getOrDefault(GOAPSensors.NEARBY_ITEM_ENTITIES.key(), List.of());
+        var nearbyItemEntities = marine.getEntitySenseCache().getByType(EntityType.ITEM);
 
         // TODO: Instead of looping over every nearby item entity, we should instead use items as a key in a map.
         for (var itemEntity : nearbyItemEntities) {
