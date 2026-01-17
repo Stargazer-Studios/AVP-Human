@@ -1,5 +1,7 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.equip_armor;
 
+import com.blib.common.gameplay.goap.action.ActionMasks;
+import com.blib.common.gameplay.goap.action.BLibAction;
 import com.human.common.gameplay.entity.living.human.ai.HumanGOAPExpressions;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.action.EquipBestArmorSetFromInventoryAction;
@@ -25,9 +27,10 @@ public class EquipArmorActions {
         })
         .build();
 
-    public static final Action<Marine> EQUIP_BEST_ARMOR_PIECES_FROM_INVENTORY_ACTION = Action.<Marine>builder(
+    public static final Action<Marine> EQUIP_BEST_ARMOR_PIECES_FROM_INVENTORY_ACTION = BLibAction.<Marine>builder(
         "EquipBestArmorPiecesFromInventoryAction"
     )
+        .addMasks(ActionMasks.USE_MAIN_HAND)
         .addPrecondition(EquipArmorSensors.IS_ANY_BEST_ARMOR_SET_PIECE_IN_INVENTORY.key(), Expressions.Boolean.isTrue())
         .addPrecondition(EquipArmorSensors.BEST_ARMOR_SET_TARGET.key(), HumanGOAPExpressions.ArmorSetTarget.isNotEmpty())
         .addEffect(EquipArmorSensors.ARE_ALL_BEST_ARMOR_SET_PIECES_EQUIPPED.key().asDerived(), true)
