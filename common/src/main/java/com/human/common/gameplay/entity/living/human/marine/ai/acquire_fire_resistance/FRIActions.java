@@ -1,6 +1,8 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance;
 
 import com.blib.common.gameplay.goap.GOAPSensors;
+import com.blib.common.gameplay.goap.action.ActionMasks;
+import com.blib.common.gameplay.goap.action.BLibAction;
 import com.blib.common.gameplay.model.inventory.BLibInventoryHolder;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.action.EquipFRIAction;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.action.MoveToFRIAction;
@@ -14,7 +16,8 @@ import net.minecraft.world.entity.PathfinderMob;
 
 public class FRIActions {
 
-    public static final Action<PathfinderMob> MOVE_TO_BEST_FRI = Action.<PathfinderMob>builder("MoveToBestFRIAction")
+    public static final Action<PathfinderMob> MOVE_TO_BEST_FRI = BLibAction.<PathfinderMob>builder("MoveToBestFRIAction")
+        .addMasks(ActionMasks.MOVE)
         .addPrecondition(FRISensors.BEST_FRI_LOCATION.key(), Expressions.Compare.equalTo(ItemTarget.Location.WORLD))
         .addPrecondition(FRISensors.IS_BEST_WORLD_FRI_IN_RANGE.key(), Expressions.Boolean.isFalse())
         .addEffect(FRISensors.IS_BEST_WORLD_FRI_IN_RANGE.key().asDerived(), true)
@@ -23,7 +26,7 @@ public class FRIActions {
         .build();
 
     public static <T extends LivingEntity & BLibInventoryHolder> Action<T> pickUpBestFRIFactory() {
-        return Action.<T>builder("PickUpBestFRIAction")
+        return BLibAction.<T>builder("PickUpBestFRIAction")
             .addPrecondition(FRISensors.BEST_FRI_LOCATION.key(), Expressions.Compare.equalTo(ItemTarget.Location.WORLD))
             .addPrecondition(FRISensors.IS_BEST_WORLD_FRI_IN_RANGE.key(), Expressions.Boolean.isTrue())
             .addEffect(FRISensors.BEST_FRI_LOCATION.key().asDerived(), ItemTarget.Location.INVENTORY)
@@ -32,14 +35,16 @@ public class FRIActions {
     }
 
     public static <T extends LivingEntity & BLibInventoryHolder> Action<T> equipBestFRIFactory() {
-        return Action.<T>builder("EquipBestFRIAction")
+        return BLibAction.<T>builder("EquipBestFRIAction")
+            .addMasks(ActionMasks.USE_MAIN_HAND)
             .addPrecondition(FRISensors.BEST_FRI_LOCATION.key(), Expressions.Compare.equalTo(ItemTarget.Location.INVENTORY))
             .addEffect(FRISensors.BEST_FRI_LOCATION.key().asDerived(), ItemTarget.Location.EQUIPPED)
             .withPerformCallback(EquipFRIAction::perform)
             .build();
     }
 
-    public static final Action<LivingEntity> USE_BEST_FRI = Action.<LivingEntity>builder("UseBestFRIAction")
+    public static final Action<LivingEntity> USE_BEST_FRI = BLibAction.<LivingEntity>builder("UseBestFRIAction")
+        .addMasks(ActionMasks.USE_MAIN_HAND)
         .addPrecondition(FRISensors.BEST_FRI_LOCATION.key(), Expressions.Compare.equalTo(ItemTarget.Location.EQUIPPED))
         .addEffect(GOAPSensors.HAS_FIRE_RESISTANCE.key().asDerived(), true)
         .withPerformCallback(UseFRIAction::perform)
