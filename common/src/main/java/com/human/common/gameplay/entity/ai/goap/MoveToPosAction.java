@@ -20,6 +20,7 @@ public class MoveToPosAction {
         Supplier<@Nullable Vec3> positionSupplier,
         double speedMultiplier
     ) {
+        var navigation = pathfinderMob.getNavigation();
         var pathOrNull = blackboard.getOrNull(PATH);
 
         if (pathOrNull == null || !pathOrNull.canReach()) {
@@ -28,8 +29,6 @@ public class MoveToPosAction {
             if (position == null) {
                 return MoveResult.POSITION_NOT_FOUND;
             }
-
-            var navigation = pathfinderMob.getNavigation();
 
             pathOrNull = navigation.createPath(position.x, position.y, position.z, 1);
 
@@ -46,6 +45,8 @@ public class MoveToPosAction {
         if (pathOrNull.isDone()) {
             blackboard.set(PATH, null);
             return MoveResult.FINISHED;
+        } else {
+            navigation.moveTo(pathOrNull, speedMultiplier);
         }
 
         return MoveResult.MOVING;
