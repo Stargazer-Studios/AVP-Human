@@ -12,6 +12,9 @@ import com.human.common.gameplay.entity.living.human.marine.ai.combat.CombatSens
 import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.EquipArmorActions;
 import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.EquipArmorGoals;
 import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.EquipArmorSensors;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_totem.TotemActions;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_totem.TotemGoals;
+import com.human.common.gameplay.entity.living.human.marine.ai.equip_totem.TotemSensors;
 import com.human.common.gameplay.entity.living.human.marine.ai.extinguish_fire.ExtinguishFireActions;
 import com.human.common.gameplay.entity.living.human.marine.ai.extinguish_fire.ExtinguishFireGoals;
 import com.human.common.gameplay.entity.living.human.marine.ai.extinguish_fire.ExtinguishFireSensors;
@@ -46,6 +49,7 @@ public class MarineGOAP {
         .apply(MarineGOAP::addStayCloseToLeaderPackage)
         .apply(MarineGOAP::addTameWolfPackage)
         .apply(MarineGOAP::addPlaceTorchPackage)
+        .apply(MarineGOAP::addEquipTotemPackage)
         .build();
 
     private static Graph.Builder<Marine> addSensorsPackage(Graph.Builder<Marine> graphBuilder) {
@@ -268,6 +272,32 @@ public class MarineGOAP {
         graphBuilder.addSensor(TorchSensors.TORCH_WALL_PLACEMENT_POS);
         graphBuilder.addSensor(TorchSensors.CAN_PLACE_TORCH_ON_WALL);
         graphBuilder.addSensor(TorchSensors.SHOULD_PLACE_TORCH);
+
+        return graphBuilder;
+    }
+
+    private static Graph.Builder<Marine> addEquipTotemPackage(Graph.Builder<Marine> graphBuilder) {
+        // Goal for equipping totem when near death.
+        graphBuilder.addGoal(TotemGoals.EQUIP_TOTEM_WHEN_NEAR_DEATH_GOAL);
+        // Goal for always keeping at least one totem in inventory.
+        graphBuilder.addGoal(TotemGoals.COLLECT_TOTEM_GOAL);
+
+        // Actions for handling totems.
+        graphBuilder.addAction(TotemActions.MOVE_TO_TOTEM);
+        graphBuilder.addAction(TotemActions.pickUpTotemFactory());
+        graphBuilder.addAction(TotemActions.equipTotemFactory());
+
+        // Totem detection sensors.
+        graphBuilder.addSensor(TotemSensors.NEAREST_TOTEM_IN_WORLD);
+        graphBuilder.addSensor(TotemSensors.HAS_TOTEM_IN_WORLD);
+        graphBuilder.addSensor(TotemSensors.IS_NEAREST_TOTEM_IN_RANGE);
+        graphBuilder.addSensor(TotemSensors.TOTEM_COUNT_IN_INVENTORY);
+        graphBuilder.addSensor(TotemSensors.HAS_TOTEM_IN_INVENTORY);
+        graphBuilder.addSensor(TotemSensors.HAS_TOTEM_EQUIPPED);
+        graphBuilder.addSensor(TotemSensors.SHOULD_COLLECT_TOTEM);
+        // Health-based sensors.
+        graphBuilder.addSensor(TotemSensors.IS_NEAR_DEATH);
+        graphBuilder.addSensor(TotemSensors.SHOULD_EQUIP_TOTEM);
 
         return graphBuilder;
     }
