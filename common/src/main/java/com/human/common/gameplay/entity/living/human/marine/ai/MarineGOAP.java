@@ -21,6 +21,9 @@ import com.human.common.gameplay.entity.living.human.marine.ai.follow_leader.Fol
 import com.human.common.gameplay.entity.living.human.marine.ai.idle.IdleActions;
 import com.human.common.gameplay.entity.living.human.marine.ai.idle.IdleGoals;
 import com.human.common.gameplay.entity.living.human.marine.ai.idle.IdleSensors;
+import com.human.common.gameplay.entity.living.human.marine.ai.tame_wolf.TameWolfActions;
+import com.human.common.gameplay.entity.living.human.marine.ai.tame_wolf.TameWolfGoals;
+import com.human.common.gameplay.entity.living.human.marine.ai.tame_wolf.TameWolfSensors;
 import com.human.common.registry.tag.HumanEntityTypeTags;
 import com.just.goap.graph.Graph;
 import net.minecraft.world.entity.LivingEntity;
@@ -38,6 +41,7 @@ public class MarineGOAP {
         .apply(MarineGOAP::addExtinguishSelfPackage)
         .apply(MarineGOAP::addSatisfyBoredomPackage)
         .apply(MarineGOAP::addStayCloseToLeaderPackage)
+        .apply(MarineGOAP::addTameWolfPackage)
         .build();
 
     private static Graph.Builder<Marine> addSensorsPackage(Graph.Builder<Marine> graphBuilder) {
@@ -53,9 +57,11 @@ public class MarineGOAP {
         graphBuilder.addSensor(GOAPSensors.HAS_FIRE_RESISTANCE);
         graphBuilder.addSensor(GOAPSensors.HEALTH_RATIO);
         graphBuilder.addSensor(GOAPSensors.IS_ON_FIRE);
+
+        return graphBuilder;
     }
 
-    private static void addAcquireFireResistancePackage(Graph.Builder<Marine> graphBuilder) {
+    private static Graph.Builder<Marine> addAcquireFireResistancePackage(Graph.Builder<Marine> graphBuilder) {
         // The goal we want to complete.
         graphBuilder.addGoal(FRIGoals.ACQUIRE_FIRE_RESISTANCE_GOAL);
 
@@ -74,9 +80,11 @@ public class MarineGOAP {
         // Used for locating best FRI in world.
         graphBuilder.addSensor(FRISensors.BEST_FRI_IN_WORLD);
         graphBuilder.addSensor(FRISensors.IS_BEST_WORLD_FRI_IN_RANGE);
+
+        return graphBuilder;
     }
 
-    private static void addCombatPackage(Graph.Builder<Marine> graphBuilder) {
+    private static Graph.Builder<Marine> addCombatPackage(Graph.Builder<Marine> graphBuilder) {
         // The goal we want to complete.
         graphBuilder.addGoal(CombatGoals.HAS_WEAPON_GOAL);
         graphBuilder.addGoal(CombatGoals.NO_ATTACK_TARGET_GOAL);
@@ -114,9 +122,11 @@ public class MarineGOAP {
         graphBuilder.addSensor(CombatSensors.HAS_WEAPON);
         // Used for checking if the attack target is in range of the agent's currently equipped best weapon.
         graphBuilder.addSensor(CombatSensors.IS_ATTACK_TARGET_IN_RANGE_OF_EQUIPPED_BEST_WEAPON);
+
+        return graphBuilder;
     }
 
-    private static void addEquipBestArmorPackage(Graph.Builder<Marine> graphBuilder) {
+    private static Graph.Builder<Marine> addEquipBestArmorPackage(Graph.Builder<Marine> graphBuilder) {
         graphBuilder.addGoal(EquipArmorGoals.EQUIP_BEST_ARMOR_GOAL);
 
         graphBuilder.addAction(EquipArmorActions.EQUIP_BEST_ARMOR_PIECES_FROM_INVENTORY_ACTION);
@@ -151,9 +161,11 @@ public class MarineGOAP {
         graphBuilder.addSensor(EquipArmorSensors.NETHER_CHITIN_ARMOR_SET_TARGET);
         graphBuilder.addSensor(EquipArmorSensors.PLATED_NETHER_CHITIN_ARMOR_SET_TARGET);
         graphBuilder.addSensor(EquipArmorSensors.PRESSURE_SUIT_ARMOR_SET_TARGET);
+
+        return graphBuilder;
     }
 
-    private static void addExtinguishSelfPackage(Graph.Builder<Marine> graphBuilder) {
+    private static Graph.Builder<Marine> addExtinguishSelfPackage(Graph.Builder<Marine> graphBuilder) {
         graphBuilder.addGoal(ExtinguishFireGoals.EXTINGUISH_SELF_GOAL);
 
         graphBuilder.addAction(ExtinguishFireActions.EQUIP_WATER_BUCKET_ACTION);
@@ -162,9 +174,11 @@ public class MarineGOAP {
         graphBuilder.addSensor(ExtinguishFireSensors.HAS_WATER_BUCKET_EQUIPPED);
         graphBuilder.addSensor(MarineGOAPSensors.IS_IN_ULTRA_WARM_DIMENSION);
         graphBuilder.addSensor(ExtinguishFireSensors.WATER_BUCKET_IN_INVENTORY);
+
+        return graphBuilder;
     }
 
-    private static void addSatisfyBoredomPackage(Graph.Builder<Marine> graphBuilder) {
+    private static Graph.Builder<Marine> addSatisfyBoredomPackage(Graph.Builder<Marine> graphBuilder) {
         // The goal we want to complete.
         graphBuilder.addGoal(IdleGoals.SATISFY_BOREDOM_GOAL);
 
@@ -175,9 +189,11 @@ public class MarineGOAP {
         graphBuilder.addSensor(FollowLeaderSensors.HAS_LEADER);
         // Used for determining when the marine should wander around.
         graphBuilder.addSensor(IdleSensors.IS_BORED);
+
+        return graphBuilder;
     }
 
-    private static void addStayCloseToLeaderPackage(Graph.Builder<Marine> graphBuilder) {
+    private static Graph.Builder<Marine> addStayCloseToLeaderPackage(Graph.Builder<Marine> graphBuilder) {
         // The goal we want to complete.
         graphBuilder.addGoal(FollowLeaderGoals.STAY_CLOSE_TO_LEADER_GOAL);
 
@@ -190,46 +206,100 @@ public class MarineGOAP {
         graphBuilder.addSensor(FollowLeaderSensors.HAS_LEADER);
         // Used for determining if the marine is too far away from the leader.
         graphBuilder.addSensor(FollowLeaderSensors.IS_CLOSE_TO_LEADER);
+
+        return graphBuilder;
+    }
+
+    private static Graph.Builder<Marine> addTameWolfPackage(Graph.Builder<Marine> graphBuilder) {
+        // Goals for taming wolves and collecting bones.
+        graphBuilder.addGoal(TameWolfGoals.TAME_WOLF_GOAL);
+        graphBuilder.addGoal(TameWolfGoals.COLLECT_BONES_GOAL);
+
+        // Actions for taming wolves.
+        graphBuilder.addAction(TameWolfActions.MOVE_TO_BONE);
+        graphBuilder.addAction(TameWolfActions.pickUpBoneFactory());
+        graphBuilder.addAction(TameWolfActions.equipBoneFactory());
+        graphBuilder.addAction(TameWolfActions.MOVE_TO_WOLF);
+        graphBuilder.addAction(TameWolfActions.USE_BONE_ON_WOLF);
+
+        // Wolf detection sensors.
+        graphBuilder.addSensor(TameWolfSensors.NEAREST_UNTAMED_WOLF);
+        graphBuilder.addSensor(TameWolfSensors.HAS_UNTAMED_WOLF_NEARBY);
+        graphBuilder.addSensor(TameWolfSensors.IS_WOLF_IN_RANGE);
+        // Bone detection sensors.
+        graphBuilder.addSensor(TameWolfSensors.NEAREST_BONE_IN_WORLD);
+        graphBuilder.addSensor(TameWolfSensors.HAS_BONE_IN_WORLD);
+        graphBuilder.addSensor(TameWolfSensors.IS_NEAREST_BONE_IN_RANGE);
+        graphBuilder.addSensor(TameWolfSensors.BONE_COUNT_IN_INVENTORY);
+        graphBuilder.addSensor(TameWolfSensors.HAS_BONE_IN_INVENTORY);
+        graphBuilder.addSensor(TameWolfSensors.HAS_BONE_EQUIPPED);
+        // Bone collection sensor.
+        graphBuilder.addSensor(TameWolfSensors.SHOULD_COLLECT_MORE_BONES);
+
+        return graphBuilder;
     }
 
     private static boolean isAThreat(Marine marine, LivingEntity livingEntity) {
-        if (livingEntity.getType().is(HumanEntityTypeTags.HATED_BY_MARINES)) {
-            return true;
+        return livingEntity.getType().is(HumanEntityTypeTags.HATED_BY_MARINES)
+            || shouldRetaliateAgainstLastAttacker(marine, livingEntity)
+            || shouldProtectSelfOrAllies(marine, livingEntity)
+            || shouldAttackLeaderTarget(marine, livingEntity);
+    }
+
+    private static boolean shouldAttackLeaderTarget(Marine marine, LivingEntity livingEntity) {
+        var leaderOption = marine.getLeader();
+
+        if (!leaderOption.isSome()) {
+            return false;
         }
 
-        if (livingEntity instanceof Mob mob) {
-            var leaderUUIDOption = marine.getLeaderUUID();
-            var mobTarget = mob.getTarget();
+        var leader = leaderOption.unwrap();
 
-            if (mobTarget != null) {
-                // Is the mob targeting me?
-                return Objects.equals(mobTarget.getUUID(), marine.getUUID())
-                    // OR is the mob targeting my leader?
-                    || leaderUUIDOption.isSomeAnd(mobTarget.getUUID()::equals)
-                    // OR is the mob targeting an ally?
-                    // (an ally is defined as another marine with the same leader status (no leader or same leader).
-                    || (mobTarget instanceof Marine otherMarine
-                        && Objects.equals(otherMarine.getLeaderUUID(), leaderUUIDOption));
-            }
-
-            var leaderOption = marine.getLeader();
-
-            if (leaderOption.isSome()) {
-                var leader = leaderOption.unwrap();
-
-                if (!(leader instanceof LivingEntity livingLeader)) {
-                    return false;
-                }
-
-                var leaderLastTarget = livingLeader.getLastHurtMob();
-
-                // Was the mob hurt by my leader?
-                return leaderLastTarget != null
-                    && Objects.equals(leaderLastTarget.getUUID(), livingEntity.getUUID());
-            }
+        if (!(leader instanceof LivingEntity livingLeader)) {
+            return false;
         }
 
-        return false;
+        var leaderLastTarget = livingLeader.getLastHurtMob();
+
+        // Was the mob hurt by my leader?
+        return leaderLastTarget != null
+            && Objects.equals(leaderLastTarget.getUUID(), livingEntity.getUUID());
+    }
+
+    private static boolean shouldProtectSelfOrAllies(Marine marine, LivingEntity livingEntity) {
+        if (!(livingEntity instanceof Mob mob)) {
+            return false;
+        }
+
+        var mobTarget = mob.getTarget();
+
+        if (mobTarget == null) {
+            return false;
+        }
+
+        var leaderUUIDOption = marine.getLeaderUUID();
+
+        // Is the mob targeting me?
+        return Objects.equals(mobTarget.getUUID(), marine.getUUID())
+            // OR is the mob targeting my leader?
+            || leaderUUIDOption.isSomeAnd(mobTarget.getUUID()::equals)
+            // OR is the mob targeting an ally?
+            // (an ally is defined as another marine with the same leader status (no leader or same leader).
+            || (mobTarget instanceof Marine otherMarine
+                && Objects.equals(otherMarine.getLeaderUUID(), leaderUUIDOption));
+    }
+
+    private static boolean shouldRetaliateAgainstLastAttacker(Marine marine, LivingEntity livingEntity) {
+        var lastAttacker = marine.getLastHurtByMob();
+        var foo = lastAttacker != null
+            // AND the last attacker is not our leader...
+            && !Objects.equals(lastAttacker.getUUID(), marine.getLeaderUUID().unwrapOr(null))
+            // AND the current entity we are checking is our last attacker...
+            && Objects.equals(lastAttacker.getUUID(), livingEntity.getUUID())
+            // AND the current entity is not a fellow marine...
+            // TODO: We'll want to do faction checking here in the future.
+            && !(livingEntity instanceof Marine);
+        return foo;
     }
 
     public static void initialize() {}
