@@ -1,6 +1,5 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.extinguish_fire.action;
 
-import com.blib.common.gameplay.model.inventory.BLibInventory;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.just.core.functional.option.Option;
 import com.just.goap.StateKey;
@@ -30,7 +29,7 @@ public class PlaceWaterAtFeetAction {
         var isWaterBucketEquipped = mainhandItemStack.is(Items.WATER_BUCKET);
 
         if (!isWaterBucketEquipped) {
-            return equipWaterBucket(marine, mainhandItemStack);
+            return Action.Signal.ABORT;
         }
 
         var currentWaterPosOption = blackboard.getOrDefault(WATER_POS_OPTION, Option.none());
@@ -39,9 +38,8 @@ public class PlaceWaterAtFeetAction {
             var blockPos = getBestPosForWaterPlacement(marine);
             currentWaterPosOption = Option.some(blockPos);
 
-            blackboard.set(WATER_POS_OPTION, currentWaterPosOption);
-
             marine.level().setBlock(blockPos, Blocks.WATER.defaultBlockState(), Block.UPDATE_ALL);
+            blackboard.set(WATER_POS_OPTION, currentWaterPosOption);
             marine.setItemInHand(HAND_TO_USE, new ItemStack(Items.BUCKET));
         }
 
@@ -80,25 +78,6 @@ public class PlaceWaterAtFeetAction {
 
             marine.setItemInHand(HAND_TO_USE, ItemStack.EMPTY);
         });
-    }
-
-    private static Action.Signal equipWaterBucket(Marine marine, ItemStack mainhandItemStack) {
-        // Remove the water bucket from the marine's inventory.
-        var removeResult = marine.getInventory().removeItem(Items.WATER_BUCKET);
-
-        return switch (removeResult) {
-            case BLibInventory.RemoveResult.InventoryEmpty inventoryEmpty -> Action.Signal.ABORT;
-            case BLibInventory.RemoveResult.Partial partial -> Action.Signal.ABORT;
-            case BLibInventory.RemoveResult.Success success -> {
-                // Put mainhand item in inventory.
-                marine.getInventory().addItemStack(mainhandItemStack);
-                marine.setItemInHand(HAND_TO_USE, ItemStack.EMPTY);
-                // Equip water bucket.
-                marine.setItemInHand(HAND_TO_USE, new ItemStack(Items.WATER_BUCKET));
-
-                yield Action.Signal.CONTINUE;
-            }
-        };
     }
 
     private PlaceWaterAtFeetAction() {
