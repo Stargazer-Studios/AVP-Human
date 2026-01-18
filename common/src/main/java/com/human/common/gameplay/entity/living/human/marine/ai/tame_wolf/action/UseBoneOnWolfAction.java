@@ -4,6 +4,7 @@ import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.human.common.gameplay.entity.living.human.marine.ai.tame_wolf.TameWolfSensors;
 import com.just.core.functional.option.Option;
 import com.just.goap.action.Action;
+import net.minecraft.world.entity.EntityEvent;
 import net.minecraft.world.item.Items;
 
 public class UseBoneOnWolfAction {
@@ -44,12 +45,12 @@ public class UseBoneOnWolfAction {
             wolf.setOrderedToSit(false);
             wolf.setInSittingPose(false);
             // Hearts particle effect.
-            wolf.level().broadcastEntityEvent(wolf, (byte) 7);
+            wolf.level().broadcastEntityEvent(wolf, EntityEvent.TAMING_SUCCEEDED);
 
             return Action.Signal.CONTINUE;
         } else {
             // Taming failed, show smoke particles.
-            wolf.level().broadcastEntityEvent(wolf, (byte) 6);
+            wolf.level().broadcastEntityEvent(wolf, EntityEvent.TAMING_FAILED);
         }
 
         // If we still have bones equipped, continue trying.
