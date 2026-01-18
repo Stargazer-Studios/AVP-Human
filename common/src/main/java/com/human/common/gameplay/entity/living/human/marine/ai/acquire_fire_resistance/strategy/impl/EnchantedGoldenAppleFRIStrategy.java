@@ -2,9 +2,9 @@ package com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_res
 
 import com.blib.common.gameplay.goap.GOAPSensors;
 import com.blib.common.gameplay.model.inventory.BLibInventory;
+import com.human.common.gameplay.entity.living.human.ai.generic.action.ConsumeItemAction;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.FRIStrategy;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.FRIStrategyUtil;
-import com.human.common.gameplay.entity.living.human.marine.ai.action.ConsumeItemAction;
 import com.just.goap.action.Action;
 import com.just.goap.state.Blackboard;
 import com.just.goap.state.ReadableWorldState;

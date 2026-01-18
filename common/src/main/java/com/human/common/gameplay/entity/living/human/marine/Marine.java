@@ -15,6 +15,7 @@ import com.human.common.gameplay.entity.EntitySenseCache;
 import com.human.common.gameplay.entity.living.human.AbstractHuman;
 import com.human.common.gameplay.entity.living.human.marine.ai.MarineGOAP;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.FRIStrategySet;
+import com.human.common.gameplay.entity.living.human.marine.ai.break_fall.BreakFallSensors;
 import com.human.common.gameplay.entity.living.human.marine.ai.combat.strategy.WeaponStrategySet;
 import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.strategy.ArmorStrategySet;
 import com.human.common.gameplay.item.GunItem;
@@ -169,6 +170,10 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
                     var wasOnFire = context.previousWorldState().getOrDefault(GOAPSensors.IS_ON_FIRE.key(), false);
                     // If we were previously not on fire, and now we're on fire, then replan.
                     return !wasOnFire && isOnFire;
+                }),
+                ReplanPolicies.custom(context -> {
+                    // if the marine is falling, we want him to replan so he can save his own life.
+                    return context.worldState().getOrDefault(BreakFallSensors.IS_FALLING.key(), false);
                 })
             )
         );
@@ -186,6 +191,13 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
         if (!level().isClientSide) {
             itemCooldowns.tick();
         }
+    }
+
+    @Override
+    public int getMaxFallDistance() {
+        return inventory.hasItem(Items.WATER_BUCKET)
+            ? 1024
+            : super.getMaxFallDistance();
     }
 
     @Override

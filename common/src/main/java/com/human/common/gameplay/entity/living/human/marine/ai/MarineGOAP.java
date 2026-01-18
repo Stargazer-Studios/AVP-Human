@@ -6,6 +6,9 @@ import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.FRIActions;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.FRIGoals;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.FRISensors;
+import com.human.common.gameplay.entity.living.human.marine.ai.break_fall.BreakFallActions;
+import com.human.common.gameplay.entity.living.human.marine.ai.break_fall.BreakFallGoals;
+import com.human.common.gameplay.entity.living.human.marine.ai.break_fall.BreakFallSensors;
 import com.human.common.gameplay.entity.living.human.marine.ai.combat.CombatActions;
 import com.human.common.gameplay.entity.living.human.marine.ai.combat.CombatGoals;
 import com.human.common.gameplay.entity.living.human.marine.ai.combat.CombatSensors;
@@ -50,6 +53,7 @@ public class MarineGOAP {
         .apply(MarineGOAP::addTameWolfPackage)
         .apply(MarineGOAP::addPlaceTorchPackage)
         .apply(MarineGOAP::addEquipTotemPackage)
+        .apply(MarineGOAP::addBreakFallPackage)
         .build();
 
     private static Graph.Builder<Marine> addSensorsPackage(Graph.Builder<Marine> graphBuilder) {
@@ -298,6 +302,31 @@ public class MarineGOAP {
         // Health-based sensors.
         graphBuilder.addSensor(TotemSensors.IS_NEAR_DEATH);
         graphBuilder.addSensor(TotemSensors.SHOULD_EQUIP_TOTEM);
+
+        return graphBuilder;
+    }
+
+    private static Graph.Builder<Marine> addBreakFallPackage(Graph.Builder<Marine> graphBuilder) {
+        // Goals for breaking falls and cleaning up water.
+        graphBuilder.addGoal(BreakFallGoals.BREAK_FALL_GOAL);
+
+        // Actions for breaking falls.
+        graphBuilder.addAction(ExtinguishFireActions.EQUIP_WATER_BUCKET_ACTION);
+        graphBuilder.addAction(BreakFallActions.PLACE_WATER_TO_BREAK_FALL);
+
+        // Fall detection sensors.
+        graphBuilder.addSensor(BreakFallSensors.IS_FALLING);
+        graphBuilder.addSensor(BreakFallSensors.FALL_DISTANCE);
+        graphBuilder.addSensor(BreakFallSensors.WILL_TAKE_FALL_DAMAGE);
+        graphBuilder.addSensor(BreakFallSensors.LANDING_BLOCK_POS);
+        graphBuilder.addSensor(BreakFallSensors.WILL_LAND_IN_FLUID);
+        graphBuilder.addSensor(BreakFallSensors.CAN_PLACE_WATER_AT_LANDING);
+        graphBuilder.addSensor(BreakFallSensors.IS_CLOSE_TO_LANDING);
+        // Water bucket sensors.
+        graphBuilder.addSensor(ExtinguishFireSensors.WATER_BUCKET_IN_INVENTORY);
+        graphBuilder.addSensor(ExtinguishFireSensors.HAS_WATER_BUCKET_EQUIPPED);
+        // Combined sensors.
+        graphBuilder.addSensor(BreakFallSensors.SHOULD_BREAK_FALL);
 
         return graphBuilder;
     }

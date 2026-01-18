@@ -1,8 +1,8 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.action;
 
 import com.blib.common.gameplay.model.inventory.BLibInventory;
+import com.human.common.gameplay.entity.living.human.ai.generic.action.EquipItemAction;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
-import com.human.common.gameplay.entity.living.human.marine.ai.action.EquipItemAction;
 import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.EquipArmorSensors;
 import com.human.common.gameplay.entity.living.human.marine.ai.model.ArmorSetTarget;
 import com.human.common.gameplay.entity.living.human.marine.ai.model.ItemTarget;

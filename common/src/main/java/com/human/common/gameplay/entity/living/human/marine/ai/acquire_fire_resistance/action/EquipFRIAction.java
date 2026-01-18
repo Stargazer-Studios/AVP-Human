@@ -1,8 +1,8 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.action;
 
 import com.blib.common.gameplay.model.inventory.BLibInventoryHolder;
+import com.human.common.gameplay.entity.living.human.ai.generic.action.EquipItemAction;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.FRISensors;
-import com.human.common.gameplay.entity.living.human.marine.ai.action.EquipItemAction;
 import com.just.core.functional.option.Option;
 import com.just.goap.action.Action;
 import net.minecraft.world.entity.EquipmentSlot;

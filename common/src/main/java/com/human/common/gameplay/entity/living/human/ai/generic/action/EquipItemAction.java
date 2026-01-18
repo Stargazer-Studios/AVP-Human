@@ -1,4 +1,4 @@
-package com.human.common.gameplay.entity.living.human.marine.ai.action;
+package com.human.common.gameplay.entity.living.human.ai.generic.action;
 
 import com.blib.common.gameplay.model.inventory.BLibInventory;
 import com.blib.common.gameplay.model.inventory.BLibInventoryHolder;
