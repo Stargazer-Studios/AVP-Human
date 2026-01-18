@@ -24,7 +24,7 @@
     "MixinOwnableEntity_NPCOwnerPatch",
     "MixinPlayer_CrawlPosing",
     "MixinShearsItem_BreakRazorWire",
-    "MixinWolf_OwnableEntityPatch"
+    "MixinWolf_Accessor"
   ],
   "client": [
     "client.MixinGui_CrosshairPickEntityWithinGunRange",
