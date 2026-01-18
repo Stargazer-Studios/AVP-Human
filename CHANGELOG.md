@@ -29,8 +29,9 @@
   - The mob was attacked by their leader (if they have a leader).
 
 ## 🐞 Fixes
-- Fixed "lastHurtMob" field not being set when entities shoot mobs with guns.
 - Fixed marine pathfinding sometimes getting stuck.
+- Fixed marines not playing a pickup animation when picking up items.
+- Fixed "lastHurtMob" field not being set when entities shoot mobs with guns.
 - Fixed marines not using a full nether chitin armor set to prevent fire damage.
 - Fixed marines not using a full nether chitin armor set to prevent lava damage.
 - Fixed marines not attacking the closest monsters to them first.

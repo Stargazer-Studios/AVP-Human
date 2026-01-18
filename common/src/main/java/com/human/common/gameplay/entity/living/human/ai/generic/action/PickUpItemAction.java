@@ -17,7 +17,8 @@ public class PickUpItemAction {
 
         // Put target item entity in inventory.
         livingEntityWithInventory.getInventory().addItemStack(itemEntity.getItem());
-        // Discard the item entity since it was picked up.
+        // Pick up the item entity.
+        livingEntityWithInventory.take(itemEntity, itemEntity.getItem().getCount());
         itemEntity.discard();
 
         return Action.Signal.CONTINUE;
