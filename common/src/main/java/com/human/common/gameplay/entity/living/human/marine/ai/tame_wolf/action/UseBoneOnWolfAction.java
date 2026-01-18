@@ -3,10 +3,12 @@ package com.human.common.gameplay.entity.living.human.marine.ai.tame_wolf.action
 import com.human.common.gameplay.entity.living.human.ai.generic.action.UnequipItemAction;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.human.common.gameplay.entity.living.human.marine.ai.tame_wolf.TameWolfSensors;
+import com.human.mixin.MixinWolf_Accessor;
 import com.just.core.functional.option.Option;
 import com.just.goap.action.Action;
 import net.minecraft.world.entity.EntityEvent;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Items;
 
 public class UseBoneOnWolfAction {
@@ -50,6 +52,11 @@ public class UseBoneOnWolfAction {
             wolf.setInSittingPose(false);
             // Hearts particle effect.
             wolf.level().broadcastEntityEvent(wolf, EntityEvent.TAMING_SUCCEEDED);
+
+            if (!marine.hasLeader()) {
+                var accessor = (MixinWolf_Accessor) wolf;
+                wolf.getEntityData().set(accessor.getDataCollarColor(), DyeColor.GREEN.getId());
+            }
 
             return Action.Signal.CONTINUE;
         } else {
