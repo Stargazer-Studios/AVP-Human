@@ -1,13 +1,17 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.tame_wolf.action;
 
+import com.human.common.gameplay.entity.living.human.ai.generic.action.UnequipItemAction;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.human.common.gameplay.entity.living.human.marine.ai.tame_wolf.TameWolfSensors;
 import com.just.core.functional.option.Option;
 import com.just.goap.action.Action;
 import net.minecraft.world.entity.EntityEvent;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Items;
 
 public class UseBoneOnWolfAction {
+
+    private static final EquipmentSlot HAND_TO_USE = EquipmentSlot.MAINHAND;
 
     public static Action.Signal perform(Action.Context<? extends Marine> context) {
         var marine = context.getActor();
@@ -21,9 +25,9 @@ public class UseBoneOnWolfAction {
         var wolf = wolfOption.unwrap();
 
         // Ensure marine has a bone in main hand.
-        var mainHandItem = marine.getMainHandItem();
+        var itemStackInHand = marine.getItemBySlot(HAND_TO_USE);
 
-        if (!mainHandItem.is(Items.BONE)) {
+        if (!itemStackInHand.is(Items.BONE)) {
             return Action.Signal.ABORT;
         }
 
@@ -31,7 +35,7 @@ public class UseBoneOnWolfAction {
         marine.getLookControl().setLookAt(wolf, 30.0F, 30.0F);
 
         // Consume the bone.
-        mainHandItem.shrink(1);
+        itemStackInHand.shrink(1);
 
         // Attempt to tame the wolf (1/3 chance, same as vanilla).
         if (marine.getRandom().nextInt(3) == 0) {
@@ -54,7 +58,7 @@ public class UseBoneOnWolfAction {
         }
 
         // If we still have bones equipped, continue trying.
-        if (marine.getMainHandItem().is(Items.BONE) && marine.getMainHandItem().getCount() > 0) {
+        if (itemStackInHand.is(Items.BONE) && itemStackInHand.getCount() > 0) {
             return Action.Signal.CONTINUE;
         }
 
@@ -68,6 +72,10 @@ public class UseBoneOnWolfAction {
 
         // No more bones, abort.
         return Action.Signal.ABORT;
+    }
+
+    public static Action.Signal onFinish(Action.Context<? extends Marine> context) {
+        return UnequipItemAction.perform(context.getActor(), HAND_TO_USE);
     }
 
     private UseBoneOnWolfAction() {

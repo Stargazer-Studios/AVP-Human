@@ -61,6 +61,7 @@ public class TameWolfActions {
         .addPrecondition(TameWolfSensors.IS_WOLF_IN_RANGE.key(), Expressions.Boolean.isTrue())
         .addEffect(TameWolfSensors.HAS_UNTAMED_WOLF_NEARBY.key().asDerived(), false)
         .withPerformCallback(UseBoneOnWolfAction::perform)
+        .withFinishCallback(UseBoneOnWolfAction::onFinish)
         .build();
 
     private TameWolfActions() {
