@@ -88,13 +88,17 @@ public class HitScanGunAttackAction implements GunAttackAction {
 
         var gunHitResultsPayload = new C2SGunHitResultsPayload(hitResults);
 
-        if (!level.isClientSide && !(shooter instanceof Player)) {
-            // If the gun was fired server-side and the shooter is not a player (such as a marine), then we process the
-            // shot immediately. This is fine to do because the marine has no outdated information on its target like a
-            // client might have in terms of target's movement, position, etc.
-            GunHitScanAttackHandler.handle(gunHitResultsPayload, shooter);
+        if (!level.isClientSide) {
+
+            if (!(shooter instanceof Player)) {
+                // If the gun was fired server-side and the shooter is not a player (such as a marine), then we process
+                // the shot immediately. This is fine to do because the marine has no outdated information on its target
+                // like a client might have in terms of target's movement, position, etc.
+                GunHitScanAttackHandler.handle(gunHitResultsPayload, shooter);
+            }
+
             return GunShootResult.SHOT;
-        } else if (level.isClientSide && shooter instanceof Player player) {
+        } else if (shooter instanceof Player player) {
             // Otherwise if the shot occurred client-side AND the shooter was a player, then add a bit of recoil.
             applyRecoilToPlayer(gunAttackConfig, player, level);
             // And then network their hit results to the server. While yes this opens the door for players to cheat

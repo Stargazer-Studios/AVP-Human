@@ -95,9 +95,12 @@ public class GunItem extends Item {
                     // No side effects to run for these results at the time of writing.
                     case COOLDOWN, DELAYED, FAILURE, RELOADING -> { /* NO-OP */ }
                     case SHOT -> {
+                        if (!level.isClientSide) {
+                            playUseAnimations(livingEntity, itemStack);
+                        }
+
                         itemStack.set(HumanDataComponents.IS_FIRING.get(), true);
                         itemStack.set(HumanDataComponents.MUZZLE_FLASH_DURATION_IN_TICKS.get(), 5);
-                        playUseAnimations(livingEntity, itemStack);
                     }
                 }
             });
@@ -126,6 +129,11 @@ public class GunItem extends Item {
 
         if (newMuzzleFlashDurationInTicks == 0) {
             itemStack.set(HumanDataComponents.IS_FIRING.get(), false);
+        }
+
+        if (level.isClientSide()) {
+            gunConfig.animationDispatcher()
+                .idle(entity, itemStack);
         }
 
         super.inventoryTick(itemStack, level, entity, i, bl);
