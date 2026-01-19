@@ -12,9 +12,17 @@ public class M42A3SniperRifleAnimationDispatcher implements GunAnimationDispatch
 
     public static final String CONTROLLER_MAIN = "main";
 
+    private static final String ANIMATION_IDLE = "animation.idle";
+
     private static final String ANIMATION_RECHAMBER = "animation.rechamber";
 
     private static final String ANIMATION_SHOOT = "animation.shoot";
+
+    private static final AzCommand IDLE = AzCommand.create(
+        CONTROLLER_MAIN,
+        ANIMATION_IDLE,
+        AzPlayBehaviors.LOOP
+    );
 
     private static final AzCommand RECHAMBER = AzCommand.create(
         CONTROLLER_MAIN,
@@ -33,7 +41,7 @@ public class M42A3SniperRifleAnimationDispatcher implements GunAnimationDispatch
 
     @Override
     public void idle(Entity entity, ItemStack itemStack) {
-        DEFAULT.idle(entity, itemStack);
+        IDLE.sendForItem(entity, itemStack);
     }
 
     @Override
