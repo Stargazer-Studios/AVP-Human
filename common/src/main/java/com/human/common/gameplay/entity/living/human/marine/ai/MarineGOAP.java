@@ -24,6 +24,9 @@ import com.human.common.gameplay.entity.living.human.marine.ai.extinguish_fire.E
 import com.human.common.gameplay.entity.living.human.marine.ai.follow_leader.FollowLeaderActions;
 import com.human.common.gameplay.entity.living.human.marine.ai.follow_leader.FollowLeaderGoals;
 import com.human.common.gameplay.entity.living.human.marine.ai.follow_leader.FollowLeaderSensors;
+import com.human.common.gameplay.entity.living.human.marine.ai.heal_self.HealingActions;
+import com.human.common.gameplay.entity.living.human.marine.ai.heal_self.HealingGoals;
+import com.human.common.gameplay.entity.living.human.marine.ai.heal_self.HealingSensors;
 import com.human.common.gameplay.entity.living.human.marine.ai.idle.IdleActions;
 import com.human.common.gameplay.entity.living.human.marine.ai.idle.IdleGoals;
 import com.human.common.gameplay.entity.living.human.marine.ai.idle.IdleSensors;
@@ -54,6 +57,7 @@ public class MarineGOAP {
         .apply(MarineGOAP::addPlaceTorchPackage)
         .apply(MarineGOAP::addEquipTotemPackage)
         .apply(MarineGOAP::addBreakFallPackage)
+        .apply(MarineGOAP::addHealSelfPackage)
         .build();
 
     private static Graph.Builder<Marine> addSensorsPackage(Graph.Builder<Marine> graphBuilder) {
@@ -327,6 +331,29 @@ public class MarineGOAP {
         graphBuilder.addSensor(ExtinguishFireSensors.HAS_WATER_BUCKET_EQUIPPED);
         // Combined sensors.
         graphBuilder.addSensor(BreakFallSensors.SHOULD_BREAK_FALL);
+
+        return graphBuilder;
+    }
+
+    private static Graph.Builder<Marine> addHealSelfPackage(Graph.Builder<Marine> graphBuilder) {
+        // Goal for healing when health is low.
+        graphBuilder.addGoal(HealingGoals.HEAL_SELF_GOAL);
+
+        // Actions for healing.
+        graphBuilder.addAction(HealingActions.MOVE_TO_BEST_HEALING_ITEM);
+        graphBuilder.addAction(HealingActions.pickUpBestHealingItemFactory());
+        graphBuilder.addAction(HealingActions.equipBestHealingItemFactory());
+        graphBuilder.addAction(HealingActions.USE_BEST_HEALING_ITEM);
+
+        // Best healing item sensors.
+        graphBuilder.addSensor(HealingSensors.BEST_HEALING_ITEM);
+        graphBuilder.addSensor(HealingSensors.BEST_HEALING_ITEM_LOCATION);
+        // Best healing item on self.
+        graphBuilder.addSensor(HealingSensors.BEST_HEALING_ITEM_IN_HANDS);
+        graphBuilder.addSensor(HealingSensors.BEST_HEALING_ITEM_IN_INVENTORY);
+        // Best healing item in world.
+        graphBuilder.addSensor(HealingSensors.BEST_HEALING_ITEM_IN_WORLD);
+        graphBuilder.addSensor(HealingSensors.IS_BEST_WORLD_HEALING_ITEM_IN_RANGE);
 
         return graphBuilder;
     }
