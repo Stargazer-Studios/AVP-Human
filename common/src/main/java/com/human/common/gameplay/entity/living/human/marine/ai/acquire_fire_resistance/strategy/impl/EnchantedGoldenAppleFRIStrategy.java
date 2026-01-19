@@ -5,6 +5,7 @@ import com.blib.common.gameplay.model.inventory.BLibInventory;
 import com.human.common.gameplay.entity.living.human.ai.generic.action.ConsumeItemAction;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.FRIStrategy;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.FRIStrategyUtil;
+import com.human.common.gameplay.entity.living.human.marine.ai.heal_self.strategy.HealingStrategyUtil;
 import com.just.goap.action.Action;
 import com.just.goap.state.Blackboard;
 import com.just.goap.state.ReadableWorldState;
@@ -18,7 +19,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
 import java.util.Collection;
-import java.util.List;
 
 public class EnchantedGoldenAppleFRIStrategy implements FRIStrategy {
 
@@ -30,12 +30,6 @@ public class EnchantedGoldenAppleFRIStrategy implements FRIStrategy {
         .mapToInt(MobEffectInstance::getDuration)
         .findFirst()
         .orElse(0);
-
-    private static final List<MobEffectInstance> POSSIBLE_EFFECTS = Foods.ENCHANTED_GOLDEN_APPLE
-        .effects()
-        .stream()
-        .map(FoodProperties.PossibleEffect::effect)
-        .toList();
 
     @Override
     public boolean isValidItemStack(ItemStack itemStack) {
@@ -81,20 +75,6 @@ public class EnchantedGoldenAppleFRIStrategy implements FRIStrategy {
     public Action.Signal execute(Action.Context<? extends LivingEntity> context) {
         var livingEntity = context.getActor();
         var blackboard = context.getBlackboard(Blackboard.Scope.ACTION);
-        return ConsumeItemAction.perform(SoundEvents.GENERIC_EAT, livingEntity, blackboard, () -> onConsume(livingEntity));
-    }
-
-    private static Action.Signal onConsume(LivingEntity livingEntity) {
-        var itemStack = livingEntity.getMainHandItem();
-
-        if (!itemStack.is(Items.ENCHANTED_GOLDEN_APPLE)) {
-            return Action.Signal.ABORT;
-        }
-
-        POSSIBLE_EFFECTS.forEach(livingEntity::addEffect);
-
-        itemStack.shrink(1);
-
-        return Action.Signal.CONTINUE;
+        return ConsumeItemAction.perform(SoundEvents.GENERIC_EAT, livingEntity, blackboard, () -> HealingStrategyUtil.eat(livingEntity));
     }
 }
