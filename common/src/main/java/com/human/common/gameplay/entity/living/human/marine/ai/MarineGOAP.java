@@ -1,6 +1,7 @@
 package com.human.common.gameplay.entity.living.human.marine.ai;
 
 import com.blib.common.gameplay.goap.GOAPSensors;
+import com.blib.common.gameplay.util.BLibEntityPredicates;
 import com.human.common.gameplay.entity.ai.goap.HumanGOAPSensors;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.FRIActions;
@@ -220,6 +221,7 @@ public class MarineGOAP {
         graphBuilder.addSensor(FollowLeaderSensors.CAN_FOLLOW_LEADER);
         // Used for determining if the marine has a leader to follow.
         graphBuilder.addSensor(FollowLeaderSensors.HAS_LEADER);
+        graphBuilder.addSensor(FollowLeaderSensors.HAS_PLAYER_LEADER);
         // Used for determining if the marine is too far away from the leader.
         graphBuilder.addSensor(FollowLeaderSensors.IS_CLOSE_TO_LEADER);
 
@@ -359,6 +361,10 @@ public class MarineGOAP {
     }
 
     private static boolean isAThreat(Marine marine, LivingEntity livingEntity) {
+        if (BLibEntityPredicates.isInvulnerable(livingEntity)) {
+            return false;
+        }
+
         return livingEntity.getType().is(HumanEntityTypeTags.HATED_BY_MARINES)
             || shouldRetaliateAgainstLastAttacker(marine, livingEntity)
             || shouldProtectSelfOrAllies(marine, livingEntity)

@@ -30,6 +30,7 @@
 
 ## 🐞 Fixes
 - Fixed marine pathfinding sometimes getting stuck.
+- Fixed marines trying to attack invulnerable targets.
 - Fixed marines not playing a pickup animation when picking up items.
 - Fixed marine item consume cooldown not resetting after first consume.
 - Fixed "lastHurtMob" field not being set when entities shoot mobs with guns.
