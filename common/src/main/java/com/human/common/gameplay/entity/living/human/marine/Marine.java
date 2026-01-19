@@ -86,19 +86,6 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
             HumanArmorItems.TACTICAL_CAMO_LEGGINGS,
             HumanArmorItems.TACTICAL_CAMO_BOOTS
         )
-        // TODO:
-        // List.of(
-        // HumanArmorItems.WY_COMMANDO_HELMET,
-        // HumanArmorItems.WY_COMMANDO_CHESTPLATE,
-        // HumanArmorItems.WY_COMMANDO_LEGGINGS,
-        // HumanArmorItems.WY_COMMANDO_BOOTS
-        // ),
-        // List.of(
-        // HumanArmorItems.WY_ELITE_HELMET,
-        // HumanArmorItems.WY_ELITE_CHESTPLATE,
-        // HumanArmorItems.WY_ELITE_LEGGINGS,
-        // HumanArmorItems.WY_ELITE_BOOTS
-        // )
     );
 
     private static final List<Supplier<Item>> PRIMARY_WEAPON_ITEM_SUPPLIERS = List.of(
@@ -190,6 +177,12 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
 
         if (!level().isClientSide) {
             itemCooldowns.tick();
+
+            // Tick items in hand. This prevents gun muzzle flashes from getting stuck when held by marines.
+            var mainHandItemStack = getMainHandItem();
+            mainHandItemStack.inventoryTick(level(), this, EquipmentSlot.MAINHAND.getIndex(), true);
+            var offHandItemStack = getOffhandItem();
+            offHandItemStack.inventoryTick(level(), this, EquipmentSlot.OFFHAND.getIndex(), true);
         }
     }
 

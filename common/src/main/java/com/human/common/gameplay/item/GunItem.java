@@ -36,6 +36,7 @@ public class GunItem extends Item {
         super(
             new Item.Properties().stacksTo(1)
                 .component(HumanDataComponents.IS_FIRING.get(), false)
+                .component(HumanDataComponents.MUZZLE_FLASH_DURATION_IN_TICKS.get(), 0)
                 .durability(gunConfig.durability())
                 .attributes(createAttributes())
         );
@@ -95,6 +96,7 @@ public class GunItem extends Item {
                     case COOLDOWN, DELAYED, FAILURE, RELOADING -> { /* NO-OP */ }
                     case SHOT -> {
                         itemStack.set(HumanDataComponents.IS_FIRING.get(), true);
+                        itemStack.set(HumanDataComponents.MUZZLE_FLASH_DURATION_IN_TICKS.get(), 5);
                         playUseAnimations(livingEntity, itemStack);
                     }
                 }
@@ -117,26 +119,13 @@ public class GunItem extends Item {
 
     @Override
     public void inventoryTick(@NotNull ItemStack itemStack, @NotNull Level level, @NotNull Entity entity, int i, boolean bl) {
-        var isFiring = itemStack.get(HumanDataComponents.IS_FIRING.get());
-        var cooldownsOrNull = entity instanceof LivingEntity livingEntity
-            ? ItemCooldownUser.getItemCooldownsOrNull(livingEntity)
-            : null;
+        var muzzleFlashDurationInTicks = itemStack.getOrDefault(HumanDataComponents.MUZZLE_FLASH_DURATION_IN_TICKS.get(), 0);
+        var newMuzzleFlashDurationInTicks = Math.max(muzzleFlashDurationInTicks - 1, 0);
 
-        if (cooldownsOrNull != null) {
+        itemStack.set(HumanDataComponents.MUZZLE_FLASH_DURATION_IN_TICKS.get(), newMuzzleFlashDurationInTicks);
 
-            var isCooldownActive = cooldownsOrNull.isOnCooldown(this);
-
-            if (isCooldownActive) {
-                var muzzleFlashDurationInTicks = 5;
-                var cooldownInTicks = gunConfig.getDefaultFireMode().cooldownInTicks();
-                var percentage = Math.clamp(muzzleFlashDurationInTicks / (float) cooldownInTicks, 0, 1);
-
-                var isCooldownStale = cooldownsOrNull.getCooldownPercent(this, 0) < 1 - percentage;
-
-                if (Boolean.TRUE.equals(isFiring) && isCooldownStale) {
-                    itemStack.set(HumanDataComponents.IS_FIRING.get(), false);
-                }
-            }
+        if (newMuzzleFlashDurationInTicks == 0) {
+            itemStack.set(HumanDataComponents.IS_FIRING.get(), false);
         }
 
         super.inventoryTick(itemStack, level, entity, i, bl);

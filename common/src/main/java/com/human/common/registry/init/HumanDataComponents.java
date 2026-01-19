@@ -70,6 +70,12 @@ public class HumanDataComponents {
             .cacheEncoding()
     );
 
+    public static final BLibHolder<DataComponentType<Integer>> MUZZLE_FLASH_DURATION_IN_TICKS = create(
+        "muzzle_flash_duration_in_ticks",
+        builder -> builder.persistent(Codec.INT)
+            .cacheEncoding()
+    );
+
     public static final BLibHolder<DataComponentType<SyringeContents>> SYRINGE_CONTENTS = create(
         "syringe_contents",
         builder -> builder.persistent(SyringeContents.CODEC)

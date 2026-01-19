@@ -44,6 +44,7 @@
   - This led to them getting "stuck" in their combat AI.
 - Fixed numerous bugs with gun animations:
   - Fixed gun animations locking up after holding fire and then releasing.
+  - Fixed muzzle flashes on guns sometimes getting stuck for players and marines.
   - Fixed muzzle flashes not showing when guns are shot.
 
 ## 🛠 Data Pack
