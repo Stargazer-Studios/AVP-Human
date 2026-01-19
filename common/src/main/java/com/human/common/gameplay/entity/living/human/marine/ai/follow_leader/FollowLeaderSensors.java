@@ -6,6 +6,7 @@ import com.human.common.gameplay.entity.living.human.marine.MarineMode;
 import com.just.goap.StateKey;
 import com.just.goap.sensor.Sensor;
 import com.just.goap.sensor.Sensors;
+import net.minecraft.world.entity.player.Player;
 
 public class FollowLeaderSensors {
 
@@ -23,6 +24,11 @@ public class FollowLeaderSensors {
     public static final Sensor.Mono<Marine, Boolean> HAS_LEADER = Sensors.map(
         StateKey.sensed("has_leader"),
         marine -> marine.getLeader().isSome()
+    );
+
+    public static final Sensor.Mono<Marine, Boolean> HAS_PLAYER_LEADER = Sensors.map(
+        StateKey.sensed("has_player_leader"),
+        marine -> marine.getLeader().isSomeAnd(leader -> leader instanceof Player)
     );
 
     public static final Sensor.Mono<Marine, Boolean> IS_CLOSE_TO_LEADER = Sensors.map(

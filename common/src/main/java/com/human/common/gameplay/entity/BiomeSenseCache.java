@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity;
 
-import com.human.common.gameplay.entity.living.human.marine.ai.sensor.NearbyBiomesSensor;
+import com.human.common.gameplay.entity.living.human.ai.generic.sensor.NearbyBiomesSensor;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.tags.TagKey;

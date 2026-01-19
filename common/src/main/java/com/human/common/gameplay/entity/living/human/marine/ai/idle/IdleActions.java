@@ -13,7 +13,7 @@ public class IdleActions {
 
     public static final Action<Marine> WANDER_ACTION = BLibAction.<Marine>builder("WanderAction")
         .addMasks(ActionMasks.MOVE)
-        .addPrecondition(FollowLeaderSensors.HAS_LEADER.key(), Expressions.Boolean.isFalse())
+        .addPrecondition(FollowLeaderSensors.HAS_PLAYER_LEADER.key(), Expressions.Boolean.isFalse())
         .addPrecondition(CombatSensors.HAS_ATTACK_TARGET.key(), Expressions.Boolean.isFalse())
         .addPrecondition(IdleSensors.IS_BORED.key(), Expressions.Boolean.isTrue())
         .addEffect(IdleSensors.IS_BORED.key().asDerived(), false)

@@ -1,4 +1,4 @@
-package com.human.common.gameplay.entity.living.human.marine.ai.sensor;
+package com.human.common.gameplay.entity.living.human.ai.generic.sensor;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;

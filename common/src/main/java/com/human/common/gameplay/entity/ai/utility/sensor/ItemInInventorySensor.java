@@ -4,7 +4,7 @@ import com.blib.common.gameplay.model.inventory.BLibInventory;
 import com.blib.common.gameplay.model.inventory.BLibInventoryHolder;
 import com.human.common.gameplay.entity.ai.utility.item.ItemStrategy;
 import com.human.common.gameplay.entity.ai.utility.item.ItemStrategyResult;
-import com.human.common.gameplay.entity.living.human.marine.ai.model.ItemTarget;
+import com.human.common.gameplay.entity.living.human.ai.model.ItemTarget;
 import com.just.core.functional.function.Function3;
 import com.just.core.functional.option.Option;
 import com.just.goap.state.ReadableWorldState;

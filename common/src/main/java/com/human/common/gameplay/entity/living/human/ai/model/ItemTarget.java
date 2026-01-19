@@ -1,4 +1,4 @@
-package com.human.common.gameplay.entity.living.human.marine.ai.model;
+package com.human.common.gameplay.entity.living.human.ai.model;
 
 import com.blib.common.gameplay.model.inventory.BLibInventory;
 import net.minecraft.world.entity.EquipmentSlot;

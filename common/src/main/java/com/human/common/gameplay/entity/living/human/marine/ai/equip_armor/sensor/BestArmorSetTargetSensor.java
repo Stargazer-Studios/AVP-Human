@@ -2,10 +2,10 @@ package com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.sens
 
 import com.blib.common.gameplay.goap.GOAPSensors;
 import com.human.common.gameplay.entity.ai.goap.HumanGOAPSensors;
+import com.human.common.gameplay.entity.living.human.ai.model.ArmorSetTarget;
+import com.human.common.gameplay.entity.living.human.ai.model.ItemTarget;
 import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.EquipArmorSensors;
 import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.strategy.ArmorStrategyResult;
-import com.human.common.gameplay.entity.living.human.marine.ai.model.ArmorSetTarget;
-import com.human.common.gameplay.entity.living.human.marine.ai.model.ItemTarget;
 import com.just.core.functional.option.Option;
 import com.just.goap.state.ReadableWorldState;
 import net.minecraft.world.entity.LivingEntity;

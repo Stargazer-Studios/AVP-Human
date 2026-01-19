@@ -1,10 +1,10 @@
-package com.human.common.gameplay.entity.living.human.marine.ai.util;
+package com.human.common.gameplay.entity.living.human.ai;
 
 import com.blib.common.gameplay.model.inventory.BLibInventoryHolder;
+import com.human.common.gameplay.entity.living.human.ai.model.ArmorSet;
+import com.human.common.gameplay.entity.living.human.ai.model.ArmorSetTarget;
+import com.human.common.gameplay.entity.living.human.ai.model.ItemTarget;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
-import com.human.common.gameplay.entity.living.human.marine.ai.model.ArmorSet;
-import com.human.common.gameplay.entity.living.human.marine.ai.model.ArmorSetTarget;
-import com.human.common.gameplay.entity.living.human.marine.ai.model.ItemTarget;
 import com.just.goap.state.ReadableWorldState;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
