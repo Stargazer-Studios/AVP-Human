@@ -7,7 +7,11 @@ import com.human.common.data.HumanReloadListeners;
 import com.human.common.data.fixer.migration.HumanDataMigrations;
 import com.human.common.gameplay.entity.living.human.marine.ai.MarineGOAP;
 import com.human.common.gameplay.gene.Genes;
-import com.human.common.gameplay.level.patrol.MarinePatrolSpawner;
+import com.human.common.gameplay.level.patrol.impl.MarinePatrolSpawnHandle;
+import com.human.common.gameplay.level.patrol.impl.WYCPatrolSpawnHandle;
+import com.human.common.gameplay.level.patrol.impl.WYEPatrolSpawnHandle;
+import com.human.common.gameplay.level.patrol.impl.WYSOCPatrolSpawnHandle;
+import com.human.common.gameplay.level.patrol.impl.WYSOEPatrolSpawnHandle;
 import com.human.common.gameplay.power.PowerSystem;
 import com.human.common.gameplay.worldgen.biome.NukedAshPlacement;
 import com.human.common.gameplay.worldgen.structure.HumanCommissaryVillagerHouseInjector;
@@ -56,7 +60,6 @@ import com.human.common.registry.key.HumanVillagerGiftKeys;
 import com.human.mixin.GiveGiftToHeroAccessor;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -68,8 +71,6 @@ public class Human {
     public static final BLibMod MOD = BLib.createMod(MOD_ID);
 
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-
-    public static final MarinePatrolSpawner MARINE_PATROL_SPAWNER = new MarinePatrolSpawner();
 
     public static final NukedAshPlacement NUKED_ASH_PLACEMENT = new NukedAshPlacement();
 
@@ -163,7 +164,12 @@ public class Human {
     private static void tickMarinePatrolSpawner(Level level) {
         if (!level.isClientSide) {
             var serverLevel = (ServerLevel) level;
-            Human.MARINE_PATROL_SPAWNER.tick(serverLevel, serverLevel.getGameRules().getBoolean(GameRules.RULE_DOMOBSPAWNING), true);
+
+            MarinePatrolSpawnHandle.INSTANCE.tick(serverLevel);
+            WYCPatrolSpawnHandle.INSTANCE.tick(serverLevel);
+            WYEPatrolSpawnHandle.INSTANCE.tick(serverLevel);
+            WYSOCPatrolSpawnHandle.INSTANCE.tick(serverLevel);
+            WYSOEPatrolSpawnHandle.INSTANCE.tick(serverLevel);
         }
     }
 
