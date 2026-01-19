@@ -22,6 +22,8 @@ public class ConsumeItemAction {
         blackboard.set(CONSUME_TICK_DURATION, tickDuration + 1);
 
         if (tickDuration >= 32) {
+            // Reset consume tick duration.
+            blackboard.set(CONSUME_TICK_DURATION, 0);
             return onConsume.get();
         }
 

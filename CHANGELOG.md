@@ -31,6 +31,7 @@
 ## 🐞 Fixes
 - Fixed marine pathfinding sometimes getting stuck.
 - Fixed marines not playing a pickup animation when picking up items.
+- Fixed marine item consume cooldown not resetting after first consume.
 - Fixed "lastHurtMob" field not being set when entities shoot mobs with guns.
 - Fixed marines not using a full nether chitin armor set to prevent fire damage.
 - Fixed marines not using a full nether chitin armor set to prevent lava damage.
