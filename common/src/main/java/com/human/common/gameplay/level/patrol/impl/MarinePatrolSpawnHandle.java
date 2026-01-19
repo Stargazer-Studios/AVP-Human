@@ -2,7 +2,8 @@ package com.human.common.gameplay.level.patrol.impl;
 
 import com.human.common.gameplay.level.patrol.PatrolSpawner;
 import com.human.common.gameplay.level.patrol.PatrolSpawnerTicker;
-import com.human.common.gameplay.level.patrol.decorator.impl.MarineSquadLeadershipDecorator;
+import com.human.common.gameplay.level.patrol.decorator.gear.MarineGearDecorator;
+import com.human.common.gameplay.level.patrol.decorator.squad.MarineSquadLeadershipDecorator;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
@@ -39,5 +40,9 @@ public class MarinePatrolSpawnHandle {
         var spawnedMarines = MarineSpawner.spawn(level, player, mutableBlockPos);
 
         MarineSquadLeadershipDecorator.INSTANCE.decorate(level, spawnedMarines);
+
+        for (var marine : spawnedMarines) {
+            MarineGearDecorator.INSTANCE.decorate(level, marine);
+        }
     }
 }

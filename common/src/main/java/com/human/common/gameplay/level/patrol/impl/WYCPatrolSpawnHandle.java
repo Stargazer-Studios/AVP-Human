@@ -2,8 +2,8 @@ package com.human.common.gameplay.level.patrol.impl;
 
 import com.human.common.gameplay.level.patrol.PatrolSpawner;
 import com.human.common.gameplay.level.patrol.PatrolSpawnerTicker;
-import com.human.common.gameplay.level.patrol.decorator.impl.MarineSquadLeadershipDecorator;
-import com.human.common.gameplay.level.patrol.decorator.impl.MarineSquadWYCDecorator;
+import com.human.common.gameplay.level.patrol.decorator.gear.MarineWYCGearDecorator;
+import com.human.common.gameplay.level.patrol.decorator.squad.MarineSquadLeadershipDecorator;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
@@ -40,6 +40,9 @@ public class WYCPatrolSpawnHandle {
         var spawnedMarines = MarineSpawner.spawn(level, player, mutableBlockPos);
 
         MarineSquadLeadershipDecorator.INSTANCE.decorate(level, spawnedMarines);
-        MarineSquadWYCDecorator.INSTANCE.decorate(level, spawnedMarines);
+
+        for (var marine : spawnedMarines) {
+            MarineWYCGearDecorator.INSTANCE.decorate(level, marine);
+        }
     }
 }

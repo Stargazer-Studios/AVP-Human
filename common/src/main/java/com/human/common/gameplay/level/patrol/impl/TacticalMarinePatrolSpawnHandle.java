@@ -2,7 +2,7 @@ package com.human.common.gameplay.level.patrol.impl;
 
 import com.human.common.gameplay.level.patrol.PatrolSpawner;
 import com.human.common.gameplay.level.patrol.PatrolSpawnerTicker;
-import com.human.common.gameplay.level.patrol.decorator.gear.MarineWYSOEGearDecorator;
+import com.human.common.gameplay.level.patrol.decorator.gear.TacticalMarineGearDecorator;
 import com.human.common.gameplay.level.patrol.decorator.squad.MarineSquadLeadershipDecorator;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -10,15 +10,15 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 
-public class WYSOEPatrolSpawnHandle {
+public class TacticalMarinePatrolSpawnHandle {
 
-    public static final WYSOEPatrolSpawnHandle INSTANCE = new WYSOEPatrolSpawnHandle();
+    public static final TacticalMarinePatrolSpawnHandle INSTANCE = new TacticalMarinePatrolSpawnHandle();
 
     private final PatrolSpawner spawner;
 
     private final PatrolSpawnerTicker ticker;
 
-    private WYSOEPatrolSpawnHandle() {
+    private TacticalMarinePatrolSpawnHandle() {
         this.spawner = PatrolSpawner.builder()
             .withCondition(level -> !level.getGameRules().getBoolean(GameRules.RULE_DO_PATROL_SPAWNING))
             .build(this::spawn);
@@ -42,7 +42,7 @@ public class WYSOEPatrolSpawnHandle {
         MarineSquadLeadershipDecorator.INSTANCE.decorate(level, spawnedMarines);
 
         for (var marine : spawnedMarines) {
-            MarineWYSOEGearDecorator.INSTANCE.decorate(level, marine);
+            TacticalMarineGearDecorator.INSTANCE.decorate(level, marine);
         }
     }
 }

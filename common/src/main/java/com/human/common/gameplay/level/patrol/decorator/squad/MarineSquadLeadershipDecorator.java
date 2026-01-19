@@ -1,4 +1,4 @@
-package com.human.common.gameplay.level.patrol.decorator.impl;
+package com.human.common.gameplay.level.patrol.decorator.squad;
 
 import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.human.common.gameplay.level.patrol.decorator.MarineSquadDecorator;
