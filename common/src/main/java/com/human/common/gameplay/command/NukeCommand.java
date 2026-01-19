@@ -1,4 +1,4 @@
-package com.human.common.gameplay.command.nuke;
+package com.human.common.gameplay.command;
 
 import com.blib.common.gameplay.explosion.Explosion;
 import com.blib.common.gameplay.explosion.ExplosionProgressTracker;

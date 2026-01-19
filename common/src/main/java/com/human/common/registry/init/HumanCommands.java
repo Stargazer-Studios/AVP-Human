@@ -2,7 +2,7 @@ package com.human.common.registry.init;
 
 import com.blib.common.registry.impl.BLibCommandRegistry;
 import com.human.Human;
-import com.human.common.gameplay.command.nuke.NukeCommand;
+import com.human.common.gameplay.command.NukeCommand;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
