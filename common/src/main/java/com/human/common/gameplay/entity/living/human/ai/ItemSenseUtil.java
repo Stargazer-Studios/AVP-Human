@@ -6,7 +6,6 @@ import com.human.common.gameplay.entity.living.human.ai.model.ArmorSetTarget;
 import com.human.common.gameplay.entity.living.human.ai.model.ItemTarget;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.just.goap.state.ReadableWorldState;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
@@ -90,15 +89,12 @@ public class ItemSenseUtil {
         }
 
         // At this point we can assume the item is not in the entity's inventory. So, time to check the environment.
-        var nearbyItemEntities = marine.getEntitySenseCache().getByType(EntityType.ITEM);
+        var nearbyItemEntities = marine.getEntitySenseCache()
+            .getByItem(targetItem);
 
-        // TODO: Instead of looping over every nearby item entity, we should instead use items as a key in a map.
-        for (var itemEntity : nearbyItemEntities) {
-            if (itemEntity.getItem().is(targetItem)) {
-                // Found an item entity that matches our desired item.
-                // TODO: What if we want the closest based on distance?
-                return new ItemTarget.World(itemEntity);
-            }
+        if (!nearbyItemEntities.isEmpty()) {
+            // TODO: What if we want the closest based on distance?
+            return new ItemTarget.World(nearbyItemEntities.getFirst());
         }
 
         // The item did not exist in the world state, so, return NONE - we couldn't find it!

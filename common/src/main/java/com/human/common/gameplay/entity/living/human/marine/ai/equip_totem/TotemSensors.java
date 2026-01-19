@@ -7,7 +7,6 @@ import com.just.goap.StateKey;
 import com.just.goap.sensor.Compose;
 import com.just.goap.sensor.Sensor;
 import com.just.goap.sensor.Sensors;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Items;
 
@@ -20,16 +19,13 @@ public class TotemSensors {
     public static final Sensor.Mono<Marine, Option<ItemEntity>> NEAREST_TOTEM_IN_WORLD = Sensors.lazyCompose(
         StateKey.sensed("nearest_totem_in_world"),
         (marine, worldState) -> {
-            var itemEntities = marine.getEntitySenseCache().getByType(EntityType.ITEM);
+            var itemEntities = marine.getEntitySenseCache()
+                .getByItem(Items.TOTEM_OF_UNDYING);
 
             ItemEntity nearestTotem = null;
             double nearestDistance = Double.MAX_VALUE;
 
             for (var itemEntity : itemEntities) {
-                if (!itemEntity.getItem().is(Items.TOTEM_OF_UNDYING)) {
-                    continue;
-                }
-
                 var distance = marine.distanceToSqr(itemEntity);
 
                 if (distance < nearestDistance) {

@@ -50,16 +50,13 @@ public class TameWolfSensors {
     public static final Sensor.Mono<Marine, Option<ItemEntity>> NEAREST_BONE_IN_WORLD = Sensors.lazyCompose(
         StateKey.sensed("nearest_bone_in_world"),
         (marine, worldState) -> {
-            var itemEntities = marine.getEntitySenseCache().getByType(EntityType.ITEM);
+            var itemEntities = marine.getEntitySenseCache()
+                .getByItem(Items.BONE);
 
             ItemEntity nearestBone = null;
             double nearestDistance = Double.MAX_VALUE;
 
             for (var itemEntity : itemEntities) {
-                if (!itemEntity.getItem().is(Items.BONE)) {
-                    continue;
-                }
-
                 var distance = marine.distanceToSqr(itemEntity);
 
                 if (distance < nearestDistance) {

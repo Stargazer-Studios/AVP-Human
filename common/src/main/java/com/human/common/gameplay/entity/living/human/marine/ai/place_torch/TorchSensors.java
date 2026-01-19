@@ -9,7 +9,6 @@ import com.just.goap.sensor.Sensor;
 import com.just.goap.sensor.Sensors;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.LightLayer;
@@ -25,16 +24,12 @@ public class TorchSensors {
     public static final Sensor.Mono<Marine, Option<ItemEntity>> NEAREST_TORCH_IN_WORLD = Sensors.lazyCompose(
         StateKey.sensed("nearest_torch_in_world"),
         (marine, worldState) -> {
-            var itemEntities = marine.getEntitySenseCache().getByType(EntityType.ITEM);
+            var itemEntities = marine.getEntitySenseCache().getByItem(Items.TORCH);
 
             ItemEntity nearestTorch = null;
             double nearestDistance = Double.MAX_VALUE;
 
             for (var itemEntity : itemEntities) {
-                if (!itemEntity.getItem().is(Items.TORCH)) {
-                    continue;
-                }
-
                 var distance = marine.distanceToSqr(itemEntity);
 
                 if (distance < nearestDistance) {

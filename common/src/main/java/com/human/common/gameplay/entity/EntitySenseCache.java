@@ -3,6 +3,8 @@ package com.human.common.gameplay.entity;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.phys.AABB;
 
 import java.util.ArrayList;
@@ -18,6 +20,8 @@ public class EntitySenseCache {
 
     private final Map<EntityType<?>, List<Entity>> entitiesByTypeMap;
 
+    private final Map<Item, List<ItemEntity>> itemEntitiesByItemMap;
+
     private final int tickFrequency;
 
     private int lastSenseTick;
@@ -26,6 +30,7 @@ public class EntitySenseCache {
         this.entity = entity;
         this.entitiesByClassMap = new HashMap<>();
         this.entitiesByTypeMap = new HashMap<>();
+        this.itemEntitiesByItemMap = new HashMap<>();
         this.tickFrequency = tickFrequency;
         this.lastSenseTick = 0;
     }
@@ -70,6 +75,10 @@ public class EntitySenseCache {
         return (List<T>) collectedEntities;
     }
 
+    public List<ItemEntity> getByItem(Item item) {
+        return itemEntitiesByItemMap.getOrDefault(item, List.of());
+    }
+
     public List<Entity> getByTag(TagKey<EntityType<?>> tagKey) {
         tryPopulateCache();
 
@@ -108,6 +117,7 @@ public class EntitySenseCache {
 
         entitiesByClassMap.clear();
         entitiesByTypeMap.clear();
+        itemEntitiesByItemMap.clear();
 
         var scanArea = AABB.ofSize(entity.getEyePosition(), 16, 16, 16);
 
@@ -118,6 +128,11 @@ public class EntitySenseCache {
                 .add(entity);
             entitiesByTypeMap.computeIfAbsent(entity.getType(), $ -> new ArrayList<>())
                 .add(entity);
+
+            if (entity instanceof ItemEntity itemEntity) {
+                itemEntitiesByItemMap.computeIfAbsent(itemEntity.getItem().getItem(), $ -> new ArrayList<>())
+                    .add(itemEntity);
+            }
         }
 
         this.lastSenseTick = entity.tickCount;
