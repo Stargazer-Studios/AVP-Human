@@ -5,6 +5,7 @@ import com.human.common.gameplay.level.patrol.decorator.MarineDecorator;
 import com.human.common.gameplay.level.patrol.decorator.util.MarineGearDecoratorUtil;
 import com.human.common.registry.init.item.HumanArmorItems;
 import com.human.common.registry.init.item.HumanGunItems;
+import com.human.common.registry.init.item.HumanItems;
 import com.just.core.functional.tuple.Tuple2;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -34,6 +35,7 @@ public class TacticalMarineGearDecorator implements MarineDecorator {
         applyPrimaryWeapon(marine);
         applySecondaryWeapon(marine);
         applyExtras(marine);
+        applyExclusives(marine);
     }
 
     public void applyArmor(Marine marine) {
@@ -41,6 +43,10 @@ public class TacticalMarineGearDecorator implements MarineDecorator {
         MarineGearDecoratorUtil.equipArmorItem(marine, HumanArmorItems.TACTICAL_CAMO_CHESTPLATE.get());
         MarineGearDecoratorUtil.equipArmorItem(marine, HumanArmorItems.TACTICAL_CAMO_LEGGINGS.get());
         MarineGearDecoratorUtil.equipArmorItem(marine, HumanArmorItems.TACTICAL_CAMO_BOOTS.get());
+    }
+
+    public void applyExclusives(Marine marine) {
+        MarineGearDecoratorUtil.giveItem(marine, HumanItems.CORNBREAD.get(), 5 + marine.getRandom().nextInt(10));
     }
 
     public void applyExtras(Marine marine) {

@@ -46,6 +46,7 @@ public class MarineGearDecorator implements MarineDecorator {
     }
 
     public void applyExclusives(Marine marine) {
+        MarineGearDecoratorUtil.giveItem(marine, HumanItems.CORNBREAD.get(), 5 + marine.getRandom().nextInt(10));
         MarineGearDecoratorUtil.giveItem(marine, Items.BONE, 7 + marine.getRandom().nextInt(12));
     }
 
