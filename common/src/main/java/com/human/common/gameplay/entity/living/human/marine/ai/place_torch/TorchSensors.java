@@ -21,9 +21,9 @@ public class TorchSensors {
 
     private static final int MAX_WALL_SEARCH_DISTANCE = 3;
 
-    public static final Sensor.Mono<Marine, Option<ItemEntity>> NEAREST_TORCH_IN_WORLD = Sensors.lazyCompose(
+    public static final Sensor.Mono<Marine, Option<ItemEntity>> NEAREST_TORCH_IN_WORLD = Sensors.map(
         StateKey.sensed("nearest_torch_in_world"),
-        (marine, worldState) -> {
+        marine -> {
             var itemEntities = marine.getEntitySenseCache().getByItem(Items.TORCH);
 
             ItemEntity nearestTorch = null;
@@ -54,9 +54,9 @@ public class TorchSensors {
         (marine, torchOption) -> torchOption.isSomeAnd(torch -> marine.distanceToSqr(torch) < 4)
     );
 
-    public static final Sensor.Mono<Marine, Integer> TORCH_COUNT_IN_INVENTORY = Sensors.lazyCompose(
+    public static final Sensor.Mono<Marine, Integer> TORCH_COUNT_IN_INVENTORY = Sensors.map(
         StateKey.sensed("torch_count_in_inventory"),
-        (marine, worldState) -> {
+        marine -> {
             var inventory = marine.getInventory();
             return inventory.selectEntries(Items.TORCH)
                 .stream()
@@ -71,9 +71,9 @@ public class TorchSensors {
         (marine, count) -> count > 0
     );
 
-    public static final Sensor.Mono<Marine, Boolean> HAS_TORCH_EQUIPPED = Sensors.lazyCompose(
+    public static final Sensor.Mono<Marine, Boolean> HAS_TORCH_EQUIPPED = Sensors.map(
         StateKey.sensed("has_torch_equipped"),
-        (marine, worldState) -> marine.getMainHandItem().is(Items.TORCH) || marine.getOffhandItem().is(Items.TORCH)
+        marine -> marine.getMainHandItem().is(Items.TORCH) || marine.getOffhandItem().is(Items.TORCH)
     );
 
     public static final Sensor.Mono<Marine, Boolean> SHOULD_COLLECT_MORE_TORCHES = Sensors.lazyCompose(
@@ -86,20 +86,20 @@ public class TorchSensors {
         }
     );
 
-    public static final Sensor.Mono<Marine, Boolean> IS_IN_DARK_AREA = Sensors.lazyCompose(
+    public static final Sensor.Mono<Marine, Boolean> IS_IN_DARK_AREA = Sensors.map(
         StateKey.sensed("is_in_dark_area"),
-        (marine, worldState) -> {
+        marine -> {
             var level = marine.level();
             var pos = marine.blockPosition();
-            var blockLight = level.getBrightness(LightLayer.BLOCK, pos);
 
-            return blockLight <= DARK_LIGHT_LEVEL_THRESHOLD;
+            return !marine.level().canSeeSky(pos)
+                && level.getBrightness(LightLayer.BLOCK, pos) <= DARK_LIGHT_LEVEL_THRESHOLD;
         }
     );
 
-    public static final Sensor.Mono<Marine, Boolean> CAN_PLACE_TORCH_AT_FEET = Sensors.lazyCompose(
+    public static final Sensor.Mono<Marine, Boolean> CAN_PLACE_TORCH_AT_FEET = Sensors.map(
         StateKey.sensed("can_place_torch_at_feet"),
-        (marine, worldState) -> {
+        marine -> {
             var level = marine.level();
             var feetPos = marine.blockPosition();
             var belowPos = feetPos.below();
@@ -126,9 +126,9 @@ public class TorchSensors {
      * Finds a valid wall position to place a wall torch within 3 blocks in any cardinal direction. Returns the position
      * where the torch would be placed (the air block), not the wall itself.
      */
-    public static final Sensor.Mono<Marine, Option<BlockPos>> TORCH_WALL_PLACEMENT_POS = Sensors.lazyCompose(
+    public static final Sensor.Mono<Marine, Option<BlockPos>> TORCH_WALL_PLACEMENT_POS = Sensors.map(
         StateKey.sensed("torch_wall_placement_pos"),
-        (marine, worldState) -> {
+        marine -> {
             var level = marine.level();
             var marinePos = marine.blockPosition();
 
