@@ -33,7 +33,7 @@ public class ApeGearDecorator implements MarineDecorator {
     }
 
     public void applyExclusives(Marine marine) {
-        MarineGearDecoratorUtil.giveDroppableItem(marine, HumanGunItems.FLAMETHROWER_SEVASTOPOL.get());
+        MarineGearDecoratorUtil.giveItem(marine, HumanGunItems.FLAMETHROWER_SEVASTOPOL.get());
     }
 
     public void applyExtras(Marine marine) {
@@ -49,7 +49,7 @@ public class ApeGearDecorator implements MarineDecorator {
     }
 
     public void applyPrimaryWeapon(Marine marine) {
-        MarineGearDecoratorUtil.giveDroppableItem(marine, HumanGunItems.M41A_PULSE_RIFLE.get());
+        MarineGearDecoratorUtil.giveItem(marine, HumanGunItems.M41A_PULSE_RIFLE.get());
     }
 
     public void applySecondaryWeapon(Marine marine) {
