@@ -8,6 +8,7 @@ import com.just.core.functional.option.Option;
 import com.just.goap.action.Action;
 import net.minecraft.world.entity.EntityEvent;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Items;
 
@@ -41,22 +42,30 @@ public class UseBoneOnWolfAction {
 
         // Attempt to tame the wolf (1/3 chance, same as vanilla).
         if (marine.getRandom().nextInt(3) == 0) {
-            // Taming successful! Tame the wolf to the marine's leader if they have one,
-            // otherwise tame to the marine itself.
-            var ownerUUID = marine.getLeaderUUID().unwrapOr(marine.getUUID());
+            var accessor = (MixinWolf_Accessor) wolf;
+            // If the marine does not have a leader, then the wolf belongs to marine.
+            // If the marine has a leader but the leader is not loaded, then the wolf belongs to the marine.
+            if (!marine.hasLeader() || !marine.getLeader().isSome()) {
+                wolf.setOwnerUUID(marine.getUUID());
+                wolf.getEntityData().set(accessor.getDataCollarColor(), DyeColor.GREEN.getId());
+            } else {
+                var leader = marine.getLeader().unwrap();
+
+                // If the marine has a leader and the leader is NOT a player, then the wolf belongs to the marine.
+                if (!(leader instanceof Player)) {
+                    wolf.setOwnerUUID(marine.getUUID());
+                    wolf.getEntityData().set(accessor.getDataCollarColor(), DyeColor.GREEN.getId());
+                } else {
+                    wolf.setOwnerUUID(leader.getUUID());
+                }
+            }
 
             wolf.setTame(true, true);
-            wolf.setOwnerUUID(ownerUUID);
             wolf.getNavigation().stop();
             wolf.setOrderedToSit(false);
             wolf.setInSittingPose(false);
             // Hearts particle effect.
             wolf.level().broadcastEntityEvent(wolf, EntityEvent.TAMING_SUCCEEDED);
-
-            if (!marine.hasLeader()) {
-                var accessor = (MixinWolf_Accessor) wolf;
-                wolf.getEntityData().set(accessor.getDataCollarColor(), DyeColor.GREEN.getId());
-            }
 
             return Action.Signal.CONTINUE;
         } else {
