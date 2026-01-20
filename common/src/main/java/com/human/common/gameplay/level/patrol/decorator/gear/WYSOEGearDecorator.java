@@ -50,8 +50,7 @@ public class WYSOEGearDecorator implements MarineDecorator {
     }
 
     public void applyPrimaryWeapon(Marine marine) {
-        var randomWeaponSupplier = MarineGearDecoratorUtil.selectFromWeightedList(weightedPrimaryWeapons, marine.getRandom());
-        MarineGearDecoratorUtil.giveItem(marine, randomWeaponSupplier.get());
+        MarineGearDecoratorUtil.giveWeightedItemFromPool(marine, weightedPrimaryWeapons);
     }
 
     public void applySecondaryWeapon(Marine marine) {

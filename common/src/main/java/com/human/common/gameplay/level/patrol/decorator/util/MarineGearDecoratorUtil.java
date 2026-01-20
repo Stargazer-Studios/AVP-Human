@@ -15,6 +15,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 public class MarineGearDecoratorUtil {
 
@@ -83,7 +84,12 @@ public class MarineGearDecoratorUtil {
         marine.getInventory().addItemStack(itemStack);
     }
 
-    public static <T> T selectFromWeightedList(List<Tuple2<Integer, T>> weightedList, RandomSource randomSource) {
+    public static void giveWeightedItemFromPool(Marine marine, List<Tuple2<Integer, Supplier<Item>>> pool) {
+        var randomWeaponSupplier = selectFromWeightedList(pool, marine.getRandom());
+        giveItem(marine, randomWeaponSupplier.get());
+    }
+
+    private static <T> T selectFromWeightedList(List<Tuple2<Integer, T>> weightedList, RandomSource randomSource) {
         if (weightedList.isEmpty()) {
             throw new IllegalArgumentException("Weighted list cannot be empty.");
         }
