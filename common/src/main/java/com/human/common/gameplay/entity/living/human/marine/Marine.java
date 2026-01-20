@@ -1,7 +1,6 @@
 package com.human.common.gameplay.entity.living.human.marine;
 
 import com.blib.common.constant.PlayerStatConstants;
-import com.blib.common.gameplay.goap.GOAPSensors;
 import com.blib.common.gameplay.goap.GOAPUser;
 import com.blib.common.gameplay.model.inventory.BLibInventory;
 import com.blib.common.gameplay.model.inventory.BLibInventoryHolder;
@@ -15,20 +14,16 @@ import com.human.common.gameplay.entity.EntitySenseCache;
 import com.human.common.gameplay.entity.living.human.AbstractHuman;
 import com.human.common.gameplay.entity.living.human.marine.ai.MarineGOAP;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.FRIStrategySet;
-import com.human.common.gameplay.entity.living.human.marine.ai.break_fall.BreakFallSensors;
 import com.human.common.gameplay.entity.living.human.marine.ai.combat.strategy.WeaponStrategySet;
 import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.strategy.ArmorStrategySet;
 import com.human.common.gameplay.item.GunItem;
 import com.human.common.gameplay.item.ItemCooldownUser;
+import com.human.common.gameplay.level.patrol.decorator.gear.MarineGearDecorator;
 import com.human.common.registry.init.HumanDataComponents;
-import com.human.common.registry.init.item.HumanArmorItems;
-import com.human.common.registry.init.item.HumanGunItems;
-import com.human.common.registry.init.item.HumanItems;
 import com.just.codec.impl.Codecs;
 import com.just.core.functional.option.Option;
 import com.just.goap.Agent;
 import com.just.goap.graph.Graph;
-import com.just.goap.plan.ReplanPolicies;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -45,8 +40,6 @@ import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemCooldowns;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -56,10 +49,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
-import java.util.function.Supplier;
 
 public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUser<Marine>, ItemCooldownUser {
 
@@ -72,49 +63,6 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
     private static final String NBT_INVENTORY = "inventory";
 
     private static final String NBT_LEADER_UUID = "leaderUUID";
-
-    private static final List<List<Supplier<ArmorItem>>> DEFAULT_ARMOR_SETS = List.of(
-        List.of(
-            HumanArmorItems.TACTICAL_HELMET,
-            HumanArmorItems.TACTICAL_CHESTPLATE,
-            HumanArmorItems.TACTICAL_LEGGINGS,
-            HumanArmorItems.TACTICAL_BOOTS
-        ),
-        List.of(
-            HumanArmorItems.TACTICAL_CAMO_HELMET,
-            HumanArmorItems.TACTICAL_CAMO_CHESTPLATE,
-            HumanArmorItems.TACTICAL_CAMO_LEGGINGS,
-            HumanArmorItems.TACTICAL_CAMO_BOOTS
-        )
-    );
-
-    private static final List<Supplier<Item>> PRIMARY_WEAPON_ITEM_SUPPLIERS = List.of(
-        HumanGunItems.F903WE_RIFLE,
-        HumanGunItems.FLAMETHROWER_SEVASTOPOL,
-        HumanGunItems.M37_12_SHOTGUN,
-        HumanGunItems.M41A_PULSE_RIFLE,
-        HumanGunItems.M42A3_SNIPER_RIFLE,
-        HumanGunItems.M4RA_BATTLE_RIFLE,
-        HumanGunItems.M56_SMARTGUN,
-        HumanGunItems.M6B_ROCKET_LAUNCHER,
-        HumanGunItems.ZX_76_SHOTGUN
-    );
-
-    private static final List<Supplier<Item>> SECONDARY_WEAPON_ITEM_SUPPLIERS = List.of(
-        HumanGunItems.M88MOD4_COMBAT_PISTOL
-    );
-
-    private static final List<Supplier<Item>> MELEE_WEAPON_ITEM_SUPPLIERS = List.of(
-        () -> Items.IRON_AXE,
-        () -> Items.IRON_SWORD
-    );
-
-    private static final List<EquipmentSlot> ARMOR_EQUIPMENT_SLOTS = List.of(
-        EquipmentSlot.HEAD,
-        EquipmentSlot.CHEST,
-        EquipmentSlot.LEGS,
-        EquipmentSlot.FEET
-    );
 
     public static AttributeSupplier.Builder createMarineAttributes() {
         return applyFrom(HumanConfig.INSTANCE.statsConfigs.MARINE_STATS, Mob.createMobAttributes().add(Attributes.ATTACK_DAMAGE));
@@ -147,23 +95,7 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
 
     @Override
     public Agent.Builder<Marine> blib$applyGOAPAgentProperties(Agent.Builder<Marine> agentBuilder) {
-        return agentBuilder.withReplanPolicy(
-            ReplanPolicies.anyOf(
-                ReplanPolicies.ifNoActivePlans(),
-                // Replan every 20 ticks (every 1 second).
-                ReplanPolicies.custom(context -> context.agent().getActor().tickCount % 20 == 0),
-                ReplanPolicies.custom(context -> {
-                    var isOnFire = context.worldState().getOrDefault(GOAPSensors.IS_ON_FIRE.key(), false);
-                    var wasOnFire = context.previousWorldState().getOrDefault(GOAPSensors.IS_ON_FIRE.key(), false);
-                    // If we were previously not on fire, and now we're on fire, then replan.
-                    return !wasOnFire && isOnFire;
-                }),
-                ReplanPolicies.custom(context -> {
-                    // if the marine is falling, we want him to replan so he can save his own life.
-                    return context.worldState().getOrDefault(BreakFallSensors.IS_FALLING.key(), false);
-                })
-            )
-        );
+        return MarineGOAP.applyAgentProperties(agentBuilder);
     }
 
     @Override
@@ -215,12 +147,7 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
         @NotNull MobSpawnType spawnType,
         @Nullable SpawnGroupData spawnGroupData
     ) {
-        addInitialArmor();
-        addInitialGrenade();
-        addWeaponFromPool(PRIMARY_WEAPON_ITEM_SUPPLIERS);
-        addWeaponFromPool(SECONDARY_WEAPON_ITEM_SUPPLIERS);
-        addWeaponFromPool(MELEE_WEAPON_ITEM_SUPPLIERS);
-
+        MarineGearDecorator.INSTANCE.decorate(level(), this);
         return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
     }
 
@@ -346,40 +273,5 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
 
     public void removeLeader() {
         this.leaderUUIDOption = Option.none();
-    }
-
-    private void addInitialArmor() {
-        var randomArmorSetIndex = getRandom().nextInt(DEFAULT_ARMOR_SETS.size());
-        var selectedArmor = DEFAULT_ARMOR_SETS.get(randomArmorSetIndex)
-            .stream()
-            .map(itemSupplier -> {
-                var itemStack = new ItemStack(itemSupplier.get());
-                itemStack.set(HumanDataComponents.MARINE_OWNED.get(), true);
-                return itemStack;
-            })
-            .toArray(ItemStack[]::new);
-
-        for (var i = 0; i < ARMOR_EQUIPMENT_SLOTS.size(); i++) {
-            inventory.addItemStack(selectedArmor[i]);
-        }
-    }
-
-    private void addInitialGrenade() {
-        var grenadeItemStack = new ItemStack(HumanItems.GRENADE.get());
-        grenadeItemStack.set(HumanDataComponents.MARINE_OWNED.get(), true);
-        inventory.addItemStack(grenadeItemStack);
-    }
-
-    private void addWeaponFromPool(List<Supplier<Item>> itemSupplierPool) {
-        var randomIndex = random.nextInt(itemSupplierPool.size());
-        var item = itemSupplierPool.get(randomIndex).get();
-        var itemStack = new ItemStack(item);
-        itemStack.set(HumanDataComponents.MARINE_OWNED.get(), true);
-
-        if (item instanceof GunItem gunItem) {
-            itemStack.set(HumanDataComponents.AMMUNITION.get(), gunItem.getGunConfig().maximumAmmunition());
-        }
-
-        inventory.addItemStack(itemStack);
     }
 }

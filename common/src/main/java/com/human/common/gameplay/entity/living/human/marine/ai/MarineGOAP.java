@@ -38,7 +38,9 @@ import com.human.common.gameplay.entity.living.human.marine.ai.tame_wolf.TameWol
 import com.human.common.gameplay.entity.living.human.marine.ai.tame_wolf.TameWolfGoals;
 import com.human.common.gameplay.entity.living.human.marine.ai.tame_wolf.TameWolfSensors;
 import com.human.common.registry.tag.HumanEntityTypeTags;
+import com.just.goap.Agent;
 import com.just.goap.graph.Graph;
+import com.just.goap.plan.ReplanPolicies;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 
@@ -60,6 +62,32 @@ public class MarineGOAP {
         .apply(MarineGOAP::addBreakFallPackage)
         .apply(MarineGOAP::addHealSelfPackage)
         .build();
+
+    public static Agent.Builder<Marine> applyAgentProperties(Agent.Builder<Marine> agentBuilder) {
+        return agentBuilder.withReplanPolicy(
+            ReplanPolicies.anyOf(
+                ReplanPolicies.ifNoActivePlans(),
+                // Replan every 20 ticks (every 1 second).
+                ReplanPolicies.custom(context -> context.agent().getActor().tickCount % 20 == 0),
+                ReplanPolicies.custom(context -> {
+                    var isOnFire = context.worldState().getOrDefault(GOAPSensors.IS_ON_FIRE.key(), false);
+                    var wasOnFire = context.previousWorldState().getOrDefault(GOAPSensors.IS_ON_FIRE.key(), false);
+                    // If the marine was previously not on fire, and is now on fire, then replan.
+                    return !wasOnFire && isOnFire;
+                }),
+                ReplanPolicies.custom(context -> {
+                    // if the marine is falling, we want him to replan so he can save his own life.
+                    return context.worldState().getOrDefault(BreakFallSensors.IS_FALLING.key(), false);
+                }),
+                ReplanPolicies.custom(context -> {
+                    var currentHealthRatio = context.worldState().getOrDefault(GOAPSensors.HEALTH_RATIO.key(), 0F);
+                    var previousHealthRatio = context.previousWorldState().getOrDefault(GOAPSensors.HEALTH_RATIO.key(), 0F);
+                    // If the marine's health decreased, then replan.
+                    return currentHealthRatio < previousHealthRatio;
+                })
+            )
+        );
+    }
 
     private static Graph.Builder<Marine> addSensorsPackage(Graph.Builder<Marine> graphBuilder) {
         // Environment.
