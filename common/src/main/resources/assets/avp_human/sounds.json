@@ -1,4 +1,13 @@
 {
+  "item.armor.equip_ape": {
+    "sounds": [
+      {
+        "name": "minecraft:item.armor.equip_leather",
+        "type": "event"
+      }
+    ],
+    "subtitle": "subtitles.item.armor.equip_ape"
+  },
   "item.armor.equip_mk50": {
     "sounds": [
       {

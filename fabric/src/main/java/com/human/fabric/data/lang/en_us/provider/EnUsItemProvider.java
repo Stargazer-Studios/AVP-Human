@@ -33,6 +33,10 @@ public class EnUsItemProvider {
         addItem(builder, HumanGunItems.M6B_ROCKET_LAUNCHER, "M6B Rocket Launcher");
         addItem(builder, HumanGunItems.M88MOD4_COMBAT_PISTOL, "88 Mod 4 Combat Pistol");
         addItem(builder, HumanItems.MEDIUM_BULLET, "Medium Bullet");
+        addItem(builder, HumanArmorItems.APE_BOOTS, "Ape Boots");
+        addItem(builder, HumanArmorItems.APE_CHESTPLATE, "Ape Chestplate");
+        addItem(builder, HumanArmorItems.APE_HELMET, "Ape Helmet");
+        addItem(builder, HumanArmorItems.APE_LEGGINGS, "Ape Leggings");
         addItem(builder, HumanArmorItems.MK50_BOOTS, "MK50 Boots");
         addItem(builder, HumanArmorItems.MK50_CHESTPLATE, "MK50 Chestplate");
         addItem(builder, HumanArmorItems.MK50_HELMET, "MK50 Helmet");

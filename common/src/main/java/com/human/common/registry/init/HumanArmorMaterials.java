@@ -22,6 +22,22 @@ public class HumanArmorMaterials {
 
     public static final BLibRegistry<ArmorMaterial> REGISTRY = Human.MOD.registries().create(BuiltInRegistries.ARMOR_MATERIAL);
 
+    public static final BLibHolder<ArmorMaterial> APE = create(
+        "ape",
+        relativeDefense(
+            ArmorMaterials.IRON,
+            Map.ofEntries(
+                Map.entry(ArmorItem.Type.CHESTPLATE, -2),
+                Map.entry(ArmorItem.Type.LEGGINGS, -1)
+            )
+        ),
+        6,
+        HumanSoundEvents.ITEM_ARMOR_EQUIP_APE,
+        () -> Ingredient.of(HumanCommonItemTags.INGOTS_LEAD),
+        0,
+        0
+    );
+
     public static final BLibHolder<ArmorMaterial> MK50 = create(
         "mk50",
         relativeDefense(
@@ -35,8 +51,7 @@ public class HumanArmorMaterials {
         HumanSoundEvents.ITEM_ARMOR_EQUIP_MK50,
         () -> Ingredient.of(HumanCommonItemTags.INGOTS_LEAD),
         0,
-        0,
-        true
+        0
     );
 
     public static final BLibHolder<ArmorMaterial> PRESSURE = create(
@@ -52,8 +67,7 @@ public class HumanArmorMaterials {
         HumanSoundEvents.ITEM_ARMOR_EQUIP_PRESSURE,
         () -> Ingredient.of(HumanCommonItemTags.INGOTS_ALUMINUM),
         0,
-        0,
-        false
+        0
     );
 
     public static final BLibHolder<ArmorMaterial> STEEL = create(
@@ -71,8 +85,7 @@ public class HumanArmorMaterials {
         HumanSoundEvents.ITEM_ARMOR_EQUIP_STEEL,
         () -> Ingredient.of(HumanCommonItemTags.INGOTS_STEEL),
         0,
-        0,
-        false
+        0
     );
 
     public static final BLibHolder<ArmorMaterial> TACTICAL = create(
@@ -87,8 +100,7 @@ public class HumanArmorMaterials {
         HumanSoundEvents.ITEM_ARMOR_EQUIP_TACTICAL,
         () -> Ingredient.of(HumanCommonItemTags.INGOTS_STEEL),
         0,
-        0,
-        false
+        0
     );
 
     public static final BLibHolder<ArmorMaterial> TITANIUM = create(
@@ -106,8 +118,7 @@ public class HumanArmorMaterials {
         HumanSoundEvents.ITEM_ARMOR_EQUIP_TITANIUM,
         () -> Ingredient.of(HumanCommonItemTags.INGOTS_TITANIUM),
         1,
-        0,
-        false
+        0
     );
 
     public static final BLibHolder<ArmorMaterial> WY_COMMANDO = create(
@@ -122,8 +133,7 @@ public class HumanArmorMaterials {
         HumanSoundEvents.ITEM_ARMOR_EQUIP_TACTICAL,
         () -> Ingredient.of(HumanCommonItemTags.INGOTS_STEEL),
         0,
-        0,
-        false
+        0
     );
 
     public static final BLibHolder<ArmorMaterial> WY_ELITE = create(
@@ -138,8 +148,7 @@ public class HumanArmorMaterials {
         HumanSoundEvents.ITEM_ARMOR_EQUIP_TACTICAL,
         () -> Ingredient.of(HumanCommonItemTags.INGOTS_STEEL),
         0,
-        0,
-        false
+        0
     );
 
     public static BLibHolder<ArmorMaterial> create(
@@ -149,13 +158,12 @@ public class HumanArmorMaterials {
         BLibHolder<SoundEvent> holder,
         Supplier<Ingredient> repairIngredientSupplier,
         float toughness,
-        float knockbackResistance,
-        boolean dyeable
+        float knockbackResistance
     ) {
         var resourceLocation = HumanResources.location(path);
 
         List<ArmorMaterial.Layer> layers = List.of(
-            new ArmorMaterial.Layer(resourceLocation, "", dyeable)
+            new ArmorMaterial.Layer(resourceLocation, "", false)
         );
 
         return REGISTRY.createHolder(

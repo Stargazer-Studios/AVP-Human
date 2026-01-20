@@ -11,6 +11,8 @@ public class HumanSoundEvents {
 
     private static final BLibRegistry<SoundEvent> REGISTRY = Human.MOD.registries().create(BuiltInRegistries.SOUND_EVENT);
 
+    public static final BLibHolder<SoundEvent> ITEM_ARMOR_EQUIP_APE = create("item.armor.equip_ape");
+
     public static final BLibHolder<SoundEvent> ITEM_ARMOR_EQUIP_MK50 = create("item.armor.equip_mk50");
 
     public static final BLibHolder<SoundEvent> ITEM_ARMOR_EQUIP_PRESSURE = create("item.armor.equip_pressure");

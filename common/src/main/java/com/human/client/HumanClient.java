@@ -6,6 +6,7 @@ import com.blib.client.BLibClientMod;
 import com.blib.common.registry.BLibHolder;
 import com.human.Human;
 import com.human.client.input.keybind.HumanKeybindingRegistry;
+import com.human.client.render.armor.ApeArmorRenderer;
 import com.human.client.render.armor.MK50ArmorRenderer;
 import com.human.client.render.armor.PressureArmorRenderer;
 import com.human.client.render.armor.TacticalArmorRenderer;
@@ -92,6 +93,16 @@ public class HumanClient {
     }
 
     private static void registerArmorRenderers() {
+        MOD.registries()
+            .registerArmorRenderer(
+                ApeArmorRenderer::new,
+                List.of(
+                    HumanArmorItems.APE_HELMET,
+                    HumanArmorItems.APE_CHESTPLATE,
+                    HumanArmorItems.APE_LEGGINGS,
+                    HumanArmorItems.APE_BOOTS
+                )
+            );
         MOD.registries()
             .registerArmorRenderer(
                 MK50ArmorRenderer::new,

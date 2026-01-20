@@ -10,6 +10,7 @@ import java.util.function.Supplier;
 public class EnUsSoundEventProvider {
 
     public static final Consumer<FabricLanguageProvider.TranslationBuilder> CONSUMER = builder -> {
+        addSound(builder, HumanSoundEvents.ITEM_ARMOR_EQUIP_APE, "APE armor rustles");
         addSound(builder, HumanSoundEvents.ITEM_ARMOR_EQUIP_MK50, "MK50 armor rustles");
         addSound(builder, HumanSoundEvents.ITEM_ARMOR_EQUIP_PRESSURE, "Pressure armor rustles");
         addSound(builder, HumanSoundEvents.ITEM_ARMOR_EQUIP_STEEL, "Steel armor clanks");

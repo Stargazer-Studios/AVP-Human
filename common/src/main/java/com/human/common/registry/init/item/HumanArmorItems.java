@@ -3,6 +3,7 @@ package com.human.common.registry.init.item;
 import com.blib.common.registry.BLibHolder;
 import com.blib.common.registry.BLibRegistry;
 import com.human.Human;
+import com.human.common.gameplay.item.ApeArmorItem;
 import com.human.common.gameplay.item.MK50ArmorItem;
 import com.human.common.gameplay.item.PressureSuitArmorItem;
 import com.human.common.registry.init.HumanArmorMaterials;
@@ -27,6 +28,20 @@ public class HumanArmorItems {
     private static final int WY_COMMANDO_DURABILITY_MULTIPLIER = 18;
 
     private static final int WY_ELITE_DURABILITY_MULTIPLIER = 18;
+
+    public static final BLibHolder<ArmorItem> APE_BOOTS = create("ape_boots", () -> new ApeArmorItem(ArmorItem.Type.BOOTS));
+
+    public static final BLibHolder<ArmorItem> APE_CHESTPLATE = create(
+        "ape_chestplate",
+        () -> new ApeArmorItem(ArmorItem.Type.CHESTPLATE)
+    );
+
+    public static final BLibHolder<ArmorItem> APE_HELMET = create("ape_helmet", () -> new ApeArmorItem(ArmorItem.Type.HELMET));
+
+    public static final BLibHolder<ArmorItem> APE_LEGGINGS = create(
+        "ape_leggings",
+        () -> new ApeArmorItem(ArmorItem.Type.LEGGINGS)
+    );
 
     public static final BLibHolder<ArmorItem> MK50_BOOTS = create("mk50_boots", () -> new MK50ArmorItem(ArmorItem.Type.BOOTS));
 
