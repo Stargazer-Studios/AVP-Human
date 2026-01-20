@@ -16,6 +16,7 @@ import com.human.common.gameplay.entity.living.human.marine.ai.MarineGOAP;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.FRIStrategySet;
 import com.human.common.gameplay.entity.living.human.marine.ai.combat.strategy.WeaponStrategySet;
 import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.strategy.ArmorStrategySet;
+import com.human.common.gameplay.entity.living.human.marine.ai.heal_self.strategy.HealingStrategySet;
 import com.human.common.gameplay.item.GunItem;
 import com.human.common.gameplay.item.ItemCooldownUser;
 import com.human.common.gameplay.level.patrol.decorator.gear.MarineGearDecorator;
@@ -163,17 +164,20 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
                 HumanAdvancements.HIRE_MARINE.grant((ServerPlayer) player);
             }
 
-            // TODO: Grant advancement here, maybe?
             return InteractionResult.sidedSuccess(level().isClientSide);
         }
 
         // Only leaders can give marines items.
         if (getLeaderUUID().isSomeAnd(uuid -> Objects.equals(uuid, player.getUUID()))) {
             if (
-                itemStack.getItem() == Items.WATER_BUCKET
+                itemStack.getItem() == Items.BONE
+                    || itemStack.getItem() == Items.TORCH
+                    || itemStack.getItem() == Items.TOTEM_OF_UNDYING
+                    || itemStack.getItem() == Items.WATER_BUCKET
                     || ArmorStrategySet.INSTANCE.isAnyValidFor(itemStack)
-                    || WeaponStrategySet.INSTANCE.isAnyValidFor(itemStack)
                     || FRIStrategySet.INSTANCE.isAnyValidFor(itemStack)
+                    || HealingStrategySet.INSTANCE.isAnyValidFor(itemStack)
+                    || WeaponStrategySet.INSTANCE.isAnyValidFor(itemStack)
             ) {
                 if (!level().isClientSide) {
                     var item = new ItemStack(itemStack.getItem(), 1);
