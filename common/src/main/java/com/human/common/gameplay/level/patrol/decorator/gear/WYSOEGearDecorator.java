@@ -13,13 +13,13 @@ import net.minecraft.world.level.Level;
 import java.util.List;
 import java.util.function.Supplier;
 
-public class MarineWYSOEGearDecorator implements MarineDecorator {
+public class WYSOEGearDecorator implements MarineDecorator {
 
-    public static final MarineWYSOEGearDecorator INSTANCE = new MarineWYSOEGearDecorator();
+    public static final WYSOEGearDecorator INSTANCE = new WYSOEGearDecorator();
 
     private final List<Tuple2<Integer, Supplier<Item>>> weightedPrimaryWeapons;
 
-    private MarineWYSOEGearDecorator() {
+    private WYSOEGearDecorator() {
         this.weightedPrimaryWeapons = List.of(
             new Tuple2<>(25, HumanGunItems.M56_SMARTGUN),
             new Tuple2<>(50, HumanGunItems.M41A_PULSE_RIFLE),
@@ -38,13 +38,13 @@ public class MarineWYSOEGearDecorator implements MarineDecorator {
     }
 
     public void applyArmor(Marine marine) {
-        MarineWYEGearDecorator.INSTANCE.applyArmor(marine);
+        WYEGearDecorator.INSTANCE.applyArmor(marine);
     }
 
     public void applyExclusives(Marine marine) {}
 
     public void applyExtras(Marine marine) {
-        MarineWYSOCGearDecorator.INSTANCE.applyExtras(marine);
+        WYSOCGearDecorator.INSTANCE.applyExtras(marine);
 
         MarineGearDecoratorUtil.giveItem(marine, Items.ENCHANTED_GOLDEN_APPLE, 8);
     }
@@ -55,6 +55,6 @@ public class MarineWYSOEGearDecorator implements MarineDecorator {
     }
 
     public void applySecondaryWeapon(Marine marine) {
-        MarineWYSOCGearDecorator.INSTANCE.applySecondaryWeapon(marine);
+        WYSOCGearDecorator.INSTANCE.applySecondaryWeapon(marine);
     }
 }

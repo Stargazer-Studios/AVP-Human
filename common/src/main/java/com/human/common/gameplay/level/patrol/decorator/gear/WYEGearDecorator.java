@@ -7,11 +7,11 @@ import com.human.common.registry.init.item.HumanArmorItems;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 
-public class MarineWYEGearDecorator implements MarineDecorator {
+public class WYEGearDecorator implements MarineDecorator {
 
-    public static final MarineWYEGearDecorator INSTANCE = new MarineWYEGearDecorator();
+    public static final WYEGearDecorator INSTANCE = new WYEGearDecorator();
 
-    private MarineWYEGearDecorator() {}
+    private WYEGearDecorator() {}
 
     @Override
     public void decorate(Level level, Marine marine) {
@@ -32,16 +32,16 @@ public class MarineWYEGearDecorator implements MarineDecorator {
     public void applyExclusives(Marine marine) {}
 
     public void applyExtras(Marine marine) {
-        MarineWYCGearDecorator.INSTANCE.applyExtras(marine);
+        WYCGearDecorator.INSTANCE.applyExtras(marine);
 
         MarineGearDecoratorUtil.giveItem(marine, Items.GOLDEN_APPLE, 8);
     }
 
     public void applyPrimaryWeapon(Marine marine) {
-        MarineWYCGearDecorator.INSTANCE.applyPrimaryWeapon(marine);
+        WYCGearDecorator.INSTANCE.applyPrimaryWeapon(marine);
     }
 
     public void applySecondaryWeapon(Marine marine) {
-        MarineWYCGearDecorator.INSTANCE.applySecondaryWeapon(marine);
+        WYCGearDecorator.INSTANCE.applySecondaryWeapon(marine);
     }
 }

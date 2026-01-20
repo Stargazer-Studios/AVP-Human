@@ -9,11 +9,11 @@ import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 
-public class MarineWYSOCGearDecorator implements MarineDecorator {
+public class WYSOCGearDecorator implements MarineDecorator {
 
-    public static final MarineWYSOCGearDecorator INSTANCE = new MarineWYSOCGearDecorator();
+    public static final WYSOCGearDecorator INSTANCE = new WYSOCGearDecorator();
 
-    private MarineWYSOCGearDecorator() {}
+    private WYSOCGearDecorator() {}
 
     @Override
     public void decorate(Level level, Marine marine) {
@@ -26,13 +26,13 @@ public class MarineWYSOCGearDecorator implements MarineDecorator {
     }
 
     public void applyArmor(Marine marine) {
-        MarineWYCGearDecorator.INSTANCE.applyArmor(marine);
+        WYCGearDecorator.INSTANCE.applyArmor(marine);
     }
 
     public void applyExclusives(Marine marine) {}
 
     public void applyExtras(Marine marine) {
-        MarineWYEGearDecorator.INSTANCE.applyExtras(marine);
+        WYEGearDecorator.INSTANCE.applyExtras(marine);
 
         MarineGearDecoratorUtil.giveItem(marine, Items.ENCHANTED_GOLDEN_APPLE, 4);
         MarineGearDecoratorUtil.giveItem(marine, Items.TOTEM_OF_UNDYING, 2);
@@ -42,10 +42,10 @@ public class MarineWYSOCGearDecorator implements MarineDecorator {
     }
 
     public void applyPrimaryWeapon(Marine marine) {
-        MarineWYEGearDecorator.INSTANCE.applyPrimaryWeapon(marine);
+        WYEGearDecorator.INSTANCE.applyPrimaryWeapon(marine);
     }
 
     public void applySecondaryWeapon(Marine marine) {
-        MarineWYEGearDecorator.INSTANCE.applySecondaryWeapon(marine);
+        WYEGearDecorator.INSTANCE.applySecondaryWeapon(marine);
     }
 }

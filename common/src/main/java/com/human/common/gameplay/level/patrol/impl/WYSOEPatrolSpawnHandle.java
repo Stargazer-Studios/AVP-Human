@@ -2,7 +2,7 @@ package com.human.common.gameplay.level.patrol.impl;
 
 import com.human.common.gameplay.level.patrol.PatrolSpawner;
 import com.human.common.gameplay.level.patrol.PatrolSpawnerTicker;
-import com.human.common.gameplay.level.patrol.decorator.gear.MarineWYSOEGearDecorator;
+import com.human.common.gameplay.level.patrol.decorator.gear.WYSOEGearDecorator;
 import com.human.common.gameplay.level.patrol.decorator.squad.MarineSquadLeadershipDecorator;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -42,7 +42,7 @@ public class WYSOEPatrolSpawnHandle {
         MarineSquadLeadershipDecorator.INSTANCE.decorate(level, spawnedMarines);
 
         for (var marine : spawnedMarines) {
-            MarineWYSOEGearDecorator.INSTANCE.decorate(level, marine);
+            WYSOEGearDecorator.INSTANCE.decorate(level, marine);
         }
     }
 }

@@ -9,11 +9,11 @@ import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 
-public class MarineWYCGearDecorator implements MarineDecorator {
+public class WYCGearDecorator implements MarineDecorator {
 
-    public static final MarineWYCGearDecorator INSTANCE = new MarineWYCGearDecorator();
+    public static final WYCGearDecorator INSTANCE = new WYCGearDecorator();
 
-    private MarineWYCGearDecorator() {}
+    private WYCGearDecorator() {}
 
     @Override
     public void decorate(Level level, Marine marine) {
