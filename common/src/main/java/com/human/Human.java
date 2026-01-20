@@ -7,6 +7,7 @@ import com.human.common.data.HumanReloadListeners;
 import com.human.common.data.fixer.migration.HumanDataMigrations;
 import com.human.common.gameplay.entity.living.human.marine.ai.MarineGOAP;
 import com.human.common.gameplay.gene.Genes;
+import com.human.common.gameplay.level.patrol.impl.ApePatrolSpawnHandle;
 import com.human.common.gameplay.level.patrol.impl.MarinePatrolSpawnHandle;
 import com.human.common.gameplay.level.patrol.impl.TacticalMarinePatrolSpawnHandle;
 import com.human.common.gameplay.level.patrol.impl.WYCPatrolSpawnHandle;
@@ -168,6 +169,7 @@ public class Human {
 
             MarinePatrolSpawnHandle.INSTANCE.tick(serverLevel);
             TacticalMarinePatrolSpawnHandle.INSTANCE.tick(serverLevel);
+            ApePatrolSpawnHandle.INSTANCE.tick(serverLevel);
             WYCPatrolSpawnHandle.INSTANCE.tick(serverLevel);
             WYEPatrolSpawnHandle.INSTANCE.tick(serverLevel);
             WYSOCPatrolSpawnHandle.INSTANCE.tick(serverLevel);

@@ -1,6 +1,7 @@
 package com.human.common.gameplay.command;
 
 import com.human.common.gameplay.level.patrol.PatrolSpawner;
+import com.human.common.gameplay.level.patrol.impl.ApePatrolSpawnHandle;
 import com.human.common.gameplay.level.patrol.impl.MarinePatrolSpawnHandle;
 import com.human.common.gameplay.level.patrol.impl.TacticalMarinePatrolSpawnHandle;
 import com.human.common.gameplay.level.patrol.impl.WYCPatrolSpawnHandle;
@@ -18,6 +19,10 @@ public class SpawnPatrolCommand {
         return Commands.literal("patrol")
             .then(
                 Commands.literal("spawn")
+                    .then(
+                        Commands.literal("ape")
+                            .executes(context -> spawnPatrol(context, ApePatrolSpawnHandle.INSTANCE.getSpawner()))
+                    )
                     .then(
                         Commands.literal("marine")
                             .executes(context -> spawnPatrol(context, MarinePatrolSpawnHandle.INSTANCE.getSpawner()))

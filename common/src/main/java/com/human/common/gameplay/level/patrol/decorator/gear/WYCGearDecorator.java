@@ -4,16 +4,31 @@ import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.human.common.gameplay.level.patrol.decorator.MarineDecorator;
 import com.human.common.gameplay.level.patrol.decorator.util.MarineGearDecoratorUtil;
 import com.human.common.registry.init.item.HumanArmorItems;
+import com.human.common.registry.init.item.HumanGunItems;
+import com.just.core.functional.tuple.Tuple2;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Supplier;
+
 public class WYCGearDecorator implements MarineDecorator {
 
     public static final WYCGearDecorator INSTANCE = new WYCGearDecorator();
 
-    private WYCGearDecorator() {}
+    private final List<Tuple2<Integer, Supplier<Item>>> weightedPrimaryWeapons;
+
+    private WYCGearDecorator() {
+        var base = new ArrayList<>(TacticalMarineGearDecorator.INSTANCE.getWeightedPrimaryWeapons());
+
+        base.add(new Tuple2<>(40, HumanGunItems.M41A_PULSE_RIFLE));
+
+        this.weightedPrimaryWeapons = List.copyOf(base);
+    }
 
     @Override
     public void decorate(Level level, Marine marine) {
@@ -34,7 +49,7 @@ public class WYCGearDecorator implements MarineDecorator {
     public void applyExclusives(Marine marine) {}
 
     public void applyExtras(Marine marine) {
-        TacticalMarineGearDecorator.INSTANCE.applyExtras(marine);
+        ApeGearDecorator.INSTANCE.applyExtras(marine);
 
         MarineGearDecoratorUtil.giveItem(marine, Items.TOTEM_OF_UNDYING);
         MarineGearDecoratorUtil.giveItem(marine, Items.GOLDEN_APPLE, 4);
@@ -47,10 +62,10 @@ public class WYCGearDecorator implements MarineDecorator {
     }
 
     public void applyPrimaryWeapon(Marine marine) {
-        TacticalMarineGearDecorator.INSTANCE.applyPrimaryWeapon(marine);
+        MarineGearDecoratorUtil.giveWeightedItemFromPool(marine, weightedPrimaryWeapons);
     }
 
     public void applySecondaryWeapon(Marine marine) {
-        TacticalMarineGearDecorator.INSTANCE.applySecondaryWeapon(marine);
+        ApeGearDecorator.INSTANCE.applySecondaryWeapon(marine);
     }
 }

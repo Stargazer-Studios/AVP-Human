@@ -1,0 +1,58 @@
+package com.human.common.gameplay.level.patrol.decorator.gear;
+
+import com.human.common.gameplay.entity.living.human.marine.Marine;
+import com.human.common.gameplay.level.patrol.decorator.MarineDecorator;
+import com.human.common.gameplay.level.patrol.decorator.util.MarineGearDecoratorUtil;
+import com.human.common.registry.init.item.HumanArmorItems;
+import com.human.common.registry.init.item.HumanGunItems;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionContents;
+import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.level.Level;
+
+public class ApeGearDecorator implements MarineDecorator {
+
+    public static final ApeGearDecorator INSTANCE = new ApeGearDecorator();
+
+    private ApeGearDecorator() {}
+
+    @Override
+    public void decorate(Level level, Marine marine) {
+        applyArmor(marine);
+        applyPrimaryWeapon(marine);
+        applySecondaryWeapon(marine);
+        applyExtras(marine);
+        applyExclusives(marine);
+    }
+
+    public void applyArmor(Marine marine) {
+        MarineGearDecoratorUtil.equipArmorItem(marine, HumanArmorItems.APE_HELMET.get());
+        MarineGearDecoratorUtil.equipArmorItem(marine, HumanArmorItems.APE_CHESTPLATE.get());
+        MarineGearDecoratorUtil.equipArmorItem(marine, HumanArmorItems.APE_LEGGINGS.get());
+        MarineGearDecoratorUtil.equipArmorItem(marine, HumanArmorItems.APE_BOOTS.get());
+    }
+
+    public void applyExclusives(Marine marine) {
+        MarineGearDecoratorUtil.giveDroppableItem(marine, HumanGunItems.FLAMETHROWER_SEVASTOPOL.get());
+    }
+
+    public void applyExtras(Marine marine) {
+        TacticalMarineGearDecorator.INSTANCE.applyExtras(marine);
+
+        for (var i = 0; i < 2; i++) {
+            var healingPotion = PotionContents.createItemStack(Items.POTION, Potions.FIRE_RESISTANCE);
+            MarineGearDecoratorUtil.giveItem(marine, healingPotion);
+
+            var regenerationPotion = PotionContents.createItemStack(Items.SPLASH_POTION, Potions.FIRE_RESISTANCE);
+            MarineGearDecoratorUtil.giveItem(marine, regenerationPotion);
+        }
+    }
+
+    public void applyPrimaryWeapon(Marine marine) {
+        MarineGearDecoratorUtil.giveDroppableItem(marine, HumanGunItems.M41A_PULSE_RIFLE.get());
+    }
+
+    public void applySecondaryWeapon(Marine marine) {
+        TacticalMarineGearDecorator.INSTANCE.applySecondaryWeapon(marine);
+    }
+}
