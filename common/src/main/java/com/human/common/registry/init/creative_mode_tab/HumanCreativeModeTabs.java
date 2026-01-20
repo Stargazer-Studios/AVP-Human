@@ -8,6 +8,7 @@ import com.human.common.registry.init.block.HumanPlasticBlocks;
 import com.human.common.registry.init.creative_mode_tab.initializer.BlocksCreativeModeTabInitializer;
 import com.human.common.registry.init.creative_mode_tab.initializer.ColoredBlocksCreativeModeTabInitializer;
 import com.human.common.registry.init.creative_mode_tab.initializer.CombatCreativeModeTabInitializer;
+import com.human.common.registry.init.creative_mode_tab.initializer.FoodAndDrinksCreativeModeTabInitializer;
 import com.human.common.registry.init.creative_mode_tab.initializer.IngredientsCreativeModeTabInitializer;
 import com.human.common.registry.init.creative_mode_tab.initializer.SpawnEggsCreativeModeTabInitializer;
 import com.human.common.registry.init.creative_mode_tab.initializer.ToolsAndUtilitiesCreativeModeTabInitializer;
@@ -47,6 +48,12 @@ public class HumanCreativeModeTabs {
         HumanCreativeModeTabKeys.COMBAT_KEY,
         () -> new ItemStack(HumanGunItems.M41A_PULSE_RIFLE.get()),
         CombatCreativeModeTabInitializer.OUTPUT_CONSUMER
+    );
+
+    public static final BLibHolder<CreativeModeTab> FOOD_AND_DRINKS = create(
+        HumanCreativeModeTabKeys.FOOD_AND_DRINKS_KEY,
+        () -> new ItemStack(HumanItems.CORNBREAD.get()),
+        FoodAndDrinksCreativeModeTabInitializer.OUTPUT_CONSUMER
     );
 
     public static final BLibHolder<CreativeModeTab> INGREDIENTS = create(

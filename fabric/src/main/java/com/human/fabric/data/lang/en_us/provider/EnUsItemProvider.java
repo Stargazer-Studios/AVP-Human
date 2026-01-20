@@ -94,6 +94,7 @@ public class EnUsItemProvider {
         addItem(builder, HumanItems.BRASS_INGOT, "Brass Ingot");
         addItem(builder, HumanItems.CAPACITOR, "Capacitor");
         addItem(builder, HumanItems.CARBON_DUST, "Carbon Dust");
+        addItem(builder, HumanItems.CORNBREAD, "Cornbread");
         addItem(builder, HumanItems.CPU, "CPU");
         addItem(builder, HumanItems.DIODE, "Diode");
         addItem(builder, HumanItems.FERROALUMINUM_INGOT, "Ferroaluminum Ingot");

@@ -14,6 +14,7 @@ import com.human.common.registry.init.HumanDataComponents;
 import com.human.common.registry.init.HumanTiers;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.Item;
@@ -80,6 +81,11 @@ public class HumanItems {
     public static final BLibHolder<Item> CARBON_DUST = create("carbon_dust");
 
     public static final BLibHolder<Item> CASELESS_BULLET = create("caseless_bullet");
+
+    public static final BLibHolder<Item> CORNBREAD = create(
+        "cornbread",
+        new Item.Properties().food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.3F).build())
+    );
 
     public static final BLibHolder<Item> CPU = create("cpu");
 

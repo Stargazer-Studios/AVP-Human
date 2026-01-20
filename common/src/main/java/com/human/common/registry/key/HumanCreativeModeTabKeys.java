@@ -13,6 +13,8 @@ public class HumanCreativeModeTabKeys {
 
     public static final ResourceKey<CreativeModeTab> COMBAT_KEY = create("human_combat");
 
+    public static final ResourceKey<CreativeModeTab> FOOD_AND_DRINKS_KEY = create("human_food_and_drinks");
+
     public static final ResourceKey<CreativeModeTab> INGREDIENTS_KEY = create("human_ingredients");
 
     public static final ResourceKey<CreativeModeTab> SPAWN_EGGS_KEY = create("human_spawn_eggs");

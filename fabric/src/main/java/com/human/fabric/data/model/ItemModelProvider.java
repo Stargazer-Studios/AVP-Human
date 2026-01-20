@@ -100,6 +100,7 @@ public class ItemModelProvider extends FabricModelProvider {
         generateStandardItem(generators, HumanItems.SERVO);
         generateStandardItem(generators, HumanItems.SPEAKER);
         generateStandardItem(generators, HumanItems.CARBON_DUST);
+        generateStandardItem(generators, HumanItems.CORNBREAD);
         generateStandardItem(generators, HumanItems.CPU);
         generateStandardItem(generators, HumanItems.DIODE);
         generateStandardItem(generators, HumanItems.FERROALUMINUM_INGOT);
