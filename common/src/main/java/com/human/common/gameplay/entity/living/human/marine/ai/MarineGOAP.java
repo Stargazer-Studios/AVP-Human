@@ -447,7 +447,8 @@ public class MarineGOAP {
 
     private static boolean shouldRetaliateAgainstLastAttacker(Marine marine, LivingEntity livingEntity) {
         var lastAttacker = marine.getLastHurtByMob();
-        var foo = lastAttacker != null
+
+        return lastAttacker != null
             // AND the last attacker is not our leader...
             && !Objects.equals(lastAttacker.getUUID(), marine.getLeaderUUID().unwrapOr(null))
             // AND the current entity we are checking is our last attacker...
@@ -455,7 +456,6 @@ public class MarineGOAP {
             // AND the current entity is not a fellow marine...
             // TODO: We'll want to do faction checking here in the future.
             && !(livingEntity instanceof Marine);
-        return foo;
     }
 
     public static void initialize() {}

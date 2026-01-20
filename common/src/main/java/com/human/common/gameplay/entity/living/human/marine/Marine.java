@@ -148,7 +148,26 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
         @NotNull MobSpawnType spawnType,
         @Nullable SpawnGroupData spawnGroupData
     ) {
-        MarineGearDecorator.INSTANCE.decorate(level(), this);
+        switch (spawnType) {
+            case BUCKET,
+                COMMAND,
+                DISPENSER,
+                MOB_SUMMONED,
+                NATURAL,
+                SPAWN_EGG,
+                SPAWNER,
+                TRIGGERED,
+                TRIAL_SPAWNER -> MarineGearDecorator.INSTANCE.decorate(level(), this);
+            case BREEDING,
+                CHUNK_GENERATION,
+                CONVERSION,
+                EVENT,
+                JOCKEY,
+                PATROL,
+                REINFORCEMENT,
+                STRUCTURE -> { /* NO-OP */ }
+        }
+
         return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
     }
 
