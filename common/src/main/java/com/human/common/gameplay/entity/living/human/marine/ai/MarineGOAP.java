@@ -389,7 +389,10 @@ public class MarineGOAP {
     }
 
     private static boolean isAThreat(Marine marine, LivingEntity livingEntity) {
-        if (BLibEntityPredicates.isInvulnerable(livingEntity)) {
+        if (
+            BLibEntityPredicates.isInvulnerable(livingEntity)
+                || Objects.equals(marine.getUUID(), livingEntity.getUUID())
+        ) {
             return false;
         }
 
