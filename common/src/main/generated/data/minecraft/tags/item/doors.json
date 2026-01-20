@@ -1,12 +1,8 @@
 {
   "values": [
     "avp_human:ferroaluminum_door",
-    "avp_human:ferroaluminum_door",
-    "avp_human:industrial_glass_door",
     "avp_human:industrial_glass_door",
     "avp_human:steel_door",
-    "avp_human:steel_door",
-    "avp_human:titanium_door",
     "avp_human:titanium_door"
   ]
 }
