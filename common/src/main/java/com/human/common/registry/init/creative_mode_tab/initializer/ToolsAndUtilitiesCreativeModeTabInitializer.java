@@ -8,6 +8,7 @@ import java.util.function.Consumer;
 public class ToolsAndUtilitiesCreativeModeTabInitializer {
 
     public static final Consumer<CreativeModeTab.Output> OUTPUT_CONSUMER = output -> {
+        CreativeModeTabUtil.accept(output, HumanItems.DOG_TAG);
         CreativeModeTabUtil.accept(output, HumanItems.ARMOR_CASE);
         CreativeModeTabUtil.accept(output, HumanItems.GENE_READER);
         CreativeModeTabUtil.accept(output, HumanItems.SYRINGE);

@@ -47,17 +47,37 @@ public class MarineGearDecoratorUtil {
         }
     }
 
+    public static void giveDroppableItem(Marine marine, Item item) {
+        giveDroppableItem(marine, item, 1);
+    }
+
+    public static void giveDroppableItem(Marine marine, Item item, int count) {
+        giveDroppableItem(marine, new ItemStack(item, count));
+    }
+
+    public static void giveDroppableItem(Marine marine, ItemStack itemStack) {
+        giveItem(marine, itemStack, false);
+    }
+
     public static void giveItem(Marine marine, Item item) {
         giveItem(marine, item, 1);
     }
 
     public static void giveItem(Marine marine, Item item, int count) {
-        giveItem(marine, new ItemStack(item, count));
+        giveItem(marine, new ItemStack(item, count), true);
     }
 
     public static void giveItem(Marine marine, ItemStack itemStack) {
+        giveItem(marine, itemStack, true);
+    }
+
+    public static void giveItem(Marine marine, ItemStack itemStack, boolean marineOwned) {
         if (itemStack.getItem() instanceof GunItem gunItem) {
             itemStack.set(HumanDataComponents.AMMUNITION.get(), gunItem.getGunConfig().maximumAmmunition());
+        }
+
+        if (marineOwned) {
+            itemStack.set(HumanDataComponents.MARINE_OWNED.get(), true);
         }
 
         marine.getInventory().addItemStack(itemStack);

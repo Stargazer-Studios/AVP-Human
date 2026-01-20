@@ -91,6 +91,8 @@ public class HumanItems {
 
     public static final BLibHolder<Item> DIODE = create("diode");
 
+    public static final BLibHolder<Item> DOG_TAG = create("dog_tag");
+
     public static final BLibHolder<Item> FERROALUMINUM_INGOT = create("ferroaluminum_ingot");
 
     public static final BLibHolder<Item> FERROALUMINUM_NUGGET = create("ferroaluminum_nugget");

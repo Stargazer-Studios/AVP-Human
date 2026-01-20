@@ -97,6 +97,7 @@ public class EnUsItemProvider {
         addItem(builder, HumanItems.CORNBREAD, "Cornbread");
         addItem(builder, HumanItems.CPU, "CPU");
         addItem(builder, HumanItems.DIODE, "Diode");
+        addItem(builder, HumanItems.DOG_TAG, "Dog Tag");
         addItem(builder, HumanItems.FERROALUMINUM_INGOT, "Ferroaluminum Ingot");
         addItem(builder, HumanItems.GRIP, "Grip");
         addItem(builder, HumanItems.INTEGRATED_CIRCUIT, "Integrated Circuit");

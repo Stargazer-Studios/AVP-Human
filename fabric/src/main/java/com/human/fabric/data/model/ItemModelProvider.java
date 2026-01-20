@@ -103,6 +103,7 @@ public class ItemModelProvider extends FabricModelProvider {
         generateStandardItem(generators, HumanItems.CORNBREAD);
         generateStandardItem(generators, HumanItems.CPU);
         generateStandardItem(generators, HumanItems.DIODE);
+        generateStandardItem(generators, HumanItems.DOG_TAG);
         generateStandardItem(generators, HumanItems.FERROALUMINUM_INGOT);
         generateStandardItem(generators, HumanItems.GRIP);
         generateStandardItem(generators, HumanItems.INTEGRATED_CIRCUIT);

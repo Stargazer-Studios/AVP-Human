@@ -46,6 +46,7 @@ public class TacticalMarineGearDecorator implements MarineDecorator {
     }
 
     public void applyExclusives(Marine marine) {
+        MarineGearDecoratorUtil.giveDroppableItem(marine, HumanItems.DOG_TAG.get());
         MarineGearDecoratorUtil.giveItem(marine, HumanItems.CORNBREAD.get(), 5 + marine.getRandom().nextInt(10));
     }
 
