@@ -1,5 +1,6 @@
 package com.human.fabric.data.lang.en_us;
 
+import com.human.common.registry.init.HumanMobEffects;
 import com.human.fabric.data.lang.en_us.provider.EnUsAdvancementProvider;
 import com.human.fabric.data.lang.en_us.provider.EnUsBiomeTagProvider;
 import com.human.fabric.data.lang.en_us.provider.EnUsBlockProvider;
@@ -69,7 +70,7 @@ public class EnglishLanguageProvider extends FabricLanguageProvider {
         builder.add("display.avp.no_ammunition_warning", "Out of Ammo");
 
         // Mob Effects
-        builder.add("effect.avp.radiation", "Radiation");
+        builder.add(HumanMobEffects.getRadiationHolder().value(), "Radiation");
 
         // Sounds
         EnUsSoundEventProvider.CONSUMER.accept(builder);

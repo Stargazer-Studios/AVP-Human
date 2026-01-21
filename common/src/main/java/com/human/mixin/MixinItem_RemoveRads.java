@@ -21,8 +21,8 @@ public class MixinItem_RemoveRads {
         LivingEntity livingEntity,
         CallbackInfoReturnable<ItemStack> cir
     ) {
-        if (stack.is(HumanItemTags.RADIATION_CURE_ITEMS) && livingEntity.hasEffect(HumanMobEffects.RADIATION)) {
-            livingEntity.removeEffect(HumanMobEffects.RADIATION);
+        if (stack.is(HumanItemTags.RADIATION_CURE_ITEMS) && livingEntity.hasEffect(HumanMobEffects.getRadiationHolder())) {
+            livingEntity.removeEffect(HumanMobEffects.getRadiationHolder());
         }
     }
 

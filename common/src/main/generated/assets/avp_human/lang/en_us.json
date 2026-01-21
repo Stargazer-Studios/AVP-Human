@@ -709,7 +709,7 @@
   "death.attack.razor_wire": "%1$s got tangled in razor wire",
   "display.avp.low_ammunition_warning": "Low Ammo",
   "display.avp.no_ammunition_warning": "Out of Ammo",
-  "effect.avp.radiation": "Radiation",
+  "effect.avp_human.radiation": "Radiation",
   "entity.avp_human.flamethrow": "Flamethrow",
   "entity.avp_human.grenade_thrown": "Grenade",
   "entity.avp_human.marine": "Marine",

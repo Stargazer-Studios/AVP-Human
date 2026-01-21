@@ -20,6 +20,7 @@
     "MixinLivingEntity_ApplyArmorEffects",
     "MixinLivingEntity_GeneCarrier",
     "MixinLivingEntity_NukedRadiation",
+    "MixinLivingEntity_RadiationDamage",
     "MixinMob_GeneCarrier",
     "MixinOwnableEntity_NPCOwnerPatch",
     "MixinPlayer_CrawlPosing",

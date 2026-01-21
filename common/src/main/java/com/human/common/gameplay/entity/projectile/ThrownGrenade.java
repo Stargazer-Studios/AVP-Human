@@ -104,7 +104,7 @@ public class ThrownGrenade extends BouncingItemProjectile {
         );
         areaEffectCloudEntity.setParticle(ParticleTypes.ASH);
         areaEffectCloudEntity.addEffect(
-            new MobEffectInstance(HumanMobEffects.RADIATION, RadiationStatusEffect.EFFECT_DURATION_IN_TICKS, 0)
+            new MobEffectInstance(HumanMobEffects.getRadiationHolder(), RadiationStatusEffect.MEDIUM_EFFECT_DURATION_IN_TICKS, 0)
         );
 
         level.addFreshEntity(areaEffectCloudEntity);

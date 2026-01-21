@@ -35,8 +35,8 @@ public class MixinItem_GiveRads {
 
         // Apply the radiation effect.
         var mobEffectInstance = new MobEffectInstance(
-            HumanMobEffects.RADIATION,
-            RadiationStatusEffect.EFFECT_DURATION_IN_TICKS,
+            HumanMobEffects.getRadiationHolder(),
+            RadiationStatusEffect.SHORT_EFFECT_DURATION_IN_TICKS,
             0
         );
         livingEntity.addEffect(mobEffectInstance);

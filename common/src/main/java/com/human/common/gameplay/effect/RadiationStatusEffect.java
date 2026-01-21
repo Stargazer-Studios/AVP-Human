@@ -1,9 +1,6 @@
 package com.human.common.gameplay.effect;
 
-import com.blib.common.gameplay.util.BLibEntityPredicates;
-import com.human.common.registry.init.HumanMobEffects;
 import com.human.common.registry.key.HumanDamageTypeKeys;
-import com.human.common.registry.tag.HumanEntityTypeTags;
 import mod.azure.azurelib.core.object.Color;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
@@ -13,118 +10,89 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
-import org.jetbrains.annotations.NotNull;
 
-import java.util.Map;
-import java.util.WeakHashMap;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Radiation status effect (display only).
+ * <p>
+ * This effect serves as a visual indicator of radiation exposure. The actual damage and side effects are handled by
+ * {@code MixinLivingEntity_RadiationDamage}.
+ * <p>
+ * The effect progresses through phases based on remaining duration:
+ * <ul>
+ * <li><b>Incubation (0-20% progress):</b> No damage, no side effects</li>
+ * <li><b>Ramp-up (20-80% progress):</b> Damage frequency increases, side effects applied</li>
+ * <li><b>Taper-off (80-100% progress):</b> Damage frequency decreases as effect subsides</li>
+ * </ul>
+ * <p>
+ * The amplifier affects damage amount per hit, not frequency.
+ */
 public class RadiationStatusEffect extends MobEffect {
 
-    public static final int EFFECT_DURATION_IN_TICKS = (int) TimeUnit.MINUTES.toSeconds(4) * 20;
+    public static final int SHORT_EFFECT_DURATION_IN_TICKS = (int) TimeUnit.MINUTES.toSeconds(1) * 20;
 
-    private static final Map<LivingEntity, Integer> EFFECT_TRACKER = new WeakHashMap<>();
+    public static final int MEDIUM_EFFECT_DURATION_IN_TICKS = (int) (TimeUnit.MINUTES.toSeconds(2) + 30) * 20;
+
+    public static final int LONG_EFFECT_DURATION_IN_TICKS = (int) TimeUnit.MINUTES.toSeconds(5) * 20;
+
+    public static final float INCUBATION_RATIO = 0.20f;
+
+    public static final float PEAK_DAMAGE_RATIO = 0.80f;
+
+    public static final float BASE_DAMAGE = 1.0f;
+
+    public static final float DAMAGE_PER_AMPLIFIER = 0.5f;
+
+    public static final int MAX_DAMAGE_INTERVAL_TICKS = 4 * 20;
+
+    public static final int MIN_DAMAGE_INTERVAL_TICKS = 20;
 
     public RadiationStatusEffect() {
         super(MobEffectCategory.HARMFUL, Color.GREEN.getColor());
     }
 
-    @Override
-    public boolean shouldApplyEffectTickThisTick(int i, int amplifier) {
-        return true;
-    }
+    public static int calculateDamageInterval(float progress) {
+        float damageIntensity;
 
-    @Override
-    public boolean applyEffectTick(@NotNull LivingEntity livingEntity, int amplifier) {
-        if (
-            BLibEntityPredicates.isInvulnerable(livingEntity)
-                || livingEntity.getType().is(HumanEntityTypeTags.RADIATION_RESISTANT)
-        ) {
-            livingEntity.removeEffect(HumanMobEffects.RADIATION);
-            return false;
-        }
-
-        var currentDuration = EFFECT_TRACKER.getOrDefault(livingEntity, 0);
-
-        switch (amplifier) {
-            case 0:
-                applyLevel1RadiationSideEffects(livingEntity, amplifier);
-                break;
-            case 1:
-                applyLevel2RadiationSideEffects(livingEntity, amplifier);
-                break;
-            default:
-                applyDefaultRadiationSideEffects(livingEntity, amplifier);
-                break;
-        }
-
-        var threshold = switch (amplifier) {
-            case 0 -> RadiationStatusEffect.EFFECT_DURATION_IN_TICKS / 4;
-            case 1 -> RadiationStatusEffect.EFFECT_DURATION_IN_TICKS / 2;
-            default -> RadiationStatusEffect.EFFECT_DURATION_IN_TICKS;
-        };
-
-        if (currentDuration >= threshold && amplifier < 2) {
-            EFFECT_TRACKER.put(livingEntity, 0);
-            livingEntity.addEffect(
-                new MobEffectInstance(HumanMobEffects.RADIATION, RadiationStatusEffect.EFFECT_DURATION_IN_TICKS, amplifier + 1)
-            );
+        if (progress < RadiationStatusEffect.PEAK_DAMAGE_RATIO) {
+            var rampProgress = (progress - RadiationStatusEffect.INCUBATION_RATIO) / (RadiationStatusEffect.PEAK_DAMAGE_RATIO
+                - RadiationStatusEffect.INCUBATION_RATIO);
+            damageIntensity = rampProgress;
         } else {
-            EFFECT_TRACKER.put(livingEntity, currentDuration + 1);
+            var taperProgress = (progress - RadiationStatusEffect.PEAK_DAMAGE_RATIO) / (1.0f - RadiationStatusEffect.PEAK_DAMAGE_RATIO);
+            damageIntensity = 1.0f - taperProgress;
         }
 
-        return livingEntity.isAlive();
+        var interval = (int) (RadiationStatusEffect.MAX_DAMAGE_INTERVAL_TICKS - (damageIntensity
+            * (RadiationStatusEffect.MAX_DAMAGE_INTERVAL_TICKS - RadiationStatusEffect.MIN_DAMAGE_INTERVAL_TICKS)));
+        return Math.max(RadiationStatusEffect.MIN_DAMAGE_INTERVAL_TICKS, interval);
     }
 
-    private void applyLevel1RadiationSideEffects(LivingEntity livingEntity, int amplifier) {
-        handleStatusEffects(livingEntity, amplifier, MobEffects.WEAKNESS, MobEffects.HUNGER);
+    public static void applyRadiationSideEffects(LivingEntity entity, int amplifier) {
+        handleStatusEffects(entity, amplifier, MobEffects.WEAKNESS, MobEffects.HUNGER);
 
-        if (livingEntity.tickCount % (4 * 20) == 0) {
-            livingEntity.hurt(createRadiationDamageSource(livingEntity), 0.5F);
+        if (amplifier >= 1) {
+            handleStatusEffects(entity, amplifier, MobEffects.MOVEMENT_SLOWDOWN);
         }
-    }
 
-    private void applyLevel2RadiationSideEffects(LivingEntity livingEntity, int amplifier) {
-        handleStatusEffects(
-            livingEntity,
-            amplifier,
-            MobEffects.WEAKNESS,
-            MobEffects.HUNGER,
-            MobEffects.MOVEMENT_SLOWDOWN
-        );
-
-        if (livingEntity.tickCount % (2 * 20) == 0) {
-            livingEntity.hurt(createRadiationDamageSource(livingEntity), 1.0F);
-        }
-    }
-
-    private void applyDefaultRadiationSideEffects(LivingEntity livingEntity, int amplifier) {
-        handleStatusEffects(
-            livingEntity,
-            amplifier,
-            MobEffects.WEAKNESS,
-            MobEffects.HUNGER,
-            MobEffects.MOVEMENT_SLOWDOWN,
-            MobEffects.BLINDNESS
-        );
-
-        if (livingEntity.tickCount % 20 == 0) {
-            livingEntity.hurt(createRadiationDamageSource(livingEntity), 2.0F);
+        if (amplifier >= 2) {
+            handleStatusEffects(entity, amplifier, MobEffects.BLINDNESS);
         }
     }
 
     @SafeVarargs
-    private void handleStatusEffects(@NotNull LivingEntity livingEntity, int amplifier, Holder<MobEffect>... statusEffects) {
+    public static void handleStatusEffects(LivingEntity entity, int amplifier, Holder<MobEffect>... statusEffects) {
         for (var effect : statusEffects) {
-            if (!livingEntity.hasEffect(effect)) {
-                livingEntity.addEffect(new MobEffectInstance(effect, 5 * 20, amplifier, true, true));
+            if (!entity.hasEffect(effect)) {
+                entity.addEffect(new MobEffectInstance(effect, 5 * 20, amplifier, true, true));
             }
         }
     }
 
-    private static DamageSource createRadiationDamageSource(LivingEntity livingEntity) {
+    public static DamageSource createRadiationDamageSource(LivingEntity entity) {
         return new DamageSource(
-            livingEntity.registryAccess()
+            entity.registryAccess()
                 .registryOrThrow(Registries.DAMAGE_TYPE)
                 .getHolderOrThrow(HumanDamageTypeKeys.RADIATION)
         );

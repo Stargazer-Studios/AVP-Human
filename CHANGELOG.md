@@ -108,6 +108,23 @@
 - Reduced accuracy required for marines to pathfind to weapon items.
 - Marine aggression towards mobs is now controlled by the `#avp_human:hated_by_marines` entity type tag.
 - Reduced marine nearby biome detection radius (16 -> 4).
+- The radiation effect has been reworked:
+  - Radiation no longer ramps up to higher amplifiers over time.
+  - Radiation instead now has an "incubation period" of 20% of the duration.
+    - If you get radiation for 5 minutes, then for 1 minute nothing bad will happen to you.
+    - If you get radiation for 10 minutes, then the incubation period is 2 minutes.
+  - After the incubation period has elapsed, you will start to slowly take damage.
+  - The damage ramps up until 80% of the way through the effect's duration, where the damage is at its peak.
+  - After 80% of the duration has elapsed, the damage will slowly ramp back down until the effect goes away.
+  - The duration of the radiation depends on the source:
+    - If you touch radioactive items or have radioactive items in your inventory, you get a radioactive dose of 1 minute.
+    - If you touch radioactive blocks in the world, you get a larger radioactive dose of 2.5 minutes.
+    - If you walk around in a radioactive biome, you get a larger radioactive dose of 5 minutes.
+  - The amplifier of the effect controls how much damage is dealt each damage tick. It also controls what side effects are given.
+    - An amplifier of 0 will give weakness and hunger.
+    - An amplifier of 1 will also give slowness in addition to the side effects given with an amplifier of 0.
+    - An amplifier of 2 will also give blindness in addition to the side effects given with an amplifier of 1.
+    - Currently amplifier is not used anywhere in the mod at the moment, but may in the near-future.
 - Marines will now target mobs under any of the following conditions:
   - The mob is part of the `#avp_human:hated_by_marines` entity type tag.
   - The mob is targeting them.
@@ -116,6 +133,8 @@
   - The mob was attacked by their leader (if they have a leader).
 
 ## 🐞 Fixes
+- Fixed radiation effect sometimes causing a crash when the player pauses the game.
+- Fixed radiation effect having an untranslated name.
 - Fixed marine pathfinding sometimes getting stuck.
 - Fixed marines trying to attack invulnerable targets.
 - Fixed marines not playing a pickup animation when picking up items.
