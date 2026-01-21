@@ -133,6 +133,7 @@
   - The mob was attacked by their leader (if they have a leader).
 
 ## 🐞 Fixes
+- [NeoForge] Fixed weapon blueprints not generating in vanilla structures.
 - Fixed radiation effect sometimes causing a crash when the player pauses the game.
 - Fixed radiation effect having an untranslated name.
 - Fixed marine pathfinding sometimes getting stuck.

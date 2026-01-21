@@ -21,6 +21,7 @@
     "MixinLivingEntity_GeneCarrier",
     "MixinLivingEntity_NukedRadiation",
     "MixinLivingEntity_RadiationDamage",
+    "MixinLootContext_Accessor",
     "MixinMob_GeneCarrier",
     "MixinOwnableEntity_NPCOwnerPatch",
     "MixinPlayer_CrawlPosing",

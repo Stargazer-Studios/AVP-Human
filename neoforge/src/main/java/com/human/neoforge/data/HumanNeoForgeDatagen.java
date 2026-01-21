@@ -2,6 +2,7 @@ package com.human.neoforge.data;
 
 import com.human.Human;
 import com.human.neoforge.data.impl.NeoForgeHumanBiomeModifiers;
+import com.human.neoforge.data.loot.HumanGlobalLootModifierProvider;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.data.DataProvider;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -21,6 +22,8 @@ public class HumanNeoForgeDatagen {
 
         DataProvider.Factory<DatapackBuiltinEntriesProvider> datapackBuiltinEntriesProviderFactory =
             $1 -> createDatapackBuiltInEntriesProvider(event);
+
+        event.createProvider(HumanGlobalLootModifierProvider::new);
 
         generator.addProvider(event.includeServer(), datapackBuiltinEntriesProviderFactory);
     }
