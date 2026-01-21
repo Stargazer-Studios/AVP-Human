@@ -42,19 +42,18 @@ public class UseBoneOnWolfAction {
 
         // Attempt to tame the wolf (1/3 chance, same as vanilla).
         if (marine.getRandom().nextInt(3) == 0) {
-            var accessor = (MixinWolf_Accessor) wolf;
             // If the marine does not have a leader, then the wolf belongs to marine.
             // If the marine has a leader but the leader is not loaded, then the wolf belongs to the marine.
             if (!marine.hasLeader() || !marine.getLeader().isSome()) {
                 wolf.setOwnerUUID(marine.getUUID());
-                wolf.getEntityData().set(accessor.getDataCollarColor(), DyeColor.GREEN.getId());
+                wolf.getEntityData().set(MixinWolf_Accessor.getDataCollarColor(), DyeColor.GREEN.getId());
             } else {
                 var leader = marine.getLeader().unwrap();
 
                 // If the marine has a leader and the leader is NOT a player, then the wolf belongs to the marine.
                 if (!(leader instanceof Player)) {
                     wolf.setOwnerUUID(marine.getUUID());
-                    wolf.getEntityData().set(accessor.getDataCollarColor(), DyeColor.GREEN.getId());
+                    wolf.getEntityData().set(MixinWolf_Accessor.getDataCollarColor(), DyeColor.GREEN.getId());
                 } else {
                     wolf.setOwnerUUID(leader.getUUID());
                 }

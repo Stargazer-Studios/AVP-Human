@@ -65,8 +65,7 @@ public class MarinePatrolSpawnHandle {
                 wolf.setOrderedToSit(false);
                 wolf.setInSittingPose(false);
 
-                var accessor = (MixinWolf_Accessor) wolf;
-                wolf.getEntityData().set(accessor.getDataCollarColor(), DyeColor.GREEN.getId());
+                wolf.getEntityData().set(MixinWolf_Accessor.getDataCollarColor(), DyeColor.GREEN.getId());
             }
         }
     }
