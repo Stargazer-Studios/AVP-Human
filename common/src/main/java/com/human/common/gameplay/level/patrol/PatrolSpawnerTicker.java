@@ -91,7 +91,7 @@ public class PatrolSpawnerTicker {
                 .toList();
 
             if (players.isEmpty()) {
-                return null;
+                return List.of();
             }
 
             var randomIndex = level.random.nextInt(players.size());

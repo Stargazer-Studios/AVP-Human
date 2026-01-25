@@ -1,0 +1,24 @@
+{
+  "values": [
+    {
+      "id": "#minecraft:is_taiga",
+      "required": false
+    },
+    "minecraft:badlands",
+    "minecraft:birch_forest",
+    "minecraft:desert",
+    "minecraft:flower_forest",
+    "minecraft:forest",
+    "minecraft:grove",
+    "minecraft:meadow",
+    "minecraft:old_growth_birch_forest",
+    "minecraft:plains",
+    "minecraft:sunflower_plains",
+    "minecraft:windswept_hills",
+    "minecraft:windswept_savanna",
+    {
+      "id": "#minecraft:is_savanna",
+      "required": false
+    }
+  ]
+}

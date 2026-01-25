@@ -1,8 +1,8 @@
 {
   "values": [
-    "minecraft:windswept_savanna",
-    "minecraft:windswept_hills",
     "minecraft:flower_forest",
-    "minecraft:sunflower_plains"
+    "minecraft:sunflower_plains",
+    "minecraft:windswept_hills",
+    "minecraft:windswept_savanna"
   ]
 }

@@ -156,6 +156,13 @@
   - Fixed muzzle flashes not showing when guns are shot.
 
 ## 🛠 Data Pack
+- Added `#avp_human:has_marine_patrols` biome tag.
+- Added `#avp_human:has_tactical_marine_patrols` biome tag.
+- Added `#avp_human:has_wy_ape_patrols` biome tag.
+- Added `#avp_human:has_wy_commando_patrols` biome tag.
+- Added `#avp_human:has_wy_elite_patrols` biome tag.
+- Added `#avp_human:has_wy_spec_ops_commando_patrols` biome tag.
+- Added `#avp_human:has_wy_spec_ops_elite_patrols` biome tag.
 - Added `#avp_human:hated_by_marines` entity type tag.
 - Added `#avp_human:wy_commando_armor` item tag.
 - Added `#avp_human:wy_elite_armor` item tag.

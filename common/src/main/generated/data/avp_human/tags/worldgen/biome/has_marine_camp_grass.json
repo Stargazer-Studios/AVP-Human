@@ -1,8 +1,8 @@
 {
   "values": [
-    "minecraft:meadow",
-    "minecraft:plains",
+    "minecraft:birch_forest",
     "minecraft:forest",
-    "minecraft:birch_forest"
+    "minecraft:meadow",
+    "minecraft:plains"
   ]
 }

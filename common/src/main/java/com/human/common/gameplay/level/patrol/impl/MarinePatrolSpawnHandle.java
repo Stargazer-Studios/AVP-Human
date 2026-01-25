@@ -1,9 +1,11 @@
 package com.human.common.gameplay.level.patrol.impl;
 
+import com.human.common.gameplay.level.patrol.PatrolSpawnTimings;
 import com.human.common.gameplay.level.patrol.PatrolSpawner;
 import com.human.common.gameplay.level.patrol.PatrolSpawnerTicker;
 import com.human.common.gameplay.level.patrol.decorator.gear.MarineGearDecorator;
 import com.human.common.gameplay.level.patrol.decorator.squad.MarineSquadLeadershipDecorator;
+import com.human.common.registry.tag.HumanBiomeTags;
 import com.human.mixin.MixinWolf_Accessor;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -25,11 +27,20 @@ public class MarinePatrolSpawnHandle {
 
     private MarinePatrolSpawnHandle() {
         this.spawner = PatrolSpawner.builder()
-            .withCondition(level -> !level.getGameRules().getBoolean(GameRules.RULE_DO_PATROL_SPAWNING))
+            .withCondition(level -> level.getGameRules().getBoolean(GameRules.RULE_DO_PATROL_SPAWNING))
+            .withSpawnPositionSelector(player -> {
+                var position = PatrolSpawner.PositionSelector.NEAR_PLAYER.select(player);
+
+                if (position == null || !player.level().getBiome(position).is(HumanBiomeTags.HAS_MARINE_PATROLS)) {
+                    return null;
+                }
+
+                return position;
+            })
             .build(this::spawn);
         this.ticker = PatrolSpawnerTicker.builder()
             .withPlayerSelector(PatrolSpawnerTicker.PlayerSelector.RANDOM_NON_SPECTATOR)
-            .withTiming(PatrolSpawnerTicker.Timing.EVERY_THREE_TO_SIX_DAYS)
+            .withTiming(PatrolSpawnTimings.MARINE_PATROLS)
             .build(spawner);
     }
 

@@ -164,7 +164,7 @@ public class Human {
     }
 
     private static void tickMarinePatrolSpawner(Level level) {
-        if (!level.isClientSide) {
+        if (!level.isClientSide && level.dimension() == Level.OVERWORLD) {
             var serverLevel = (ServerLevel) level;
 
             MarinePatrolSpawnHandle.INSTANCE.tick(serverLevel);
