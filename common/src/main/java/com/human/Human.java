@@ -1,7 +1,7 @@
 package com.human;
 
-import com.blib.BLib;
-import com.blib.BLibMod;
+import com.blib.api.BLibAPI;
+import com.blib.api.common.mod.v1.BLibMod;
 import com.human.common.config.HumanConfig;
 import com.human.common.data.HumanReloadListeners;
 import com.human.common.data.fixer.migration.HumanDataMigrations;
@@ -70,14 +70,14 @@ public class Human {
 
     public static final String MOD_ID = "avp_human";
 
-    public static final BLibMod MOD = BLib.createMod(MOD_ID);
+    public static final BLibMod MOD = BLibAPI.createMod(MOD_ID);
 
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
     public static final NukedAshPlacement NUKED_ASH_PLACEMENT = new NukedAshPlacement();
 
     public static void initialize() {
-        LOGGER.info("Initializing AVP (Human) for mod loader '{}'", BLib.getModLoaderType());
+        LOGGER.info("Initializing AVP (Human) for mod loader '{}'", BLibAPI.getModLoaderType());
 
         HumanConfig.initialize();
 

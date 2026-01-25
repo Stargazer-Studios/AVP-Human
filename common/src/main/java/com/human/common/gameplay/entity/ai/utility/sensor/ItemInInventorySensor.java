@@ -1,7 +1,7 @@
 package com.human.common.gameplay.entity.ai.utility.sensor;
 
-import com.blib.common.gameplay.model.inventory.BLibInventory;
-import com.blib.common.gameplay.model.inventory.BLibInventoryHolder;
+import com.blib.api.common.inventory.v1.BLibInventory;
+import com.blib.api.common.inventory.v1.BLibInventoryHolder;
 import com.human.common.gameplay.entity.ai.utility.item.ItemStrategy;
 import com.human.common.gameplay.entity.ai.utility.item.ItemStrategyResult;
 import com.human.common.gameplay.entity.living.human.ai.model.ItemTarget;

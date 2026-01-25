@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.extinguish_fire;
 
-import com.blib.common.gameplay.goap.GOAPSensors;
+import com.blib.api.common.goap.v1.GOAPSensors;
 import com.just.goap.condition.expression.Expressions;
 import com.just.goap.goal.Goal;
 

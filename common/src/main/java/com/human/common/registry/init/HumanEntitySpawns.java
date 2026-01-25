@@ -1,8 +1,8 @@
 package com.human.common.registry.init;
 
-import com.blib.common.gameplay.model.spawning.BLibEntitySpawnData;
-import com.blib.common.gameplay.model.spawning.SpawnSettings;
-import com.blib.common.registry.impl.BLibEntitySpawnRegistry;
+import com.blib.api.common.entity.v1.spawning.BLibEntitySpawnData;
+import com.blib.api.common.entity.v1.spawning.SpawnSettings;
+import com.blib.api.common.registry.v1.impl.BLibEntitySpawnRegistry;
 import com.human.Human;
 import com.human.common.config.HumanConfig;
 import com.human.common.gameplay.entity.living.human.marine.MarineSpawning;

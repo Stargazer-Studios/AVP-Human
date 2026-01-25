@@ -1,6 +1,6 @@
 package com.human.common.gameplay.item.gun.attack.hitscan;
 
-import com.blib.common.gameplay.util.EnchantmentUtil;
+import com.blib.api.common.enchantment.v1.EnchantmentUtil;
 import com.human.common.gameplay.item.gun.attack.GunAttackConfig;
 import com.human.common.registry.key.HumanDamageTypeKeys;
 import net.minecraft.core.registries.Registries;

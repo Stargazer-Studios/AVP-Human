@@ -1,7 +1,7 @@
 package com.human.common.network;
 
-import com.blib.common.network.model.NetworkHandler;
-import com.blib.common.registry.impl.BLibNetworkRegistry;
+import com.blib.api.common.network.v1.NetworkHandler;
+import com.blib.api.common.registry.v1.impl.BLibNetworkRegistry;
 import com.human.Human;
 import com.human.client.network.HumanClientListener;
 import com.human.common.network.packet.C2SGunHitResultsPayload;

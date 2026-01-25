@@ -1,6 +1,6 @@
 package com.human.common.data.worldgen;
 
-import com.blib.common.data.worldgen.BLibOreData;
+import com.blib.api.common.worldgen.v1.BLibOreData;
 import com.human.HumanResources;
 import com.human.common.registry.init.block.CoreBlocks;
 import net.minecraft.tags.BlockTags;

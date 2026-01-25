@@ -1,12 +1,8 @@
 package com.human.common.config;
 
-import com.blib.common.config.BLibConfigs;
-import com.blib.common.constant.PlayerStatConstants;
+import com.blib.api.common.entity.v1.PlayerStatConstants;
 import com.human.Human;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
-import mod.azure.azurelib.common.config.Config;
-import mod.azure.azurelib.common.config.Configurable;
-import mod.azure.azurelib.common.config.format.ConfigFormats;
 
 @Config(id = Human.MOD_ID)
 public class HumanConfig {
@@ -14,7 +10,8 @@ public class HumanConfig {
     public static HumanConfig INSTANCE;
 
     public static void initialize() {
-        INSTANCE = BLibConfigs.register(HumanConfig.class, ConfigFormats.json()).getConfigInstance();
+        // FIXME:
+        // INSTANCE = BLibConfigs.register(HumanConfig.class, ConfigFormats.json()).getConfigInstance();
     }
 
     @Configurable

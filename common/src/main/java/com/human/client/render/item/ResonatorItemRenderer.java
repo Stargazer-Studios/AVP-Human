@@ -1,8 +1,8 @@
 package com.human.client.render.item;
 
+import com.blib.azurelib.common.render.item.AzItemRenderer;
+import com.blib.azurelib.common.render.item.AzItemRendererConfig;
 import com.human.HumanResources;
-import mod.azure.azurelib.common.render.item.AzItemRenderer;
-import mod.azure.azurelib.common.render.item.AzItemRendererConfig;
 import net.minecraft.resources.ResourceLocation;
 
 public class ResonatorItemRenderer extends AzItemRenderer {

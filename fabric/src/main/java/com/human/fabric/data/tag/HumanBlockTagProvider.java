@@ -1,6 +1,6 @@
 package com.human.fabric.data.tag;
 
-import com.compatibility.CommonBlockTags;
+import com.blib.api.common.tag.v1.CommonBlockTags;
 import com.human.Human;
 import com.human.common.registry.init.HumanBlocks;
 import com.human.common.registry.init.block.CoreBlocks;

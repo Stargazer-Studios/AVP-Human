@@ -1,6 +1,6 @@
 package com.human.common.gameplay.item.gun.attack;
 
-import com.blib.common.util.codec.stream.impl.MojangStreamCodecs;
+import com.blib.api.common.codec.v1.stream.impl.MojangStreamCodecs;
 import com.human.common.network.codec.GunHitResultCodec;
 import com.just.codec.stream.RecordStreamCodec;
 import com.just.codec.stream.StreamCodec;

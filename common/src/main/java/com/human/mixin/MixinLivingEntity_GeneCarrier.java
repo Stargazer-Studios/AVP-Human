@@ -1,8 +1,8 @@
 package com.human.mixin;
 
-import com.blib.common.network.data.DataAccessor;
-import com.blib.common.network.data.DataUser;
-import com.blib.common.util.TeleportUtil;
+import com.blib.api.common.data_sync.v1.DataAccessor;
+import com.blib.api.common.data_sync.v1.model.DataUser;
+import com.blib.api.common.entity.v1.TeleportUtil;
 import com.human.common.gameplay.entity.manager.GeneManager;
 import com.human.common.gameplay.gene.GeneOperationType;
 import com.human.common.gameplay.gene.Genes;

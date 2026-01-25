@@ -1,9 +1,9 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance;
 
-import com.blib.common.gameplay.goap.GOAPSensors;
-import com.blib.common.gameplay.goap.action.ActionMasks;
-import com.blib.common.gameplay.goap.action.BLibAction;
-import com.blib.common.gameplay.model.inventory.BLibInventoryHolder;
+import com.blib.api.common.goap.v1.GOAPSensors;
+import com.blib.api.common.goap.v1.action.ActionMasks;
+import com.blib.api.common.goap.v1.action.BLibAction;
+import com.blib.api.common.inventory.v1.BLibInventoryHolder;
 import com.human.common.gameplay.entity.living.human.ai.model.ItemTarget;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.action.EquipFRIAction;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.action.MoveToFRIAction;

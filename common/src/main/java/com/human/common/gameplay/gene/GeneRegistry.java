@@ -1,6 +1,6 @@
 package com.human.common.gameplay.gene;
 
-import com.blib.common.registry.BLibHolder;
+import com.blib.api.common.registry.v1.BLibHolder;
 import com.just.core.functional.option.Option;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;

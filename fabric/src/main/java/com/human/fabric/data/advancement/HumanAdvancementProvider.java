@@ -1,12 +1,12 @@
 package com.human.fabric.data.advancement;
 
+import com.blib.mod.common.registry.init.BLibDataComponents;
 import com.human.HumanResources;
 import com.human.common.data.HumanAdvancements;
 import com.human.common.registry.init.block.HumanSteelBlocks;
 import com.human.common.registry.init.item.HumanGunItems;
 import com.human.common.registry.init.item.HumanItems;
 import com.human.common.registry.tag.HumanItemTags;
-import mod.azure.azurelib.AzureLib;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementType;
@@ -132,7 +132,7 @@ public class HumanAdvancementProvider {
     private static AdvancementHolder addHasGunAdvancement(AdvancementHolder parent, Consumer<AdvancementHolder> consumer) {
         var itemStack = new ItemStack(HumanGunItems.M41A_PULSE_RIFLE.get(), 1);
 
-        itemStack.remove(AzureLib.AZ_ID.get());
+        itemStack.remove(BLibDataComponents.AZ_ID.get());
 
         return Advancement.Builder.advancement()
             .addCriterion(

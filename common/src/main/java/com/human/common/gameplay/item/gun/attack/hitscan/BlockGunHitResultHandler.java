@@ -1,8 +1,8 @@
 package com.human.common.gameplay.item.gun.attack.hitscan;
 
-import com.blib.common.data.tag.BLibBlockTags;
-import com.blib.common.gameplay.util.EnchantmentUtil;
-import com.blib.server.BlockBreakProgressManager;
+import com.blib.api.common.block.v1.BlockBreakProgressManager;
+import com.blib.api.common.enchantment.v1.EnchantmentUtil;
+import com.blib.api.common.tag.v1.BLibBlockTags;
 import com.human.Human;
 import com.human.common.config.HumanConfig;
 import com.human.common.gameplay.item.gun.attack.GunAttackConfig;

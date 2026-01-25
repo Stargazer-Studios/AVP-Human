@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.combat.action;
 
-import com.blib.common.gameplay.model.inventory.BLibInventoryHolder;
+import com.blib.api.common.inventory.v1.BLibInventoryHolder;
 import com.human.common.gameplay.entity.living.human.ai.generic.action.EquipItemAction;
 import com.human.common.gameplay.entity.living.human.marine.ai.combat.CombatSensors;
 import com.just.core.functional.option.Option;

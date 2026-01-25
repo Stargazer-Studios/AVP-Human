@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.combat.strategy.impl;
 
-import com.blib.common.gameplay.util.EnchantmentUtil;
+import com.blib.api.common.enchantment.v1.EnchantmentUtil;
 import com.human.common.gameplay.entity.living.human.ai.AttributeUtil;
 import com.human.common.gameplay.entity.living.human.marine.ai.combat.CombatSensors;
 import com.human.common.gameplay.entity.living.human.marine.ai.combat.strategy.WeaponStrategy;

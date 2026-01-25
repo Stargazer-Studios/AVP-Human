@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.heal_self.action;
 
-import com.blib.common.gameplay.model.inventory.BLibInventoryHolder;
+import com.blib.api.common.inventory.v1.BLibInventoryHolder;
 import com.human.common.gameplay.entity.living.human.ai.generic.action.PickUpItemAction;
 import com.human.common.gameplay.entity.living.human.marine.ai.heal_self.HealingSensors;
 import com.just.core.functional.option.Option;

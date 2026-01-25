@@ -1,7 +1,7 @@
 package com.human.common.gameplay.explosion.nuke;
 
-import com.blib.common.gameplay.explosion.Explosion;
-import com.blib.common.util.ExplosionUtil;
+import com.blib.api.common.explosion.v1.Explosion;
+import com.blib.api.common.explosion.v1.ExplosionUtil;
 import com.human.common.registry.init.block.CoreBlocks;
 import com.human.common.registry.key.HumanBiomeKeys;
 import net.minecraft.core.BlockPos;

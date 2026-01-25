@@ -1,11 +1,11 @@
 package com.human.client.render.entity;
 
+import com.blib.azurelib.common.render.entity.AzEntityRenderer;
+import com.blib.azurelib.common.render.entity.AzEntityRendererConfig;
+import com.blib.azurelib.common.render.layer.AzAutoGlowingLayer;
 import com.human.HumanResources;
 import com.human.client.animation.entity.SentryTurretAnimator;
 import com.human.common.gameplay.entity.machine.SentryTurret;
-import mod.azure.azurelib.common.render.entity.AzEntityRenderer;
-import mod.azure.azurelib.common.render.entity.AzEntityRendererConfig;
-import mod.azure.azurelib.common.render.layer.AzAutoGlowingLayer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 

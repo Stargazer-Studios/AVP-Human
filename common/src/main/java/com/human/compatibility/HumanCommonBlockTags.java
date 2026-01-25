@@ -1,6 +1,6 @@
 package com.human.compatibility;
 
-import com.compatibility.CommonConstants;
+import com.blib.api.common.tag.v1.CommonConstants;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;

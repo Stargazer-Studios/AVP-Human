@@ -1,8 +1,8 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.extinguish_fire;
 
-import com.blib.common.gameplay.goap.GOAPSensors;
-import com.blib.common.gameplay.goap.action.ActionMasks;
-import com.blib.common.gameplay.goap.action.BLibAction;
+import com.blib.api.common.goap.v1.GOAPSensors;
+import com.blib.api.common.goap.v1.action.ActionMasks;
+import com.blib.api.common.goap.v1.action.BLibAction;
 import com.human.common.gameplay.entity.living.human.ai.generic.action.EquipWaterBucketAction;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.human.common.gameplay.entity.living.human.marine.ai.MarineGOAPSensors;

@@ -1,6 +1,6 @@
 package com.human.common.gameplay.item.gun.pipeline.step.impl;
 
-import com.blib.common.gameplay.util.EnchantmentUtil;
+import com.blib.api.common.enchantment.v1.EnchantmentUtil;
 import com.human.common.gameplay.item.gun.GunReloading;
 import com.human.common.gameplay.item.gun.pipeline.GunShootContext;
 import com.human.common.gameplay.item.gun.pipeline.GunShootResult;

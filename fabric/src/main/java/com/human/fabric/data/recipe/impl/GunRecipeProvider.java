@@ -1,12 +1,12 @@
 package com.human.fabric.data.recipe.impl;
 
-import com.blib.common.registry.BLibHolder;
+import com.blib.api.common.registry.v1.BLibHolder;
 import com.blib.fabric.data.recipe.builder.RecipeBuilder;
+import com.blib.mod.common.registry.init.BLibDataComponents;
 import com.human.common.registry.init.item.HumanGunItems;
 import com.human.common.registry.init.item.HumanItems;
 import com.human.common.registry.tag.HumanItemTags;
 import com.human.compatibility.HumanCommonItemTags;
-import mod.azure.azurelib.AzureLib;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -288,7 +288,7 @@ public class GunRecipeProvider {
     private static @NotNull ItemStack createItemStackNoAzureLibID(ItemLike itemLike) {
         var itemStack = new ItemStack(itemLike, 1);
 
-        itemStack.remove(AzureLib.AZ_ID.get());
+        itemStack.remove(BLibDataComponents.AZ_ID.get());
 
         return itemStack;
     }

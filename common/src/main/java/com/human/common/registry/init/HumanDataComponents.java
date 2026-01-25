@@ -1,8 +1,8 @@
 package com.human.common.registry.init;
 
-import com.blib.common.registry.BLibHolder;
-import com.blib.common.registry.BLibRegistry;
-import com.blib.common.util.codec.stream.adapter.JustStreamCodecToMojangStreamCodecAdapter;
+import com.blib.api.common.codec.v1.stream.adapter.J2MStreamCodecAdapter;
+import com.blib.api.common.registry.v1.BLibHolder;
+import com.blib.api.common.registry.v1.BLibRegistry;
 import com.human.Human;
 import com.human.common.gameplay.component.ArmorCaseContainerContents;
 import com.human.common.gameplay.component.GeneReaderContents;
@@ -31,7 +31,7 @@ public class HumanDataComponents {
     public static final BLibHolder<DataComponentType<ArmorCaseContainerContents>> ARMOR_CASE_CONTAINER = create(
         "armor_case_container",
         builder -> builder.persistent(ArmorCaseContainerContents.CODEC)
-            .networkSynchronized(new JustStreamCodecToMojangStreamCodecAdapter<>(ArmorCaseContainerContents.STREAM_CODEC))
+            .networkSynchronized(new J2MStreamCodecAdapter<>(ArmorCaseContainerContents.STREAM_CODEC))
             .cacheEncoding()
     );
 
@@ -45,14 +45,14 @@ public class HumanDataComponents {
     public static final BLibHolder<DataComponentType<GeneReaderContents>> GENE_READER_CONTENTS = create(
         "gene_reader_contents",
         builder -> builder.persistent(GeneReaderContents.CODEC)
-            .networkSynchronized(new JustStreamCodecToMojangStreamCodecAdapter<>(GeneReaderContents.STREAM_CODEC))
+            .networkSynchronized(new J2MStreamCodecAdapter<>(GeneReaderContents.STREAM_CODEC))
             .cacheEncoding()
     );
 
     public static final BLibHolder<DataComponentType<GeneReaderMode>> GENE_READER_MODE = create(
         "gene_reader_mode",
         builder -> builder.persistent(GeneReaderMode.CODEC)
-            .networkSynchronized(new JustStreamCodecToMojangStreamCodecAdapter<>(GeneReaderMode.STREAM_CODEC))
+            .networkSynchronized(new J2MStreamCodecAdapter<>(GeneReaderMode.STREAM_CODEC))
             .cacheEncoding()
     );
 
@@ -79,14 +79,14 @@ public class HumanDataComponents {
     public static final BLibHolder<DataComponentType<SyringeContents>> SYRINGE_CONTENTS = create(
         "syringe_contents",
         builder -> builder.persistent(SyringeContents.CODEC)
-            .networkSynchronized(new JustStreamCodecToMojangStreamCodecAdapter<>(SyringeContents.STREAM_CODEC))
+            .networkSynchronized(new J2MStreamCodecAdapter<>(SyringeContents.STREAM_CODEC))
             .cacheEncoding()
     );
 
     public static final BLibHolder<DataComponentType<SyringeMode>> SYRINGE_MODE = create(
         "syringe_mode",
         builder -> builder.persistent(SyringeMode.CODEC)
-            .networkSynchronized(new JustStreamCodecToMojangStreamCodecAdapter<>(SyringeMode.STREAM_CODEC))
+            .networkSynchronized(new J2MStreamCodecAdapter<>(SyringeMode.STREAM_CODEC))
             .cacheEncoding()
     );
 

@@ -1,11 +1,11 @@
 package com.human.client.render.entity;
 
+import com.blib.azurelib.common.render.entity.AzEntityRenderer;
+import com.blib.azurelib.common.render.entity.AzEntityRendererConfig;
 import com.human.HumanResources;
 import com.human.client.animation.entity.MushroomCloudAnimator;
 import com.human.common.gameplay.entity.nuke.MushroomCloudEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
-import mod.azure.azurelib.common.render.entity.AzEntityRenderer;
-import mod.azure.azurelib.common.render.entity.AzEntityRendererConfig;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;

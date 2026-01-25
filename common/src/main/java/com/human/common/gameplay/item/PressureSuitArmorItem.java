@@ -1,8 +1,8 @@
 package com.human.common.gameplay.item;
 
-import com.blib.common.data.TooltipHintBuilder;
-import com.blib.common.data.TooltipTranslationKeys;
-import com.blib.common.gameplay.model.TooltipCategoryType;
+import com.blib.api.common.tooltip.v1.TooltipCategoryType;
+import com.blib.api.common.tooltip.v1.TooltipHintBuilder;
+import com.blib.api.common.tooltip.v1.TooltipTranslationKeys;
 import com.human.common.registry.init.HumanArmorMaterials;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ArmorItem;

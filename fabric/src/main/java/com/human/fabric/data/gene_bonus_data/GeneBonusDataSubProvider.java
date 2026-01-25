@@ -1,6 +1,6 @@
 package com.human.fabric.data.gene_bonus_data;
 
-import com.blib.common.data.EntityTypePredicate;
+import com.blib.api.common.entity.v1.EntityTypePredicate;
 import com.human.Human;
 import com.human.common.gameplay.gene.Gene;
 import com.human.common.gameplay.gene.GeneBonusData;

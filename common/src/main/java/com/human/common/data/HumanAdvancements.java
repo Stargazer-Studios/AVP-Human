@@ -1,6 +1,6 @@
 package com.human.common.data;
 
-import com.blib.common.data.BLibAdvancementAccess;
+import com.blib.api.common.advancement.v1.BLibAdvancementAccess;
 import com.human.Human;
 
 public class HumanAdvancements {

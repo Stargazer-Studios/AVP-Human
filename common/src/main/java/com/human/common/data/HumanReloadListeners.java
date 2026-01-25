@@ -1,6 +1,6 @@
 package com.human.common.data;
 
-import com.blib.common.registry.impl.BLibReloadListenerRegistry;
+import com.blib.api.common.registry.v1.impl.BLibReloadListenerRegistry;
 import com.human.Human;
 import net.minecraft.server.packs.resources.PreparableReloadListener;
 

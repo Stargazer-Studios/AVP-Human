@@ -1,8 +1,8 @@
 package com.human.fabric.data.recipe.impl;
 
+import com.blib.api.common.tag.v1.CommonItemTags;
 import com.blib.fabric.data.recipe.builder.RecipeBuilder;
 import com.blib.fabric.data.recipe.util.RecipeUtil;
-import com.compatibility.CommonItemTags;
 import com.human.common.registry.init.block.HumanPaddingBlocks;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.tags.ItemTags;

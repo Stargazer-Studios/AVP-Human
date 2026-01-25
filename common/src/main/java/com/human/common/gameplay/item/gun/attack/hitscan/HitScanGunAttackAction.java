@@ -1,7 +1,7 @@
 package com.human.common.gameplay.item.gun.attack.hitscan;
 
-import com.blib.common.gameplay.util.BLibEntityPredicates;
-import com.blib.common.gameplay.util.EnchantmentUtil;
+import com.blib.api.common.enchantment.v1.EnchantmentUtil;
+import com.blib.api.common.entity.v1.BLibEntityPredicates;
 import com.human.Human;
 import com.human.common.gameplay.item.gun.attack.GunAttackAction;
 import com.human.common.gameplay.item.gun.attack.GunAttackConfig;

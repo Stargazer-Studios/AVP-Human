@@ -1,7 +1,6 @@
 package com.human.common.util;
 
-import mod.azure.azurelib.common.registry.AzureBlocksRegistry;
-import mod.azure.azurelib.common.util.AzureLibUtil;
+import com.blib.azurelib.common.util.AzureLibUtil;
 import net.minecraft.world.entity.Entity;
 
 public class GunLightUtil {
@@ -13,6 +12,8 @@ public class GunLightUtil {
             return;
         }
 
-        entity.level().setBlockAndUpdate(lightBlockPos, AzureBlocksRegistry.TICKING_LIGHT_BLOCK.get().defaultBlockState());
+        // FIXME:
+        // entity.level().setBlockAndUpdate(lightBlockPos,
+        // AzureBlocksRegistry.TICKING_LIGHT_BLOCK.get().defaultBlockState());
     }
 }

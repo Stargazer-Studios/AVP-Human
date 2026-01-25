@@ -1,7 +1,7 @@
 package com.human.fabric.data.tag;
 
-import com.blib.common.data.tag.BLibItemTags;
-import com.compatibility.CommonItemTags;
+import com.blib.api.common.tag.v1.BLibItemTags;
+import com.blib.api.common.tag.v1.CommonItemTags;
 import com.human.Human;
 import com.human.common.gameplay.item.GunItem;
 import com.human.common.registry.init.block.CoreBlocks;

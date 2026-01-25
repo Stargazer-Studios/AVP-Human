@@ -1,7 +1,7 @@
 package com.human.common.gameplay.effect;
 
+import com.blib.azurelib.core.object.Color;
 import com.human.common.registry.key.HumanDamageTypeKeys;
-import mod.azure.azurelib.core.object.Color;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.damagesource.DamageSource;

@@ -1,11 +1,11 @@
 package com.human.client.animation.block;
 
+import com.blib.azurelib.common.animation.AzAnimatorConfig;
+import com.blib.azurelib.common.animation.controller.AzAnimationController;
+import com.blib.azurelib.common.animation.controller.AzAnimationControllerContainer;
+import com.blib.azurelib.common.animation.impl.AzBlockAnimator;
 import com.human.HumanResources;
 import com.human.common.gameplay.block.entity.power.impl.SolarPanelBlockEntity;
-import mod.azure.azurelib.common.animation.AzAnimatorConfig;
-import mod.azure.azurelib.common.animation.controller.AzAnimationController;
-import mod.azure.azurelib.common.animation.controller.AzAnimationControllerContainer;
-import mod.azure.azurelib.common.animation.impl.AzBlockAnimator;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 

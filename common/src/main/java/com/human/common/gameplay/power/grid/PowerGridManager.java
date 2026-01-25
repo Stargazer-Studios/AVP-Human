@@ -1,8 +1,8 @@
 package com.human.common.gameplay.power.grid;
 
-import com.blib.common.util.DirectionUtil;
 import com.human.common.gameplay.power.PowerNode;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
 
 import java.util.HashMap;
@@ -10,6 +10,8 @@ import java.util.HashSet;
 import java.util.Map;
 
 public class PowerGridManager {
+
+    private static final Direction[] VALUES = Direction.values();
 
     private final PowerGridDSU dsu;
 
@@ -65,7 +67,7 @@ public class PowerGridManager {
 
         var visited = new HashSet<BlockPos>();
 
-        for (var direction : DirectionUtil.VALUES) {
+        for (var direction : VALUES) {
             var neighbor = removedPos.relative(direction);
 
             if (!visited.contains(neighbor) && PowerGridExploreUtil.isConnectable(level, neighbor)) {

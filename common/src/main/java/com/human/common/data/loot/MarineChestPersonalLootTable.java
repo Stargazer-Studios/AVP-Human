@@ -1,15 +1,9 @@
 package com.human.common.data.loot;
 
-import com.alien.common.registry.init.item.AlienItems;
-import com.blib.common.data.loot.condition.item.BLibLootItemModLoadedCondition;
-import com.human.compatibility.avp_alien.AVPAlien;
-import com.human.compatibility.avp_predator.AVPPredator;
-import com.predator.common.registry.init.item.PredatorItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
@@ -82,27 +76,28 @@ public class MarineChestPersonalLootTable {
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 6)))
                         .setWeight(10)
                 )
-        )
-        .withPool(
-            LootPool.lootPool()
-                .when(BLibLootItemModLoadedCondition.isModLoaded(AVPAlien.MOD.id()))
-                .setRolls(ConstantValue.exactly(1))
-                .add(EmptyLootItem.emptyItem().setWeight(1))
-                .add(
-                    LootItem.lootTableItem(AlienItems.ALIEN_MUSIC_DISC_1_FRAGMENT.get())
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
-                        .setWeight(1)
-                )
-        )
-        .withPool(
-            LootPool.lootPool()
-                .when(BLibLootItemModLoadedCondition.isModLoaded(AVPPredator.MOD.id()))
-                .setRolls(ConstantValue.exactly(1))
-                .add(EmptyLootItem.emptyItem().setWeight(1))
-                .add(
-                    LootItem.lootTableItem(PredatorItems.PREDATOR_MUSIC_DISC_1_FRAGMENT.get())
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
-                        .setWeight(1)
-                )
         );
+    // FIXME:
+    // .withPool(
+    // LootPool.lootPool()
+    // .when(BLibLootItemModLoadedCondition.isModLoaded(AVPAlien.MOD.id()))
+    // .setRolls(ConstantValue.exactly(1))
+    // .add(EmptyLootItem.emptyItem().setWeight(1))
+    // .add(
+    // LootItem.lootTableItem(AlienItems.ALIEN_MUSIC_DISC_1_FRAGMENT.get())
+    // .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
+    // .setWeight(1)
+    // )
+    // )
+    // .withPool(
+    // LootPool.lootPool()
+    // .when(BLibLootItemModLoadedCondition.isModLoaded(AVPPredator.MOD.id()))
+    // .setRolls(ConstantValue.exactly(1))
+    // .add(EmptyLootItem.emptyItem().setWeight(1))
+    // .add(
+    // LootItem.lootTableItem(PredatorItems.PREDATOR_MUSIC_DISC_1_FRAGMENT.get())
+    // .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
+    // .setWeight(1)
+    // )
+    // );
 }

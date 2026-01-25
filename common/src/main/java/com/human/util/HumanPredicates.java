@@ -1,6 +1,6 @@
 package com.human.util;
 
-import com.blib.common.gameplay.util.BLibEntityPredicates;
+import com.blib.api.common.entity.v1.BLibEntityPredicates;
 import com.human.common.registry.init.HumanMobEffects;
 import com.human.common.registry.tag.HumanEntityTypeTags;
 import com.human.common.registry.tag.HumanItemTags;

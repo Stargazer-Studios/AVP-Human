@@ -1,6 +1,6 @@
 package com.human.client.input.keybind;
 
-import com.blib.client.model.KeyInteractType;
+import com.blib.api.client.input.v1.model.KeyInteractType;
 import com.human.Human;
 import com.human.client.HumanClient;
 import com.human.common.model.Crawler;

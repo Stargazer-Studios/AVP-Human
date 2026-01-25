@@ -1,6 +1,6 @@
 package com.human.common.gameplay.block.property;
 
-import com.blib.common.gameplay.block.property.BlockPropertyBuilder;
+import com.blib.api.common.block.v1.BlockPropertyBuilder;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;

@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.living.human.ai.model;
 
-import com.blib.common.gameplay.model.inventory.BLibInventory;
+import com.blib.api.common.inventory.v1.BLibInventory;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.item.ItemEntity;
 

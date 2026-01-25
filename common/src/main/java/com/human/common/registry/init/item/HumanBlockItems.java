@@ -1,8 +1,8 @@
 package com.human.common.registry.init.item;
 
-import com.blib.common.registry.BLibHolder;
-import com.blib.common.registry.BLibRegistry;
-import com.blib.common.registry.impl.BLibAzureLibIdentityRegistry;
+import com.blib.api.common.registry.v1.BLibHolder;
+import com.blib.api.common.registry.v1.BLibRegistry;
+import com.blib.api.common.registry.v1.impl.BLibAzureLibIdentityRegistry;
 import com.human.Human;
 import com.human.common.gameplay.block_item.AmmoChestBlockItem;
 import com.human.common.gameplay.block_item.LeadChestBlockItem;

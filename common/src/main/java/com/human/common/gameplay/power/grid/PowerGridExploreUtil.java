@@ -1,10 +1,10 @@
 package com.human.common.gameplay.power.grid;
 
-import com.blib.common.util.DirectionUtil;
 import com.human.common.gameplay.power.PowerNode;
 import com.human.common.registry.init.HumanBlocks;
 import com.just.core.traversal.BFS;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
 
 import java.util.Arrays;
@@ -12,6 +12,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class PowerGridExploreUtil {
+
+    private static final Direction[] VALUES = Direction.values();
 
     /**
      * Performs a BFS traversal to find all physically connected cable blocks and power nodes.
@@ -24,7 +26,7 @@ public class PowerGridExploreUtil {
 
         BFS.traverse(
             start,
-            current -> Arrays.stream(DirectionUtil.VALUES)
+            current -> Arrays.stream(VALUES)
                 .map(current::relative)
                 .filter(relPos -> isConnectable(level, relPos))
                 .toList(),

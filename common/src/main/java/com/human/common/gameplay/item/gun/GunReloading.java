@@ -1,8 +1,8 @@
 package com.human.common.gameplay.item.gun;
 
-import com.blib.common.gameplay.util.BLibEntityPredicates;
-import com.blib.common.gameplay.util.EnchantmentUtil;
-import com.blib.server.ServerScheduler;
+import com.blib.api.common.enchantment.v1.EnchantmentUtil;
+import com.blib.api.common.entity.v1.BLibEntityPredicates;
+import com.blib.api.common.server.v1.ServerScheduler;
 import com.human.common.gameplay.item.GunItem;
 import com.human.common.registry.init.HumanDataComponents;
 import com.human.common.registry.init.item.HumanBlockItems;

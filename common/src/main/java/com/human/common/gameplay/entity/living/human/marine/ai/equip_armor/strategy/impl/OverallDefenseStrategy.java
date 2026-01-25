@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.strategy.impl;
 
-import com.blib.common.gameplay.util.EnchantmentUtil;
+import com.blib.api.common.enchantment.v1.EnchantmentUtil;
 import com.human.common.gameplay.entity.living.human.ai.MathUtil;
 import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.strategy.ArmorStrategy;
 import com.just.goap.state.ReadableWorldState;

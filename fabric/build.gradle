@@ -72,7 +72,6 @@ dependencies {
         exclude group: "com.just", module: "just-core"
         exclude group: "com.just", module: "just-goap"
     }
-    modImplementation "mod.azure.azurelib:azurelib-fabric-${project.minecraft_version}:${project.azurelib_version}"
 
     modApi "com.terraformersmc:modmenu:${project.modmenu_version}"
     modApi "dev.architectury:architectury-fabric:${project.architectury_version}"
@@ -83,17 +82,17 @@ dependencies {
         exclude group: project.group
     }
     // Uncomment to test compatibility.
-    modLocalRuntime("com.avp.alien:avp_alien-fabric-1.21.1:${project.avp_alien_version}") {
-        exclude group: project.group
-    }
+//    modLocalRuntime("com.avp.alien:avp_alien-fabric-1.21.1:${project.avp_alien_version}") {
+//        exclude group: project.group
+//    }
 
     modCompileOnly("com.avp.predator:avp_predator-fabric-1.21.1:${project.avp_predator_version}") {
         exclude group: project.group
     }
     // Uncomment to test compatibility.
-    modLocalRuntime("com.avp.predator:avp_predator-fabric-1.21.1:${project.avp_predator_version}") {
-        exclude group: project.group
-    }
+//    modLocalRuntime("com.avp.predator:avp_predator-fabric-1.21.1:${project.avp_predator_version}") {
+//        exclude group: project.group
+//    }
 
     // Here in case of any issues
     //modImplementation "maven.modrinth:modernfix:5.21.0+mc1.21.1"

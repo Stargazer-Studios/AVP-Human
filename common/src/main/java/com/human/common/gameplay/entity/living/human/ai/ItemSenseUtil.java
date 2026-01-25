@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.living.human.ai;
 
-import com.blib.common.gameplay.model.inventory.BLibInventoryHolder;
+import com.blib.api.common.inventory.v1.BLibInventoryHolder;
 import com.human.common.gameplay.entity.living.human.ai.model.ArmorSet;
 import com.human.common.gameplay.entity.living.human.ai.model.ArmorSetTarget;
 import com.human.common.gameplay.entity.living.human.ai.model.ItemTarget;

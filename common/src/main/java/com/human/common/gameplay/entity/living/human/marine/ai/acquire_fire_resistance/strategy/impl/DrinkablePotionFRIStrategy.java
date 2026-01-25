@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.impl;
 
-import com.blib.common.gameplay.goap.GOAPSensors;
+import com.blib.api.common.goap.v1.GOAPSensors;
 import com.human.common.gameplay.entity.living.human.ai.generic.action.ConsumeItemAction;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.FRIStrategy;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.FRIStrategyUtil;

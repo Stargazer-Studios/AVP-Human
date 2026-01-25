@@ -1,6 +1,6 @@
 package com.human.common.registry.init;
 
-import com.blib.common.registry.impl.BLibFurnaceFuelRegistry;
+import com.blib.api.common.registry.v1.impl.BLibFurnaceFuelRegistry;
 import com.human.Human;
 import com.human.common.registry.init.item.HumanItems;
 

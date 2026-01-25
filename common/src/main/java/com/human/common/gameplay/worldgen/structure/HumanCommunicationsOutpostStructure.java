@@ -1,6 +1,6 @@
 package com.human.common.gameplay.worldgen.structure;
 
-import com.blib.common.gameplay.structure.JigsawBackedStructure;
+import com.blib.api.common.worldgen.v1.JigsawBackedStructure;
 import com.human.common.registry.init.HumanStructureTypes;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

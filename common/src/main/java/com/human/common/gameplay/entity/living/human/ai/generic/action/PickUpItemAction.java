@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.living.human.ai.generic.action;
 
-import com.blib.common.gameplay.model.inventory.BLibInventoryHolder;
+import com.blib.api.common.inventory.v1.BLibInventoryHolder;
 import com.just.goap.action.Action;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;

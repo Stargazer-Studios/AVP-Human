@@ -33,7 +33,6 @@ dependencies {
         exclude group: "com.just", module: "just-core"
         exclude group: "com.just", module: "just-goap"
     }
-    compileOnly "mod.azure.azurelib:azurelib-common-${project.minecraft_version}:${project.azurelib_version}"
 
     // Compatibility
     compileOnly "com.avp.alien:avp_alien-common-1.21.1:${project.avp_alien_version}"

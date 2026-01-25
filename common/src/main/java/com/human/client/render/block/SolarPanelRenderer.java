@@ -1,10 +1,10 @@
 package com.human.client.render.block;
 
+import com.blib.azurelib.common.render.block.AzBlockEntityRenderer;
+import com.blib.azurelib.common.render.block.AzBlockEntityRendererConfig;
 import com.human.HumanResources;
 import com.human.client.animation.block.SolarPanelAnimator;
 import com.human.common.gameplay.block.entity.power.impl.SolarPanelBlockEntity;
-import mod.azure.azurelib.common.render.block.AzBlockEntityRenderer;
-import mod.azure.azurelib.common.render.block.AzBlockEntityRendererConfig;
 import net.minecraft.resources.ResourceLocation;
 
 public class SolarPanelRenderer extends AzBlockEntityRenderer<SolarPanelBlockEntity> {

@@ -1,11 +1,11 @@
 package com.human.common.gameplay.entity.living.human.marine;
 
-import com.blib.common.constant.PlayerStatConstants;
-import com.blib.common.gameplay.goap.GOAPUser;
-import com.blib.common.gameplay.model.inventory.BLibInventory;
-import com.blib.common.gameplay.model.inventory.BLibInventoryHolder;
-import com.blib.common.gameplay.util.ItemUtil;
-import com.blib.common.util.codec.schema.CodecSchemas;
+import com.blib.api.common.codec.v1.schema.CodecSchemas;
+import com.blib.api.common.entity.v1.PlayerStatConstants;
+import com.blib.api.common.goap.v1.GOAPUser;
+import com.blib.api.common.inventory.v1.BLibInventory;
+import com.blib.api.common.inventory.v1.BLibInventoryHolder;
+import com.blib.api.common.item.v1.ItemUtil;
 import com.human.Human;
 import com.human.common.config.HumanConfig;
 import com.human.common.data.HumanAdvancements;

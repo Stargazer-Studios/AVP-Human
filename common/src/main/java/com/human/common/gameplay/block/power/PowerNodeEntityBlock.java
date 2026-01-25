@@ -1,10 +1,10 @@
 package com.human.common.gameplay.block.power;
 
-import com.blib.common.util.DirectionUtil;
 import com.human.common.gameplay.block.entity.power.PowerNodeBlockEntity;
 import com.human.common.gameplay.power.PowerNode;
 import com.human.common.gameplay.power.PowerSystem;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -16,6 +16,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public abstract class PowerNodeEntityBlock<T extends PowerNodeBlockEntity & PowerNode> extends BaseEntityBlock {
+
+    private static final Direction[] VALUES = Direction.values();
 
     public PowerNodeEntityBlock(Properties properties) {
         super(properties);
@@ -54,7 +56,7 @@ public abstract class PowerNodeEntityBlock<T extends PowerNodeBlockEntity & Powe
 
         var manager = PowerSystem.get((ServerLevel) level);
 
-        for (var direction : DirectionUtil.VALUES) {
+        for (var direction : VALUES) {
             var neighbor = pos.relative(direction);
             var neighborState = level.getBlockState(neighbor);
 

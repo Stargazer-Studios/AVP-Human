@@ -1,9 +1,9 @@
 package com.human.fabric.data.recipe.impl;
 
-import com.blib.common.data.tag.BLibItemTags;
+import com.blib.api.common.tag.v1.BLibItemTags;
+import com.blib.api.common.tag.v1.CommonItemTags;
 import com.blib.fabric.data.recipe.RecipeConstants;
 import com.blib.fabric.data.recipe.builder.RecipeBuilder;
-import com.compatibility.CommonItemTags;
 import com.human.common.registry.init.HumanBlocks;
 import com.human.common.registry.init.block.CoreBlocks;
 import com.human.common.registry.init.item.HumanItems;

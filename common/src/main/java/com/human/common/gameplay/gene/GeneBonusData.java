@@ -1,6 +1,6 @@
 package com.human.common.gameplay.gene;
 
-import com.blib.common.data.EntityTypePredicate;
+import com.blib.api.common.entity.v1.EntityTypePredicate;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 

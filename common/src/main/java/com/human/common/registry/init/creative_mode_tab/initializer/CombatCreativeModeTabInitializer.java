@@ -1,6 +1,6 @@
 package com.human.common.registry.init.creative_mode_tab.initializer;
 
-import com.blib.common.registry.BLibHolder;
+import com.blib.api.common.registry.v1.BLibHolder;
 import com.human.common.registry.init.HumanBlocks;
 import com.human.common.registry.init.item.HumanArmorItems;
 import com.human.common.registry.init.item.HumanGunItems;

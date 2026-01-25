@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.nuke;
 
-import com.blib.server.ServerScheduler;
+import com.blib.api.common.server.v1.ServerScheduler;
 import com.human.common.config.HumanConfig;
 import com.human.common.registry.init.HumanBlocks;
 import com.human.common.registry.init.HumanEntityTypes;

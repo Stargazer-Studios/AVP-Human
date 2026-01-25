@@ -1,5 +1,7 @@
 package com.human.client.render.entity;
 
+import com.blib.azurelib.common.render.entity.AzEntityRenderer;
+import com.blib.azurelib.common.render.entity.AzEntityRendererConfig;
 import com.human.HumanResources;
 import com.human.client.render.layer.human.HumanArmorLayer;
 import com.human.client.render.layer.human.HumanBeardLayer;
@@ -8,8 +10,6 @@ import com.human.client.render.layer.human.HumanHairLayer;
 import com.human.client.render.layer.human.HumanItemLayer;
 import com.human.client.render.layer.human.HumanSkinLayer;
 import com.human.common.gameplay.entity.living.human.AbstractHuman;
-import mod.azure.azurelib.common.render.entity.AzEntityRenderer;
-import mod.azure.azurelib.common.render.entity.AzEntityRendererConfig;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 

@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.follow_leader;
 
-import com.blib.common.gameplay.util.BLibEntityPredicates;
+import com.blib.api.common.entity.v1.BLibEntityPredicates;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.human.common.gameplay.entity.living.human.marine.MarineMode;
 import com.just.goap.StateKey;

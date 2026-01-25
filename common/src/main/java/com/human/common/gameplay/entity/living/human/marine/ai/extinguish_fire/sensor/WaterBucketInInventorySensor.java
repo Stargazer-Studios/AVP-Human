@@ -1,7 +1,7 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.extinguish_fire.sensor;
 
-import com.blib.common.gameplay.model.inventory.BLibInventory;
-import com.blib.common.gameplay.model.inventory.BLibInventoryHolder;
+import com.blib.api.common.inventory.v1.BLibInventory;
+import com.blib.api.common.inventory.v1.BLibInventoryHolder;
 import com.just.core.functional.option.Option;
 import com.just.goap.StateKey;
 import com.just.goap.state.ReadableWorldState;

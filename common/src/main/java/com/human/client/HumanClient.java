@@ -2,8 +2,8 @@ package com.human.client;
 
 import com.alien.client.render.entity.head.EntityHeadDataCache;
 import com.alien.client.render.entity.parasite.attachment.ParasiteHeadAttachmentOffsetDataCache;
-import com.blib.client.BLibClientMod;
-import com.blib.common.registry.BLibHolder;
+import com.blib.api.client.mod.v1.BLibClientMod;
+import com.blib.api.common.registry.v1.BLibHolder;
 import com.human.Human;
 import com.human.client.input.keybind.HumanKeybindingRegistry;
 import com.human.client.render.armor.ApeArmorRenderer;

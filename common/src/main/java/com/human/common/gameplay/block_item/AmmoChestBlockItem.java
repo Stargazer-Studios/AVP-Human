@@ -1,7 +1,7 @@
 package com.human.common.gameplay.block_item;
 
-import com.blib.common.data.TooltipHintBuilder;
-import com.blib.common.gameplay.model.TooltipCategoryType;
+import com.blib.api.common.tooltip.v1.TooltipCategoryType;
+import com.blib.api.common.tooltip.v1.TooltipHintBuilder;
 import com.human.common.data.HumanTooltipTranslationKeys;
 import com.human.common.registry.init.HumanBlocks;
 import net.minecraft.core.component.DataComponents;

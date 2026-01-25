@@ -1,7 +1,7 @@
 package com.human.common.gameplay.item;
 
-import com.blib.common.data.TooltipHintBuilder;
-import com.blib.common.gameplay.model.TooltipCategoryType;
+import com.blib.api.common.tooltip.v1.TooltipCategoryType;
+import com.blib.api.common.tooltip.v1.TooltipHintBuilder;
 import com.human.common.data.HumanAdvancements;
 import com.human.common.data.HumanTooltipTranslationKeys;
 import com.human.common.gameplay.component.ArmorCaseContainerContents;

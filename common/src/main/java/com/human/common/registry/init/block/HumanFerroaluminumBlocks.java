@@ -1,8 +1,8 @@
 package com.human.common.registry.init.block;
 
-import com.blib.common.gameplay.block.property.BlockPropertyBuilder;
-import com.blib.common.registry.BLibHolder;
-import com.blib.common.registry.BLibRegistry;
+import com.blib.api.common.block.v1.BlockPropertyBuilder;
+import com.blib.api.common.registry.v1.BLibHolder;
+import com.blib.api.common.registry.v1.BLibRegistry;
 import com.human.Human;
 import com.human.common.gameplay.block.HumanBlockSetTypes;
 import com.human.common.gameplay.block.property.HumanBlockProperties;

@@ -1,8 +1,8 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.equip_totem;
 
-import com.blib.common.gameplay.goap.action.ActionMasks;
-import com.blib.common.gameplay.goap.action.BLibAction;
-import com.blib.common.gameplay.model.inventory.BLibInventoryHolder;
+import com.blib.api.common.goap.v1.action.ActionMasks;
+import com.blib.api.common.goap.v1.action.BLibAction;
+import com.blib.api.common.inventory.v1.BLibInventoryHolder;
 import com.human.common.gameplay.entity.living.human.marine.ai.equip_totem.action.EquipTotemAction;
 import com.human.common.gameplay.entity.living.human.marine.ai.equip_totem.action.MoveToTotemAction;
 import com.human.common.gameplay.entity.living.human.marine.ai.equip_totem.action.PickUpTotemAction;

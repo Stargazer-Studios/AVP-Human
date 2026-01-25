@@ -1,7 +1,7 @@
 package com.human.common.gameplay.entity.nuke;
 
-import mod.azure.azurelib.common.animation.dispatch.command.AzCommand;
-import mod.azure.azurelib.common.animation.play_behavior.AzPlayBehaviors;
+import com.blib.azurelib.common.animation.dispatch.command.AzCommand;
+import com.blib.azurelib.common.animation.play_behavior.AzPlayBehaviors;
 
 public class MushroomCloudAnimDispatcher {
 

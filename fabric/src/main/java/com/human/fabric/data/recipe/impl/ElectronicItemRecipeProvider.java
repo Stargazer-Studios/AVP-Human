@@ -1,7 +1,7 @@
 package com.human.fabric.data.recipe.impl;
 
+import com.blib.api.common.tag.v1.CommonItemTags;
 import com.blib.fabric.data.recipe.builder.RecipeBuilder;
-import com.compatibility.CommonItemTags;
 import com.human.common.registry.init.item.HumanItems;
 import com.human.common.registry.tag.HumanItemTags;
 import com.human.compatibility.HumanCommonItemTags;

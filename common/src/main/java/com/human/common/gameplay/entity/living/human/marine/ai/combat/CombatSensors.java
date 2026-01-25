@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.combat;
 
-import com.blib.common.gameplay.util.BLibEntityPredicates;
+import com.blib.api.common.entity.v1.BLibEntityPredicates;
 import com.human.common.gameplay.entity.ai.utility.sensor.BestItemSensor;
 import com.human.common.gameplay.entity.ai.utility.sensor.EquippedItemSensor;
 import com.human.common.gameplay.entity.ai.utility.sensor.ItemInInventorySensor;

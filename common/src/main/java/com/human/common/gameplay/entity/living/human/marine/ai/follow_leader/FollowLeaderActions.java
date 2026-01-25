@@ -1,7 +1,7 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.follow_leader;
 
-import com.blib.common.gameplay.goap.action.ActionMasks;
-import com.blib.common.gameplay.goap.action.BLibAction;
+import com.blib.api.common.goap.v1.action.ActionMasks;
+import com.blib.api.common.goap.v1.action.BLibAction;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.human.common.gameplay.entity.living.human.marine.ai.follow_leader.action.MoveCloserToLeaderAction;
 import com.just.goap.action.Action;

@@ -1,6 +1,6 @@
 package com.human.common.network.packet;
 
-import com.blib.common.util.codec.stream.impl.MojangStreamCodecs;
+import com.blib.api.common.codec.v1.stream.impl.MojangStreamCodecs;
 import com.human.HumanResources;
 import com.just.codec.stream.RecordStreamCodec;
 import com.just.codec.stream.StreamCodec;

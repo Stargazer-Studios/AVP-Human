@@ -1,12 +1,12 @@
 package com.human.common.gameplay.entity.projectile;
 
 import com.alien.common.data.AlienVariantTypes;
-import com.blib.common.util.DirectionUtil;
 import com.human.common.registry.init.HumanEntityTypes;
 import com.human.common.registry.key.HumanDamageTypeKeys;
 import com.human.compatibility.avp_alien.AVPAlien;
 import com.just.core.traversal.BFS;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
@@ -26,6 +26,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 
 public class Flamethrow extends ThrowableProjectile {
+
+    private static final Direction[] VALUES = Direction.values();
 
     private static final String IS_ENHANCED_ENHANCED = "IsEnhanced";
 
@@ -104,7 +106,7 @@ public class Flamethrow extends ThrowableProjectile {
 
         BFS.traverse(
             originPos,
-            pos -> Arrays.stream(DirectionUtil.VALUES).map(pos::relative).filter(this::shouldPlaceFireAt).toList(),
+            pos -> Arrays.stream(VALUES).map(pos::relative).filter(this::shouldPlaceFireAt).toList(),
             pos -> level().setBlockAndUpdate(pos, Blocks.FIRE.defaultBlockState()),
             pos -> originPos.distManhattan(pos) > radius + 1
         );

@@ -1,6 +1,6 @@
 package com.human.common.registry.init;
 
-import com.blib.common.registry.impl.BLibVillagerTradeRegistry;
+import com.blib.api.common.registry.v1.impl.BLibVillagerTradeRegistry;
 import com.human.Human;
 import com.human.common.data.CommissaryTradeLevels;
 

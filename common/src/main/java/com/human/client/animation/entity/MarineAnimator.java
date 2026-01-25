@@ -1,12 +1,12 @@
 package com.human.client.animation.entity;
 
-import com.blib.client.animation.BLibEntityAnimationUtils;
+import com.blib.api.client.animation.v1.BLibEntityAnimationUtils;
+import com.blib.azurelib.common.animation.controller.AzAnimationController;
+import com.blib.azurelib.common.animation.controller.AzAnimationControllerContainer;
+import com.blib.azurelib.common.animation.impl.AzEntityAnimator;
 import com.human.HumanResources;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.human.common.gameplay.entity.living.human.marine.MarineAnimationRefs;
-import mod.azure.azurelib.common.animation.controller.AzAnimationController;
-import mod.azure.azurelib.common.animation.controller.AzAnimationControllerContainer;
-import mod.azure.azurelib.common.animation.impl.AzEntityAnimator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.NotNull;

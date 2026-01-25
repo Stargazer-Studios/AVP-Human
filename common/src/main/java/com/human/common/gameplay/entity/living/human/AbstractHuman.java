@@ -1,8 +1,8 @@
 package com.human.common.gameplay.entity.living.human;
 
-import com.blib.common.network.data.DataAccessor;
-import com.blib.common.network.data.DataUser;
-import com.blib.common.util.MovementAnalyzer;
+import com.blib.api.common.data_sync.v1.DataAccessor;
+import com.blib.api.common.data_sync.v1.model.DataUser;
+import com.blib.api.common.entity.v1.MovementAnalyzer;
 import com.human.common.config.HumanConfig;
 import com.human.common.registry.init.HumanDataSyncKeys;
 import net.minecraft.nbt.CompoundTag;

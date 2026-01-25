@@ -1,6 +1,6 @@
 package com.human.common.gameplay.item.gun.attack.projectile;
 
-import com.blib.common.gameplay.util.EnchantmentUtil;
+import com.blib.api.common.enchantment.v1.EnchantmentUtil;
 import com.human.Human;
 import com.human.common.gameplay.entity.projectile.Flamethrow;
 import com.human.common.gameplay.item.gun.attack.GunAttackAction;

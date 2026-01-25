@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.manager;
 
-import com.blib.common.gameplay.model.NBTSerializable;
+import com.blib.api.common.nbt.v1.model.NBTSerializable;
 import com.human.common.gameplay.gene.Gene;
 import com.human.common.gameplay.gene.GeneModifierKey;
 import com.human.common.gameplay.gene.GeneRegistry;

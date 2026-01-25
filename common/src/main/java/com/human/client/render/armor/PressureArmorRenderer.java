@@ -1,8 +1,8 @@
 package com.human.client.render.armor;
 
+import com.blib.azurelib.common.render.armor.AzArmorRendererConfig;
 import com.human.HumanResources;
 import com.human.client.render.layer.DyedRenderLayer;
-import mod.azure.azurelib.common.render.armor.AzArmorRendererConfig;
 import net.minecraft.resources.ResourceLocation;
 
 public class PressureArmorRenderer extends AzPatchedArmorRenderer {

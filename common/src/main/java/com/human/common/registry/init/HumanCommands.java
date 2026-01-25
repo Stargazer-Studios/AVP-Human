@@ -1,6 +1,6 @@
 package com.human.common.registry.init;
 
-import com.blib.common.registry.impl.BLibCommandRegistry;
+import com.blib.api.common.registry.v1.impl.BLibCommandRegistry;
 import com.human.Human;
 import com.human.common.gameplay.command.NukeCommand;
 import com.human.common.gameplay.command.SpawnPatrolCommand;

@@ -1,7 +1,7 @@
 package com.human.fabric.data.tag;
 
 import com.alien.common.registry.tag.AlienEntityTypeTags;
-import com.blib.common.data.tag.BLibEntityTypeTags;
+import com.blib.api.common.tag.v1.BLibEntityTypeTags;
 import com.human.common.registry.init.HumanEntityTypes;
 import com.human.common.registry.tag.HumanEntityTypeTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;

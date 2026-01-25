@@ -1,10 +1,10 @@
 package com.human.fabric.data.recipe.impl;
 
+import com.blib.api.common.tag.v1.CommonItemTags;
 import com.blib.fabric.data.recipe.RecipeConstants;
 import com.blib.fabric.data.recipe.RecipeTemplates;
 import com.blib.fabric.data.recipe.builder.RecipeBuilder;
 import com.blib.fabric.data.recipe.util.RecipeUtil;
-import com.compatibility.CommonItemTags;
 import com.human.common.registry.init.block.CoreBlocks;
 import com.human.common.registry.init.block.HumanFerroaluminumBlocks;
 import com.human.common.registry.init.block.HumanSteelBlocks;

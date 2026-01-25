@@ -1,6 +1,5 @@
 package com.human.common.gameplay.block.entity.power.impl;
 
-import com.blib.common.util.DirectionUtil;
 import com.human.common.gameplay.block.IndustrialFurnaceBlock;
 import com.human.common.gameplay.block.entity.power.PowerNodeBlockEntity;
 import com.human.common.gameplay.power.PowerNode;
@@ -9,16 +8,15 @@ import com.human.common.registry.init.HumanBlocks;
 import com.just.core.functional.function.Function;
 import com.just.core.functional.function.Lazy;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.block.BlastFurnaceBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.FurnaceBlock;
-import net.minecraft.world.level.block.SmokerBlock;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.Map;
 
 public class ThermalGeneratorBlockEntity extends PowerNodeBlockEntity implements PowerNode.PowerProducer {
+
+    private static final Direction[] VALUES = Direction.values();
 
     private static final Lazy<Map<Block, Function<BlockState, Integer>>> HEAT_VALUES = Lazy.of(
         () -> Map.ofEntries(
@@ -57,7 +55,7 @@ public class ThermalGeneratorBlockEntity extends PowerNodeBlockEntity implements
 
         var totalHeat = 0;
 
-        for (var direction : DirectionUtil.VALUES) {
+        for (var direction : VALUES) {
             var neighborPos = worldPosition.relative(direction);
             var neighborState = level.getBlockState(neighborPos);
             var neighborBlock = neighborState.getBlock();

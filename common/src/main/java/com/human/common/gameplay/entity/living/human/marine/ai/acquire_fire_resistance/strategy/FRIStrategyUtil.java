@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy;
 
-import com.blib.common.gameplay.model.inventory.BLibInventory;
+import com.blib.api.common.inventory.v1.BLibInventory;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.effect.MobEffect;

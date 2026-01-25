@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.manager;
 
-import com.blib.common.registry.BLibHolder;
+import com.blib.api.common.registry.v1.BLibHolder;
 import com.human.common.gameplay.gene.Gene;
 import com.human.common.gameplay.gene.GeneModifierKey;
 import com.human.common.gameplay.gene.GeneOperationType;

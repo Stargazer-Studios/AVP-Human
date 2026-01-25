@@ -1,7 +1,7 @@
 package com.human.client.render.armor;
 
+import com.blib.azurelib.common.render.armor.AzArmorRendererConfig;
 import com.human.HumanResources;
-import mod.azure.azurelib.common.render.armor.AzArmorRendererConfig;
 import net.minecraft.resources.ResourceLocation;
 
 public class ApeArmorRenderer extends AzPatchedArmorRenderer {

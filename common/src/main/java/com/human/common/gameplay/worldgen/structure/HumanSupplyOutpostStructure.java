@@ -1,6 +1,6 @@
 package com.human.common.gameplay.worldgen.structure;
 
-import com.blib.common.gameplay.structure.JigsawBackedStructure;
+import com.blib.api.common.worldgen.v1.JigsawBackedStructure;
 import net.minecraft.core.Holder;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.VerticalAnchor;

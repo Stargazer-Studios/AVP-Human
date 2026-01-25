@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.extinguish_fire;
 
-import com.blib.common.gameplay.model.inventory.BLibInventory;
+import com.blib.api.common.inventory.v1.BLibInventory;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.human.common.gameplay.entity.living.human.marine.ai.extinguish_fire.sensor.WaterBucketInInventorySensor;
 import com.just.core.functional.option.Option;

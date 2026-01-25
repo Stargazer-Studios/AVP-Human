@@ -1,6 +1,6 @@
 package com.human.common.gameplay.item;
 
-import com.blib.common.gameplay.util.TooltipUtil;
+import com.blib.api.common.tooltip.v1.TooltipUtil;
 import com.human.common.gameplay.item.gun.GunConfig;
 import com.human.common.gameplay.item.gun.pipeline.GunShootContext;
 import com.human.common.registry.init.HumanDataComponents;

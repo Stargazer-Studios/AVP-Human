@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.projectile;
 
-import com.blib.common.gameplay.entity.projectile.BouncingItemProjectile;
+import com.blib.api.common.entity.v1.projectile.BouncingItemProjectile;
 import com.human.common.gameplay.effect.RadiationStatusEffect;
 import com.human.common.registry.init.HumanEntityTypes;
 import com.human.common.registry.init.HumanMobEffects;

@@ -1,7 +1,7 @@
 package com.human.common.registry.init;
 
-import com.blib.common.registry.BLibHolder;
-import com.blib.common.registry.BLibRegistry;
+import com.blib.api.common.registry.v1.BLibHolder;
+import com.blib.api.common.registry.v1.BLibRegistry;
 import com.google.common.collect.ImmutableSet;
 import com.human.Human;
 import com.human.common.registry.key.HumanVillagerPoiKeys;

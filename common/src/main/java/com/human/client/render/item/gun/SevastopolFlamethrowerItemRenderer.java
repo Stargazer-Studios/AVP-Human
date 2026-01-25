@@ -1,9 +1,9 @@
 package com.human.client.render.item.gun;
 
+import com.blib.azurelib.common.render.item.AzItemRenderer;
+import com.blib.azurelib.common.render.item.AzItemRendererConfig;
 import com.human.HumanResources;
 import com.human.client.animation.item.SevastopolFlamethrowerAnimator;
-import mod.azure.azurelib.common.render.item.AzItemRenderer;
-import mod.azure.azurelib.common.render.item.AzItemRendererConfig;
 
 public class SevastopolFlamethrowerItemRenderer extends AzItemRenderer {
 
