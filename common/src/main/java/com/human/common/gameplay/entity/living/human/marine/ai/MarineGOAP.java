@@ -97,6 +97,7 @@ public class MarineGOAP {
         graphBuilder.addSensor(GOAPSensors.IS_IN_LAVA);
         graphBuilder.addSensor(GOAPSensors.IS_ON_GROUND);
         graphBuilder.addSensor(GOAPSensors.IS_UNDERWATER);
+        graphBuilder.addSensor(GOAPSensors.HAS_WATER_BREATHING);
         // Self state.
         graphBuilder.addSensor(GOAPSensors.FIRE_RESISTANCE_REMAINING_TICKS);
         graphBuilder.addSensor(GOAPSensors.HAS_FIRE_RESISTANCE);
