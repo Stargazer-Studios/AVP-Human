@@ -78,17 +78,17 @@ dependencies {
         exclude group: project.group
     }
     // Uncomment to test compatibility.
-    localRuntime("com.avp.alien:avp_alien-neoforge-1.21.1:${project.avp_alien_version}") {
-        exclude group: project.group
-    }
+//    localRuntime("com.avp.alien:avp_alien-neoforge-1.21.1:${project.avp_alien_version}") {
+//        exclude group: project.group
+//    }
 
     compileOnly("com.avp.predator:avp_predator-neoforge-1.21.1:${project.avp_predator_version}") {
         exclude group: project.group
     }
     // Uncomment to test compatibility.
-    localRuntime("com.avp.predator:avp_predator-neoforge-1.21.1:${project.avp_predator_version}") {
-        exclude group: project.group
-    }
+//    localRuntime("com.avp.predator:avp_predator-neoforge-1.21.1:${project.avp_predator_version}") {
+//        exclude group: project.group
+//    }
 
     compileOnly "dev.emi:emi-neoforge:${emi_version}"
     compileOnly "mezz.jei:jei-$minecraft_version-neoforge:${jei_version}"

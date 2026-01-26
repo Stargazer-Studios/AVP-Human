@@ -1,7 +1,8 @@
 package com.human.common.gameplay.entity.machine;
 
-import com.human.common.config.HumanConfig;
 import com.human.common.gameplay.block.entity.AmmoChestBlockEntity;
+import com.human.common.property.HumanProperties;
+import com.human.common.property.HumanPropertyAccess;
 import com.human.common.registry.init.HumanBlocks;
 import com.human.common.registry.init.HumanSoundEvents;
 import com.human.common.registry.key.HumanDamageTypeKeys;
@@ -33,13 +34,13 @@ import java.util.UUID;
 
 public class SentryTurret extends Mob implements TraceableEntity {
 
-    public static float DAMAGE = HumanConfig.INSTANCE.blockConfigs.TURRET_DAMAGE;
+    public static float DAMAGE = HumanPropertyAccess.INSTANCE.getOrThrow(HumanProperties.Blocks.SentryTurret.DAMAGE);
 
-    public static int RANGE = HumanConfig.INSTANCE.blockConfigs.TURRET_RANGE;
+    public static int RANGE = HumanPropertyAccess.INSTANCE.getOrThrow(HumanProperties.Blocks.SentryTurret.RANGE);
 
-    protected static int AMMO_CHEST_RANGE = HumanConfig.INSTANCE.blockConfigs.TURRET_AMMO_CHEST_SEARCH_RANGE;
+    protected static int AMMO_CHEST_RANGE = HumanPropertyAccess.INSTANCE.getOrThrow(HumanProperties.Blocks.SentryTurret.AMMO_CHEST_RANGE);
 
-    protected static int FOV = HumanConfig.INSTANCE.blockConfigs.TURRET_FOV;
+    protected static int FOV = HumanPropertyAccess.INSTANCE.getOrThrow(HumanProperties.Blocks.SentryTurret.FOV);
 
     private static final int MAX_TURRET_FIRE_COOLDOWN_IN_TICKS = 2;
 

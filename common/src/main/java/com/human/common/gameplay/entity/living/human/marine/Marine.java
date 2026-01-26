@@ -7,7 +7,6 @@ import com.blib.api.common.inventory.v1.BLibInventory;
 import com.blib.api.common.inventory.v1.BLibInventoryHolder;
 import com.blib.api.common.item.v1.ItemUtil;
 import com.human.Human;
-import com.human.common.config.HumanConfig;
 import com.human.common.data.HumanAdvancements;
 import com.human.common.gameplay.entity.BiomeSenseCache;
 import com.human.common.gameplay.entity.EntitySenseCache;
@@ -20,6 +19,7 @@ import com.human.common.gameplay.entity.living.human.marine.ai.heal_self.strateg
 import com.human.common.gameplay.item.GunItem;
 import com.human.common.gameplay.item.ItemCooldownUser;
 import com.human.common.gameplay.level.patrol.decorator.gear.MarineGearDecorator;
+import com.human.common.property.HumanProperties;
 import com.human.common.registry.init.HumanDataComponents;
 import com.just.codec.impl.Codecs;
 import com.just.core.functional.option.Option;
@@ -31,13 +31,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
@@ -66,7 +60,7 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
     private static final String NBT_LEADER_UUID = "leaderUUID";
 
     public static AttributeSupplier.Builder createMarineAttributes() {
-        return applyFrom(HumanConfig.INSTANCE.statsConfigs.MARINE_STATS, Mob.createMobAttributes().add(Attributes.ATTACK_DAMAGE));
+        return applyFrom(HumanProperties.Entities.Marine.STATS, Mob.createMobAttributes().add(Attributes.ATTACK_DAMAGE));
     }
 
     private final MarineAnimationDispatcher animationDispatcher;

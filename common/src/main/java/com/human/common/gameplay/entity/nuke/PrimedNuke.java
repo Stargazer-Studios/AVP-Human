@@ -1,7 +1,8 @@
 package com.human.common.gameplay.entity.nuke;
 
 import com.blib.api.common.server.v1.ServerScheduler;
-import com.human.common.config.HumanConfig;
+import com.human.common.property.HumanProperties;
+import com.human.common.property.HumanPropertyAccess;
 import com.human.common.registry.init.HumanBlocks;
 import com.human.common.registry.init.HumanEntityTypes;
 import com.human.util.NuclearExplosionUtil;
@@ -129,7 +130,7 @@ public class PrimedNuke extends Entity {
 
     public boolean isNukeEnabled(ServerLevel serverLevel) {
         if (serverLevel.getServer().isDedicatedServer()) {
-            return HumanConfig.INSTANCE.blockConfigs.ENABLE_NUKE_BLOCK_MECHS;
+            return HumanPropertyAccess.INSTANCE.getOrThrow(HumanProperties.Blocks.Nuke.ENABLED);
         }
 
         return true;

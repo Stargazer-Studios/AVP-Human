@@ -4,10 +4,11 @@ import com.blib.api.common.block.v1.BlockBreakProgressManager;
 import com.blib.api.common.enchantment.v1.EnchantmentUtil;
 import com.blib.api.common.tag.v1.BLibBlockTags;
 import com.human.Human;
-import com.human.common.config.HumanConfig;
 import com.human.common.gameplay.item.gun.attack.GunAttackConfig;
 import com.human.common.gameplay.item.gun.attack.GunHitResult;
 import com.human.common.network.packet.S2CBulletHitBlockPayload;
+import com.human.common.property.HumanProperties;
+import com.human.common.property.HumanPropertyAccess;
 import com.human.common.registry.init.HumanSoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
@@ -60,7 +61,7 @@ public class BlockGunHitResultHandler {
         int pierceIndex
     ) {
         if (
-            !HumanConfig.INSTANCE.weaponConfigs.BULLETS_DAMAGE_BLOCKS_ENABLED
+            !HumanPropertyAccess.INSTANCE.getOrThrow(HumanProperties.Weapons.BULLETS_DAMAGE_BLOCKS_ENABLED)
                 || !level.getGameRules().getBoolean(GameRules.RULE_PROJECTILESCANBREAKBLOCKS)
                 // Only damage blocks if they should be destroyed.
                 || blockState.is(BLibBlockTags.SHOULD_NOT_BE_DESTROYED)

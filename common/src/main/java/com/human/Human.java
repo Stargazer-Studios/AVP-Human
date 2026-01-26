@@ -2,7 +2,6 @@ package com.human;
 
 import com.blib.api.BLibAPI;
 import com.blib.api.common.mod.v1.BLibMod;
-import com.human.common.config.HumanConfig;
 import com.human.common.data.HumanReloadListeners;
 import com.human.common.data.fixer.migration.HumanDataMigrations;
 import com.human.common.gameplay.entity.living.human.marine.ai.MarineGOAP;
@@ -19,6 +18,7 @@ import com.human.common.gameplay.worldgen.biome.NukedAshPlacement;
 import com.human.common.gameplay.worldgen.structure.HumanCommissaryVillagerHouseInjector;
 import com.human.common.network.HumanPacketDirectionRegistry;
 import com.human.common.network.HumanServerPacketHandlerRegistry;
+import com.human.common.property.HumanPropertyAccess;
 import com.human.common.registry.GeneBonusDataRegistry;
 import com.human.common.registry.init.HumanArmorMaterials;
 import com.human.common.registry.init.HumanBlockEntityTypes;
@@ -79,7 +79,7 @@ public class Human {
     public static void initialize() {
         LOGGER.info("Initializing AVP (Human) for mod loader '{}'", BLibAPI.getModLoaderType());
 
-        HumanConfig.initialize();
+        HumanPropertyAccess.INSTANCE.save();
 
         MOD.initialize(Human::runInitialization);
     }

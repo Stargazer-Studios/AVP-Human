@@ -3,7 +3,8 @@ package com.human.common.gameplay.entity.living.human;
 import com.blib.api.common.data_sync.v1.DataAccessor;
 import com.blib.api.common.data_sync.v1.model.DataUser;
 import com.blib.api.common.entity.v1.MovementAnalyzer;
-import com.human.common.config.HumanConfig;
+import com.human.common.property.HumanProperties;
+import com.human.common.property.HumanPropertyAccess;
 import com.human.common.registry.init.HumanDataSyncKeys;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvent;
@@ -27,14 +28,14 @@ public abstract class AbstractHuman extends PathfinderMob implements DataUser {
 
     public static final int MIN_IDLE_TIME_IN_TICKS = 7 * 20;
 
-    public static AttributeSupplier.Builder applyFrom(HumanConfig.StatsConfigs.AdvancedStats config, AttributeSupplier.Builder builder) {
-        builder.add(Attributes.ARMOR, config.armor);
-        builder.add(Attributes.ARMOR_TOUGHNESS, config.armorToughness);
-        builder.add(Attributes.ATTACK_DAMAGE, config.attackDamage);
-        builder.add(Attributes.FOLLOW_RANGE, config.followRange);
-        builder.add(Attributes.KNOCKBACK_RESISTANCE, config.knockbackResistance);
-        builder.add(Attributes.MAX_HEALTH, config.health);
-        builder.add(Attributes.MOVEMENT_SPEED, config.moveSpeed);
+    public static AttributeSupplier.Builder applyFrom(HumanProperties.StatProperties statProperties, AttributeSupplier.Builder builder) {
+        builder.add(Attributes.ARMOR, HumanPropertyAccess.INSTANCE.getOrThrow(statProperties.armor()));
+        builder.add(Attributes.ARMOR_TOUGHNESS, HumanPropertyAccess.INSTANCE.getOrThrow(statProperties.armorToughness()));
+        builder.add(Attributes.ATTACK_DAMAGE, HumanPropertyAccess.INSTANCE.getOrThrow(statProperties.attackDamage()));
+        builder.add(Attributes.FOLLOW_RANGE, HumanPropertyAccess.INSTANCE.getOrThrow(statProperties.followRange()));
+        builder.add(Attributes.KNOCKBACK_RESISTANCE, HumanPropertyAccess.INSTANCE.getOrThrow(statProperties.knockbackResistance()));
+        builder.add(Attributes.MAX_HEALTH, HumanPropertyAccess.INSTANCE.getOrThrow(statProperties.health()));
+        builder.add(Attributes.MOVEMENT_SPEED, HumanPropertyAccess.INSTANCE.getOrThrow(statProperties.movementSpeed()));
 
         return builder;
     }

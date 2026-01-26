@@ -2,8 +2,9 @@ package com.human.common.gameplay.block.entity.power.impl;
 
 import com.alien.common.data.AlienVariantTypes;
 import com.alien.common.registry.tag.AlienBlockTags;
-import com.human.common.config.HumanConfig;
 import com.human.common.gameplay.block.entity.power.PowerConsumerBlockEntity;
+import com.human.common.property.HumanProperties;
+import com.human.common.property.HumanPropertyAccess;
 import com.human.common.registry.init.HumanBlockEntityTypes;
 import com.human.compatibility.avp_alien.AVPAlien;
 import net.minecraft.core.BlockPos;
@@ -50,13 +51,13 @@ public class ResonatorBlockEntity extends PowerConsumerBlockEntity {
 
         tickCounter++;
 
-        var tickValue = HumanConfig.INSTANCE.blockConfigs.RESONATOR_REPLACE_TICKS;
+        var tickValue = HumanPropertyAccess.INSTANCE.getOrThrow(HumanProperties.Blocks.Resonator.REPLACE_FREQUENCY_IN_TICKS);
 
         if (tickCounter % tickValue != 0) {
             return;
         }
 
-        var radius = HumanConfig.INSTANCE.blockConfigs.RESONATOR_REPLACE_RADIUS;
+        var radius = HumanPropertyAccess.INSTANCE.getOrThrow(HumanProperties.Blocks.Resonator.REPLACE_RADIUS_IN_BLOCKS);
 
         if (!AVPAlien.MOD.isLoaded()) {
             return;

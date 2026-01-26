@@ -1,6 +1,7 @@
 package com.human.common.gameplay.entity.projectile;
 
-import com.human.common.config.HumanConfig;
+import com.human.common.property.HumanProperties;
+import com.human.common.property.HumanPropertyAccess;
 import com.human.common.registry.init.HumanEntityTypes;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -69,7 +70,7 @@ public class Rocket extends ThrowableProjectile {
     protected void onHit(@NotNull HitResult hitResult) {
         super.onHit(hitResult);
         var level = level();
-        var explosionInteraction = HumanConfig.INSTANCE.weaponConfigs.BULLETS_DAMAGE_BLOCKS_ENABLED
+        var explosionInteraction = HumanPropertyAccess.INSTANCE.getOrThrow(HumanProperties.Weapons.BULLETS_DAMAGE_BLOCKS_ENABLED)
             ? Level.ExplosionInteraction.BLOCK
             : Level.ExplosionInteraction.NONE;
 
