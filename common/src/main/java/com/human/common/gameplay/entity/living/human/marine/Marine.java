@@ -19,7 +19,6 @@ import com.human.common.gameplay.entity.living.human.marine.ai.heal_self.strateg
 import com.human.common.gameplay.item.GunItem;
 import com.human.common.gameplay.item.ItemCooldownUser;
 import com.human.common.gameplay.level.patrol.decorator.gear.MarineGearDecorator;
-import com.human.common.property.HumanProperties;
 import com.human.common.registry.init.HumanDataComponents;
 import com.just.codec.impl.Codecs;
 import com.just.core.functional.option.Option;
@@ -49,18 +48,22 @@ import java.util.UUID;
 
 public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUser<Marine>, ItemCooldownUser {
 
-    public static final float ARMOR = 2.0F;
-
-    public static final float ATTACK_DAMAGE = PlayerStatConstants.BASE_HEALTH * 0.1F;
-
-    public static final float FOLLOW_RANGE = 20F;
-
     private static final String NBT_INVENTORY = "inventory";
 
     private static final String NBT_LEADER_UUID = "leaderUUID";
 
     public static AttributeSupplier.Builder createMarineAttributes() {
-        return applyFrom(HumanProperties.Entities.Marine.STATS, Mob.createMobAttributes().add(Attributes.ATTACK_DAMAGE));
+        var builder = Mob.createMobAttributes().add(Attributes.ATTACK_DAMAGE);
+
+        builder.add(Attributes.ARMOR, 2.0F);
+        builder.add(Attributes.ARMOR_TOUGHNESS, 0f);
+        builder.add(Attributes.ATTACK_DAMAGE, PlayerStatConstants.BASE_HEALTH * 0.1F);
+        builder.add(Attributes.FOLLOW_RANGE, 20F);
+        builder.add(Attributes.KNOCKBACK_RESISTANCE, 0f);
+        builder.add(Attributes.MAX_HEALTH, PlayerStatConstants.BASE_HEALTH);
+        builder.add(Attributes.MOVEMENT_SPEED, PlayerStatConstants.BASE_SPRINT_JUMP_SPEED);
+
+        return builder;
     }
 
     private final MarineAnimationDispatcher animationDispatcher;

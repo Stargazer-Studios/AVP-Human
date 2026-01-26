@@ -1,8 +1,6 @@
 package com.human.common.property;
 
-import com.blib.api.common.entity.v1.PlayerStatConstants;
 import com.blib.api.common.property.v1.BLibPropertySchema;
-import com.human.common.gameplay.entity.living.human.marine.Marine;
 
 public class HumanPropertySchema {
 
@@ -27,47 +25,9 @@ public class HumanPropertySchema {
         .addComment("Block range that turrets can target.")
         .addProperty(HumanProperties.Blocks.SentryTurret.RANGE, 32)
         .addBlankLine()
-        .apply(HumanPropertySchema::addMarineSpawnProperties)
-        .addBlankLine()
-        .apply(HumanPropertySchema::addMarineStatsProperties)
-        .addBlankLine()
         .addComment("If enabled, bullets from guns will damage blocks.")
         .addProperty(HumanProperties.Weapons.BULLETS_DAMAGE_BLOCKS_ENABLED, true)
         .build();
-
-    private static BLibPropertySchema.Builder addMarineSpawnProperties(BLibPropertySchema.Builder builder) {
-        var spawnProperties = HumanProperties.Entities.Marine.SPAWNING;
-
-        return builder
-            .addComment("If true, spawning is enabled.")
-            .addProperty(spawnProperties.enabled(), true)
-            .addComment("The maximum group size for this entity's spawn.")
-            .addProperty(spawnProperties.maximumGroupSize(), 1)
-            .addComment("The minimum group size for this entity's spawn.")
-            .addProperty(spawnProperties.minimumGroupSize(), 1)
-            .addComment("The spawn weight for this entity.")
-            .addProperty(spawnProperties.weight(), 1);
-    }
-
-    private static BLibPropertySchema.Builder addMarineStatsProperties(BLibPropertySchema.Builder builder) {
-        var spawnProperties = HumanProperties.Entities.Marine.STATS;
-
-        return builder
-            .addComment("The entity's armor value.")
-            .addProperty(spawnProperties.armor(), Marine.ARMOR)
-            .addComment("The entity's armor toughness.")
-            .addProperty(spawnProperties.armorToughness(), 0f)
-            .addComment("The entity's attack damage.")
-            .addProperty(spawnProperties.attackDamage(), Marine.ATTACK_DAMAGE)
-            .addComment("The entity's max follow range.")
-            .addProperty(spawnProperties.followRange(), Marine.FOLLOW_RANGE)
-            .addComment("The entity's health.")
-            .addProperty(spawnProperties.health(), PlayerStatConstants.BASE_HEALTH)
-            .addComment("The entity's knockback resistance.")
-            .addProperty(spawnProperties.knockbackResistance(), 0f)
-            .addComment("The entity's movement speed.")
-            .addProperty(spawnProperties.movementSpeed(), PlayerStatConstants.BASE_SPRINT_JUMP_SPEED);
-    }
 
     private HumanPropertySchema() {
         throw new UnsupportedOperationException();
