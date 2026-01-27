@@ -1,6 +1,11 @@
 package com.human.common.data.loot;
 
+import com.alien.common.registry.init.item.AlienItems;
+import com.blib.api.common.loot.v1.condition.item.BLibLootItemModLoadedCondition;
 import com.human.common.registry.init.item.HumanItems;
+import com.human.compatibility.avp_alien.AVPAlien;
+import com.human.compatibility.avp_predator.AVPPredator;
+import com.predator.common.registry.init.item.PredatorItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -68,26 +73,25 @@ public class ChestRawMaterialLootTable {
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 6)))
                         .setWeight(5)
                 )
+        )
+        .withPool(
+            LootPool.lootPool()
+                .when(BLibLootItemModLoadedCondition.isModLoaded(AVPAlien.MOD.id()))
+                .setRolls(ConstantValue.exactly(1))
+                .add(
+                    LootItem.lootTableItem(AlienItems.ALIEN_MUSIC_DISC_1_FRAGMENT.get())
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 4)))
+                        .setWeight(5)
+                )
+        )
+        .withPool(
+            LootPool.lootPool()
+                .when(BLibLootItemModLoadedCondition.isModLoaded(AVPPredator.MOD.id()))
+                .setRolls(ConstantValue.exactly(1))
+                .add(
+                    LootItem.lootTableItem(PredatorItems.PREDATOR_MUSIC_DISC_1_FRAGMENT.get())
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 4)))
+                        .setWeight(5)
+                )
         );
-    // FIXME:
-    // .withPool(
-    // LootPool.lootPool()
-    // .when(BLibLootItemModLoadedCondition.isModLoaded(AVPAlien.MOD.id()))
-    // .setRolls(ConstantValue.exactly(1))
-    // .add(
-    // LootItem.lootTableItem(AlienItems.ALIEN_MUSIC_DISC_1_FRAGMENT.get())
-    // .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 4)))
-    // .setWeight(5)
-    // )
-    // )
-    // .withPool(
-    // LootPool.lootPool()
-    // .when(BLibLootItemModLoadedCondition.isModLoaded(AVPPredator.MOD.id()))
-    // .setRolls(ConstantValue.exactly(1))
-    // .add(
-    // LootItem.lootTableItem(PredatorItems.PREDATOR_MUSIC_DISC_1_FRAGMENT.get())
-    // .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 4)))
-    // .setWeight(5)
-    // )
-    // );
 }

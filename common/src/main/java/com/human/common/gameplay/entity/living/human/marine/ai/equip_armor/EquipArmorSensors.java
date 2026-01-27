@@ -1,5 +1,6 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.equip_armor;
 
+import com.alien.common.registry.init.item.AlienArmorItems;
 import com.human.common.gameplay.entity.ai.utility.sensor.BestItemSensor;
 import com.human.common.gameplay.entity.ai.utility.sensor.EquippedItemSensor;
 import com.human.common.gameplay.entity.ai.utility.sensor.ItemInInventorySensor;
@@ -14,6 +15,7 @@ import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.strat
 import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.strategy.ArmorStrategyResult;
 import com.human.common.gameplay.entity.living.human.marine.ai.equip_armor.strategy.ArmorStrategySet;
 import com.human.common.registry.init.item.HumanArmorItems;
+import com.human.compatibility.avp_alien.AVPAlien;
 import com.just.core.functional.option.Option;
 import com.just.goap.StateKey;
 import com.just.goap.sensor.Sensor;
@@ -39,29 +41,25 @@ public class EquipArmorSensors {
     );
 
     private static final Option<ArmorSet> NETHER_CHITIN_ARMOR_SET_OPTION = Option.ofNullable(
-        null
-        // FIXME:
-        // AVPAlien.MOD.isLoaded()
-        // ? new ArmorSet(
-        // AlienArmorItems.NETHER_CHITIN_HELMET,
-        // AlienArmorItems.NETHER_CHITIN_CHESTPLATE,
-        // AlienArmorItems.NETHER_CHITIN_LEGGINGS,
-        // AlienArmorItems.NETHER_CHITIN_BOOTS
-        // )
-        // : null
+        AVPAlien.MOD.isLoaded()
+            ? new ArmorSet(
+                AlienArmorItems.NETHER_CHITIN_HELMET,
+                AlienArmorItems.NETHER_CHITIN_CHESTPLATE,
+                AlienArmorItems.NETHER_CHITIN_LEGGINGS,
+                AlienArmorItems.NETHER_CHITIN_BOOTS
+            )
+            : null
     );
 
     private static final Option<ArmorSet> PLATED_NETHER_CHITIN_ARMOR_SET_OPTION = Option.ofNullable(
-        null
-        // FIXME:
-        // AVPAlien.MOD.isLoaded()
-        // ? new ArmorSet(
-        // AlienArmorItems.PLATED_NETHER_CHITIN_HELMET,
-        // AlienArmorItems.PLATED_NETHER_CHITIN_CHESTPLATE,
-        // AlienArmorItems.PLATED_NETHER_CHITIN_LEGGINGS,
-        // AlienArmorItems.PLATED_NETHER_CHITIN_BOOTS
-        // )
-        // : null
+        AVPAlien.MOD.isLoaded()
+            ? new ArmorSet(
+                AlienArmorItems.PLATED_NETHER_CHITIN_HELMET,
+                AlienArmorItems.PLATED_NETHER_CHITIN_CHESTPLATE,
+                AlienArmorItems.PLATED_NETHER_CHITIN_LEGGINGS,
+                AlienArmorItems.PLATED_NETHER_CHITIN_BOOTS
+            )
+            : null
     );
 
     public static final Sensor.Mono<Marine, Option<ArmorStrategyResult<ItemTarget.Equipped>>> BEST_HELMET_EQUIPPED = Sensors.lazyCompose(

@@ -1,10 +1,14 @@
 package com.human.common.gameplay.gene;
 
+import com.alien.common.gameplay.entity.living.alien.ovomorph.Ovomorph;
 import com.human.HumanResources;
+import com.human.common.model.GeneCarrier;
+import com.human.compatibility.avp_alien.AVPAlien;
 import com.just.core.functional.function.Function2;
 import net.minecraft.core.Holder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 
 import java.util.function.Consumer;
@@ -186,31 +190,28 @@ public class Genes {
         return GeneRegistry.register(() -> new Gene.Simple(HumanResources.location(name), transformer));
     }
 
-    // FIXME:
     private static void handleBonusParasiteCount(LivingEntity entity) {
-        // if (!AVPAlien.MOD.isLoaded()) {
-        // return;
-        // }
-        //
-        // if (!(entity instanceof Ovomorph ovomorph)) {
-        // return;
-        // }
-        //
-        // var scaleAttribute = ovomorph.getAttribute(Attributes.SCALE);
-        //
-        // if (scaleAttribute != null) {
-        // // FIXME:
-        ////            var geneContainer = ((GeneCarrier) ovomorph).getOrCreateGeneManager().getGeneContainer();
-////            var totalParasiteCount = geneContainer.getActiveGeneMap().getValue(Genes.BONUS_PARASITE_COUNT);
-////            var modifier = new AttributeModifier(
-////                Genes.BONUS_PARASITE_COUNT.id(),
-////                totalParasiteCount / 2.0,
-////                AttributeModifier.Operation.ADD_VALUE
-////            );
-////
-////            // FIXME:
-//////            ovomorph.maxSpawnCount.set((byte) (1 + totalParasiteCount));
-////            scaleAttribute.addOrReplacePermanentModifier(modifier);
-        // }
+        if (!AVPAlien.MOD.isLoaded()) {
+            return;
+        }
+
+        if (!(entity instanceof Ovomorph ovomorph)) {
+            return;
+        }
+
+        var scaleAttribute = ovomorph.getAttribute(Attributes.SCALE);
+
+        if (scaleAttribute != null) {
+            var geneContainer = ((GeneCarrier) ovomorph).getOrCreateGeneManager().getGeneContainer();
+            var totalParasiteCount = geneContainer.getActiveGeneMap().getValue(Genes.BONUS_PARASITE_COUNT);
+            var modifier = new AttributeModifier(
+                Genes.BONUS_PARASITE_COUNT.id(),
+                totalParasiteCount / 2.0,
+                AttributeModifier.Operation.ADD_VALUE
+            );
+
+            ovomorph.maxSpawnCount.set((byte) (1 + totalParasiteCount));
+            scaleAttribute.addOrReplacePermanentModifier(modifier);
+        }
     }
 }
