@@ -1,5 +1,6 @@
 package com.human.common.gameplay.item.gun.pipeline;
 
+import com.blib.api.common.block.v1.DynamicBlockLighting;
 import com.blib.api.common.entity.v1.BLibEntityPredicates;
 import com.human.common.gameplay.item.GunItem;
 import com.human.common.gameplay.item.ItemCooldownUser;
@@ -11,7 +12,6 @@ import com.human.common.gameplay.item.gun.pipeline.step.impl.CheckCooldownStep;
 import com.human.common.gameplay.item.gun.pipeline.step.impl.CheckReloadingStep;
 import com.human.common.gameplay.item.gun.pipeline.step.impl.CheckShootDelayStep;
 import com.human.common.registry.init.HumanDataComponents;
-import com.human.common.util.GunLightUtil;
 import com.just.core.functional.option.Option;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -87,7 +87,7 @@ public record GunShootContext(
             return;
         }
 
-        GunLightUtil.spawnLightSource(shooter);
+        DynamicBlockLighting.emitTemporaryLight(shooter);
 
         consumeAmmunition();
 
