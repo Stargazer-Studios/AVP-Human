@@ -1,8 +1,8 @@
 package com.human.client.render.entity;
 
-import com.blib.azurelib.common.render.entity.AzEntityRenderer;
-import com.blib.azurelib.common.render.entity.AzEntityRendererConfig;
-import com.blib.azurelib.common.render.layer.AzAutoGlowingLayer;
+import com.blib.api.client.render.v1.entity.AzEntityRenderer;
+import com.blib.api.client.render.v1.entity.AzEntityRendererConfig;
+import com.blib.api.client.render.v1.layer.AzAutoGlowingLayer;
 import com.human.HumanResources;
 import com.human.client.animation.entity.SentryTurretAnimator;
 import com.human.common.gameplay.entity.machine.SentryTurret;

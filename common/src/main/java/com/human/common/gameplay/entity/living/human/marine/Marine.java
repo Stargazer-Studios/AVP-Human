@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.living.human.marine;
 
-import com.blib.api.common.codec.v1.schema.CodecSchemas;
+import com.blib.api.common.codec.v1.BLibCodecs;
 import com.blib.api.common.entity.v1.PlayerStatConstants;
 import com.blib.api.common.goap.v1.GOAPUser;
 import com.blib.api.common.inventory.v1.BLibInventory;
@@ -233,13 +233,13 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
         super.readAdditionalSaveData(compoundTag);
 
         if (compoundTag.contains(NBT_INVENTORY)) {
-            BLibInventory.CODEC.decode(CodecSchemas.NBT, compoundTag.get(NBT_INVENTORY))
+            BLibInventory.CODEC.decode(BLibCodecs.Schema.NBT, compoundTag.get(NBT_INVENTORY))
                 .inspectErr(tag -> Human.LOGGER.error("Failed to load tag '{}'. Tag: {}", NBT_INVENTORY, tag))
                 .ifOk(loadedInventory -> Arrays.stream(loadedInventory.getSerializedItemStacks()).forEach(inventory::addItemStack));
         }
 
         if (compoundTag.contains(NBT_LEADER_UUID)) {
-            Codecs.UUID.decode(CodecSchemas.NBT, compoundTag.get(NBT_LEADER_UUID))
+            Codecs.UUID.decode(BLibCodecs.Schema.NBT, compoundTag.get(NBT_LEADER_UUID))
                 .ifOk(uuid -> this.leaderUUIDOption = Option.ofNullable(uuid));
         }
     }
@@ -247,8 +247,8 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
     @Override
     public void addAdditionalSaveData(@NotNull CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
-        compoundTag.put(NBT_INVENTORY, BLibInventory.CODEC.encode(CodecSchemas.NBT, inventory));
-        leaderUUIDOption.ifSome(leaderUUID -> compoundTag.put(NBT_LEADER_UUID, Codecs.UUID.encode(CodecSchemas.NBT, leaderUUID)));
+        compoundTag.put(NBT_INVENTORY, BLibInventory.CODEC.encode(BLibCodecs.Schema.NBT, inventory));
+        leaderUUIDOption.ifSome(leaderUUID -> compoundTag.put(NBT_LEADER_UUID, Codecs.UUID.encode(BLibCodecs.Schema.NBT, leaderUUID)));
     }
 
     public BiomeSenseCache getBiomeSenseCache() {

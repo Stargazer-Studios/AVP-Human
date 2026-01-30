@@ -1,9 +1,9 @@
 package com.human.client.animation.block;
 
-import com.blib.azurelib.common.animation.AzAnimatorConfig;
-import com.blib.azurelib.common.animation.controller.AzAnimationController;
-import com.blib.azurelib.common.animation.controller.AzAnimationControllerContainer;
-import com.blib.azurelib.common.animation.impl.AzBlockAnimator;
+import com.blib.api.client.animation.v1.animator.AzAnimatorConfig;
+import com.blib.api.client.animation.v1.animator.AzBlockAnimator;
+import com.blib.api.client.animation.v1.controller.AzAnimationController;
+import com.blib.api.client.animation.v1.controller.AzAnimationControllerContainer;
 import com.human.HumanResources;
 import com.human.common.gameplay.block.entity.power.impl.ResonatorBlockEntity;
 import net.minecraft.resources.ResourceLocation;

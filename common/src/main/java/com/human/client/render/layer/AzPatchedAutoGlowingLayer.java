@@ -1,10 +1,9 @@
 package com.human.client.render.layer;
 
-import com.blib.azurelib.common.cache.texture.AzAbstractTexture;
-import com.blib.azurelib.common.model.AzBone;
-import com.blib.azurelib.common.render.AzRendererPipelineContext;
-import com.blib.azurelib.common.render.layer.AzRenderLayer;
-import com.blib.azurelib.common.util.client.ClientUtils;
+import com.blib.api.client.model.v1.AzBone;
+import com.blib.api.client.render.v1.AzRendererPipelineContext;
+import com.blib.api.client.render.v1.layer.AzRenderLayer;
+import com.blib.internal.client.texture.AzAbstractTexture;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.RenderType;
@@ -74,7 +73,7 @@ public class AzPatchedAutoGlowingLayer<K, T> implements AzRenderLayer<K, T> {
 
         var isInvisible = entity.isInvisible();
         var appearsGlowing = Minecraft.getInstance().shouldEntityAppearGlowing(entity);
-        var isPlayerInvisible = entity.isInvisibleTo(ClientUtils.getClientPlayer());
+        var isPlayerInvisible = entity.isInvisibleTo(Minecraft.getInstance().player);
 
         if (isInvisible) {
             if (!isPlayerInvisible) {

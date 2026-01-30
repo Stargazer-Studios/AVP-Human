@@ -1,6 +1,6 @@
 package com.human.client.render.layer.human;
 
-import com.blib.azurelib.common.render.AzRendererPipelineContext;
+import com.blib.api.client.render.v1.AzRendererPipelineContext;
 import com.human.common.gameplay.entity.living.human.AbstractHuman;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderType;

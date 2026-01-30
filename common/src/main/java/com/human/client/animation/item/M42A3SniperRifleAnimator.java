@@ -1,9 +1,9 @@
 package com.human.client.animation.item;
 
-import com.blib.azurelib.common.animation.AzAnimatorConfig;
-import com.blib.azurelib.common.animation.controller.AzAnimationController;
-import com.blib.azurelib.common.animation.controller.AzAnimationControllerContainer;
-import com.blib.azurelib.common.animation.impl.AzItemAnimator;
+import com.blib.api.client.animation.v1.animator.AzAnimatorConfig;
+import com.blib.api.client.animation.v1.animator.AzItemAnimator;
+import com.blib.api.client.animation.v1.controller.AzAnimationController;
+import com.blib.api.client.animation.v1.controller.AzAnimationControllerContainer;
 import com.human.HumanResources;
 import com.human.common.gameplay.item.gun.animation.dispatcher.impl.M42A3SniperRifleAnimationDispatcher;
 import net.minecraft.resources.ResourceLocation;

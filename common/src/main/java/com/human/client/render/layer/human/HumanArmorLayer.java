@@ -1,8 +1,8 @@
 package com.human.client.render.layer.human;
 
-import com.blib.azurelib.common.model.AzBone;
-import com.blib.azurelib.common.render.AzRendererPipelineContext;
-import com.blib.azurelib.common.render.layer.AzArmorLayer;
+import com.blib.api.client.model.v1.AzBone;
+import com.blib.api.client.render.v1.AzRendererPipelineContext;
+import com.blib.api.client.render.v1.layer.AzArmorLayer;
 import com.human.common.gameplay.entity.living.human.AbstractHuman;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;

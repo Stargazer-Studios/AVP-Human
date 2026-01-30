@@ -1,6 +1,6 @@
 package com.human.common.gameplay.gene;
 
-import com.blib.api.common.codec.v1.stream.impl.MojangStreamCodecs;
+import com.blib.api.common.codec.v1.BLibCodecs;
 import com.just.codec.stream.RecordStreamCodec;
 import com.just.codec.stream.StreamCodec;
 import com.just.codec.stream.impl.StreamCodecs;
@@ -25,7 +25,7 @@ public record GeneBonusDataEntry(
     );
 
     public static final StreamCodec<GeneBonusDataEntry> STREAM_CODEC = RecordStreamCodec.of(
-        MojangStreamCodecs.RESOURCE_LOCATION,
+        BLibCodecs.Stream.RESOURCE_LOCATION,
         GeneBonusDataEntry::id,
         GeneOperationType.STREAM_CODEC,
         GeneBonusDataEntry::operation,

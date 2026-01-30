@@ -1,8 +1,8 @@
 package com.human.client.render.block;
 
-import com.blib.azurelib.common.render.block.AzBlockEntityRenderer;
-import com.blib.azurelib.common.render.block.AzBlockEntityRendererConfig;
-import com.blib.azurelib.common.render.layer.AzAutoGlowingLayer;
+import com.blib.api.client.render.v1.block.AzBlockEntityRenderer;
+import com.blib.api.client.render.v1.block.AzBlockEntityRendererConfig;
+import com.blib.api.client.render.v1.layer.AzAutoGlowingLayer;
 import com.human.HumanResources;
 import com.human.common.gameplay.block.entity.power.impl.DeskTerminalBlockEntity;
 import net.minecraft.resources.ResourceLocation;

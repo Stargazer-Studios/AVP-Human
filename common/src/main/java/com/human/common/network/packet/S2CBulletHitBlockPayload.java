@@ -1,6 +1,6 @@
 package com.human.common.network.packet;
 
-import com.blib.api.common.codec.v1.stream.impl.MojangStreamCodecs;
+import com.blib.api.common.codec.v1.BLibCodecs;
 import com.human.HumanResources;
 import com.just.codec.stream.RecordStreamCodec;
 import com.just.codec.stream.StreamCodec;
@@ -20,9 +20,9 @@ public record S2CBulletHitBlockPayload(
     public static final CustomPacketPayload.Type<S2CBulletHitBlockPayload> TYPE = new CustomPacketPayload.Type<>(PAYLOAD_ID);
 
     public static final StreamCodec<S2CBulletHitBlockPayload> CODEC = RecordStreamCodec.of(
-        MojangStreamCodecs.BLOCK_POS,
+        BLibCodecs.Stream.BLOCK_POS,
         S2CBulletHitBlockPayload::blockPos,
-        MojangStreamCodecs.DIRECTION,
+        BLibCodecs.Stream.DIRECTION,
         S2CBulletHitBlockPayload::direction,
         S2CBulletHitBlockPayload::new
     );

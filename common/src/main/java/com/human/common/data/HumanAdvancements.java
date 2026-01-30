@@ -1,29 +1,29 @@
 package com.human.common.data;
 
-import com.blib.api.common.advancement.v1.BLibAdvancementAccess;
+import com.blib.api.common.advancement.v1.BLibAdvancement;
 import com.human.Human;
 
 public class HumanAdvancements {
 
-    public static final BLibAdvancementAccess BLAST_STEEL = create("blast_steel");
+    public static final BLibAdvancement BLAST_STEEL = create("blast_steel");
 
-    public static final BLibAdvancementAccess EQUIP_FULL_ARMOR_SET_WITH_ARMOR_CASE = create("equip_full_armor_set_with_armor_case");
+    public static final BLibAdvancement EQUIP_FULL_ARMOR_SET_WITH_ARMOR_CASE = create("equip_full_armor_set_with_armor_case");
 
-    public static final BLibAdvancementAccess FILL_CANISTER = create("fill_canister");
+    public static final BLibAdvancement FILL_CANISTER = create("fill_canister");
 
-    public static final BLibAdvancementAccess HAS_GUN = create("has_gun");
+    public static final BLibAdvancement HAS_GUN = create("has_gun");
 
-    public static final BLibAdvancementAccess HIRE_MARINE = create("hire_marine");
+    public static final BLibAdvancement HIRE_MARINE = create("hire_marine");
 
-    public static final BLibAdvancementAccess ROOT = create("root");
+    public static final BLibAdvancement ROOT = create("root");
 
-    public static final BLibAdvancementAccess SMELT_BRASS = create("smelt_brass");
+    public static final BLibAdvancement SMELT_BRASS = create("smelt_brass");
 
-    public static final BLibAdvancementAccess SMELT_PLASTIC = create("smelt_plastic");
+    public static final BLibAdvancement SMELT_PLASTIC = create("smelt_plastic");
 
-    public static final BLibAdvancementAccess SMELT_TITANIUM = create("smelt_titanium");
+    public static final BLibAdvancement SMELT_TITANIUM = create("smelt_titanium");
 
-    private static BLibAdvancementAccess create(String path) {
-        return new BLibAdvancementAccess(Human.MOD_ID, "humans", path);
+    private static BLibAdvancement create(String path) {
+        return new BLibAdvancement(Human.MOD_ID, "humans", path);
     }
 }

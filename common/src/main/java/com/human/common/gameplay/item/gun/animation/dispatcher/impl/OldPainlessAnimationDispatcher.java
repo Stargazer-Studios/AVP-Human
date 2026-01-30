@@ -1,7 +1,7 @@
 package com.human.common.gameplay.item.gun.animation.dispatcher.impl;
 
-import com.blib.azurelib.common.animation.dispatch.command.AzCommand;
-import com.blib.azurelib.common.animation.play_behavior.AzPlayBehaviors;
+import com.blib.api.client.animation.v1.command.AzCommand;
+import com.blib.api.client.animation.v1.command.play_behavior.AzPlayBehaviors;
 import com.human.common.gameplay.item.gun.animation.dispatcher.GunAnimationDispatcher;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;

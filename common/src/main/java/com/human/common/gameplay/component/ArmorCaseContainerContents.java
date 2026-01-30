@@ -1,6 +1,6 @@
 package com.human.common.gameplay.component;
 
-import com.blib.api.common.codec.v1.stream.impl.MojangStreamCodecs;
+import com.blib.api.common.codec.v1.BLibCodecs;
 import com.just.codec.stream.RecordStreamCodec;
 import com.just.codec.stream.StreamCodec;
 import com.mojang.serialization.Codec;
@@ -32,13 +32,13 @@ public record ArmorCaseContainerContents(
     );
 
     public static final StreamCodec<ArmorCaseContainerContents> STREAM_CODEC = RecordStreamCodec.of(
-        MojangStreamCodecs.ITEM_STACK,
+        BLibCodecs.Stream.ITEM_STACK,
         ArmorCaseContainerContents::head,
-        MojangStreamCodecs.ITEM_STACK,
+        BLibCodecs.Stream.ITEM_STACK,
         ArmorCaseContainerContents::chest,
-        MojangStreamCodecs.ITEM_STACK,
+        BLibCodecs.Stream.ITEM_STACK,
         ArmorCaseContainerContents::legs,
-        MojangStreamCodecs.ITEM_STACK,
+        BLibCodecs.Stream.ITEM_STACK,
         ArmorCaseContainerContents::feet,
         ArmorCaseContainerContents::new
     );

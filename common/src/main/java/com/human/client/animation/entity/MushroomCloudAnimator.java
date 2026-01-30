@@ -1,8 +1,8 @@
 package com.human.client.animation.entity;
 
-import com.blib.azurelib.common.animation.controller.AzAnimationController;
-import com.blib.azurelib.common.animation.controller.AzAnimationControllerContainer;
-import com.blib.azurelib.common.animation.impl.AzEntityAnimator;
+import com.blib.api.client.animation.v1.animator.AzEntityAnimator;
+import com.blib.api.client.animation.v1.controller.AzAnimationController;
+import com.blib.api.client.animation.v1.controller.AzAnimationControllerContainer;
 import com.human.HumanResources;
 import com.human.common.gameplay.entity.nuke.MushroomCloudEntity;
 import net.minecraft.resources.ResourceLocation;

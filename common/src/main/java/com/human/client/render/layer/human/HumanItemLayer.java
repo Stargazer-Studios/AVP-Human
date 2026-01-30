@@ -1,8 +1,8 @@
 package com.human.client.render.layer.human;
 
-import com.blib.azurelib.common.model.AzBone;
-import com.blib.azurelib.common.render.AzRendererPipelineContext;
-import com.blib.azurelib.common.render.layer.AzBlockAndItemLayer;
+import com.blib.api.client.model.v1.AzBone;
+import com.blib.api.client.render.v1.AzRendererPipelineContext;
+import com.blib.api.client.render.v1.layer.AzBlockAndItemLayer;
 import com.human.common.gameplay.entity.living.human.AbstractHuman;
 import com.mojang.math.Axis;
 import net.minecraft.world.entity.EquipmentSlot;

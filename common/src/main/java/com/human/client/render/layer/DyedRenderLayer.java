@@ -1,9 +1,9 @@
 package com.human.client.render.layer;
 
-import com.blib.azurelib.common.model.AzBone;
-import com.blib.azurelib.common.render.AzRendererPipelineContext;
-import com.blib.azurelib.common.render.layer.AzRenderLayer;
-import com.blib.azurelib.core.object.Color;
+import com.blib.api.client.model.v1.AzBone;
+import com.blib.api.client.render.v1.AzRendererPipelineContext;
+import com.blib.api.client.render.v1.layer.AzRenderLayer;
+import com.blib.api.common.color.v1.Color;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;

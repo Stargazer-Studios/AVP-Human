@@ -1,7 +1,7 @@
 package com.human.client.render.entity;
 
-import com.blib.azurelib.common.render.entity.AzEntityRenderer;
-import com.blib.azurelib.common.render.entity.AzEntityRendererConfig;
+import com.blib.api.client.render.v1.entity.AzEntityRenderer;
+import com.blib.api.client.render.v1.entity.AzEntityRendererConfig;
 import com.human.HumanResources;
 import com.human.client.render.layer.human.HumanArmorLayer;
 import com.human.client.render.layer.human.HumanBeardLayer;

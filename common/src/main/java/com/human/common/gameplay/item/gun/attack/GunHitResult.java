@@ -1,6 +1,6 @@
 package com.human.common.gameplay.item.gun.attack;
 
-import com.blib.api.common.codec.v1.stream.impl.MojangStreamCodecs;
+import com.blib.api.common.codec.v1.BLibCodecs;
 import com.human.common.network.codec.GunHitResultCodec;
 import com.just.codec.stream.RecordStreamCodec;
 import com.just.codec.stream.StreamCodec;
@@ -23,9 +23,9 @@ public sealed interface GunHitResult {
     ) implements GunHitResult {
 
         public static final StreamCodec<Block> STREAM_CODEC = RecordStreamCodec.of(
-            MojangStreamCodecs.BLOCK_POS,
+            BLibCodecs.Stream.BLOCK_POS,
             GunHitResult.Block::blockPos,
-            MojangStreamCodecs.DIRECTION,
+            BLibCodecs.Stream.DIRECTION,
             GunHitResult.Block::direction,
             GunHitResult.Block::new
         );

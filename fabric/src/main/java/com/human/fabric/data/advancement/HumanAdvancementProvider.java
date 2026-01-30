@@ -27,8 +27,8 @@ public class HumanAdvancementProvider {
         var root = Advancement.Builder.advancement()
             .display(
                 HumanSteelBlocks.STEEL_BLOCK.get(),
-                HumanAdvancements.ROOT.getTitleComponent(),
-                HumanAdvancements.ROOT.getDescriptionComponent(),
+                HumanAdvancements.ROOT.titleComponent(),
+                HumanAdvancements.ROOT.descriptionComponent(),
                 HumanResources.location("textures/gui/advancements/backgrounds/steel.png"),
                 AdvancementType.TASK,
                 false,
@@ -36,7 +36,7 @@ public class HumanAdvancementProvider {
                 false
             )
             .addCriterion("crafting_table", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.CRAFTING_TABLE))
-            .save(consumer, HumanAdvancements.ROOT.getResourceLocation().toString());
+            .save(consumer, HumanAdvancements.ROOT.resourceLocation().toString());
 
         var blastSteelAdvancement = addBlastSteelAdvancement(root, consumer);
 
@@ -61,15 +61,15 @@ public class HumanAdvancementProvider {
             .parent(parent)
             .display(
                 HumanItems.STEEL_INGOT.get(),
-                HumanAdvancements.BLAST_STEEL.getTitleComponent(),
-                HumanAdvancements.BLAST_STEEL.getDescriptionComponent(),
+                HumanAdvancements.BLAST_STEEL.titleComponent(),
+                HumanAdvancements.BLAST_STEEL.descriptionComponent(),
                 null,
                 AdvancementType.TASK,
                 true,
                 true,
                 false
             )
-            .save(consumer, HumanAdvancements.BLAST_STEEL.getResourceLocation().toString());
+            .save(consumer, HumanAdvancements.BLAST_STEEL.resourceLocation().toString());
     }
 
     private static AdvancementHolder addEquipFullArmorSetWithArmorCaseAdvancement(
@@ -84,15 +84,15 @@ public class HumanAdvancementProvider {
             .parent(parent)
             .display(
                 HumanItems.ARMOR_CASE.get(),
-                HumanAdvancements.EQUIP_FULL_ARMOR_SET_WITH_ARMOR_CASE.getTitleComponent(),
-                HumanAdvancements.EQUIP_FULL_ARMOR_SET_WITH_ARMOR_CASE.getDescriptionComponent(),
+                HumanAdvancements.EQUIP_FULL_ARMOR_SET_WITH_ARMOR_CASE.titleComponent(),
+                HumanAdvancements.EQUIP_FULL_ARMOR_SET_WITH_ARMOR_CASE.descriptionComponent(),
                 null,
                 AdvancementType.TASK,
                 true,
                 true,
                 false
             )
-            .save(consumer, HumanAdvancements.EQUIP_FULL_ARMOR_SET_WITH_ARMOR_CASE.getResourceLocation().toString());
+            .save(consumer, HumanAdvancements.EQUIP_FULL_ARMOR_SET_WITH_ARMOR_CASE.resourceLocation().toString());
     }
 
     private static AdvancementHolder addFillCanisterAdvancement(AdvancementHolder parent, Consumer<AdvancementHolder> consumer) {
@@ -101,15 +101,15 @@ public class HumanAdvancementProvider {
             .parent(parent)
             .display(
                 HumanItems.LAVA_CANISTER.get(),
-                HumanAdvancements.FILL_CANISTER.getTitleComponent(),
-                HumanAdvancements.FILL_CANISTER.getDescriptionComponent(),
+                HumanAdvancements.FILL_CANISTER.titleComponent(),
+                HumanAdvancements.FILL_CANISTER.descriptionComponent(),
                 null,
                 AdvancementType.TASK,
                 true,
                 true,
                 false
             )
-            .save(consumer, HumanAdvancements.FILL_CANISTER.getResourceLocation().toString());
+            .save(consumer, HumanAdvancements.FILL_CANISTER.resourceLocation().toString());
     }
 
     private static AdvancementHolder addSmeltPlasticAdvancement(AdvancementHolder parent, Consumer<AdvancementHolder> consumer) {
@@ -118,15 +118,15 @@ public class HumanAdvancementProvider {
             .parent(parent)
             .display(
                 HumanItems.POLYMER.get(),
-                HumanAdvancements.SMELT_PLASTIC.getTitleComponent(),
-                HumanAdvancements.SMELT_PLASTIC.getDescriptionComponent(),
+                HumanAdvancements.SMELT_PLASTIC.titleComponent(),
+                HumanAdvancements.SMELT_PLASTIC.descriptionComponent(),
                 null,
                 AdvancementType.TASK,
                 true,
                 true,
                 false
             )
-            .save(consumer, HumanAdvancements.SMELT_PLASTIC.getResourceLocation().toString());
+            .save(consumer, HumanAdvancements.SMELT_PLASTIC.resourceLocation().toString());
     }
 
     private static AdvancementHolder addHasGunAdvancement(AdvancementHolder parent, Consumer<AdvancementHolder> consumer) {
@@ -142,15 +142,15 @@ public class HumanAdvancementProvider {
             .parent(parent)
             .display(
                 itemStack,
-                HumanAdvancements.HAS_GUN.getTitleComponent(),
-                HumanAdvancements.HAS_GUN.getDescriptionComponent(),
+                HumanAdvancements.HAS_GUN.titleComponent(),
+                HumanAdvancements.HAS_GUN.descriptionComponent(),
                 null,
                 AdvancementType.TASK,
                 true,
                 true,
                 false
             )
-            .save(consumer, HumanAdvancements.HAS_GUN.getResourceLocation().toString());
+            .save(consumer, HumanAdvancements.HAS_GUN.resourceLocation().toString());
     }
 
     private static AdvancementHolder addHireMarineAdvancement(AdvancementHolder parent, Consumer<AdvancementHolder> consumer) {
@@ -159,15 +159,15 @@ public class HumanAdvancementProvider {
             .parent(parent)
             .display(
                 Items.DIAMOND,
-                HumanAdvancements.HIRE_MARINE.getTitleComponent(),
-                HumanAdvancements.HIRE_MARINE.getDescriptionComponent(),
+                HumanAdvancements.HIRE_MARINE.titleComponent(),
+                HumanAdvancements.HIRE_MARINE.descriptionComponent(),
                 null,
                 AdvancementType.TASK,
                 true,
                 true,
                 false
             )
-            .save(consumer, HumanAdvancements.HIRE_MARINE.getResourceLocation().toString());
+            .save(consumer, HumanAdvancements.HIRE_MARINE.resourceLocation().toString());
     }
 
     private static AdvancementHolder addSmeltBrassAdvancement(AdvancementHolder parent, Consumer<AdvancementHolder> consumer) {
@@ -176,15 +176,15 @@ public class HumanAdvancementProvider {
             .parent(parent)
             .display(
                 HumanItems.BRASS_INGOT.get(),
-                HumanAdvancements.SMELT_BRASS.getTitleComponent(),
-                HumanAdvancements.SMELT_BRASS.getDescriptionComponent(),
+                HumanAdvancements.SMELT_BRASS.titleComponent(),
+                HumanAdvancements.SMELT_BRASS.descriptionComponent(),
                 null,
                 AdvancementType.TASK,
                 true,
                 true,
                 false
             )
-            .save(consumer, HumanAdvancements.SMELT_BRASS.getResourceLocation().toString());
+            .save(consumer, HumanAdvancements.SMELT_BRASS.resourceLocation().toString());
     }
 
     private static AdvancementHolder addSmeltTitaniumAdvancement(AdvancementHolder parent, Consumer<AdvancementHolder> consumer) {
@@ -193,14 +193,14 @@ public class HumanAdvancementProvider {
             .parent(parent)
             .display(
                 HumanItems.TITANIUM_INGOT.get(),
-                HumanAdvancements.SMELT_TITANIUM.getTitleComponent(),
-                HumanAdvancements.SMELT_TITANIUM.getDescriptionComponent(),
+                HumanAdvancements.SMELT_TITANIUM.titleComponent(),
+                HumanAdvancements.SMELT_TITANIUM.descriptionComponent(),
                 null,
                 AdvancementType.TASK,
                 true,
                 true,
                 false
             )
-            .save(consumer, HumanAdvancements.SMELT_TITANIUM.getResourceLocation().toString());
+            .save(consumer, HumanAdvancements.SMELT_TITANIUM.resourceLocation().toString());
     }
 }

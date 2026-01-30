@@ -20,7 +20,7 @@ public class HumanVillageInjection {
         ResourceLocation resourceLocation,
         int weight
     ) {
-        var holderOptional = processorListRegistry.getHolder(BLibStructureProcessorListKeys.EMPTY_PROCESSOR_LIST_KEY);
+        var holderOptional = processorListRegistry.getHolder(BLibStructureProcessorListKeys.EMPTY);
 
         if (holderOptional.isEmpty()) {
             return;
