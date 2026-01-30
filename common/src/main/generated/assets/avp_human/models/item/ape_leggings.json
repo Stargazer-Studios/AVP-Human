@@ -1,7 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "avp_human:item/ape_leggings",
-    "layer1": "avp_human:item/ape_leggings_overlay"
+    "layer0": "avp_human:item/ape_leggings"
   }
 }
