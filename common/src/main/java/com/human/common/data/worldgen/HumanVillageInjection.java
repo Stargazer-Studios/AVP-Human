@@ -1,7 +1,7 @@
 package com.human.common.data.worldgen;
 
+import com.blib.api.common.worldgen.v1.StructureTemplatePoolAccessor;
 import com.blib.api.common.worldgen.v1.key.BLibStructureProcessorListKeys;
-import com.blib.internal.mixin.StructurePoolAccessor;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
@@ -35,16 +35,16 @@ public class HumanVillageInjection {
 
         var legacySinglePoolElement = SinglePoolElement.legacy(resourceLocation.toString(), emptyProcessorList)
             .apply(StructureTemplatePool.Projection.RIGID);
-        var structurePoolAccessor = (StructurePoolAccessor) structureTemplatePool;
+        var accessor = (StructureTemplatePoolAccessor) structureTemplatePool;
 
         for (var i = 0; i < weight; i++) {
-            structurePoolAccessor.getElements().add(legacySinglePoolElement);
+            accessor.getElements().add(legacySinglePoolElement);
         }
 
-        var listOfPieceEntries = new ArrayList<>(structurePoolAccessor.getElementCounts());
+        var listOfPieceEntries = new ArrayList<>(accessor.getElementCounts());
 
         listOfPieceEntries.add(new Pair<>(legacySinglePoolElement, weight));
 
-        structurePoolAccessor.setElementCounts(listOfPieceEntries);
+        accessor.setElementCounts(listOfPieceEntries);
     }
 }

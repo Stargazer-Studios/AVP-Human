@@ -3,7 +3,7 @@ package com.human.client.render.layer;
 import com.blib.api.client.model.v1.AzBone;
 import com.blib.api.client.render.v1.AzRendererPipelineContext;
 import com.blib.api.client.render.v1.layer.AzRenderLayer;
-import com.blib.internal.client.texture.AzAbstractTexture;
+import com.blib.api.client.texture.v1.AzAbstractTexture;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.RenderType;
