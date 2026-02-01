@@ -43,212 +43,146 @@ public class HumanBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider wrapperLookup) {
-        var concreteTagBuilder = getOrCreateTagBuilder(HumanBlockTags.CONCRETE);
+        addConcreteBlocks();
+        addFerroaluminumBlocks();
+        addIndustrialConcreteBlocks();
+        addIndustrialGlassFullBlocks();
+        addIndustrialGlassPaneBlocks();
+        addIndustrialGlassBlocks();
+        addPaddingBlocks();
+        addPlasticBlocks();
+        addSteelBlocks();
+        addTitaniumBlocks();
+        addClimbableBlocks();
+        addMineableWithAxeBlocks();
+        addMineableWithPickaxeBlocks();
+        addMineableWithShovelBlocks();
+        addNeedsStoneToolBlocks();
+        addNeedsIronToolBlocks();
+        addMarineSpawnBlocks();
+        addRazorWireBlocks();
 
-        Stream.of(
-            HumanBlocks.DYE_COLOR_TO_CONCRETE_SLAB,
-            HumanBlocks.DYE_COLOR_TO_CONCRETE_STAIRS
-        )
-            .map(Map::values)
-            .flatMap(Collection::stream)
-            .map(Supplier::get)
-            .forEach(concreteTagBuilder::add);
+        addAutomatedBlockTags();
+        addCompatibilityBlockTags();
+    }
 
-        getOrCreateTagBuilder(HumanBlockTags.FERROALUMINUM)
+    private void addRazorWireBlocks() {
+        getOrCreateTagBuilder(HumanBlockTags.RAZOR_WIRE).add(HumanBlocks.RAZOR_WIRE.get());
+    }
+
+    private void addMarineSpawnBlocks() {
+        getOrCreateTagBuilder(HumanBlockTags.MARINE_SPAWN_BLOCKS).add(
+            HumanPaddingBlocks.DYE_COLOR_TO_PANEL_PADDING.get(DyeColor.BLACK).get(),
+            HumanPlasticBlocks.DYE_COLOR_TO_CUT_PLASTIC_SLAB.get(DyeColor.LIGHT_GRAY).get(),
+            HumanPlasticBlocks.DYE_COLOR_TO_CUT_PLASTIC_SLAB.get(DyeColor.GRAY).get(),
+            HumanIndustrialConcreteBlocks.DYE_COLOR_TO_INDUSTRIAL_CONCRETE.get(DyeColor.BLACK).get(),
+            Blocks.CYAN_TERRACOTTA,
+            Blocks.MOSS_BLOCK,
+            HumanFerroaluminumBlocks.FERROALUMINUM_TREAD.get(),
+            HumanSteelBlocks.STEEL_TREAD.get(),
+            Blocks.GRAVEL,
+            HumanSteelBlocks.STEEL_GRATE.get(),
+            HumanTitaniumBlocks.TITANIUM_TREAD.get()
+        );
+    }
+
+    private void addAutomatedBlockTags() {
+        var buttonTagProvider = getOrCreateTagBuilder(BlockTags.BUTTONS);
+        var doorTagProvider = getOrCreateTagBuilder(BlockTags.DOORS);
+        var fenceTagProvider = getOrCreateTagBuilder(BlockTags.FENCES);
+        var pressurePlateTagProvider = getOrCreateTagBuilder(BlockTags.PRESSURE_PLATES);
+        var slabTagProvider = getOrCreateTagBuilder(BlockTags.SLABS);
+        var stairsTagProvider = getOrCreateTagBuilder(BlockTags.STAIRS);
+        var trapdoorTagProvider = getOrCreateTagBuilder(BlockTags.TRAPDOORS);
+        var wallTagBuilder = getOrCreateTagBuilder(BlockTags.WALLS);
+
+        Human.MOD.registries().getAllHolders(BuiltInRegistries.BLOCK).forEach(deferredHolder -> {
+            var block = deferredHolder.get();
+
+            if (block instanceof ButtonBlock) {
+                buttonTagProvider.add(block);
+            }
+
+            if (block instanceof DoorBlock) {
+                doorTagProvider.add(block);
+            }
+
+            if (block instanceof FenceBlock) {
+                fenceTagProvider.add(block);
+            }
+
+            if (block instanceof PressurePlateBlock) {
+                pressurePlateTagProvider.add(block);
+            }
+
+            if (block instanceof SlabBlock) {
+                slabTagProvider.add(block);
+            }
+
+            if (block instanceof StairBlock) {
+                stairsTagProvider.add(block);
+            }
+
+            if (block instanceof TrapDoorBlock) {
+                trapdoorTagProvider.add(block);
+            }
+
+            if (block instanceof WallBlock) {
+                wallTagBuilder.add(block);
+            }
+        });
+    }
+
+    private void addNeedsIronToolBlocks() {
+        getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
+            .addTag(HumanBlockTags.INDUSTRIAL_CONCRETE)
+            .addTag(HumanBlockTags.INDUSTRIAL_GLASS)
+            .addTag(HumanBlockTags.STEEL)
+            .addTag(HumanBlockTags.TITANIUM)
             .add(
-                HumanFerroaluminumBlocks.CHISELED_FERROALUMINUM.get(),
-                HumanFerroaluminumBlocks.CUT_FERROALUMINUM.get(),
-                HumanFerroaluminumBlocks.CUT_FERROALUMINUM_SLAB.get(),
-                HumanFerroaluminumBlocks.CUT_FERROALUMINUM_STAIRS.get(),
-                HumanFerroaluminumBlocks.FERROALUMINUM_BLOCK.get(),
-                HumanFerroaluminumBlocks.FERROALUMINUM_BUTTON.get(),
-                HumanFerroaluminumBlocks.FERROALUMINUM_CHAIN_FENCE.get(),
-                HumanFerroaluminumBlocks.FERROALUMINUM_COLUMN.get(),
-                HumanFerroaluminumBlocks.FERROALUMINUM_DOOR.get(),
-                HumanFerroaluminumBlocks.FERROALUMINUM_FASTENED_SIDING.get(),
-                HumanFerroaluminumBlocks.FERROALUMINUM_FASTENED_SIDING_SLAB.get(),
-                HumanFerroaluminumBlocks.FERROALUMINUM_FASTENED_SIDING_STAIRS.get(),
-                HumanFerroaluminumBlocks.FERROALUMINUM_FASTENED_STANDING.get(),
-                HumanFerroaluminumBlocks.FERROALUMINUM_FASTENED_STANDING_SLAB.get(),
-                HumanFerroaluminumBlocks.FERROALUMINUM_FASTENED_STANDING_STAIRS.get(),
-                HumanFerroaluminumBlocks.FERROALUMINUM_GRATE.get(),
-                HumanFerroaluminumBlocks.FERROALUMINUM_GRATE_SLAB.get(),
-                HumanFerroaluminumBlocks.FERROALUMINUM_GRATE_STAIRS.get(),
-                HumanFerroaluminumBlocks.FERROALUMINUM_PLATING.get(),
-                HumanFerroaluminumBlocks.FERROALUMINUM_PLATING_SLAB.get(),
-                HumanFerroaluminumBlocks.FERROALUMINUM_PLATING_STAIRS.get(),
-                HumanFerroaluminumBlocks.FERROALUMINUM_PRESSURE_PLATE.get(),
-                HumanFerroaluminumBlocks.FERROALUMINUM_SIDING.get(),
-                HumanFerroaluminumBlocks.FERROALUMINUM_SIDING_SLAB.get(),
-                HumanFerroaluminumBlocks.FERROALUMINUM_SIDING_STAIRS.get(),
-                HumanFerroaluminumBlocks.FERROALUMINUM_SLAB.get(),
-                HumanFerroaluminumBlocks.FERROALUMINUM_STAIRS.get(),
-                HumanFerroaluminumBlocks.FERROALUMINUM_STANDING.get(),
-                HumanFerroaluminumBlocks.FERROALUMINUM_STANDING_SLAB.get(),
-                HumanFerroaluminumBlocks.FERROALUMINUM_STANDING_STAIRS.get(),
-                HumanFerroaluminumBlocks.FERROALUMINUM_TRAP_DOOR.get(),
-                HumanFerroaluminumBlocks.FERROALUMINUM_TREAD.get(),
-                HumanFerroaluminumBlocks.FERROALUMINUM_TREAD_SLAB.get(),
-                HumanFerroaluminumBlocks.FERROALUMINUM_TREAD_STAIRS.get()
-            );
-
-        var industrialConcreteTagBuilder = getOrCreateTagBuilder(HumanBlockTags.INDUSTRIAL_CONCRETE);
-
-        Stream.of(
-            HumanIndustrialConcreteBlocks.DYE_COLOR_TO_INDUSTRIAL_CONCRETE,
-            HumanIndustrialConcreteBlocks.DYE_COLOR_TO_INDUSTRIAL_CONCRETE_SLAB,
-            HumanIndustrialConcreteBlocks.DYE_COLOR_TO_INDUSTRIAL_CONCRETE_STAIRS,
-            HumanIndustrialConcreteBlocks.DYE_COLOR_TO_INDUSTRIAL_CONCRETE_WALL
-        )
-            .map(Map::values)
-            .flatMap(Collection::stream)
-            .map(Supplier::get)
-            .forEach(industrialConcreteTagBuilder::add);
-
-        var industrialGlassBlockTagBuilder = getOrCreateTagBuilder(HumanBlockTags.INDUSTRIAL_GLASS_BLOCK);
-
-        industrialGlassBlockTagBuilder.add(HumanIndustrialGlassBlocks.INDUSTRIAL_GLASS.get());
-        HumanIndustrialGlassBlocks.DYE_COLOR_TO_INDUSTRIAL_GLASS.values()
-            .stream()
-            .map(Supplier::get)
-            .forEach(industrialGlassBlockTagBuilder::add);
-
-        var industrialGlassPaneTagBuilder = getOrCreateTagBuilder(HumanBlockTags.INDUSTRIAL_GLASS_PANE);
-
-        industrialGlassPaneTagBuilder.add(HumanIndustrialGlassBlocks.INDUSTRIAL_GLASS_PANE.get());
-        HumanIndustrialGlassBlocks.DYE_COLOR_TO_INDUSTRIAL_GLASS_PANE.values()
-            .stream()
-            .map(Supplier::get)
-            .forEach(industrialGlassPaneTagBuilder::add);
-
-        getOrCreateTagBuilder(HumanBlockTags.INDUSTRIAL_GLASS)
-            .addTag(HumanBlockTags.INDUSTRIAL_GLASS_BLOCK)
-            .addTag(HumanBlockTags.INDUSTRIAL_GLASS_PANE)
-            .add(
-                HumanIndustrialGlassBlocks.INDUSTRIAL_GLASS_DOOR.get(),
-                HumanIndustrialGlassBlocks.INDUSTRIAL_GLASS_SLAB.get(),
-                HumanIndustrialGlassBlocks.INDUSTRIAL_GLASS_STAIRS.get(),
-                HumanIndustrialGlassBlocks.INDUSTRIAL_GLASS_TRAP_DOOR.get()
-            );
-
-        var paddingTagBuilder = getOrCreateTagBuilder(HumanBlockTags.PADDING);
-
-        Stream.of(
-            HumanPaddingBlocks.DYE_COLOR_TO_PADDING,
-            HumanPaddingBlocks.DYE_COLOR_TO_PADDING_SLAB,
-            HumanPaddingBlocks.DYE_COLOR_TO_PADDING_STAIRS,
-            HumanPaddingBlocks.DYE_COLOR_TO_PANEL_PADDING,
-            HumanPaddingBlocks.DYE_COLOR_TO_PANEL_PADDING_SLAB,
-            HumanPaddingBlocks.DYE_COLOR_TO_PANEL_PADDING_STAIRS,
-            HumanPaddingBlocks.DYE_COLOR_TO_PIPE_PADDING,
-            HumanPaddingBlocks.DYE_COLOR_TO_PIPE_PADDING_SLAB,
-            HumanPaddingBlocks.DYE_COLOR_TO_PIPE_PADDING_STAIRS,
-            HumanPaddingBlocks.DYE_COLOR_TO_TILE_PADDING,
-            HumanPaddingBlocks.DYE_COLOR_TO_TILE_PADDING_SLAB,
-            HumanPaddingBlocks.DYE_COLOR_TO_TILE_PADDING_STAIRS
-        )
-            .map(Map::values)
-            .flatMap(Collection::stream)
-            .map(Supplier::get)
-            .forEach(paddingTagBuilder::add);
-
-        var plasticTagBuilder = getOrCreateTagBuilder(HumanBlockTags.PLASTIC);
-
-        TagProviderUtil.getPlasticBlockStream()
-            .forEach(plasticTagBuilder::add);
-
-        getOrCreateTagBuilder(HumanBlockTags.STEEL)
-            .add(
-                HumanSteelBlocks.CHISELED_STEEL.get(),
-                HumanSteelBlocks.CUT_STEEL.get(),
-                HumanSteelBlocks.CUT_STEEL_SLAB.get(),
-                HumanSteelBlocks.CUT_STEEL_STAIRS.get(),
-                HumanSteelBlocks.STEEL_BARS.get(),
-                HumanSteelBlocks.STEEL_BLOCK.get(),
-                HumanSteelBlocks.STEEL_BUTTON.get(),
-                HumanSteelBlocks.STEEL_CHAIN_FENCE.get(),
-                HumanSteelBlocks.STEEL_COLUMN.get(),
-                HumanSteelBlocks.STEEL_DOOR.get(),
-                HumanSteelBlocks.STEEL_FASTENED_SIDING.get(),
-                HumanSteelBlocks.STEEL_FASTENED_SIDING_SLAB.get(),
-                HumanSteelBlocks.STEEL_FASTENED_SIDING_STAIRS.get(),
-                HumanSteelBlocks.STEEL_FASTENED_STANDING.get(),
-                HumanSteelBlocks.STEEL_FASTENED_STANDING_SLAB.get(),
-                HumanSteelBlocks.STEEL_FASTENED_STANDING_STAIRS.get(),
-                HumanSteelBlocks.STEEL_GRATE.get(),
-                HumanSteelBlocks.STEEL_GRATE_SLAB.get(),
-                HumanSteelBlocks.STEEL_GRATE_STAIRS.get(),
-                HumanSteelBlocks.STEEL_PLATING.get(),
-                HumanSteelBlocks.STEEL_PLATING_SLAB.get(),
-                HumanSteelBlocks.STEEL_PLATING_STAIRS.get(),
-                HumanSteelBlocks.STEEL_PRESSURE_PLATE.get(),
-                HumanSteelBlocks.STEEL_SIDING.get(),
-                HumanSteelBlocks.STEEL_SIDING_SLAB.get(),
-                HumanSteelBlocks.STEEL_SIDING_STAIRS.get(),
-                HumanSteelBlocks.STEEL_SLAB.get(),
-                HumanSteelBlocks.STEEL_STAIRS.get(),
-                HumanSteelBlocks.STEEL_STANDING.get(),
-                HumanSteelBlocks.STEEL_STANDING_SLAB.get(),
-                HumanSteelBlocks.STEEL_STANDING_STAIRS.get(),
-                HumanSteelBlocks.STEEL_TRAP_DOOR.get(),
-                HumanSteelBlocks.STEEL_TREAD.get(),
-                HumanSteelBlocks.STEEL_TREAD_SLAB.get(),
-                HumanSteelBlocks.STEEL_TREAD_STAIRS.get()
-            );
-
-        getOrCreateTagBuilder(HumanBlockTags.TITANIUM)
-            .add(
-                HumanTitaniumBlocks.CHISELED_TITANIUM.get(),
-                HumanTitaniumBlocks.CUT_TITANIUM.get(),
-                HumanTitaniumBlocks.CUT_TITANIUM_SLAB.get(),
-                HumanTitaniumBlocks.CUT_TITANIUM_STAIRS.get(),
+                HumanBlocks.AMMO_CHEST.get(),
+                HumanBlocks.BATTERY.get(),
                 CoreBlocks.DEEPSLATE_TITANIUM_ORE.get(),
+                HumanBlocks.DESK_TERMINAL_BLOCK.get(),
+                HumanBlocks.INDUSTRIAL_FURNACE.get(),
+                HumanBlocks.INFINITE_POWER_GENERATOR.get(),
+                HumanBlocks.LEAD_CHEST.get(),
+                HumanBlocks.NUKE_BLOCK.get(),
                 CoreBlocks.RAW_TITANIUM_BLOCK.get(),
-                HumanTitaniumBlocks.TITANIUM_BLOCK.get(),
-                HumanTitaniumBlocks.TITANIUM_BUTTON.get(),
-                HumanTitaniumBlocks.TITANIUM_CHAIN_FENCE.get(),
-                HumanTitaniumBlocks.TITANIUM_COLUMN.get(),
-                HumanTitaniumBlocks.TITANIUM_DOOR.get(),
-                HumanTitaniumBlocks.TITANIUM_FASTENED_SIDING.get(),
-                HumanTitaniumBlocks.TITANIUM_FASTENED_SIDING_SLAB.get(),
-                HumanTitaniumBlocks.TITANIUM_FASTENED_SIDING_STAIRS.get(),
-                HumanTitaniumBlocks.TITANIUM_FASTENED_STANDING.get(),
-                HumanTitaniumBlocks.TITANIUM_FASTENED_STANDING_SLAB.get(),
-                HumanTitaniumBlocks.TITANIUM_FASTENED_STANDING_STAIRS.get(),
-                HumanTitaniumBlocks.TITANIUM_GRATE.get(),
-                HumanTitaniumBlocks.TITANIUM_GRATE_SLAB.get(),
-                HumanTitaniumBlocks.TITANIUM_GRATE_STAIRS.get(),
-                HumanTitaniumBlocks.TITANIUM_PLATING.get(),
-                HumanTitaniumBlocks.TITANIUM_PLATING_SLAB.get(),
-                HumanTitaniumBlocks.TITANIUM_PLATING_STAIRS.get(),
-                HumanTitaniumBlocks.TITANIUM_PRESSURE_PLATE.get(),
-                HumanTitaniumBlocks.TITANIUM_SIDING.get(),
-                HumanTitaniumBlocks.TITANIUM_SIDING_SLAB.get(),
-                HumanTitaniumBlocks.TITANIUM_SIDING_STAIRS.get(),
-                HumanTitaniumBlocks.TITANIUM_SLAB.get(),
-                HumanTitaniumBlocks.TITANIUM_STAIRS.get(),
-                HumanTitaniumBlocks.TITANIUM_STANDING.get(),
-                HumanTitaniumBlocks.TITANIUM_STANDING_SLAB.get(),
-                HumanTitaniumBlocks.TITANIUM_STANDING_STAIRS.get(),
-                HumanTitaniumBlocks.TITANIUM_TRAP_DOOR.get(),
-                HumanTitaniumBlocks.TITANIUM_TREAD.get(),
-                HumanTitaniumBlocks.TITANIUM_TREAD_SLAB.get(),
-                HumanTitaniumBlocks.TITANIUM_TREAD_STAIRS.get()
+                HumanBlocks.REDSTONE_GENERATOR.get(),
+                HumanBlocks.RESONATOR_BLOCK.get(),
+                HumanBlocks.SENTRY_TURRET.get(),
+                HumanBlocks.SOLAR_PANEL.get(),
+                HumanBlocks.THERMAL_GENERATOR.get(),
+                HumanBlocks.WIND_TURBINE.get(),
+                CoreBlocks.TRINITITE_BLOCK.get(),
+                CoreBlocks.URANIUM_BLOCK.get()
             );
+    }
 
-        getOrCreateTagBuilder(BlockTags.CLIMBABLE)
+    private void addNeedsStoneToolBlocks() {
+        getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
+            .addTag(HumanBlockTags.FERROALUMINUM)
+            .addTag(HumanBlockTags.PADDING)
+            .addTag(HumanBlockTags.PLASTIC)
             .add(
-                HumanFerroaluminumBlocks.FERROALUMINUM_CHAIN_FENCE.get(),
-                HumanSteelBlocks.STEEL_CHAIN_FENCE.get(),
-                HumanTitaniumBlocks.TITANIUM_CHAIN_FENCE.get()
-            );
-
-        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_AXE)
-            .add(
+                CoreBlocks.BAUXITE_ORE.get(),
                 HumanBlocks.BLUEPRINT_BLOCK.get(),
-                HumanBlocks.CABLE.get()
+                HumanBlocks.CABLE.get(),
+                CoreBlocks.GALENA_ORE.get(),
+                CoreBlocks.RAW_BAUXITE_BLOCK.get()
             );
+    }
 
+    private void addMineableWithShovelBlocks() {
+        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_SHOVEL)
+            .add(
+                CoreBlocks.ASH_BLOCK.get(),
+                CoreBlocks.SILICA_GRAVEL.get()
+            );
+    }
+
+    private void addMineableWithPickaxeBlocks() {
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
             .addTag(HumanBlockTags.CONCRETE)
             .addTag(HumanBlockTags.FERROALUMINUM)
@@ -299,115 +233,239 @@ public class HumanBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 CoreBlocks.ZINC_BLOCK.get(),
                 CoreBlocks.ZINC_ORE.get()
             );
-
-        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_SHOVEL)
-            .add(
-                CoreBlocks.ASH_BLOCK.get(),
-                CoreBlocks.SILICA_GRAVEL.get()
-            );
-
-        getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
-            .addTag(HumanBlockTags.FERROALUMINUM)
-            .addTag(HumanBlockTags.PADDING)
-            .addTag(HumanBlockTags.PLASTIC)
-            .add(
-                CoreBlocks.BAUXITE_ORE.get(),
-                HumanBlocks.BLUEPRINT_BLOCK.get(),
-                HumanBlocks.CABLE.get(),
-                CoreBlocks.GALENA_ORE.get(),
-                CoreBlocks.RAW_BAUXITE_BLOCK.get()
-            );
-
-        getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
-            .addTag(HumanBlockTags.INDUSTRIAL_CONCRETE)
-            .addTag(HumanBlockTags.INDUSTRIAL_GLASS)
-            .addTag(HumanBlockTags.STEEL)
-            .addTag(HumanBlockTags.TITANIUM)
-            .add(
-                HumanBlocks.AMMO_CHEST.get(),
-                HumanBlocks.BATTERY.get(),
-                CoreBlocks.DEEPSLATE_TITANIUM_ORE.get(),
-                HumanBlocks.DESK_TERMINAL_BLOCK.get(),
-                HumanBlocks.INDUSTRIAL_FURNACE.get(),
-                HumanBlocks.INFINITE_POWER_GENERATOR.get(),
-                HumanBlocks.LEAD_CHEST.get(),
-                HumanBlocks.NUKE_BLOCK.get(),
-                CoreBlocks.RAW_TITANIUM_BLOCK.get(),
-                HumanBlocks.REDSTONE_GENERATOR.get(),
-                HumanBlocks.RESONATOR_BLOCK.get(),
-                HumanBlocks.SENTRY_TURRET.get(),
-                HumanBlocks.SOLAR_PANEL.get(),
-                HumanBlocks.THERMAL_GENERATOR.get(),
-                HumanBlocks.WIND_TURBINE.get(),
-                CoreBlocks.TRINITITE_BLOCK.get(),
-                CoreBlocks.URANIUM_BLOCK.get()
-            );
-
-        var buttonTagProvider = getOrCreateTagBuilder(BlockTags.BUTTONS);
-        var doorTagProvider = getOrCreateTagBuilder(BlockTags.DOORS);
-        var fenceTagProvider = getOrCreateTagBuilder(BlockTags.FENCES);
-        var pressurePlateTagProvider = getOrCreateTagBuilder(BlockTags.PRESSURE_PLATES);
-        var slabTagProvider = getOrCreateTagBuilder(BlockTags.SLABS);
-        var stairsTagProvider = getOrCreateTagBuilder(BlockTags.STAIRS);
-        var trapdoorTagProvider = getOrCreateTagBuilder(BlockTags.TRAPDOORS);
-        var wallTagBuilder = getOrCreateTagBuilder(BlockTags.WALLS);
-
-        Human.MOD.registries().getAllHolders(BuiltInRegistries.BLOCK).forEach(deferredHolder -> {
-            var block = deferredHolder.get();
-
-            if (block instanceof ButtonBlock) {
-                buttonTagProvider.add(block);
-            }
-
-            if (block instanceof DoorBlock) {
-                doorTagProvider.add(block);
-            }
-
-            if (block instanceof FenceBlock) {
-                fenceTagProvider.add(block);
-            }
-
-            if (block instanceof PressurePlateBlock) {
-                pressurePlateTagProvider.add(block);
-            }
-
-            if (block instanceof SlabBlock) {
-                slabTagProvider.add(block);
-            }
-
-            if (block instanceof StairBlock) {
-                stairsTagProvider.add(block);
-            }
-
-            if (block instanceof TrapDoorBlock) {
-                trapdoorTagProvider.add(block);
-            }
-
-            if (block instanceof WallBlock) {
-                wallTagBuilder.add(block);
-            }
-        });
-
-        getOrCreateTagBuilder(HumanBlockTags.MARINE_SPAWN_BLOCKS).add(
-            HumanPaddingBlocks.DYE_COLOR_TO_PANEL_PADDING.get(DyeColor.BLACK).get(),
-            HumanPlasticBlocks.DYE_COLOR_TO_CUT_PLASTIC_SLAB.get(DyeColor.LIGHT_GRAY).get(),
-            HumanPlasticBlocks.DYE_COLOR_TO_CUT_PLASTIC_SLAB.get(DyeColor.GRAY).get(),
-            HumanIndustrialConcreteBlocks.DYE_COLOR_TO_INDUSTRIAL_CONCRETE.get(DyeColor.BLACK).get(),
-            Blocks.CYAN_TERRACOTTA,
-            Blocks.MOSS_BLOCK,
-            HumanFerroaluminumBlocks.FERROALUMINUM_TREAD.get(),
-            HumanSteelBlocks.STEEL_TREAD.get(),
-            Blocks.GRAVEL,
-            HumanSteelBlocks.STEEL_GRATE.get(),
-            HumanTitaniumBlocks.TITANIUM_TREAD.get()
-        );
-
-        getOrCreateTagBuilder(HumanBlockTags.RAZOR_WIRE).add(HumanBlocks.RAZOR_WIRE.get());
-
-        addCompatibilityTags();
     }
 
-    private void addCompatibilityTags() {
+    private void addMineableWithAxeBlocks() {
+        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_AXE)
+            .add(
+                HumanBlocks.BLUEPRINT_BLOCK.get(),
+                HumanBlocks.CABLE.get()
+            );
+    }
+
+    private void addClimbableBlocks() {
+        getOrCreateTagBuilder(BlockTags.CLIMBABLE)
+            .add(
+                HumanFerroaluminumBlocks.FERROALUMINUM_CHAIN_FENCE.get(),
+                HumanSteelBlocks.STEEL_CHAIN_FENCE.get(),
+                HumanTitaniumBlocks.TITANIUM_CHAIN_FENCE.get()
+            );
+    }
+
+    private void addTitaniumBlocks() {
+        getOrCreateTagBuilder(HumanBlockTags.TITANIUM)
+            .add(
+                HumanTitaniumBlocks.CHISELED_TITANIUM.get(),
+                HumanTitaniumBlocks.CUT_TITANIUM.get(),
+                HumanTitaniumBlocks.CUT_TITANIUM_SLAB.get(),
+                HumanTitaniumBlocks.CUT_TITANIUM_STAIRS.get(),
+                CoreBlocks.DEEPSLATE_TITANIUM_ORE.get(),
+                CoreBlocks.RAW_TITANIUM_BLOCK.get(),
+                HumanTitaniumBlocks.TITANIUM_BLOCK.get(),
+                HumanTitaniumBlocks.TITANIUM_BUTTON.get(),
+                HumanTitaniumBlocks.TITANIUM_CHAIN_FENCE.get(),
+                HumanTitaniumBlocks.TITANIUM_COLUMN.get(),
+                HumanTitaniumBlocks.TITANIUM_DOOR.get(),
+                HumanTitaniumBlocks.TITANIUM_FASTENED_SIDING.get(),
+                HumanTitaniumBlocks.TITANIUM_FASTENED_SIDING_SLAB.get(),
+                HumanTitaniumBlocks.TITANIUM_FASTENED_SIDING_STAIRS.get(),
+                HumanTitaniumBlocks.TITANIUM_FASTENED_STANDING.get(),
+                HumanTitaniumBlocks.TITANIUM_FASTENED_STANDING_SLAB.get(),
+                HumanTitaniumBlocks.TITANIUM_FASTENED_STANDING_STAIRS.get(),
+                HumanTitaniumBlocks.TITANIUM_GRATE.get(),
+                HumanTitaniumBlocks.TITANIUM_GRATE_SLAB.get(),
+                HumanTitaniumBlocks.TITANIUM_GRATE_STAIRS.get(),
+                HumanTitaniumBlocks.TITANIUM_PLATING.get(),
+                HumanTitaniumBlocks.TITANIUM_PLATING_SLAB.get(),
+                HumanTitaniumBlocks.TITANIUM_PLATING_STAIRS.get(),
+                HumanTitaniumBlocks.TITANIUM_PRESSURE_PLATE.get(),
+                HumanTitaniumBlocks.TITANIUM_SIDING.get(),
+                HumanTitaniumBlocks.TITANIUM_SIDING_SLAB.get(),
+                HumanTitaniumBlocks.TITANIUM_SIDING_STAIRS.get(),
+                HumanTitaniumBlocks.TITANIUM_SLAB.get(),
+                HumanTitaniumBlocks.TITANIUM_STAIRS.get(),
+                HumanTitaniumBlocks.TITANIUM_STANDING.get(),
+                HumanTitaniumBlocks.TITANIUM_STANDING_SLAB.get(),
+                HumanTitaniumBlocks.TITANIUM_STANDING_STAIRS.get(),
+                HumanTitaniumBlocks.TITANIUM_TRAP_DOOR.get(),
+                HumanTitaniumBlocks.TITANIUM_TREAD.get(),
+                HumanTitaniumBlocks.TITANIUM_TREAD_SLAB.get(),
+                HumanTitaniumBlocks.TITANIUM_TREAD_STAIRS.get()
+            );
+    }
+
+    private void addSteelBlocks() {
+        getOrCreateTagBuilder(HumanBlockTags.STEEL)
+            .add(
+                HumanSteelBlocks.CHISELED_STEEL.get(),
+                HumanSteelBlocks.CUT_STEEL.get(),
+                HumanSteelBlocks.CUT_STEEL_SLAB.get(),
+                HumanSteelBlocks.CUT_STEEL_STAIRS.get(),
+                HumanSteelBlocks.STEEL_BARS.get(),
+                HumanSteelBlocks.STEEL_BLOCK.get(),
+                HumanSteelBlocks.STEEL_BUTTON.get(),
+                HumanSteelBlocks.STEEL_CHAIN_FENCE.get(),
+                HumanSteelBlocks.STEEL_COLUMN.get(),
+                HumanSteelBlocks.STEEL_DOOR.get(),
+                HumanSteelBlocks.STEEL_FASTENED_SIDING.get(),
+                HumanSteelBlocks.STEEL_FASTENED_SIDING_SLAB.get(),
+                HumanSteelBlocks.STEEL_FASTENED_SIDING_STAIRS.get(),
+                HumanSteelBlocks.STEEL_FASTENED_STANDING.get(),
+                HumanSteelBlocks.STEEL_FASTENED_STANDING_SLAB.get(),
+                HumanSteelBlocks.STEEL_FASTENED_STANDING_STAIRS.get(),
+                HumanSteelBlocks.STEEL_GRATE.get(),
+                HumanSteelBlocks.STEEL_GRATE_SLAB.get(),
+                HumanSteelBlocks.STEEL_GRATE_STAIRS.get(),
+                HumanSteelBlocks.STEEL_PLATING.get(),
+                HumanSteelBlocks.STEEL_PLATING_SLAB.get(),
+                HumanSteelBlocks.STEEL_PLATING_STAIRS.get(),
+                HumanSteelBlocks.STEEL_PRESSURE_PLATE.get(),
+                HumanSteelBlocks.STEEL_SIDING.get(),
+                HumanSteelBlocks.STEEL_SIDING_SLAB.get(),
+                HumanSteelBlocks.STEEL_SIDING_STAIRS.get(),
+                HumanSteelBlocks.STEEL_SLAB.get(),
+                HumanSteelBlocks.STEEL_STAIRS.get(),
+                HumanSteelBlocks.STEEL_STANDING.get(),
+                HumanSteelBlocks.STEEL_STANDING_SLAB.get(),
+                HumanSteelBlocks.STEEL_STANDING_STAIRS.get(),
+                HumanSteelBlocks.STEEL_TRAP_DOOR.get(),
+                HumanSteelBlocks.STEEL_TREAD.get(),
+                HumanSteelBlocks.STEEL_TREAD_SLAB.get(),
+                HumanSteelBlocks.STEEL_TREAD_STAIRS.get()
+            );
+    }
+
+    private void addPlasticBlocks() {
+        var plasticTagBuilder = getOrCreateTagBuilder(HumanBlockTags.PLASTIC);
+
+        TagProviderUtil.getPlasticBlockStream()
+            .forEach(plasticTagBuilder::add);
+    }
+
+    private void addPaddingBlocks() {
+        var paddingTagBuilder = getOrCreateTagBuilder(HumanBlockTags.PADDING);
+
+        Stream.of(
+            HumanPaddingBlocks.DYE_COLOR_TO_PADDING,
+            HumanPaddingBlocks.DYE_COLOR_TO_PADDING_SLAB,
+            HumanPaddingBlocks.DYE_COLOR_TO_PADDING_STAIRS,
+            HumanPaddingBlocks.DYE_COLOR_TO_PANEL_PADDING,
+            HumanPaddingBlocks.DYE_COLOR_TO_PANEL_PADDING_SLAB,
+            HumanPaddingBlocks.DYE_COLOR_TO_PANEL_PADDING_STAIRS,
+            HumanPaddingBlocks.DYE_COLOR_TO_PIPE_PADDING,
+            HumanPaddingBlocks.DYE_COLOR_TO_PIPE_PADDING_SLAB,
+            HumanPaddingBlocks.DYE_COLOR_TO_PIPE_PADDING_STAIRS,
+            HumanPaddingBlocks.DYE_COLOR_TO_TILE_PADDING,
+            HumanPaddingBlocks.DYE_COLOR_TO_TILE_PADDING_SLAB,
+            HumanPaddingBlocks.DYE_COLOR_TO_TILE_PADDING_STAIRS
+        )
+            .map(Map::values)
+            .flatMap(Collection::stream)
+            .map(Supplier::get)
+            .forEach(paddingTagBuilder::add);
+    }
+
+    private void addIndustrialGlassBlocks() {
+        getOrCreateTagBuilder(HumanBlockTags.INDUSTRIAL_GLASS)
+            .addTag(HumanBlockTags.INDUSTRIAL_GLASS_BLOCK)
+            .addTag(HumanBlockTags.INDUSTRIAL_GLASS_PANE)
+            .add(
+                HumanIndustrialGlassBlocks.INDUSTRIAL_GLASS_DOOR.get(),
+                HumanIndustrialGlassBlocks.INDUSTRIAL_GLASS_SLAB.get(),
+                HumanIndustrialGlassBlocks.INDUSTRIAL_GLASS_STAIRS.get(),
+                HumanIndustrialGlassBlocks.INDUSTRIAL_GLASS_TRAP_DOOR.get()
+            );
+    }
+
+    private void addIndustrialGlassPaneBlocks() {
+        var industrialGlassPaneTagBuilder = getOrCreateTagBuilder(HumanBlockTags.INDUSTRIAL_GLASS_PANE);
+
+        industrialGlassPaneTagBuilder.add(HumanIndustrialGlassBlocks.INDUSTRIAL_GLASS_PANE.get());
+        HumanIndustrialGlassBlocks.DYE_COLOR_TO_INDUSTRIAL_GLASS_PANE.values()
+            .stream()
+            .map(Supplier::get)
+            .forEach(industrialGlassPaneTagBuilder::add);
+    }
+
+    private void addIndustrialGlassFullBlocks() {
+        var industrialGlassBlockTagBuilder = getOrCreateTagBuilder(HumanBlockTags.INDUSTRIAL_GLASS_BLOCK);
+
+        industrialGlassBlockTagBuilder.add(HumanIndustrialGlassBlocks.INDUSTRIAL_GLASS.get());
+        HumanIndustrialGlassBlocks.DYE_COLOR_TO_INDUSTRIAL_GLASS.values()
+            .stream()
+            .map(Supplier::get)
+            .forEach(industrialGlassBlockTagBuilder::add);
+    }
+
+    private void addIndustrialConcreteBlocks() {
+        var industrialConcreteTagBuilder = getOrCreateTagBuilder(HumanBlockTags.INDUSTRIAL_CONCRETE);
+
+        Stream.of(
+            HumanIndustrialConcreteBlocks.DYE_COLOR_TO_INDUSTRIAL_CONCRETE,
+            HumanIndustrialConcreteBlocks.DYE_COLOR_TO_INDUSTRIAL_CONCRETE_SLAB,
+            HumanIndustrialConcreteBlocks.DYE_COLOR_TO_INDUSTRIAL_CONCRETE_STAIRS,
+            HumanIndustrialConcreteBlocks.DYE_COLOR_TO_INDUSTRIAL_CONCRETE_WALL
+        )
+            .map(Map::values)
+            .flatMap(Collection::stream)
+            .map(Supplier::get)
+            .forEach(industrialConcreteTagBuilder::add);
+    }
+
+    private void addFerroaluminumBlocks() {
+        getOrCreateTagBuilder(HumanBlockTags.FERROALUMINUM)
+            .add(
+                HumanFerroaluminumBlocks.CHISELED_FERROALUMINUM.get(),
+                HumanFerroaluminumBlocks.CUT_FERROALUMINUM.get(),
+                HumanFerroaluminumBlocks.CUT_FERROALUMINUM_SLAB.get(),
+                HumanFerroaluminumBlocks.CUT_FERROALUMINUM_STAIRS.get(),
+                HumanFerroaluminumBlocks.FERROALUMINUM_BLOCK.get(),
+                HumanFerroaluminumBlocks.FERROALUMINUM_BUTTON.get(),
+                HumanFerroaluminumBlocks.FERROALUMINUM_CHAIN_FENCE.get(),
+                HumanFerroaluminumBlocks.FERROALUMINUM_COLUMN.get(),
+                HumanFerroaluminumBlocks.FERROALUMINUM_DOOR.get(),
+                HumanFerroaluminumBlocks.FERROALUMINUM_FASTENED_SIDING.get(),
+                HumanFerroaluminumBlocks.FERROALUMINUM_FASTENED_SIDING_SLAB.get(),
+                HumanFerroaluminumBlocks.FERROALUMINUM_FASTENED_SIDING_STAIRS.get(),
+                HumanFerroaluminumBlocks.FERROALUMINUM_FASTENED_STANDING.get(),
+                HumanFerroaluminumBlocks.FERROALUMINUM_FASTENED_STANDING_SLAB.get(),
+                HumanFerroaluminumBlocks.FERROALUMINUM_FASTENED_STANDING_STAIRS.get(),
+                HumanFerroaluminumBlocks.FERROALUMINUM_GRATE.get(),
+                HumanFerroaluminumBlocks.FERROALUMINUM_GRATE_SLAB.get(),
+                HumanFerroaluminumBlocks.FERROALUMINUM_GRATE_STAIRS.get(),
+                HumanFerroaluminumBlocks.FERROALUMINUM_PLATING.get(),
+                HumanFerroaluminumBlocks.FERROALUMINUM_PLATING_SLAB.get(),
+                HumanFerroaluminumBlocks.FERROALUMINUM_PLATING_STAIRS.get(),
+                HumanFerroaluminumBlocks.FERROALUMINUM_PRESSURE_PLATE.get(),
+                HumanFerroaluminumBlocks.FERROALUMINUM_SIDING.get(),
+                HumanFerroaluminumBlocks.FERROALUMINUM_SIDING_SLAB.get(),
+                HumanFerroaluminumBlocks.FERROALUMINUM_SIDING_STAIRS.get(),
+                HumanFerroaluminumBlocks.FERROALUMINUM_SLAB.get(),
+                HumanFerroaluminumBlocks.FERROALUMINUM_STAIRS.get(),
+                HumanFerroaluminumBlocks.FERROALUMINUM_STANDING.get(),
+                HumanFerroaluminumBlocks.FERROALUMINUM_STANDING_SLAB.get(),
+                HumanFerroaluminumBlocks.FERROALUMINUM_STANDING_STAIRS.get(),
+                HumanFerroaluminumBlocks.FERROALUMINUM_TRAP_DOOR.get(),
+                HumanFerroaluminumBlocks.FERROALUMINUM_TREAD.get(),
+                HumanFerroaluminumBlocks.FERROALUMINUM_TREAD_SLAB.get(),
+                HumanFerroaluminumBlocks.FERROALUMINUM_TREAD_STAIRS.get()
+            );
+    }
+
+    private void addConcreteBlocks() {
+        var concreteTagBuilder = getOrCreateTagBuilder(HumanBlockTags.CONCRETE);
+
+        Stream.of(
+            HumanBlocks.DYE_COLOR_TO_CONCRETE_SLAB,
+            HumanBlocks.DYE_COLOR_TO_CONCRETE_STAIRS
+        )
+            .map(Map::values)
+            .flatMap(Collection::stream)
+            .map(Supplier::get)
+            .forEach(concreteTagBuilder::add);
+    }
+
+    private void addCompatibilityBlockTags() {
         getOrCreateTagBuilder(CommonBlockTags.CHESTS)
             .setReplace(false)
             .add(
