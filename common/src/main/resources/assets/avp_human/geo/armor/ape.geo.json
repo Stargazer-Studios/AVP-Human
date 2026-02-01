@@ -4,8 +4,8 @@
 		{
 			"description": {
 				"identifier": "geometry.unknown",
-				"texture_width": 72,
-				"texture_height": 62,
+				"texture_width": 128,
+				"texture_height": 64,
 				"visible_bounds_width": 3,
 				"visible_bounds_height": 3.5,
 				"visible_bounds_offset": [0, 1.25, 0]
@@ -21,7 +21,7 @@
 					"pivot": [0, 24, 0]
 				},
 				{
-					"name": "CommandoHead",
+					"name": "ApeHead",
 					"parent": "armorHead",
 					"pivot": [0, 24, 0],
 					"rotation": [-180, 0, 180],
@@ -32,7 +32,7 @@
 				},
 				{
 					"name": "Faceplate",
-					"parent": "CommandoHead",
+					"parent": "ApeHead",
 					"pivot": [1.5, 24.3, 5.475],
 					"cubes": [
 						{"origin": [-2.5, 23.275, 4.525], "size": [5, 5, 1], "inflate": -0.1, "uv": [47, 1]},
@@ -51,7 +51,7 @@
 					"pivot": [0, 24, 0]
 				},
 				{
-					"name": "CommandoChest",
+					"name": "ApeChest",
 					"parent": "armorBody",
 					"pivot": [0, 24, 0],
 					"rotation": [-180, 0, 180],
@@ -65,7 +65,7 @@
 				},
 				{
 					"name": "Pouches",
-					"parent": "CommandoChest",
+					"parent": "ApeChest",
 					"pivot": [2.725, 11.55, 2.125],
 					"cubes": [
 						{"origin": [2.425, 11.3, 2.125], "size": [2, 3, 1], "inflate": -0.25, "uv": [0, 0], "mirror": true},
@@ -88,7 +88,7 @@
 					"pivot": [-5, 22, 0]
 				},
 				{
-					"name": "CommandoRightArm",
+					"name": "ApeRightArm",
 					"parent": "armorRightArm",
 					"pivot": [-5, 22, 0],
 					"cubes": [
@@ -107,7 +107,7 @@
 					"pivot": [5, 22, 0]
 				},
 				{
-					"name": "CommandoLeftArm",
+					"name": "ApeLeftArm",
 					"parent": "armorLeftArm",
 					"pivot": [5, 22, 0],
 					"cubes": [
