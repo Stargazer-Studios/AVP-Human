@@ -5,3 +5,5 @@
 
 ## 🐞 Fixes
 - Fixed ape suit helmet not being facehugger-resistant.
+- Fixed industrial glass not being immune to `AVP: Alien` acid.
+- Fixed plastic not being immune to `AVP: Alien` acid.

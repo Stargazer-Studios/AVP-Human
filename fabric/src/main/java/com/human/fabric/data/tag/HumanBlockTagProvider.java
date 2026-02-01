@@ -1,5 +1,6 @@
 package com.human.fabric.data.tag;
 
+import com.alien.common.registry.tag.AlienBlockTags;
 import com.blib.api.common.tag.v1.CommonBlockTags;
 import com.human.Human;
 import com.human.common.registry.init.HumanBlocks;
@@ -63,6 +64,7 @@ public class HumanBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         addRazorWireBlocks();
 
         addAutomatedBlockTags();
+        addCommonBlockTags();
         addCompatibilityBlockTags();
     }
 
@@ -465,7 +467,7 @@ public class HumanBlockTagProvider extends FabricTagProvider.BlockTagProvider {
             .forEach(concreteTagBuilder::add);
     }
 
-    private void addCompatibilityBlockTags() {
+    private void addCommonBlockTags() {
         getOrCreateTagBuilder(CommonBlockTags.CHESTS)
             .setReplace(false)
             .add(
@@ -582,5 +584,11 @@ public class HumanBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(HumanCommonBlockTags.STORAGE_BLOCKS_ZINC)
             .setReplace(false)
             .add(CoreBlocks.ZINC_BLOCK.get());
+    }
+
+    private void addCompatibilityBlockTags() {
+        getOrCreateTagBuilder(AlienBlockTags.ACID_IMMUNE)
+            .addTag(HumanBlockTags.INDUSTRIAL_GLASS)
+            .addTag(HumanBlockTags.PLASTIC);
     }
 }
