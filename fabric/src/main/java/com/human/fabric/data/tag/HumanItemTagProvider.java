@@ -1,5 +1,6 @@
 package com.human.fabric.data.tag;
 
+import com.alien.common.registry.tag.AlienItemTags;
 import com.blib.api.common.tag.v1.BLibItemTags;
 import com.blib.api.common.tag.v1.CommonItemTags;
 import com.human.Human;
@@ -48,7 +49,8 @@ public class HumanItemTagProvider extends FabricTagProvider.ItemTagProvider {
     protected void addTags(HolderLookup.Provider wrapperLookup) {
         addArmors();
         addRadioactiveItems();
-        addCompatibilityTags();
+        addCommonItems();
+        addCompatibilityItems();
         addAutomatedTagItems();
 
         getOrCreateTagBuilder(HumanItemTags.AMMO_ITEMS)
@@ -180,7 +182,7 @@ public class HumanItemTagProvider extends FabricTagProvider.ItemTagProvider {
             .addOptionalTag(HumanCommonItemTags.NUGGETS_URANIUM);
     }
 
-    private void addCompatibilityTags() {
+    private void addCommonItems() {
         getOrCreateTagBuilder(HumanCommonItemTags.DUSTS_AUTUNITE)
             .setReplace(false)
             .add(HumanItems.AUTUNITE_DUST.get());
@@ -424,6 +426,11 @@ public class HumanItemTagProvider extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(HumanCommonItemTags.STORAGE_BLOCKS_ZINC)
             .setReplace(false)
             .add(HumanBlockItems.ZINC_BLOCK.get());
+    }
+
+    private void addCompatibilityItems() {
+        getOrCreateTagBuilder(AlienItemTags.FACEHUGGER_RESISTANT_HELMETS)
+            .add(HumanArmorItems.APE_HELMET.get());
     }
 
     private void addAutomatedTagItems() {
