@@ -7,16 +7,20 @@
 - N/A
 
 ## ✨ What's New
-- N/A
+- Added crafting recipes for WY Ape armor (helmet, chestplate, leggings, boots).
+- Added full WY Ape armor set bonus: grants Fire Resistance while wearing the complete set.
 
 ## ♻️ Changes
-- N/A
+- Renamed "Ape" armor to "WY Ape" armor (e.g., "Ape Boots" is now "WY Ape Boots").
+- Simplified WY Commando Boots recipe to a single recipe instead of 16 dye-color variants.
 
 ## 🐞 Fixes
-- Fixed wy commando boots and wy elite boots having the same recipes.
+- Fixed WY Commando Boots and WY Elite Boots having the same recipes.
 
 ## 🧪 Experimental
 - N/A
 
 ## 🛠 Data Pack
-- N/A
+- Added `avp_human:padding_blocks` item tag containing all colored padding blocks.
+- Added `avp_human:plastic_blocks` item tag containing all colored plastic blocks.
+- Added `avp_human:wy_ape_armor` item tag containing all WY Ape armor pieces.
