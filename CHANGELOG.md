@@ -10,10 +10,10 @@
 - N/A
 
 ## ♻️ Changes
-- N/A
+- WY ape armor is equal to titanium in terms of defense and toughness.
 
 ## 🐞 Fixes
-- Fixed wy ape armor using lead for repair ingredients.
+- Fixed WY ape armor using lead for repair ingredients.
   - Titanium, padding blocks or plastic blocks can now be used for repair, instead.
 
 ## 🧪 Experimental

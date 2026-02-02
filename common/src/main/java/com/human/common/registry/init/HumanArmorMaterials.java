@@ -25,17 +25,11 @@ public class HumanArmorMaterials {
 
     public static final BLibHolder<ArmorMaterial> APE = create(
         "ape",
-        relativeDefense(
-            ArmorMaterials.IRON,
-            Map.ofEntries(
-                Map.entry(ArmorItem.Type.CHESTPLATE, -2),
-                Map.entry(ArmorItem.Type.LEGGINGS, -1)
-            )
-        ),
-        6,
+        getTitaniumDefensePoints(),
+        5,
         HumanSoundEvents.ITEM_ARMOR_EQUIP_APE,
         () -> Ingredient.of(HumanItemTags.WY_APE_ARMOR_REPAIR_INGREDIENTS),
-        0,
+        1,
         0
     );
 
@@ -106,15 +100,7 @@ public class HumanArmorMaterials {
 
     public static final BLibHolder<ArmorMaterial> TITANIUM = create(
         "titanium",
-        relativeDefense(
-            ArmorMaterials.IRON,
-            Map.ofEntries(
-                Map.entry(ArmorItem.Type.HELMET, 1),
-                Map.entry(ArmorItem.Type.CHESTPLATE, 2),
-                Map.entry(ArmorItem.Type.LEGGINGS, 1),
-                Map.entry(ArmorItem.Type.BOOTS, 1)
-            )
-        ),
+        getTitaniumDefensePoints(),
         5,
         HumanSoundEvents.ITEM_ARMOR_EQUIP_TITANIUM,
         () -> Ingredient.of(HumanCommonItemTags.INGOTS_TITANIUM),
@@ -201,6 +187,18 @@ public class HumanArmorMaterials {
         ArmorMaterial armorMaterial
     ) {
         return Map.entry(type, armorMaterial.getDefense(type) + additiveDefense.getOrDefault(type, 0));
+    }
+
+    private static @NotNull Map<ArmorItem.Type, Integer> getTitaniumDefensePoints() {
+        return relativeDefense(
+            ArmorMaterials.IRON,
+            Map.ofEntries(
+                Map.entry(ArmorItem.Type.HELMET, 1),
+                Map.entry(ArmorItem.Type.CHESTPLATE, 2),
+                Map.entry(ArmorItem.Type.LEGGINGS, 1),
+                Map.entry(ArmorItem.Type.BOOTS, 1)
+            )
+        );
     }
 
     public static void initialize() {
