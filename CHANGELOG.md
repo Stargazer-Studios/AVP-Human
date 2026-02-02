@@ -11,6 +11,7 @@
 
 ## ♻️ Changes
 - WY ape armor is equal to titanium in terms of defense and toughness.
+- WY Commando and WY Elite armors can now be repaired with plastic blocks in addition to steel ingots.
 
 ## 🐞 Fixes
 - Fixed WY ape armor using lead for repair ingredients.
@@ -20,7 +21,14 @@
 - N/A
 
 ## 🛠 Data Pack
-- N/A
+- Added repair ingredient tags for all armors:
+  - `avp_human:mk50_armor_repair_ingredients`.
+  - `avp_human:pressure_armor_repair_ingredients`.
+  - `avp_human:steel_armor_repair_ingredients`.
+  - `avp_human:tactical_armor_repair_ingredients`.
+  - `avp_human:titanium_armor_repair_ingredients`.
+  - `avp_human:wy_commando_armor_repair_ingredients`.
+  - `avp_human:wy_elite_armor_repair_ingredients`.
 
 ## 🔬 Technical Changes
 - N/A

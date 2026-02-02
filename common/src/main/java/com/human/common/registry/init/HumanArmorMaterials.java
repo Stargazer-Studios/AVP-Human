@@ -5,7 +5,6 @@ import com.blib.api.common.registry.v1.BLibRegistry;
 import com.human.Human;
 import com.human.HumanResources;
 import com.human.common.registry.tag.HumanItemTags;
-import com.human.compatibility.HumanCommonItemTags;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.sounds.SoundEvent;
@@ -44,7 +43,7 @@ public class HumanArmorMaterials {
         ),
         6,
         HumanSoundEvents.ITEM_ARMOR_EQUIP_MK50,
-        () -> Ingredient.of(HumanCommonItemTags.INGOTS_LEAD),
+        () -> Ingredient.of(HumanItemTags.MK50_ARMOR_REPAIR_INGREDIENTS),
         0,
         0
     );
@@ -60,7 +59,7 @@ public class HumanArmorMaterials {
         ),
         6,
         HumanSoundEvents.ITEM_ARMOR_EQUIP_PRESSURE,
-        () -> Ingredient.of(HumanCommonItemTags.INGOTS_ALUMINUM),
+        () -> Ingredient.of(HumanItemTags.PRESSURE_ARMOR_REPAIR_INGREDIENTS),
         0,
         0
     );
@@ -78,7 +77,7 @@ public class HumanArmorMaterials {
         ),
         5, // TODO:
         HumanSoundEvents.ITEM_ARMOR_EQUIP_STEEL,
-        () -> Ingredient.of(HumanCommonItemTags.INGOTS_STEEL),
+        () -> Ingredient.of(HumanItemTags.STEEL_ARMOR_REPAIR_INGREDIENTS),
         0,
         0
     );
@@ -93,7 +92,7 @@ public class HumanArmorMaterials {
         ),
         5,
         HumanSoundEvents.ITEM_ARMOR_EQUIP_TACTICAL,
-        () -> Ingredient.of(HumanCommonItemTags.INGOTS_STEEL),
+        () -> Ingredient.of(HumanItemTags.TACTICAL_ARMOR_REPAIR_INGREDIENTS),
         0,
         0
     );
@@ -103,7 +102,7 @@ public class HumanArmorMaterials {
         getTitaniumDefensePoints(),
         5,
         HumanSoundEvents.ITEM_ARMOR_EQUIP_TITANIUM,
-        () -> Ingredient.of(HumanCommonItemTags.INGOTS_TITANIUM),
+        () -> Ingredient.of(HumanItemTags.TITANIUM_ARMOR_REPAIR_INGREDIENTS),
         1,
         0
     );
@@ -118,7 +117,7 @@ public class HumanArmorMaterials {
         ),
         5,
         HumanSoundEvents.ITEM_ARMOR_EQUIP_TACTICAL,
-        () -> Ingredient.of(HumanCommonItemTags.INGOTS_STEEL),
+        () -> Ingredient.of(HumanItemTags.WY_COMMANDO_ARMOR_REPAIR_INGREDIENTS),
         0,
         0
     );
@@ -133,7 +132,7 @@ public class HumanArmorMaterials {
         ),
         5,
         HumanSoundEvents.ITEM_ARMOR_EQUIP_TACTICAL,
-        () -> Ingredient.of(HumanCommonItemTags.INGOTS_STEEL),
+        () -> Ingredient.of(HumanItemTags.WY_ELITE_ARMOR_REPAIR_INGREDIENTS),
         0,
         0
     );
