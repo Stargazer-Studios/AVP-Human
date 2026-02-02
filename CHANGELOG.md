@@ -1,9 +1,21 @@
-# v0.1.3
+# v0.1.4
 
 ## ✍️ Developer Notes
 - For help or other questions, concerns, etc. check out our Discord server: https://discord.gg/wp7mvmbkVb
 
+## ✨ What's New
+- Added crafting recipes for WY Ape armor (helmet, chestplate, leggings, boots).
+- Added full WY Ape armor set bonus: grants Fire Resistance while wearing the complete set.
+
+## ♻️ Changes
+- Renamed "Ape" armor to "WY Ape" armor (e.g., "Ape Boots" is now "WY Ape Boots").
+- Simplified WY Commando Boots recipe to a single recipe instead of 16 dye-color variants.
+- Moved armor set bonus effects (MK50, Pressure, WY Ape) from mixin to event-based system.
+
 ## 🐞 Fixes
-- Fixed ape suit helmet not being facehugger-resistant.
-- Fixed industrial glass not being immune to `AVP: Alien` acid.
-- Fixed plastic not being immune to `AVP: Alien` acid.
+- Fixed WY Commando Boots and WY Elite Boots having the same recipes.
+
+## 🛠 Data Pack
+- Added `avp_human:padding_blocks` item tag containing all colored padding blocks.
+- Added `avp_human:plastic_blocks` item tag containing all colored plastic blocks.
+- Added `avp_human:wy_ape_armor` item tag containing all WY Ape armor pieces.

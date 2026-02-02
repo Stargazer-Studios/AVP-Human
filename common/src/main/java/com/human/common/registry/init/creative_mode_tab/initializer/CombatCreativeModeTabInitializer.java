@@ -43,10 +43,10 @@ public class CombatCreativeModeTabInitializer {
         CreativeModeTabUtil.accept(output, HumanGunItems.OLD_PAINLESS);
         CreativeModeTabUtil.accept(output, HumanGunItems.ZX_76_SHOTGUN);
 
-        CreativeModeTabUtil.accept(output, HumanArmorItems.APE_HELMET);
-        CreativeModeTabUtil.accept(output, HumanArmorItems.APE_CHESTPLATE);
-        CreativeModeTabUtil.accept(output, HumanArmorItems.APE_LEGGINGS);
-        CreativeModeTabUtil.accept(output, HumanArmorItems.APE_BOOTS);
+        CreativeModeTabUtil.accept(output, HumanArmorItems.WY_APE_HELMET);
+        CreativeModeTabUtil.accept(output, HumanArmorItems.WY_APE_CHESTPLATE);
+        CreativeModeTabUtil.accept(output, HumanArmorItems.WY_APE_LEGGINGS);
+        CreativeModeTabUtil.accept(output, HumanArmorItems.WY_APE_BOOTS);
 
         CreativeModeTabUtil.accept(output, HumanArmorItems.MK50_HELMET);
         CreativeModeTabUtil.accept(output, HumanArmorItems.MK50_CHESTPLATE);

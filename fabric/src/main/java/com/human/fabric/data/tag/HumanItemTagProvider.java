@@ -6,6 +6,8 @@ import com.blib.api.common.tag.v1.CommonItemTags;
 import com.human.Human;
 import com.human.common.gameplay.item.GunItem;
 import com.human.common.registry.init.block.CoreBlocks;
+import com.human.common.registry.init.block.HumanPaddingBlocks;
+import com.human.common.registry.init.block.HumanPlasticBlocks;
 import com.human.common.registry.init.item.HumanArmorItems;
 import com.human.common.registry.init.item.HumanBlockItems;
 import com.human.common.registry.init.item.HumanItems;
@@ -38,6 +40,7 @@ import net.minecraft.world.level.block.TrapDoorBlock;
 import net.minecraft.world.level.block.WallBlock;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
 
 public class HumanItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
@@ -76,11 +79,29 @@ public class HumanItemTagProvider extends FabricTagProvider.ItemTagProvider {
             .addTag(HumanCommonItemTags.INGOTS_STEEL)
             .addTag(HumanCommonItemTags.INGOTS_ZINC);
 
+        var paddingBlocksTagBuilder = getOrCreateTagBuilder(HumanItemTags.PADDING_BLOCKS);
+
+        HumanPaddingBlocks.DYE_COLOR_TO_PADDING
+            .values()
+            .stream()
+            .map(Supplier::get)
+            .map(Block::asItem)
+            .forEach(paddingBlocksTagBuilder::add);
+
         var plasticTagBuilder = getOrCreateTagBuilder(HumanItemTags.PLASTIC);
 
         TagProviderUtil.getPlasticBlockStream()
             .map(Block::asItem)
             .forEach(plasticTagBuilder::add);
+
+        var plasticBlocksTagBuilder = getOrCreateTagBuilder(HumanItemTags.PLASTIC_BLOCKS);
+
+        HumanPlasticBlocks.DYE_COLOR_TO_PLASTIC
+            .values()
+            .stream()
+            .map(Supplier::get)
+            .map(Block::asItem)
+            .forEach(plasticBlocksTagBuilder::add);
 
         var industrialGlassBlockTagBuilder = getOrCreateTagBuilder(HumanItemTags.INDUSTRIAL_GLASS_BLOCK);
 
@@ -118,6 +139,14 @@ public class HumanItemTagProvider extends FabricTagProvider.ItemTagProvider {
     }
 
     private void addArmors() {
+        getOrCreateTagBuilder(HumanItemTags.WY_APE_ARMOR)
+            .add(
+                HumanArmorItems.WY_APE_BOOTS.get(),
+                HumanArmorItems.WY_APE_CHESTPLATE.get(),
+                HumanArmorItems.WY_APE_HELMET.get(),
+                HumanArmorItems.WY_APE_LEGGINGS.get()
+            );
+
         getOrCreateTagBuilder(HumanItemTags.RADIATION_RESISTANT_ARMORS)
             .add(
                 HumanArmorItems.MK50_HELMET.get(),
@@ -430,7 +459,7 @@ public class HumanItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
     private void addCompatibilityItems() {
         getOrCreateTagBuilder(AlienItemTags.FACEHUGGER_RESISTANT_HELMETS)
-            .add(HumanArmorItems.APE_HELMET.get());
+            .add(HumanArmorItems.WY_APE_HELMET.get());
     }
 
     private void addAutomatedTagItems() {

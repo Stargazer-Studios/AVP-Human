@@ -1,11 +1,21 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_ingots/steel": {
+    "has_padding_blocks": {
       "conditions": {
         "items": [
           {
-            "items": "#c:ingots/steel"
+            "items": "#avp_human:padding_blocks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_plastic_blocks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#avp_human:plastic_blocks"
           }
         ]
       },
@@ -13,15 +23,15 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "avp_human:white_wy_commando_boots"
+        "recipe": "avp_human:ape_leggings"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "has_white_plastic": {
+    "has_titanium_leggings": {
       "conditions": {
         "items": [
           {
-            "items": "avp_human:white_plastic"
+            "items": "avp_human:titanium_leggings"
           }
         ]
       },
@@ -31,13 +41,14 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_ingots/steel",
-      "has_white_plastic"
+      "has_padding_blocks",
+      "has_plastic_blocks",
+      "has_titanium_leggings"
     ]
   ],
   "rewards": {
     "recipes": [
-      "avp_human:white_wy_commando_boots"
+      "avp_human:ape_leggings"
     ]
   }
 }

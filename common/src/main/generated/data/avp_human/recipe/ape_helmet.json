@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "tag": "avp_human:padding_blocks"
+    },
+    "B": {
+      "tag": "avp_human:plastic_blocks"
+    },
+    "C": {
+      "item": "avp_human:titanium_helmet"
+    },
+    "D": {
+      "tag": "c:ingots/steel"
+    },
+    "E": {
+      "item": "avp_human:steel_bars"
+    },
+    "F": {
+      "tag": "c:ingots/titanium"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "BCB",
+    "DEF"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avp_human:ape_helmet"
+  }
+}

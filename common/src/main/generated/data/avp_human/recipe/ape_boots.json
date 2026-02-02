@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "tag": "avp_human:padding_blocks"
+    },
+    "B": {
+      "tag": "avp_human:plastic_blocks"
+    },
+    "C": {
+      "item": "avp_human:titanium_boots"
+    }
+  },
+  "pattern": [
+    "B B",
+    "ACA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "avp_human:ape_boots"
+  }
+}

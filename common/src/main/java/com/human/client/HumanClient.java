@@ -97,10 +97,10 @@ public class HumanClient {
             .registerArmorRenderer(
                 ApeArmorRenderer::new,
                 List.of(
-                    HumanArmorItems.APE_HELMET,
-                    HumanArmorItems.APE_CHESTPLATE,
-                    HumanArmorItems.APE_LEGGINGS,
-                    HumanArmorItems.APE_BOOTS
+                    HumanArmorItems.WY_APE_HELMET,
+                    HumanArmorItems.WY_APE_CHESTPLATE,
+                    HumanArmorItems.WY_APE_LEGGINGS,
+                    HumanArmorItems.WY_APE_BOOTS
                 )
             );
         MOD.registries()

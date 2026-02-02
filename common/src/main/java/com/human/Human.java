@@ -1,6 +1,7 @@
 package com.human;
 
 import com.blib.api.BLibAPI;
+import com.blib.api.common.entity.v1.BLibEntityPredicates;
 import com.blib.api.common.mod.v1.BLibMod;
 import com.human.common.data.HumanReloadListeners;
 import com.human.common.data.fixer.migration.HumanDataMigrations;
@@ -59,9 +60,14 @@ import com.human.common.registry.init.item.block.HumanPlasticBlockItems;
 import com.human.common.registry.init.item.block.HumanSteelBlockItems;
 import com.human.common.registry.init.item.block.HumanTitaniumBlockItems;
 import com.human.common.registry.key.HumanVillagerGiftKeys;
+import com.human.common.registry.tag.HumanItemTags;
 import com.human.mixin.GiveGiftToHeroAccessor;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -153,9 +159,34 @@ public class Human {
         MOD.events().postLevelTick().register(Human::tickMarinePatrolSpawner);
         MOD.events().postLevelTick().register(Human::tickNukeAshPlacement);
         MOD.events().postLevelTick().register(Human::tickPowerSystem);
+        MOD.events().onEntityTick().register(Human::applyFullArmorSetBonuses);
         MOD.events().onTagsUpdated().register(($1, $2) -> GeneBonusDataRegistry.rebuildLookupMappings());
         MOD.events().serverStarting().register(HumanCommissaryVillagerHouseInjector::inject);
         MOD.events().serverStarting().register(Human::injectVillagerGifts);
+    }
+
+    private static void applyFullArmorSetBonuses(Entity entity) {
+        if (entity.level().isClientSide || !(entity instanceof LivingEntity livingEntity)) {
+            return;
+        }
+
+        if (BLibEntityPredicates.hasFullArmorSetMatching(livingEntity, itemStack -> itemStack.is(HumanItemTags.WY_APE_ARMOR))) {
+            livingEntity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 5, 0, true, false, true));
+        }
+
+        var supplyAir = false;
+
+        if (BLibEntityPredicates.hasFullArmorSetMatching(livingEntity, itemStack -> itemStack.is(HumanItemTags.MK50_ARMOR))) {
+            livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 5, 0, true, false, true));
+            supplyAir = true;
+        } else if (BLibEntityPredicates.hasFullArmorSetMatching(livingEntity, itemStack -> itemStack.is(HumanItemTags.PRESSURE_ARMOR))) {
+            supplyAir = true;
+        }
+
+        if (supplyAir) {
+            var newAirSupply = Math.min(livingEntity.getAirSupply() + 4, livingEntity.getMaxAirSupply());
+            livingEntity.setAirSupply(newAirSupply);
+        }
     }
 
     private static void injectVillagerGifts(MinecraftServer minecraftServer) {

@@ -11,11 +11,11 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_light_gray_plastic": {
+    "has_polymer": {
       "conditions": {
         "items": [
           {
-            "items": "avp_human:light_gray_plastic"
+            "items": "avp_human:polymer"
           }
         ]
       },
@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "avp_human:light_gray_wy_commando_boots"
+        "recipe": "avp_human:wy_commando_boots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -32,12 +32,12 @@
     [
       "has_the_recipe",
       "has_ingots/steel",
-      "has_light_gray_plastic"
+      "has_polymer"
     ]
   ],
   "rewards": {
     "recipes": [
-      "avp_human:light_gray_wy_commando_boots"
+      "avp_human:wy_commando_boots"
     ]
   }
 }
