@@ -76,6 +76,15 @@ public class HumanItemTagProvider extends FabricTagProvider.ItemTagProvider {
             .addTag(HumanCommonItemTags.INGOTS_STEEL)
             .addTag(HumanCommonItemTags.INGOTS_ZINC);
 
+        var paddingBlocksTagBuilder = getOrCreateTagBuilder(HumanItemTags.PADDING_BLOCKS);
+
+        HumanPaddingBlocks.DYE_COLOR_TO_PADDING
+            .values()
+            .stream()
+            .map(Supplier::get)
+            .map(Block::asItem)
+            .forEach(paddingBlocksTagBuilder::add);
+
         var plasticTagBuilder = getOrCreateTagBuilder(HumanItemTags.PLASTIC);
 
         TagProviderUtil.getPlasticBlockStream()

@@ -1,0 +1,20 @@
+{
+  "values": [
+    "avp_human:white_padding",
+    "avp_human:orange_padding",
+    "avp_human:magenta_padding",
+    "avp_human:light_blue_padding",
+    "avp_human:yellow_padding",
+    "avp_human:lime_padding",
+    "avp_human:pink_padding",
+    "avp_human:gray_padding",
+    "avp_human:light_gray_padding",
+    "avp_human:cyan_padding",
+    "avp_human:purple_padding",
+    "avp_human:blue_padding",
+    "avp_human:brown_padding",
+    "avp_human:green_padding",
+    "avp_human:red_padding",
+    "avp_human:black_padding"
+  ]
+}

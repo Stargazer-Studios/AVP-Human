@@ -23,6 +23,8 @@ public class HumanItemTags {
 
     public static final TagKey<Item> MK50_ARMOR = create("mk50_armor");
 
+    public static final TagKey<Item> PADDING_BLOCKS = create("padding_blocks");
+
     public static final TagKey<Item> PLASTIC = create("plastic");
 
     public static final TagKey<Item> PRESSURE_ARMOR = create("pressure_armor");
