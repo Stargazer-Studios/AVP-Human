@@ -1,9 +1,22 @@
-# v0.1.3
+# v0.1.4
 
 ## ✍️ Developer Notes
 - For help or other questions, concerns, etc. check out our Discord server: https://discord.gg/wp7mvmbkVb
 
+## ☢️ Breaking Changes
+- N/A
+
+## ✨ What's New
+- N/A
+
+## ♻️ Changes
+- N/A
+
 ## 🐞 Fixes
-- Fixed ape suit helmet not being facehugger-resistant.
-- Fixed industrial glass not being immune to `AVP: Alien` acid.
-- Fixed plastic not being immune to `AVP: Alien` acid.
+- N/A
+
+## 🧪 Experimental
+- N/A
+
+## 🛠 Data Pack
+- N/A

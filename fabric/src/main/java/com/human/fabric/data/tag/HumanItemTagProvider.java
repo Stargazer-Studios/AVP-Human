@@ -118,6 +118,14 @@ public class HumanItemTagProvider extends FabricTagProvider.ItemTagProvider {
     }
 
     private void addArmors() {
+        getOrCreateTagBuilder(HumanItemTags.APE_ARMOR)
+            .add(
+                HumanArmorItems.APE_BOOTS.get(),
+                HumanArmorItems.APE_CHESTPLATE.get(),
+                HumanArmorItems.APE_HELMET.get(),
+                HumanArmorItems.APE_LEGGINGS.get()
+            );
+
         getOrCreateTagBuilder(HumanItemTags.RADIATION_RESISTANT_ARMORS)
             .add(
                 HumanArmorItems.MK50_HELMET.get(),

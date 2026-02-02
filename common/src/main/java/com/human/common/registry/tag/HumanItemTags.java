@@ -9,6 +9,8 @@ public class HumanItemTags {
 
     public static final TagKey<Item> AMMO_ITEMS = create("ammo_items");
 
+    public static final TagKey<Item> APE_ARMOR = create("ape_armor");
+
     public static final TagKey<Item> GUNS = create("guns");
 
     public static final TagKey<Item> INDUSTRIAL_GLASS = create("industrial_glass");
