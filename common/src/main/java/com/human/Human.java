@@ -1,6 +1,7 @@
 package com.human;
 
 import com.blib.api.BLibAPI;
+import com.blib.api.common.entity.v1.BLibEntityPredicates;
 import com.blib.api.common.mod.v1.BLibMod;
 import com.human.common.data.HumanReloadListeners;
 import com.human.common.data.fixer.migration.HumanDataMigrations;
@@ -59,9 +60,14 @@ import com.human.common.registry.init.item.block.HumanPlasticBlockItems;
 import com.human.common.registry.init.item.block.HumanSteelBlockItems;
 import com.human.common.registry.init.item.block.HumanTitaniumBlockItems;
 import com.human.common.registry.key.HumanVillagerGiftKeys;
+import com.human.common.registry.tag.HumanItemTags;
 import com.human.mixin.GiveGiftToHeroAccessor;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -153,9 +159,20 @@ public class Human {
         MOD.events().postLevelTick().register(Human::tickMarinePatrolSpawner);
         MOD.events().postLevelTick().register(Human::tickNukeAshPlacement);
         MOD.events().postLevelTick().register(Human::tickPowerSystem);
+        MOD.events().onEntityTick().register(Human::applyFullApeArmorSetBonuses);
         MOD.events().onTagsUpdated().register(($1, $2) -> GeneBonusDataRegistry.rebuildLookupMappings());
         MOD.events().serverStarting().register(HumanCommissaryVillagerHouseInjector::inject);
         MOD.events().serverStarting().register(Human::injectVillagerGifts);
+    }
+
+    private static void applyFullApeArmorSetBonuses(Entity entity) {
+        if (
+            !entity.level().isClientSide
+                && entity instanceof LivingEntity livingEntity
+                && BLibEntityPredicates.hasFullArmorSetMatching(livingEntity, itemStack -> itemStack.is(HumanItemTags.APE_ARMOR))
+        ) {
+            livingEntity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 5, 0, true, false, true));
+        }
     }
 
     private static void injectVillagerGifts(MinecraftServer minecraftServer) {
