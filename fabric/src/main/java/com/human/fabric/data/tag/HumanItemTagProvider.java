@@ -139,12 +139,12 @@ public class HumanItemTagProvider extends FabricTagProvider.ItemTagProvider {
     }
 
     private void addArmors() {
-        getOrCreateTagBuilder(HumanItemTags.APE_ARMOR)
+        getOrCreateTagBuilder(HumanItemTags.WY_APE_ARMOR)
             .add(
-                HumanArmorItems.APE_BOOTS.get(),
-                HumanArmorItems.APE_CHESTPLATE.get(),
-                HumanArmorItems.APE_HELMET.get(),
-                HumanArmorItems.APE_LEGGINGS.get()
+                HumanArmorItems.WY_APE_BOOTS.get(),
+                HumanArmorItems.WY_APE_CHESTPLATE.get(),
+                HumanArmorItems.WY_APE_HELMET.get(),
+                HumanArmorItems.WY_APE_LEGGINGS.get()
             );
 
         getOrCreateTagBuilder(HumanItemTags.RADIATION_RESISTANT_ARMORS)
@@ -459,7 +459,7 @@ public class HumanItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
     private void addCompatibilityItems() {
         getOrCreateTagBuilder(AlienItemTags.FACEHUGGER_RESISTANT_HELMETS)
-            .add(HumanArmorItems.APE_HELMET.get());
+            .add(HumanArmorItems.WY_APE_HELMET.get());
     }
 
     private void addAutomatedTagItems() {

@@ -33,10 +33,6 @@ public class EnUsItemProvider {
         addItem(builder, HumanGunItems.M6B_ROCKET_LAUNCHER, "M6B Rocket Launcher");
         addItem(builder, HumanGunItems.M88MOD4_COMBAT_PISTOL, "88 Mod 4 Combat Pistol");
         addItem(builder, HumanItems.MEDIUM_BULLET, "Medium Bullet");
-        addItem(builder, HumanArmorItems.APE_BOOTS, "Ape Boots");
-        addItem(builder, HumanArmorItems.APE_CHESTPLATE, "Ape Chestplate");
-        addItem(builder, HumanArmorItems.APE_HELMET, "Ape Helmet");
-        addItem(builder, HumanArmorItems.APE_LEGGINGS, "Ape Leggings");
         addItem(builder, HumanArmorItems.MK50_BOOTS, "MK50 Boots");
         addItem(builder, HumanArmorItems.MK50_CHESTPLATE, "MK50 Chestplate");
         addItem(builder, HumanArmorItems.MK50_HELMET, "MK50 Helmet");
@@ -65,6 +61,10 @@ public class EnUsItemProvider {
         addItem(builder, HumanArmorItems.TITANIUM_CHESTPLATE, "Titanium Chestplate");
         addItem(builder, HumanArmorItems.TITANIUM_HELMET, "Titanium Helmet");
         addItem(builder, HumanArmorItems.TITANIUM_LEGGINGS, "Titanium Leggings");
+        addItem(builder, HumanArmorItems.WY_APE_BOOTS, "WY Ape Boots");
+        addItem(builder, HumanArmorItems.WY_APE_CHESTPLATE, "WY Ape Chestplate");
+        addItem(builder, HumanArmorItems.WY_APE_HELMET, "WY Ape Helmet");
+        addItem(builder, HumanArmorItems.WY_APE_LEGGINGS, "WY Ape Leggings");
         addItem(builder, HumanArmorItems.WY_COMMANDO_BOOTS, "WY Commando Boots");
         addItem(builder, HumanArmorItems.WY_COMMANDO_CHESTPLATE, "WY Commando Chestplate");
         addItem(builder, HumanArmorItems.WY_COMMANDO_HELMET, "WY Commando Helmet");

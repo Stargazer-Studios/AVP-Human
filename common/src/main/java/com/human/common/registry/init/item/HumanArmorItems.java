@@ -29,16 +29,16 @@ public class HumanArmorItems {
 
     private static final int WY_ELITE_DURABILITY_MULTIPLIER = 18;
 
-    public static final BLibHolder<ArmorItem> APE_BOOTS = create("ape_boots", () -> new ApeArmorItem(ArmorItem.Type.BOOTS));
+    public static final BLibHolder<ArmorItem> WY_APE_BOOTS = create("ape_boots", () -> new ApeArmorItem(ArmorItem.Type.BOOTS));
 
-    public static final BLibHolder<ArmorItem> APE_CHESTPLATE = create(
+    public static final BLibHolder<ArmorItem> WY_APE_CHESTPLATE = create(
         "ape_chestplate",
         () -> new ApeArmorItem(ArmorItem.Type.CHESTPLATE)
     );
 
-    public static final BLibHolder<ArmorItem> APE_HELMET = create("ape_helmet", () -> new ApeArmorItem(ArmorItem.Type.HELMET));
+    public static final BLibHolder<ArmorItem> WY_APE_HELMET = create("ape_helmet", () -> new ApeArmorItem(ArmorItem.Type.HELMET));
 
-    public static final BLibHolder<ArmorItem> APE_LEGGINGS = create(
+    public static final BLibHolder<ArmorItem> WY_APE_LEGGINGS = create(
         "ape_leggings",
         () -> new ApeArmorItem(ArmorItem.Type.LEGGINGS)
     );

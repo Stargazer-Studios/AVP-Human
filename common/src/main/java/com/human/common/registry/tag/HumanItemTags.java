@@ -9,8 +9,6 @@ public class HumanItemTags {
 
     public static final TagKey<Item> AMMO_ITEMS = create("ammo_items");
 
-    public static final TagKey<Item> APE_ARMOR = create("ape_armor");
-
     public static final TagKey<Item> GUNS = create("guns");
 
     public static final TagKey<Item> INDUSTRIAL_GLASS = create("industrial_glass");
@@ -38,6 +36,8 @@ public class HumanItemTags {
     public static final TagKey<Item> RADIOACTIVE_ITEMS = create("radioactive_items");
 
     public static final TagKey<Item> URANIUM_NUGGET_LIKE = create("uranium_nugget_like");
+
+    public static final TagKey<Item> WY_APE_ARMOR = create("wy_ape_armor");
 
     public static final TagKey<Item> WY_COMMANDO_ARMOR = create("wy_commando_armor");
 

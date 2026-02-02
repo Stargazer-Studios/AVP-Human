@@ -26,10 +26,10 @@ public class ApeGearDecorator implements MarineDecorator {
     }
 
     public void applyArmor(Marine marine) {
-        MarineGearDecoratorUtil.equipArmorItem(marine, HumanArmorItems.APE_HELMET.get());
-        MarineGearDecoratorUtil.equipArmorItem(marine, HumanArmorItems.APE_CHESTPLATE.get());
-        MarineGearDecoratorUtil.equipArmorItem(marine, HumanArmorItems.APE_LEGGINGS.get());
-        MarineGearDecoratorUtil.equipArmorItem(marine, HumanArmorItems.APE_BOOTS.get());
+        MarineGearDecoratorUtil.equipArmorItem(marine, HumanArmorItems.WY_APE_HELMET.get());
+        MarineGearDecoratorUtil.equipArmorItem(marine, HumanArmorItems.WY_APE_CHESTPLATE.get());
+        MarineGearDecoratorUtil.equipArmorItem(marine, HumanArmorItems.WY_APE_LEGGINGS.get());
+        MarineGearDecoratorUtil.equipArmorItem(marine, HumanArmorItems.WY_APE_BOOTS.get());
     }
 
     public void applyExclusives(Marine marine) {

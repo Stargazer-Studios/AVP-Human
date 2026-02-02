@@ -169,7 +169,7 @@ public class Human {
         if (
             !entity.level().isClientSide
                 && entity instanceof LivingEntity livingEntity
-                && BLibEntityPredicates.hasFullArmorSetMatching(livingEntity, itemStack -> itemStack.is(HumanItemTags.APE_ARMOR))
+                && BLibEntityPredicates.hasFullArmorSetMatching(livingEntity, itemStack -> itemStack.is(HumanItemTags.WY_APE_ARMOR))
         ) {
             livingEntity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 5, 0, true, false, true));
         }
