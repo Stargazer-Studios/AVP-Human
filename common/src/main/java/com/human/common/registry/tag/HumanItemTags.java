@@ -39,6 +39,8 @@ public class HumanItemTags {
 
     public static final TagKey<Item> WY_APE_ARMOR = create("wy_ape_armor");
 
+    public static final TagKey<Item> WY_APE_ARMOR_REPAIR_INGREDIENTS = create("wy_ape_armor_repair_ingredients");
+
     public static final TagKey<Item> WY_COMMANDO_ARMOR = create("wy_commando_armor");
 
     public static final TagKey<Item> WY_ELITE_ARMOR = create("wy_elite_armor");

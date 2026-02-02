@@ -147,6 +147,11 @@ public class HumanItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 HumanArmorItems.WY_APE_LEGGINGS.get()
             );
 
+        getOrCreateTagBuilder(HumanItemTags.WY_APE_ARMOR_REPAIR_INGREDIENTS)
+            .addTag(HumanCommonItemTags.INGOTS_TITANIUM)
+            .addTag(HumanItemTags.PADDING_BLOCKS)
+            .addTag(HumanItemTags.PLASTIC_BLOCKS);
+
         getOrCreateTagBuilder(HumanItemTags.RADIATION_RESISTANT_ARMORS)
             .add(
                 HumanArmorItems.MK50_HELMET.get(),

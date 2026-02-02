@@ -4,6 +4,7 @@ import com.blib.api.common.registry.v1.BLibHolder;
 import com.blib.api.common.registry.v1.BLibRegistry;
 import com.human.Human;
 import com.human.HumanResources;
+import com.human.common.registry.tag.HumanItemTags;
 import com.human.compatibility.HumanCommonItemTags;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -33,7 +34,7 @@ public class HumanArmorMaterials {
         ),
         6,
         HumanSoundEvents.ITEM_ARMOR_EQUIP_APE,
-        () -> Ingredient.of(HumanCommonItemTags.INGOTS_LEAD),
+        () -> Ingredient.of(HumanItemTags.WY_APE_ARMOR_REPAIR_INGREDIENTS),
         0,
         0
     );
