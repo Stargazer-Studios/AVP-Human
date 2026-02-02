@@ -61,7 +61,7 @@ public class BlockGunHitResultHandler {
         int pierceIndex
     ) {
         if (
-            !HumanPropertyAccess.INSTANCE.getOrThrow(HumanProperties.Weapons.BULLETS_DAMAGE_BLOCKS_ENABLED)
+            !HumanPropertyAccess.INSTANCE.get(HumanProperties.Weapons.BULLETS_DAMAGE_BLOCKS_ENABLED)
                 || !level.getGameRules().getBoolean(GameRules.RULE_PROJECTILESCANBREAKBLOCKS)
                 // Only damage blocks if they should be destroyed.
                 || blockState.is(BLibBlockTags.SHOULD_NOT_BE_DESTROYED)

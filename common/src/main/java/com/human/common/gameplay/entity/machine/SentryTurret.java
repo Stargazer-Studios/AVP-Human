@@ -34,13 +34,13 @@ import java.util.UUID;
 
 public class SentryTurret extends Mob implements TraceableEntity {
 
-    public static float DAMAGE = HumanPropertyAccess.INSTANCE.getOrThrow(HumanProperties.Blocks.SentryTurret.DAMAGE);
+    public static float DAMAGE = HumanPropertyAccess.INSTANCE.get(HumanProperties.Blocks.SentryTurret.DAMAGE);
 
-    public static int RANGE = HumanPropertyAccess.INSTANCE.getOrThrow(HumanProperties.Blocks.SentryTurret.RANGE);
+    public static int RANGE = HumanPropertyAccess.INSTANCE.get(HumanProperties.Blocks.SentryTurret.RANGE);
 
-    protected static int AMMO_CHEST_RANGE = HumanPropertyAccess.INSTANCE.getOrThrow(HumanProperties.Blocks.SentryTurret.AMMO_CHEST_RANGE);
+    protected static int AMMO_CHEST_RANGE = HumanPropertyAccess.INSTANCE.get(HumanProperties.Blocks.SentryTurret.AMMO_CHEST_RANGE);
 
-    protected static int FOV = HumanPropertyAccess.INSTANCE.getOrThrow(HumanProperties.Blocks.SentryTurret.FOV);
+    protected static int FOV = HumanPropertyAccess.INSTANCE.get(HumanProperties.Blocks.SentryTurret.FOV);
 
     private static final int MAX_TURRET_FIRE_COOLDOWN_IN_TICKS = 2;
 

@@ -51,13 +51,13 @@ public class ResonatorBlockEntity extends PowerConsumerBlockEntity {
 
         tickCounter++;
 
-        var tickValue = HumanPropertyAccess.INSTANCE.getOrThrow(HumanProperties.Blocks.Resonator.REPLACE_FREQUENCY_IN_TICKS);
+        var tickValue = HumanPropertyAccess.INSTANCE.get(HumanProperties.Blocks.Resonator.REPLACE_FREQUENCY_IN_TICKS);
 
         if (tickCounter % tickValue != 0) {
             return;
         }
 
-        var radius = HumanPropertyAccess.INSTANCE.getOrThrow(HumanProperties.Blocks.Resonator.REPLACE_RADIUS_IN_BLOCKS);
+        var radius = HumanPropertyAccess.INSTANCE.get(HumanProperties.Blocks.Resonator.REPLACE_RADIUS_IN_BLOCKS);
 
         if (!AVPAlien.MOD.isLoaded()) {
             return;

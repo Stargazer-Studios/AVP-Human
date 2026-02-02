@@ -70,7 +70,7 @@ public class Rocket extends ThrowableProjectile {
     protected void onHit(@NotNull HitResult hitResult) {
         super.onHit(hitResult);
         var level = level();
-        var explosionInteraction = HumanPropertyAccess.INSTANCE.getOrThrow(HumanProperties.Weapons.BULLETS_DAMAGE_BLOCKS_ENABLED)
+        var explosionInteraction = HumanPropertyAccess.INSTANCE.get(HumanProperties.Weapons.BULLETS_DAMAGE_BLOCKS_ENABLED)
             ? Level.ExplosionInteraction.BLOCK
             : Level.ExplosionInteraction.NONE;
 

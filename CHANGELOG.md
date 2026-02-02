@@ -31,4 +31,5 @@
   - `avp_human:wy_elite_armor_repair_ingredients`.
 
 ## 🔬 Technical Changes
-- N/A
+- Property access now uses default values instead of throwing exceptions when properties are missing.
+- Added `HumanProperty` record that couples property keys with their default values for simpler access.
