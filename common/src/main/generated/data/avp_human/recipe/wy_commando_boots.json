@@ -6,7 +6,7 @@
       "tag": "c:ingots/steel"
     },
     "B": {
-      "item": "avp_human:gray_plastic"
+      "item": "avp_human:polymer"
     }
   },
   "pattern": [
@@ -14,11 +14,6 @@
     "A A"
   ],
   "result": {
-    "components": {
-      "minecraft:dyed_color": {
-        "rgb": 4673362
-      }
-    },
     "count": 1,
     "id": "avp_human:wy_commando_boots"
   }

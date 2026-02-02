@@ -13,7 +13,7 @@
 - N/A
 
 ## 🐞 Fixes
-- N/A
+- Fixed wy commando boots and wy elite boots having the same recipes.
 
 ## 🧪 Experimental
 - N/A

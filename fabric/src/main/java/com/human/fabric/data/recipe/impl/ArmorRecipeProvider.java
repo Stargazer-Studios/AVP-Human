@@ -23,6 +23,8 @@ import java.util.function.Supplier;
 
 public class ArmorRecipeProvider {
 
+    private static final DyeColor[] VALUES = DyeColor.values();
+
     public static void provide(RecipeBuilder builder) {
         createMk50ArmorSetRecipes(builder);
         createPressureArmorSetRecipes(builder);
@@ -148,7 +150,7 @@ public class ArmorRecipeProvider {
     }
 
     private static void createWYCommandoArmorSetRecipes(RecipeBuilder builder) {
-        for (var dyeColor : DyeColor.values()) {
+        for (var dyeColor : VALUES) {
             Supplier<ShapedRecipeBuilder> wyCommandoArmorBuilder = () -> builder.shaped()
                 .withCategory(RecipeCategory.COMBAT)
                 .define('A', HumanCommonItemTags.INGOTS_STEEL)
@@ -183,19 +185,19 @@ public class ArmorRecipeProvider {
                 .pattern("C C")
                 .withCustomName(baseName -> dyeColor.getName() + "_" + baseName)
                 .into(leggingsItemStack);
-
-            var bootsItemStack = new ItemStack(HumanArmorItems.WY_COMMANDO_BOOTS.get(), 1);
-            bootsItemStack = DyeItemColorUtil.applyDyesForced(bootsItemStack, List.of(DyeItem.byColor(dyeColor)));
-            wyCommandoArmorBuilder.get()
-                .pattern("B B")
-                .pattern("A A")
-                .withCustomName(baseName -> dyeColor.getName() + "_" + baseName)
-                .into(bootsItemStack);
         }
+
+        builder.shaped()
+            .withCategory(RecipeCategory.COMBAT)
+            .define('A', HumanCommonItemTags.INGOTS_STEEL)
+            .define('B', HumanItems.POLYMER)
+            .pattern("B B")
+            .pattern("A A")
+            .into(1, HumanArmorItems.WY_COMMANDO_BOOTS.get());
     }
 
     private static void createWYEliteArmorSetRecipes(RecipeBuilder builder) {
-        for (var dyeColor : DyeColor.values()) {
+        for (var dyeColor : VALUES) {
             Supplier<ShapedRecipeBuilder> wyEliteArmorBuilder = () -> builder.shaped()
                 .withCategory(RecipeCategory.COMBAT)
                 .define('A', HumanCommonItemTags.INGOTS_STEEL)
