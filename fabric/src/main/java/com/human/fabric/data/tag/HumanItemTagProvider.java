@@ -6,6 +6,8 @@ import com.blib.api.common.tag.v1.CommonItemTags;
 import com.human.Human;
 import com.human.common.gameplay.item.GunItem;
 import com.human.common.registry.init.block.CoreBlocks;
+import com.human.common.registry.init.block.HumanPaddingBlocks;
+import com.human.common.registry.init.block.HumanPlasticBlocks;
 import com.human.common.registry.init.item.HumanArmorItems;
 import com.human.common.registry.init.item.HumanBlockItems;
 import com.human.common.registry.init.item.HumanItems;
@@ -38,6 +40,7 @@ import net.minecraft.world.level.block.TrapDoorBlock;
 import net.minecraft.world.level.block.WallBlock;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
 
 public class HumanItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
@@ -90,6 +93,15 @@ public class HumanItemTagProvider extends FabricTagProvider.ItemTagProvider {
         TagProviderUtil.getPlasticBlockStream()
             .map(Block::asItem)
             .forEach(plasticTagBuilder::add);
+
+        var plasticBlocksTagBuilder = getOrCreateTagBuilder(HumanItemTags.PLASTIC_BLOCKS);
+
+        HumanPlasticBlocks.DYE_COLOR_TO_PLASTIC
+            .values()
+            .stream()
+            .map(Supplier::get)
+            .map(Block::asItem)
+            .forEach(plasticBlocksTagBuilder::add);
 
         var industrialGlassBlockTagBuilder = getOrCreateTagBuilder(HumanItemTags.INDUSTRIAL_GLASS_BLOCK);
 

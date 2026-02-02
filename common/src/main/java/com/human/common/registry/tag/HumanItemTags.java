@@ -27,6 +27,8 @@ public class HumanItemTags {
 
     public static final TagKey<Item> PLASTIC = create("plastic");
 
+    public static final TagKey<Item> PLASTIC_BLOCKS = create("plastic_blocks");
+
     public static final TagKey<Item> PRESSURE_ARMOR = create("pressure_armor");
 
     public static final TagKey<Item> RADIATION_CURE_ITEMS = create("radiation_cure_items");
