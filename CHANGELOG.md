@@ -13,6 +13,7 @@
 ## ♻️ Changes
 - Renamed "Ape" armor to "WY Ape" armor (e.g., "Ape Boots" is now "WY Ape Boots").
 - Simplified WY Commando Boots recipe to a single recipe instead of 16 dye-color variants.
+- Moved armor set bonus effects (MK50, Pressure, WY Ape) from mixin to event-based system.
 
 ## 🐞 Fixes
 - Fixed WY Commando Boots and WY Elite Boots having the same recipes.

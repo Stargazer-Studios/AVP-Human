@@ -159,19 +159,33 @@ public class Human {
         MOD.events().postLevelTick().register(Human::tickMarinePatrolSpawner);
         MOD.events().postLevelTick().register(Human::tickNukeAshPlacement);
         MOD.events().postLevelTick().register(Human::tickPowerSystem);
-        MOD.events().onEntityTick().register(Human::applyFullApeArmorSetBonuses);
+        MOD.events().onEntityTick().register(Human::applyFullArmorSetBonuses);
         MOD.events().onTagsUpdated().register(($1, $2) -> GeneBonusDataRegistry.rebuildLookupMappings());
         MOD.events().serverStarting().register(HumanCommissaryVillagerHouseInjector::inject);
         MOD.events().serverStarting().register(Human::injectVillagerGifts);
     }
 
-    private static void applyFullApeArmorSetBonuses(Entity entity) {
-        if (
-            !entity.level().isClientSide
-                && entity instanceof LivingEntity livingEntity
-                && BLibEntityPredicates.hasFullArmorSetMatching(livingEntity, itemStack -> itemStack.is(HumanItemTags.WY_APE_ARMOR))
-        ) {
+    private static void applyFullArmorSetBonuses(Entity entity) {
+        if (entity.level().isClientSide || !(entity instanceof LivingEntity livingEntity)) {
+            return;
+        }
+
+        if (BLibEntityPredicates.hasFullArmorSetMatching(livingEntity, itemStack -> itemStack.is(HumanItemTags.WY_APE_ARMOR))) {
             livingEntity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 5, 0, true, false, true));
+        }
+
+        var supplyAir = false;
+
+        if (BLibEntityPredicates.hasFullArmorSetMatching(livingEntity, itemStack -> itemStack.is(HumanItemTags.MK50_ARMOR))) {
+            livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 5, 0, true, false, true));
+            supplyAir = true;
+        } else if (BLibEntityPredicates.hasFullArmorSetMatching(livingEntity, itemStack -> itemStack.is(HumanItemTags.PRESSURE_ARMOR))) {
+            supplyAir = true;
+        }
+
+        if (supplyAir) {
+            var newAirSupply = Math.min(livingEntity.getAirSupply() + 4, livingEntity.getMaxAirSupply());
+            livingEntity.setAirSupply(newAirSupply);
         }
     }
 

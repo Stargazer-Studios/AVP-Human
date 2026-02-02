@@ -17,7 +17,6 @@
     "MixinItem_GiveRads",
     "MixinItem_RemoveRads",
     "MixinItemEntity_LithiumExplode",
-    "MixinLivingEntity_ApplyArmorEffects",
     "MixinLivingEntity_GeneCarrier",
     "MixinLivingEntity_NukedRadiation",
     "MixinLivingEntity_RadiationDamage",
