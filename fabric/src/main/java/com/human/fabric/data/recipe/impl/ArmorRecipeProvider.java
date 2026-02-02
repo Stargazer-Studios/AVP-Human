@@ -8,6 +8,7 @@ import com.human.common.gameplay.item.DyeItemColorUtil;
 import com.human.common.registry.init.block.HumanPlasticBlocks;
 import com.human.common.registry.init.item.HumanArmorItems;
 import com.human.common.registry.init.item.HumanItems;
+import com.human.common.registry.init.item.block.HumanSteelBlockItems;
 import com.human.common.registry.tag.HumanItemTags;
 import com.human.compatibility.HumanCommonItemTags;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -31,6 +32,7 @@ public class ArmorRecipeProvider {
         createTacticalArmorSetRecipes(builder);
         createWYCommandoArmorSetRecipes(builder);
         createWYEliteArmorSetRecipes(builder);
+        createWYApeArmorSetRecipes(builder);
         createStandardArmorSetRecipes(
             builder,
             HumanCommonItemTags.INGOTS_STEEL,
@@ -238,6 +240,43 @@ public class ArmorRecipeProvider {
                 .withCustomName(baseName -> dyeColor.getName() + "_" + baseName)
                 .into(bootsItemStack);
         }
+    }
+
+    private static void createWYApeArmorSetRecipes(RecipeBuilder builder) {
+        Supplier<ShapedRecipeBuilder> wyEliteArmorBuilder = () -> builder.shaped()
+            .withCategory(RecipeCategory.COMBAT)
+            .define('A', HumanItemTags.PADDING_BLOCKS)
+            .define('B', HumanItemTags.PLASTIC_BLOCKS);
+
+        wyEliteArmorBuilder.get()
+            .define('C', HumanArmorItems.TITANIUM_HELMET.get())
+            .define('D', HumanCommonItemTags.INGOTS_STEEL)
+            .define('E', HumanSteelBlockItems.STEEL_BARS)
+            .define('F', HumanCommonItemTags.INGOTS_TITANIUM)
+            .pattern("ABA")
+            .pattern("BCB")
+            .pattern("DEF")
+            .into(1, HumanArmorItems.WY_APE_HELMET.get());
+
+        wyEliteArmorBuilder.get()
+            .define('C', HumanArmorItems.TITANIUM_CHESTPLATE.get())
+            .pattern("B B")
+            .pattern("ACA")
+            .pattern("BAB")
+            .into(1, HumanArmorItems.WY_APE_CHESTPLATE.get());
+
+        wyEliteArmorBuilder.get()
+            .define('C', HumanArmorItems.TITANIUM_LEGGINGS.get())
+            .pattern("BBB")
+            .pattern("ACA")
+            .pattern("B B")
+            .into(1, HumanArmorItems.WY_APE_LEGGINGS.get());
+
+        wyEliteArmorBuilder.get()
+            .define('C', HumanArmorItems.TITANIUM_BOOTS.get())
+            .pattern("B B")
+            .pattern("ACA")
+            .into(1, HumanArmorItems.WY_APE_BOOTS.get());
     }
 
     private static void createStandardArmorSetRecipes(
