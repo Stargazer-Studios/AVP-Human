@@ -30,9 +30,21 @@ public class PlasticRecipeProvider {
             .pattern("BAB")
             .pattern("ABA")
             .into(9, aisleHazardPlastic);
-        RecipeUtil.createSlabBlockManualAndStonecutterRecipes(builder, aisleHazardPlastic, HumanPlasticBlocks.AISLE_HAZARD_PLASTIC_SLAB.get());
-        RecipeUtil.createStairBlockManualAndStonecutterRecipes(builder, aisleHazardPlastic, HumanPlasticBlocks.AISLE_HAZARD_PLASTIC_STAIRS.get());
-        RecipeUtil.createWallBlockManualAndStonecutterRecipes(builder, aisleHazardPlastic, HumanPlasticBlocks.AISLE_HAZARD_PLASTIC_WALL.get());
+        RecipeUtil.createSlabBlockManualAndStonecutterRecipes(
+            builder,
+            aisleHazardPlastic,
+            HumanPlasticBlocks.AISLE_HAZARD_PLASTIC_SLAB.get()
+        );
+        RecipeUtil.createStairBlockManualAndStonecutterRecipes(
+            builder,
+            aisleHazardPlastic,
+            HumanPlasticBlocks.AISLE_HAZARD_PLASTIC_STAIRS.get()
+        );
+        RecipeUtil.createWallBlockManualAndStonecutterRecipes(
+            builder,
+            aisleHazardPlastic,
+            HumanPlasticBlocks.AISLE_HAZARD_PLASTIC_WALL.get()
+        );
 
         var alienHazardPlastic = HumanPlasticBlocks.ALIEN_HAZARD_PLASTIC.get();
         builder.shaped()
@@ -43,9 +55,21 @@ public class PlasticRecipeProvider {
             .pattern("BAB")
             .pattern("ABA")
             .into(9, alienHazardPlastic);
-        RecipeUtil.createSlabBlockManualAndStonecutterRecipes(builder, alienHazardPlastic, HumanPlasticBlocks.ALIEN_HAZARD_PLASTIC_SLAB.get());
-        RecipeUtil.createStairBlockManualAndStonecutterRecipes(builder, alienHazardPlastic, HumanPlasticBlocks.ALIEN_HAZARD_PLASTIC_STAIRS.get());
-        RecipeUtil.createWallBlockManualAndStonecutterRecipes(builder, alienHazardPlastic, HumanPlasticBlocks.ALIEN_HAZARD_PLASTIC_WALL.get());
+        RecipeUtil.createSlabBlockManualAndStonecutterRecipes(
+            builder,
+            alienHazardPlastic,
+            HumanPlasticBlocks.ALIEN_HAZARD_PLASTIC_SLAB.get()
+        );
+        RecipeUtil.createStairBlockManualAndStonecutterRecipes(
+            builder,
+            alienHazardPlastic,
+            HumanPlasticBlocks.ALIEN_HAZARD_PLASTIC_STAIRS.get()
+        );
+        RecipeUtil.createWallBlockManualAndStonecutterRecipes(
+            builder,
+            alienHazardPlastic,
+            HumanPlasticBlocks.ALIEN_HAZARD_PLASTIC_WALL.get()
+        );
 
         var fireHazardPlastic = HumanPlasticBlocks.FIRE_HAZARD_PLASTIC.get();
         builder.shaped()
@@ -56,9 +80,21 @@ public class PlasticRecipeProvider {
             .pattern("BAB")
             .pattern("ABA")
             .into(9, fireHazardPlastic);
-        RecipeUtil.createSlabBlockManualAndStonecutterRecipes(builder, fireHazardPlastic, HumanPlasticBlocks.FIRE_HAZARD_PLASTIC_SLAB.get());
-        RecipeUtil.createStairBlockManualAndStonecutterRecipes(builder, fireHazardPlastic, HumanPlasticBlocks.FIRE_HAZARD_PLASTIC_STAIRS.get());
-        RecipeUtil.createWallBlockManualAndStonecutterRecipes(builder, fireHazardPlastic, HumanPlasticBlocks.FIRE_HAZARD_PLASTIC_WALL.get());
+        RecipeUtil.createSlabBlockManualAndStonecutterRecipes(
+            builder,
+            fireHazardPlastic,
+            HumanPlasticBlocks.FIRE_HAZARD_PLASTIC_SLAB.get()
+        );
+        RecipeUtil.createStairBlockManualAndStonecutterRecipes(
+            builder,
+            fireHazardPlastic,
+            HumanPlasticBlocks.FIRE_HAZARD_PLASTIC_STAIRS.get()
+        );
+        RecipeUtil.createWallBlockManualAndStonecutterRecipes(
+            builder,
+            fireHazardPlastic,
+            HumanPlasticBlocks.FIRE_HAZARD_PLASTIC_WALL.get()
+        );
 
         var hazardPlastic = HumanPlasticBlocks.HAZARD_PLASTIC.get();
         builder.shaped()
@@ -82,9 +118,21 @@ public class PlasticRecipeProvider {
             .pattern("BAB")
             .pattern("ABA")
             .into(9, machineHazardPlastic);
-        RecipeUtil.createSlabBlockManualAndStonecutterRecipes(builder, machineHazardPlastic, HumanPlasticBlocks.MACHINE_HAZARD_PLASTIC_SLAB.get());
-        RecipeUtil.createStairBlockManualAndStonecutterRecipes(builder, machineHazardPlastic, HumanPlasticBlocks.MACHINE_HAZARD_PLASTIC_STAIRS.get());
-        RecipeUtil.createWallBlockManualAndStonecutterRecipes(builder, machineHazardPlastic, HumanPlasticBlocks.MACHINE_HAZARD_PLASTIC_WALL.get());
+        RecipeUtil.createSlabBlockManualAndStonecutterRecipes(
+            builder,
+            machineHazardPlastic,
+            HumanPlasticBlocks.MACHINE_HAZARD_PLASTIC_SLAB.get()
+        );
+        RecipeUtil.createStairBlockManualAndStonecutterRecipes(
+            builder,
+            machineHazardPlastic,
+            HumanPlasticBlocks.MACHINE_HAZARD_PLASTIC_STAIRS.get()
+        );
+        RecipeUtil.createWallBlockManualAndStonecutterRecipes(
+            builder,
+            machineHazardPlastic,
+            HumanPlasticBlocks.MACHINE_HAZARD_PLASTIC_WALL.get()
+        );
 
         var radiationHazardPlastic = HumanPlasticBlocks.RADIATION_HAZARD_PLASTIC.get();
         builder.shaped()
@@ -95,9 +143,21 @@ public class PlasticRecipeProvider {
             .pattern("BAB")
             .pattern("ABA")
             .into(9, radiationHazardPlastic);
-        RecipeUtil.createSlabBlockManualAndStonecutterRecipes(builder, radiationHazardPlastic, HumanPlasticBlocks.RADIATION_HAZARD_PLASTIC_SLAB.get());
-        RecipeUtil.createStairBlockManualAndStonecutterRecipes(builder, radiationHazardPlastic, HumanPlasticBlocks.RADIATION_HAZARD_PLASTIC_STAIRS.get());
-        RecipeUtil.createWallBlockManualAndStonecutterRecipes(builder, radiationHazardPlastic, HumanPlasticBlocks.RADIATION_HAZARD_PLASTIC_WALL.get());
+        RecipeUtil.createSlabBlockManualAndStonecutterRecipes(
+            builder,
+            radiationHazardPlastic,
+            HumanPlasticBlocks.RADIATION_HAZARD_PLASTIC_SLAB.get()
+        );
+        RecipeUtil.createStairBlockManualAndStonecutterRecipes(
+            builder,
+            radiationHazardPlastic,
+            HumanPlasticBlocks.RADIATION_HAZARD_PLASTIC_STAIRS.get()
+        );
+        RecipeUtil.createWallBlockManualAndStonecutterRecipes(
+            builder,
+            radiationHazardPlastic,
+            HumanPlasticBlocks.RADIATION_HAZARD_PLASTIC_WALL.get()
+        );
 
         var safetyPlastic = HumanPlasticBlocks.SAFETY_PLASTIC.get();
         builder.shaped()
@@ -121,9 +181,21 @@ public class PlasticRecipeProvider {
             .pattern("BAB")
             .pattern("ABA")
             .into(9, trafficHazardPlastic);
-        RecipeUtil.createSlabBlockManualAndStonecutterRecipes(builder, trafficHazardPlastic, HumanPlasticBlocks.TRAFFIC_HAZARD_PLASTIC_SLAB.get());
-        RecipeUtil.createStairBlockManualAndStonecutterRecipes(builder, trafficHazardPlastic, HumanPlasticBlocks.TRAFFIC_HAZARD_PLASTIC_STAIRS.get());
-        RecipeUtil.createWallBlockManualAndStonecutterRecipes(builder, trafficHazardPlastic, HumanPlasticBlocks.TRAFFIC_HAZARD_PLASTIC_WALL.get());
+        RecipeUtil.createSlabBlockManualAndStonecutterRecipes(
+            builder,
+            trafficHazardPlastic,
+            HumanPlasticBlocks.TRAFFIC_HAZARD_PLASTIC_SLAB.get()
+        );
+        RecipeUtil.createStairBlockManualAndStonecutterRecipes(
+            builder,
+            trafficHazardPlastic,
+            HumanPlasticBlocks.TRAFFIC_HAZARD_PLASTIC_STAIRS.get()
+        );
+        RecipeUtil.createWallBlockManualAndStonecutterRecipes(
+            builder,
+            trafficHazardPlastic,
+            HumanPlasticBlocks.TRAFFIC_HAZARD_PLASTIC_WALL.get()
+        );
     }
 
     private static void createPlasticBlockRecipes(RecipeBuilder builder) {

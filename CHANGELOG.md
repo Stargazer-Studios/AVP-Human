@@ -18,7 +18,7 @@
   - Traffic Hazard Plastic
 
 ## ♻️ Changes
-- WY ape armor is equal to titanium in terms of defense and toughness.
+- WY ape armor is now equal to titanium in terms of defense and toughness.
 - WY Commando and WY Elite armors can now be repaired with plastic blocks in addition to steel ingots.
 
 ## 🐞 Fixes
