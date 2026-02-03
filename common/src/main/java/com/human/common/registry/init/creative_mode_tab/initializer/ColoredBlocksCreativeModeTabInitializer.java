@@ -82,5 +82,45 @@ public class ColoredBlocksCreativeModeTabInitializer {
             output.accept(HumanPlasticBlocks.DYE_COLOR_TO_PITTED_PLASTIC_STAIRS.get(dyeColor).get());
             output.accept(HumanPlasticBlocks.DYE_COLOR_TO_PITTED_PLASTIC_SLAB.get(dyeColor).get());
         });
+
+        CreativeModeTabUtil.accept(output, HumanPlasticBlocks.AISLE_HAZARD_PLASTIC);
+        CreativeModeTabUtil.accept(output, HumanPlasticBlocks.AISLE_HAZARD_PLASTIC_STAIRS);
+        CreativeModeTabUtil.accept(output, HumanPlasticBlocks.AISLE_HAZARD_PLASTIC_SLAB);
+        CreativeModeTabUtil.accept(output, HumanPlasticBlocks.AISLE_HAZARD_PLASTIC_WALL);
+
+        CreativeModeTabUtil.accept(output, HumanPlasticBlocks.ALIEN_HAZARD_PLASTIC);
+        CreativeModeTabUtil.accept(output, HumanPlasticBlocks.ALIEN_HAZARD_PLASTIC_STAIRS);
+        CreativeModeTabUtil.accept(output, HumanPlasticBlocks.ALIEN_HAZARD_PLASTIC_SLAB);
+        CreativeModeTabUtil.accept(output, HumanPlasticBlocks.ALIEN_HAZARD_PLASTIC_WALL);
+
+        CreativeModeTabUtil.accept(output, HumanPlasticBlocks.FIRE_HAZARD_PLASTIC);
+        CreativeModeTabUtil.accept(output, HumanPlasticBlocks.FIRE_HAZARD_PLASTIC_STAIRS);
+        CreativeModeTabUtil.accept(output, HumanPlasticBlocks.FIRE_HAZARD_PLASTIC_SLAB);
+        CreativeModeTabUtil.accept(output, HumanPlasticBlocks.FIRE_HAZARD_PLASTIC_WALL);
+
+        CreativeModeTabUtil.accept(output, HumanPlasticBlocks.HAZARD_PLASTIC);
+        CreativeModeTabUtil.accept(output, HumanPlasticBlocks.HAZARD_PLASTIC_STAIRS);
+        CreativeModeTabUtil.accept(output, HumanPlasticBlocks.HAZARD_PLASTIC_SLAB);
+        CreativeModeTabUtil.accept(output, HumanPlasticBlocks.HAZARD_PLASTIC_WALL);
+
+        CreativeModeTabUtil.accept(output, HumanPlasticBlocks.MACHINE_HAZARD_PLASTIC);
+        CreativeModeTabUtil.accept(output, HumanPlasticBlocks.MACHINE_HAZARD_PLASTIC_STAIRS);
+        CreativeModeTabUtil.accept(output, HumanPlasticBlocks.MACHINE_HAZARD_PLASTIC_SLAB);
+        CreativeModeTabUtil.accept(output, HumanPlasticBlocks.MACHINE_HAZARD_PLASTIC_WALL);
+
+        CreativeModeTabUtil.accept(output, HumanPlasticBlocks.RADIATION_HAZARD_PLASTIC);
+        CreativeModeTabUtil.accept(output, HumanPlasticBlocks.RADIATION_HAZARD_PLASTIC_STAIRS);
+        CreativeModeTabUtil.accept(output, HumanPlasticBlocks.RADIATION_HAZARD_PLASTIC_SLAB);
+        CreativeModeTabUtil.accept(output, HumanPlasticBlocks.RADIATION_HAZARD_PLASTIC_WALL);
+
+        CreativeModeTabUtil.accept(output, HumanPlasticBlocks.SAFETY_PLASTIC);
+        CreativeModeTabUtil.accept(output, HumanPlasticBlocks.SAFETY_PLASTIC_STAIRS);
+        CreativeModeTabUtil.accept(output, HumanPlasticBlocks.SAFETY_PLASTIC_SLAB);
+        CreativeModeTabUtil.accept(output, HumanPlasticBlocks.SAFETY_PLASTIC_WALL);
+
+        CreativeModeTabUtil.accept(output, HumanPlasticBlocks.TRAFFIC_HAZARD_PLASTIC);
+        CreativeModeTabUtil.accept(output, HumanPlasticBlocks.TRAFFIC_HAZARD_PLASTIC_STAIRS);
+        CreativeModeTabUtil.accept(output, HumanPlasticBlocks.TRAFFIC_HAZARD_PLASTIC_SLAB);
+        CreativeModeTabUtil.accept(output, HumanPlasticBlocks.TRAFFIC_HAZARD_PLASTIC_WALL);
     };
 }

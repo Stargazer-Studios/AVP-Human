@@ -7,7 +7,15 @@
 - N/A
 
 ## ✨ What's New
-- N/A
+- Added hazard and safety plastic blocks with stairs, slab, and wall variants:
+  - Aisle Hazard Plastic
+  - Alien Hazard Plastic
+  - Fire Hazard Plastic
+  - Hazard Plastic
+  - Machine Hazard Plastic
+  - Radiation Hazard Plastic
+  - Safety Plastic
+  - Traffic Hazard Plastic
 
 ## ♻️ Changes
 - WY ape armor is equal to titanium in terms of defense and toughness.

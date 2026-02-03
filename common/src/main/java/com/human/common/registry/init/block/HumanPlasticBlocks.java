@@ -10,6 +10,7 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.WaterloggedTransparentBlock;
 
 import java.util.Arrays;
@@ -23,6 +24,168 @@ import java.util.stream.Collectors;
 public class HumanPlasticBlocks {
 
     public static final BLibRegistry<Block> REGISTRY = Human.MOD.registries().create(BuiltInRegistries.BLOCK);
+
+    public static final BLibHolder<Block> AISLE_HAZARD_PLASTIC = create(
+        "aisle_hazard_plastic",
+        HumanBlockProperties.PLASTIC
+    );
+
+    public static final BLibHolder<Block> ALIEN_HAZARD_PLASTIC = create(
+        "alien_hazard_plastic",
+        HumanBlockProperties.PLASTIC
+    );
+
+    public static final BLibHolder<Block> FIRE_HAZARD_PLASTIC = create(
+        "fire_hazard_plastic",
+        HumanBlockProperties.PLASTIC
+    );
+
+    public static final BLibHolder<Block> HAZARD_PLASTIC = create(
+        "hazard_plastic",
+        HumanBlockProperties.PLASTIC
+    );
+
+    public static final BLibHolder<Block> MACHINE_HAZARD_PLASTIC = create(
+        "machine_hazard_plastic",
+        HumanBlockProperties.PLASTIC
+    );
+
+    public static final BLibHolder<Block> RADIATION_HAZARD_PLASTIC = create(
+        "radiation_hazard_plastic",
+        HumanBlockProperties.PLASTIC
+    );
+
+    public static final BLibHolder<Block> SAFETY_PLASTIC = create(
+        "safety_plastic",
+        HumanBlockProperties.PLASTIC
+    );
+
+    public static final BLibHolder<Block> TRAFFIC_HAZARD_PLASTIC = create(
+        "traffic_hazard_plastic",
+        HumanBlockProperties.PLASTIC
+    );
+
+    // Hazard/Safety plastic stairs
+    public static final BLibHolder<Block> AISLE_HAZARD_PLASTIC_STAIRS = create(
+        "aisle_hazard_plastic_stairs",
+        () -> new StairBlock(AISLE_HAZARD_PLASTIC.get().defaultBlockState(), HumanBlockProperties.PLASTIC.build())
+    );
+
+    public static final BLibHolder<Block> ALIEN_HAZARD_PLASTIC_STAIRS = create(
+        "alien_hazard_plastic_stairs",
+        () -> new StairBlock(ALIEN_HAZARD_PLASTIC.get().defaultBlockState(), HumanBlockProperties.PLASTIC.build())
+    );
+
+    public static final BLibHolder<Block> FIRE_HAZARD_PLASTIC_STAIRS = create(
+        "fire_hazard_plastic_stairs",
+        () -> new StairBlock(FIRE_HAZARD_PLASTIC.get().defaultBlockState(), HumanBlockProperties.PLASTIC.build())
+    );
+
+    public static final BLibHolder<Block> HAZARD_PLASTIC_STAIRS = create(
+        "hazard_plastic_stairs",
+        () -> new StairBlock(HAZARD_PLASTIC.get().defaultBlockState(), HumanBlockProperties.PLASTIC.build())
+    );
+
+    public static final BLibHolder<Block> MACHINE_HAZARD_PLASTIC_STAIRS = create(
+        "machine_hazard_plastic_stairs",
+        () -> new StairBlock(MACHINE_HAZARD_PLASTIC.get().defaultBlockState(), HumanBlockProperties.PLASTIC.build())
+    );
+
+    public static final BLibHolder<Block> RADIATION_HAZARD_PLASTIC_STAIRS = create(
+        "radiation_hazard_plastic_stairs",
+        () -> new StairBlock(RADIATION_HAZARD_PLASTIC.get().defaultBlockState(), HumanBlockProperties.PLASTIC.build())
+    );
+
+    public static final BLibHolder<Block> SAFETY_PLASTIC_STAIRS = create(
+        "safety_plastic_stairs",
+        () -> new StairBlock(SAFETY_PLASTIC.get().defaultBlockState(), HumanBlockProperties.PLASTIC.build())
+    );
+
+    public static final BLibHolder<Block> TRAFFIC_HAZARD_PLASTIC_STAIRS = create(
+        "traffic_hazard_plastic_stairs",
+        () -> new StairBlock(TRAFFIC_HAZARD_PLASTIC.get().defaultBlockState(), HumanBlockProperties.PLASTIC.build())
+    );
+
+    public static final BLibHolder<Block> AISLE_HAZARD_PLASTIC_SLAB = create(
+        "aisle_hazard_plastic_slab",
+        () -> new SlabBlock(HumanBlockProperties.PLASTIC.build())
+    );
+
+    public static final BLibHolder<Block> ALIEN_HAZARD_PLASTIC_SLAB = create(
+        "alien_hazard_plastic_slab",
+        () -> new SlabBlock(HumanBlockProperties.PLASTIC.build())
+    );
+
+    public static final BLibHolder<Block> FIRE_HAZARD_PLASTIC_SLAB = create(
+        "fire_hazard_plastic_slab",
+        () -> new SlabBlock(HumanBlockProperties.PLASTIC.build())
+    );
+
+    public static final BLibHolder<Block> HAZARD_PLASTIC_SLAB = create(
+        "hazard_plastic_slab",
+        () -> new SlabBlock(HumanBlockProperties.PLASTIC.build())
+    );
+
+    public static final BLibHolder<Block> MACHINE_HAZARD_PLASTIC_SLAB = create(
+        "machine_hazard_plastic_slab",
+        () -> new SlabBlock(HumanBlockProperties.PLASTIC.build())
+    );
+
+    public static final BLibHolder<Block> RADIATION_HAZARD_PLASTIC_SLAB = create(
+        "radiation_hazard_plastic_slab",
+        () -> new SlabBlock(HumanBlockProperties.PLASTIC.build())
+    );
+
+    public static final BLibHolder<Block> SAFETY_PLASTIC_SLAB = create(
+        "safety_plastic_slab",
+        () -> new SlabBlock(HumanBlockProperties.PLASTIC.build())
+    );
+
+    public static final BLibHolder<Block> TRAFFIC_HAZARD_PLASTIC_SLAB = create(
+        "traffic_hazard_plastic_slab",
+        () -> new SlabBlock(HumanBlockProperties.PLASTIC.build())
+    );
+
+    // Hazard/Safety plastic walls
+    public static final BLibHolder<Block> AISLE_HAZARD_PLASTIC_WALL = create(
+        "aisle_hazard_plastic_wall",
+        () -> new WallBlock(HumanBlockProperties.PLASTIC.build())
+    );
+
+    public static final BLibHolder<Block> ALIEN_HAZARD_PLASTIC_WALL = create(
+        "alien_hazard_plastic_wall",
+        () -> new WallBlock(HumanBlockProperties.PLASTIC.build())
+    );
+
+    public static final BLibHolder<Block> FIRE_HAZARD_PLASTIC_WALL = create(
+        "fire_hazard_plastic_wall",
+        () -> new WallBlock(HumanBlockProperties.PLASTIC.build())
+    );
+
+    public static final BLibHolder<Block> HAZARD_PLASTIC_WALL = create(
+        "hazard_plastic_wall",
+        () -> new WallBlock(HumanBlockProperties.PLASTIC.build())
+    );
+
+    public static final BLibHolder<Block> MACHINE_HAZARD_PLASTIC_WALL = create(
+        "machine_hazard_plastic_wall",
+        () -> new WallBlock(HumanBlockProperties.PLASTIC.build())
+    );
+
+    public static final BLibHolder<Block> RADIATION_HAZARD_PLASTIC_WALL = create(
+        "radiation_hazard_plastic_wall",
+        () -> new WallBlock(HumanBlockProperties.PLASTIC.build())
+    );
+
+    public static final BLibHolder<Block> SAFETY_PLASTIC_WALL = create(
+        "safety_plastic_wall",
+        () -> new WallBlock(HumanBlockProperties.PLASTIC.build())
+    );
+
+    public static final BLibHolder<Block> TRAFFIC_HAZARD_PLASTIC_WALL = create(
+        "traffic_hazard_plastic_wall",
+        () -> new WallBlock(HumanBlockProperties.PLASTIC.build())
+    );
 
     public static final Map<DyeColor, BLibHolder<Block>> DYE_COLOR_TO_CUT_PLASTIC =
         Collections.unmodifiableMap(

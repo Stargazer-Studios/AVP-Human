@@ -17,6 +17,113 @@ public class PlasticRecipeProvider {
 
     public static void provide(RecipeBuilder builder) {
         createPlasticBlockRecipes(builder);
+        createUniquePlasticBlockRecipes(builder);
+    }
+
+    private static void createUniquePlasticBlockRecipes(RecipeBuilder builder) {
+        var aisleHazardPlastic = HumanPlasticBlocks.AISLE_HAZARD_PLASTIC.get();
+        builder.shaped()
+            .withCategory(RecipeCategory.BUILDING_BLOCKS)
+            .define('A', HumanPlasticBlocks.DYE_COLOR_TO_PLASTIC.get(DyeColor.WHITE))
+            .define('B', HumanPlasticBlocks.DYE_COLOR_TO_PLASTIC.get(DyeColor.BLACK))
+            .pattern("ABA")
+            .pattern("BAB")
+            .pattern("ABA")
+            .into(9, aisleHazardPlastic);
+        RecipeUtil.createSlabBlockManualAndStonecutterRecipes(builder, aisleHazardPlastic, HumanPlasticBlocks.AISLE_HAZARD_PLASTIC_SLAB.get());
+        RecipeUtil.createStairBlockManualAndStonecutterRecipes(builder, aisleHazardPlastic, HumanPlasticBlocks.AISLE_HAZARD_PLASTIC_STAIRS.get());
+        RecipeUtil.createWallBlockManualAndStonecutterRecipes(builder, aisleHazardPlastic, HumanPlasticBlocks.AISLE_HAZARD_PLASTIC_WALL.get());
+
+        var alienHazardPlastic = HumanPlasticBlocks.ALIEN_HAZARD_PLASTIC.get();
+        builder.shaped()
+            .withCategory(RecipeCategory.BUILDING_BLOCKS)
+            .define('A', HumanPlasticBlocks.DYE_COLOR_TO_PLASTIC.get(DyeColor.GREEN))
+            .define('B', HumanPlasticBlocks.DYE_COLOR_TO_PLASTIC.get(DyeColor.BLACK))
+            .pattern("ABA")
+            .pattern("BAB")
+            .pattern("ABA")
+            .into(9, alienHazardPlastic);
+        RecipeUtil.createSlabBlockManualAndStonecutterRecipes(builder, alienHazardPlastic, HumanPlasticBlocks.ALIEN_HAZARD_PLASTIC_SLAB.get());
+        RecipeUtil.createStairBlockManualAndStonecutterRecipes(builder, alienHazardPlastic, HumanPlasticBlocks.ALIEN_HAZARD_PLASTIC_STAIRS.get());
+        RecipeUtil.createWallBlockManualAndStonecutterRecipes(builder, alienHazardPlastic, HumanPlasticBlocks.ALIEN_HAZARD_PLASTIC_WALL.get());
+
+        var fireHazardPlastic = HumanPlasticBlocks.FIRE_HAZARD_PLASTIC.get();
+        builder.shaped()
+            .withCategory(RecipeCategory.BUILDING_BLOCKS)
+            .define('A', HumanPlasticBlocks.DYE_COLOR_TO_PLASTIC.get(DyeColor.RED))
+            .define('B', HumanPlasticBlocks.DYE_COLOR_TO_PLASTIC.get(DyeColor.WHITE))
+            .pattern("ABA")
+            .pattern("BAB")
+            .pattern("ABA")
+            .into(9, fireHazardPlastic);
+        RecipeUtil.createSlabBlockManualAndStonecutterRecipes(builder, fireHazardPlastic, HumanPlasticBlocks.FIRE_HAZARD_PLASTIC_SLAB.get());
+        RecipeUtil.createStairBlockManualAndStonecutterRecipes(builder, fireHazardPlastic, HumanPlasticBlocks.FIRE_HAZARD_PLASTIC_STAIRS.get());
+        RecipeUtil.createWallBlockManualAndStonecutterRecipes(builder, fireHazardPlastic, HumanPlasticBlocks.FIRE_HAZARD_PLASTIC_WALL.get());
+
+        var hazardPlastic = HumanPlasticBlocks.HAZARD_PLASTIC.get();
+        builder.shaped()
+            .withCategory(RecipeCategory.BUILDING_BLOCKS)
+            .define('A', HumanPlasticBlocks.DYE_COLOR_TO_PLASTIC.get(DyeColor.YELLOW))
+            .define('B', HumanPlasticBlocks.DYE_COLOR_TO_PLASTIC.get(DyeColor.BLACK))
+            .pattern("ABA")
+            .pattern("BAB")
+            .pattern("ABA")
+            .into(9, hazardPlastic);
+        RecipeUtil.createSlabBlockManualAndStonecutterRecipes(builder, hazardPlastic, HumanPlasticBlocks.HAZARD_PLASTIC_SLAB.get());
+        RecipeUtil.createStairBlockManualAndStonecutterRecipes(builder, hazardPlastic, HumanPlasticBlocks.HAZARD_PLASTIC_STAIRS.get());
+        RecipeUtil.createWallBlockManualAndStonecutterRecipes(builder, hazardPlastic, HumanPlasticBlocks.HAZARD_PLASTIC_WALL.get());
+
+        var machineHazardPlastic = HumanPlasticBlocks.MACHINE_HAZARD_PLASTIC.get();
+        builder.shaped()
+            .withCategory(RecipeCategory.BUILDING_BLOCKS)
+            .define('A', HumanPlasticBlocks.DYE_COLOR_TO_PLASTIC.get(DyeColor.BLUE))
+            .define('B', HumanPlasticBlocks.DYE_COLOR_TO_PLASTIC.get(DyeColor.WHITE))
+            .pattern("ABA")
+            .pattern("BAB")
+            .pattern("ABA")
+            .into(9, machineHazardPlastic);
+        RecipeUtil.createSlabBlockManualAndStonecutterRecipes(builder, machineHazardPlastic, HumanPlasticBlocks.MACHINE_HAZARD_PLASTIC_SLAB.get());
+        RecipeUtil.createStairBlockManualAndStonecutterRecipes(builder, machineHazardPlastic, HumanPlasticBlocks.MACHINE_HAZARD_PLASTIC_STAIRS.get());
+        RecipeUtil.createWallBlockManualAndStonecutterRecipes(builder, machineHazardPlastic, HumanPlasticBlocks.MACHINE_HAZARD_PLASTIC_WALL.get());
+
+        var radiationHazardPlastic = HumanPlasticBlocks.RADIATION_HAZARD_PLASTIC.get();
+        builder.shaped()
+            .withCategory(RecipeCategory.BUILDING_BLOCKS)
+            .define('A', HumanPlasticBlocks.DYE_COLOR_TO_PLASTIC.get(DyeColor.YELLOW))
+            .define('B', HumanPlasticBlocks.DYE_COLOR_TO_PLASTIC.get(DyeColor.MAGENTA))
+            .pattern("ABA")
+            .pattern("BAB")
+            .pattern("ABA")
+            .into(9, radiationHazardPlastic);
+        RecipeUtil.createSlabBlockManualAndStonecutterRecipes(builder, radiationHazardPlastic, HumanPlasticBlocks.RADIATION_HAZARD_PLASTIC_SLAB.get());
+        RecipeUtil.createStairBlockManualAndStonecutterRecipes(builder, radiationHazardPlastic, HumanPlasticBlocks.RADIATION_HAZARD_PLASTIC_STAIRS.get());
+        RecipeUtil.createWallBlockManualAndStonecutterRecipes(builder, radiationHazardPlastic, HumanPlasticBlocks.RADIATION_HAZARD_PLASTIC_WALL.get());
+
+        var safetyPlastic = HumanPlasticBlocks.SAFETY_PLASTIC.get();
+        builder.shaped()
+            .withCategory(RecipeCategory.BUILDING_BLOCKS)
+            .define('A', HumanPlasticBlocks.DYE_COLOR_TO_PLASTIC.get(DyeColor.LIME))
+            .define('B', HumanPlasticBlocks.DYE_COLOR_TO_PLASTIC.get(DyeColor.WHITE))
+            .pattern("ABA")
+            .pattern("BAB")
+            .pattern("ABA")
+            .into(9, safetyPlastic);
+        RecipeUtil.createSlabBlockManualAndStonecutterRecipes(builder, safetyPlastic, HumanPlasticBlocks.SAFETY_PLASTIC_SLAB.get());
+        RecipeUtil.createStairBlockManualAndStonecutterRecipes(builder, safetyPlastic, HumanPlasticBlocks.SAFETY_PLASTIC_STAIRS.get());
+        RecipeUtil.createWallBlockManualAndStonecutterRecipes(builder, safetyPlastic, HumanPlasticBlocks.SAFETY_PLASTIC_WALL.get());
+
+        var trafficHazardPlastic = HumanPlasticBlocks.TRAFFIC_HAZARD_PLASTIC.get();
+        builder.shaped()
+            .withCategory(RecipeCategory.BUILDING_BLOCKS)
+            .define('A', HumanPlasticBlocks.DYE_COLOR_TO_PLASTIC.get(DyeColor.ORANGE))
+            .define('B', HumanPlasticBlocks.DYE_COLOR_TO_PLASTIC.get(DyeColor.WHITE))
+            .pattern("ABA")
+            .pattern("BAB")
+            .pattern("ABA")
+            .into(9, trafficHazardPlastic);
+        RecipeUtil.createSlabBlockManualAndStonecutterRecipes(builder, trafficHazardPlastic, HumanPlasticBlocks.TRAFFIC_HAZARD_PLASTIC_SLAB.get());
+        RecipeUtil.createStairBlockManualAndStonecutterRecipes(builder, trafficHazardPlastic, HumanPlasticBlocks.TRAFFIC_HAZARD_PLASTIC_STAIRS.get());
+        RecipeUtil.createWallBlockManualAndStonecutterRecipes(builder, trafficHazardPlastic, HumanPlasticBlocks.TRAFFIC_HAZARD_PLASTIC_WALL.get());
     }
 
     private static void createPlasticBlockRecipes(RecipeBuilder builder) {

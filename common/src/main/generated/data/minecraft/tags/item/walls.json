@@ -15,6 +15,14 @@
     "avp_human:brown_industrial_concrete_wall",
     "avp_human:green_industrial_concrete_wall",
     "avp_human:red_industrial_concrete_wall",
-    "avp_human:black_industrial_concrete_wall"
+    "avp_human:black_industrial_concrete_wall",
+    "avp_human:aisle_hazard_plastic_wall",
+    "avp_human:alien_hazard_plastic_wall",
+    "avp_human:fire_hazard_plastic_wall",
+    "avp_human:hazard_plastic_wall",
+    "avp_human:machine_hazard_plastic_wall",
+    "avp_human:radiation_hazard_plastic_wall",
+    "avp_human:safety_plastic_wall",
+    "avp_human:traffic_hazard_plastic_wall"
   ]
 }

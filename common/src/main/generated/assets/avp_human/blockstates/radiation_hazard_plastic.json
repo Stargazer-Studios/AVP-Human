@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "avp_human:block/radiation_hazard_plastic"
+    }
+  }
+}

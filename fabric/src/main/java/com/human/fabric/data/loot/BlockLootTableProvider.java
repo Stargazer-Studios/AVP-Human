@@ -152,6 +152,31 @@ public class BlockLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(CoreBlocks.URANIUM_BLOCK);
         dropSelf(CoreBlocks.ZINC_BLOCK);
 
+        dropSelf(HumanPlasticBlocks.AISLE_HAZARD_PLASTIC);
+        dropSelf(HumanPlasticBlocks.AISLE_HAZARD_PLASTIC_STAIRS);
+        dropSelf(HumanPlasticBlocks.AISLE_HAZARD_PLASTIC_WALL);
+        dropSelf(HumanPlasticBlocks.ALIEN_HAZARD_PLASTIC);
+        dropSelf(HumanPlasticBlocks.ALIEN_HAZARD_PLASTIC_STAIRS);
+        dropSelf(HumanPlasticBlocks.ALIEN_HAZARD_PLASTIC_WALL);
+        dropSelf(HumanPlasticBlocks.FIRE_HAZARD_PLASTIC);
+        dropSelf(HumanPlasticBlocks.FIRE_HAZARD_PLASTIC_STAIRS);
+        dropSelf(HumanPlasticBlocks.FIRE_HAZARD_PLASTIC_WALL);
+        dropSelf(HumanPlasticBlocks.HAZARD_PLASTIC);
+        dropSelf(HumanPlasticBlocks.HAZARD_PLASTIC_STAIRS);
+        dropSelf(HumanPlasticBlocks.HAZARD_PLASTIC_WALL);
+        dropSelf(HumanPlasticBlocks.MACHINE_HAZARD_PLASTIC);
+        dropSelf(HumanPlasticBlocks.MACHINE_HAZARD_PLASTIC_STAIRS);
+        dropSelf(HumanPlasticBlocks.MACHINE_HAZARD_PLASTIC_WALL);
+        dropSelf(HumanPlasticBlocks.RADIATION_HAZARD_PLASTIC);
+        dropSelf(HumanPlasticBlocks.RADIATION_HAZARD_PLASTIC_STAIRS);
+        dropSelf(HumanPlasticBlocks.RADIATION_HAZARD_PLASTIC_WALL);
+        dropSelf(HumanPlasticBlocks.SAFETY_PLASTIC);
+        dropSelf(HumanPlasticBlocks.SAFETY_PLASTIC_STAIRS);
+        dropSelf(HumanPlasticBlocks.SAFETY_PLASTIC_WALL);
+        dropSelf(HumanPlasticBlocks.TRAFFIC_HAZARD_PLASTIC);
+        dropSelf(HumanPlasticBlocks.TRAFFIC_HAZARD_PLASTIC_STAIRS);
+        dropSelf(HumanPlasticBlocks.TRAFFIC_HAZARD_PLASTIC_WALL);
+
         Stream.of(
             HumanBlocks.DYE_COLOR_TO_CONCRETE_STAIRS,
             HumanPlasticBlocks.DYE_COLOR_TO_CUT_PLASTIC,
@@ -211,6 +236,15 @@ public class BlockLootTableProvider extends FabricBlockLootTableProvider {
         dropSlab(HumanTitaniumBlocks.TITANIUM_SLAB);
         dropSlab(HumanTitaniumBlocks.TITANIUM_STANDING_SLAB);
         dropSlab(HumanTitaniumBlocks.TITANIUM_TREAD_SLAB);
+
+        dropSlab(HumanPlasticBlocks.AISLE_HAZARD_PLASTIC_SLAB);
+        dropSlab(HumanPlasticBlocks.ALIEN_HAZARD_PLASTIC_SLAB);
+        dropSlab(HumanPlasticBlocks.FIRE_HAZARD_PLASTIC_SLAB);
+        dropSlab(HumanPlasticBlocks.HAZARD_PLASTIC_SLAB);
+        dropSlab(HumanPlasticBlocks.MACHINE_HAZARD_PLASTIC_SLAB);
+        dropSlab(HumanPlasticBlocks.RADIATION_HAZARD_PLASTIC_SLAB);
+        dropSlab(HumanPlasticBlocks.SAFETY_PLASTIC_SLAB);
+        dropSlab(HumanPlasticBlocks.TRAFFIC_HAZARD_PLASTIC_SLAB);
 
         Stream.of(
             HumanBlocks.DYE_COLOR_TO_CONCRETE_SLAB,
