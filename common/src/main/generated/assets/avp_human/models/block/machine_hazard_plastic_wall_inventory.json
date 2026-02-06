@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "avp_human:block/machine_hazard_plastic"
+  }
+}

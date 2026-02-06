@@ -1,21 +1,43 @@
-# v0.1.4
+# v0.1.5
 
 ## ✍️ Developer Notes
 - For help or other questions, concerns, etc. check out our Discord server: https://discord.gg/wp7mvmbkVb
 
+## ☢️ Breaking Changes
+- N/A
+
 ## ✨ What's New
-- Added crafting recipes for WY Ape armor (helmet, chestplate, leggings, boots).
-- Added full WY Ape armor set bonus: grants Fire Resistance while wearing the complete set.
+- Added hazard and safety plastic blocks with stairs, slab, and wall variants:
+  - Aisle Hazard Plastic
+  - Alien Hazard Plastic
+  - Fire Hazard Plastic
+  - Hazard Plastic
+  - Machine Hazard Plastic
+  - Radiation Hazard Plastic
+  - Safety Plastic
+  - Traffic Hazard Plastic
 
 ## ♻️ Changes
-- Renamed "Ape" armor to "WY Ape" armor (e.g., "Ape Boots" is now "WY Ape Boots").
-- Simplified WY Commando Boots recipe to a single recipe instead of 16 dye-color variants.
-- Moved armor set bonus effects (MK50, Pressure, WY Ape) from mixin to event-based system.
+- WY ape armor is now equal to titanium in terms of defense and toughness.
+- WY Commando and WY Elite armors can now be repaired with plastic blocks in addition to steel ingots.
 
 ## 🐞 Fixes
-- Fixed WY Commando Boots and WY Elite Boots having the same recipes.
+- Fixed WY ape armor using lead for repair ingredients.
+  - Titanium, padding blocks or plastic blocks can now be used for repair, instead.
+
+## 🧪 Experimental
+- N/A
 
 ## 🛠 Data Pack
-- Added `avp_human:padding_blocks` item tag containing all colored padding blocks.
-- Added `avp_human:plastic_blocks` item tag containing all colored plastic blocks.
-- Added `avp_human:wy_ape_armor` item tag containing all WY Ape armor pieces.
+- Added repair ingredient tags for all armors:
+  - `avp_human:mk50_armor_repair_ingredients`.
+  - `avp_human:pressure_armor_repair_ingredients`.
+  - `avp_human:steel_armor_repair_ingredients`.
+  - `avp_human:tactical_armor_repair_ingredients`.
+  - `avp_human:titanium_armor_repair_ingredients`.
+  - `avp_human:wy_commando_armor_repair_ingredients`.
+  - `avp_human:wy_elite_armor_repair_ingredients`.
+
+## 🔬 Technical Changes
+- Property access now uses default values instead of throwing exceptions when properties are missing.
+- Added `HumanProperty` record that couples property keys with their default values for simpler access.

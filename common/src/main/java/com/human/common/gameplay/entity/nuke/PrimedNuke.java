@@ -130,7 +130,7 @@ public class PrimedNuke extends Entity {
 
     public boolean isNukeEnabled(ServerLevel serverLevel) {
         if (serverLevel.getServer().isDedicatedServer()) {
-            return HumanPropertyAccess.INSTANCE.getOrThrow(HumanProperties.Blocks.Nuke.ENABLED);
+            return HumanPropertyAccess.INSTANCE.get(HumanProperties.Blocks.Nuke.ENABLED);
         }
 
         return true;

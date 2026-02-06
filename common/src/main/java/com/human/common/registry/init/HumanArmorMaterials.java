@@ -4,7 +4,7 @@ import com.blib.api.common.registry.v1.BLibHolder;
 import com.blib.api.common.registry.v1.BLibRegistry;
 import com.human.Human;
 import com.human.HumanResources;
-import com.human.compatibility.HumanCommonItemTags;
+import com.human.common.registry.tag.HumanItemTags;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.sounds.SoundEvent;
@@ -24,17 +24,11 @@ public class HumanArmorMaterials {
 
     public static final BLibHolder<ArmorMaterial> APE = create(
         "ape",
-        relativeDefense(
-            ArmorMaterials.IRON,
-            Map.ofEntries(
-                Map.entry(ArmorItem.Type.CHESTPLATE, -2),
-                Map.entry(ArmorItem.Type.LEGGINGS, -1)
-            )
-        ),
-        6,
+        getTitaniumDefensePoints(),
+        5,
         HumanSoundEvents.ITEM_ARMOR_EQUIP_APE,
-        () -> Ingredient.of(HumanCommonItemTags.INGOTS_LEAD),
-        0,
+        () -> Ingredient.of(HumanItemTags.WY_APE_ARMOR_REPAIR_INGREDIENTS),
+        1,
         0
     );
 
@@ -49,7 +43,7 @@ public class HumanArmorMaterials {
         ),
         6,
         HumanSoundEvents.ITEM_ARMOR_EQUIP_MK50,
-        () -> Ingredient.of(HumanCommonItemTags.INGOTS_LEAD),
+        () -> Ingredient.of(HumanItemTags.MK50_ARMOR_REPAIR_INGREDIENTS),
         0,
         0
     );
@@ -65,7 +59,7 @@ public class HumanArmorMaterials {
         ),
         6,
         HumanSoundEvents.ITEM_ARMOR_EQUIP_PRESSURE,
-        () -> Ingredient.of(HumanCommonItemTags.INGOTS_ALUMINUM),
+        () -> Ingredient.of(HumanItemTags.PRESSURE_ARMOR_REPAIR_INGREDIENTS),
         0,
         0
     );
@@ -83,7 +77,7 @@ public class HumanArmorMaterials {
         ),
         5, // TODO:
         HumanSoundEvents.ITEM_ARMOR_EQUIP_STEEL,
-        () -> Ingredient.of(HumanCommonItemTags.INGOTS_STEEL),
+        () -> Ingredient.of(HumanItemTags.STEEL_ARMOR_REPAIR_INGREDIENTS),
         0,
         0
     );
@@ -98,25 +92,17 @@ public class HumanArmorMaterials {
         ),
         5,
         HumanSoundEvents.ITEM_ARMOR_EQUIP_TACTICAL,
-        () -> Ingredient.of(HumanCommonItemTags.INGOTS_STEEL),
+        () -> Ingredient.of(HumanItemTags.TACTICAL_ARMOR_REPAIR_INGREDIENTS),
         0,
         0
     );
 
     public static final BLibHolder<ArmorMaterial> TITANIUM = create(
         "titanium",
-        relativeDefense(
-            ArmorMaterials.IRON,
-            Map.ofEntries(
-                Map.entry(ArmorItem.Type.HELMET, 1),
-                Map.entry(ArmorItem.Type.CHESTPLATE, 2),
-                Map.entry(ArmorItem.Type.LEGGINGS, 1),
-                Map.entry(ArmorItem.Type.BOOTS, 1)
-            )
-        ),
+        getTitaniumDefensePoints(),
         5,
         HumanSoundEvents.ITEM_ARMOR_EQUIP_TITANIUM,
-        () -> Ingredient.of(HumanCommonItemTags.INGOTS_TITANIUM),
+        () -> Ingredient.of(HumanItemTags.TITANIUM_ARMOR_REPAIR_INGREDIENTS),
         1,
         0
     );
@@ -131,7 +117,7 @@ public class HumanArmorMaterials {
         ),
         5,
         HumanSoundEvents.ITEM_ARMOR_EQUIP_TACTICAL,
-        () -> Ingredient.of(HumanCommonItemTags.INGOTS_STEEL),
+        () -> Ingredient.of(HumanItemTags.WY_COMMANDO_ARMOR_REPAIR_INGREDIENTS),
         0,
         0
     );
@@ -146,7 +132,7 @@ public class HumanArmorMaterials {
         ),
         5,
         HumanSoundEvents.ITEM_ARMOR_EQUIP_TACTICAL,
-        () -> Ingredient.of(HumanCommonItemTags.INGOTS_STEEL),
+        () -> Ingredient.of(HumanItemTags.WY_ELITE_ARMOR_REPAIR_INGREDIENTS),
         0,
         0
     );
@@ -200,6 +186,18 @@ public class HumanArmorMaterials {
         ArmorMaterial armorMaterial
     ) {
         return Map.entry(type, armorMaterial.getDefense(type) + additiveDefense.getOrDefault(type, 0));
+    }
+
+    private static @NotNull Map<ArmorItem.Type, Integer> getTitaniumDefensePoints() {
+        return relativeDefense(
+            ArmorMaterials.IRON,
+            Map.ofEntries(
+                Map.entry(ArmorItem.Type.HELMET, 1),
+                Map.entry(ArmorItem.Type.CHESTPLATE, 2),
+                Map.entry(ArmorItem.Type.LEGGINGS, 1),
+                Map.entry(ArmorItem.Type.BOOTS, 1)
+            )
+        );
     }
 
     public static void initialize() {

@@ -13,22 +13,24 @@ public class HumanProperties {
 
             private static final BLibPropertyKey.Parent NUKE = BLOCKS.child("nuke");
 
-            public static final BLibPropertyKey.Leaf<Boolean> ENABLED = NUKE.leaf("enabled", BLibPropertySerializers.BOOLEAN);
-
+            public static final HumanProperty<Boolean> ENABLED = new HumanProperty<>(
+                NUKE.leaf("enabled", BLibPropertySerializers.BOOLEAN),
+                false
+            );
         }
 
         public static class Resonator {
 
             private static final BLibPropertyKey.Parent RESONATOR = BLOCKS.child("resonator");
 
-            public static final BLibPropertyKey.Leaf<Integer> REPLACE_RADIUS_IN_BLOCKS = RESONATOR.leaf(
-                "replace_radius",
-                BLibPropertySerializers.INT
+            public static final HumanProperty<Integer> REPLACE_RADIUS_IN_BLOCKS = new HumanProperty<>(
+                RESONATOR.leaf("replace_radius", BLibPropertySerializers.INT),
+                25
             );
 
-            public static final BLibPropertyKey.Leaf<Long> REPLACE_FREQUENCY_IN_TICKS = RESONATOR.leaf(
-                "replace_ticks",
-                BLibPropertySerializers.LONG
+            public static final HumanProperty<Long> REPLACE_FREQUENCY_IN_TICKS = new HumanProperty<>(
+                RESONATOR.leaf("replace_ticks", BLibPropertySerializers.LONG),
+                600L
             );
         }
 
@@ -36,17 +38,25 @@ public class HumanProperties {
 
             private static final BLibPropertyKey.Parent SENTRY_TURRET = BLOCKS.child("sentry_turret");
 
-            public static final BLibPropertyKey.Leaf<Integer> AMMO_CHEST_RANGE = SENTRY_TURRET.leaf(
-                "ammo_chest_range",
-                BLibPropertySerializers.INT
+            public static final HumanProperty<Integer> AMMO_CHEST_RANGE = new HumanProperty<>(
+                SENTRY_TURRET.leaf("ammo_chest_range", BLibPropertySerializers.INT),
+                5
             );
 
-            public static final BLibPropertyKey.Leaf<Float> DAMAGE = SENTRY_TURRET.leaf("damage", BLibPropertySerializers.FLOAT);
+            public static final HumanProperty<Float> DAMAGE = new HumanProperty<>(
+                SENTRY_TURRET.leaf("damage", BLibPropertySerializers.FLOAT),
+                2f
+            );
 
-            public static final BLibPropertyKey.Leaf<Integer> FOV = SENTRY_TURRET.leaf("fov", BLibPropertySerializers.INT);
+            public static final HumanProperty<Integer> FOV = new HumanProperty<>(
+                SENTRY_TURRET.leaf("fov", BLibPropertySerializers.INT),
+                45
+            );
 
-            public static final BLibPropertyKey.Leaf<Integer> RANGE = SENTRY_TURRET.leaf("range", BLibPropertySerializers.INT);
-
+            public static final HumanProperty<Integer> RANGE = new HumanProperty<>(
+                SENTRY_TURRET.leaf("range", BLibPropertySerializers.INT),
+                32
+            );
         }
     }
 
@@ -54,10 +64,9 @@ public class HumanProperties {
 
         private static final BLibPropertyKey.Parent WEAPONS = BLibPropertyKey.parent("weapons");
 
-        public static final BLibPropertyKey.Leaf<Boolean> BULLETS_DAMAGE_BLOCKS_ENABLED = WEAPONS.leaf(
-            "bullets_damage_blocks_enabled",
-            BLibPropertySerializers.BOOLEAN
+        public static final HumanProperty<Boolean> BULLETS_DAMAGE_BLOCKS_ENABLED = new HumanProperty<>(
+            WEAPONS.leaf("bullets_damage_blocks_enabled", BLibPropertySerializers.BOOLEAN),
+            true
         );
-
     }
 }

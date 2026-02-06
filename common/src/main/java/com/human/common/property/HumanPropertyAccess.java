@@ -63,6 +63,10 @@ public class HumanPropertyAccess {
             : value;
     }
 
+    public <T> T get(HumanProperty<T> property) {
+        return getOrDefault(property.key(), property.defaultValue());
+    }
+
     public <T> void set(BLibPropertyKey.Leaf<T> propertyKey, T value) {
         getOrCreatePropertyContainer().set(propertyKey, value);
     }

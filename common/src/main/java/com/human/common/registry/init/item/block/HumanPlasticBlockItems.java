@@ -19,6 +19,169 @@ public class HumanPlasticBlockItems {
 
     private static final BLibRegistry<Item> REGISTRY = Human.MOD.registries().create(BuiltInRegistries.ITEM);
 
+    public static final BLibHolder<BlockItem> AISLE_HAZARD_PLASTIC = create(
+        "aisle_hazard_plastic",
+        HumanPlasticBlocks.AISLE_HAZARD_PLASTIC
+    );
+
+    public static final BLibHolder<BlockItem> ALIEN_HAZARD_PLASTIC = create(
+        "alien_hazard_plastic",
+        HumanPlasticBlocks.ALIEN_HAZARD_PLASTIC
+    );
+
+    public static final BLibHolder<BlockItem> FIRE_HAZARD_PLASTIC = create(
+        "fire_hazard_plastic",
+        HumanPlasticBlocks.FIRE_HAZARD_PLASTIC
+    );
+
+    public static final BLibHolder<BlockItem> HAZARD_PLASTIC = create(
+        "hazard_plastic",
+        HumanPlasticBlocks.HAZARD_PLASTIC
+    );
+
+    public static final BLibHolder<BlockItem> MACHINE_HAZARD_PLASTIC = create(
+        "machine_hazard_plastic",
+        HumanPlasticBlocks.MACHINE_HAZARD_PLASTIC
+    );
+
+    public static final BLibHolder<BlockItem> RADIATION_HAZARD_PLASTIC = create(
+        "radiation_hazard_plastic",
+        HumanPlasticBlocks.RADIATION_HAZARD_PLASTIC
+    );
+
+    public static final BLibHolder<BlockItem> SAFETY_PLASTIC = create(
+        "safety_plastic",
+        HumanPlasticBlocks.SAFETY_PLASTIC
+    );
+
+    public static final BLibHolder<BlockItem> TRAFFIC_HAZARD_PLASTIC = create(
+        "traffic_hazard_plastic",
+        HumanPlasticBlocks.TRAFFIC_HAZARD_PLASTIC
+    );
+
+    // Hazard/Safety plastic stairs
+    public static final BLibHolder<BlockItem> AISLE_HAZARD_PLASTIC_STAIRS = create(
+        "aisle_hazard_plastic_stairs",
+        HumanPlasticBlocks.AISLE_HAZARD_PLASTIC_STAIRS
+    );
+
+    public static final BLibHolder<BlockItem> ALIEN_HAZARD_PLASTIC_STAIRS = create(
+        "alien_hazard_plastic_stairs",
+        HumanPlasticBlocks.ALIEN_HAZARD_PLASTIC_STAIRS
+    );
+
+    public static final BLibHolder<BlockItem> FIRE_HAZARD_PLASTIC_STAIRS = create(
+        "fire_hazard_plastic_stairs",
+        HumanPlasticBlocks.FIRE_HAZARD_PLASTIC_STAIRS
+    );
+
+    public static final BLibHolder<BlockItem> HAZARD_PLASTIC_STAIRS = create(
+        "hazard_plastic_stairs",
+        HumanPlasticBlocks.HAZARD_PLASTIC_STAIRS
+    );
+
+    public static final BLibHolder<BlockItem> MACHINE_HAZARD_PLASTIC_STAIRS = create(
+        "machine_hazard_plastic_stairs",
+        HumanPlasticBlocks.MACHINE_HAZARD_PLASTIC_STAIRS
+    );
+
+    public static final BLibHolder<BlockItem> RADIATION_HAZARD_PLASTIC_STAIRS = create(
+        "radiation_hazard_plastic_stairs",
+        HumanPlasticBlocks.RADIATION_HAZARD_PLASTIC_STAIRS
+    );
+
+    public static final BLibHolder<BlockItem> SAFETY_PLASTIC_STAIRS = create(
+        "safety_plastic_stairs",
+        HumanPlasticBlocks.SAFETY_PLASTIC_STAIRS
+    );
+
+    public static final BLibHolder<BlockItem> TRAFFIC_HAZARD_PLASTIC_STAIRS = create(
+        "traffic_hazard_plastic_stairs",
+        HumanPlasticBlocks.TRAFFIC_HAZARD_PLASTIC_STAIRS
+    );
+
+    // Hazard/Safety plastic slabs
+    public static final BLibHolder<BlockItem> AISLE_HAZARD_PLASTIC_SLAB = create(
+        "aisle_hazard_plastic_slab",
+        HumanPlasticBlocks.AISLE_HAZARD_PLASTIC_SLAB
+    );
+
+    public static final BLibHolder<BlockItem> ALIEN_HAZARD_PLASTIC_SLAB = create(
+        "alien_hazard_plastic_slab",
+        HumanPlasticBlocks.ALIEN_HAZARD_PLASTIC_SLAB
+    );
+
+    public static final BLibHolder<BlockItem> FIRE_HAZARD_PLASTIC_SLAB = create(
+        "fire_hazard_plastic_slab",
+        HumanPlasticBlocks.FIRE_HAZARD_PLASTIC_SLAB
+    );
+
+    public static final BLibHolder<BlockItem> HAZARD_PLASTIC_SLAB = create(
+        "hazard_plastic_slab",
+        HumanPlasticBlocks.HAZARD_PLASTIC_SLAB
+    );
+
+    public static final BLibHolder<BlockItem> MACHINE_HAZARD_PLASTIC_SLAB = create(
+        "machine_hazard_plastic_slab",
+        HumanPlasticBlocks.MACHINE_HAZARD_PLASTIC_SLAB
+    );
+
+    public static final BLibHolder<BlockItem> RADIATION_HAZARD_PLASTIC_SLAB = create(
+        "radiation_hazard_plastic_slab",
+        HumanPlasticBlocks.RADIATION_HAZARD_PLASTIC_SLAB
+    );
+
+    public static final BLibHolder<BlockItem> SAFETY_PLASTIC_SLAB = create(
+        "safety_plastic_slab",
+        HumanPlasticBlocks.SAFETY_PLASTIC_SLAB
+    );
+
+    public static final BLibHolder<BlockItem> TRAFFIC_HAZARD_PLASTIC_SLAB = create(
+        "traffic_hazard_plastic_slab",
+        HumanPlasticBlocks.TRAFFIC_HAZARD_PLASTIC_SLAB
+    );
+
+    // Hazard/Safety plastic walls
+    public static final BLibHolder<BlockItem> AISLE_HAZARD_PLASTIC_WALL = create(
+        "aisle_hazard_plastic_wall",
+        HumanPlasticBlocks.AISLE_HAZARD_PLASTIC_WALL
+    );
+
+    public static final BLibHolder<BlockItem> ALIEN_HAZARD_PLASTIC_WALL = create(
+        "alien_hazard_plastic_wall",
+        HumanPlasticBlocks.ALIEN_HAZARD_PLASTIC_WALL
+    );
+
+    public static final BLibHolder<BlockItem> FIRE_HAZARD_PLASTIC_WALL = create(
+        "fire_hazard_plastic_wall",
+        HumanPlasticBlocks.FIRE_HAZARD_PLASTIC_WALL
+    );
+
+    public static final BLibHolder<BlockItem> HAZARD_PLASTIC_WALL = create(
+        "hazard_plastic_wall",
+        HumanPlasticBlocks.HAZARD_PLASTIC_WALL
+    );
+
+    public static final BLibHolder<BlockItem> MACHINE_HAZARD_PLASTIC_WALL = create(
+        "machine_hazard_plastic_wall",
+        HumanPlasticBlocks.MACHINE_HAZARD_PLASTIC_WALL
+    );
+
+    public static final BLibHolder<BlockItem> RADIATION_HAZARD_PLASTIC_WALL = create(
+        "radiation_hazard_plastic_wall",
+        HumanPlasticBlocks.RADIATION_HAZARD_PLASTIC_WALL
+    );
+
+    public static final BLibHolder<BlockItem> SAFETY_PLASTIC_WALL = create(
+        "safety_plastic_wall",
+        HumanPlasticBlocks.SAFETY_PLASTIC_WALL
+    );
+
+    public static final BLibHolder<BlockItem> TRAFFIC_HAZARD_PLASTIC_WALL = create(
+        "traffic_hazard_plastic_wall",
+        HumanPlasticBlocks.TRAFFIC_HAZARD_PLASTIC_WALL
+    );
+
     public static final Map<DyeColor, Supplier<BlockItem>> DYE_COLOR_TO_CUT_PLASTIC =
         HumanPlasticBlocks.DYE_COLOR_TO_CUT_PLASTIC.entrySet()
             .stream()

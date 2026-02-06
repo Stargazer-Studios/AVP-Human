@@ -215,6 +215,46 @@ public class EnUsBlockProvider {
             (key, value) -> addBlock(builder, value, format(key.getName()) + " Plastic Grate Stairs")
         );
 
+        addBlock(builder, HumanPlasticBlocks.AISLE_HAZARD_PLASTIC, "Aisle Hazard Plastic");
+        addBlock(builder, HumanPlasticBlocks.AISLE_HAZARD_PLASTIC_STAIRS, "Aisle Hazard Plastic Stairs");
+        addBlock(builder, HumanPlasticBlocks.AISLE_HAZARD_PLASTIC_SLAB, "Aisle Hazard Plastic Slab");
+        addBlock(builder, HumanPlasticBlocks.AISLE_HAZARD_PLASTIC_WALL, "Aisle Hazard Plastic Wall");
+
+        addBlock(builder, HumanPlasticBlocks.ALIEN_HAZARD_PLASTIC, "Alien Hazard Plastic");
+        addBlock(builder, HumanPlasticBlocks.ALIEN_HAZARD_PLASTIC_STAIRS, "Alien Hazard Plastic Stairs");
+        addBlock(builder, HumanPlasticBlocks.ALIEN_HAZARD_PLASTIC_SLAB, "Alien Hazard Plastic Slab");
+        addBlock(builder, HumanPlasticBlocks.ALIEN_HAZARD_PLASTIC_WALL, "Alien Hazard Plastic Wall");
+
+        addBlock(builder, HumanPlasticBlocks.FIRE_HAZARD_PLASTIC, "Fire Hazard Plastic");
+        addBlock(builder, HumanPlasticBlocks.FIRE_HAZARD_PLASTIC_STAIRS, "Fire Hazard Plastic Stairs");
+        addBlock(builder, HumanPlasticBlocks.FIRE_HAZARD_PLASTIC_SLAB, "Fire Hazard Plastic Slab");
+        addBlock(builder, HumanPlasticBlocks.FIRE_HAZARD_PLASTIC_WALL, "Fire Hazard Plastic Wall");
+
+        addBlock(builder, HumanPlasticBlocks.HAZARD_PLASTIC, "Hazard Plastic");
+        addBlock(builder, HumanPlasticBlocks.HAZARD_PLASTIC_STAIRS, "Hazard Plastic Stairs");
+        addBlock(builder, HumanPlasticBlocks.HAZARD_PLASTIC_SLAB, "Hazard Plastic Slab");
+        addBlock(builder, HumanPlasticBlocks.HAZARD_PLASTIC_WALL, "Hazard Plastic Wall");
+
+        addBlock(builder, HumanPlasticBlocks.MACHINE_HAZARD_PLASTIC, "Machine Hazard Plastic");
+        addBlock(builder, HumanPlasticBlocks.MACHINE_HAZARD_PLASTIC_STAIRS, "Machine Hazard Plastic Stairs");
+        addBlock(builder, HumanPlasticBlocks.MACHINE_HAZARD_PLASTIC_SLAB, "Machine Hazard Plastic Slab");
+        addBlock(builder, HumanPlasticBlocks.MACHINE_HAZARD_PLASTIC_WALL, "Machine Hazard Plastic Wall");
+
+        addBlock(builder, HumanPlasticBlocks.RADIATION_HAZARD_PLASTIC, "Radiation Hazard Plastic");
+        addBlock(builder, HumanPlasticBlocks.RADIATION_HAZARD_PLASTIC_STAIRS, "Radiation Hazard Plastic Stairs");
+        addBlock(builder, HumanPlasticBlocks.RADIATION_HAZARD_PLASTIC_SLAB, "Radiation Hazard Plastic Slab");
+        addBlock(builder, HumanPlasticBlocks.RADIATION_HAZARD_PLASTIC_WALL, "Radiation Hazard Plastic Wall");
+
+        addBlock(builder, HumanPlasticBlocks.SAFETY_PLASTIC, "Safety Plastic");
+        addBlock(builder, HumanPlasticBlocks.SAFETY_PLASTIC_STAIRS, "Safety Plastic Stairs");
+        addBlock(builder, HumanPlasticBlocks.SAFETY_PLASTIC_SLAB, "Safety Plastic Slab");
+        addBlock(builder, HumanPlasticBlocks.SAFETY_PLASTIC_WALL, "Safety Plastic Wall");
+
+        addBlock(builder, HumanPlasticBlocks.TRAFFIC_HAZARD_PLASTIC, "Traffic Hazard Plastic");
+        addBlock(builder, HumanPlasticBlocks.TRAFFIC_HAZARD_PLASTIC_STAIRS, "Traffic Hazard Plastic Stairs");
+        addBlock(builder, HumanPlasticBlocks.TRAFFIC_HAZARD_PLASTIC_SLAB, "Traffic Hazard Plastic Slab");
+        addBlock(builder, HumanPlasticBlocks.TRAFFIC_HAZARD_PLASTIC_WALL, "Traffic Hazard Plastic Wall");
+
         addBlock(builder, CoreBlocks.RAW_BAUXITE_BLOCK, "Block of Raw Bauxite");
         addBlock(builder, CoreBlocks.RAW_GALENA_BLOCK, "Block of Raw Galena");
         addBlock(builder, CoreBlocks.RAW_MONAZITE_BLOCK, "Block of Raw Monazite");

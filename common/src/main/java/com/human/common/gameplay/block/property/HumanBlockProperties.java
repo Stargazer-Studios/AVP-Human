@@ -294,4 +294,9 @@ public class HumanBlockProperties {
                     .strength(4, 4)
             )
         );
+
+    public static final BlockPropertyBuilder PLASTIC = BlockPropertyBuilder.of()
+        .requiresCorrectToolForDrops()
+        .sound(SoundType.STONE)
+        .strength(4, 4);
 }

@@ -55,6 +55,7 @@ public class HumanItemTagProvider extends FabricTagProvider.ItemTagProvider {
         addCommonItems();
         addCompatibilityItems();
         addAutomatedTagItems();
+        addArmorRepairIngredientItems();
 
         getOrCreateTagBuilder(HumanItemTags.AMMO_ITEMS)
             .add(
@@ -136,6 +137,36 @@ public class HumanItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         getOrCreateTagBuilder(BLibItemTags.RANGED_WEAPONS)
             .addTag(HumanItemTags.GUNS);
+    }
+
+    private void addArmorRepairIngredientItems() {
+        getOrCreateTagBuilder(HumanItemTags.WY_APE_ARMOR_REPAIR_INGREDIENTS)
+            .addTag(HumanCommonItemTags.INGOTS_TITANIUM)
+            .addTag(HumanItemTags.PADDING_BLOCKS)
+            .addTag(HumanItemTags.PLASTIC_BLOCKS);
+
+        getOrCreateTagBuilder(HumanItemTags.MK50_ARMOR_REPAIR_INGREDIENTS)
+            .addTag(HumanCommonItemTags.INGOTS_LEAD);
+
+        getOrCreateTagBuilder(HumanItemTags.PRESSURE_ARMOR_REPAIR_INGREDIENTS)
+            .addTag(HumanCommonItemTags.INGOTS_ALUMINUM);
+
+        getOrCreateTagBuilder(HumanItemTags.STEEL_ARMOR_REPAIR_INGREDIENTS)
+            .addTag(HumanCommonItemTags.INGOTS_STEEL);
+
+        getOrCreateTagBuilder(HumanItemTags.TACTICAL_ARMOR_REPAIR_INGREDIENTS)
+            .addTag(HumanCommonItemTags.INGOTS_STEEL);
+
+        getOrCreateTagBuilder(HumanItemTags.TITANIUM_ARMOR_REPAIR_INGREDIENTS)
+            .addTag(HumanCommonItemTags.INGOTS_TITANIUM);
+
+        getOrCreateTagBuilder(HumanItemTags.WY_COMMANDO_ARMOR_REPAIR_INGREDIENTS)
+            .addTag(HumanCommonItemTags.INGOTS_STEEL)
+            .addTag(HumanItemTags.PLASTIC_BLOCKS);
+
+        getOrCreateTagBuilder(HumanItemTags.WY_ELITE_ARMOR_REPAIR_INGREDIENTS)
+            .addTag(HumanCommonItemTags.INGOTS_STEEL)
+            .addTag(HumanItemTags.PLASTIC_BLOCKS);
     }
 
     private void addArmors() {

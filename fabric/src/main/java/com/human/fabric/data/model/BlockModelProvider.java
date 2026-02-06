@@ -186,6 +186,46 @@ public class BlockModelProvider extends FabricModelProvider {
             }
         );
 
+        generators.family(HumanPlasticBlocks.AISLE_HAZARD_PLASTIC.get())
+            .slab(HumanPlasticBlocks.AISLE_HAZARD_PLASTIC_SLAB.get())
+            .stairs(HumanPlasticBlocks.AISLE_HAZARD_PLASTIC_STAIRS.get())
+            .wall(HumanPlasticBlocks.AISLE_HAZARD_PLASTIC_WALL.get());
+
+        generators.family(HumanPlasticBlocks.ALIEN_HAZARD_PLASTIC.get())
+            .slab(HumanPlasticBlocks.ALIEN_HAZARD_PLASTIC_SLAB.get())
+            .stairs(HumanPlasticBlocks.ALIEN_HAZARD_PLASTIC_STAIRS.get())
+            .wall(HumanPlasticBlocks.ALIEN_HAZARD_PLASTIC_WALL.get());
+
+        generators.family(HumanPlasticBlocks.FIRE_HAZARD_PLASTIC.get())
+            .slab(HumanPlasticBlocks.FIRE_HAZARD_PLASTIC_SLAB.get())
+            .stairs(HumanPlasticBlocks.FIRE_HAZARD_PLASTIC_STAIRS.get())
+            .wall(HumanPlasticBlocks.FIRE_HAZARD_PLASTIC_WALL.get());
+
+        generators.family(HumanPlasticBlocks.HAZARD_PLASTIC.get())
+            .slab(HumanPlasticBlocks.HAZARD_PLASTIC_SLAB.get())
+            .stairs(HumanPlasticBlocks.HAZARD_PLASTIC_STAIRS.get())
+            .wall(HumanPlasticBlocks.HAZARD_PLASTIC_WALL.get());
+
+        generators.family(HumanPlasticBlocks.MACHINE_HAZARD_PLASTIC.get())
+            .slab(HumanPlasticBlocks.MACHINE_HAZARD_PLASTIC_SLAB.get())
+            .stairs(HumanPlasticBlocks.MACHINE_HAZARD_PLASTIC_STAIRS.get())
+            .wall(HumanPlasticBlocks.MACHINE_HAZARD_PLASTIC_WALL.get());
+
+        generators.family(HumanPlasticBlocks.RADIATION_HAZARD_PLASTIC.get())
+            .slab(HumanPlasticBlocks.RADIATION_HAZARD_PLASTIC_SLAB.get())
+            .stairs(HumanPlasticBlocks.RADIATION_HAZARD_PLASTIC_STAIRS.get())
+            .wall(HumanPlasticBlocks.RADIATION_HAZARD_PLASTIC_WALL.get());
+
+        generators.family(HumanPlasticBlocks.SAFETY_PLASTIC.get())
+            .slab(HumanPlasticBlocks.SAFETY_PLASTIC_SLAB.get())
+            .stairs(HumanPlasticBlocks.SAFETY_PLASTIC_STAIRS.get())
+            .wall(HumanPlasticBlocks.SAFETY_PLASTIC_WALL.get());
+
+        generators.family(HumanPlasticBlocks.TRAFFIC_HAZARD_PLASTIC.get())
+            .slab(HumanPlasticBlocks.TRAFFIC_HAZARD_PLASTIC_SLAB.get())
+            .stairs(HumanPlasticBlocks.TRAFFIC_HAZARD_PLASTIC_STAIRS.get())
+            .wall(HumanPlasticBlocks.TRAFFIC_HAZARD_PLASTIC_WALL.get());
+
         generators.createTrivialCube(CoreBlocks.ALUMINUM_BLOCK.get());
         generators.createTrivialCube(CoreBlocks.TRINITITE_BLOCK.get());
         generators.createTrivialCube(CoreBlocks.AUTUNITE_BLOCK.get());
