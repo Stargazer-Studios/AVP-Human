@@ -590,5 +590,10 @@ public class HumanBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(AlienBlockTags.ACID_IMMUNE)
             .addTag(HumanBlockTags.INDUSTRIAL_GLASS)
             .addTag(HumanBlockTags.PLASTIC);
+
+        getOrCreateTagBuilder(AlienBlockTags.XENOMORPH_IMMUNE)
+            .addTag(HumanBlockTags.INDUSTRIAL_CONCRETE)
+            .addTag(HumanBlockTags.INDUSTRIAL_GLASS)
+            .addTag(HumanBlockTags.PLASTIC);
     }
 }
