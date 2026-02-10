@@ -92,6 +92,11 @@ dependencies {
         exclude group: project.group
     }
 
+    modCompileOnly "maven.modrinth:gigeresque:${project.gigeresque_modrinth_version}"
+    modLocalRuntime "maven.modrinth:gigeresque:${project.gigeresque_modrinth_version}"
+    // Required for gigeresque.
+    modLocalRuntime "mod.azure.azurelib:azurelib-fabric-${project.minecraft_version}:${project.azurelib_version}"
+
     // Here in case of any issues
     //modImplementation "maven.modrinth:modernfix:5.21.0+mc1.21.1"
 

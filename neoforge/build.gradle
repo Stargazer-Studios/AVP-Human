@@ -88,6 +88,11 @@ dependencies {
         exclude group: project.group
     }
 
+    compileOnly "maven.modrinth:gigeresque:${project.gigeresque_version}"
+    localRuntime "maven.modrinth:gigeresque:${project.gigeresque_version}"
+    // Required for gigeresque.
+    localRuntime "mod.azure.azurelib:azurelib-neo-${project.minecraft_version}:${project.azurelib_version}"
+
     compileOnly "dev.emi:emi-neoforge:${emi_version}"
     compileOnly "mezz.jei:jei-$minecraft_version-neoforge:${jei_version}"
     compileOnly "me.shedaniel:RoughlyEnoughItems-neoforge:${rei_version}"

@@ -115,6 +115,8 @@ processResources {
             'avp_predator_excl_end_version': avp_predator_excl_end_version,
             'blib_version'                 : blib_version,
             'blib_excl_end_version'        : blib_excl_end_version,
+            'gigeresque_version'           : gigeresque_version,
+            'gigeresque_excl_end_version'  : gigeresque_excl_end_version,
     ]
 
     filesMatching(['pack.mcmeta', 'fabric.mod.json', 'META-INF/mods.toml', 'META-INF/neoforge.mods.toml', '*.mixins.json']) {
