@@ -1,7 +1,25 @@
-# v0.1.6
+# v0.1.7
 
 ## ✍️ Developer Notes
 - For help or other questions, concerns, etc. check out our Discord server: https://discord.gg/wp7mvmbkVb
 
+## ☢️ Breaking Changes
+- N/A
+
+## ✨ What's New
+- N/A
+
+## ♻️ Changes
+- N/A
+
 ## 🐞 Fixes
-- Fixed industrial concrete, industrial glass and plastic not being included in the `#avp_alien:xenomorph_immune` block tag.
+- N/A
+
+## 🧪 Experimental
+- N/A
+
+## 🛠 Data Pack
+- N/A
+
+## 🔬 Technical Changes
+- N/A
