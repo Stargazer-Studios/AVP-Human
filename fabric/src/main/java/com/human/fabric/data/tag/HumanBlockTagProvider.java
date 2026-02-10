@@ -14,6 +14,7 @@ import com.human.common.registry.init.block.HumanSteelBlocks;
 import com.human.common.registry.init.block.HumanTitaniumBlocks;
 import com.human.common.registry.tag.HumanBlockTags;
 import com.human.compatibility.HumanCommonBlockTags;
+import mods.cybercat.gigeresque.common.tags.GigTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.core.HolderLookup;
@@ -593,6 +594,10 @@ public class HumanBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         getOrCreateTagBuilder(AlienBlockTags.XENOMORPH_IMMUNE)
             .addTag(HumanBlockTags.INDUSTRIAL_CONCRETE)
+            .addTag(HumanBlockTags.INDUSTRIAL_GLASS)
+            .addTag(HumanBlockTags.PLASTIC);
+
+        getOrCreateTagBuilder(GigTags.ACID_RESISTANT)
             .addTag(HumanBlockTags.INDUSTRIAL_GLASS)
             .addTag(HumanBlockTags.PLASTIC);
     }
