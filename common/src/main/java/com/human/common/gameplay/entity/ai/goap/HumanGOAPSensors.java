@@ -1,4 +1,4 @@
-package com.human.common.gameplay.entity.ai.goap;
+package com.blib.api.common.goap.v1.action.impl;
 
 import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.human.common.registry.tag.HumanBiomeTags;

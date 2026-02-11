@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.tame_wolf.action;
 
-import com.human.common.gameplay.entity.ai.goap.MoveToPosAction;
+import com.blib.api.common.goap.v1.action.impl.MoveToPosAction;
 import com.human.common.gameplay.entity.living.human.marine.ai.tame_wolf.TameWolfSensors;
 import com.just.core.functional.option.Option;
 import com.just.goap.action.Action;
@@ -13,17 +13,17 @@ public class MoveToBoneAction {
         var pathfinderMob = context.getActor();
         var worldState = context.getWorldState();
         var blackboard = context.getBlackboard(Blackboard.Scope.ACTION);
-        var boneEntityOption = worldState.getOrDefault(TameWolfSensors.NEAREST_BONE_IN_WORLD.key(), Option.none());
+        var itemEntityOption = worldState.getOrDefault(TameWolfSensors.NEAREST_BONE_IN_WORLD.key(), Option.none());
 
-        if (boneEntityOption.isNone()) {
+        if (itemEntityOption.isNone()) {
             return Action.Signal.ABORT;
         }
 
-        var boneEntity = boneEntityOption.unwrap();
+        var itemEntity = itemEntityOption.unwrap();
 
-        return switch (MoveToPosAction.perform(pathfinderMob, blackboard, boneEntity::position, 1)) {
+        return switch (MoveToPosAction.perform(pathfinderMob, blackboard, itemEntity.position(), 1)) {
             case FINISHED, MOVING -> Action.Signal.CONTINUE;
-            case NO_PATH, POSITION_NOT_FOUND -> Action.Signal.ABORT;
+            case NO_PATH -> Action.Signal.ABORT;
         };
     }
 

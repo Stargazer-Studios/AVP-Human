@@ -2,7 +2,7 @@ package com.human.common.gameplay.entity.living.human.marine.ai;
 
 import com.blib.api.common.entity.v1.BLibEntityPredicates;
 import com.blib.api.common.goap.v1.GOAPSensors;
-import com.human.common.gameplay.entity.ai.goap.HumanGOAPSensors;
+import com.blib.api.common.goap.v1.action.impl.HumanGOAPSensors;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.FRIActions;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.FRIGoals;

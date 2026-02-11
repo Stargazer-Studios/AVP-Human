@@ -1,30 +1,39 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.idle.action;
 
-import com.human.common.gameplay.entity.ai.goap.MoveToPosAction;
+import com.blib.api.common.goap.v1.action.impl.MoveToPosAction;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
+import com.just.goap.StateKey;
 import com.just.goap.action.Action;
 import com.just.goap.state.Blackboard;
 import net.minecraft.world.entity.ai.util.LandRandomPos;
+import net.minecraft.world.phys.Vec3;
 
 public class WanderAction {
+
+    private static final StateKey<Vec3> TARGET_POS = StateKey.sensed("target_pos");
 
     public static Action.Signal perform(Action.Context<? extends Marine> context) {
         var marine = context.getActor();
         var blackboard = context.getBlackboard(Blackboard.Scope.ACTION);
-        var moveResult = MoveToPosAction.perform(
-            marine,
-            blackboard,
-            () -> LandRandomPos.getPos(marine, 10, 7),
-            0.8D
-        );
+        var targetPosOrNull = blackboard.getOrNull(TARGET_POS);
 
-        return switch (moveResult) {
+        if (targetPosOrNull == null) {
+            targetPosOrNull = LandRandomPos.getPos(marine, 10, 7);
+
+            if (targetPosOrNull == null) {
+                return Action.Signal.ABORT;
+            }
+
+            blackboard.set(TARGET_POS, targetPosOrNull);
+        }
+
+        return switch (MoveToPosAction.perform(marine, blackboard, targetPosOrNull, 0.8D)) {
             case FINISHED -> {
                 marine.resetTicksUntilBored();
                 yield Action.Signal.CONTINUE;
             }
             case MOVING -> Action.Signal.CONTINUE;
-            case NO_PATH, POSITION_NOT_FOUND -> Action.Signal.ABORT;
+            case NO_PATH -> Action.Signal.ABORT;
         };
     }
 

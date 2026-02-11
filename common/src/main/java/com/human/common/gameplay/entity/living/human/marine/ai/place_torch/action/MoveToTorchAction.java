@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.place_torch.action;
 
-import com.human.common.gameplay.entity.ai.goap.MoveToPosAction;
+import com.blib.api.common.goap.v1.action.impl.MoveToPosAction;
 import com.human.common.gameplay.entity.living.human.marine.ai.place_torch.TorchSensors;
 import com.just.core.functional.option.Option;
 import com.just.goap.action.Action;
@@ -19,11 +19,11 @@ public class MoveToTorchAction {
             return Action.Signal.ABORT;
         }
 
-        var torchEntity = torchEntityOption.unwrap();
+        var itemEntity = torchEntityOption.unwrap();
 
-        return switch (MoveToPosAction.perform(pathfinderMob, blackboard, torchEntity::position, 1)) {
+        return switch (MoveToPosAction.perform(pathfinderMob, blackboard, itemEntity.position(), 1)) {
             case FINISHED, MOVING -> Action.Signal.CONTINUE;
-            case NO_PATH, POSITION_NOT_FOUND -> Action.Signal.ABORT;
+            case NO_PATH -> Action.Signal.ABORT;
         };
     }
 

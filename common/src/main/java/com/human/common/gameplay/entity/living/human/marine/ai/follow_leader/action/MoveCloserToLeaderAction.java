@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.follow_leader.action;
 
-import com.human.common.gameplay.entity.ai.goap.MoveToPosAction;
+import com.blib.api.common.goap.v1.action.impl.MoveToPosAction;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.just.goap.StateKey;
 import com.just.goap.action.Action;
@@ -34,16 +34,9 @@ public class MoveCloserToLeaderAction {
             return Action.Signal.CONTINUE;
         }
 
-        var moveResult = MoveToPosAction.perform(
-            marine,
-            blackboard,
-            leaderOrNull::position,
-            1.0D
-        );
-
-        return switch (moveResult) {
+        return switch (MoveToPosAction.perform(marine, blackboard, leaderOrNull.position(), 1)) {
             case FINISHED, MOVING -> Action.Signal.CONTINUE;
-            case NO_PATH, POSITION_NOT_FOUND -> Action.Signal.ABORT;
+            case NO_PATH -> Action.Signal.ABORT;
         };
     }
 
