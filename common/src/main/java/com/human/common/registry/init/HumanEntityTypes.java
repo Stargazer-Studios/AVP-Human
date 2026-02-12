@@ -59,7 +59,7 @@ public class HumanEntityTypes {
             entity.skinColor.set(SkinColorGenerator.random(random));
 
             return entity;
-        }, MobCategory.CREATURE).sized(0.7F, 1.95F)
+        }, MobCategory.CREATURE).sized(0.6F, 1.95F)
     );
 
     public static final BLibHolder<EntityType<MushroomCloudEntity>> MUSHROOM_CLOUD = create(

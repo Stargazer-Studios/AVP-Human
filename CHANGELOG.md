@@ -5,6 +5,7 @@
 
 ## 🐞 Fixes
 - Fixed razor wire not being pathfindable.
+- Fixed marines being unable to open doors.
 - Fixed marines getting stuck in razor wire blocks.
 - Fixed marines sometimes moving away from their leader after they teleport to their leader.
 - Fixed marine pathing not updating frequently (which led to the marines zigzagging or not following the player optimally).

@@ -21,6 +21,8 @@ public class HumanNavigationManager {
         this.groundMoveControl = moveControl;
         this.groundNavigation = new GroundPathNavigation(humanMob, humanMob.level());
 
+        groundNavigation.setCanOpenDoors(true);
+
         // Water navigation.
         humanMob.setPathfindingMalus(PathType.WATER, 0.5F);
         this.waterMoveControl = new WaterMoveControl(humanMob);
