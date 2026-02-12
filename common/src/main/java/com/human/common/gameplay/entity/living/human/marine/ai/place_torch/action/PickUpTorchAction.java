@@ -1,7 +1,7 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.place_torch.action;
 
+import com.blib.api.common.goap.v1.action.impl.PickUpItemAction;
 import com.blib.api.common.inventory.v1.BLibInventoryHolder;
-import com.human.common.gameplay.entity.living.human.ai.generic.action.PickUpItemAction;
 import com.human.common.gameplay.entity.living.human.marine.ai.place_torch.TorchSensors;
 import com.just.core.functional.option.Option;
 import com.just.goap.action.Action;

@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.tame_wolf.action;
 
-import com.human.common.gameplay.entity.living.human.ai.generic.action.UnequipItemAction;
+import com.blib.api.common.goap.v1.action.impl.UnequipItemAction;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.human.common.gameplay.entity.living.human.marine.ai.tame_wolf.TameWolfSensors;
 import com.human.mixin.MixinWolf_Accessor;

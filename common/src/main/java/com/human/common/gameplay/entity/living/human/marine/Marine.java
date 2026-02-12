@@ -1,6 +1,8 @@
 package com.human.common.gameplay.entity.living.human.marine;
 
 import com.blib.api.common.codec.v1.BLibCodecs;
+import com.blib.api.common.entity.v1.BiomeSenseCache;
+import com.blib.api.common.entity.v1.EntitySenseCache;
 import com.blib.api.common.entity.v1.PlayerStatConstants;
 import com.blib.api.common.goap.v1.GOAPUser;
 import com.blib.api.common.inventory.v1.BLibInventory;
@@ -8,8 +10,6 @@ import com.blib.api.common.inventory.v1.BLibInventoryHolder;
 import com.blib.api.common.item.v1.ItemUtil;
 import com.human.Human;
 import com.human.common.data.HumanAdvancements;
-import com.human.common.gameplay.entity.BiomeSenseCache;
-import com.human.common.gameplay.entity.EntitySenseCache;
 import com.human.common.gameplay.entity.living.human.AbstractHuman;
 import com.human.common.gameplay.entity.living.human.marine.ai.MarineGOAP;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.strategy.FRIStrategySet;
@@ -83,7 +83,7 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
     public Marine(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level);
         this.animationDispatcher = new MarineAnimationDispatcher(this);
-        this.biomeSenseCache = new BiomeSenseCache(this, 40);
+        this.biomeSenseCache = new BiomeSenseCache(this, 4, 40);
         this.entitySenseCache = new EntitySenseCache(this, 40);
         this.inventory = new BLibInventory(27);
         this.itemCooldowns = new ItemCooldowns();

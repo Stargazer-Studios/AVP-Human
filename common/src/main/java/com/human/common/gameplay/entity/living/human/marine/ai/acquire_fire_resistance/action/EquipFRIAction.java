@@ -1,7 +1,7 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.action;
 
+import com.blib.api.common.goap.v1.action.impl.EquipItemAction;
 import com.blib.api.common.inventory.v1.BLibInventoryHolder;
-import com.human.common.gameplay.entity.living.human.ai.generic.action.EquipItemAction;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.FRISensors;
 import com.just.core.functional.option.Option;
 import com.just.goap.action.Action;

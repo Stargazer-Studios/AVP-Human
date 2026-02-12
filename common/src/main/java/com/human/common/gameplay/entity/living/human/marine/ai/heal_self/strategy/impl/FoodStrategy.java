@@ -1,7 +1,7 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.heal_self.strategy.impl;
 
 import com.blib.api.common.goap.v1.GOAPSensors;
-import com.human.common.gameplay.entity.living.human.ai.generic.action.ConsumeItemAction;
+import com.blib.api.common.goap.v1.action.impl.ConsumeItemAction;
 import com.human.common.gameplay.entity.living.human.marine.ai.heal_self.strategy.HealingStrategy;
 import com.human.common.gameplay.entity.living.human.marine.ai.heal_self.strategy.HealingStrategyUtil;
 import com.just.goap.action.Action;

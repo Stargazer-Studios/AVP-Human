@@ -1,7 +1,7 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.equip_totem.action;
 
+import com.blib.api.common.goap.v1.action.impl.EquipItemAction;
 import com.blib.api.common.inventory.v1.BLibInventoryHolder;
-import com.human.common.gameplay.entity.living.human.ai.generic.action.EquipItemAction;
 import com.just.goap.action.Action;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
