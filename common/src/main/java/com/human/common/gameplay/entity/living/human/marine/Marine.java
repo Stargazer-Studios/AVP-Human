@@ -3,6 +3,7 @@ package com.human.common.gameplay.entity.living.human.marine;
 import com.blib.api.common.codec.v1.BLibCodecs;
 import com.blib.api.common.entity.v1.BiomeSenseCache;
 import com.blib.api.common.entity.v1.EntitySenseCache;
+import com.blib.api.common.entity.v1.EntitySenseCacheUser;
 import com.blib.api.common.entity.v1.PlayerStatConstants;
 import com.blib.api.common.goap.v1.GOAPUser;
 import com.blib.api.common.inventory.v1.BLibInventory;
@@ -46,7 +47,7 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.UUID;
 
-public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUser<Marine>, ItemCooldownUser {
+public class Marine extends AbstractHuman implements BLibInventoryHolder, EntitySenseCacheUser, GOAPUser<Marine>, ItemCooldownUser {
 
     private static final String NBT_INVENTORY = "inventory";
 
@@ -255,6 +256,7 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
         return biomeSenseCache;
     }
 
+    @Override
     public EntitySenseCache getEntitySenseCache() {
         return entitySenseCache;
     }

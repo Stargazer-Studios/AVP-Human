@@ -1,6 +1,6 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.combat;
 
-import com.blib.api.common.entity.v1.BLibEntityPredicates;
+import com.blib.api.common.goap.v1.GOAPSensors;
 import com.human.common.gameplay.entity.ai.utility.sensor.BestItemSensor;
 import com.human.common.gameplay.entity.ai.utility.sensor.EquippedItemSensor;
 import com.human.common.gameplay.entity.ai.utility.sensor.ItemInInventorySensor;
@@ -14,59 +14,13 @@ import com.just.core.functional.option.Option;
 import com.just.goap.StateKey;
 import com.just.goap.sensor.Compose;
 import com.just.goap.sensor.Compose2;
-import com.just.goap.sensor.Map;
 import com.just.goap.sensor.Sensor;
 import com.just.goap.sensor.Sensors;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.function.BiPredicate;
-
 public class CombatSensors {
-
-    public static final StateKey.Sensed<List<LivingEntity>> NEARBY_ATTACKABLE_TARGETS_KEY = StateKey.sensed("nearby_attackable_targets");
-
-    public static Map<Marine, List<LivingEntity>> nearbyAttackableTargetsFactory(
-        BiPredicate<Marine, LivingEntity> targetPredicate
-    ) {
-        return Sensors.map(
-            NEARBY_ATTACKABLE_TARGETS_KEY,
-            marine -> marine.getEntitySenseCache()
-                .getByClass(LivingEntity.class)
-                .stream()
-                .filter(
-                    livingEntity -> BLibEntityPredicates.isAlive(livingEntity)
-                        && targetPredicate.test(marine, livingEntity)
-                )
-                .toList()
-        );
-    }
-
-    public static Compose<Mob, List<LivingEntity>, List<LivingEntity>> NEAREST_ATTACKABLE_TARGETS = Sensors.compose(
-        NEARBY_ATTACKABLE_TARGETS_KEY,
-        StateKey.sensed("nearest_attackable_targets"),
-        (mob, nearbyAttackableTargets) -> nearbyAttackableTargets.stream()
-            .sorted(Comparator.comparingDouble(mob::distanceToSqr))
-            .toList()
-    );
-
-    public static Compose<Mob, List<LivingEntity>, Option<LivingEntity>> NEAREST_ATTACKABLE_TARGET = Sensors.compose(
-        NEAREST_ATTACKABLE_TARGETS.key(),
-        StateKey.sensed("nearest_attackable_target"),
-        (mob, nearestAttackableTargets) -> {
-            var targetOption = nearestAttackableTargets.stream()
-                .findFirst()
-                .<Option<LivingEntity>>map(Option::some)
-                .orElse(Option.none());
-
-            targetOption.ifSome(mob::setTarget);
-
-            return targetOption;
-        }
-    );
 
     public static final Sensor.Mono<LivingEntity, Option<WeaponStrategyResult<ItemTarget.Equipped>>> BEST_WEAPON_IN_HANDS = Sensors
         .lazyCompose(
@@ -116,15 +70,9 @@ public class CombatSensors {
             ($1, bwOption) -> bwOption.map(result -> result.itemTarget().location()).unwrapOr(ItemTarget.Location.NONE)
         );
 
-    public static final Compose<Mob, Option<LivingEntity>, Boolean> HAS_ATTACK_TARGET = Sensors.compose(
-        NEAREST_ATTACKABLE_TARGET.key(),
-        StateKey.sensed("has_attack_target"),
-        (mob, attackTargetOption) -> attackTargetOption.isSome()
-    );
-
     public static final Compose2<Mob, Option<LivingEntity>, Option<WeaponStrategyResult<ItemTarget.Equipped>>, Boolean> IS_ATTACK_TARGET_IN_RANGE_OF_EQUIPPED_BEST_WEAPON =
         Sensors.compose(
-            NEAREST_ATTACKABLE_TARGET.key(),
+            GOAPSensors.NEAREST_ATTACKABLE_TARGET.key(),
             BEST_WEAPON_IN_HANDS.key(),
             StateKey.sensed("is_attack_target_in_range_of_equipped_best_weapon"),
             (mob, attackTargetOption, bwOption) -> bwOption.isSomeAnd(weaponStrategyResult -> {

@@ -1,5 +1,6 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.combat.action;
 
+import com.blib.api.common.goap.v1.GOAPSensors;
 import com.human.common.gameplay.entity.living.human.marine.ai.combat.CombatSensors;
 import com.just.core.functional.option.Option;
 import com.just.goap.StateKey;
@@ -18,7 +19,7 @@ public class MoveUntilAttackTargetInRangeForEquippedBestWeaponAction {
         var blackboard = context.getBlackboard(Blackboard.Scope.ACTION);
         var weaponStrategyResultOption = worldState.getOrDefault(CombatSensors.BEST_WEAPON_IN_HANDS.key(), Option.none());
 
-        var attackTargetOption = worldState.getOrDefault(CombatSensors.NEAREST_ATTACKABLE_TARGET.key(), Option.none());
+        var attackTargetOption = worldState.getOrDefault(GOAPSensors.NEAREST_ATTACKABLE_TARGET.key(), Option.none());
 
         if (weaponStrategyResultOption.isNone() || attackTargetOption.isNone()) {
             return Action.Signal.ABORT;

@@ -144,15 +144,15 @@ public class MarineGOAP {
 
         // Used for sensing attackable targets.
         graphBuilder.addSensor(
-            CombatSensors.nearbyAttackableTargetsFactory(
+            GOAPSensors.nearbyAttackableTargetsFactory(
                 (marine, livingEntity) -> isAThreat(marine, livingEntity)
                     && marine.getSensing().hasLineOfSight(livingEntity)
             )
         );
         // Used for sensing attackable targets in a sorted order based on distance.
-        graphBuilder.addSensor(CombatSensors.NEAREST_ATTACKABLE_TARGETS);
+        graphBuilder.addSensor(GOAPSensors.NEAREST_ATTACKABLE_TARGETS);
         // Used for picking out the closest attackable target.
-        graphBuilder.addSensor(CombatSensors.NEAREST_ATTACKABLE_TARGET);
+        graphBuilder.addSensor(GOAPSensors.NEAREST_ATTACKABLE_TARGET);
         // Used for locating best weapon.
         graphBuilder.addSensor(CombatSensors.BEST_WEAPON);
         graphBuilder.addSensor(CombatSensors.BEST_WEAPON_LOCATION);
@@ -163,7 +163,7 @@ public class MarineGOAP {
         graphBuilder.addSensor(CombatSensors.BEST_WEAPON_IN_WORLD);
         graphBuilder.addSensor(CombatSensors.IS_BEST_WORLD_WEAPON_IN_RANGE);
         // Used for checking if entity has an attack target.
-        graphBuilder.addSensor(CombatSensors.HAS_ATTACK_TARGET);
+        graphBuilder.addSensor(GOAPSensors.HAS_ATTACK_TARGET);
         // Used for checking if the entity has a weapon (either in their inventory or in their hands).
         graphBuilder.addSensor(CombatSensors.HAS_WEAPON);
         // Used for checking if the attack target is in range of the agent's currently equipped best weapon.

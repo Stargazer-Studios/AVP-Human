@@ -1,5 +1,6 @@
 package com.human.common.gameplay.entity.living.human.marine.ai.combat;
 
+import com.blib.api.common.goap.v1.GOAPSensors;
 import com.blib.api.common.goap.v1.action.ActionMasks;
 import com.blib.api.common.goap.v1.action.BLibAction;
 import com.blib.api.common.inventory.v1.BLibInventoryHolder;
@@ -58,7 +59,7 @@ public class CombatActions {
         .addMasks(ActionMasks.LOOK, ActionMasks.USE_MAIN_HAND)
         .addPrecondition(CombatSensors.BEST_WEAPON_LOCATION.key(), Expressions.Compare.equalTo(ItemTarget.Location.EQUIPPED))
         .addPrecondition(CombatSensors.IS_ATTACK_TARGET_IN_RANGE_OF_EQUIPPED_BEST_WEAPON.key(), Expressions.Boolean.isTrue())
-        .addEffect(CombatSensors.HAS_ATTACK_TARGET.key().asDerived(), false)
+        .addEffect(GOAPSensors.HAS_ATTACK_TARGET.key().asDerived(), false)
         .withPerformCallback(UseWeaponAction::perform)
         .build();
 
