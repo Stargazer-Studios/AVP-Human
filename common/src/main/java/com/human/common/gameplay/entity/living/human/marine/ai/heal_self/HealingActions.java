@@ -4,10 +4,10 @@ import com.blib.api.common.goap.v1.GOAPSensors;
 import com.blib.api.common.goap.v1.action.ActionMasks;
 import com.blib.api.common.goap.v1.action.BLibAction;
 import com.blib.api.common.inventory.v1.BLibInventoryHolder;
+import com.human.common.gameplay.entity.living.human.ai.generic.action.MoveToTargetAction;
+import com.human.common.gameplay.entity.living.human.ai.generic.action.PickUpNearbyItemAction;
 import com.human.common.gameplay.entity.living.human.ai.model.ItemTarget;
 import com.human.common.gameplay.entity.living.human.marine.ai.heal_self.action.EquipHealingItemAction;
-import com.human.common.gameplay.entity.living.human.marine.ai.heal_self.action.MoveToHealingItemAction;
-import com.human.common.gameplay.entity.living.human.marine.ai.heal_self.action.PickUpHealingItemAction;
 import com.human.common.gameplay.entity.living.human.marine.ai.heal_self.action.UseHealingItemAction;
 import com.just.goap.action.Action;
 import com.just.goap.condition.expression.Expressions;
@@ -21,8 +21,14 @@ public class HealingActions {
         .addPrecondition(HealingSensors.BEST_HEALING_ITEM_LOCATION.key(), Expressions.Compare.equalTo(ItemTarget.Location.WORLD))
         .addPrecondition(HealingSensors.IS_BEST_WORLD_HEALING_ITEM_IN_RANGE.key(), Expressions.Boolean.isFalse())
         .addEffect(HealingSensors.IS_BEST_WORLD_HEALING_ITEM_IN_RANGE.key().asDerived(), true)
-        .withPerformCallback(MoveToHealingItemAction::perform)
-        .withFinishCallback(MoveToHealingItemAction::onFinish)
+        .withPerformCallback(
+            ctx -> MoveToTargetAction.perform(
+                ctx,
+                HealingSensors.BEST_HEALING_ITEM_IN_WORLD.key(),
+                r -> r.itemTarget().itemEntity().position()
+            )
+        )
+        .withFinishCallback(MoveToTargetAction::onFinish)
         .build();
 
     public static <T extends LivingEntity & BLibInventoryHolder> Action<T> pickUpBestHealingItemFactory() {
@@ -30,7 +36,13 @@ public class HealingActions {
             .addPrecondition(HealingSensors.BEST_HEALING_ITEM_LOCATION.key(), Expressions.Compare.equalTo(ItemTarget.Location.WORLD))
             .addPrecondition(HealingSensors.IS_BEST_WORLD_HEALING_ITEM_IN_RANGE.key(), Expressions.Boolean.isTrue())
             .addEffect(HealingSensors.BEST_HEALING_ITEM_LOCATION.key().asDerived(), ItemTarget.Location.INVENTORY)
-            .withPerformCallback(PickUpHealingItemAction::perform)
+            .withPerformCallback(
+                ctx -> PickUpNearbyItemAction.perform(
+                    ctx,
+                    HealingSensors.BEST_HEALING_ITEM_IN_WORLD.key(),
+                    r -> r.itemTarget().itemEntity()
+                )
+            )
             .build();
     }
 

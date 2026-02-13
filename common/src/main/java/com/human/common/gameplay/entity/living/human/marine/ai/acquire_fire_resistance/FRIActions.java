@@ -4,10 +4,10 @@ import com.blib.api.common.goap.v1.GOAPSensors;
 import com.blib.api.common.goap.v1.action.ActionMasks;
 import com.blib.api.common.goap.v1.action.BLibAction;
 import com.blib.api.common.inventory.v1.BLibInventoryHolder;
+import com.human.common.gameplay.entity.living.human.ai.generic.action.MoveToTargetAction;
+import com.human.common.gameplay.entity.living.human.ai.generic.action.PickUpNearbyItemAction;
 import com.human.common.gameplay.entity.living.human.ai.model.ItemTarget;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.action.EquipFRIAction;
-import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.action.MoveToFRIAction;
-import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.action.PickUpFRIAction;
 import com.human.common.gameplay.entity.living.human.marine.ai.acquire_fire_resistance.action.UseFRIAction;
 import com.just.goap.action.Action;
 import com.just.goap.condition.expression.Expressions;
@@ -21,8 +21,10 @@ public class FRIActions {
         .addPrecondition(FRISensors.BEST_FRI_LOCATION.key(), Expressions.Compare.equalTo(ItemTarget.Location.WORLD))
         .addPrecondition(FRISensors.IS_BEST_WORLD_FRI_IN_RANGE.key(), Expressions.Boolean.isFalse())
         .addEffect(FRISensors.IS_BEST_WORLD_FRI_IN_RANGE.key().asDerived(), true)
-        .withPerformCallback(MoveToFRIAction::perform)
-        .withFinishCallback(MoveToFRIAction::onFinish)
+        .withPerformCallback(
+            ctx -> MoveToTargetAction.perform(ctx, FRISensors.BEST_FRI_IN_WORLD.key(), r -> r.itemTarget().itemEntity().position())
+        )
+        .withFinishCallback(MoveToTargetAction::onFinish)
         .build();
 
     public static <T extends LivingEntity & BLibInventoryHolder> Action<T> pickUpBestFRIFactory() {
@@ -30,7 +32,9 @@ public class FRIActions {
             .addPrecondition(FRISensors.BEST_FRI_LOCATION.key(), Expressions.Compare.equalTo(ItemTarget.Location.WORLD))
             .addPrecondition(FRISensors.IS_BEST_WORLD_FRI_IN_RANGE.key(), Expressions.Boolean.isTrue())
             .addEffect(FRISensors.BEST_FRI_LOCATION.key().asDerived(), ItemTarget.Location.INVENTORY)
-            .withPerformCallback(PickUpFRIAction::perform)
+            .withPerformCallback(
+                ctx -> PickUpNearbyItemAction.perform(ctx, FRISensors.BEST_FRI_IN_WORLD.key(), r -> r.itemTarget().itemEntity())
+            )
             .build();
     }
 

@@ -3,15 +3,18 @@ package com.human.common.gameplay.entity.living.human.marine.ai.place_torch;
 import com.blib.api.common.goap.v1.action.ActionMasks;
 import com.blib.api.common.goap.v1.action.BLibAction;
 import com.blib.api.common.inventory.v1.BLibInventoryHolder;
+import com.human.common.gameplay.entity.living.human.ai.generic.action.MoveToTargetAction;
+import com.human.common.gameplay.entity.living.human.ai.generic.action.PickUpNearbyItemAction;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.human.common.gameplay.entity.living.human.marine.ai.place_torch.action.EquipTorchAction;
-import com.human.common.gameplay.entity.living.human.marine.ai.place_torch.action.MoveToTorchAction;
-import com.human.common.gameplay.entity.living.human.marine.ai.place_torch.action.PickUpTorchAction;
 import com.human.common.gameplay.entity.living.human.marine.ai.place_torch.action.PlaceTorchAction;
 import com.just.goap.action.Action;
 import com.just.goap.condition.expression.Expressions;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.item.ItemEntity;
+
+import java.util.function.Function;
 
 public class TorchActions {
 
@@ -20,8 +23,8 @@ public class TorchActions {
         .addPrecondition(TorchSensors.HAS_TORCH_IN_WORLD.key(), Expressions.Boolean.isTrue())
         .addPrecondition(TorchSensors.IS_NEAREST_TORCH_IN_RANGE.key(), Expressions.Boolean.isFalse())
         .addEffect(TorchSensors.IS_NEAREST_TORCH_IN_RANGE.key().asDerived(), true)
-        .withPerformCallback(MoveToTorchAction::perform)
-        .withFinishCallback(MoveToTorchAction::onFinish)
+        .withPerformCallback(ctx -> MoveToTargetAction.perform(ctx, TorchSensors.NEAREST_TORCH_IN_WORLD.key(), ItemEntity::position))
+        .withFinishCallback(MoveToTargetAction::onFinish)
         .build();
 
     public static <T extends LivingEntity & BLibInventoryHolder> Action<T> pickUpTorchFactory() {
@@ -29,7 +32,7 @@ public class TorchActions {
             .addPrecondition(TorchSensors.HAS_TORCH_IN_WORLD.key(), Expressions.Boolean.isTrue())
             .addPrecondition(TorchSensors.IS_NEAREST_TORCH_IN_RANGE.key(), Expressions.Boolean.isTrue())
             .addEffect(TorchSensors.HAS_TORCH_IN_INVENTORY.key().asDerived(), true)
-            .withPerformCallback(PickUpTorchAction::perform)
+            .withPerformCallback(ctx -> PickUpNearbyItemAction.perform(ctx, TorchSensors.NEAREST_TORCH_IN_WORLD.key(), Function.identity()))
             .build();
     }
 

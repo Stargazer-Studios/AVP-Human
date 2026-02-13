@@ -4,11 +4,11 @@ import com.blib.api.common.goap.v1.GOAPSensors;
 import com.blib.api.common.goap.v1.action.ActionMasks;
 import com.blib.api.common.goap.v1.action.BLibAction;
 import com.blib.api.common.inventory.v1.BLibInventoryHolder;
+import com.human.common.gameplay.entity.living.human.ai.generic.action.MoveToTargetAction;
+import com.human.common.gameplay.entity.living.human.ai.generic.action.PickUpNearbyItemAction;
 import com.human.common.gameplay.entity.living.human.ai.model.ItemTarget;
 import com.human.common.gameplay.entity.living.human.marine.ai.combat.action.EquipWeaponAction;
-import com.human.common.gameplay.entity.living.human.marine.ai.combat.action.MoveToWeaponAction;
 import com.human.common.gameplay.entity.living.human.marine.ai.combat.action.MoveUntilAttackTargetInRangeForEquippedBestWeaponAction;
-import com.human.common.gameplay.entity.living.human.marine.ai.combat.action.PickUpWeaponAction;
 import com.human.common.gameplay.entity.living.human.marine.ai.combat.action.UseWeaponAction;
 import com.just.goap.action.Action;
 import com.just.goap.condition.expression.Expressions;
@@ -22,8 +22,10 @@ public class CombatActions {
         .addPrecondition(CombatSensors.BEST_WEAPON_LOCATION.key(), Expressions.Compare.equalTo(ItemTarget.Location.WORLD))
         .addPrecondition(CombatSensors.IS_BEST_WORLD_WEAPON_IN_RANGE.key(), Expressions.Boolean.isFalse())
         .addEffect(CombatSensors.IS_BEST_WORLD_WEAPON_IN_RANGE.key().asDerived(), true)
-        .withPerformCallback(MoveToWeaponAction::perform)
-        .withFinishCallback(MoveToWeaponAction::onFinish)
+        .withPerformCallback(
+            ctx -> MoveToTargetAction.perform(ctx, CombatSensors.BEST_WEAPON_IN_WORLD.key(), r -> r.itemTarget().itemEntity().position())
+        )
+        .withFinishCallback(MoveToTargetAction::onFinish)
         .build();
 
     public static <T extends LivingEntity & BLibInventoryHolder> Action<T> pickUpBestWeaponFactory() {
@@ -32,7 +34,9 @@ public class CombatActions {
             .addPrecondition(CombatSensors.IS_BEST_WORLD_WEAPON_IN_RANGE.key(), Expressions.Boolean.isTrue())
             .addEffect(CombatSensors.BEST_WEAPON_LOCATION.key().asDerived(), ItemTarget.Location.INVENTORY)
             .addEffect(CombatSensors.HAS_WEAPON.key().asDerived(), true)
-            .withPerformCallback(PickUpWeaponAction::perform)
+            .withPerformCallback(
+                ctx -> PickUpNearbyItemAction.perform(ctx, CombatSensors.BEST_WEAPON_IN_WORLD.key(), r -> r.itemTarget().itemEntity())
+            )
             .build();
     }
 
