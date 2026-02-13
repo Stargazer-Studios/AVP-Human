@@ -3,6 +3,9 @@
 ## ✍️ Developer Notes
 - For help or other questions, concerns, etc. check out our Discord server: https://discord.gg/wp7mvmbkVb
 
+## ✨ What's New
+- Marines can now move to and pick up water buckets.
+
 ## 🐞 Fixes
 - Fixed razor wire not being pathfindable.
 - Fixed marines being unable to open doors.
