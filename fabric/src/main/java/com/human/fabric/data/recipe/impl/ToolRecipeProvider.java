@@ -28,6 +28,12 @@ public class ToolRecipeProvider {
         builder.shaped()
             .apply(RecipeTemplates.SWORD.apply(HumanCommonItemTags.INGOTS_STEEL))
             .into(1, HumanItems.STEEL_SWORD);
+        builder.shaped()
+            .define('A', HumanCommonItemTags.INGOTS_STEEL)
+            .define('B', HumanItems.POLYMER.get())
+            .pattern("A")
+            .pattern("B")
+            .into(1, HumanItems.TACTICAL_KNIFE);
     }
 
     private static void createTitaniumToolsetRecipes(RecipeBuilder builder) {

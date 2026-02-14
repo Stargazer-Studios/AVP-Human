@@ -5,6 +5,12 @@
 
 ## ✨ What's New
 - Marines can now move to and pick up water buckets.
+- Added tactical knife item.
+  - Made from 1 steel ingot and 1 polymer.
+  - Swings faster than a sword, but deals less damage.
+- Marines of all types now spawn with tactical knives.
+  - Useful for when marines run out of ammo.
+  - This change does not apply retroactively to already-spawned marines.
 
 ## 🐞 Fixes
 - Fixed razor wire not being pathfindable.

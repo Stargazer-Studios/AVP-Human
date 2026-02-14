@@ -156,6 +156,7 @@ public class EnUsItemProvider {
         addItem(builder, HumanItems.STEEL_SHOVEL, "Steel Shovel");
         addItem(builder, HumanItems.STEEL_SWORD, "Steel Sword");
         addItem(builder, HumanItems.SYRINGE, "Syringe");
+        addItem(builder, HumanItems.TACTICAL_KNIFE, "Tactical Knife");
         addItem(builder, HumanItems.TITANIUM_AXE, "Titanium Axe");
         addItem(builder, HumanItems.TITANIUM_HOE, "Titanium Hoe");
         addItem(builder, HumanItems.TITANIUM_PICKAXE, "Titanium Pickaxe");

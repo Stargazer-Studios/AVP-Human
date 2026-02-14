@@ -34,6 +34,7 @@ public class TacticalMarineGearDecorator implements MarineDecorator {
         applyArmor(marine);
         applyPrimaryWeapon(marine);
         applySecondaryWeapon(marine);
+        applyMeleeWeapon(marine);
         applyExtras(marine);
         applyExclusives(marine);
     }
@@ -63,6 +64,10 @@ public class TacticalMarineGearDecorator implements MarineDecorator {
 
     public void applySecondaryWeapon(Marine marine) {
         MarineGearDecorator.INSTANCE.applySecondaryWeapon(marine);
+    }
+
+    public void applyMeleeWeapon(Marine marine) {
+        MarineGearDecoratorUtil.giveItem(marine, HumanItems.TACTICAL_KNIFE.get());
     }
 
     public List<Tuple2<Integer, Supplier<Item>>> getWeightedPrimaryWeapons() {

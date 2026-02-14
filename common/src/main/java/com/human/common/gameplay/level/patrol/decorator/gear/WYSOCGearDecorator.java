@@ -3,6 +3,7 @@ package com.human.common.gameplay.level.patrol.decorator.gear;
 import com.human.common.gameplay.entity.living.human.marine.Marine;
 import com.human.common.gameplay.level.patrol.decorator.MarineDecorator;
 import com.human.common.gameplay.level.patrol.decorator.util.MarineGearDecoratorUtil;
+import com.human.common.registry.init.item.HumanItems;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionContents;
@@ -21,6 +22,7 @@ public class WYSOCGearDecorator implements MarineDecorator {
         MarineGearDecoratorUtil.applyDyeColorToArmor(marine, DyeColor.BLACK);
         applyPrimaryWeapon(marine);
         applySecondaryWeapon(marine);
+        applyMeleeWeapon(marine);
         applyExtras(marine);
         applyExclusives(marine);
     }
@@ -47,5 +49,9 @@ public class WYSOCGearDecorator implements MarineDecorator {
 
     public void applySecondaryWeapon(Marine marine) {
         WYEGearDecorator.INSTANCE.applySecondaryWeapon(marine);
+    }
+
+    public void applyMeleeWeapon(Marine marine) {
+        MarineGearDecoratorUtil.giveItem(marine, HumanItems.TACTICAL_KNIFE.get());
     }
 }

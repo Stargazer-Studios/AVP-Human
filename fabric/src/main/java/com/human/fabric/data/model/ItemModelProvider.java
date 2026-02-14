@@ -139,6 +139,7 @@ public class ItemModelProvider extends FabricModelProvider {
         generateHandheldItem(generators, HumanItems.STEEL_PICKAXE);
         generateHandheldItem(generators, HumanItems.STEEL_SHOVEL);
         generateHandheldItem(generators, HumanItems.STEEL_SWORD);
+        generateHandheldItem(generators, HumanItems.TACTICAL_KNIFE);
         generateStandardItem(generators, HumanItems.STOCK);
         generateHandheldItem(generators, HumanItems.TITANIUM_AXE);
         generateHandheldItem(generators, HumanItems.TITANIUM_HOE);

@@ -5,6 +5,7 @@ import com.human.common.gameplay.level.patrol.decorator.MarineDecorator;
 import com.human.common.gameplay.level.patrol.decorator.util.MarineGearDecoratorUtil;
 import com.human.common.registry.init.item.HumanArmorItems;
 import com.human.common.registry.init.item.HumanGunItems;
+import com.human.common.registry.init.item.HumanItems;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
@@ -21,6 +22,7 @@ public class ApeGearDecorator implements MarineDecorator {
         applyArmor(marine);
         applyPrimaryWeapon(marine);
         applySecondaryWeapon(marine);
+        applyMeleeWeapon(marine);
         applyExtras(marine);
         applyExclusives(marine);
     }
@@ -54,5 +56,9 @@ public class ApeGearDecorator implements MarineDecorator {
 
     public void applySecondaryWeapon(Marine marine) {
         TacticalMarineGearDecorator.INSTANCE.applySecondaryWeapon(marine);
+    }
+
+    public void applyMeleeWeapon(Marine marine) {
+        MarineGearDecoratorUtil.giveItem(marine, HumanItems.TACTICAL_KNIFE.get());
     }
 }

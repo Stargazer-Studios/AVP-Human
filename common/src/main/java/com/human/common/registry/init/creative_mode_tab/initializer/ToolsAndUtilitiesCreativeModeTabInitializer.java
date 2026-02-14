@@ -22,6 +22,7 @@ public class ToolsAndUtilitiesCreativeModeTabInitializer {
         CreativeModeTabUtil.accept(output, HumanItems.STEEL_PICKAXE);
         CreativeModeTabUtil.accept(output, HumanItems.STEEL_SHOVEL);
         CreativeModeTabUtil.accept(output, HumanItems.STEEL_SWORD);
+        CreativeModeTabUtil.accept(output, HumanItems.TACTICAL_KNIFE);
         CreativeModeTabUtil.accept(output, HumanItems.TITANIUM_AXE);
         CreativeModeTabUtil.accept(output, HumanItems.TITANIUM_HOE);
         CreativeModeTabUtil.accept(output, HumanItems.TITANIUM_PICKAXE);

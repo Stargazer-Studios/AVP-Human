@@ -236,6 +236,11 @@ public class HumanItems {
 
     public static final BLibHolder<Item> SYRINGE = create("syringe", SyringeItem::new);
 
+    public static final BLibHolder<Item> TACTICAL_KNIFE = create(
+        "tactical_knife",
+        () -> new SwordItem(HumanTiers.STEEL, new Item.Properties().attributes(SwordItem.createAttributes(HumanTiers.STEEL, 1, -1.8F)))
+    );
+
     public static final BLibHolder<Item> TITANIUM_AXE = create(
         "titanium_axe",
         () -> new AxeItem(HumanTiers.TITANIUM, new Item.Properties().attributes(AxeItem.createAttributes(HumanTiers.TITANIUM, 6.0F, -3.1F)))
