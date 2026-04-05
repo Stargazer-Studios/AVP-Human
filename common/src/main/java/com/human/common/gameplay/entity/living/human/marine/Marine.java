@@ -25,11 +25,13 @@ import com.just.core.functional.option.Option;
 import com.just.goap.Agent;
 import com.just.goap.graph.Graph;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -51,6 +53,12 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
     private static final String NBT_INVENTORY = "inventory";
 
     private static final String NBT_LEADER_UUID = "leaderUUID";
+
+    @Deprecated
+    private static final String NBT_PERSONAL_INVENTORY = "personalInventory";
+
+    @Deprecated
+    private static final String NBT_PRIMARY_INVENTORY = "primaryInventory";
 
     public static AttributeSupplier.Builder createMarineAttributes() {
         var builder = Mob.createMobAttributes().add(Attributes.ATTACK_DAMAGE);
@@ -231,6 +239,18 @@ public class Marine extends AbstractHuman implements BLibInventoryHolder, GOAPUs
     @Override
     public void readAdditionalSaveData(@NotNull CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
+
+        if (compoundTag.contains(NBT_PERSONAL_INVENTORY)) {
+            var personalInventory = new SimpleContainer(9);
+            personalInventory.fromTag(compoundTag.getList(NBT_PERSONAL_INVENTORY, Tag.TAG_COMPOUND), level().registryAccess());
+            personalInventory.getItems().forEach(inventory::addItemStack);
+        }
+
+        if (compoundTag.contains(NBT_PRIMARY_INVENTORY)) {
+            var primaryInventory = new SimpleContainer(27);
+            primaryInventory.fromTag(compoundTag.getList(NBT_PRIMARY_INVENTORY, Tag.TAG_COMPOUND), level().registryAccess());
+            primaryInventory.getItems().forEach(inventory::addItemStack);
+        }
 
         if (compoundTag.contains(NBT_INVENTORY)) {
             BLibInventory.CODEC.decode(BLibCodecs.Schema.NBT, compoundTag.get(NBT_INVENTORY))
